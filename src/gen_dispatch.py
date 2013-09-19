@@ -35,15 +35,29 @@ class GLFunction(object):
         self.ret_type = ret_type
         self.providers = []
         self.args = []
+
+        # This is the string of C code for passing through the
+        # arguments to the function.
         self.args_list = ''
+
+        # This is the string of C code for declaring the arguments
+        # list.
         self.args_decl = 'void'
 
-        # For an alias group, alias_func is the function they are all
-        # marked as the alias of.
+        # If present, this is the string name of the function that
+        # this is an alias of.  This initially comes from the
+        # registry, and may get updated if it turns out our alias is
+        # itself an alias (for example glFramebufferTextureEXT ->
+        # glFramebufferTextureARB -> glFramebufferTexture)
+        self.alias_name = None
+
+        # After alias resolution, this is the function that this is an
+        # alias of.
         self.alias_func = None
-        # For an alias group, the shared alias_func has this list of
-        # functions (of different names) that are marked as aliases of
-        # it, so that it can write a resolver for all of them.
+
+        # For the root of an alias tree, this lists the functions that
+        # are marked as aliases of it, so that it can write a resolver
+        # for all of them.
         self.alias_exts = []
 
     def add_arg(self, type, name):
@@ -138,8 +152,11 @@ class Generator(object):
 
             alias = command.find('alias')
             if alias is not None:
-                alias_func = self.functions[alias.get('name')]
-                alias_func.add_alias(func)
+                # XXX print('{0} -> {1}'.format(func.name, alias.get('name')))
+                # Note that some alias references appear before the
+                # target command is defined (glAttachObjectARB() ->
+                # glAttachShader(), for example).
+                func.alias_name = alias.get('name')
 
             self.functions[name] = func
 
@@ -153,6 +170,17 @@ class Generator(object):
 
         for name in weird_functions:
             del self.functions[name]
+
+    def resolve_aliases(self):
+        for func in self.functions.values():
+            # Find the root of the alias tree, and add ourselves to it.
+            if func.alias_name:
+                alias_func = func
+                while alias_func.alias_name:
+                    alias_func = self.functions[alias_func.alias_name]
+                func.alias_name = alias_func.name
+                func.alias_func = alias_func
+                alias_func.alias_exts.append(func)
 
     def process_require_statements(self, feature, condition, loader, human_name):
         for command in feature.findall('require/command'):
@@ -373,20 +401,20 @@ class Generator(object):
         self.outln('')
 
     def write_dispatch_table_stub(self, func):
-        dispatch_table_entry = 'dispatch_table->p{0}'.format(func.name)
-
         # Use the same resolver for all the aliases of a particular
         # function.
-        alias_func = func
-        if func.alias_func:
-            alias_func = func
+        alias_name = func.name
+        if func.alias_name:
+            alias_name = func.alias_name
+
+        dispatch_table_entry = 'dispatch_table->p{0}'.format(alias_name)
 
         self.outln('PUBLIC {0}'.format(func.ret_type))
         self.outln('epoxy_{0}({1})'.format(func.name, func.args_decl))
         self.outln('{')
         self.outln('    if (!{0})'.format(dispatch_table_entry))
         self.outln('        {0} = epoxy_{1}_resolver();'.format(dispatch_table_entry,
-                                                                alias_func.name))
+                                                                alias_name))
         self.outln('')
         if func.ret_type == 'void':
             self.outln('    {0}({1});'.format(dispatch_table_entry, func.args_list))
@@ -415,7 +443,9 @@ class Generator(object):
 
         self.outln('struct dispatch_table {')
         for func in self.functions.values():
-            self.outln('    {0} p{1};'.format(func.ptr_type, func.name))
+            # Aliases don't get their own slot, since they use a shared resolver.
+            if not func.alias_name:
+                self.outln('    {0} p{1};'.format(func.ptr_type, func.name))
         self.outln('};')
         self.outln('')
 
@@ -428,6 +458,7 @@ class Generator(object):
             if not func.alias_func:
                 self.write_function_ptr_resolver(func)
 
+        for func in self.functions.values():
             self.write_dispatch_table_stub(func)
 
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
@@ -443,13 +474,14 @@ for file in args.files:
     generator = Generator()
     generator.parse(file)
     generator.drop_weird_glx_functions()
+    generator.resolve_aliases()
     generator.fixup_bootstrap_function('glGetString')
     generator.fixup_bootstrap_function('glGetIntegerv')
 
     # While this is technically exposed as a GLX extension, it's
     # required to be present as a public symbol by the Linux OpenGL
     # ABI.
-    generator.fixup_bootstrap_function('glXGetProcAddressARB')
+    generator.fixup_bootstrap_function('glXGetProcAddress')
 
     generator.write_header(incdir + name + '_generated.h')
     generator.write_proto_define_header(incdir + name + '_generated_vtable_defines.h', '')
