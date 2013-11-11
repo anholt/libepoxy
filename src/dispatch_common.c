@@ -108,7 +108,7 @@ epoxy_is_desktop_gl(void)
     const char *version = (const char *)glGetString(GL_VERSION);
 
     printf("VERSION %s\n", version);
-    return !strncmp(es_prefix, version, strlen(es_prefix));
+    return strncmp(es_prefix, version, strlen(es_prefix));
 }
 
 PUBLIC int
