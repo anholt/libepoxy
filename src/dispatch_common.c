@@ -91,6 +91,7 @@
 #include <stdlib.h>
 #include <dlfcn.h>
 #include <string.h>
+#include <ctype.h>
 #include <stdio.h>
 #include "epoxy/gl.h"
 #include "epoxy/glx.h"
@@ -113,12 +114,22 @@ epoxy_is_desktop_gl(void)
 PUBLIC int
 epoxy_gl_version(void)
 {
+    const char *version = (const char *)glGetString(GL_VERSION);
     GLint major, minor;
+    int scanf_count;
 
-    glGetIntegerv(GL_MAJOR_VERSION, &major);
-    glGetIntegerv(GL_MINOR_VERSION, &minor);
+    /* skip to version number */
+    while (!isdigit(*version) && *version != '\0')
+        version++;
 
-    return major * 10 + minor;
+    /* Interpret version number */
+    scanf_count = sscanf(version, "%i.%i", &major, &minor);
+    if (scanf_count != 2) {
+        fprintf(stderr, "Unable to interpret GL_VERSION string: %s\n",
+                version);
+        exit(1);
+    }
+    return 10 * major + minor;
 }
 
 bool
