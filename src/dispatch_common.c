@@ -116,7 +116,7 @@ epoxy_gl_version(void)
     GLint major, minor;
 
     glGetIntegerv(GL_MAJOR_VERSION, &major);
-    glGetIntegerv(GL_MAJOR_VERSION, &minor);
+    glGetIntegerv(GL_MINOR_VERSION, &minor);
 
     return major * 10 + minor;
 }
