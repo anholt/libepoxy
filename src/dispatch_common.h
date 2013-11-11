@@ -46,7 +46,6 @@ struct api {
 	void *winsys_handle;
 };
 
-bool epoxy_is_desktop_gl(void);
 bool epoxy_is_glx(void);
 
 void *epoxy_get_proc_address(const char *name);

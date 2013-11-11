@@ -102,7 +102,7 @@ struct api local_api;
 
 struct api *api = &local_api;
 
-bool
+PUBLIC bool
 epoxy_is_desktop_gl(void)
 {
     const char *es_prefix = "OpenGL ES ";
@@ -132,13 +132,13 @@ epoxy_gl_version(void)
     return 10 * major + minor;
 }
 
-bool
+PUBLIC bool
 epoxy_is_glx(void)
 {
     return true; /* XXX */
 }
 
-int
+PUBLIC int
 epoxy_glx_version(void)
 {
     return 14; /* XXX */

@@ -32,6 +32,7 @@
 #include <stdbool.h>
 
 bool epoxy_has_gl_extension(const char *extension);
+bool epoxy_is_desktop_gl(void);
 int epoxy_gl_version(void);
 
 #endif /* EPOXY_GL_COMMON_H */
