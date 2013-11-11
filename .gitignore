@@ -80,6 +80,7 @@ core
 # 
 configure.lineno
 .dirstamp
+test-driver
 
 gl_generated_dispatch.c
 gl_generated.h

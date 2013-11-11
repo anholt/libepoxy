@@ -18,19 +18,25 @@
 #  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 #  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-SUBDIRS = src
+EPOXY = $(builddir)/../src/libepoxy.la
 
-if HAVE_X11
-SUBDIRS += test
-endif
+check_LTLIBRARIES = libglx_common.la
 
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = epoxy.pc
-
-EXTRA_DIST = \
-	epoxy.pc.in \
-	registry/egl.xml \
-	registry/gl.xml \
-	registry/glx.xml \
-	registry/wgl.xml \
+libglx_common_la_SOURCES = \
+	glx_common.c \
+	glx_common.h
 	$()
+
+AM_CPPFLAGS = \
+	-I$(top_srcdir)/include \
+	$(X11_CFLAGS)
+
+TESTS = \
+	glx_public_api
+	$()
+
+check_PROGRAMS = $(TESTS)
+
+glx_public_api_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
+glx_public_api_DEPENDENCIES = libglx_common.la
+

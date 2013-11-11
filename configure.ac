@@ -69,6 +69,7 @@ AC_CONFIG_FILES([
                 epoxy.pc
                 Makefile
                 src/Makefile
+                test/Makefile
 ])
 AC_OUTPUT
 
