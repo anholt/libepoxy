@@ -107,7 +107,6 @@ epoxy_is_desktop_gl(void)
     const char *es_prefix = "OpenGL ES ";
     const char *version = (const char *)glGetString(GL_VERSION);
 
-    printf("VERSION %s\n", version);
     return strncmp(es_prefix, version, strlen(es_prefix));
 }
 
