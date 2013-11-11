@@ -84,6 +84,7 @@ class Generator(object):
     def __init__(self):
         self.enums = {}
         self.functions = {}
+        self.sorted_function = None
         self.max_enum_name_len = 1
         self.copyright_comment = None
         self.typedefs = ''
@@ -181,6 +182,9 @@ class Generator(object):
                 func.alias_name = alias_func.name
                 func.alias_func = alias_func
                 alias_func.alias_exts.append(func)
+
+    def sort_functions(self):
+        self.sorted_functions = sorted(self.functions.values(), key=lambda func:func.name)
 
     def process_require_statements(self, feature, condition, loader, human_name):
         for command in feature.findall('require/command'):
@@ -288,7 +292,7 @@ class Generator(object):
             self.outln('#define ' + name.ljust(self.max_enum_name_len + 3) + value + '')
 
     def write_function_ptr_typedefs(self):
-        for func in self.functions.values():
+        for func in self.sorted_functions:
             self.outln('typedef {0} (*{1})({2});'.format(func.ret_type, func.ptr_type,
                                                          func.args_decl))
 
@@ -337,7 +341,7 @@ class Generator(object):
         self.outln('')
         self.write_function_ptr_typedefs()
 
-        for func in self.functions.values():
+        for func in self.sorted_functions:
             self.outln('{0} epoxy_{1}({2});'.format(func.ret_type, func.name,
                                                     func.args_decl))
             self.outln('')
@@ -345,7 +349,7 @@ class Generator(object):
     def write_proto_define_header(self, file, style):
         self.write_header_header(file)
 
-        for func in self.functions.values():
+        for func in self.sorted_functions:
             self.outln('#define {0} epoxy_{1}{0}'.format(func.name, style))
 
     def write_function_ptr_resolver(self, func):
@@ -442,7 +446,7 @@ class Generator(object):
         self.outln('')
 
         self.outln('struct dispatch_table {')
-        for func in self.functions.values():
+        for func in self.sorted_functions:
             # Aliases don't get their own slot, since they use a shared resolver.
             if not func.alias_name:
                 self.outln('    {0} p{1};'.format(func.ptr_type, func.name))
@@ -454,11 +458,11 @@ class Generator(object):
         self.outln('static struct dispatch_table *dispatch_table = &local_dispatch_table;')
         self.outln('')
 
-        for func in self.functions.values():
+        for func in self.sorted_functions:
             if not func.alias_func:
                 self.write_function_ptr_resolver(func)
 
-        for func in self.functions.values():
+        for func in self.sorted_functions:
             self.write_dispatch_table_stub(func)
 
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
@@ -474,6 +478,7 @@ for file in args.files:
     generator = Generator()
     generator.parse(file)
     generator.drop_weird_glx_functions()
+    generator.sort_functions()
     generator.resolve_aliases()
     generator.fixup_bootstrap_function('glGetString')
     generator.fixup_bootstrap_function('glGetIntegerv')
