@@ -152,7 +152,7 @@ PUBLIC bool
 epoxy_has_gl_extension(const char *ext)
 {
     return epoxy_extension_in_string((const char *)glGetString(GL_EXTENSIONS),
-				     ext);
+                                     ext);
 }
 
 #if 0
@@ -184,34 +184,34 @@ epoxy_has_glx_extension(const char *ext)
 void *
 epoxy_dlsym(const char *name)
 {
-	assert(api->gl_handle);
-	return dlsym(api->gl_handle, name);
+    assert(api->gl_handle);
+    return dlsym(api->gl_handle, name);
 }
 
 void *
 epoxy_get_proc_address(const char *name)
 {
-	return glXGetProcAddress((const GLubyte *)name);
+    return glXGetProcAddress((const GLubyte *)name);
 }
 
 void
 epoxy_glx_autoinit(void)
 {
-	if (api->gl_handle)
-		return;
+    if (api->gl_handle)
+        return;
 
-	api->gl_handle = dlopen("libGL.so.1", RTLD_LAZY | RTLD_LOCAL);
-	if (!api->gl_handle) {
-		fprintf(stderr, "Couldn't open libGL.so.1: %s", dlerror());
-		exit(1);
-	}
+    api->gl_handle = dlopen("libGL.so.1", RTLD_LAZY | RTLD_LOCAL);
+    if (!api->gl_handle) {
+        fprintf(stderr, "Couldn't open libGL.so.1: %s", dlerror());
+        exit(1);
+    }
 
-	api->winsys_handle = api->gl_handle;
+    api->winsys_handle = api->gl_handle;
 }
 
 void
 epoxy_platform_autoinit(void)
 {
-	epoxy_glx_autoinit();
+    epoxy_glx_autoinit();
 }
 
