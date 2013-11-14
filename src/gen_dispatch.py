@@ -230,7 +230,7 @@ class Generator(object):
             elif api == 'glx':
                 human_name = 'GLX {0}'.format(version)
                 condition = 'epoxy_is_glx()'
-                if version > 12:
+                if version > 13:
                     condition = condition + ' && epoxy_glx_version() >= {0}'.format(version)
                 loader = self.dlsym_loader
 

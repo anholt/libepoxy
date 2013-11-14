@@ -141,7 +141,32 @@ epoxy_is_glx(void)
 PUBLIC int
 epoxy_glx_version(void)
 {
-    return 14; /* XXX */
+    Display *dpy = glXGetCurrentDisplay();
+    GLXContext ctx = glXGetCurrentContext();
+    int server_major, server_minor;
+    int client_major, client_minor;
+    int server, client;
+    const char *version_string;
+    int screen = 0;
+    int ret;
+
+    /* XXX: What if there's no current context? */
+    glXQueryContext(dpy, ctx, GLX_SCREEN, &screen);
+
+    version_string = glXQueryServerString(dpy, screen, GLX_VERSION);
+    ret = sscanf(version_string, "%d.%d", &server_major, &server_minor);
+    assert(ret == 2);
+    server = server_major * 10 + server_minor;
+
+    version_string = glXGetClientString(dpy, GLX_VERSION);
+    ret = sscanf(version_string, "%d.%d", &client_major, &client_minor);
+    assert(ret == 2);
+    client = client_major * 10 + client_minor;
+
+    if (client < server)
+        return client;
+    else
+        return server;
 }
 
 static bool
