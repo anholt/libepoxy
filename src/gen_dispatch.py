@@ -28,12 +28,36 @@ import xml.etree.ElementTree as ET
 import re
 import os
 
+class GLProvider(object):
+    def __init__(self, condition, condition_name, loader, name):
+        # C code for determining if this function is available.
+        # (e.g. epoxy_is_desktop_gl() && epoxy_gl_version() >= 20
+        self.condition = condition
+
+        # A string (possibly with spaces) describing the condition.
+        self.condition_name = condition_name
+
+        # The loader for getting the symbol -- either dlsym or
+        # getprocaddress.  This is a python format string to generate
+        # C code, given self.name.
+        self.loader = loader
+
+        # The name of the function to be loaded (possibly an
+        # ARB/EXT/whatever-decorated variant).
+        self.name = name
+
+        # This is the C enum name we'll use for referring to this provider.
+        self.enum = condition_name
+        self.enum = self.enum.replace(' ', '_')
+        self.enum = self.enum.replace('\\"', '')
+        self.enum = self.enum.replace('.', '_')
+
 class GLFunction(object):
     def __init__(self, ret_type, name):
         self.name = name
         self.ptr_type = 'PFN' + name.upper()
         self.ret_type = ret_type
-        self.providers = []
+        self.providers = {}
         self.args = []
 
         # This is the string of C code for passing through the
@@ -69,8 +93,9 @@ class GLFunction(object):
             self.args_list += ', ' + name
             self.args_decl += ', ' + type + ' ' + name
 
-    def add_provider(self, condition, loader, human_name):
-        self.providers.append((condition, loader, human_name))
+    def add_provider(self, condition, loader, condition_name):
+        self.providers[condition_name] = GLProvider(condition, condition_name,
+                                                    loader, self.name)
 
     def add_alias(self, ext):
         # We don't support transitivity of aliases.
@@ -91,13 +116,22 @@ class Generator(object):
         self.typedefs = ''
         self.out_file = None
 
-        self.dlsym_loader = 'epoxy_dlsym("{0}")'
-        self.gpa_loader = 'epoxy_get_proc_address("{0}")'
+        self.dlsym_loader = 'epoxy_dlsym({0})'
+        self.gpa_loader = 'epoxy_get_proc_address({0})'
 
         # Dictionary mapping human-readable names of providers to a C
         # enum token that will be used to reference those names, to
         # reduce generated binary size.
         self.provider_enum = {}
+
+        # Dictionary mapping human-readable names of providers to C
+        # code to detect if it's present.
+        self.provider_condition = {}
+
+        # Dictionary mapping human-readable names of providers to
+        # format strings for fetching the function pointer when
+        # provided the name of the symbol to be requested.
+        self.provider_loader = {}
 
     def all_text_until_element_name(self, element, element_name):
         text = ''
@@ -192,16 +226,21 @@ class Generator(object):
     def prepare_provider_enum(self):
         self.provider_enum = {}
 
+        # We assume that for any given provider, all functions using
+        # it will have the same loader.  This lets us generate a
+        # general C function for detecting conditions and calling the
+        # dlsym/getprocaddress, and have our many resolver stubs just
+        # call it with a table of values.
         for func in self.functions.values():
-            for condition, loader, human_name in func.providers:
-                if human_name in self.provider_enum:
+            for provider in func.providers.values():
+                if provider.condition_name in self.provider_enum:
+                    assert(self.provider_condition[provider.condition_name] == provider.condition)
+                    assert(self.provider_loader[provider.condition_name] == provider.loader)
                     continue
 
-                enum = human_name.replace(' ', '_')
-                enum = enum.replace('\\"', '')
-                enum = enum.replace('.', '_')
-
-                self.provider_enum[human_name] = enum;
+                self.provider_enum[provider.condition_name] = provider.enum;
+                self.provider_condition[provider.condition_name] = provider.condition;
+                self.provider_loader[provider.condition_name] = provider.loader;
 
     def sort_functions(self):
         self.sorted_functions = sorted(self.functions.values(), key=lambda func:func.name)
@@ -210,7 +249,7 @@ class Generator(object):
         for command in feature.findall('require/command'):
             name = command.get('name')
             func = self.functions[name]
-            func.add_provider(condition, loader.format(name), human_name)
+            func.add_provider(condition, loader, human_name)
 
     def parse_function_providers(self, reg):
         for feature in reg.findall('feature'):
@@ -271,12 +310,12 @@ class Generator(object):
             if 'glx' in apis:
                 human_name = 'GLX extension \\"{0}\\"'.format(extname)
                 condition = 'epoxy_has_glx_extension("{0}")'.format(extname)
-                loader = 'epoxy_get_proc_address("{0}")'
+                loader = self.gpa_loader
                 self.process_require_statements(extension, condition, loader, human_name)
             if 'gl' in apis:
                 human_name = 'GL extension \\"{0}\\"'.format(extname)
                 condition = 'epoxy_has_gl_extension("{0}")'.format(extname)
-                loader = 'epoxy_get_proc_address("{0}")'
+                loader = self.gpa_loader
                 self.process_require_statements(extension, condition, loader, human_name)
 
     def fixup_bootstrap_function(self, name):
@@ -288,9 +327,8 @@ class Generator(object):
             return
 
         func = self.functions[name]
-        func.providers = []
-        func.add_provider('true', self.dlsym_loader.format(func.name),
-                          'always present')
+        func.providers = {}
+        func.add_provider('true', self.dlsym_loader, 'always present')
 
     def parse(self, file):
         reg = ET.parse(file)
@@ -381,26 +419,21 @@ class Generator(object):
 
         providers = []
         # Make a local list of all the providers for this alias group
-        for provider in func.providers:
+        for provider in func.providers.values():
             providers.append(provider)
         for alias_func in func.alias_exts:
-            for provider in alias_func.providers:
+            for provider in alias_func.providers.values():
                 providers.append(provider)
 
-        # Check if there's any alias of this that's built into our
-        # ABI, and just use that one if available.  This is important
-        # for avoiding loops of
-        # glXGetProcAddress(glXGetProcAddress()), or
-        # glGetIntegerv(glGetIntegerv()).
-        global_loader = None
-        for condition, loader, human_name in providers:
-            if condition == 'true':
-                global_loader = loader
-
         self.outln('    static const enum {0}_provider providers[] = {{'.format(self.target))
-        for provider, loader, human_name in providers:
-            self.outln('        {0},'.format(self.provider_enum[human_name]))
+        for provider in providers:
+            self.outln('        {0},'.format(provider.enum))
         self.outln('        {0}_provider_terminator'.format(self.target))
+        self.outln('    };')
+
+        self.outln('    static const char *entrypoints[] = {')
+        for provider in providers:
+            self.outln('        "{0}",'.format(provider.name))
         self.outln('    };')
 
         if 'glX' in func.name:
@@ -409,21 +442,8 @@ class Generator(object):
             self.outln('    epoxy_platform_autoinit();')
         self.outln('')
 
-        if global_loader:
-            self.outln('   return {0};'.format(loader))
-        else:
-            for condition, loader, human_name in providers:
-                self.outln('    if ({0})'.format(condition))
-                self.outln('        return {0};'.format(loader))
-            self.outln('')
-
-        # If the function isn't provided by any known extension, print
-        # something useful for the poor application developer before
-        # aborting.  (In non-epoxy GL usage, the app developer would
-        # call into some blank stub function and segfault).
-        self.outln('    epoxy_print_failure_reasons(\"{0}()\",'.format(func.name))
-        self.outln('                                enum_strings, (const int *)providers);')
-        self.outln('    abort();')
+        self.outln('   return {0}_provider_resolver("{1}",'.format(self.target, func.name))
+        self.outln('                                providers, entrypoints);')
 
         self.outln('}')
         self.outln('')
@@ -476,6 +496,39 @@ class Generator(object):
             self.outln('    [{0}] = "{1}",'.format(enum, human_name))
         self.outln('};')
 
+    def write_provider_resolver(self):
+        self.outln('static void *{0}_provider_resolver(const char *name,'.format(self.target))
+        self.outln('                                   const enum {0}_provider *providers,'.format(self.target))
+        self.outln('                                   const char **entrypoints)')
+        self.outln('{')
+        self.outln('    int i;')
+
+        self.outln('    for (i = 0; providers[i] != {0}_provider_terminator; i++) {{'.format(self.target))
+        self.outln('        switch (providers[i]) {')
+
+        for human_name in sorted(self.provider_enum.keys()):
+            enum = self.provider_enum[human_name]
+            self.outln('        case {0}:'.format(enum))
+            self.outln('            if ({0})'.format(self.provider_condition[human_name]))
+            self.outln('                return {0};'.format(self.provider_loader[human_name]).format("entrypoints[i]"))
+            self.outln('            break;')
+
+        self.outln('        case {0}_provider_terminator:'.format(self.target))
+        self.outln('            abort(); /* Not reached */')
+        self.outln('        }')
+        self.outln('    }')
+        self.outln('')
+
+        # If the function isn't provided by any known extension, print
+        # something useful for the poor application developer before
+        # aborting.  (In non-epoxy GL usage, the app developer would
+        # call into some blank stub function and segfault).
+        self.outln('    epoxy_print_failure_reasons(name, enum_strings, (const int *)providers);')
+        self.outln('    abort();')
+
+        self.outln('}')
+        self.outln('')
+
     def write_source(self, file):
         self.out_file = open(file, 'w')
 
@@ -509,6 +562,7 @@ class Generator(object):
 
         self.write_provider_enums()
         self.write_provider_enum_strings()
+        self.write_provider_resolver()
 
         for func in self.sorted_functions:
             if not func.alias_func:
