@@ -52,3 +52,6 @@ void *epoxy_get_proc_address(const char *name);
 void *epoxy_dlsym(const char *name);
 void epoxy_glx_autoinit(void);
 void epoxy_platform_autoinit(void);
+void epoxy_print_failure_reasons(const char *name,
+                                 const char **provider_names,
+                                 const int *providers);

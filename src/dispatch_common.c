@@ -250,3 +250,15 @@ epoxy_platform_autoinit(void)
     epoxy_glx_autoinit();
 }
 
+void
+epoxy_print_failure_reasons(const char *name,
+                            const char **provider_names,
+                            const int *providers)
+{
+    int i;
+
+    printf("No provider of %s found.  Requires one of:\n", name);
+
+    for (i = 0; providers[i] != 0; i++)
+        puts(provider_names[providers[i]]);
+}

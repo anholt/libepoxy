@@ -81,7 +81,8 @@ class GLFunction(object):
         ext.alias_func = self
 
 class Generator(object):
-    def __init__(self):
+    def __init__(self, target):
+        self.target = target
         self.enums = {}
         self.functions = {}
         self.sorted_function = None
@@ -92,6 +93,11 @@ class Generator(object):
 
         self.dlsym_loader = 'epoxy_dlsym("{0}")'
         self.gpa_loader = 'epoxy_get_proc_address("{0}")'
+
+        # Dictionary mapping human-readable names of providers to a C
+        # enum token that will be used to reference those names, to
+        # reduce generated binary size.
+        self.provider_enum = {}
 
     def all_text_until_element_name(self, element, element_name):
         text = ''
@@ -182,6 +188,20 @@ class Generator(object):
                 func.alias_name = alias_func.name
                 func.alias_func = alias_func
                 alias_func.alias_exts.append(func)
+
+    def prepare_provider_enum(self):
+        self.provider_enum = {}
+
+        for func in self.functions.values():
+            for condition, loader, human_name in func.providers:
+                if human_name in self.provider_enum:
+                    continue
+
+                enum = human_name.replace(' ', '_')
+                enum = enum.replace('\\"', '')
+                enum = enum.replace('.', '_')
+
+                self.provider_enum[human_name] = enum;
 
     def sort_functions(self):
         self.sorted_functions = sorted(self.functions.values(), key=lambda func:func.name)
@@ -358,11 +378,6 @@ class Generator(object):
         self.outln('static {0}'.format(func.ptr_type))
         self.outln('epoxy_{0}_resolver(void)'.format(func.name))
         self.outln('{')
-        if 'glX' in func.name:
-            self.outln('    epoxy_glx_autoinit();')
-        else:
-            self.outln('    epoxy_platform_autoinit();')
-        self.outln('')
 
         providers = []
         # Make a local list of all the providers for this alias group
@@ -382,6 +397,18 @@ class Generator(object):
             if condition == 'true':
                 global_loader = loader
 
+        self.outln('    static const enum {0}_provider providers[] = {{'.format(self.target))
+        for provider, loader, human_name in providers:
+            self.outln('        {0},'.format(self.provider_enum[human_name]))
+        self.outln('        {0}_provider_terminator'.format(self.target))
+        self.outln('    };')
+
+        if 'glX' in func.name:
+            self.outln('    epoxy_glx_autoinit();')
+        else:
+            self.outln('    epoxy_platform_autoinit();')
+        self.outln('')
+
         if global_loader:
             self.outln('   return {0};'.format(loader))
         else:
@@ -394,13 +421,8 @@ class Generator(object):
         # something useful for the poor application developer before
         # aborting.  (In non-epoxy GL usage, the app developer would
         # call into some blank stub function and segfault).
-        self.outln('    printf("No provider of \\"{0}()\\" found.  Requires one of:\\n");'.format(func.name))
-        if len(func.providers) == 0:
-            self.outln('    printf("    unknown\\n");')
-        else:
-            for provider in func.providers:
-                self.outln('    printf("    {0}\\n");'.format(provider[2]))
-
+        self.outln('    epoxy_print_failure_reasons(\"{0}()\",'.format(func.name))
+        self.outln('                                enum_strings, (const int *)providers);')
         self.outln('    abort();')
 
         self.outln('}')
@@ -428,6 +450,31 @@ class Generator(object):
             self.outln('    return {0}({1});'.format(dispatch_table_entry, func.args_list))
         self.outln('}')
         self.outln('')
+
+    def write_provider_enums(self):
+        self.outln('enum {0}_provider {{'.format(self.target))
+
+        sorted_providers = sorted(self.provider_enum.keys())
+
+        # We always put a 0 enum first so that we can have a
+        # terminator in our arrays
+        self.outln('    {0}_provider_terminator = 0,'.format(self.target))
+
+        for human_name in sorted_providers:
+            enum = self.provider_enum[human_name]
+            self.outln('    {0},'.format(enum))
+        self.outln('};')
+        self.outln('')
+
+    def write_provider_enum_strings(self):
+        self.outln('static const char *enum_strings[] = {')
+
+        sorted_providers = sorted(self.provider_enum.keys())
+
+        for human_name in sorted_providers:
+            enum = self.provider_enum[human_name]
+            self.outln('    [{0}] = "{1}",'.format(enum, human_name))
+        self.outln('};')
 
     def write_source(self, file):
         self.out_file = open(file, 'w')
@@ -460,6 +507,9 @@ class Generator(object):
         self.outln('static struct dispatch_table *dispatch_table = &local_dispatch_table;')
         self.outln('')
 
+        self.write_provider_enums()
+        self.write_provider_enum_strings()
+
         for func in self.sorted_functions:
             if not func.alias_func:
                 self.write_function_ptr_resolver(func)
@@ -477,7 +527,7 @@ incdir = args.dir + '/include/epoxy/'
 
 for file in args.files:
     name = os.path.basename(file).split('.xml')[0]
-    generator = Generator()
+    generator = Generator(name)
     generator.parse(file)
     generator.drop_weird_glx_functions()
     generator.sort_functions()
@@ -489,6 +539,8 @@ for file in args.files:
     # required to be present as a public symbol by the Linux OpenGL
     # ABI.
     generator.fixup_bootstrap_function('glXGetProcAddress')
+
+    generator.prepare_provider_enum()
 
     generator.write_header(incdir + name + '_generated.h')
     generator.write_proto_define_header(incdir + name + '_generated_vtable_defines.h', '')
