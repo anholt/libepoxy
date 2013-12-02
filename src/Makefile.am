@@ -51,18 +51,18 @@ GENERATED_GL_INCLUDES = \
 	$()
 
 GENERATED_GLX_INCLUDES = \
-	$(builddir)/../include/epoxy/glx_generated.h \
+	$(tuilddir)/../include/epoxy/glx_generated.h \
 	$(builddir)/../include/epoxy/glx_generated_vtable_defines.h \
 	$()
 
-GENERATED_GL_SOURCE = $(builddir)/gl_generated_dispatch.c
+GENERATED_GL_SOURCE = gl_generated_dispatch.c
 
 GENERATED_GL = \
 	$(GENERATED_GL_SOURCE) \
 	$(GENERATED_GL_INCLUDES) \
 	$()
 
-GENERATED_GLX_SOURCE = $(builddir)/glx_generated_dispatch.c
+GENERATED_GLX_SOURCE = glx_generated_dispatch.c
 
 GENERATED_GLX = \
 	$(GENERATED_GLX_SOURCE) \
@@ -85,8 +85,10 @@ libepoxy_la_SOURCES = \
 $(GENERATED_GL_INCLUDES): $(GENERATED_GL_SOURCE)
 $(GENERATED_GLX_INCLUDES): $(GENERATED_GLX_SOURCE)
 
-$(GENERATED_GL_SOURCE): gen_dispatch.py ../registry/gl.xml
-	$(AM_V_GEN)$(PYTHON) gen_dispatch.py --dir $(top_builddir) ../registry/gl.xml
+$(GENERATED_GL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/gl.xml
+	$(MKDIR_P) $(top_builddir)/include/epoxy
+	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/gl.xml
 
-$(GENERATED_GLX_SOURCE): gen_dispatch.py ../registry/glx.xml
-	$(AM_V_GEN)$(PYTHON) gen_dispatch.py --dir $(top_builddir) ../registry/glx.xml
+$(GENERATED_GLX_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/glx.xml
+	$(MKDIR_P) $(top_builddir)/include/epoxy
+	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/glx.xml
