@@ -374,7 +374,7 @@ class Generator(object):
     def write_header(self, file):
         self.write_header_header(file)
 
-        if 'gl_' not in file:
+        if self.target != "gl":
             self.outln('#include "epoxy/gl_generated.h"')
         else:
             # Add some ridiculous inttypes.h redefinitions that are from
@@ -391,7 +391,7 @@ class Generator(object):
             self.outln('typedef intptr_t khronos_intptr_t;')
             self.outln('typedef ptrdiff_t khronos_ssize_t;')
 
-        if 'glx_' in file:
+        if self.target == "glx":
             self.outln('#include <X11/Xlib.h>')
             self.outln('#include <X11/Xutil.h>')
 
@@ -542,10 +542,7 @@ class Generator(object):
         self.outln('#include <stdio.h>')
         self.outln('')
         self.outln('#include "dispatch_common.h"')
-        if 'glx_' in file:
-            self.outln('#include "epoxy/glx_generated.h"')
-        else:
-            self.outln('#include "epoxy/gl_generated.h"')
+        self.outln('#include "epoxy/{0}_generated.h"'.format(self.target))
         self.outln('')
 
         self.outln('struct dispatch_table {')
