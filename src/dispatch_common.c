@@ -93,14 +93,67 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdio.h>
+#include <pthread.h>
+#include <err.h>
 #include "epoxy/gl.h"
 #include "epoxy/glx.h"
+#include "epoxy/egl.h"
 #include "dispatch_common.h"
 
-/* XXX: Make this thread local */
-struct api local_api;
+struct api {
+    /**
+     * Locking for making sure we don't double-dlopen().
+     */
+    pthread_mutex_t mutex;
 
-struct api *api = &local_api;
+    /** dlopen() return value for libGL.so.1. */
+    void *glx_handle;
+
+    /** dlopen() return value for libEGL.so.1 */
+    void *egl_handle;
+
+    /** dlopen() return value for libGLESv1_CM.so.1 */
+    void *gles1_handle;
+
+    /** dlopen() return value for libGLESv2.so.2 */
+    void *gles2_handle;
+};
+
+static struct api api = {
+    .mutex = PTHREAD_MUTEX_INITIALIZER,
+};
+
+static void
+get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
+{
+    if (*handle)
+        return;
+
+    pthread_mutex_lock(&api.mutex);
+    if (!*handle) {
+        *handle = dlopen(lib_name, RTLD_LAZY | RTLD_LOCAL);
+        if (!*handle && exit_on_fail) {
+            fprintf(stderr, "Couldn't open %s: %s", lib_name, dlerror());
+            exit(1);
+        }
+    }
+    pthread_mutex_unlock(&api.mutex);
+}
+
+static void *
+do_dlsym(void **handle, const char *lib_name, const char *name,
+         bool exit_on_fail)
+{
+    void *result;
+
+    get_dlopen_handle(handle, lib_name, exit_on_fail);
+
+    result = dlsym(*handle, name);
+    if (!result)
+        errx(1, "%s() not found in %s", name, lib_name);
+
+    return result;
+}
 
 PUBLIC bool
 epoxy_is_desktop_gl(void)
@@ -130,12 +183,6 @@ epoxy_gl_version(void)
         exit(1);
     }
     return 10 * major + minor;
-}
-
-PUBLIC bool
-epoxy_is_glx(void)
-{
-    return true; /* XXX */
 }
 
 /**
@@ -183,6 +230,30 @@ epoxy_glx_version(Display *dpy, int screen)
         return server;
 }
 
+PUBLIC int
+epoxy_conservative_egl_version(void)
+{
+    EGLDisplay *dpy = eglGetCurrentDisplay();
+
+    if (!dpy)
+        return 14;
+
+    return epoxy_egl_version(dpy);
+}
+
+PUBLIC int
+epoxy_egl_version(EGLDisplay *dpy)
+{
+    int major, minor;
+    const char *version_string;
+    int ret;
+
+    version_string = eglQueryString(dpy, EGL_VERSION);
+    ret = sscanf(version_string, "%d.%d", &major, &minor);
+    assert(ret == 2);
+    return major * 10 + minor;
+}
+
 static bool
 epoxy_extension_in_string(const char *extension_list, const char *ext)
 {
@@ -204,13 +275,22 @@ epoxy_has_gl_extension(const char *ext)
                                      ext);
 }
 
-#if 0
-PUBLIC bool
-epoxy_has_egl_extension(const char *ext)
+bool
+epoxy_conservative_has_egl_extension(const char *ext)
 {
-    return epoxy_extension_in_string(eglQueryString(EGL_EXTENSIONS), ext);
+    EGLDisplay *dpy = eglGetCurrentDisplay();
+
+    if (!dpy)
+        return true;
+
+    return epoxy_has_egl_extension(dpy, ext);
 }
-#endif
+
+PUBLIC bool
+epoxy_has_egl_extension(EGLDisplay *dpy, const char *ext)
+{
+    return epoxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext);
+}
 
 /**
  * If we can determine the GLX extension support from the current
@@ -234,7 +314,7 @@ epoxy_conservative_has_glx_extension(const char *ext)
 
 PUBLIC bool
 epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
-{
+ {
     /* No, you can't just use glXGetClientString or
      * glXGetServerString() here.  Those each tell you about one half
      * of what's needed for an extension to be supported, and
@@ -245,37 +325,78 @@ epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
 }
 
 void *
-epoxy_dlsym(const char *name)
+epoxy_egl_dlsym(const char *name)
 {
-    assert(api->gl_handle);
-    return dlsym(api->gl_handle, name);
+    return do_dlsym(&api.egl_handle, "libEGL.so.1", name, true);
+}
+
+void *
+epoxy_glx_dlsym(const char *name)
+{
+    return do_dlsym(&api.glx_handle, "libGL.so.1", name, true);
+}
+
+void *
+epoxy_gl_dlsym(const char *name)
+{
+    /* There's no library for desktop GL support independent of GLX. */
+    return epoxy_glx_dlsym(name);
+}
+
+void *
+epoxy_gles1_dlsym(const char *name)
+{
+    return do_dlsym(&api.gles1_handle, "libGLESv1_CM.so.1", name, true);
+}
+
+void *
+epoxy_gles2_dlsym(const char *name)
+{
+    return do_dlsym(&api.gles1_handle, "libGLESv2.so.2", name, true);
 }
 
 void *
 epoxy_get_proc_address(const char *name)
 {
-    return glXGetProcAddress((const GLubyte *)name);
-}
+    if (api.egl_handle) {
+        return eglGetProcAddress(name);
+    } else if (api.glx_handle) {
+        return glXGetProcAddressARB((const GLubyte *)name);
+    } else {
+        /* If the application hasn't explicitly called some of our GLX
+         * or EGL code but has presumably set up a context on its own,
+         * then we need to figure out how to getprocaddress anyway.
+         *
+         * If there's a public GetProcAddress loaded in the
+         * application's namespace, then use that.
+         */
+        PFNGLXGETPROCADDRESSARBPROC glx_gpa;
+        PFNEGLGETPROCADDRESSPROC egl_gpa;
 
-void
-epoxy_glx_autoinit(void)
-{
-    if (api->gl_handle)
-        return;
+        egl_gpa = dlsym(NULL, "eglGetProcAddress");
+        if (egl_gpa)
+            return egl_gpa(name);
 
-    api->gl_handle = dlopen("libGL.so.1", RTLD_LAZY | RTLD_LOCAL);
-    if (!api->gl_handle) {
-        fprintf(stderr, "Couldn't open libGL.so.1: %s", dlerror());
-        exit(1);
+        glx_gpa = dlsym(NULL, "glXGetProcAddressARB");
+        if (glx_gpa)
+            return glx_gpa((const GLubyte *)name);
+
+        /* OK, couldn't find anything in the app's address space.
+         * Presumably they dlopened with RTLD_LOCAL, which hides it
+         * from us.  Just go dlopen()ing likely libraries and try them.
+         */
+        egl_gpa = do_dlsym(&api.egl_handle, "libEGL.so.1", "eglGetProcAddress",
+                           false);
+        if (egl_gpa)
+            return egl_gpa(name);
+
+        return do_dlsym(&api.glx_handle, "libGL.so.1", "glXGetProcAddressARB",
+                        false);
+        if (glx_gpa)
+            return glx_gpa((const GLubyte *)name);
+
+        errx(1, "Couldn't find GLX or EGL libraries.\n");
     }
-
-    api->winsys_handle = api->gl_handle;
-}
-
-void
-epoxy_platform_autoinit(void)
-{
-    epoxy_glx_autoinit();
 }
 
 void

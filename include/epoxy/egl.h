@@ -21,30 +21,43 @@
  * IN THE SOFTWARE.
  */
 
-#include <stdbool.h>
-#include "epoxy/gl.h"
-#include "epoxy/egl.h"
-#include "epoxy/glx.h"
+/** @file egl.h
+ *
+ * Provides an implementation of a EGL dispatch layer using a hidden
+ * vtable.
+ *
+ * This is a lower performance path than ifuncs when they are
+ * available, but it is required if you might have multiple return
+ * values for GetProcAddress/dlsym()ed functions (for example, if you
+ * unload libGL.so.1).
+ */
 
-#ifndef PUBLIC
-#  if (defined(__GNUC__) && __GNUC__ >= 4) || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))
-#    define PUBLIC __attribute__((visibility("default")))
-#  else
-#    define PUBLIC
-#  endif
+#ifndef __EPOXY_EGL_H
+#define __EPOXY_EGL_H
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
-void *epoxy_egl_dlsym(const char *name);
-void *epoxy_glx_dlsym(const char *name);
-void *epoxy_gl_dlsym(const char *name);
-void *epoxy_gles1_dlsym(const char *name);
-void *epoxy_gles2_dlsym(const char *name);
-void *epoxy_get_proc_address(const char *name);
+#include <stdbool.h>
 
-int epoxy_conservative_glx_version(void);
-bool epoxy_conservative_has_glx_extension(const char *name);
-int epoxy_conservative_egl_version(void);
-bool epoxy_conservative_has_egl_extension(const char *name);
-void epoxy_print_failure_reasons(const char *name,
-                                 const char **provider_names,
-                                 const int *providers);
+#if defined(__egl_h_) || defined(__eglext_h_)
+#error epoxy/egl.h must be included before (or in place of) GL/egl.h
+#else
+#define __egl_h_
+#define __eglext_h_
+#endif
+
+#pragma once
+
+#include "epoxy/egl_generated.h"
+#include "epoxy/egl_generated_vtable_defines.h"
+
+bool epoxy_has_egl_extension(EGLDisplay *dpy, const char *extension);
+int epoxy_egl_version(EGLDisplay *dpy);
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif
+
+#endif /* __EPOXY_EGL_H */

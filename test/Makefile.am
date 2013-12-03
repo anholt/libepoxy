@@ -20,7 +20,15 @@
 
 EPOXY = $(builddir)/../src/libepoxy.la
 
-check_LTLIBRARIES = libglx_common.la
+check_LTLIBRARIES = \
+	libegl_common.la \
+	libglx_common.la \
+	$()
+
+libegl_common_la_SOURCES = \
+	egl_common.c \
+	egl_common.h
+	$()
 
 libglx_common_la_SOURCES = \
 	glx_common.c \
@@ -32,6 +40,7 @@ AM_CPPFLAGS = \
 	$(X11_CFLAGS)
 
 TESTS = \
+	egl_has_extension_nocontext \
 	glx_public_api \
 	glx_glxgetprocaddress_nocontext \
 	glx_has_extension_nocontext \
@@ -39,6 +48,9 @@ TESTS = \
 	$()
 
 check_PROGRAMS = $(TESTS)
+
+egl_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libegl_common.la
+egl_has_extension_nocontext_DEPENDENCIES = libegl_common.la
 
 glx_public_api_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
 glx_public_api_DEPENDENCIES = libglx_common.la

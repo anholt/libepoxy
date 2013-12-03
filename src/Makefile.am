@@ -31,6 +31,7 @@ lib_LTLIBRARIES = libepoxy.la
 epoxyinclude_DATA = \
 	$(GL_INCLUDES) \
 	$(GLX_INCLUDES) \
+	$(EGL_INCLUDES) \
 	$()
 
 GL_INCLUDES = \
@@ -43,6 +44,11 @@ GLX_INCLUDES = \
 	$(GENERATED_GLX_INCLUDES) \
 	$()
 
+EGL_INCLUDES = \
+	../include/epoxy/egl.h \
+	$(GENERATED_EGL_INCLUDES) \
+	$()
+
 GENERATED_GL_INCLUDES = \
 	$(builddir)/../include/epoxy/gl_generated.h \
 	$(builddir)/../include/epoxy/gl_generated_vtable_defines.h \
@@ -51,6 +57,11 @@ GENERATED_GL_INCLUDES = \
 GENERATED_GLX_INCLUDES = \
 	$(tuilddir)/../include/epoxy/glx_generated.h \
 	$(builddir)/../include/epoxy/glx_generated_vtable_defines.h \
+	$()
+
+GENERATED_EGL_INCLUDES = \
+	$(tuilddir)/../include/epoxy/egl_generated.h \
+	$(builddir)/../include/epoxy/egl_generated_vtable_defines.h \
 	$()
 
 GENERATED_GL_SOURCE = gl_generated_dispatch.c
@@ -67,9 +78,17 @@ GENERATED_GLX = \
 	$(GENERATED_GLX_INCLUDES) \
 	$()
 
+GENERATED_EGL_SOURCE = egl_generated_dispatch.c
+
+GENERATED_EGL = \
+	$(GENERATED_EGL_SOURCE) \
+	$(GENERATED_EGL_INCLUDES) \
+	$()
+
 BUILT_SOURCES = \
 	$(GENERATED_GL) \
 	$(GENERATED_GLX) \
+	$(GENERATED_EGL) \
 	$()
 CLEANFILES = $(BUILT_SOURCES)
 
@@ -82,6 +101,7 @@ libepoxy_la_SOURCES = \
 # These are generated alongside the .c file.
 $(GENERATED_GL_INCLUDES): $(GENERATED_GL_SOURCE)
 $(GENERATED_GLX_INCLUDES): $(GENERATED_GLX_SOURCE)
+$(GENERATED_EGL_INCLUDES): $(GENERATED_EGL_SOURCE)
 
 $(GENERATED_GL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/gl.xml
 	$(MKDIR_P) $(top_builddir)/include/epoxy
@@ -90,3 +110,7 @@ $(GENERATED_GL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/gl.xml
 $(GENERATED_GLX_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/glx.xml
 	$(MKDIR_P) $(top_builddir)/include/epoxy
 	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/glx.xml
+
+$(GENERATED_EGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/egl.xml
+	$(MKDIR_P) $(top_builddir)/include/epoxy
+	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/egl.xml

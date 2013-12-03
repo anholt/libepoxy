@@ -21,30 +21,5 @@
  * IN THE SOFTWARE.
  */
 
-#include <stdbool.h>
-#include "epoxy/gl.h"
-#include "epoxy/egl.h"
-#include "epoxy/glx.h"
-
-#ifndef PUBLIC
-#  if (defined(__GNUC__) && __GNUC__ >= 4) || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))
-#    define PUBLIC __attribute__((visibility("default")))
-#  else
-#    define PUBLIC
-#  endif
-#endif
-
-void *epoxy_egl_dlsym(const char *name);
-void *epoxy_glx_dlsym(const char *name);
-void *epoxy_gl_dlsym(const char *name);
-void *epoxy_gles1_dlsym(const char *name);
-void *epoxy_gles2_dlsym(const char *name);
-void *epoxy_get_proc_address(const char *name);
-
-int epoxy_conservative_glx_version(void);
-bool epoxy_conservative_has_glx_extension(const char *name);
-int epoxy_conservative_egl_version(void);
-bool epoxy_conservative_has_egl_extension(const char *name);
-void epoxy_print_failure_reasons(const char *name,
-                                 const char **provider_names,
-                                 const int *providers);
+EGLDisplay *
+get_egl_display_or_skip(void);

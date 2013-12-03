@@ -116,9 +116,6 @@ class Generator(object):
         self.typedefs = ''
         self.out_file = None
 
-        self.dlsym_loader = 'epoxy_dlsym({0})'
-        self.gpa_loader = 'epoxy_get_proc_address({0})'
-
         # Dictionary mapping human-readable names of providers to a C
         # enum token that will be used to reference those names, to
         # reduce generated binary size.
@@ -266,36 +263,41 @@ class Generator(object):
                 # else is supposed to not be present, so you have to
                 # glXGetProcAddress() it.
                 if version <= 12:
-                    loader = self.dlsym_loader
+                    loader = 'epoxy_gl_dlsym({0})'
                 else:
-                    loader = self.gpa_loader
+                    loader = 'epoxy_get_proc_address({0})'
                     condition += ' && epoxy_gl_version() >= {0}'.format(version)
             elif api == 'gles2':
                 human_name = 'OpenGL ES {0}'.format(feature.get('number'))
                 condition = '!epoxy_is_desktop_gl() && epoxy_gl_version() >= {0}'.format(version)
 
                 if version <= 20:
-                    loader = self.dlsym_loader
+                    loader = 'epoxy_gles2_dlsym({0})'
                 else:
-                    loader = self.gpa_loader
+                    loader = 'epoxy_get_proc_address({0})'
             elif api == 'gles1':
                 human_name = 'OpenGL ES 1.0'
                 condition = '!epoxy_is_desktop_gl() && epoxy_gl_version() == 10'
-
-                if version <= 20:
-                    loader = self.dlsym_loader
-                else:
-                    loader = self.gpa_loader
+                loader = 'epoxy_gles1_dlsym({0})'
             elif api == 'glx':
                 human_name = 'GLX {0}'.format(version)
-                condition = 'epoxy_is_glx()'
-                # We could just always use GPA, but dlsym() is a more
+                # We could just always use GPA for loading everything
+                # but glXGetProcAddress(), but dlsym() is a more
                 # efficient lookup.
                 if version > 13:
-                    condition = condition + ' && epoxy_conservative_glx_version() >= {0}'.format(version)
-                    loader = self.gpa_loader
+                    condition = 'epoxy_conservative_glx_version() >= {0}'.format(version)
+                    loader = 'glXGetProcAddress((const GLubyte *){0})'
                 else:
-                    loader = self.dlsym_loader
+                    condition = 'true'
+                    loader = 'epoxy_glx_dlsym({0})'
+            elif api == 'egl':
+                human_name = 'EGL {0}'.format(version)
+                if version > 10:
+                    condition = 'epoxy_conservative_egl_version() >= {0}'.format(version)
+                    loader = 'eglGetProcAddress({0})'
+                else:
+                    condition = 'true'
+                    loader = 'epoxy_egl_dlsym({0})'
             else:
                 sys.exit('unknown API: "{0}"'.format(api))
 
@@ -309,15 +311,20 @@ class Generator(object):
             if 'glx' in apis:
                 human_name = 'GLX extension \\"{0}\\"'.format(extname)
                 condition = 'epoxy_conservative_has_glx_extension("{0}")'.format(extname)
-                loader = self.gpa_loader
+                loader = 'glXGetProcAddress((const GLubyte *){0})'
+                self.process_require_statements(extension, condition, loader, human_name)
+            if 'egl' in apis:
+                human_name = 'EGL extension \\"{0}\\"'.format(extname)
+                condition = 'epoxy_conservative_has_egl_extension("{0}")'.format(extname)
+                loader = 'eglGetProcAddress({0})'
                 self.process_require_statements(extension, condition, loader, human_name)
             if 'gl' in apis:
                 human_name = 'GL extension \\"{0}\\"'.format(extname)
                 condition = 'epoxy_has_gl_extension("{0}")'.format(extname)
-                loader = self.gpa_loader
+                loader = 'epoxy_get_proc_address({0})'
                 self.process_require_statements(extension, condition, loader, human_name)
 
-    def fixup_bootstrap_function(self, name):
+    def fixup_bootstrap_function(self, name, loader):
         # We handle glGetString() and glGetIntegerv() specially, because we
         # need to use them in the process of deciding on loaders for
         # resolving, and the naive code generation would result in their
@@ -327,7 +334,7 @@ class Generator(object):
 
         func = self.functions[name]
         func.providers = {}
-        func.add_provider('true', self.dlsym_loader, 'always present')
+        func.add_provider('true', loader, 'always present')
 
     def parse(self, file):
         reg = ET.parse(file)
@@ -375,6 +382,8 @@ class Generator(object):
 
         if self.target != "gl":
             self.outln('#include "epoxy/gl_generated.h"')
+            if self.target == "egl":
+                self.outln('#include "EGL/eglplatform.h"')
         else:
             # Add some ridiculous inttypes.h redefinitions that are from
             # khrplatform.h and not included in the XML.
@@ -389,6 +398,8 @@ class Generator(object):
             self.outln('typedef float khronos_float_t;')
             self.outln('typedef intptr_t khronos_intptr_t;')
             self.outln('typedef ptrdiff_t khronos_ssize_t;')
+            self.outln('typedef uint64_t khronos_utime_nanoseconds_t;')
+            self.outln('typedef int64_t khronos_stime_nanoseconds_t;')
 
         if self.target == "glx":
             self.outln('#include <X11/Xlib.h>')
@@ -434,12 +445,6 @@ class Generator(object):
         for provider in providers:
             self.outln('        "{0}",'.format(provider.name))
         self.outln('    };')
-
-        if 'glX' in func.name:
-            self.outln('    epoxy_glx_autoinit();')
-        else:
-            self.outln('    epoxy_platform_autoinit();')
-        self.outln('')
 
         self.outln('   return {0}_provider_resolver("{1}",'.format(self.target, func.name))
         self.outln('                                providers, entrypoints);')
@@ -583,13 +588,16 @@ for file in args.files:
     generator.drop_weird_glx_functions()
     generator.sort_functions()
     generator.resolve_aliases()
-    generator.fixup_bootstrap_function('glGetString')
-    generator.fixup_bootstrap_function('glGetIntegerv')
+    generator.fixup_bootstrap_function('glGetString',
+                                       'epoxy_get_proc_address({0})')
+    generator.fixup_bootstrap_function('glGetIntegerv',
+                                       'epoxy_get_proc_address({0})')
 
     # While this is technically exposed as a GLX extension, it's
     # required to be present as a public symbol by the Linux OpenGL
     # ABI.
-    generator.fixup_bootstrap_function('glXGetProcAddress')
+    generator.fixup_bootstrap_function('glXGetProcAddress',
+                                       'epoxy_glx_dlsym({0})')
 
     generator.prepare_provider_enum()
 

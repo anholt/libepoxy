@@ -22,8 +22,11 @@
  */
 
 #include <epoxy/gl.h>
+#include <epoxy/egl.h>
 #include <epoxy/glx.h>
 
+#include <EGL/egl.h>
+#include <EGL/eglext.h>
 #include <GL/gl.h>
 #include <GL/glext.h>
 #include <GL/glx.h>

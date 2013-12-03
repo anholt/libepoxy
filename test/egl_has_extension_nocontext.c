@@ -21,30 +21,50 @@
  * IN THE SOFTWARE.
  */
 
-#include <stdbool.h>
+/**
+ * @file egl_has_extension_nocontext.c
+ *
+ * Catches a bug in early development where eglGetProcAddress() with
+ * no context bound would fail out in dispatch.
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <err.h>
 #include "epoxy/gl.h"
 #include "epoxy/egl.h"
-#include "epoxy/glx.h"
 
-#ifndef PUBLIC
-#  if (defined(__GNUC__) && __GNUC__ >= 4) || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))
-#    define PUBLIC __attribute__((visibility("default")))
-#  else
-#    define PUBLIC
-#  endif
-#endif
+#include "egl_common.h"
 
-void *epoxy_egl_dlsym(const char *name);
-void *epoxy_glx_dlsym(const char *name);
-void *epoxy_gl_dlsym(const char *name);
-void *epoxy_gles1_dlsym(const char *name);
-void *epoxy_gles2_dlsym(const char *name);
-void *epoxy_get_proc_address(const char *name);
+int
+main(int argc, char **argv)
+{
+    bool pass = true;
 
-int epoxy_conservative_glx_version(void);
-bool epoxy_conservative_has_glx_extension(const char *name);
-int epoxy_conservative_egl_version(void);
-bool epoxy_conservative_has_egl_extension(const char *name);
-void epoxy_print_failure_reasons(const char *name,
-                                 const char **provider_names,
-                                 const int *providers);
+    EGLDisplay *dpy = get_egl_display_or_skip();
+    const char *extensions = eglQueryString(dpy, EGL_EXTENSIONS);
+    char *first_space;
+    char *an_extension;
+
+    /* We don't have any extensions guaranteed by the ABI, so for the
+     * touch test we just check if the first one is reported to be there.
+     */
+    first_space = strstr(extensions, " ");
+    if (first_space) {
+        an_extension = strndup(extensions, first_space - extensions);
+    } else {
+        an_extension = strdup(extensions);
+    }
+
+    if (!epoxy_has_egl_extension(dpy, an_extension))
+        errx(1, "Implementation reported absence of GLX_ARB_get_proc_address");
+
+    free(an_extension);
+
+    if (epoxy_has_egl_extension(dpy, "GLX_ARB_ham_sandwich"))
+        errx(1, "Implementation reported presence of GLX_ARB_ham_sandwich");
+
+    return pass != true;
+}
