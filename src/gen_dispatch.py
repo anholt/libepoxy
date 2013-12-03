@@ -495,6 +495,7 @@ class Generator(object):
             enum = self.provider_enum[human_name]
             self.outln('    [{0}] = "{1}",'.format(enum, human_name))
         self.outln('};')
+        self.outln('')
 
     def write_provider_resolver(self):
         self.outln('static void *{0}_provider_resolver(const char *name,'.format(self.target))
