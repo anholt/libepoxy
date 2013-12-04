@@ -5418,7 +5418,9 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8834" name="GL_DRAW_BUFFER15_EXT"/>
         <enum value="0x8834" name="GL_DRAW_BUFFER15_NV"/>
         <enum value="0x8835" name="GL_COLOR_CLEAR_UNCLAMPED_VALUE_ATI"/>
-            <unused start="0x8836" end="0x883C"/>
+            <unused start="0x8836"/>
+        <enum value="0x8837" name="GL_COMPRESSED_LUMINANCE_ALPHA_3DC_ATI"/>
+            <unused start="0x8838" end="0x883C"/>
         <enum value="0x883D" name="GL_BLEND_EQUATION_ALPHA"/>
         <enum value="0x883D" name="GL_BLEND_EQUATION_ALPHA_EXT"/>
         <enum value="0x883D" name="GL_BLEND_EQUATION_ALPHA_OES"/>
