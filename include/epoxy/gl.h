@@ -48,6 +48,23 @@ extern "C" {
 #define __glext_h_
 #endif
 
+#ifndef _WIN32
+/* APIENTRY and GLAPIENTRY are not used on Linux or Mac. */
+#define APIENTRY
+#define GLAPIENTRY
+#else
+#ifndef APIENTRY
+#define APIENTRY __stdcall
+#endif
+
+#ifndef GLAPIENTRY
+#define GLAPIENTRY APIENTRY
+#endif
+
+#ifndef GLAPI
+#define GLAPI extern
+#endif
+#endif /* _WIN32 */
 
 #include "epoxy/gl_common.h"
 #include "epoxy/gl_generated.h"
