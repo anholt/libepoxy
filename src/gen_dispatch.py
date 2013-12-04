@@ -55,7 +55,7 @@ class GLProvider(object):
 class GLFunction(object):
     def __init__(self, ret_type, name):
         self.name = name
-        self.ptr_type = 'PFN' + name.upper()
+        self.ptr_type = 'PFN' + name.upper() + 'PROC'
         self.ret_type = ret_type
         self.providers = {}
         self.args = []
