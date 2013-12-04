@@ -35,6 +35,10 @@
 #ifndef __EPOXY_GLX_H
 #define __EPOXY_GLX_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #if defined(GLX_H) || defined(__glxext_h_)
 #error epoxy/glx.h must be included before (or in place of) GL/glx.h
 #else
@@ -47,5 +51,9 @@
 #include "epoxy/glx_common.h"
 #include "epoxy/glx_generated.h"
 #include "epoxy/glx_generated_vtable_defines.h"
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif
 
 #endif /* __EPOXY_GLX_H */
