@@ -29,3 +29,5 @@ get_display_or_skip(void);
 GLXContext
 make_glx_context_current_or_skip(Display *dpy);
 
+GLXFBConfig
+get_fbconfig_for_visual(XVisualInfo *visinfo);

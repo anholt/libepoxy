@@ -1,5 +1,5 @@
 /*
- * Copyright © 2013 Intel Corporation
+ * Copyright © 2009, 2013 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -101,4 +101,30 @@ make_glx_context_current_or_skip(Display *dpy)
 	}
 
 	glXMakeCurrent(dpy, win, ctx);
+}
+
+GLXFBConfig
+get_fbconfig_for_visinfo(Display *dpy, XVisualInfo *visinfo)
+{
+	int i, nconfigs;
+	GLXFBConfig ret = None, *configs;
+
+	configs = glXGetFBConfigs(dpy, visinfo->screen, &nconfigs);
+	if (!configs)
+		return None;
+
+	for (i = 0; i < nconfigs; i++) {
+		int v;
+
+		if (glXGetFBConfigAttrib(dpy, configs[i], GLX_VISUAL_ID, &v))
+			continue;
+
+		if (v == visinfo->visualid) {
+			ret = configs[i];
+			break;
+		}
+	}
+
+	XFree(configs);
+	return ret;
 }
