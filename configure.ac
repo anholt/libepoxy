@@ -64,6 +64,7 @@ AC_SUBST([VISIBILITY_CFLAGS])
 PKG_CHECK_MODULES(X11, [x11], [x11=yes], [x11=no])
 AM_CONDITIONAL(HAVE_X11, test x$x11 = xyes)
 
+PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
 
 AC_CONFIG_FILES([
                 epoxy.pc

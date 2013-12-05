@@ -41,6 +41,7 @@ AM_CPPFLAGS = \
 
 TESTS = \
 	egl_has_extension_nocontext \
+	glx_beginend \
 	glx_public_api \
 	glx_public_api_core \
 	glx_glxgetprocaddress_nocontext \
@@ -48,10 +49,15 @@ TESTS = \
 	headerguards \
 	$()
 
+XFAIL_TESTS = glx_beginend
+
 check_PROGRAMS = $(TESTS)
 
 egl_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libegl_common.la
 egl_has_extension_nocontext_DEPENDENCIES = libegl_common.la
+
+glx_beginend_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la $(GL_LIBS)
+glx_beginend_DEPENDENCIES = libglx_common.la
 
 glx_public_api_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
 glx_public_api_DEPENDENCIES = libglx_common.la
