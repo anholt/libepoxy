@@ -88,6 +88,25 @@ test_glx_version(void)
     return true;
 }
 
+static bool
+test_glx_extension_supported(void)
+{
+    if (!epoxy_has_glx_extension("GLX_ARB_get_proc_address")) {
+        fprintf(stderr,
+                "Incorrectly reported no support for GLX_ARB_get_proc_address "
+                "(should always be present in Linux ABI)\n");
+        return false;
+    }
+
+    if (epoxy_has_glx_extension("GLX_EXT_ham_sandwich")) {
+        fprintf(stderr,
+                "Incorrectly reported support for GLX_EXT_ham_sandwich\n");
+        return false;
+    }
+
+    return true;
+}
+
 int
 main(int argc, char **argv)
 {
@@ -98,6 +117,7 @@ main(int argc, char **argv)
 
     pass = test_gl_version() && pass;
     pass = test_glx_version() && pass;
+    pass = test_glx_extension_supported() && pass;
 
     return pass != true;
 }
