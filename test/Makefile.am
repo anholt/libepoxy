@@ -49,8 +49,6 @@ TESTS = \
 	headerguards \
 	$()
 
-XFAIL_TESTS = glx_beginend
-
 check_PROGRAMS = $(TESTS)
 
 egl_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libegl_common.la

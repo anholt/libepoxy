@@ -130,6 +130,14 @@ class Generator(object):
         # provided the name of the symbol to be requested.
         self.provider_loader = {}
 
+        # These are functions with hand-written wrapper code in
+        # dispatch_common.c.  Their dispatch stubs will be replaced
+        # with non-public symbols with a "_unwrapped" suffix.
+        self.wrapped_functions = {
+            'glBegin',
+            'glEnd'
+        }
+
     def all_text_until_element_name(self, element, element_name):
         text = ''
 
@@ -265,7 +273,7 @@ class Generator(object):
                     loader = 'epoxy_gl_dlsym({0})'
                 else:
                     loader = 'epoxy_get_proc_address({0})'
-                    condition += ' && epoxy_gl_version() >= {0}'.format(version)
+                    condition += ' && epoxy_conservative_gl_version() >= {0}'.format(version)
             elif api == 'gles2':
                 human_name = 'OpenGL ES {0}'.format(feature.get('number'))
                 condition = '!epoxy_is_desktop_gl() && epoxy_gl_version() >= {0}'.format(version)
@@ -319,7 +327,7 @@ class Generator(object):
                 self.process_require_statements(extension, condition, loader, human_name)
             if 'gl' in apis:
                 human_name = 'GL extension \\"{0}\\"'.format(extname)
-                condition = 'epoxy_has_gl_extension("{0}")'.format(extname)
+                condition = 'epoxy_conservative_has_gl_extension("{0}")'.format(extname)
                 loader = 'epoxy_get_proc_address({0})'
                 self.process_require_statements(extension, condition, loader, human_name)
 
@@ -460,8 +468,15 @@ class Generator(object):
 
         dispatch_table_entry = 'dispatch_table->p{0}'.format(alias_name)
 
-        self.outln('PUBLIC {0}'.format(func.ret_type))
-        self.outln('epoxy_{0}({1})'.format(func.name, func.args_decl))
+        if func.name in self.wrapped_functions:
+            function_name = func.name + '_unwrapped'
+            public = ''
+        else:
+            function_name = func.name
+            public = 'PUBLIC '
+
+        self.outln('{0}{1}'.format(public, func.ret_type))
+        self.outln('epoxy_{0}({1})'.format(function_name, func.args_decl))
         self.outln('{')
         self.outln('    if (!{0})'.format(dispatch_table_entry))
         self.outln('        {0} = epoxy_{1}_resolver();'.format(dispatch_table_entry,

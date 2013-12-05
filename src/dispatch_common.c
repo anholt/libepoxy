@@ -117,6 +117,20 @@ struct api {
 
     /** dlopen() return value for libGLESv2.so.2 */
     void *gles2_handle;
+
+    /**
+     * This value gets incremented when any thread is in
+     * glBegin()/glEnd() called through epoxy.
+     *
+     * We're not guaranteed to be called through our wrapper, so the
+     * conservative paths also try to handle the failure cases they'll
+     * see if begin_count didn't reflect reality.  It's also a bit of
+     * a bug that the conservative paths might return success because
+     * some other thread was in epoxy glBegin/glEnd while our thread
+     * is trying to resolve, but given that it's basically just for
+     * informative error messages, we shouldn't need to care.
+     */
+    int begin_count;
 };
 
 static struct api api = {
@@ -159,17 +173,33 @@ PUBLIC bool
 epoxy_is_desktop_gl(void)
 {
     const char *es_prefix = "OpenGL ES ";
-    const char *version = (const char *)glGetString(GL_VERSION);
+    const char *version;
+
+    if (api.begin_count)
+        return true;
+
+    version = (const char *)glGetString(GL_VERSION);
+
+    /* If we didn't get a version back, there are only two things that
+     * could have happened: either malloc failure (which basically
+     * doesn't exist), or we were called within a glBegin()/glEnd().
+     * Assume the second, which only exists for desktop GL.
+     */
+    if (!version)
+        return true;
 
     return strncmp(es_prefix, version, strlen(es_prefix));
 }
 
-PUBLIC int
-epoxy_gl_version(void)
+static int
+epoxy_internal_gl_version(int error_version)
 {
     const char *version = (const char *)glGetString(GL_VERSION);
     GLint major, minor;
     int scanf_count;
+
+    if (!version)
+        return error_version;
 
     /* skip to version number */
     while (!isdigit(*version) && *version != '\0')
@@ -183,6 +213,21 @@ epoxy_gl_version(void)
         exit(1);
     }
     return 10 * major + minor;
+}
+
+PUBLIC int
+epoxy_gl_version(void)
+{
+    return epoxy_internal_gl_version(0);
+}
+
+PUBLIC int
+epoxy_conservative_gl_version(void)
+{
+    if (api.begin_count)
+        return 100;
+
+    return epoxy_internal_gl_version(100);
 }
 
 /**
@@ -268,16 +313,21 @@ epoxy_extension_in_string(const char *extension_list, const char *ext)
     return ptr != NULL;
 }
 
-PUBLIC bool
-epoxy_has_gl_extension(const char *ext)
+static bool
+epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode)
 {
     if (epoxy_gl_version() < 30) {
-        return epoxy_extension_in_string((const char *)glGetString(GL_EXTENSIONS),
-                                         ext);
+        const char *exts = (const char *)glGetString(GL_EXTENSIONS);
+        if (!exts)
+            return invalid_op_mode;
+        return epoxy_extension_in_string(exts, ext);
     } else {
         int num_extensions;
 
         glGetIntegerv(GL_NUM_EXTENSIONS, &num_extensions);
+        if (num_extensions == 0)
+            return invalid_op_mode;
+
         for (int i = 0; i < num_extensions; i++) {
             const char *gl_ext = (const char *)glGetStringi(GL_EXTENSIONS, i);
             if (strcmp(ext, gl_ext) == 0)
@@ -286,6 +336,29 @@ epoxy_has_gl_extension(const char *ext)
 
         return false;
     }
+}
+
+/**
+ * Returns true if the given GL extension is supported in the current context.
+ *
+ * Note that this function can't be called from within glBegin()/glEnd().
+ *
+ * \sa epoxy_has_egl_extension()
+ * \sa epoxy_has_glx_extension()
+ */
+PUBLIC bool
+epoxy_has_gl_extension(const char *ext)
+{
+    return epoxy_internal_has_gl_extension(ext, false);
+}
+
+bool
+epoxy_conservative_has_gl_extension(const char *ext)
+{
+    if (api.begin_count)
+        return true;
+
+    return epoxy_internal_has_gl_extension(ext, true);
 }
 
 bool
@@ -423,4 +496,24 @@ epoxy_print_failure_reasons(const char *name,
 
     for (i = 0; providers[i] != 0; i++)
         puts(provider_names[providers[i]]);
+}
+
+PUBLIC void
+epoxy_glBegin(GLenum primtype)
+{
+    pthread_mutex_lock(&api.mutex);
+    api.begin_count++;
+    pthread_mutex_unlock(&api.mutex);
+
+    epoxy_glBegin_unwrapped(primtype);
+}
+
+PUBLIC void
+epoxy_glEnd(void)
+{
+    epoxy_glEnd_unwrapped();
+
+    pthread_mutex_lock(&api.mutex);
+    api.begin_count--;
+    pthread_mutex_unlock(&api.mutex);
 }
