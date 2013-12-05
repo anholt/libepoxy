@@ -496,7 +496,13 @@ epoxy_print_failure_reasons(const char *name,
             "Requires one of:\n", name);
 
     for (i = 0; providers[i] != 0; i++)
-        fputs(stderr, provider_names[providers[i]]);
+        fprintf(stderr, "    %s",
+                provider_names[providers[i]]);
+
+    if (providers[0] == 0) {
+        fprintf(stderr, "    No known providers.  This is likely a bug "
+                "in libepoxy code generation\n");
+    }
 }
 
 PUBLIC void
