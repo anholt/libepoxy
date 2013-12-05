@@ -32,7 +32,8 @@ AM_CPPFLAGS = \
 	$(X11_CFLAGS)
 
 TESTS = \
-	glx_public_api
+	glx_public_api \
+	headerguards \
 	$()
 
 check_PROGRAMS = $(TESTS)
