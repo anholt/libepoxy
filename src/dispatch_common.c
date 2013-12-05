@@ -271,8 +271,21 @@ epoxy_extension_in_string(const char *extension_list, const char *ext)
 PUBLIC bool
 epoxy_has_gl_extension(const char *ext)
 {
-    return epoxy_extension_in_string((const char *)glGetString(GL_EXTENSIONS),
-                                     ext);
+    if (epoxy_gl_version() < 30) {
+        return epoxy_extension_in_string((const char *)glGetString(GL_EXTENSIONS),
+                                         ext);
+    } else {
+        int num_extensions;
+
+        glGetIntegerv(GL_NUM_EXTENSIONS, &num_extensions);
+        for (int i = 0; i < num_extensions; i++) {
+            char *gl_ext = (char *)glGetStringi(GL_EXTENSIONS, i);
+            if (strcmp(ext, gl_ext) == 0)
+                return true;
+        }
+
+        return false;
+    }
 }
 
 bool
