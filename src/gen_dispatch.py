@@ -190,7 +190,6 @@ class Generator(object):
 
             alias = command.find('alias')
             if alias is not None:
-                # XXX print('{0} -> {1}'.format(func.name, alias.get('name')))
                 # Note that some alias references appear before the
                 # target command is defined (glAttachObjectARB() ->
                 # glAttachShader(), for example).
