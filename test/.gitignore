@@ -1,3 +1,4 @@
+egl_has_extension_nocontext
 glx_glxgetprocaddress_nocontext
 glx_has_extension_nocontext
 glx_public_api
