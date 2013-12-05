@@ -209,9 +209,11 @@ epoxy_has_glx_extension(const char *ext)
         return false;
     }
 
-    /* No, you can't just use glXGetClientString or glXGetServerString() here.
-     * Those each tell you about one half of what's needed for an extension to
-     * be supported, and glXQueryExtensionsString().
+    /* No, you can't just use glXGetClientString or
+     * glXGetServerString() here.  Those each tell you about one half
+     * of what's needed for an extension to be supported, and
+     * glXQueryExtensionsString() is what gives you the intersection
+     * of the two.
      */
     return epoxy_extension_in_string(glXQueryExtensionsString(dpy, screen), ext);
 }
