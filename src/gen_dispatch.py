@@ -325,7 +325,7 @@ class Generator(object):
                 condition = 'epoxy_conservative_has_egl_extension("{0}")'.format(extname)
                 loader = 'eglGetProcAddress({0})'
                 self.process_require_statements(extension, condition, loader, human_name)
-            if 'gl' in apis:
+            if {'gl', 'gles1', 'gles2'}.intersection(apis):
                 human_name = 'GL extension \\"{0}\\"'.format(extname)
                 condition = 'epoxy_conservative_has_gl_extension("{0}")'.format(extname)
                 loader = 'epoxy_get_proc_address({0})'
