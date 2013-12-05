@@ -38,8 +38,6 @@ TESTS = \
 	headerguards \
 	$()
 
-XFAIL_TESTS = glx_has_extension_nocontext
-
 check_PROGRAMS = $(TESTS)
 
 glx_public_api_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la

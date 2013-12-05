@@ -46,10 +46,10 @@ main(int argc, char **argv)
 
     dpy = get_display_or_skip();
 
-    if (!epoxy_has_glx_extension("GLX_ARB_get_proc_address"))
+    if (!epoxy_has_glx_extension(dpy, 0, "GLX_ARB_get_proc_address"))
         errx(1, "Implementation reported absence of GLX_ARB_get_proc_address");
 
-    if (epoxy_has_glx_extension("GLX_ARB_ham_sandwich"))
+    if (epoxy_has_glx_extension(dpy, 0, "GLX_ARB_ham_sandwich"))
         errx(1, "Implementation reported presence of GLX_ARB_ham_sandwich");
 
     return pass != true;

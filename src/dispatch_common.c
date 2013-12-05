@@ -212,17 +212,29 @@ epoxy_has_egl_extension(const char *ext)
 }
 #endif
 
-PUBLIC bool
-epoxy_has_glx_extension(const char *ext)
+/**
+ * If we can determine the GLX extension support from the current
+ * context, then return that, otherwise give the answer that will just
+ * send us on to get_proc_address().
+ */
+bool
+epoxy_conservative_has_glx_extension(const char *ext)
 {
     Display *dpy = glXGetCurrentDisplay();
-    int screen = 0;
+    GLXContext ctx = glXGetCurrentContext();
+    int screen;
 
-    if (!dpy) {
-        fprintf(stderr, "waffle needs a display!"); /* XXX */
-        return false;
-    }
+    if (!dpy || !ctx)
+        return true;
 
+    glXQueryContext(dpy, ctx, GLX_SCREEN, &screen);
+
+    return epoxy_has_glx_extension(dpy, screen, ext);
+}
+
+PUBLIC bool
+epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
+{
     /* No, you can't just use glXGetClientString or
      * glXGetServerString() here.  Those each tell you about one half
      * of what's needed for an extension to be supported, and

@@ -91,14 +91,14 @@ test_glx_version(void)
 static bool
 test_glx_extension_supported(void)
 {
-    if (!epoxy_has_glx_extension("GLX_ARB_get_proc_address")) {
+    if (!epoxy_has_glx_extension(dpy, 0, "GLX_ARB_get_proc_address")) {
         fprintf(stderr,
                 "Incorrectly reported no support for GLX_ARB_get_proc_address "
                 "(should always be present in Linux ABI)\n");
         return false;
     }
 
-    if (epoxy_has_glx_extension("GLX_EXT_ham_sandwich")) {
+    if (epoxy_has_glx_extension(dpy, 0, "GLX_EXT_ham_sandwich")) {
         fprintf(stderr,
                 "Incorrectly reported support for GLX_EXT_ham_sandwich\n");
         return false;

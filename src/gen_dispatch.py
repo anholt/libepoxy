@@ -308,7 +308,7 @@ class Generator(object):
             apis = extension.get('supported').split('|')
             if 'glx' in apis:
                 human_name = 'GLX extension \\"{0}\\"'.format(extname)
-                condition = 'epoxy_has_glx_extension("{0}")'.format(extname)
+                condition = 'epoxy_conservative_has_glx_extension("{0}")'.format(extname)
                 loader = self.gpa_loader
                 self.process_require_statements(extension, condition, loader, human_name)
             if 'gl' in apis:
