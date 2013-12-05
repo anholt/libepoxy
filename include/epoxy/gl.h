@@ -41,6 +41,8 @@
 extern "C" {
 #endif
 
+#include <stdbool.h>
+
 #if defined(__gl_h_) || defined(__glext_h_)
 #error epoxy/gl.h must be included before (or in place of) GL/gl.h
 #else
@@ -66,9 +68,12 @@ extern "C" {
 #endif
 #endif /* _WIN32 */
 
-#include "epoxy/gl_common.h"
 #include "epoxy/gl_generated.h"
 #include "epoxy/gl_generated_vtable_defines.h"
+
+bool epoxy_has_gl_extension(const char *extension);
+bool epoxy_is_desktop_gl(void);
+int epoxy_gl_version(void);
 
 #ifdef __cplusplus
 } /* extern "C" */

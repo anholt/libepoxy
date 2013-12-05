@@ -541,7 +541,7 @@ class Generator(object):
         self.outln('#include <stdio.h>')
         self.outln('')
         self.outln('#include "dispatch_common.h"')
-        self.outln('#include "epoxy/{0}_generated.h"'.format(self.target))
+        self.outln('#include "epoxy/{0}.h"'.format(self.target))
         self.outln('')
 
         self.outln('struct dispatch_table {')

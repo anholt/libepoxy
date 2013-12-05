@@ -22,8 +22,8 @@
  */
 
 #include <stdbool.h>
-#include "epoxy/gl_common.h"
-#include "epoxy/glx_common.h"
+#include "epoxy/gl.h"
+#include "epoxy/glx.h"
 
 #ifndef PUBLIC
 #  if (defined(__GNUC__) && __GNUC__ >= 4) || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))

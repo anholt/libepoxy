@@ -39,6 +39,10 @@
 extern "C" {
 #endif
 
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <stdbool.h>
+
 #if defined(GLX_H) || defined(__glxext_h_)
 #error epoxy/glx.h must be included before (or in place of) GL/glx.h
 #else
@@ -48,9 +52,11 @@ extern "C" {
 
 #pragma once
 
-#include "epoxy/glx_common.h"
 #include "epoxy/glx_generated.h"
 #include "epoxy/glx_generated_vtable_defines.h"
+
+bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
+int epoxy_glx_version(Display *dpy, int screen);
 
 #ifdef __cplusplus
 } /* extern "C" */

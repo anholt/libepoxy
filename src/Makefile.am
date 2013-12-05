@@ -35,13 +35,11 @@ epoxyinclude_DATA = \
 
 GL_INCLUDES = \
 	../include/epoxy/gl.h \
-	../include/epoxy/gl_common.h \
 	$(GENERATED_GL_INCLUDES) \
 	$()
 
 GLX_INCLUDES = \
 	../include/epoxy/glx.h \
-	../include/epoxy/glx_common.h \
 	$(GENERATED_GLX_INCLUDES) \
 	$()
 
