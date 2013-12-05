@@ -445,7 +445,7 @@ class Generator(object):
             self.outln('        "{0}",'.format(provider.name))
         self.outln('    };')
 
-        self.outln('   return {0}_provider_resolver("{1}",'.format(self.target, func.name))
+        self.outln('    return {0}_provider_resolver("{1}",'.format(self.target, func.name))
         self.outln('                                providers, entrypoints);')
 
         self.outln('}')
