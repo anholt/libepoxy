@@ -48,7 +48,7 @@ test_gl_version(void)
 static bool
 test_glx_version(void)
 {
-    int version = epoxy_glx_version();
+    int version = epoxy_glx_version(dpy, 0);
     const char *version_string;
     int ret;
     int server_major, server_minor;

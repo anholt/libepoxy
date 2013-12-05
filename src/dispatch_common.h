@@ -49,6 +49,7 @@ struct api {
 bool epoxy_is_glx(void);
 
 void *epoxy_get_proc_address(const char *name);
+int epoxy_conservative_glx_version(void);
 void *epoxy_dlsym(const char *name);
 void epoxy_glx_autoinit(void);
 void epoxy_platform_autoinit(void);

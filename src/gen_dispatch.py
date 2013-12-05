@@ -292,7 +292,7 @@ class Generator(object):
                 # We could just always use GPA, but dlsym() is a more
                 # efficient lookup.
                 if version > 13:
-                    condition = condition + ' && epoxy_glx_version() >= {0}'.format(version)
+                    condition = condition + ' && epoxy_conservative_glx_version() >= {0}'.format(version)
                     loader = self.gpa_loader
                 else:
                     loader = self.dlsym_loader

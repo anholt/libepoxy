@@ -31,8 +31,11 @@
 
 #include <stdbool.h>
 
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+
 bool epoxy_has_glx_extension(const char *extension);
-int epoxy_glx_version(void);
+int epoxy_glx_version(Display *dpy, int screen);
 
 #endif /* EPOXY_GLX_COMMON_H */
 

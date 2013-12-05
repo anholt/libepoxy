@@ -138,20 +138,34 @@ epoxy_is_glx(void)
     return true; /* XXX */
 }
 
-PUBLIC int
-epoxy_glx_version(void)
+/**
+ * If we can determine the GLX version from the current context, then
+ * return that, otherwise return a version that will just send us on
+ * to dlsym() or get_proc_address().
+ */
+int
+epoxy_conservative_glx_version(void)
 {
     Display *dpy = glXGetCurrentDisplay();
     GLXContext ctx = glXGetCurrentContext();
+    int screen;
+
+    if (!dpy || !ctx)
+        return 14;
+
+    glXQueryContext(dpy, ctx, GLX_SCREEN, &screen);
+
+    return epoxy_glx_version(dpy, screen);
+}
+
+PUBLIC int
+epoxy_glx_version(Display *dpy, int screen)
+{
     int server_major, server_minor;
     int client_major, client_minor;
     int server, client;
     const char *version_string;
-    int screen = 0;
     int ret;
-
-    /* XXX: What if there's no current context? */
-    glXQueryContext(dpy, ctx, GLX_SCREEN, &screen);
 
     version_string = glXQueryServerString(dpy, screen, GLX_VERSION);
     ret = sscanf(version_string, "%d.%d", &server_major, &server_minor);

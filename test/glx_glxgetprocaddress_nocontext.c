@@ -45,7 +45,7 @@ main(int argc, char **argv)
     bool pass = true;
 
     dpy = get_display_or_skip();
-    if (epoxy_glx_version() < 14)
+    if (epoxy_glx_version(dpy, 0) < 14)
         errx(77, "GLX version 1.4 required for glXGetProcAddress().\n");
 
     void *func = glXGetProcAddress("glGetString");
