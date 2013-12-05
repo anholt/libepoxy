@@ -39,7 +39,7 @@ get_display_or_skip(void)
 	return dpy;
 }
 
-static XVisualInfo *
+XVisualInfo *
 get_glx_visual(Display *dpy)
 {
 	XVisualInfo *visinfo;
@@ -63,7 +63,7 @@ get_glx_visual(Display *dpy)
 	return visinfo;
 }
 
-static Window
+Window
 get_glx_window(Display *dpy, XVisualInfo *visinfo, bool map)
 {
 	XSetWindowAttributes window_attr;

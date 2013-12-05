@@ -30,4 +30,10 @@ GLXContext
 make_glx_context_current_or_skip(Display *dpy);
 
 GLXFBConfig
-get_fbconfig_for_visual(XVisualInfo *visinfo);
+get_fbconfig_for_visinfo(Display *dpy, XVisualInfo *visinfo);
+
+XVisualInfo *
+get_glx_visual(Display *dpy);
+
+Window
+get_glx_window(Display *dpy, XVisualInfo *visinfo, bool map);
