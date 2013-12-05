@@ -35,10 +35,10 @@
 #ifndef __EPOXY_GLX_H
 #define __EPOXY_GLX_H
 
-#if defined(__glx_h_) || defined(__glxext_h_)
+#if defined(GLX_H) || defined(__glxext_h_)
 #error epoxy/glx.h must be included before (or in place of) GL/glx.h
 #else
-#define __glext_h_
+#define GLX_H
 #define __glxext_h_
 #endif
 
