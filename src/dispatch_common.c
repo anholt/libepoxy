@@ -279,7 +279,7 @@ epoxy_has_gl_extension(const char *ext)
 
         glGetIntegerv(GL_NUM_EXTENSIONS, &num_extensions);
         for (int i = 0; i < num_extensions; i++) {
-            char *gl_ext = (char *)glGetStringi(GL_EXTENSIONS, i);
+            const char *gl_ext = (const char *)glGetStringi(GL_EXTENSIONS, i);
             if (strcmp(ext, gl_ext) == 0)
                 return true;
         }
