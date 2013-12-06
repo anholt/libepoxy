@@ -116,6 +116,14 @@ class Generator(object):
         self.typedefs = ''
         self.out_file = None
 
+        # GL versions named in the registry, which we should generate
+        # #defines for.
+        self.supported_versions = set()
+
+        # Extensions named in the registry, which we should generate
+        # #defines for.
+        self.supported_extensions = set()
+
         # Dictionary mapping human-readable names of providers to a C
         # enum token that will be used to reference those names, to
         # reduce generated binary size.
@@ -261,6 +269,8 @@ class Generator(object):
             m = re.match('([0-9])\.([0-9])', feature.get('number'))
             version = int(m.group(1)) * 10 + int(m.group(2))
 
+            self.supported_versions.add(feature.get('name'))
+
             if api == 'gl':
                 human_name = 'Desktop OpenGL {0}'.format(feature.get('number'))
                 condition = 'epoxy_is_desktop_gl()'
@@ -312,6 +322,9 @@ class Generator(object):
 
         for extension in reg.findall('extensions/extension'):
             extname = extension.get('name')
+
+            self.supported_extensions.add(extname)
+
             # 'supported' is a set of strings like gl, gles1, gles2, or glx, which are
             # separated by '|'
             apis = extension.get('supported').split('|')
@@ -361,6 +374,14 @@ class Generator(object):
             self.outln(' * ' + line)
 
     def write_enums(self):
+        for name in sorted(self.supported_versions):
+            self.outln('#define {0} 1'.format(name))
+        self.outln('')
+
+        for name in sorted(self.supported_extensions):
+            self.outln('#define {0} 1'.format(name))
+        self.outln('')
+
         for name, value in self.enums.items():
             self.outln('#define ' + name.ljust(self.max_enum_name_len + 3) + value + '')
 
