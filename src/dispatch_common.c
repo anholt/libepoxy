@@ -95,9 +95,14 @@
 #include <stdio.h>
 #include <pthread.h>
 #include <err.h>
+
 #include "epoxy/gl.h"
+#if PLATFORM_HAS_GLX
 #include "epoxy/glx.h"
+#endif
+#if PLATFORM_HAS_EGL
 #include "epoxy/egl.h"
+#endif
 #include "dispatch_common.h"
 
 struct api {

@@ -22,9 +22,22 @@
  */
 
 #include <stdbool.h>
+
+#ifdef _WIN32
+#define PLATFORM_HAS_EGL 0
+#define PLATFORM_HAS_GLX 0
+#else
+#define PLATFORM_HAS_EGL 1
+#define PLATFORM_HAS_GLX 1
+#endif
+
 #include "epoxy/gl.h"
-#include "epoxy/egl.h"
+#if PLATFORM_HAS_GLX
 #include "epoxy/glx.h"
+#endif
+#if PLATFORM_HAS_EGL
+#include "epoxy/egl.h"
+#endif
 
 #ifndef PUBLIC
 #  if (defined(__GNUC__) && __GNUC__ >= 4) || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))

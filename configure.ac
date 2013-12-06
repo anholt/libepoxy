@@ -96,4 +96,6 @@ AC_CONFIG_FILES([
 ])
 AC_OUTPUT
 
+echo "           EGL:         $build_egl"
+echo "           GLX:         $build_glx"
 echo "        PYTHON:         $PYTHON"

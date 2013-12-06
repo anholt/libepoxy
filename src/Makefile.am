@@ -88,8 +88,18 @@ CLEANFILES = $(BUILT_SOURCES)
 libepoxy_la_SOURCES = \
 	dispatch_common.c \
 	dispatch_common.h \
-	$(BUILT_SOURCES)
+	$(GENERATED_GL) \
+	$(BUILD_GENERATED_EGL) \
+	$(BUILD_GENERATED_GLX) \
 	$()
+
+if BUILD_EGL
+BUILD_GENERATED_EGL = $(GENERATED_EGL)
+endif
+
+if BUILD_GLX
+BUILD_GENERATED_GLX = $(GENERATED_GLX)
+endif
 
 # These are generated alongside the .c file.
 $(GENERATED_GL_INCLUDES): $(GENERATED_GL_SOURCE)
