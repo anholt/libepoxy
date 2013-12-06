@@ -37,6 +37,7 @@ libglx_common_la_SOURCES = \
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/include \
+	-I$(top_builddir)/include \
 	$(X11_CFLAGS)
 
 TESTS = \
