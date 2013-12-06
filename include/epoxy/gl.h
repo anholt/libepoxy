@@ -54,6 +54,7 @@ extern "C" {
 /* APIENTRY and GLAPIENTRY are not used on Linux or Mac. */
 #define APIENTRY
 #define GLAPIENTRY
+#define GLAPI
 #else
 #ifndef APIENTRY
 #define APIENTRY __stdcall
@@ -67,6 +68,14 @@ extern "C" {
 #define GLAPI extern
 #endif
 #endif /* _WIN32 */
+
+#ifndef APIENTRYP
+#define APIENTRYP APIENTRY *
+#endif
+
+#ifndef GLAPIENTRYP
+#define GLAPIENTRYP GLAPIENTRY *
+#endif
 
 #include "epoxy/gl_generated.h"
 #include "epoxy/gl_generated_vtable_defines.h"
