@@ -44,6 +44,7 @@ AC_CHECK_PROGS([PYTHON], [python3 python2 python])
 
 # Initialize libtool
 AC_DISABLE_STATIC
+AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 AC_SYS_LARGEFILE
 
@@ -51,12 +52,21 @@ case $host_os in
     mingw*)
         build_egl=no
         build_glx=no
+        # On windows, the DLL has to have all of its functions
+        # resolved at link time, so we have to link directly aginst
+        # opengl32.dll.  But that's the only GL provider, anyway.
+        EPOXY_LINK_LIBS="-lopengl32"
         ;;
     *)
         build_egl=yes
         build_glx=yes
+        # On platforms with dlopen, we load everything dynamically and
+        # don't link against a specific window system or GL implementation.
+        EPOXY_LINK_LIBS=""
         ;;
 esac
+
+AC_SUBST(EPOXY_LINK_LIBS)
 
 AM_CONDITIONAL(BUILD_EGL, test x$build_egl = xyes)
 if test x$build_egl = xyes; then
@@ -68,17 +78,26 @@ if test x$build_glx = xyes; then
     AC_DEFINE([BUILD_GLX], [1], [build GLX tests])
 fi
 
-if test "x$GCC" = xyes; then
-    save_CFLAGS="$CFLAGS"
-    AC_MSG_CHECKING([whether $CC supports -fvisibility=hidden])
-    VISIBILITY_CFLAGS="-fvisibility=hidden"
-    CFLAGS="$CFLAGS $VISIBILITY_CFLAGS"
-    AC_LINK_IFELSE([AC_LANG_PROGRAM()], AC_MSG_RESULT([yes]),
-		   [VISIBILITY_CFLAGS=""; AC_MSG_RESULT([no])]);
 
-    # Restore CFLAGS; VISIBILITY_CFLAGS are added to it where needed.
-    CFLAGS=$save_CFLAGS
-fi
+case $host_os in
+    mingw*)
+        # visibility flags aren't supported for windows DLLs, and the
+        # compiler whines to tell you so, so don't set them up.
+        ;;
+    *)
+        if test "x$GCC" = xyes; then
+            save_CFLAGS="$CFLAGS"
+            AC_MSG_CHECKING([whether $CC supports -fvisibility=hidden])
+            VISIBILITY_CFLAGS="-fvisibility=hidden"
+            CFLAGS="$CFLAGS $VISIBILITY_CFLAGS"
+            AC_LINK_IFELSE([AC_LANG_PROGRAM()], AC_MSG_RESULT([yes]),
+                           [VISIBILITY_CFLAGS=""; AC_MSG_RESULT([no])]);
+
+            # Restore CFLAGS; VISIBILITY_CFLAGS are added to it where needed.
+            CFLAGS=$save_CFLAGS
+        fi
+        ;;
+esac
 
 AC_SUBST([VISIBILITY_CFLAGS])
 

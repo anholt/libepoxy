@@ -89,27 +89,26 @@
 
 #include <assert.h>
 #include <stdlib.h>
+#ifdef _WIN32
+#include <windows.h>
+#else
 #include <dlfcn.h>
+#include <err.h>
+#include <pthread.h>
+#endif
 #include <string.h>
 #include <ctype.h>
 #include <stdio.h>
-#include <pthread.h>
-#include <err.h>
 
-#include "epoxy/gl.h"
-#if PLATFORM_HAS_GLX
-#include "epoxy/glx.h"
-#endif
-#if PLATFORM_HAS_EGL
-#include "epoxy/egl.h"
-#endif
 #include "dispatch_common.h"
 
 struct api {
+#ifndef _WIN32
     /**
      * Locking for making sure we don't double-dlopen().
      */
     pthread_mutex_t mutex;
+#endif
 
     /** dlopen() return value for libGL.so.1. */
     void *glx_handle;
@@ -139,9 +138,12 @@ struct api {
 };
 
 static struct api api = {
+#ifndef _WIN32
     .mutex = PTHREAD_MUTEX_INITIALIZER,
+#endif
 };
 
+#ifndef _WIN32
 static void
 get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
 {
@@ -173,6 +175,14 @@ do_dlsym(void **handle, const char *lib_name, const char *name,
 
     return result;
 }
+#else
+static void *
+do_dlsym(void **handle, const char *lib_name, const char *name,
+         bool exit_on_fail)
+{
+    return NULL;
+}
+#endif
 
 PUBLIC bool
 epoxy_is_desktop_gl(void)
@@ -331,6 +341,9 @@ epoxy_gles2_dlsym(const char *name)
 void *
 epoxy_get_proc_address(const char *name)
 {
+#ifdef _WIN32
+    return wglGetProcAddress(name);
+#else
     if (api.egl_handle) {
         return eglGetProcAddress(name);
     } else if (api.glx_handle) {
@@ -370,6 +383,7 @@ epoxy_get_proc_address(const char *name)
 
         errx(1, "Couldn't find GLX or EGL libraries.\n");
     }
+#endif
 }
 
 void
@@ -395,9 +409,13 @@ epoxy_print_failure_reasons(const char *name,
 PUBLIC void
 epoxy_glBegin(GLenum primtype)
 {
+#ifdef _WIN32
+#warning missing locking
+#else
     pthread_mutex_lock(&api.mutex);
     api.begin_count++;
     pthread_mutex_unlock(&api.mutex);
+#endif
 
     epoxy_glBegin_unwrapped(primtype);
 }
@@ -407,7 +425,11 @@ epoxy_glEnd(void)
 {
     epoxy_glEnd_unwrapped();
 
+#ifdef _WIN32
+#warning missing locking
+#else
     pthread_mutex_lock(&api.mutex);
     api.begin_count--;
     pthread_mutex_unlock(&api.mutex);
+#endif
 }

@@ -93,6 +93,11 @@ libepoxy_la_SOURCES = \
 	$(BUILD_GLX_CODE) \
 	$()
 
+libepoxy_la_LDFLAGS = \
+	-no-undefined \
+        $(EPOXY_LINK_LIBS) \
+	$()
+
 if BUILD_EGL
 BUILD_EGL_CODE = \
 	$(GENERATED_EGL) \

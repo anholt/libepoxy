@@ -40,7 +40,9 @@
 #endif
 
 #ifndef PUBLIC
-#  if (defined(__GNUC__) && __GNUC__ >= 4) || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))
+#  ifdef _WIN32
+#    define PUBLIC __declspec(dllexport)
+#  elif (defined(__GNUC__) && __GNUC__ >= 4) || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))
 #    define PUBLIC __attribute__((visibility("default")))
 #  else
 #    define PUBLIC
