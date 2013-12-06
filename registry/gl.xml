@@ -8389,7 +8389,6 @@ typedef unsigned int GLhandleARB;
         <command>
             <proto>void <name>glBindVertexArrayAPPLE</name></proto>
             <param><ptype>GLuint</ptype> <name>array</name></param>
-            <alias name="glBindVertexArray"/>
         </command>
         <command>
             <proto>void <name>glBindVertexArrayOES</name></proto>
