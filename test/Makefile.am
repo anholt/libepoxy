@@ -47,6 +47,7 @@ TESTS = \
 	glx_glxgetprocaddress_nocontext \
 	glx_has_extension_nocontext \
 	headerguards \
+	miscdefines \
 	$()
 
 check_PROGRAMS = $(TESTS)
