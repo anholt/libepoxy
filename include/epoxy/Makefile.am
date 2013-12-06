@@ -26,5 +26,10 @@ epoxyinclude_HEADERS = \
         $(GLX_INCLUDES) \
 	$()
 
+if BUILD_EGL
 EGL_INCLUDES = egl.h
+endif
+
+if BUILD_GLX
 GLX_INCLUDES = glx.h
+endif

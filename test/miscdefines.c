@@ -22,8 +22,14 @@
  */
 
 #include <epoxy/gl.h>
+
+#ifdef BUILD_EGL
 #include <epoxy/egl.h>
+#endif
+
+#ifdef BUILD_GLX
 #include <epoxy/glx.h>
+#endif
 
 #if GL_VERSION_3_2 != 1
 #error bad GL_VERSION_3_2

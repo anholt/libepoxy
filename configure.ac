@@ -47,6 +47,27 @@ AC_DISABLE_STATIC
 AC_PROG_LIBTOOL
 AC_SYS_LARGEFILE
 
+case $host_os in
+    mingw*)
+        build_egl=no
+        build_glx=no
+        ;;
+    *)
+        build_egl=yes
+        build_glx=yes
+        ;;
+esac
+
+AM_CONDITIONAL(BUILD_EGL, test x$build_egl = xyes)
+if test x$build_egl = xyes; then
+    AC_DEFINE([BUILD_EGL], [1], [build EGL tests])
+fi
+
+AM_CONDITIONAL(BUILD_GLX, test x$build_glx = xyes)
+if test x$build_glx = xyes; then
+    AC_DEFINE([BUILD_GLX], [1], [build GLX tests])
+fi
+
 if test "x$GCC" = xyes; then
     save_CFLAGS="$CFLAGS"
     AC_MSG_CHECKING([whether $CC supports -fvisibility=hidden])

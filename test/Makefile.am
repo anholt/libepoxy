@@ -21,8 +21,8 @@
 EPOXY = $(builddir)/../src/libepoxy.la
 
 check_LTLIBRARIES = \
-	libegl_common.la \
-	libglx_common.la \
+	$(EGL_LIBS) \
+	$(GLX_LIBS) \
 	$()
 
 libegl_common_la_SOURCES = \
@@ -41,17 +41,33 @@ AM_CPPFLAGS = \
 	$(X11_CFLAGS)
 
 TESTS = \
-	egl_has_extension_nocontext \
-	glx_beginend \
-	glx_public_api \
-	glx_public_api_core \
-	glx_glxgetprocaddress_nocontext \
-	glx_has_extension_nocontext \
+	$(EGL_TESTS) \
+	$(GLX_TESTS) \
 	headerguards \
 	miscdefines \
 	$()
 
 check_PROGRAMS = $(TESTS)
+
+if BUILD_EGL
+EGL_TESTS = \
+	egl_has_extension_nocontext \
+	$()
+
+EGL_LIBS = libegl_common.la
+endif
+
+if BUILD_GLX
+GLX_TESTS = \
+	glx_beginend \
+	glx_public_api \
+	glx_public_api_core \
+	glx_glxgetprocaddress_nocontext \
+	glx_has_extension_nocontext \
+	$()
+
+GLX_LIBS = libglx_common.la
+endif
 
 egl_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libegl_common.la
 egl_has_extension_nocontext_DEPENDENCIES = libegl_common.la
@@ -70,4 +86,3 @@ glx_glxgetprocaddress_nocontext_DEPENDENCIES = libglx_common.la
 
 glx_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
 glx_has_extension_nocontext_DEPENDENCIES = libglx_common.la
-

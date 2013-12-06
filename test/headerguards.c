@@ -21,16 +21,29 @@
  * IN THE SOFTWARE.
  */
 
-#include <epoxy/gl.h>
-#include <epoxy/egl.h>
-#include <epoxy/glx.h>
+#include <config.h>
 
+#include <epoxy/gl.h>
+
+#ifdef BUILD_EGL
+#include <epoxy/egl.h>
+#endif
+
+#ifdef BUILD_GLX
+#include <epoxy/glx.h>
+#endif
+
+#ifdef BUILD_EGL
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
+#endif
+
+#ifdef BUILD_GLX
 #include <GL/gl.h>
 #include <GL/glext.h>
 #include <GL/glx.h>
 #include <GL/glxext.h>
+#endif
 
 int main(int argc, char **argv)
 {
