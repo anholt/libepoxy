@@ -89,16 +89,22 @@ libepoxy_la_SOURCES = \
 	dispatch_common.c \
 	dispatch_common.h \
 	$(GENERATED_GL) \
-	$(BUILD_GENERATED_EGL) \
-	$(BUILD_GENERATED_GLX) \
+	$(BUILD_EGL_CODE) \
+	$(BUILD_GLX_CODE) \
 	$()
 
 if BUILD_EGL
-BUILD_GENERATED_EGL = $(GENERATED_EGL)
+BUILD_EGL_CODE = \
+	$(GENERATED_EGL) \
+	dispatch_egl.c \
+	$()
 endif
 
 if BUILD_GLX
-BUILD_GENERATED_GLX = $(GENERATED_GLX)
+BUILD_GLX_CODE = \
+	$(GENERATED_GLX) \
+	dispatch_glx.c \
+	$()
 endif
 
 # These are generated alongside the .c file.

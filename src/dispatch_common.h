@@ -64,5 +64,7 @@ void epoxy_print_failure_reasons(const char *name,
                                  const char **provider_names,
                                  const int *providers);
 
+bool epoxy_extension_in_string(const char *extension_list, const char *ext);
+
 void epoxy_glBegin_unwrapped(GLenum primtype);
 void epoxy_glEnd_unwrapped(void);
