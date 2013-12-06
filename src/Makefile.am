@@ -29,23 +29,8 @@ epoxyincludedir = $(includedir)/epoxy
 lib_LTLIBRARIES = libepoxy.la
 
 epoxyinclude_DATA = \
-	$(GL_INCLUDES) \
-	$(GLX_INCLUDES) \
-	$(EGL_INCLUDES) \
-	$()
-
-GL_INCLUDES = \
-	../include/epoxy/gl.h \
 	$(GENERATED_GL_INCLUDES) \
-	$()
-
-GLX_INCLUDES = \
-	../include/epoxy/glx.h \
 	$(GENERATED_GLX_INCLUDES) \
-	$()
-
-EGL_INCLUDES = \
-	../include/epoxy/egl.h \
 	$(GENERATED_EGL_INCLUDES) \
 	$()
 
@@ -108,9 +93,7 @@ $(GENERATED_GL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/gl.xml
 	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/gl.xml
 
 $(GENERATED_GLX_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/glx.xml
-	$(MKDIR_P) $(top_builddir)/include/epoxy
 	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/glx.xml
 
 $(GENERATED_EGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/egl.xml
-	$(MKDIR_P) $(top_builddir)/include/epoxy
 	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/egl.xml

@@ -18,19 +18,13 @@
 #  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 #  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-SUBDIRS = include/epoxy src
+epoxyincludedir = $(includedir)/epoxy
 
-if HAVE_X11
-SUBDIRS += test
-endif
-
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = epoxy.pc
-
-EXTRA_DIST = \
-	epoxy.pc.in \
-	registry/egl.xml \
-	registry/gl.xml \
-	registry/glx.xml \
-	registry/wgl.xml \
+epoxyinclude_HEADERS = \
+	gl.h \
+        $(EGL_INCLUDES) \
+        $(GLX_INCLUDES) \
 	$()
+
+EGL_INCLUDES = egl.h
+GLX_INCLUDES = glx.h

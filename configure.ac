@@ -69,6 +69,7 @@ PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
 AC_CONFIG_FILES([
                 epoxy.pc
                 Makefile
+                include/epoxy/Makefile
                 src/Makefile
                 test/Makefile
 ])
