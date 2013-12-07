@@ -172,6 +172,13 @@ class Generator(object):
             if 'name' in t.attrib and t.attrib['name'] not in {'GLhandleARB'}:
                 continue
 
+            # The gles1/gles2-specific types are redundant
+            # declarations, and the different types used for them (int
+            # vs int32_t) caused problems on win32 builds.
+            api = t.get('api')
+            if api:
+                continue
+
             if t.text is not None:
                 self.typedefs += t.text
 
