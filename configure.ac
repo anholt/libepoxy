@@ -56,6 +56,12 @@ case $host_os in
         # resolved at link time, so we have to link directly aginst
         # opengl32.dll.  But that's the only GL provider, anyway.
         EPOXY_LINK_LIBS="-lopengl32"
+
+        # Testing our built windows binaries requires that they be run
+        # under wine.  Yeah, we should be nice and autodetect, but
+        # there's lots of missing autodetection for the testsuite
+        # (like checking for EGL and GLX libs in non-windows.).
+        AC_SUBST([LOG_COMPILER], [wine])
         ;;
     *)
         build_egl=yes

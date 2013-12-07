@@ -43,8 +43,8 @@ AM_CPPFLAGS = \
 TESTS = \
 	$(EGL_TESTS) \
 	$(GLX_TESTS) \
-	headerguards \
-	miscdefines \
+	headerguards$(EXEEXT) \
+	miscdefines$(EXEEXT) \
 	$()
 
 check_PROGRAMS = $(TESTS)

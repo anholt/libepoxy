@@ -20,9 +20,7 @@
 
 SUBDIRS = include/epoxy src
 
-if HAVE_X11
 SUBDIRS += test
-endif
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = epoxy.pc
