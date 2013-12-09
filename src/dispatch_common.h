@@ -26,9 +26,11 @@
 #ifdef _WIN32
 #define PLATFORM_HAS_EGL 0
 #define PLATFORM_HAS_GLX 0
+#define PLATFORM_HAS_WGL 1
 #else
 #define PLATFORM_HAS_EGL 1
 #define PLATFORM_HAS_GLX 1
+#define PLATFORM_HAS_WGL 0
 #endif
 
 #include "epoxy/gl.h"
@@ -37,6 +39,9 @@
 #endif
 #if PLATFORM_HAS_EGL
 #include "epoxy/egl.h"
+#endif
+#if PLATFORM_HAS_WGL
+#include "epoxy/wgl.h"
 #endif
 
 #ifndef PUBLIC
@@ -63,6 +68,7 @@ int epoxy_conservative_glx_version(void);
 bool epoxy_conservative_has_glx_extension(const char *name);
 int epoxy_conservative_egl_version(void);
 bool epoxy_conservative_has_egl_extension(const char *name);
+bool epoxy_conservative_has_wgl_extension(const char *name);
 void epoxy_print_failure_reasons(const char *name,
                                  const char **provider_names,
                                  const int *providers);

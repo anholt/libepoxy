@@ -52,6 +52,7 @@ case $host_os in
     mingw*)
         build_egl=no
         build_glx=no
+        build_wgl=yes
         # On windows, the DLL has to have all of its functions
         # resolved at link time, so we have to link directly aginst
         # opengl32.dll.  But that's the only GL provider, anyway.
@@ -66,6 +67,7 @@ case $host_os in
     *)
         build_egl=yes
         build_glx=yes
+        build_wgl=no
         # On platforms with dlopen, we load everything dynamically and
         # don't link against a specific window system or GL implementation.
         EPOXY_LINK_LIBS=""
@@ -82,6 +84,11 @@ fi
 AM_CONDITIONAL(BUILD_GLX, test x$build_glx = xyes)
 if test x$build_glx = xyes; then
     AC_DEFINE([BUILD_GLX], [1], [build GLX tests])
+fi
+
+AM_CONDITIONAL(BUILD_WGL, test x$build_wgl = xyes)
+if test x$build_wgl = xyes; then
+    AC_DEFINE([BUILD_WGL], [1], [build WGL tests])
 fi
 
 
@@ -123,4 +130,5 @@ AC_OUTPUT
 
 echo "           EGL:         $build_egl"
 echo "           GLX:         $build_glx"
+echo "           WGL:         $build_wgl"
 echo "        PYTHON:         $PYTHON"

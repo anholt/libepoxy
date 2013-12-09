@@ -322,8 +322,12 @@ epoxy_glx_dlsym(const char *name)
 void *
 epoxy_gl_dlsym(const char *name)
 {
+#ifdef _WIN32
+    return GetProcAddress(LoadLibraryA("OPENGL32"), name);
+#else
     /* There's no library for desktop GL support independent of GLX. */
     return epoxy_glx_dlsym(name);
+#endif
 }
 
 void *
@@ -341,7 +345,13 @@ epoxy_gles2_dlsym(const char *name)
 void *
 epoxy_get_core_proc_address(const char *name, int core_version)
 {
-    if (core_version <= 12) {
+#ifdef _WIN32
+    int core_symbol_support = 10;
+#else
+    int core_symbol_support = 12;
+#endif
+
+    if (core_version <= core_symbol_support) {
         return epoxy_gl_dlsym(name);
     } else {
         return epoxy_get_proc_address(name);

@@ -42,6 +42,10 @@ if BUILD_GLX
 INSTALL_GLX_INCLUDES = $(GENERATED_GLX_INCLUDES)
 endif
 
+if BUILD_WGL
+INSTALL_WGL_INCLUDES = $(GENERATED_WGL_INCLUDES)
+endif
+
 GENERATED_GL_INCLUDES = \
 	$(builddir)/../include/epoxy/gl_generated.h \
 	$(builddir)/../include/epoxy/gl_generated_vtable_defines.h \
@@ -55,6 +59,11 @@ GENERATED_GLX_INCLUDES = \
 GENERATED_EGL_INCLUDES = \
 	$(tuilddir)/../include/epoxy/egl_generated.h \
 	$(builddir)/../include/epoxy/egl_generated_vtable_defines.h \
+	$()
+
+GENERATED_WGL_INCLUDES = \
+	$(tuilddir)/../include/epoxy/wgl_generated.h \
+	$(builddir)/../include/epoxy/wgl_generated_vtable_defines.h \
 	$()
 
 GENERATED_GL_SOURCE = gl_generated_dispatch.c
@@ -78,10 +87,18 @@ GENERATED_EGL = \
 	$(GENERATED_EGL_INCLUDES) \
 	$()
 
+GENERATED_WGL_SOURCE = wgl_generated_dispatch.c
+
+GENERATED_WGL = \
+	$(GENERATED_WGL_SOURCE) \
+	$(GENERATED_WGL_INCLUDES) \
+	$()
+
 BUILT_SOURCES = \
 	$(GENERATED_GL) \
 	$(GENERATED_GLX) \
 	$(GENERATED_EGL) \
+	$(GENERATED_WGL) \
 	$()
 CLEANFILES = $(BUILT_SOURCES)
 
@@ -91,6 +108,7 @@ libepoxy_la_SOURCES = \
 	$(GENERATED_GL) \
 	$(BUILD_EGL_CODE) \
 	$(BUILD_GLX_CODE) \
+	$(BUILD_WGL_CODE) \
 	$()
 
 libepoxy_la_LDFLAGS = \
@@ -112,10 +130,18 @@ BUILD_GLX_CODE = \
 	$()
 endif
 
+if BUILD_WGL
+BUILD_WGL_CODE = \
+	$(GENERATED_WGL) \
+	dispatch_wgl.c \
+	$()
+endif
+
 # These are generated alongside the .c file.
 $(GENERATED_GL_INCLUDES): $(GENERATED_GL_SOURCE)
 $(GENERATED_GLX_INCLUDES): $(GENERATED_GLX_SOURCE)
 $(GENERATED_EGL_INCLUDES): $(GENERATED_EGL_SOURCE)
+$(GENERATED_WGL_INCLUDES): $(GENERATED_WGL_SOURCE)
 
 $(GENERATED_GL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/gl.xml
 	$(MKDIR_P) $(top_builddir)/include/epoxy
@@ -126,3 +152,6 @@ $(GENERATED_GLX_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/glx.xm
 
 $(GENERATED_EGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/egl.xml
 	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/egl.xml
+
+$(GENERATED_WGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/wgl.xml
+	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/wgl.xml

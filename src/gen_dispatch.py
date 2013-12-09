@@ -85,6 +85,13 @@ class GLFunction(object):
         self.alias_exts = []
 
     def add_arg(self, type, name):
+        # Reword glDepthRange() arguments to avoid clashing with the
+        # "near" and "far" keywords on win32.
+        if name == "near":
+            name = "hither"
+        elif name == "far":
+            name = "yon"
+
         self.args.append((type, name))
         if self.args_decl == 'void':
             self.args_list = name
@@ -192,6 +199,14 @@ class Generator(object):
     def parse_enums(self, reg):
         for enum in reg.findall('enums/enum'):
             name = enum.get('name')
+
+            # wgl.xml's 0xwhatever definitions end up colliding with
+            # wingdi.h's decimal definitions of these.
+            if ('WGL_SWAP_OVERLAY' in name or
+                'WGL_SWAP_UNDERLAY' in name or
+                'WGL_SWAP_MAIN_PLANE' in name):
+                continue
+
             self.max_enum_name_len = max(self.max_enum_name_len, len(name))
             self.enums[name] = enum.get('value')
 
@@ -270,6 +285,11 @@ class Generator(object):
             func = self.functions[name]
             func.add_provider(condition, loader, human_name)
 
+    def delete_require_statements(self, feature):
+        for command in feature.findall('require/command'):
+            name = command.get('name')
+            del self.functions[name]
+
     def parse_function_providers(self, reg):
         for feature in reg.findall('feature'):
             api = feature.get('api') # string gl, gles1, gles2, glx
@@ -316,6 +336,15 @@ class Generator(object):
                 else:
                     condition = 'true'
                     loader = 'epoxy_egl_dlsym({0})'
+            elif api == 'wgl':
+                # There's no reason for us to interpose the
+                # non-extension WGL symbols, which we know are always
+                # available.  The registry lists WGL 1.0 symbols both
+                # from opengl32.dll and gdi32.dll, so our dlsym()
+                # would have to know which came from where, if we were
+                # to interpose.
+                self.delete_require_statements(feature)
+                continue
             else:
                 sys.exit('unknown API: "{0}"'.format(api))
 
@@ -338,6 +367,11 @@ class Generator(object):
                 human_name = 'EGL extension \\"{0}\\"'.format(extname)
                 condition = 'epoxy_conservative_has_egl_extension("{0}")'.format(extname)
                 loader = 'eglGetProcAddress({0})'
+                self.process_require_statements(extension, condition, loader, human_name)
+            if 'wgl' in apis:
+                human_name = 'WGL extension \\"{0}\\"'.format(extname)
+                condition = 'epoxy_conservative_has_wgl_extension("{0}")'.format(extname)
+                loader = 'wglGetProcAddress({0})'
                 self.process_require_statements(extension, condition, loader, human_name)
             if {'gl', 'gles1', 'gles2'}.intersection(apis):
                 human_name = 'GL extension \\"{0}\\"'.format(extname)
