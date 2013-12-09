@@ -52,9 +52,9 @@ write them:
 
 int epoxy_gl_version() returns the GL version:
 
-12 for GL 1.2
-20 for GL 2.0
-44 for GL 4.4
+* 12 for GL 1.2
+* 20 for GL 2.0
+* 44 for GL 4.4
 
 bool epoxy_has_gl_extension() returns whether a GL extension is
 available ("GL_ARB_texture_buffer_object", for example).
