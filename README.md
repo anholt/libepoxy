@@ -30,20 +30,22 @@ as well as we think it could be done.
 
 Additionally, the proliferation of OpenGL ABIs (desktop GL, GLESv1,
 GLESv2) and window systems (GLX, AGL, WGL, all versus EGL) means that
+an individual developer needs to know more and more about how to load
+their classes symbols.
 
 Switching your code to using epoxy
 ----------------------------------
 
 It should be as easy as replacing:
 
-> #include <GL/gl.h>
-> #include <GL/glx.h>
-> #include <GL/glext.h>
+    #include <GL/gl.h>
+    #include <GL/glx.h>
+    #include <GL/glext.h>
 
 with:
 
-> #include <epoxy/gl.h>
-> #include <epoxy/glx.h>
+    #include <epoxy/gl.h>
+    #include <epoxy/glx.h>
 
 Additionally, some new helpers become available, so you don't have to
 write them:
