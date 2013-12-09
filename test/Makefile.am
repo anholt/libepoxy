@@ -23,6 +23,7 @@ EPOXY = $(builddir)/../src/libepoxy.la
 check_LTLIBRARIES = \
 	$(EGL_LIBS) \
 	$(GLX_LIBS) \
+	$(WGL_LIBS) \
 	$()
 
 libegl_common_la_SOURCES = \
@@ -35,6 +36,12 @@ libglx_common_la_SOURCES = \
 	glx_common.h
 	$()
 
+libwgl_common_la_SOURCES = \
+	wgl_common.c \
+	wgl_common.h
+	$()
+libwgl_common_la_LIBADD = $(EPOXY)
+
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/include \
 	-I$(top_builddir)/include \
@@ -43,6 +50,7 @@ AM_CPPFLAGS = \
 TESTS = \
 	$(EGL_TESTS) \
 	$(GLX_TESTS) \
+	$(WGL_TESTS) \
 	headerguards$(EXEEXT) \
 	miscdefines$(EXEEXT) \
 	$()
@@ -69,6 +77,14 @@ GLX_TESTS = \
 GLX_LIBS = libglx_common.la
 endif
 
+if BUILD_WGL
+WGL_TESTS = \
+	wgl_core_and_exts$(EXEEXT) \
+	$()
+
+WGL_LIBS = libwgl_common.la
+endif
+
 egl_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libegl_common.la
 egl_has_extension_nocontext_DEPENDENCIES = libegl_common.la
 
@@ -86,3 +102,6 @@ glx_glxgetprocaddress_nocontext_DEPENDENCIES = libglx_common.la
 
 glx_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
 glx_has_extension_nocontext_DEPENDENCIES = libglx_common.la
+
+wgl_core_and_exts_LDFLAGS = $(EPOXY) libwgl_common.la -lgdi32
+wgl_core_and_exts_DEPENDENCIES = libwgl_common.la

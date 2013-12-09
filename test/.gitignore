@@ -6,5 +6,6 @@ glx_public_api
 glx_public_api_core
 headerguards
 miscdefines
+wgl_core_and_exts
 *.log
 *.trs
