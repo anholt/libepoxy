@@ -339,6 +339,16 @@ epoxy_gles2_dlsym(const char *name)
 }
 
 void *
+epoxy_get_core_proc_address(const char *name, int core_version)
+{
+    if (core_version <= 12) {
+        return epoxy_gl_dlsym(name);
+    } else {
+        return epoxy_get_proc_address(name);
+    }
+}
+
+void *
 epoxy_get_proc_address(const char *name)
 {
 #ifdef _WIN32

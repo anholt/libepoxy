@@ -55,6 +55,7 @@ void *epoxy_gl_dlsym(const char *name);
 void *epoxy_gles1_dlsym(const char *name);
 void *epoxy_gles2_dlsym(const char *name);
 void *epoxy_get_proc_address(const char *name);
+void *epoxy_get_core_proc_address(const char *name, int core_version);
 
 int epoxy_conservative_gl_version(void);
 bool epoxy_conservative_has_gl_extension(const char *name);

@@ -282,14 +282,8 @@ class Generator(object):
                 human_name = 'Desktop OpenGL {0}'.format(feature.get('number'))
                 condition = 'epoxy_is_desktop_gl()'
 
-                # Everything in GL 1.2 is guaranteed to be present as
-                # public symbols in the Linux libGL ABI.  Everything
-                # else is supposed to not be present, so you have to
-                # glXGetProcAddress() it.
-                if version <= 12:
-                    loader = 'epoxy_gl_dlsym({0})'
-                else:
-                    loader = 'epoxy_get_proc_address({0})'
+                loader = 'epoxy_get_core_proc_address({0}, {1})'.format('{0}', version)
+                if version >= 11:
                     condition += ' && epoxy_conservative_gl_version() >= {0}'.format(version)
             elif api == 'gles2':
                 human_name = 'OpenGL ES {0}'.format(feature.get('number'))
