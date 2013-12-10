@@ -134,7 +134,7 @@ struct api {
      * is trying to resolve, but given that it's basically just for
      * informative error messages, we shouldn't need to care.
      */
-    int begin_count;
+    long begin_count;
 };
 
 static struct api api = {
@@ -420,7 +420,7 @@ PUBLIC void
 epoxy_glBegin(GLenum primtype)
 {
 #ifdef _WIN32
-#warning missing locking
+    InterlockedIncrement(&api.begin_count);
 #else
     pthread_mutex_lock(&api.mutex);
     api.begin_count++;
@@ -436,7 +436,7 @@ epoxy_glEnd(void)
     epoxy_glEnd_unwrapped();
 
 #ifdef _WIN32
-#warning missing locking
+    InterlockedDecrement(&api.begin_count);
 #else
     pthread_mutex_lock(&api.mutex);
     api.begin_count--;
