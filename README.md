@@ -3,35 +3,24 @@ you.
 
 It hides the complexity of dlopen(), dlsym(), glXGetProcAddress(),
 eglGetProcAddress(), etc. from the app developer, with very little
-knowledge needed on their part.  Just read your GL specs and write
+knowledge needed on their part.  They get to read GL specs and write
 code using undecorated function names like glCompileShader().
 
 Don't forget to check for your extensions or versions being present
 before you use them, just like before!  We'll tell you what you forgot
 to check for instead of just segfaulting, though.
 
-Why does this library exist?
-----------------------------
+Features
+--------
 
-OpenGL on Linux (and other platforms) made some ABI decisions back in
-the days when symbol versioning and dlsym() weren't as widely
-available, that resulted in window-systems-specific APIs that looked
-kind of like dlsym.  They allowed you to build an app that required
-OpenGL 1.2, but could optionally use features of OpenGL 1.4 if the
-implementation made those available through the glXGetProcAddress()
-(or other similarly-named) mechanism.
-
-The downside is that the fixed OpenGL 1.2 ABI means that application
-developers have to GetProcAddress() out every modern GL entrypoint
-they want to use and stash that function pointer somewhere.  Sometimes
-this is done in a pretty way (like libGLEW), sometimes it is done in
-an ad-hoc way (like most applications I've seen), but it's never done
-as well as we think it could be done.
-
-Additionally, the proliferation of OpenGL ABIs (desktop GL, GLESv1,
-GLESv2) and window systems (GLX, AGL, WGL, all versus EGL) means that
-an individual developer needs to know more and more about how to load
-their classes symbols.
+* Automatically initializes as new GL functions are used.
+* GL 4.4 core and compatibility context support.
+* GLES 1/2/3 context support.
+* Knows about function aliases so (e.g.) glBufferData() can be used with
+  GL_ARB_vertex_buffer_object implementations, along with GL 1.5+
+  implementations.
+* EGL and GLX support.
+* Can be mixed with non-epoxy GL usage.
 
 Switching your code to using epoxy
 ----------------------------------
@@ -47,6 +36,7 @@ with:
     #include <epoxy/gl.h>
     #include <epoxy/glx.h>
 
+As long as epoxy's headers appear first, you should be ready to go.
 Additionally, some new helpers become available, so you don't have to
 write them:
 
@@ -61,3 +51,31 @@ available ("GL_ARB_texture_buffer_object", for example).
 
 Note that this is not terribly fast, so keep it out of your hot paths,
 ok?
+
+Why not use libGLEW?
+--------------------
+
+GLEW has several issues:
+
+* Doesn't know about aliases of functions (There are 5 providers of
+  glPointParameterfv, for example, and you don't want to have to
+  choose which one to call when they're all the same).
+* Doesn't support GL 3.2+ core contexts
+* Doesn't support GLES.
+* Doesn't support EGL.
+* Has a hard-to-maintain parser of extension specification text
+  instead of using the old .spec file or the new .xml.
+* Has significant startup time overhead when glewInit() autodetects
+  the world.
+* User-visible multithreading support choice for win32.
+
+The motivation for this project came out of previous use of libGLEW in
+[piglit](http://piglit.freedesktop.org/).  Other GL dispatch code
+generation projects had similar failures.  Ideally, piglit wants to be
+able to build a single binary for a test that can run on whatever
+context or window system it chooses, not based on link time choices.
+
+We had to solve some of GLEW's problems for piglit and solving them
+meant replacing every single piece of GLEW, so we built
+piglit-dispatch from scratch.  And since we wanted to reuse it in
+other GL-related projects, this is the result.
