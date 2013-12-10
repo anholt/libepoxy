@@ -625,9 +625,9 @@ for file in args.files:
     generator.sort_functions()
     generator.resolve_aliases()
     generator.fixup_bootstrap_function('glGetString',
-                                       'epoxy_get_proc_address({0})')
+                                       'epoxy_get_core_proc_address({0}, 10)')
     generator.fixup_bootstrap_function('glGetIntegerv',
-                                       'epoxy_get_proc_address({0})')
+                                       'epoxy_get_core_proc_address({0}, 10)')
 
     # While this is technically exposed as a GLX extension, it's
     # required to be present as a public symbol by the Linux OpenGL
