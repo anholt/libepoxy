@@ -1,10 +1,11 @@
 Epoxy is a library for handling OpenGL function pointer management for
 you.
 
-It hides the complexity of dlopen(), dlsym(), glXGetProcAddress(),
-eglGetProcAddress(), etc. from the app developer, with very little
-knowledge needed on their part.  They get to read GL specs and write
-code using undecorated function names like glCompileShader().
+It hides the complexity of ```dlopen()```, ```dlsym()```,
+```glXGetProcAddress()```, ```eglGetProcAddress()```, etc. from the
+app developer, with very little knowledge needed on their part.  They
+get to read GL specs and write code using undecorated function names
+like ```glCompileShader()```.
 
 Don't forget to check for your extensions or versions being present
 before you use them, just like before!  We'll tell you what you forgot
@@ -16,9 +17,9 @@ Features
 * Automatically initializes as new GL functions are used.
 * GL 4.4 core and compatibility context support.
 * GLES 1/2/3 context support.
-* Knows about function aliases so (e.g.) glBufferData() can be used with
-  GL_ARB_vertex_buffer_object implementations, along with GL 1.5+
-  implementations.
+* Knows about function aliases so (e.g.) ```glBufferData()``` can be
+  used with ```GL_ARB_vertex_buffer_object``` implementations, along
+  with GL 1.5+ implementations.
 * EGL and GLX support.
 * Can be mixed with non-epoxy GL usage.
 
@@ -40,14 +41,14 @@ As long as epoxy's headers appear first, you should be ready to go.
 Additionally, some new helpers become available, so you don't have to
 write them:
 
-int epoxy_gl_version() returns the GL version:
+```int epoxy_gl_version()``` returns the GL version:
 
 * 12 for GL 1.2
 * 20 for GL 2.0
 * 44 for GL 4.4
 
-bool epoxy_has_gl_extension() returns whether a GL extension is
-available ("GL_ARB_texture_buffer_object", for example).
+```bool epoxy_has_gl_extension()``` returns whether a GL extension is
+available (```GL_ARB_texture_buffer_object```, for example).
 
 Note that this is not terribly fast, so keep it out of your hot paths,
 ok?
@@ -65,8 +66,8 @@ GLEW has several issues:
 * Doesn't support EGL.
 * Has a hard-to-maintain parser of extension specification text
   instead of using the old .spec file or the new .xml.
-* Has significant startup time overhead when glewInit() autodetects
-  the world.
+* Has significant startup time overhead when ```glewInit()```
+  autodetects the world.
 * User-visible multithreading support choice for win32.
 
 The motivation for this project came out of previous use of libGLEW in
