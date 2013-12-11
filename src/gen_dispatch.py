@@ -515,7 +515,9 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-    def write_dispatch_table_stub(self, func):
+    def write_dispatch_table_thunk(self, func):
+        # Writes out the thunk that calls through our dispatch table.
+
         # Use the same resolver for all the aliases of a particular
         # function.
         alias_name = func.name
@@ -531,17 +533,38 @@ class Generator(object):
             function_name = func.name
             public = 'PUBLIC '
 
+
         self.outln('{0}{1}'.format(public, func.ret_type))
         self.outln('epoxy_{0}({1})'.format(function_name, func.args_decl))
         self.outln('{')
-        self.outln('    if (!{0})'.format(dispatch_table_entry))
-        self.outln('        {0} = epoxy_{1}_resolver();'.format(dispatch_table_entry,
-                                                                alias_name))
+        self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
         self.outln('')
         if func.ret_type == 'void':
             self.outln('    {0}({1});'.format(dispatch_table_entry, func.args_list))
         else:
             self.outln('    return {0}({1});'.format(dispatch_table_entry, func.args_list))
+        self.outln('}')
+        self.outln('')
+
+    def write_dispatch_table_rewrite_stub(self, func):
+        # Writes out the stub entrypoint that resolves, writes the
+        # resolved value into the dispatch table, and calls down to
+        # it.
+
+        dispatch_table_entry = 'dispatch_table->p{0}'.format(func.name)
+
+        self.outln('static {0}'.format(func.ret_type))
+        self.outln('epoxy_{0}_rewrite_stub({1})'.format(func.name, func.args_decl))
+        self.outln('{')
+        self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
+        self.outln('')
+        self.outln('    dispatch_table->p{0} = epoxy_{0}_resolver();'.format(func.name))
+        self.outln('')
+
+        if func.ret_type == 'void':
+            self.outln('    dispatch_table->p{0}({1});'.format(func.name, func.args_list))
+        else:
+            self.outln('    return dispatch_table->p{0}({1});'.format(func.name, func.args_list))
         self.outln('}')
         self.outln('')
 
@@ -627,9 +650,12 @@ class Generator(object):
         self.outln('};')
         self.outln('')
 
-        self.outln('/* XXX: Make this thread-local and swapped on makecurrent. */')
-        self.outln('static struct dispatch_table local_dispatch_table;')
-        self.outln('static struct dispatch_table *dispatch_table = &local_dispatch_table;')
+        # Early declaration, so we can declare the real thing at the
+        # bottom. (I want the function_ptr_resolver as the first
+        # per-GL-call code, since it's the most interesting to see
+        # when you search for the implementation of a call)
+        self.outln('static inline struct dispatch_table *')
+        self.outln('get_dispatch_table(void);')
         self.outln('')
 
         self.write_provider_enums()
@@ -641,7 +667,27 @@ class Generator(object):
                 self.write_function_ptr_resolver(func)
 
         for func in self.sorted_functions:
-            self.write_dispatch_table_stub(func)
+            if not func.alias_func:
+                self.write_dispatch_table_rewrite_stub(func)
+
+        for func in self.sorted_functions:
+            self.write_dispatch_table_thunk(func)
+
+        self.outln('static struct dispatch_table resolver_table = {')
+        for func in self.sorted_functions:
+            # Aliases don't get their own slot, since they use a shared resolver.
+            if not func.alias_name:
+                self.outln('    .p{0} = epoxy_{0}_rewrite_stub,'.format(func.name))
+        self.outln('};')
+        self.outln('')
+
+        self.outln('static inline struct dispatch_table *')
+        self.outln('get_dispatch_table(void)')
+        self.outln('{')
+        self.outln('    /* XXX: Make this thread-local and swapped on makecurrent on win32. */')
+        self.outln('	return &resolver_table;')
+        self.outln('}')
+        self.outln('')
 
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
 argparser.add_argument('files', metavar='file.xml', nargs='+', help='GL API XML files to be parsed')
