@@ -60,6 +60,21 @@ class GLFunction(object):
         self.providers = {}
         self.args = []
 
+        # These are functions with hand-written wrapper code in
+        # dispatch_common.c.  Their dispatch entries are replaced with
+        # non-public symbols with a "_unwrapped" suffix.
+        wrapped_functions = {
+            'glBegin',
+            'glEnd'
+        }
+
+        if name in wrapped_functions:
+            self.wrapped_name = name + '_unwrapped'
+            self.public = ''
+        else:
+            self.wrapped_name = name
+            self.public = 'PUBLIC '
+
         # This is the string of C code for passing through the
         # arguments to the function.
         self.args_list = ''
@@ -144,14 +159,6 @@ class Generator(object):
         # format strings for fetching the function pointer when
         # provided the name of the symbol to be requested.
         self.provider_loader = {}
-
-        # These are functions with hand-written wrapper code in
-        # dispatch_common.c.  Their dispatch stubs will be replaced
-        # with non-public symbols with a "_unwrapped" suffix.
-        self.wrapped_functions = {
-            'glBegin',
-            'glEnd'
-        }
 
     def all_text_until_element_name(self, element, element_name):
         text = ''
@@ -519,16 +526,8 @@ class Generator(object):
         # Writes out the thunk that calls through our dispatch table.
         dispatch_table_entry = 'dispatch_table->p{0}'.format(func.alias_name)
 
-        if func.name in self.wrapped_functions:
-            function_name = func.name + '_unwrapped'
-            public = ''
-        else:
-            function_name = func.name
-            public = 'PUBLIC '
-
-
-        self.outln('{0}{1}'.format(public, func.ret_type))
-        self.outln('epoxy_{0}({1})'.format(function_name, func.args_decl))
+        self.outln('{0}{1}'.format(func.public, func.ret_type))
+        self.outln('epoxy_{0}({1})'.format(func.wrapped_name, func.args_decl))
         self.outln('{')
         self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
         self.outln('')
