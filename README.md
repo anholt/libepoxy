@@ -20,7 +20,7 @@ Features
 * Knows about function aliases so (e.g.) ```glBufferData()``` can be
   used with ```GL_ARB_vertex_buffer_object``` implementations, along
   with GL 1.5+ implementations.
-* EGL and GLX support.
+* EGL, GLX, and WGL support.
 * Can be mixed with non-epoxy GL usage.
 
 Switching your code to using epoxy
