@@ -73,7 +73,7 @@ class GLFunction(object):
         # registry, and may get updated if it turns out our alias is
         # itself an alias (for example glFramebufferTextureEXT ->
         # glFramebufferTextureARB -> glFramebufferTexture)
-        self.alias_name = None
+        self.alias_name = name
 
         # After alias resolution, this is the function that this is an
         # alias of.
@@ -249,9 +249,9 @@ class Generator(object):
     def resolve_aliases(self):
         for func in self.functions.values():
             # Find the root of the alias tree, and add ourselves to it.
-            if func.alias_name:
+            if func.alias_name != func.name:
                 alias_func = func
-                while alias_func.alias_name:
+                while alias_func.alias_name != alias_func.name:
                     alias_func = self.functions[alias_func.alias_name]
                 func.alias_name = alias_func.name
                 func.alias_func = alias_func
@@ -517,14 +517,7 @@ class Generator(object):
 
     def write_dispatch_table_thunk(self, func):
         # Writes out the thunk that calls through our dispatch table.
-
-        # Use the same resolver for all the aliases of a particular
-        # function.
-        alias_name = func.name
-        if func.alias_name:
-            alias_name = func.alias_name
-
-        dispatch_table_entry = 'dispatch_table->p{0}'.format(alias_name)
+        dispatch_table_entry = 'dispatch_table->p{0}'.format(func.alias_name)
 
         if func.name in self.wrapped_functions:
             function_name = func.name + '_unwrapped'
@@ -645,7 +638,7 @@ class Generator(object):
         self.outln('struct dispatch_table {')
         for func in self.sorted_functions:
             # Aliases don't get their own slot, since they use a shared resolver.
-            if not func.alias_name:
+            if func.alias_name == func.name:
                 self.outln('    {0} p{1};'.format(func.ptr_type, func.name))
         self.outln('};')
         self.outln('')
@@ -676,7 +669,7 @@ class Generator(object):
         self.outln('static struct dispatch_table resolver_table = {')
         for func in self.sorted_functions:
             # Aliases don't get their own slot, since they use a shared resolver.
-            if not func.alias_name:
+            if func.alias_name == func.name:
                 self.outln('    .p{0} = epoxy_{0}_rewrite_stub,'.format(func.name))
         self.outln('};')
         self.outln('')
