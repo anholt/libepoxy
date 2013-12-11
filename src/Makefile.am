@@ -113,6 +113,7 @@ libepoxy_la_SOURCES = \
 
 libepoxy_la_LDFLAGS = \
 	-no-undefined \
+        -Bsymbolic \
         $(EPOXY_LINK_LIBS) \
 	$()
 
