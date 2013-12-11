@@ -72,6 +72,7 @@ GLX_TESTS = \
 	glx_public_api_core \
 	glx_glxgetprocaddress_nocontext \
 	glx_has_extension_nocontext \
+	glx_static \
 	$()
 
 GLX_LIBS = libglx_common.la
@@ -102,6 +103,9 @@ glx_glxgetprocaddress_nocontext_DEPENDENCIES = libglx_common.la
 
 glx_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
 glx_has_extension_nocontext_DEPENDENCIES = libglx_common.la
+
+glx_static_LDFLAGS = -ldl $(X11_LIBS) -static $(EPOXY) libglx_common.la
+glx_static_DEPENDENCIES = libglx_common.la
 
 wgl_core_and_exts_LDFLAGS = $(EPOXY) libwgl_common.la -lgdi32
 wgl_core_and_exts_DEPENDENCIES = libwgl_common.la
