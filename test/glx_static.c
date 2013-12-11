@@ -38,6 +38,7 @@
 #include "epoxy/gl.h"
 #include "epoxy/glx.h"
 #include <X11/Xlib.h>
+#include <dlfcn.h>
 
 #include "glx_common.h"
 
