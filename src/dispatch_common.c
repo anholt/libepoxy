@@ -113,6 +113,13 @@ struct api {
     /** dlopen() return value for libGL.so.1. */
     void *glx_handle;
 
+    /**
+     * dlopen() return value for OS X's GL library.
+     *
+     * On linux, glx_handle is used instead.
+     */
+    void *gl_handle;
+
     /** dlopen() return value for libEGL.so.1 */
     void *egl_handle;
 
@@ -328,6 +335,10 @@ epoxy_gl_dlsym(const char *name)
 {
 #ifdef _WIN32
     return GetProcAddress(LoadLibraryA("OPENGL32"), name);
+#elif defined(__APPLE__)
+    return do_dlsym(&api.gl_handle,
+                    "/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL",
+                    name, true);
 #else
     /* There's no library for desktop GL support independent of GLX. */
     return epoxy_glx_dlsym(name);
