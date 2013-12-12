@@ -48,7 +48,7 @@ main(int argc, char **argv)
     if (epoxy_glx_version(dpy, 0) < 14)
         errx(77, "GLX version 1.4 required for glXGetProcAddress().\n");
 
-    void *func = glXGetProcAddress("glGetString");
+    void *func = glXGetProcAddress((const GLubyte *)"glGetString");
     if (!func)
         errx(1, "glXGetProcAddress() returned NULL\n");
 
