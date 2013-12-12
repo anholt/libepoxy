@@ -48,6 +48,10 @@ AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 AC_SYS_LARGEFILE
 
+# OS X defaults to having -Wint-conversion ("warn when passing
+# uintptr_t to a void *") by default.  Kill that.
+XORG_TESTSET_CFLAG(CWARNFLAGS, [-Wno-int-conversion])
+
 case $host_os in
     mingw*)
         build_egl=no

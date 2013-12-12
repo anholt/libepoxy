@@ -107,12 +107,31 @@ class GLFunction(object):
         elif name == "far":
             name = "yon"
 
+        # Mac screwed up GLhandleARB and made it a void * instead of
+        # uint32_t, despite it being specced as only necessarily 32
+        # bits wide, causing portability problems all over.  There are
+        # prototype conflicts between things like
+        # glAttachShader(GLuint program, GLuint shader) and
+        # glAttachObjectARB(GLhandleARB container, GLhandleARB obj),
+        # even though they are marked as aliases in the XML (and being
+        # aliases in Mesa).
+        #
+        # We retain those aliases.  In the x86_64 ABI, the first 6
+        # args are stored in 64-bit registers, so the calls end up
+        # being the same despite the different types.  We just need to
+        # add a cast to uintptr_t to shut up the compiler.
+        if type == 'GLhandleARB':
+            assert(len(self.args) < 6)
+            arg_list_name = '(uintptr_t)' + name
+        else:
+            arg_list_name = name
+
         self.args.append((type, name))
         if self.args_decl == 'void':
-            self.args_list = name
+            self.args_list = arg_list_name
             self.args_decl = type + ' ' + name
         else:
-            self.args_list += ', ' + name
+            self.args_list += ', ' + arg_list_name
             self.args_decl += ', ' + type + ' ' + name
 
     def add_provider(self, condition, loader, condition_name):
