@@ -23,6 +23,34 @@ Features
 * EGL, GLX, and WGL support.
 * Can be mixed with non-epoxy GL usage.
 
+Building
+--------
+
+    ./autogen.sh
+    make
+    sudo make install
+
+Dependencies for debian:
+
+* automake
+* libegl1-mesa-dev
+* xutils-dev
+
+Dependencies for OS X (macports):
+
+* automake
+* autoconf
+* xorg-util-macros
+* pkgconfig
+* xorg-libX11
+
+Other dependencies for OS X:
+
+* [XQuartz](http://xquartz.macosforge.org/landing/)
+
+The test suite has additional dependencies depending on the platform.
+(X11, EGL, a running X Server).
+
 Switching your code to using epoxy
 ----------------------------------
 
