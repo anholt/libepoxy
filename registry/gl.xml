@@ -12821,7 +12821,6 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsizei</ptype> <name>maxCount</name></param>
             <param len="1"><ptype>GLsizei</ptype> *<name>count</name></param>
             <param group="handleARB" len="count"><ptype>GLhandleARB</ptype> *<name>obj</name></param>
-            <alias name="glGetAttachedShaders"/>
         </command>
         <command>
             <proto>void <name>glGetAttachedShaders</name></proto>
