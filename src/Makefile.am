@@ -23,7 +23,11 @@ AM_CPPFLAGS = \
 	-I$(top_builddir)/include \
 	$()
 
-AM_CFLAGS = $(CWARNFLAGS) $(VISIBILITY_CFLAGS)
+AM_CFLAGS = \
+	$(CWARNFLAGS) \
+	$(VISIBILITY_CFLAGS) \
+	$(X11_CFLAGS) \
+	$()
 
 epoxyincludedir = $(includedir)/epoxy
 lib_LTLIBRARIES = libepoxy.la
