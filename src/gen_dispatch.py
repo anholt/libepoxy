@@ -470,7 +470,7 @@ class Generator(object):
         self.write_header_header(file)
 
         if self.target != "gl":
-            self.outln('#include "epoxy/gl_generated.h"')
+            self.outln('#include "epoxy/gl.h"')
             if self.target == "egl":
                 self.outln('#include "EGL/eglplatform.h"')
         else:
