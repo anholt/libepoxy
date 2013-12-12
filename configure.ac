@@ -115,6 +115,10 @@ esac
 AC_SUBST([VISIBILITY_CFLAGS])
 
 PKG_CHECK_MODULES(X11, [x11], [x11=yes], [x11=no])
+if test x$x11 = xno -a x$build_glx = xyes; then
+    AC_MSG_ERROR([libX11 headers (libx11-dev) required to build with GLX support])
+fi
+
 AM_CONDITIONAL(HAVE_X11, test x$x11 = xyes)
 
 PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
