@@ -39,8 +39,13 @@
 #endif
 
 #ifdef BUILD_GLX
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#include <OpenGL/glext.h>
+#else
 #include <GL/gl.h>
 #include <GL/glext.h>
+#endif
 #include <GL/glx.h>
 #include <GL/glxext.h>
 #endif
