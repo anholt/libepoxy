@@ -265,11 +265,15 @@ epoxy_extension_in_string(const char *extension_list, const char *ext)
     int len = strlen(ext);
 
     /* Make sure that don't just find an extension with our name as a prefix. */
-    do {
+    while (true) {
         ptr = strstr(ptr, ext);
-    } while (ptr && (ptr[len] != ' ' && ptr[len] != 0));
+        if (!ptr)
+            return false;
 
-    return ptr != NULL;
+        if (ptr[len] == ' ' || ptr[len] == 0)
+            return true;
+        ptr += len;
+    }
 }
 
 static bool
