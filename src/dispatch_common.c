@@ -102,6 +102,12 @@
 
 #include "dispatch_common.h"
 
+#ifdef __APPLE__
+#define GLX_LIB "/opt/X11/lib/libGL.1.dylib"
+#else
+#define GLX_LIB "libGL.so.1"
+#endif
+
 struct api {
 #ifndef _WIN32
     /**
@@ -327,7 +333,7 @@ epoxy_egl_dlsym(const char *name)
 void *
 epoxy_glx_dlsym(const char *name)
 {
-    return do_dlsym(&api.glx_handle, "libGL.so.1", name, true);
+    return do_dlsym(&api.glx_handle, GLX_LIB, name, true);
 }
 
 void *
@@ -419,7 +425,7 @@ epoxy_get_proc_address(const char *name)
             return egl_gpa(name);
 #endif /* PLATFORM_HAS_EGL */
 
-        return do_dlsym(&api.glx_handle, "libGL.so.1", "glXGetProcAddressARB",
+        return do_dlsym(&api.glx_handle, GLX_LIB, "glXGetProcAddressARB",
                         false);
         if (glx_gpa)
             return glx_gpa((const GLubyte *)name);
