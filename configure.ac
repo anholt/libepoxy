@@ -64,6 +64,12 @@ case $host_os in
         # (like checking for EGL and GLX libs in non-windows.).
         AC_SUBST([LOG_COMPILER], [wine])
         ;;
+    darwin*)
+        build_egl=no
+        build_glx=yes
+        build_wgl=no
+        EPOXY_LINK_LIBS=""
+        ;;
     *)
         build_egl=yes
         build_glx=yes

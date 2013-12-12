@@ -310,7 +310,11 @@ epoxy_conservative_has_gl_extension(const char *ext)
 void *
 epoxy_egl_dlsym(const char *name)
 {
+#if PLATFORM_HAS_EGL
     return do_dlsym(&api.egl_handle, "libEGL.so.1", name, true);
+#else
+    return NULL;
+#endif
 }
 
 void *
@@ -365,7 +369,11 @@ epoxy_get_proc_address(const char *name)
     return wglGetProcAddress(name);
 #else
     if (api.egl_handle) {
+#if PLATFORM_HAS_EGL
         return eglGetProcAddress(name);
+#else
+        return NULL;
+#endif
     } else if (api.glx_handle) {
         return glXGetProcAddressARB((const GLubyte *)name);
     } else {
@@ -377,16 +385,19 @@ epoxy_get_proc_address(const char *name)
          * application's namespace, then use that.
          */
         PFNGLXGETPROCADDRESSARBPROC glx_gpa;
-        PFNEGLGETPROCADDRESSPROC egl_gpa;
 
+#if PLATFORM_HAS_EGL
+        PFNEGLGETPROCADDRESSPROC egl_gpa;
         egl_gpa = dlsym(NULL, "eglGetProcAddress");
         if (egl_gpa)
             return egl_gpa(name);
+#endif
 
         glx_gpa = dlsym(NULL, "glXGetProcAddressARB");
         if (glx_gpa)
             return glx_gpa((const GLubyte *)name);
 
+#if PLATFORM_HAS_EGL
         /* OK, couldn't find anything in the app's address space.
          * Presumably they dlopened with RTLD_LOCAL, which hides it
          * from us.  Just go dlopen()ing likely libraries and try them.
@@ -395,6 +406,7 @@ epoxy_get_proc_address(const char *name)
                            false);
         if (egl_gpa)
             return egl_gpa(name);
+#endif /* PLATFORM_HAS_EGL */
 
         return do_dlsym(&api.glx_handle, "libGL.so.1", "glXGetProcAddressARB",
                         false);
