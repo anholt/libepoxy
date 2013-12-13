@@ -157,11 +157,28 @@ static struct api api = {
 };
 
 #ifndef _WIN32
+static bool library_initialized;
+
+static void
+library_init(void) __attribute__((constructor));
+
+static void
+library_init(void)
+{
+    library_initialized = true;
+}
+
 static void
 get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
 {
     if (*handle)
         return;
+
+    if (!library_initialized) {
+        fprintf(stderr,
+                "Attempting to dlopen() while in the dynamic linker.\n");
+        abort();
+    }
 
     pthread_mutex_lock(&api.mutex);
     if (!*handle) {
