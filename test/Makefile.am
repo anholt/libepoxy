@@ -73,6 +73,7 @@ GLX_TESTS = \
 	glx_glxgetprocaddress_nocontext \
 	glx_has_extension_nocontext \
 	glx_static \
+	glx_shared_znow \
 	$()
 
 GLX_LIBS = libglx_common.la
@@ -85,6 +86,8 @@ WGL_TESTS = \
 
 WGL_LIBS = libwgl_common.la
 endif
+
+XFAIL_TESTS = glx_shared_znow
 
 egl_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libegl_common.la
 egl_has_extension_nocontext_DEPENDENCIES = $(EPOXY) libegl_common.la
@@ -106,6 +109,10 @@ glx_has_extension_nocontext_DEPENDENCIES = $(EPOXY) libglx_common.la
 
 glx_static_LDFLAGS = -ldl $(X11_LIBS) -static $(EPOXY) libglx_common.la
 glx_static_DEPENDENCIES = $(EPOXY) libglx_common.la
+
+glx_shared_znow_SOURCES = glx_static.c
+glx_shared_znow_LDFLAGS = -ldl $(X11_LIBS) -z now $(EPOXY) libglx_common.la
+glx_shared_znow_DEPENDENCIES = $(EPOXY) libglx_common.la
 
 wgl_core_and_exts_LDFLAGS = $(EPOXY) libwgl_common.la -lgdi32
 wgl_core_and_exts_DEPENDENCIES = $(EPOXY) libwgl_common.la
