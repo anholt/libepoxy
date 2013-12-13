@@ -358,10 +358,11 @@ class Generator(object):
                 human_name = 'EGL {0}'.format(version)
                 if version > 10:
                     condition = 'epoxy_conservative_egl_version() >= {0}'.format(version)
-                    loader = 'eglGetProcAddress({0})'
                 else:
                     condition = 'true'
-                    loader = 'epoxy_egl_dlsym({0})'
+                # All EGL core entrypoints must be dlsym()ed out --
+                # eglGetProcAdddress() will return NULL.
+                loader = 'epoxy_egl_dlsym({0})'
             elif api == 'wgl':
                 # There's no reason for us to interpose the
                 # non-extension WGL symbols, which we know are always
