@@ -87,25 +87,25 @@ WGL_LIBS = libwgl_common.la
 endif
 
 egl_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libegl_common.la
-egl_has_extension_nocontext_DEPENDENCIES = libegl_common.la
+egl_has_extension_nocontext_DEPENDENCIES = $(EPOXY) libegl_common.la
 
 glx_beginend_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la $(GL_LIBS)
-glx_beginend_DEPENDENCIES = libglx_common.la
+glx_beginend_DEPENDENCIES = $(EPOXY) libglx_common.la
 
 glx_public_api_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
-glx_public_api_DEPENDENCIES = libglx_common.la
+glx_public_api_DEPENDENCIES = $(EPOXY) libglx_common.la
 
 glx_public_api_core_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
-glx_public_api_core_DEPENDENCIES = libglx_common.la
+glx_public_api_core_DEPENDENCIES = $(EPOXY) libglx_common.la
 
 glx_glxgetprocaddress_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
-glx_glxgetprocaddress_nocontext_DEPENDENCIES = libglx_common.la
+glx_glxgetprocaddress_nocontext_DEPENDENCIES = $(EPOXY) libglx_common.la
 
 glx_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
-glx_has_extension_nocontext_DEPENDENCIES = libglx_common.la
+glx_has_extension_nocontext_DEPENDENCIES = $(EPOXY) libglx_common.la
 
 glx_static_LDFLAGS = -ldl $(X11_LIBS) -static $(EPOXY) libglx_common.la
-glx_static_DEPENDENCIES = libglx_common.la
+glx_static_DEPENDENCIES = $(EPOXY) libglx_common.la
 
 wgl_core_and_exts_LDFLAGS = $(EPOXY) libwgl_common.la -lgdi32
-wgl_core_and_exts_DEPENDENCIES = libwgl_common.la
+wgl_core_and_exts_DEPENDENCIES = $(EPOXY) libwgl_common.la
