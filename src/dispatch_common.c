@@ -476,8 +476,16 @@ epoxy_print_failure_reasons(const char *name,
     }
 }
 
-PUBLIC void
-epoxy_glBegin(GLenum primtype)
+#ifdef _WIN32
+#define WRAPPER_VISIBILITY PUBLIC
+#define WRAPPER(x) x
+#else
+#define WRAPPER_VISIBILITY static
+#define WRAPPER(x) x ## _wrapped
+#endif
+
+WRAPPER_VISIBILITY void
+WRAPPER(epoxy_glBegin)(GLenum primtype)
 {
 #ifdef _WIN32
     InterlockedIncrement(&api.begin_count);
@@ -490,8 +498,8 @@ epoxy_glBegin(GLenum primtype)
     epoxy_glBegin_unwrapped(primtype);
 }
 
-PUBLIC void
-epoxy_glEnd(void)
+WRAPPER_VISIBILITY void
+WRAPPER(epoxy_glEnd)(void)
 {
     epoxy_glEnd_unwrapped();
 
@@ -503,3 +511,8 @@ epoxy_glEnd(void)
     pthread_mutex_unlock(&api.mutex);
 #endif
 }
+
+#ifndef _WIN32
+PUBLIC PFNGLBEGINPROC epoxy_glBegin = epoxy_glBegin_wrapped;
+PUBLIC PFNGLENDPROC epoxy_glEnd = epoxy_glEnd_wrapped;
+#endif

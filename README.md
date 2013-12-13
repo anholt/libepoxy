@@ -108,21 +108,3 @@ We had to solve some of GLEW's problems for piglit and solving them
 meant replacing every single piece of GLEW, so we built
 piglit-dispatch from scratch.  And since we wanted to reuse it in
 other GL-related projects, this is the result.
-
-Caveats
--------
-
-* libepoxy isn't intended to be dlopen()ed.  On ifunc platforms,
-  RTLD_NOW would cause early resolution of all GL symbols, and the
-  following error from reentering the linker:
-
-```
-Inconsistency detected by ld.so: dl-open.c: 235: dl_open_worker:
-Assertion `_dl_debug_initialize (0, args->nsid)->r_state ==
-RT_CONSISTENT' failed!
-```
-
-* libepoxy isn't intended to be built statically.  It usess ifuncs on
-  linux, since it can avoid its dispatch table entirely in that case.
-  Building statically disables ifuncs, dropping you to a
-  higher-overhead path!

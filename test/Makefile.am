@@ -87,8 +87,6 @@ WGL_TESTS = \
 WGL_LIBS = libwgl_common.la
 endif
 
-XFAIL_TESTS = glx_shared_znow
-
 egl_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libegl_common.la
 egl_has_extension_nocontext_DEPENDENCIES = $(EPOXY) libegl_common.la
 

@@ -58,6 +58,18 @@
 #  endif
 #endif
 
+/* On win32, we're going to need to keep a per-thread dispatch table,
+ * since the function pointers depend on the device and pixel format
+ * of the current context.
+ */
+#if defined(_WIN32)
+#define USING_DISPATCH_TABLE 1
+#define UNWRAPPED_PROTO(x) x
+#else
+#define USING_DISPATCH_TABLE 0
+#define UNWRAPPED_PROTO(x) (*x)
+#endif
+
 void *epoxy_egl_dlsym(const char *name);
 void *epoxy_glx_dlsym(const char *name);
 void *epoxy_gl_dlsym(const char *name);
@@ -79,5 +91,5 @@ void epoxy_print_failure_reasons(const char *name,
 
 bool epoxy_extension_in_string(const char *extension_list, const char *ext);
 
-void epoxy_glBegin_unwrapped(GLenum primtype);
-void epoxy_glEnd_unwrapped(void);
+void UNWRAPPED_PROTO(epoxy_glBegin_unwrapped)(GLenum primtype);
+void UNWRAPPED_PROTO(epoxy_glEnd_unwrapped)(void);

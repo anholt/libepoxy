@@ -501,9 +501,22 @@ class Generator(object):
         self.outln('')
         self.write_function_ptr_typedefs()
 
+        self.outln('/* The library ABI is a set of functions on win32 (where')
+        self.outln(' * we have to use per-thread dispatch tables) and a set')
+        self.outln(' * of function pointers, otherwise.')
+        self.outln(' */')
+        self.outln('#ifdef _WIN32')
+        self.outln('#define EPOXY_FPTR(x) x')
+        self.outln('#define EPOXY_FPTR_EXTERN')
+        self.outln('#else')
+        self.outln('#define EPOXY_FPTR(x) (*x)')
+        self.outln('#define EPOXY_FPTR_EXTERN extern')
+        self.outln('#endif')
+
         for func in self.sorted_functions:
-            self.outln('{0} epoxy_{1}({2});'.format(func.ret_type, func.name,
-                                                    func.args_decl))
+            self.outln('EPOXY_FPTR_EXTERN {0} EPOXY_FPTR(epoxy_{1})({2});'.format(func.ret_type,
+                                                                                  func.name,
+                                                                                  func.args_decl))
             self.outln('')
 
     def write_proto_define_header(self, file, style):
@@ -580,22 +593,27 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-    def write_ifunc(self, func):
-        # Writes out the ifunc symbol that will have its PLT entry
-        # replaced with the resolved GL symbol when it's called.
-
-        # Tell the linker that even if we're in a static build, we need a PLT.
-        self.outln('__asm__(".type epoxy_{0}, @gnu_indirect_function");'.format(func.name));
-
-        # Tell the linker that epoxy_glWhatever() needs to be resolved
-        # by epoxy_ifunc_glWhatever().
-        self.outln('void *epoxy_ifunc_{0}(void) __asm__("epoxy_{0}");'.format(func.wrapped_name))
-
-        # Write out the actual epoxy_ifunc_glWhatever().
-        self.outln('{0} void *epoxy_ifunc_{1}(void)'.format(func.public, func.wrapped_name))
+    def write_function_pointer(self, func):
+        self.outln('static {0}'.format(func.ret_type))
+        self.outln('epoxy_{0}_rewrite_ptr({1})'.format(func.wrapped_name,
+                                                       func.args_decl))
         self.outln('{')
-        self.outln('    return epoxy_{0}_resolver();'.format(func.alias_name))
+        self.outln('    epoxy_{0} = (void *)epoxy_{1}_resolver();'.format(func.wrapped_name,
+                                                                          func.alias_name))
+
+        if func.ret_type == 'void':
+            self.outln('    epoxy_{0}({1});'.format(func.wrapped_name,
+                                                    func.args_list))
+        else:
+            self.outln('    return epoxy_{0}({1});'.format(func.wrapped_name,
+                                                           func.args_list))
+
         self.outln('}')
+
+        self.outln('{0}{1} epoxy_{2} = epoxy_{2}_rewrite_ptr;'.format(func.public,
+                                                                      func.ptr_type,
+                                                                      func.wrapped_name))
+        self.outln('')
 
     def write_provider_enums(self):
         self.outln('enum {0}_provider {{'.format(self.target))
@@ -671,22 +689,6 @@ class Generator(object):
         self.outln('#include "epoxy/{0}.h"'.format(self.target))
         self.outln('')
 
-        # ifuncs are a newer-gcc and newer-dynamic-linker feature that
-        # let the library rewrite the application's PLT entry with our
-        # resolved function pointer.
-        #
-        # Note that dlsym() when we're called from the dynamic linker
-        # while it's loading libraries will break. So, libepoxy can't
-        # be loaded with RTLD_NOW when ifuncs are in use.  We also
-        # can't use ifuncs for static builds, since static builds
-        # resolve just like RTLD_NOW.
-        self.outln('#if defined(__PIC__) && defined(__linux__)')
-        self.outln('#define USING_IFUNCS 1')
-        self.outln('#else')
-        self.outln('#define USING_IFUNCS 0')
-        self.outln('#endif')
-        self.outln('')
-
         self.outln('struct dispatch_table {')
         for func in self.sorted_functions:
             # Aliases don't get their own slot, since they use a shared resolver.
@@ -699,7 +701,7 @@ class Generator(object):
         # bottom. (I want the function_ptr_resolver as the first
         # per-GL-call code, since it's the most interesting to see
         # when you search for the implementation of a call)
-        self.outln('#if !USING_IFUNCS')
+        self.outln('#if USING_DISPATCH_TABLE')
         self.outln('static inline struct dispatch_table *')
         self.outln('get_dispatch_table(void);')
         self.outln('')
@@ -713,7 +715,7 @@ class Generator(object):
             if not func.alias_func:
                 self.write_function_ptr_resolver(func)
 
-        self.outln('#if !USING_IFUNCS')
+        self.outln('#if USING_DISPATCH_TABLE')
 
         for func in self.sorted_functions:
             if not func.alias_func:
@@ -738,12 +740,12 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-        self.outln('#else /* !USING_IFUNCS */')
+        self.outln('#else /* !USING_DISPATCH_TABLE */')
 
         for func in self.sorted_functions:
-            self.write_ifunc(func)
+            self.write_function_pointer(func)
 
-        self.outln('#endif /* !USING_IFUNCS */')
+        self.outln('#endif /* !USING_DISPATCH_TABLE */')
 
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
 argparser.add_argument('files', metavar='file.xml', nargs='+', help='GL API XML files to be parsed')
