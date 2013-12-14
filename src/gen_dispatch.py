@@ -519,11 +519,8 @@ class Generator(object):
                                                                                   func.args_decl))
             self.outln('')
 
-    def write_proto_define_header(self, file, style):
-        self.write_header_header(file)
-
         for func in self.sorted_functions:
-            self.outln('#define {0} epoxy_{1}{0}'.format(func.name, style))
+            self.outln('#define {0} epoxy_{0}'.format(func.name))
 
     def write_function_ptr_resolver(self, func):
         self.outln('static {0}'.format(func.ptr_type))
@@ -776,5 +773,4 @@ for file in args.files:
     generator.prepare_provider_enum()
 
     generator.write_header(incdir + name + '_generated.h')
-    generator.write_proto_define_header(incdir + name + '_generated_vtable_defines.h', '')
     generator.write_source(srcdir + name + '_generated_dispatch.c')

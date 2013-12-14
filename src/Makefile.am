@@ -52,22 +52,18 @@ endif
 
 GENERATED_GL_INCLUDES = \
 	$(builddir)/../include/epoxy/gl_generated.h \
-	$(builddir)/../include/epoxy/gl_generated_vtable_defines.h \
 	$()
 
 GENERATED_GLX_INCLUDES = \
 	$(tuilddir)/../include/epoxy/glx_generated.h \
-	$(builddir)/../include/epoxy/glx_generated_vtable_defines.h \
 	$()
 
 GENERATED_EGL_INCLUDES = \
 	$(tuilddir)/../include/epoxy/egl_generated.h \
-	$(builddir)/../include/epoxy/egl_generated_vtable_defines.h \
 	$()
 
 GENERATED_WGL_INCLUDES = \
 	$(tuilddir)/../include/epoxy/wgl_generated.h \
-	$(builddir)/../include/epoxy/wgl_generated_vtable_defines.h \
 	$()
 
 GENERATED_GL_SOURCE = gl_generated_dispatch.c

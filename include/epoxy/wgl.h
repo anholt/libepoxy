@@ -49,7 +49,6 @@ extern "C" {
 #pragma once
 
 #include "epoxy/wgl_generated.h"
-#include "epoxy/wgl_generated_vtable_defines.h"
 
 bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
 

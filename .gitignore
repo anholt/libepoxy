@@ -84,16 +84,12 @@ test-driver
 
 gl_generated_dispatch.c
 gl_generated.h
-gl_generated_vtable_defines.h
 
 glx_generated_dispatch.c
 glx_generated.h
-glx_generated_vtable_defines.h
 
 egl_generated_dispatch.c
 egl_generated.h
-egl_generated_vtable_defines.h
 
 wgl_generated_dispatch.c
 wgl_generated.h
-wgl_generated_vtable_defines.h

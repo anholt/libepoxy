@@ -54,7 +54,6 @@ extern "C" {
 #pragma once
 
 #include "epoxy/glx_generated.h"
-#include "epoxy/glx_generated_vtable_defines.h"
 
 bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
 int epoxy_glx_version(Display *dpy, int screen);

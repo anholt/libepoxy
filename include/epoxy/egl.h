@@ -51,7 +51,6 @@ extern "C" {
 #pragma once
 
 #include "epoxy/egl_generated.h"
-#include "epoxy/egl_generated_vtable_defines.h"
 
 bool epoxy_has_egl_extension(EGLDisplay *dpy, const char *extension);
 int epoxy_egl_version(EGLDisplay *dpy);

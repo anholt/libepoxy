@@ -78,7 +78,6 @@ extern "C" {
 #endif
 
 #include "epoxy/gl_generated.h"
-#include "epoxy/gl_generated_vtable_defines.h"
 
 bool epoxy_has_gl_extension(const char *extension);
 bool epoxy_is_desktop_gl(void);
