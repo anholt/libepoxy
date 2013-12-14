@@ -48,10 +48,12 @@ main(int argc, char **argv)
     bool pass = true;
     int val;
 
+#if NEEDS_TO_BE_STATIC
     if (dlsym(NULL, "epoxy_glCompileShader")) {
         fprintf(stderr, "glx_static requires epoxy built with --enable-static\n");
         return 77;
     }
+#endif
 
     Display *dpy = get_display_or_skip();
     make_glx_context_current_or_skip(dpy);

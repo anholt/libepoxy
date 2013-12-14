@@ -107,6 +107,7 @@ glx_glxgetprocaddress_nocontext_DEPENDENCIES = $(EPOXY) libglx_common.la
 glx_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
 glx_has_extension_nocontext_DEPENDENCIES = $(EPOXY) libglx_common.la
 
+glx_static_CFLAGS = -DNEEDS_TO_BE_STATIC
 glx_static_LDFLAGS = -ldl $(X11_LIBS) -static $(EPOXY) libglx_common.la
 glx_static_DEPENDENCIES = $(EPOXY) libglx_common.la
 
