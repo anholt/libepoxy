@@ -535,22 +535,28 @@ class Generator(object):
             for provider in alias_func.providers.values():
                 providers.append(provider)
 
-        self.outln('    static const enum {0}_provider providers[] = {{'.format(self.target))
-        for provider in providers:
-            self.outln('        {0},'.format(provider.enum))
-        self.outln('        {0}_provider_terminator'.format(self.target))
-        self.outln('    };')
+        if len(providers) != 1:
+            self.outln('    static const enum {0}_provider providers[] = {{'.format(self.target))
+            for provider in providers:
+                self.outln('        {0},'.format(provider.enum))
+            self.outln('        {0}_provider_terminator'.format(self.target))
+            self.outln('    };')
 
-        self.outln('    static const uint16_t entrypoints[] = {')
-        for provider in providers:
-            self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
-        self.outln('    };')
+            self.outln('    static const uint16_t entrypoints[] = {')
+            for provider in providers:
+                self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
+            self.outln('    };')
 
-        self.outln('    return {0}_provider_resolver(entrypoint_strings + {1} /* "{2}" */,'.format(self.target,
-                                                                                                   self.entrypoint_string_offset[func.name],
-                                                                                                   func.name))
-        self.outln('                                providers, entrypoints);')
-
+            self.outln('    return {0}_provider_resolver(entrypoint_strings + {1} /* "{2}" */,'.format(self.target,
+                                                                                                       self.entrypoint_string_offset[func.name],
+                                                                                                       func.name))
+            self.outln('                                providers, entrypoints);')
+        else:
+            assert(providers[0].name == func.name)
+            self.outln('    return {0}_single_resolver({1}, {2} /* {3} */);'.format(self.target,
+                                                                                    providers[0].enum,
+                                                                                    self.entrypoint_string_offset[func.name],
+                                                                                    func.name))
         self.outln('}')
         self.outln('')
 
@@ -685,6 +691,22 @@ class Generator(object):
         self.outln('    epoxy_print_failure_reasons(name, enum_strings, (const int *)providers);')
         self.outln('    abort();')
 
+        self.outln('}')
+        self.outln('')
+
+        single_resolver_proto = '{0}_single_resolver(enum {0}_provider provider, uint16_t entrypoint_offset)'.format(self.target)
+        self.outln('static void *')
+        self.outln('{0} __attribute__((noinline));'.format(single_resolver_proto))
+        self.outln('')
+        self.outln('static void *')
+        self.outln('{0}'.format(single_resolver_proto))
+        self.outln('{')
+        self.outln('    enum {0}_provider providers[] = {{'.format(self.target))
+        self.outln('        provider,')
+        self.outln('        {0}_provider_terminator'.format(self.target))
+        self.outln('    };')
+        self.outln('    return {0}_provider_resolver(entrypoint_strings + entrypoint_offset,'.format(self.target))
+        self.outln('                                providers, &entrypoint_offset);')
         self.outln('}')
         self.outln('')
 
