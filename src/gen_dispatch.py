@@ -541,9 +541,9 @@ class Generator(object):
         self.outln('        {0}_provider_terminator'.format(self.target))
         self.outln('    };')
 
-        self.outln('    static const char *entrypoints[] = {')
+        self.outln('    static const uint16_t entrypoints[] = {')
         for provider in providers:
-            self.outln('        "{0}",'.format(provider.name))
+            self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
         self.outln('    };')
 
         self.outln('    return {0}_provider_resolver("{1}",'.format(self.target, func.name))
@@ -638,10 +638,25 @@ class Generator(object):
         self.outln('};')
         self.outln('')
 
+    def write_entrypoint_strings(self):
+        self.entrypoint_string_offset = {}
+
+        self.outln('static const char entrypoint_strings[] = ')
+        offset = 0
+        for func in self.sorted_functions:
+            if func.name not in self.entrypoint_string_offset:
+                self.entrypoint_string_offset[func.name] = offset
+                offset += len(func.name) + 1
+                self.outln('   "{0}\\0"'.format(func.name))
+        self.outln('    ;')
+        # We're using uint16_t for the offsets.
+        assert(offset < 65536)
+        self.outln('')
+
     def write_provider_resolver(self):
         self.outln('static void *{0}_provider_resolver(const char *name,'.format(self.target))
         self.outln('                                   const enum {0}_provider *providers,'.format(self.target))
-        self.outln('                                   const char **entrypoints)')
+        self.outln('                                   const uint16_t *entrypoints)')
         self.outln('{')
         self.outln('    int i;')
 
@@ -652,7 +667,7 @@ class Generator(object):
             enum = self.provider_enum[human_name]
             self.outln('        case {0}:'.format(enum))
             self.outln('            if ({0})'.format(self.provider_condition[human_name]))
-            self.outln('                return {0};'.format(self.provider_loader[human_name]).format("entrypoints[i]"))
+            self.outln('                return {0};'.format(self.provider_loader[human_name]).format("entrypoint_strings + entrypoints[i]"))
             self.outln('            break;')
 
         self.outln('        case {0}_provider_terminator:'.format(self.target))
@@ -706,6 +721,7 @@ class Generator(object):
 
         self.write_provider_enums()
         self.write_provider_enum_strings()
+        self.write_entrypoint_strings()
         self.write_provider_resolver()
 
         for func in self.sorted_functions:
