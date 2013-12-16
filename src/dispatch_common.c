@@ -469,7 +469,7 @@ epoxy_print_failure_reasons(const char *name,
             "Requires one of:\n", name);
 
     for (i = 0; providers[i] != 0; i++)
-        fprintf(stderr, "    %s",
+        fprintf(stderr, "    %s\n",
                 provider_names[providers[i]]);
 
     if (providers[0] == 0) {
