@@ -83,8 +83,8 @@ class GLFunction(object):
         # list.
         self.args_decl = 'void'
 
-        # If present, this is the string name of the function that
-        # this is an alias of.  This initially comes from the
+        # This is the string name of the function that this is an
+        # alias of, or self.name.  This initially comes from the
         # registry, and may get updated if it turns out our alias is
         # itself an alias (for example glFramebufferTextureEXT ->
         # glFramebufferTextureARB -> glFramebufferTexture)
@@ -139,8 +139,6 @@ class GLFunction(object):
                                                     loader, self.name)
 
     def add_alias(self, ext):
-        # We don't support transitivity of aliases.
-        assert not ext.alias_exts
         assert self.alias_func is None
 
         self.alias_exts.append(ext)
