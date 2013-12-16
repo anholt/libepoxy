@@ -91,5 +91,5 @@ void epoxy_print_failure_reasons(const char *name,
 
 bool epoxy_extension_in_string(const char *extension_list, const char *ext);
 
-void UNWRAPPED_PROTO(epoxy_glBegin_unwrapped)(GLenum primtype);
-void UNWRAPPED_PROTO(epoxy_glEnd_unwrapped)(void);
+extern void UNWRAPPED_PROTO(epoxy_glBegin_unwrapped)(GLenum primtype);
+extern void UNWRAPPED_PROTO(epoxy_glEnd_unwrapped)(void);
