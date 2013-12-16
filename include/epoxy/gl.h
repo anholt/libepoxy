@@ -23,15 +23,8 @@
 
 /** @file gl.h
  *
- * Provides an implementation of a GL dispatch layer using a hidden
- * vtable.
- *
- * This is a lower performance path than ifuncs when they are
- * available, but it is required if you might have multiple return
- * values for GetProcAddress/dlsym()ed functions.  That is the case if
- * you're using WGL (which can return different function pointers per
- * context), or if you dlclose() and re-dlopen() libGL (which means
- * you'll get different dynamically allocated dispatch stubs).
+ * Provides an implementation of a GL dispatch layer using either
+ * global function pointers or a hidden vtable.
  */
 
 #ifndef __EPOXY_GL_H

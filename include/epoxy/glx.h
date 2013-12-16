@@ -23,13 +23,8 @@
 
 /** @file glx.h
  *
- * Provides an implementation of a GLX dispatch layer using a hidden
- * vtable.
- *
- * This is a lower performance path than ifuncs when they are
- * available, but it is required if you might have multiple return
- * values for GetProcAddress/dlsym()ed functions (for example, if you
- * unload libGL.so.1).
+ * Provides an implementation of a GLX dispatch layer using global
+ * function pointers.
  */
 
 #ifndef __EPOXY_GLX_H
