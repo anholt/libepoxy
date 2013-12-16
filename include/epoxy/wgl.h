@@ -46,8 +46,6 @@ extern "C" {
 #define __wglxext_h_
 #endif
 
-#pragma once
-
 #include "epoxy/wgl_generated.h"
 
 bool epoxy_has_wgl_extension(HDC hdc, const char *extension);

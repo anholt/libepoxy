@@ -48,8 +48,6 @@ extern "C" {
 #define __eglext_h_
 #endif
 
-#pragma once
-
 #include "epoxy/egl_generated.h"
 
 bool epoxy_has_egl_extension(EGLDisplay *dpy, const char *extension);
