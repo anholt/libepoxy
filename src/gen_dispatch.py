@@ -380,8 +380,8 @@ class Generator(object):
 
             self.supported_extensions.add(extname)
 
-            # 'supported' is a set of strings like gl, gles1, gles2, or glx, which are
-            # separated by '|'
+            # 'supported' is a set of strings like gl, gles1, gles2,
+            # or glx, which are separated by '|'
             apis = extension.get('supported').split('|')
             if 'glx' in apis:
                 human_name = 'GLX extension \\"{0}\\"'.format(extname)
@@ -405,9 +405,10 @@ class Generator(object):
                 self.process_require_statements(extension, condition, loader, human_name)
 
     def fixup_bootstrap_function(self, name, loader):
-        # We handle glGetString() and glGetIntegerv() specially, because we
-        # need to use them in the process of deciding on loaders for
-        # resolving, and the naive code generation would result in their
+        # We handle glGetString(), glGetIntegerv(), and
+        # glXGetProcAddressARB() specially, because we need to use
+        # them in the process of deciding on loaders for resolving,
+        # and the naive code generation would result in their
         # resolvers calling their own resolvers.
         if name not in self.functions:
             return
@@ -575,7 +576,9 @@ class Generator(object):
         self.outln('')
 
     def write_dispatch_table_thunk(self, func):
-        # Writes out the thunk that calls through our dispatch table.
+        # Writes out the thunk that fetches the (win32) dispatch table
+        # and calls through its entrypoint.
+
         dispatch_table_entry = 'dispatch_table->p{0}'.format(func.alias_name)
 
         self.outln('{0}{1}'.format(func.public, func.ret_type))
@@ -591,9 +594,9 @@ class Generator(object):
         self.outln('')
 
     def write_dispatch_table_rewrite_stub(self, func):
-        # Writes out the stub entrypoint that resolves, writes the
-        # resolved value into the dispatch table, and calls down to
-        # it.
+        # Writes out the initial dispatch table function pointer value
+        # that that resolves, writes the resolved value into the
+        # dispatch table, and calls down to it.
 
         dispatch_table_entry = 'dispatch_table->p{0}'.format(func.name)
 
@@ -613,6 +616,10 @@ class Generator(object):
         self.outln('')
 
     def write_function_pointer(self, func):
+        # Writes out the function for resolving and updating the
+        # global function pointer, plus the actual global function
+        # pointer initializer.
+
         self.outln('static {0}'.format(func.ret_type))
         self.outln('epoxy_{0}_rewrite_ptr({1})'.format(func.wrapped_name,
                                                        func.args_decl))
@@ -635,6 +642,9 @@ class Generator(object):
         self.outln('')
 
     def write_provider_enums(self):
+        # Writes the enum declaration for the list of providers
+        # supported by gl_provider_resolver()
+
         self.outln('enum {0}_provider {{'.format(self.target))
 
         sorted_providers = sorted(self.provider_enum.keys())
@@ -650,6 +660,9 @@ class Generator(object):
         self.outln('')
 
     def write_provider_enum_strings(self):
+        # Writes the mapping from enums to the strings describing them
+        # for epoxy_print_failure_reasons().
+
         self.outln('static const char *enum_strings[] = {')
 
         sorted_providers = sorted(self.provider_enum.keys())
