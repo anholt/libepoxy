@@ -535,6 +535,22 @@ class Generator(object):
             for provider in alias_func.providers.values():
                 providers.append(provider)
 
+        # Add some partial aliases of a few functions.  These are ones
+        # that aren't quite aliases, because of some trivial behavior
+        # difference (like whether to produce an error for a
+        # non-Genned name), but where we'd like to fall back to the
+        # similar function if the proper one isn't present.
+        half_aliases = {
+            'glBindVertexArray' : 'glBindVertexArrayAPPLE',
+            'glBindVertexArrayAPPLE' : 'glBindVertexArray',
+            'glBindFramebuffer' : 'glBindFramebufferEXT',
+            'glBindFramebufferEXT' : 'glBindFramebuffer',
+        }
+        if func.name in half_aliases:
+            alias_func = self.functions[half_aliases[func.name]]
+            for provider in alias_func.providers.values():
+                providers.append(provider)
+
         if len(providers) != 1:
             self.outln('    static const enum {0}_provider providers[] = {{'.format(self.target))
             for provider in providers:
