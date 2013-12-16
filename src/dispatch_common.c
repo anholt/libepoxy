@@ -405,6 +405,8 @@ epoxy_get_proc_address(const char *name)
 {
 #ifdef _WIN32
     return wglGetProcAddress(name);
+#elif defined(__APPLE__)
+    return epoxy_gl_dlsym(name);
 #else
     if (api.egl_handle) {
 #if PLATFORM_HAS_EGL
