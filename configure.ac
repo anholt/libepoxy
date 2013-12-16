@@ -52,6 +52,8 @@ AC_SYS_LARGEFILE
 # uintptr_t to a void *") by default.  Kill that.
 XORG_TESTSET_CFLAG(CWARNFLAGS, [-Wno-int-conversion])
 
+has_znow=yes
+
 case $host_os in
     mingw*)
         build_egl=no
@@ -72,6 +74,7 @@ case $host_os in
         build_egl=no
         build_glx=yes
         build_wgl=no
+        has_znow=no
         EPOXY_LINK_LIBS=""
         ;;
     *)
@@ -101,6 +104,7 @@ if test x$build_wgl = xyes; then
     AC_DEFINE([BUILD_WGL], [1], [build WGL tests])
 fi
 
+AM_CONDITIONAL(HAS_ZNOW, test x$has_znow = xyes)
 
 case $host_os in
     mingw*)

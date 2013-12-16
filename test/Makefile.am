@@ -66,6 +66,10 @@ EGL_LIBS = libegl_common.la
 endif
 
 if BUILD_GLX
+if HAS_ZNOW
+GLX_SHARED_ZNOW = glx_shared_znow
+endif
+
 GLX_TESTS = \
 	glx_beginend \
 	glx_public_api \
@@ -73,7 +77,7 @@ GLX_TESTS = \
 	glx_glxgetprocaddress_nocontext \
 	glx_has_extension_nocontext \
 	glx_static \
-	glx_shared_znow \
+        $(GLX_SHARED_ZNOW) \
 	$()
 
 GLX_LIBS = libglx_common.la
