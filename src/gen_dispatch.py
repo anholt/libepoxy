@@ -506,16 +506,14 @@ class Generator(object):
         self.outln(' */')
         self.outln('#ifdef _WIN32')
         self.outln('#define EPOXY_FPTR(x) x')
-        self.outln('#define EPOXY_FPTR_EXTERN')
         self.outln('#else')
         self.outln('#define EPOXY_FPTR(x) (*x)')
-        self.outln('#define EPOXY_FPTR_EXTERN extern')
         self.outln('#endif')
 
         for func in self.sorted_functions:
-            self.outln('EPOXY_FPTR_EXTERN {0} EPOXY_FPTR(epoxy_{1})({2});'.format(func.ret_type,
-                                                                                  func.name,
-                                                                                  func.args_decl))
+            self.outln('extern EPOXYAPIENTRY {0} EPOXY_FPTR(epoxy_{1})({2});'.format(func.ret_type,
+                                                                                     func.name,
+                                                                                     func.args_decl))
             self.outln('')
 
         for func in self.sorted_functions:

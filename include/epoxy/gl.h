@@ -47,6 +47,7 @@ extern "C" {
 /* APIENTRY and GLAPIENTRY are not used on Linux or Mac. */
 #define APIENTRY
 #define GLAPIENTRY
+#define EPOXYAPIENTRY
 #define GLAPI
 #else
 #ifndef APIENTRY
@@ -55,6 +56,10 @@ extern "C" {
 
 #ifndef GLAPIENTRY
 #define GLAPIENTRY APIENTRY
+#endif
+
+#ifndef EPOXYAPIENTRY
+#define EPOXYAPIENTRY __declspec(dllimport)
 #endif
 
 #ifndef GLAPI
