@@ -108,3 +108,14 @@ We had to solve some of GLEW's problems for piglit and solving them
 meant replacing every single piece of GLEW, so we built
 piglit-dispatch from scratch.  And since we wanted to reuse it in
 other GL-related projects, this is the result.
+
+win32 issues
+------------
+
+The automatic per-context symbol resolution for win32 requires that
+epoxy knows when ```wglMakeCurrent()``` is called, because
+wglGetProcAddress() return values depend on the context's device and
+pixel format.  If ```wglMakeCurrent()``` is called from outside of
+epoxy (in a way that might change the device or pixel format), then
+epoxy needs to be notified of the change using
+```epoxy_handle_external_wglMakeCurrent()```.

@@ -59,8 +59,17 @@ epoxy_has_wgl_extension(HDC hdc, const char *ext)
     return epoxy_extension_in_string(getext(hdc), ext);
 }
 
-static void
-reset_dispatch_table(void)
+/**
+ * Does the work necessary to update the win32 per-thread dispatch
+ * tables when wglMakeCurrent() is called.
+ *
+ * Right now, we just reset everything to "do wglGetProcAddress()
+ * again".  This could be improved in the future to track a resolved
+ * dispatch table per context and reuse it when the context is made
+ * current again.
+ */
+PUBLIC void
+epoxy_handle_external_wglMakeCurrent(void)
 {
     gl_init_dispatch_table();
     wgl_init_dispatch_table();
@@ -96,7 +105,7 @@ DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
         data = LocalAlloc(LPTR, wgl_tls_size);
         TlsSetValue(wgl_tls_index, data);
 
-        reset_dispatch_table();
+        epoxy_handle_external_wglMakeCurrent();
         break;
 
     case DLL_THREAD_DETACH:
@@ -123,7 +132,7 @@ WRAPPER(epoxy_wglMakeCurrent)(HDC hdc, HGLRC hglrc)
 {
     BOOL ret = epoxy_wglMakeCurrent_unwrapped(hdc, hglrc);
 
-    reset_dispatch_table();
+    epoxy_handle_external_wglMakeCurrent();
 
     return ret;
 }
@@ -137,7 +146,7 @@ WRAPPER(epoxy_wglMakeContextCurrentARB)(HDC hDrawDC,
     BOOL ret = epoxy_wglMakeContextCurrentARB_unwrapped(hDrawDC, hReadDC,
                                                         hglrc);
 
-    reset_dispatch_table();
+    epoxy_handle_external_wglMakeCurrent();
 
     return ret;
 }
@@ -151,7 +160,7 @@ WRAPPER(epoxy_wglMakeContextCurrentEXT)(HDC hDrawDC,
     BOOL ret = epoxy_wglMakeContextCurrentEXT_unwrapped(hDrawDC, hReadDC,
                                                         hglrc);
 
-    reset_dispatch_table();
+    epoxy_handle_external_wglMakeCurrent();
 
     return ret;
 }
@@ -162,7 +171,7 @@ WRAPPER(epoxy_wglMakeAssociatedContextCurrentAMD)(HGLRC hglrc)
 {
     BOOL ret = epoxy_wglMakeAssociatedContextCurrentAMD_unwrapped(hglrc);
 
-    reset_dispatch_table();
+    epoxy_handle_external_wglMakeCurrent();
 
     return ret;
 }
