@@ -66,9 +66,13 @@
 #if defined(_WIN32)
 #define USING_DISPATCH_TABLE 1
 #define UNWRAPPED_PROTO(x) x
+#define WRAPPER_VISIBILITY PUBLIC
+#define WRAPPER(x) x
 #else
 #define USING_DISPATCH_TABLE 0
 #define UNWRAPPED_PROTO(x) (*x)
+#define WRAPPER_VISIBILITY static
+#define WRAPPER(x) x ## _wrapped
 #endif
 
 void *epoxy_egl_dlsym(const char *name);
@@ -100,4 +104,8 @@ void gl_init_dispatch_table(void);
 void wgl_init_dispatch_table(void);
 extern uint32_t gl_tls_index, gl_tls_size;
 extern uint32_t wgl_tls_index, wgl_tls_size;
+extern BOOL UNWRAPPED_PROTO(epoxy_wglMakeCurrent_unwrapped)(HDC hdc, HGLRC hglrc);
+extern BOOL UNWRAPPED_PROTO(epoxy_wglMakeContextCurrentARB_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
+extern BOOL UNWRAPPED_PROTO(epoxy_wglMakeContextCurrentEXT_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
+extern BOOL UNWRAPPED_PROTO(epoxy_wglMakeAssociatedContextCurrentAMD_unwrapped)(HGLRC hglrc);
 #endif

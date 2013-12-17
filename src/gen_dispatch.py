@@ -65,7 +65,11 @@ class GLFunction(object):
         # non-public symbols with a "_unwrapped" suffix.
         wrapped_functions = {
             'glBegin',
-            'glEnd'
+            'glEnd',
+            'wglMakeCurrent',
+            'wglMakeContextCurrentEXT',
+            'wglMakeContextCurrentARB',
+            'wglMakeAssociatedContextCurrentAMD',
         }
 
         if name in wrapped_functions:

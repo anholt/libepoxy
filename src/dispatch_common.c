@@ -475,14 +475,6 @@ epoxy_print_failure_reasons(const char *name,
     }
 }
 
-#ifdef _WIN32
-#define WRAPPER_VISIBILITY PUBLIC
-#define WRAPPER(x) x
-#else
-#define WRAPPER_VISIBILITY static
-#define WRAPPER(x) x ## _wrapped
-#endif
-
 WRAPPER_VISIBILITY void
 WRAPPER(epoxy_glBegin)(GLenum primtype)
 {
