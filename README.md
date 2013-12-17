@@ -117,8 +117,8 @@ epoxy knows when ```wglMakeCurrent()``` is called, because
 wglGetProcAddress() return values depend on the context's device and
 pixel format.  If ```wglMakeCurrent()``` is called from outside of
 epoxy (in a way that might change the device or pixel format), then
-epoxy needs to be notified of the change using
-```epoxy_handle_external_wglMakeCurrent()```.
+epoxy needs to be notified of the change using the
+```epoxy_handle_external_wglMakeCurrent()``` function.
 
 The win32 dispatch layer is currently slower than it should be in the
 single-context (or multi-context, but same device and pixel format)
