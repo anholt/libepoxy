@@ -27,7 +27,7 @@
 #define PLATFORM_HAS_EGL 0
 #define PLATFORM_HAS_GLX 0
 #define PLATFORM_HAS_WGL 1
-#define EPOXYAPIENTRY __declspec(dllexport)
+#define EPOXYAPIENTRY __declspec(dllexport) __stdcall
 #elif defined(__APPLE__)
 #define PLATFORM_HAS_EGL 0
 #define PLATFORM_HAS_GLX 1
@@ -65,15 +65,13 @@
  */
 #if defined(_WIN32)
 #define USING_DISPATCH_TABLE 1
-#define UNWRAPPED_PROTO(x) x
-#define WRAPPER_VISIBILITY PUBLIC
-#define WRAPPER(x) x
 #else
 #define USING_DISPATCH_TABLE 0
-#define UNWRAPPED_PROTO(x) (*x)
-#define WRAPPER_VISIBILITY static
-#define WRAPPER(x) x ## _wrapped
 #endif
+
+#define UNWRAPPED_PROTO(x) (GLAPIENTRY *x)
+#define WRAPPER_VISIBILITY static GLAPIENTRY
+#define WRAPPER(x) x ## _wrapped
 
 void *epoxy_egl_dlsym(const char *name);
 void *epoxy_glx_dlsym(const char *name);

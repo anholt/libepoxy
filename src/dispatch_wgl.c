@@ -176,3 +176,7 @@ WRAPPER(epoxy_wglMakeAssociatedContextCurrentAMD)(HGLRC hglrc)
     return ret;
 }
 
+PUBLIC PFNWGLMAKECURRENTPROC epoxy_wglMakeCurrent = epoxy_wglMakeCurrent_wrapped;
+PUBLIC PFNWGLMAKECONTEXTCURRENTEXTPROC epoxy_wglMakeContextCurrentEXT = epoxy_wglMakeContextCurrentEXT_wrapped;
+PUBLIC PFNWGLMAKECONTEXTCURRENTARBPROC epoxy_wglMakeContextCurrentARB = epoxy_wglMakeContextCurrentARB_wrapped;
+PUBLIC PFNWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC epoxy_wglMakeAssociatedContextCurrentEXT = epoxy_wglMakeAssociatedContextCurrentAMD_wrapped;

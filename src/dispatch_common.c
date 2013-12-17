@@ -503,7 +503,5 @@ WRAPPER(epoxy_glEnd)(void)
 #endif
 }
 
-#ifndef _WIN32
 PUBLIC PFNGLBEGINPROC epoxy_glBegin = epoxy_glBegin_wrapped;
 PUBLIC PFNGLENDPROC epoxy_glEnd = epoxy_glEnd_wrapped;
-#endif

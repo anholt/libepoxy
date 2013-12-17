@@ -119,3 +119,13 @@ pixel format.  If ```wglMakeCurrent()``` is called from outside of
 epoxy (in a way that might change the device or pixel format), then
 epoxy needs to be notified of the change using
 ```epoxy_handle_external_wglMakeCurrent()```.
+
+The win32 dispatch layer is currently slower than it should be in the
+single-context (or multi-context, but same device and pixel format)
+case.  We need to switch to using the linux-like function pointer
+stubs, and detect when transitioning to multi-device/format and hook
+in the per-thread dispatch table at that point.
+
+The win32 wglMakeCurrent () variants are slower than they should be,
+because they should be caching the resolved dispatch tables instead of
+resetting an entire thread-local dispatch table every time.

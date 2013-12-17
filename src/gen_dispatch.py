@@ -451,8 +451,9 @@ class Generator(object):
 
     def write_function_ptr_typedefs(self):
         for func in self.sorted_functions:
-            self.outln('typedef {0} (*{1})({2});'.format(func.ret_type, func.ptr_type,
-                                                         func.args_decl))
+            self.outln('typedef {0} (GLAPIENTRY *{1})({2});'.format(func.ret_type,
+                                                                    func.ptr_type,
+                                                                    func.args_decl))
 
     def write_header_header(self, file):
         self.out_file = open(file, 'w')
@@ -503,18 +504,8 @@ class Generator(object):
         self.outln('')
         self.write_function_ptr_typedefs()
 
-        self.outln('/* The library ABI is a set of functions on win32 (where')
-        self.outln(' * we have to use per-thread dispatch tables) and a set')
-        self.outln(' * of function pointers, otherwise.')
-        self.outln(' */')
-        self.outln('#ifdef _WIN32')
-        self.outln('#define EPOXY_FPTR(x) x')
-        self.outln('#else')
-        self.outln('#define EPOXY_FPTR(x) (*x)')
-        self.outln('#endif')
-
         for func in self.sorted_functions:
-            self.outln('extern EPOXYAPIENTRY {0} EPOXY_FPTR(epoxy_{1})({2});'.format(func.ret_type,
+            self.outln('extern EPOXYAPIENTRY {0} (*epoxy_{1})({2});'.format(func.ret_type,
                                                                                      func.name,
                                                                                      func.args_decl))
             self.outln('')
@@ -582,8 +573,8 @@ class Generator(object):
 
         dispatch_table_entry = 'dispatch_table->p{0}'.format(func.alias_name)
 
-        self.outln('{0}{1}'.format(func.public, func.ret_type))
-        self.outln('epoxy_{0}({1})'.format(func.wrapped_name, func.args_decl))
+        self.outln('static __stdcall {0}'.format(func.ret_type))
+        self.outln('epoxy_{0}_dispatch_table_thunk({1})'.format(func.wrapped_name, func.args_decl))
         self.outln('{')
         self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
         self.outln('')
@@ -601,7 +592,7 @@ class Generator(object):
 
         dispatch_table_entry = 'dispatch_table->p{0}'.format(func.name)
 
-        self.outln('static {0}'.format(func.ret_type))
+        self.outln('static GLAPIENTRY {0}'.format(func.ret_type))
         self.outln('epoxy_{0}_rewrite_stub({1})'.format(func.name, func.args_decl))
         self.outln('{')
         self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
@@ -616,7 +607,7 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-    def write_function_pointer(self, func):
+    def write_linux_function_pointer(self, func):
         # Writes out the function for resolving and updating the
         # global function pointer, plus the actual global function
         # pointer initializer.
@@ -640,6 +631,12 @@ class Generator(object):
         self.outln('{0}{1} epoxy_{2} = epoxy_{2}_rewrite_ptr;'.format(func.public,
                                                                       func.ptr_type,
                                                                       func.wrapped_name))
+        self.outln('')
+
+    def write_win32_function_pointer(self, func):
+        self.outln('{0}{1} epoxy_{2} = epoxy_{2}_dispatch_table_thunk;'.format(func.public,
+                                                                               func.ptr_type,
+                                                                               func.wrapped_name))
         self.outln('')
 
     def write_provider_enums(self):
@@ -816,10 +813,13 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
+        for func in self.sorted_functions:
+            self.write_win32_function_pointer(func)
+
         self.outln('#else /* !USING_DISPATCH_TABLE */')
 
         for func in self.sorted_functions:
-            self.write_function_pointer(func)
+            self.write_linux_function_pointer(func)
 
         self.outln('#endif /* !USING_DISPATCH_TABLE */')
 

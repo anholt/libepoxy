@@ -59,7 +59,7 @@ extern "C" {
 #endif
 
 #ifndef EPOXYAPIENTRY
-#define EPOXYAPIENTRY __declspec(dllimport)
+#define EPOXYAPIENTRY __declspec(dllimport) __stdcall
 #endif
 
 #ifndef GLAPI
