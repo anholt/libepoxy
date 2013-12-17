@@ -345,11 +345,7 @@ epoxy_conservative_has_gl_extension(const char *ext)
 void *
 epoxy_egl_dlsym(const char *name)
 {
-#if PLATFORM_HAS_EGL
     return do_dlsym(&api.egl_handle, "libEGL.so.1", name, true);
-#else
-    return NULL;
-#endif
 }
 
 void *
