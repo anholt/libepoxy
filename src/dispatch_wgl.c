@@ -58,3 +58,62 @@ epoxy_has_wgl_extension(HDC hdc, const char *ext)
 
     return epoxy_extension_in_string(getext(hdc), ext);
 }
+
+static void
+reset_dispatch_table(void)
+{
+    gl_init_dispatch_table();
+    wgl_init_dispatch_table();
+}
+
+/**
+ * This global symbol is apparently looked up by Windows when loading
+ * a DLL, but it doesn't declare the prototype.
+ */
+BOOL WINAPI
+DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved);
+
+BOOL WINAPI
+DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
+{
+    void *data;
+
+    switch (reason) {
+    case DLL_PROCESS_ATTACH:
+        gl_tls_index = TlsAlloc();
+        if (gl_tls_index == TLS_OUT_OF_INDEXES)
+            return FALSE;
+        wgl_tls_index = TlsAlloc();
+        if (wgl_tls_index == TLS_OUT_OF_INDEXES)
+            return FALSE;
+
+        /* FALLTHROUGH */
+
+    case DLL_THREAD_ATTACH:
+        data = LocalAlloc(LPTR, gl_tls_size);
+        TlsSetValue(gl_tls_index, data);
+
+        data = LocalAlloc(LPTR, wgl_tls_size);
+        TlsSetValue(wgl_tls_index, data);
+
+        reset_dispatch_table();
+        break;
+
+    case DLL_THREAD_DETACH:
+    case DLL_PROCESS_DETACH:
+        data = TlsGetValue(gl_tls_index);
+        LocalFree(data);
+
+        data = TlsGetValue(wgl_tls_index);
+        LocalFree(data);
+        break;
+
+        if (reason == DLL_PROCESS_DETACH) {
+            TlsFree(gl_tls_index);
+            TlsFree(wgl_tls_index);
+        }
+        break;
+    }
+
+    return TRUE;
+}

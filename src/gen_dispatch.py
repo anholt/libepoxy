@@ -794,11 +794,22 @@ class Generator(object):
         self.outln('};')
         self.outln('')
 
+        self.outln('uint32_t {0}_tls_index;'.format(self.target))
+        self.outln('uint32_t {0}_tls_size = sizeof(struct dispatch_table);'.format(self.target))
+        self.outln('')
+
         self.outln('static inline struct dispatch_table *')
         self.outln('get_dispatch_table(void)')
         self.outln('{')
-        self.outln('    /* XXX: Make this thread-local and swapped on makecurrent on win32. */')
-        self.outln('	return &resolver_table;')
+        self.outln('	return TlsGetValue({0}_tls_index);'.format(self.target))
+        self.outln('}')
+        self.outln('')
+
+        self.outln('void')
+        self.outln('{0}_init_dispatch_table(void)'.format(self.target))
+        self.outln('{')
+        self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
+        self.outln('    memcpy(dispatch_table, &resolver_table, sizeof(resolver_table));')
         self.outln('}')
         self.outln('')
 

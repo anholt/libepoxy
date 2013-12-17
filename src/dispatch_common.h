@@ -94,3 +94,10 @@ bool epoxy_extension_in_string(const char *extension_list, const char *ext);
 
 extern void UNWRAPPED_PROTO(epoxy_glBegin_unwrapped)(GLenum primtype);
 extern void UNWRAPPED_PROTO(epoxy_glEnd_unwrapped)(void);
+
+#if USING_DISPATCH_TABLE
+void gl_init_dispatch_table(void);
+void wgl_init_dispatch_table(void);
+extern uint32_t gl_tls_index, gl_tls_size;
+extern uint32_t wgl_tls_index, wgl_tls_size;
+#endif
