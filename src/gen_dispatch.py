@@ -306,13 +306,17 @@ class Generator(object):
     def process_require_statements(self, feature, condition, loader, human_name):
         for command in feature.findall('require/command'):
             name = command.get('name')
+
+            # wgl.xml describes 6 functions in WGL 1.0 that are in
+            # gdi32.dll instead of opengl32.dll, and we would need to
+            # change up our symbol loading to support that.  Just
+            # don't wrap those functions.
+            if self.target == 'wgl' and 'wgl' not in name:
+                del self.functions[name]
+                continue;
+
             func = self.functions[name]
             func.add_provider(condition, loader, human_name)
-
-    def delete_require_statements(self, feature):
-        for command in feature.findall('require/command'):
-            name = command.get('name')
-            del self.functions[name]
 
     def parse_function_providers(self, reg):
         for feature in reg.findall('feature'):
@@ -362,14 +366,9 @@ class Generator(object):
                 # eglGetProcAdddress() will return NULL.
                 loader = 'epoxy_egl_dlsym({0})'
             elif api == 'wgl':
-                # There's no reason for us to interpose the
-                # non-extension WGL symbols, which we know are always
-                # available.  The registry lists WGL 1.0 symbols both
-                # from opengl32.dll and gdi32.dll, so our dlsym()
-                # would have to know which came from where, if we were
-                # to interpose.
-                self.delete_require_statements(feature)
-                continue
+                human_name = 'WGL {0}'.format(version)
+                condition = 'true'
+                loader = 'epoxy_gl_dlsym({0})'
             else:
                 sys.exit('unknown API: "{0}"'.format(api))
 
