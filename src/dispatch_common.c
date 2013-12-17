@@ -156,7 +156,6 @@ static struct api api = {
 #endif
 };
 
-#ifndef _WIN32
 static bool library_initialized;
 
 static void
@@ -180,6 +179,9 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
         abort();
     }
 
+#ifdef _WIN32
+    *handle = LoadLibraryA(lib_name);
+#else
     pthread_mutex_lock(&api.mutex);
     if (!*handle) {
         *handle = dlopen(lib_name, RTLD_LAZY | RTLD_LOCAL);
@@ -189,6 +191,7 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
         }
     }
     pthread_mutex_unlock(&api.mutex);
+#endif
 }
 
 static void *
@@ -199,20 +202,18 @@ do_dlsym(void **handle, const char *lib_name, const char *name,
 
     get_dlopen_handle(handle, lib_name, exit_on_fail);
 
+#ifdef _WIN32
+    result = GetProcAddress(*handle, name);
+#else
     result = dlsym(*handle, name);
-    if (!result)
-        errx(1, "%s() not found in %s", name, lib_name);
+#endif
+    if (!result) {
+        fprintf(stderr,"%s() not found in %s", name, lib_name);
+        exit(1);
+    }
 
     return result;
 }
-#else
-static void *
-do_dlsym(void **handle, const char *lib_name, const char *name,
-         bool exit_on_fail)
-{
-    return NULL;
-}
-#endif
 
 PUBLIC bool
 epoxy_is_desktop_gl(void)
@@ -361,7 +362,7 @@ void *
 epoxy_gl_dlsym(const char *name)
 {
 #ifdef _WIN32
-    return GetProcAddress(LoadLibraryA("OPENGL32"), name);
+    return do_dlsym(&api.gl_handle, "OPENGL32", name, true);
 #elif defined(__APPLE__)
     return do_dlsym(&api.gl_handle,
                     "/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL",
