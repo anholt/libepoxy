@@ -12902,6 +12902,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>target</name></param>
             <param><ptype>GLenum</ptype> <name>pname</name></param>
             <param><ptype>GLvoid</ptype> **<name>params</name></param>
+            <alias name="glGetBufferPointerv"/>
         </command>
         <command>
             <proto>void <name>glGetBufferSubData</name></proto>
@@ -16424,6 +16425,7 @@ typedef unsigned int GLhandleARB;
             <proto>void *<name>glMapBufferOES</name></proto>
             <param><ptype>GLenum</ptype> <name>target</name></param>
             <param><ptype>GLenum</ptype> <name>access</name></param>
+            <alias name="glMapBuffer"/>
         </command>
         <command>
             <proto>void *<name>glMapBufferRange</name></proto>
@@ -23917,6 +23919,7 @@ typedef unsigned int GLhandleARB;
         <command>
             <proto><ptype>GLboolean</ptype> <name>glUnmapBufferOES</name></proto>
             <param><ptype>GLenum</ptype> <name>target</name></param>
+            <alias name="glUnmapBuffer"/>
         </command>
         <command>
             <proto group="Boolean"><ptype>GLboolean</ptype> <name>glUnmapNamedBufferEXT</name></proto>
