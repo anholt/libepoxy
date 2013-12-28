@@ -1431,6 +1431,8 @@
             <require>
                 <!-- @ Most interfaces defined by EGL_KHR_image above -->
                 <enum name="EGL_IMAGE_PRESERVED_KHR"/>
+                <command name="eglCreateImageKHR"/>
+                <command name="eglDestroyImageKHR"/>
             </require>
         </extension>
         <extension name="EGL_KHR_image_pixmap" supported="egl">
