@@ -86,6 +86,7 @@ typedef unsigned __int64 uint64_t;
         <type name="XVisualInfo"/>
         <type name="GLboolean"/>
         <type name="GLenum"/>
+        <type name="GLfloat"/>
         <type name="GLint"/>
         <type name="GLsizei"/>
         <type name="GLubyte"/>
@@ -819,6 +820,12 @@ typedef unsigned __int64 uint64_t;
             <param>float <name>cushion</name></param>
         </command>
         <command>
+            <proto><ptype>Bool</ptype> <name>glXDelayBeforeSwapNV</name></proto>
+            <param><ptype>Display</ptype> *<name>dpy</name></param>
+            <param><ptype>GLXDrawable</ptype> <name>drawable</name></param>
+            <param><ptype>GLfloat</ptype> <name>seconds</name></param>
+        </command>
+        <command>
             <proto>void <name>glXDestroyContext</name></proto>
             <param><ptype>Display</ptype> *<name>dpy</name></param>
             <param><ptype>GLXContext</ptype> <name>ctx</name></param>
@@ -1399,6 +1406,7 @@ typedef unsigned __int64 uint64_t;
 
     <feature api="glx" name="GLX_VERSION_1_3" number="1.3">
         <require>
+            <type name="GLXContextID" comment="Required here so it doesn't collide with Mesa glx.h (Bug 11454)"/>
             <enum name="GLX_WINDOW_BIT"/>
             <enum name="GLX_PIXMAP_BIT"/>
             <enum name="GLX_PBUFFER_BIT"/>
@@ -1776,6 +1784,11 @@ typedef unsigned __int64 uint64_t;
                 <command name="glXSwapBuffersMscOML"/>
                 <command name="glXWaitForMscOML"/>
                 <command name="glXWaitForSbcOML"/>
+            </require>
+        </extension>
+        <extension name="GLX_NV_delay_before_swap" supported="glx">
+            <require>
+                <command name="glXDelayBeforeSwapNV"/>
             </require>
         </extension>
         <extension name="GLX_NV_float_buffer" supported="glx">
