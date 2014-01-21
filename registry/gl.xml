@@ -2035,7 +2035,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x20000000" name="GL_MULTISAMPLE_BIT_ARB"/>
         <enum value="0x20000000" name="GL_MULTISAMPLE_BIT_EXT"/>
         <enum value="0x20000000" name="GL_MULTISAMPLE_BIT_3DFX"/>
-        <enum value="0xFFFFFFFF" name="GL_ALL_ATTRIB_BITS" comment="Guaranteed to mark all attribute groups at once"/>
+        <enum value="0x000FFFFF" name="GL_ALL_ATTRIB_BITS" comment="Guaranteed to mark all attribute groups at once"/>
     </enums>
 
     <enums namespace="GL" group="ClearBufferMask" type="bitmask" comment="GL_{DEPTH,ACCUM,STENCIL,COLOR}_BUFFER_BIT also lie in this namespace">
