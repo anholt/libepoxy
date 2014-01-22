@@ -27,14 +27,18 @@
 
 #ifdef BUILD_EGL
 #include <epoxy/egl.h>
+#include <epoxy/egl.h>
 #endif
 
 #ifdef BUILD_GLX
+#include <epoxy/glx.h>
 #include <epoxy/glx.h>
 #endif
 
 #ifdef BUILD_EGL
 #include <EGL/egl.h>
+#include <EGL/egl.h>
+#include <EGL/eglext.h>
 #include <EGL/eglext.h>
 #endif
 
