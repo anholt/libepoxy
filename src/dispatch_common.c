@@ -218,7 +218,7 @@ do_dlsym(void **handle, const char *lib_name, const char *name,
 PUBLIC bool
 epoxy_is_desktop_gl(void)
 {
-    const char *es_prefix = "OpenGL ES ";
+    const char *es_prefix = "OpenGL ES";
     const char *version;
 
     if (api.begin_count)

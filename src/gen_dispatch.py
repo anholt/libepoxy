@@ -347,7 +347,7 @@ class Generator(object):
                     loader = 'epoxy_get_proc_address({0})'
             elif api == 'gles1':
                 human_name = 'OpenGL ES 1.0'
-                condition = '!epoxy_is_desktop_gl() && epoxy_gl_version() == 10'
+                condition = '!epoxy_is_desktop_gl() && epoxy_gl_version() >= 10 && epoxy_gl_version() < 20'
                 loader = 'epoxy_gles1_dlsym({0})'
             elif api == 'glx':
                 human_name = 'GLX {0}'.format(version)
