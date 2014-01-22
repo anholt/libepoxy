@@ -27,8 +27,8 @@
  * global function pointers or a hidden vtable.
  */
 
-#ifndef __EPOXY_GL_H
-#define __EPOXY_GL_H
+#ifndef EPOXY_GL_H
+#define EPOXY_GL_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -85,4 +85,4 @@ int epoxy_gl_version(void);
 } /* extern "C" */
 #endif
 
-#endif /* __EPOXY_GL_H */
+#endif /* EPOXY_GL_H */

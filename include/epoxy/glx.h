@@ -27,8 +27,8 @@
  * function pointers.
  */
 
-#ifndef __EPOXY_GLX_H
-#define __EPOXY_GLX_H
+#ifndef EPOXY_GLX_H
+#define EPOXY_GLX_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -55,4 +55,4 @@ int epoxy_glx_version(Display *dpy, int screen);
 } /* extern "C" */
 #endif
 
-#endif /* __EPOXY_GLX_H */
+#endif /* EPOXY_GLX_H */

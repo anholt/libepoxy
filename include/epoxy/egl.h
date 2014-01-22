@@ -27,8 +27,8 @@
  * function pointers
  */
 
-#ifndef __EPOXY_EGL_H
-#define __EPOXY_EGL_H
+#ifndef EPOXY_EGL_H
+#define EPOXY_EGL_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -52,4 +52,4 @@ int epoxy_egl_version(EGLDisplay *dpy);
 } /* extern "C" */
 #endif
 
-#endif /* __EPOXY_EGL_H */
+#endif /* EPOXY_EGL_H */

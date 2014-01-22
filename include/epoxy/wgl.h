@@ -27,8 +27,8 @@
  * vtable.
  */
 
-#ifndef __EPOXY_WGL_H
-#define __EPOXY_WGL_H
+#ifndef EPOXY_WGL_H
+#define EPOXY_WGL_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -55,4 +55,4 @@ void epoxy_handle_external_wglMakeCurrent(void);
 } /* extern "C" */
 #endif
 
-#endif /* __EPOXY_WGL_H */
+#endif /* EPOXY_WGL_H */
