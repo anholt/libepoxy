@@ -446,8 +446,16 @@ class Generator(object):
             self.outln('#define {0} 1'.format(name))
         self.outln('')
 
-        for name, value in self.enums.items():
-            self.outln('#define ' + name.ljust(self.max_enum_name_len + 3) + value + '')
+        # We want to sort by enum number (which puts a bunch of things
+        # in a logical order), then by name after that, so we do those
+        # sorts in reverse.  This is still way uglier than doing some
+        # sort based on what version/extensions things are introduced
+        # in, but we haven't paid any attention to those attributes
+        # for enums yet.
+        sorted_by_name = sorted(self.enums.keys())
+        sorted_by_number = sorted(sorted_by_name, key=lambda name: self.enums[name])
+        for name in sorted_by_number:
+            self.outln('#define ' + name.ljust(self.max_enum_name_len + 3) + self.enums[name] + '')
 
     def write_function_ptr_typedefs(self):
         for func in self.sorted_functions:
