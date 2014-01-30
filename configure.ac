@@ -106,6 +106,9 @@ fi
 
 AM_CONDITIONAL(HAS_ZNOW, test x$has_znow = xyes)
 
+AC_CHECK_LIB([dl], [dlopen], [DLOPEN_LIBS="-ldl"])
+AC_SUBST([DLOPEN_LIBS])
+
 case $host_os in
     mingw*)
         # visibility flags aren't supported for windows DLLs, and the
