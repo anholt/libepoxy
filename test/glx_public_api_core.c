@@ -134,15 +134,9 @@ int
 main(int argc, char **argv)
 {
     bool pass = true;
-
-    dpy = get_display_or_skip();
-
-    if (!epoxy_has_glx_extension(dpy, 0, "GLX_ARB_create_context_profile"))
-        errx(77, "Test requires GLX_ARB_create_context_profile");
-
-    XVisualInfo *visinfo = get_glx_visual(dpy);
-    Window win = get_glx_window(dpy, visinfo, false);
-    GLXFBConfig config = get_fbconfig_for_visinfo(dpy, visinfo);
+    XVisualInfo *visinfo;
+    Window win;
+    GLXFBConfig config;
     static const int attribs[] = {
         GLX_CONTEXT_PROFILE_MASK_ARB,
         GLX_CONTEXT_CORE_PROFILE_BIT_ARB,
@@ -152,8 +146,17 @@ main(int argc, char **argv)
         2,
         None
     };
-    GLXContext ctx = glXCreateContextAttribsARB(dpy, config, NULL, True,
-                                                attribs);
+    GLXContext ctx;
+
+    dpy = get_display_or_skip();
+
+    if (!epoxy_has_glx_extension(dpy, 0, "GLX_ARB_create_context_profile"))
+        errx(77, "Test requires GLX_ARB_create_context_profile");
+
+    visinfo = get_glx_visual(dpy);
+    win = get_glx_window(dpy, visinfo, false);
+    config = get_fbconfig_for_visinfo(dpy, visinfo);
+    ctx = glXCreateContextAttribsARB(dpy, config, NULL, True, attribs);
     if (ctx == None)
         errx(77, "glXCreateContext failed");
 

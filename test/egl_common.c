@@ -23,6 +23,7 @@
 
 #include <err.h>
 #include <epoxy/egl.h>
+#include "egl_common.h"
 
 /**
  * Do whatever it takes to get us an EGL display for the system.
@@ -34,15 +35,17 @@ get_egl_display_or_skip(void)
 {
     Display *dpy = XOpenDisplay(NULL);
     EGLint major, minor;
+    EGLDisplay *edpy;
+    bool ok;
 
     if (!dpy)
         errx(77, "couldn't open display\n");
 
-    EGLDisplay *edpy = eglGetDisplay(dpy);
+    edpy = eglGetDisplay(dpy);
     if (!edpy)
         errx(1, "Couldn't get EGL display for X11 Display.\n");
 
-    bool ok = eglInitialize(edpy, &major, &minor);
+    ok = eglInitialize(edpy, &major, &minor);
     if (!ok)
         errx(1, "eglInitialize() failed\n");
 
