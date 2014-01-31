@@ -57,8 +57,6 @@ TESTS = \
 	$()
 
 XFAIL_TESTS = \
-        egl_gles1_without_glx \
-        egl_gles2_without_glx \
 	$()
 
 check_PROGRAMS = $(TESTS)

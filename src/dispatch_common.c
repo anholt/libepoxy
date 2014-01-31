@@ -1,5 +1,5 @@
 /*
- * Copyright © 2013 Intel Corporation
+ * Copyright © 2013-2014 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -381,6 +381,10 @@ epoxy_gles2_dlsym(const char *name)
     return do_dlsym(&api.gles2_handle, "libGLESv2.so.2", name, true);
 }
 
+/**
+ * Performs either the dlsym or glXGetProcAddress()-equivalent for
+ * core functions in desktop GL.
+ */
 void *
 epoxy_get_core_proc_address(const char *name, int core_version)
 {
@@ -395,6 +399,70 @@ epoxy_get_core_proc_address(const char *name, int core_version)
     } else {
         return epoxy_get_proc_address(name);
     }
+}
+
+/**
+ * Performs the dlsym() for the core GL 1.0 functions that we use for
+ * determining version and extension support for deciding on dlsym
+ * versus glXGetProcAddress() for all other functions.
+ *
+ * This needs to succeed on implementations without GLX (since
+ * glGetString() and glGetIntegerv() are both in GLES1/2 as well, and
+ * at call time we don't know for sure what API they're trying to use
+ * without inspecting contexts ourselves).
+ */
+void *
+epoxy_get_bootstrap_proc_address(const char *name)
+{
+    /* If we already have a library that links to libglapi loaded,
+     * use that.
+     */
+    if (api.glx_handle)
+        return epoxy_gl_dlsym(name);
+    if (api.gles2_handle)
+        return epoxy_gles2_dlsym(name);
+    if (api.gles1_handle)
+        return epoxy_gles1_dlsym(name);
+
+    /* If epoxy hasn't loaded any API-specific library yet, try to
+     * figure out what API the context is using and use that library,
+     * since future calls will also use that API (this prevents a
+     * non-X11 ES2 context from loading a bunch of X11 junk).
+     */
+#if PLATFORM_HAS_EGL
+    get_dlopen_handle(&api.egl_handle, "libEGL.so.1", false);
+    if (api.egl_handle) {
+        EGLenum save_api = eglQueryAPI();
+        EGLContext ctx;
+
+        eglBindAPI(EGL_OPENGL_API);
+        ctx = eglGetCurrentContext();
+        if (ctx) {
+            eglBindAPI(save_api);
+            return epoxy_gl_dlsym(name);
+        }
+
+        eglBindAPI(EGL_OPENGL_ES_API);
+        ctx = eglGetCurrentContext();
+        if (ctx) {
+            eglBindAPI(save_api);
+            /* We can't resolve the GL version, because
+             * epoxy_glGetString() is one of the two things calling
+             * us.  Try the GLES2 implementation first, and fall back
+             * to GLES1 otherwise.
+             */
+            get_dlopen_handle(&api.gles2_handle, "libGLESv2.so.2", false);
+            if (api.gles2_handle)
+                return epoxy_gles2_dlsym(name);
+            else
+                return epoxy_gles1_dlsym(name);
+        }
+        eglBindAPI(save_api);
+    }
+#endif /* PLATFORM_HAS_EGL */
+
+    /* Fall back to GLX */
+    return epoxy_gl_dlsym(name);
 }
 
 void *
