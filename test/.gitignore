@@ -1,4 +1,6 @@
 egl_has_extension_nocontext
+egl_gles1_without_glx
+egl_gles2_without_glx
 glx_beginend
 glx_glxgetprocaddress_nocontext
 glx_has_extension_nocontext

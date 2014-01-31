@@ -56,11 +56,18 @@ TESTS = \
 	miscdefines$(EXEEXT) \
 	$()
 
+XFAIL_TESTS = \
+        egl_gles1_without_glx \
+        egl_gles2_without_glx \
+	$()
+
 check_PROGRAMS = $(TESTS)
 
 if BUILD_EGL
 EGL_TESTS = \
 	egl_has_extension_nocontext \
+	egl_gles1_without_glx \
+	egl_gles2_without_glx \
 	$()
 
 EGL_LIBS = libegl_common.la
@@ -94,6 +101,16 @@ endif
 
 egl_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libegl_common.la
 egl_has_extension_nocontext_DEPENDENCIES = $(EPOXY) libegl_common.la
+
+egl_gles1_without_glx_CPPFLAGS = $(AM_CPPFLAGS) -DGLES_VERSION=1
+egl_gles1_without_glx_SOURCES = egl_without_glx.c
+egl_gles1_without_glx_LDFLAGS = $(X11_LIBS) $(EPOXY) $(DLOPEN_LIBS) libegl_common.la
+egl_gles1_without_glx_DEPENDENCIES = $(EPOXY) libegl_common.la
+
+egl_gles2_without_glx_CPPFLAGS = $(AM_CPPFLAGS) -DGLES_VERSION=2
+egl_gles2_without_glx_SOURCES = egl_without_glx.c
+egl_gles2_without_glx_LDFLAGS = $(X11_LIBS) $(EPOXY) $(DLOPEN_LIBS) libegl_common.la
+egl_gles2_without_glx_DEPENDENCIES = $(EPOXY) libegl_common.la
 
 glx_beginend_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la $(GL_LIBS)
 glx_beginend_DEPENDENCIES = $(EPOXY) libglx_common.la
