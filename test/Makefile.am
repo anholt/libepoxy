@@ -48,6 +48,8 @@ AM_CPPFLAGS = \
 	-I$(top_builddir)/include \
 	$(X11_CFLAGS)
 
+AM_CFLAGS = $(CWARNFLAGS)
+
 TESTS = \
 	$(EGL_TESTS) \
 	$(GLX_TESTS) \
