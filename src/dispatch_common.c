@@ -378,7 +378,7 @@ epoxy_gles1_dlsym(const char *name)
 void *
 epoxy_gles2_dlsym(const char *name)
 {
-    return do_dlsym(&api.gles1_handle, "libGLESv2.so.2", name, true);
+    return do_dlsym(&api.gles2_handle, "libGLESv2.so.2", name, true);
 }
 
 void *
