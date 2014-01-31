@@ -208,7 +208,7 @@ do_dlsym(void **handle, const char *lib_name, const char *name,
     result = dlsym(*handle, name);
 #endif
     if (!result) {
-        fprintf(stderr,"%s() not found in %s", name, lib_name);
+        fprintf(stderr,"%s() not found in %s\n", name, lib_name);
         exit(1);
     }
 
