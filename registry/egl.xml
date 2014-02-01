@@ -568,6 +568,11 @@
             <unused start="0x32B0" end="0x32BF"/>
     </enums>
 
+    <enums namespace="EGL" start="0x32C0" end="0x32CF" vendor="Vivante" comment="Reserved for Jeff Vigil (Bug 10663)">
+        <enum value="0x32C0" name="EGL_PROTECTED_CONTENT_EXT"/>
+            <unused start="0x32C1" end="0x32CF"/>
+    </enums>
+
 <!-- Please remember that new enumerant allocations must be obtained by
      request to the Khronos API registrar (see comments at the top of this
      file) File requests in the Khronos Bugzilla, EGL project, Registry
@@ -575,11 +580,11 @@
      Khronos APIs, and new ranges should be allocated with such overlaps in
      mind. -->
 
-<!-- Reservable for future use: 0x32C0-0x3FFF.
+<!-- Reservable for future use: 0x32D0-0x3FFF.
      To generate a new range, allocate multiples of 16 starting at the
      lowest available point in this block. -->
-    <enums namespace="EGL" start="0x32C0" end="0x3FFF" vendor="KHR">
-            <unused start="0x32C0" end="0x3FFF" comment="Reserved for future use"/>
+    <enums namespace="EGL" start="0x32D0" end="0x3FFF" vendor="KHR">
+            <unused start="0x32D0" end="0x3FFF" comment="Reserved for future use"/>
     </enums>
 
     <enums namespace="EGL" start="0x8F70" end="0x8F7F" vendor="HI" comment="For Mark Callow, Khronos bug 4055. Shared with GL.">
@@ -1344,6 +1349,11 @@
             <require>
                 <enum name="EGL_PLATFORM_X11_EXT"/>
                 <enum name="EGL_PLATFORM_X11_SCREEN_EXT"/>
+            </require>
+        </extension>
+        <extension name="EGL_EXT_protected_surface" supported="egl">
+            <require>
+                <enum name="EGL_PROTECTED_CONTENT_EXT"/>
             </require>
         </extension>
         <extension name="EGL_EXT_swap_buffers_with_damage" supported="egl">
