@@ -99,32 +99,32 @@ WGL_TESTS = \
 WGL_LIBS = libwgl_common.la
 endif
 
-egl_has_extension_nocontext_LDADD = $(X11_LIBS) $(EPOXY) libegl_common.la
+egl_has_extension_nocontext_LDADD = $(EPOXY) libegl_common.la $(X11_LIBS)
 
 egl_gles1_without_glx_CPPFLAGS = $(AM_CPPFLAGS) -DGLES_VERSION=1
 egl_gles1_without_glx_SOURCES = egl_without_glx.c
-egl_gles1_without_glx_LDADD = $(X11_LIBS) $(EPOXY) $(DLOPEN_LIBS) libegl_common.la
+egl_gles1_without_glx_LDADD = $(EPOXY) $(DLOPEN_LIBS) libegl_common.la $(X11_LIBS)
 
 egl_gles2_without_glx_CPPFLAGS = $(AM_CPPFLAGS) -DGLES_VERSION=2
 egl_gles2_without_glx_SOURCES = egl_without_glx.c
-egl_gles2_without_glx_LDADD = $(X11_LIBS) $(EPOXY) $(DLOPEN_LIBS) libegl_common.la
+egl_gles2_without_glx_LDADD = $(EPOXY) $(DLOPEN_LIBS) libegl_common.la $(X11_LIBS)
 
-glx_beginend_LDADD = $(X11_LIBS) $(EPOXY) libglx_common.la $(GL_LIBS)
+glx_beginend_LDADD = $(EPOXY) libglx_common.la $(GL_LIBS) $(X11_LIBS)
 
-glx_public_api_LDADD = $(X11_LIBS) $(EPOXY) libglx_common.la
+glx_public_api_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS)
 
-glx_public_api_core_LDADD = $(X11_LIBS) $(EPOXY) libglx_common.la
+glx_public_api_core_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS)
 
-glx_glxgetprocaddress_nocontext_LDADD = $(X11_LIBS) $(EPOXY) libglx_common.la
+glx_glxgetprocaddress_nocontext_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS)
 
-glx_has_extension_nocontext_LDADD = $(X11_LIBS) $(EPOXY) libglx_common.la
+glx_has_extension_nocontext_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS)
 
 glx_static_CFLAGS = -DNEEDS_TO_BE_STATIC
-glx_static_LDADD = -ldl $(X11_LIBS) $(EPOXY) libglx_common.la
+glx_static_LDADD = $(DLOPEN_LIBS) $(EPOXY) libglx_common.la $(X11_LIBS)
 glx_static_LDFLAGS = -static
 
 glx_shared_znow_SOURCES = glx_static.c
-glx_shared_znow_LDADD = -ldl $(X11_LIBS) $(EPOXY) libglx_common.la
+glx_shared_znow_LDADD = $(DLOPEN_LIBS) $(EPOXY) libglx_common.la $(X11_LIBS)
 glx_shared_znow_LDFLAGS = -z now
 
 wgl_core_and_exts_LDADD = $(EPOXY) libwgl_common.la -lgdi32
