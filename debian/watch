@@ -1,0 +1,4 @@
+version=3
+
+opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/libepoxy-$1\.tar\.gz/ \
+  https://github.com/anholt/libepoxy/tags .*/v?(\d\S*)\.tar\.gz
