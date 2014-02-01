@@ -1,23 +1,38 @@
 Source: libepoxy
 Priority: optional
 Maintainer: Eric Anholt <eric@anholt.net>
-Build-Depends: debhelper (>= 8.0.0)
-Standards-Version: 3.9.4
+Build-Depends: debhelper (>= 9),
+               dh-autoreconf,
+               autotools-dev,
+               xutils-dev,
+               pkg-config,
+               libx11-dev,
+               libegl1-mesa-dev,
+               python
+Standards-Version: 3.9.5
 Section: libs
-Homepage: <insert the upstream URL, if relevant>
-#Vcs-Git: git://git.debian.org/collab-maint/libepoxy.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/libepoxy.git;a=summary
+Homepage: https://github.com/anholt/libepoxy
+Vcs-Git: https://github.com/anholt/libepoxy.git
+Vcs-Browser: https://github.com/anholt/libepoxy
 
 Package: libepoxy-dev
 Section: libdevel
 Architecture: any
-Depends: libepoxyBROKEN (= ${binary:Version})
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: libepoxy0 (= ${binary:Version}), ${misc:Depends}
+Description: OpenGL function pointer management library- development
+ It hides the complexity of dlopen(), dlsym(), glXGetProcAddress(),
+ eglGetProcAddress(), etc. from the app developer, with very little
+ knowledge needed on their part.  They get to read GL specs and write
+ code using undecorated function names like glCompileShader().
+ .
+ This package contains the development headers for the library found in
+ libx11-6. Non-developers likely have little use for this package.
 
-Package: libepoxyBROKEN
-Section: libs
+Package: libepoxy0
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: OpenGL function pointer management library
+ It hides the complexity of dlopen(), dlsym(), glXGetProcAddress(),
+ eglGetProcAddress(), etc. from the app developer, with very little
+ knowledge needed on their part.  They get to read GL specs and write
+ code using undecorated function names like glCompileShader().

@@ -1,8 +1,10 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
-
+# We use dh_autoreconf because we're not building from tarballs, so
+# there are no generated Makefiles and configure script in our tree.
 %:
-	dh $@ 
+	dh $@ --with autoreconf
+
+# Running make check is unsuitable because the tests require a working
+# X environment currently, so we disable dh_auto_test.
+override_dh_auto_test:

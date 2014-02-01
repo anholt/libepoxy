@@ -1,5 +1,5 @@
 libepoxy (1.0-1) unstable; urgency=low
 
-  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+  * Initial release (Closes: #737273)
 
  -- Eric Anholt <eric@anholt.net>  Fri, 31 Jan 2014 16:52:20 -0800
