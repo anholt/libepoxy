@@ -99,41 +99,32 @@ WGL_TESTS = \
 WGL_LIBS = libwgl_common.la
 endif
 
-egl_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libegl_common.la
-egl_has_extension_nocontext_DEPENDENCIES = $(EPOXY) libegl_common.la
+egl_has_extension_nocontext_LDADD = $(X11_LIBS) $(EPOXY) libegl_common.la
 
 egl_gles1_without_glx_CPPFLAGS = $(AM_CPPFLAGS) -DGLES_VERSION=1
 egl_gles1_without_glx_SOURCES = egl_without_glx.c
-egl_gles1_without_glx_LDFLAGS = $(X11_LIBS) $(EPOXY) $(DLOPEN_LIBS) libegl_common.la
-egl_gles1_without_glx_DEPENDENCIES = $(EPOXY) libegl_common.la
+egl_gles1_without_glx_LDADD = $(X11_LIBS) $(EPOXY) $(DLOPEN_LIBS) libegl_common.la
 
 egl_gles2_without_glx_CPPFLAGS = $(AM_CPPFLAGS) -DGLES_VERSION=2
 egl_gles2_without_glx_SOURCES = egl_without_glx.c
-egl_gles2_without_glx_LDFLAGS = $(X11_LIBS) $(EPOXY) $(DLOPEN_LIBS) libegl_common.la
-egl_gles2_without_glx_DEPENDENCIES = $(EPOXY) libegl_common.la
+egl_gles2_without_glx_LDADD = $(X11_LIBS) $(EPOXY) $(DLOPEN_LIBS) libegl_common.la
 
-glx_beginend_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la $(GL_LIBS)
-glx_beginend_DEPENDENCIES = $(EPOXY) libglx_common.la
+glx_beginend_LDADD = $(X11_LIBS) $(EPOXY) libglx_common.la $(GL_LIBS)
 
-glx_public_api_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
-glx_public_api_DEPENDENCIES = $(EPOXY) libglx_common.la
+glx_public_api_LDADD = $(X11_LIBS) $(EPOXY) libglx_common.la
 
-glx_public_api_core_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
-glx_public_api_core_DEPENDENCIES = $(EPOXY) libglx_common.la
+glx_public_api_core_LDADD = $(X11_LIBS) $(EPOXY) libglx_common.la
 
-glx_glxgetprocaddress_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
-glx_glxgetprocaddress_nocontext_DEPENDENCIES = $(EPOXY) libglx_common.la
+glx_glxgetprocaddress_nocontext_LDADD = $(X11_LIBS) $(EPOXY) libglx_common.la
 
-glx_has_extension_nocontext_LDFLAGS = $(X11_LIBS) $(EPOXY) libglx_common.la
-glx_has_extension_nocontext_DEPENDENCIES = $(EPOXY) libglx_common.la
+glx_has_extension_nocontext_LDADD = $(X11_LIBS) $(EPOXY) libglx_common.la
 
 glx_static_CFLAGS = -DNEEDS_TO_BE_STATIC
-glx_static_LDFLAGS = -ldl $(X11_LIBS) -static $(EPOXY) libglx_common.la
-glx_static_DEPENDENCIES = $(EPOXY) libglx_common.la
+glx_static_LDADD = -ldl $(X11_LIBS) $(EPOXY) libglx_common.la
+glx_static_LDFLAGS = -static
 
 glx_shared_znow_SOURCES = glx_static.c
-glx_shared_znow_LDFLAGS = -ldl $(X11_LIBS) -z now $(EPOXY) libglx_common.la
-glx_shared_znow_DEPENDENCIES = $(EPOXY) libglx_common.la
+glx_shared_znow_LDADD = -ldl $(X11_LIBS) $(EPOXY) libglx_common.la
+glx_shared_znow_LDFLAGS = -z now
 
-wgl_core_and_exts_LDFLAGS = $(EPOXY) libwgl_common.la -lgdi32
-wgl_core_and_exts_DEPENDENCIES = $(EPOXY) libwgl_common.la
+wgl_core_and_exts_LDADD = $(EPOXY) libwgl_common.la -lgdi32
