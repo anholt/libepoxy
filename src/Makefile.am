@@ -119,6 +119,7 @@ libepoxy_la_LDFLAGS = \
 
 libepoxy_la_LIBADD = \
 	$(EPOXY_LINK_LIBS) \
+        $(DLOPEN_LIBS) \
 	$()
 
 if BUILD_EGL
