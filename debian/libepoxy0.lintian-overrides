@@ -1,0 +1,19 @@
+# The library calls exit() or abort() when a GL call is attempted that
+# it can't find a resolution for, which should only be in the case of
+# the caller not having the correct GL library dependencies present on
+# the system.  At that point in execution, the only thing libepoxy
+# could do is return without calling down, but this means that the GL
+# operation wasn't executed, and you'll probably just get a segfault
+# later.  For example, if we fail to resolve glGetString(), a common
+# early initialization command used by applications, they would need
+# an actual string.  While you can imagine building code to support
+# failure from glGetString() resolution by returning a dummy string,
+# in the limit you'd end up building a GL implementation in the
+# process of trying to provide not-segfaulting-the-app fallback
+# behavior, and you'd never succeed anyway because no application
+# expects GL calls to error out, even with GL_OUT_OF_MEMORY.
+libepoxy0 binary: shlib-calls-exit
+
+# The only changelog is the git history, and it doesn't appear to be
+# standard practiice to extract that.
+libepoxy0 binary: no-upstream-changelog

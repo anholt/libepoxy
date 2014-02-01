@@ -1,0 +1,5 @@
+# The github release tarballs referenced in the watch file aren't
+# GPG-signed (since they're generated from the git tree).  Since our
+# orig tarball is generated from git, GPG-signing those wouldn't be
+# terribly interesting, anyway.
+libepoxy source: debian-watch-may-check-gpg-signature
