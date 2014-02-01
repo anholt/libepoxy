@@ -1,6 +1,16 @@
 libepoxy for Debian
 -------------------
 
-<possible notes regarding this package - if none, delete this file>
+An interesting note about libepoxy is that it dynamically opens the
+libGL, libEGL, libGLESv2, and libGLESv1 libraries as needed by the
+application using libepoxy.  As a result, applications using libepoxy
+likely won't have any direct dependencies on a GL implementation in
+their linker command lines (because they're just using epoxy), nor
+will libepoxy have GL dependencies its linker command line (because it
+can be used with any subset of the libraries in question and doesn't
+want to force you to install everything).  Thus, if you are packaging
+something linking against libepoxy, you should check what APIs it is
+trying to use and ensure that you have a runtime dependency against
+them.
 
  -- Eric Anholt <eric@anholt.net>  Fri, 31 Jan 2014 16:52:20 -0800
