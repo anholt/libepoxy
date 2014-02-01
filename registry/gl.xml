@@ -7236,7 +7236,11 @@ typedef unsigned int GLhandleARB;
             <unused start="0x903D" end="0x9044"/>
         <enum value="0x9045" name="GL_TEXTURE_COVERAGE_SAMPLES_NV"/>
         <enum value="0x9046" name="GL_TEXTURE_COLOR_SAMPLES_NV"/>
-            <unused start="0x9047" end="0x904B"/>
+        <enum value="0x9047" name="GL_GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX"/>
+        <enum value="0x9048" name="GL_GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX"/>
+        <enum value="0x9049" name="GL_GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX"/>
+        <enum value="0x904A" name="GL_GPU_MEMORY_INFO_EVICTION_COUNT_NVX"/>
+        <enum value="0x904B" name="GL_GPU_MEMORY_INFO_EVICTED_MEMORY_NVX"/>
         <enum value="0x904C" name="GL_IMAGE_1D"/>
         <enum value="0x904C" name="GL_IMAGE_1D_EXT"/>
         <enum value="0x904D" name="GL_IMAGE_2D"/>
@@ -7870,22 +7874,22 @@ typedef unsigned int GLhandleARB;
     </enums>
 
     <enums namespace="GL" start="0x94F0" end="0x950F" vendor="INTEL" comment="Khronos bug 11345">
-        <enum value="0x94F0" name="GL_PERFQUERY_COUNTER_EVENT_INTEL"/>           
-        <enum value="0x94F1" name="GL_PERFQUERY_COUNTER_DURATION_NORM_INTEL"/>   
-        <enum value="0x94F2" name="GL_PERFQUERY_COUNTER_DURATION_RAW_INTEL"/>    
-        <enum value="0x94F3" name="GL_PERFQUERY_COUNTER_THROUGHPUT_INTEL"/>      
-        <enum value="0x94F4" name="GL_PERFQUERY_COUNTER_RAW_INTEL"/>             
-        <enum value="0x94F5" name="GL_PERFQUERY_COUNTER_TIMESTAMP_INTEL"/>       
+        <enum value="0x94F0" name="GL_PERFQUERY_COUNTER_EVENT_INTEL"/>
+        <enum value="0x94F1" name="GL_PERFQUERY_COUNTER_DURATION_NORM_INTEL"/>
+        <enum value="0x94F2" name="GL_PERFQUERY_COUNTER_DURATION_RAW_INTEL"/>
+        <enum value="0x94F3" name="GL_PERFQUERY_COUNTER_THROUGHPUT_INTEL"/>
+        <enum value="0x94F4" name="GL_PERFQUERY_COUNTER_RAW_INTEL"/>
+        <enum value="0x94F5" name="GL_PERFQUERY_COUNTER_TIMESTAMP_INTEL"/>
             <unused start="0x94F6" end="0x94F7"/>
-        <enum value="0x94F8" name="GL_PERFQUERY_COUNTER_DATA_UINT32_INTEL"/>     
-        <enum value="0x94F9" name="GL_PERFQUERY_COUNTER_DATA_UINT64_INTEL"/>     
-        <enum value="0x94FA" name="GL_PERFQUERY_COUNTER_DATA_FLOAT_INTEL"/>      
-        <enum value="0x94FB" name="GL_PERFQUERY_COUNTER_DATA_DOUBLE_INTEL"/>     
-        <enum value="0x94FC" name="GL_PERFQUERY_COUNTER_DATA_BOOL32_INTEL"/>     
-        <enum value="0x94FD" name="GL_PERFQUERY_QUERY_NAME_LENGTH_MAX_INTEL"/>   
-        <enum value="0x94FE" name="GL_PERFQUERY_COUNTER_NAME_LENGTH_MAX_INTEL"/> 
-        <enum value="0x94FF" name="GL_PERFQUERY_COUNTER_DESC_LENGTH_MAX_INTEL"/> 
-        <enum value="0x9500" name="GL_PERFQUERY_GPA_EXTENDED_COUNTERS_INTEL"/>   
+        <enum value="0x94F8" name="GL_PERFQUERY_COUNTER_DATA_UINT32_INTEL"/>
+        <enum value="0x94F9" name="GL_PERFQUERY_COUNTER_DATA_UINT64_INTEL"/>
+        <enum value="0x94FA" name="GL_PERFQUERY_COUNTER_DATA_FLOAT_INTEL"/>
+        <enum value="0x94FB" name="GL_PERFQUERY_COUNTER_DATA_DOUBLE_INTEL"/>
+        <enum value="0x94FC" name="GL_PERFQUERY_COUNTER_DATA_BOOL32_INTEL"/>
+        <enum value="0x94FD" name="GL_PERFQUERY_QUERY_NAME_LENGTH_MAX_INTEL"/>
+        <enum value="0x94FE" name="GL_PERFQUERY_COUNTER_NAME_LENGTH_MAX_INTEL"/>
+        <enum value="0x94FF" name="GL_PERFQUERY_COUNTER_DESC_LENGTH_MAX_INTEL"/>
+        <enum value="0x9500" name="GL_PERFQUERY_GPA_EXTENDED_COUNTERS_INTEL"/>
             <unused start="0x9501" end="0x950F"/>
     </enums>
 
@@ -24119,6 +24123,7 @@ typedef unsigned int GLhandleARB;
         <command>
             <proto><ptype>GLboolean</ptype> <name>glUnmapBufferOES</name></proto>
             <param><ptype>GLenum</ptype> <name>target</name></param>
+            <alias name="glUnmapBuffer"/>
         </command>
         <command>
             <proto group="Boolean"><ptype>GLboolean</ptype> <name>glUnmapNamedBufferEXT</name></proto>
@@ -38283,6 +38288,15 @@ typedef unsigned int GLhandleARB;
             <require>
                 <command name="glBeginConditionalRenderNVX"/>
                 <command name="glEndConditionalRenderNVX"/>
+            </require>
+        </extension>
+        <extension name="GL_NVX_gpu_memory_info" supported="gl">
+            <require>
+                <enum name="GL_GPU_MEMORY_INFO_DEDICATED_VIDMEM_NVX"/>
+                <enum name="GL_GPU_MEMORY_INFO_TOTAL_AVAILABLE_MEMORY_NVX"/>
+                <enum name="GL_GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX"/>
+                <enum name="GL_GPU_MEMORY_INFO_EVICTION_COUNT_NVX"/>
+                <enum name="GL_GPU_MEMORY_INFO_EVICTED_MEMORY_NVX"/>
             </require>
         </extension>
         <extension name="GL_NV_bindless_multi_draw_indirect" supported="gl">
