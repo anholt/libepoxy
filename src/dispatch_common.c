@@ -530,8 +530,7 @@ epoxy_print_failure_reasons(const char *name,
 {
     int i;
 
-    fprintf(stderr, "No provider of %s found.  "
-            "Requires one of:\n", name);
+    fprintf(stderr, "No provider of %s found.  Requires one of:\n", name);
 
     for (i = 0; providers[i] != 0; i++)
         fprintf(stderr, "    %s\n",
