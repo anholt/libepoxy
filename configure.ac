@@ -48,6 +48,12 @@ AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 AC_SYS_LARGEFILE
 
+AC_CHECK_HEADER([KHR/khrplatform.h],
+                [AC_DEFINE([HAVE_KHRPLATFORM_H], [1],
+                           [Define to 1 if you have <KHR/khrplatform.h> (used for tests)]
+                           )]
+               )
+
 # OS X defaults to having -Wint-conversion ("warn when passing
 # uintptr_t to a void *") by default.  Kill that.
 XORG_TESTSET_CFLAG(CWARNFLAGS, [-Wno-int-conversion])

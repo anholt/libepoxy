@@ -56,6 +56,7 @@ TESTS = \
 	$(WGL_TESTS) \
 	headerguards$(EXEEXT) \
 	miscdefines$(EXEEXT) \
+	khronos_typedefs$(EXEEXT) \
 	$()
 
 XFAIL_TESTS = \
@@ -126,5 +127,11 @@ glx_static_LDFLAGS = -static
 glx_shared_znow_SOURCES = glx_static.c
 glx_shared_znow_LDADD = $(DLOPEN_LIBS) $(EPOXY) libglx_common.la $(X11_LIBS)
 glx_shared_znow_LDFLAGS = -z now
+
+khronos_typedefs_SOURCES = \
+	khronos_typedefs.c \
+	khronos_typedefs.h \
+	khronos_typedefs_nonepoxy.c \
+	$()
 
 wgl_core_and_exts_LDADD = $(EPOXY) libwgl_common.la -lgdi32

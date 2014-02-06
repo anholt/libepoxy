@@ -9,6 +9,7 @@ glx_public_api_core
 glx_shared_znow
 glx_static
 headerguards
+khronos_typedefs
 miscdefines
 wgl_core_and_exts
 *.log
