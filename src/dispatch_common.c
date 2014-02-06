@@ -186,7 +186,7 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
     if (!*handle) {
         *handle = dlopen(lib_name, RTLD_LAZY | RTLD_LOCAL);
         if (!*handle && exit_on_fail) {
-            fprintf(stderr, "Couldn't open %s: %s", lib_name, dlerror());
+            fprintf(stderr, "Couldn't open %s: %s\n", lib_name, dlerror());
             exit(1);
         }
     }
