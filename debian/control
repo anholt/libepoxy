@@ -26,7 +26,7 @@ Description: OpenGL function pointer management library- development
  code using undecorated function names like glCompileShader().
  .
  This package contains the development headers for the library found in
- libx11-6. Non-developers likely have little use for this package.
+ libepoxy0. Non-developers likely have little use for this package.
 
 Package: libepoxy0
 Architecture: any
