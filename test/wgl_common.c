@@ -54,12 +54,12 @@ setup_pixel_format(HDC hdc)
 
     pixel_format = ChoosePixelFormat(hdc, &pfd);
     if (!pixel_format) {
-        fprintf(stderr, "ChoosePixelFormat failed.");
+        fprintf(stderr, "ChoosePixelFormat failed.\n");
         exit(1);
     }
 
     if (SetPixelFormat(hdc, pixel_format, &pfd) != TRUE) {
-        fprintf(stderr, "SetPixelFormat() failed.");
+        fprintf(stderr, "SetPixelFormat() failed.\n");
         exit(1);
     }
 }
