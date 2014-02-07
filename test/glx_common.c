@@ -24,7 +24,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <X11/Xlib.h>
-#include "epoxy/glx.h"
+#include "glx_common.h"
 
 Display *
 get_display_or_skip(void)

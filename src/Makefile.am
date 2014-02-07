@@ -56,15 +56,15 @@ GENERATED_GL_INCLUDES = \
 	$()
 
 GENERATED_GLX_INCLUDES = \
-	$(tuilddir)/../include/epoxy/glx_generated.h \
+	$(builddir)/../include/epoxy/glx_generated.h \
 	$()
 
 GENERATED_EGL_INCLUDES = \
-	$(tuilddir)/../include/epoxy/egl_generated.h \
+	$(builddir)/../include/epoxy/egl_generated.h \
 	$()
 
 GENERATED_WGL_INCLUDES = \
-	$(tuilddir)/../include/epoxy/wgl_generated.h \
+	$(builddir)/../include/epoxy/wgl_generated.h \
 	$()
 
 GENERATED_GL_SOURCE = gl_generated_dispatch.c
@@ -115,7 +115,11 @@ libepoxy_la_SOURCES = \
 libepoxy_la_LDFLAGS = \
 	-no-undefined \
         -Bsymbolic \
-        $(EPOXY_LINK_LIBS) \
+	$()
+
+libepoxy_la_LIBADD = \
+	$(EPOXY_LINK_LIBS) \
+        $(DLOPEN_LIBS) \
 	$()
 
 if BUILD_EGL
@@ -157,3 +161,7 @@ $(GENERATED_EGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/egl.xm
 
 $(GENERATED_WGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/wgl.xml
 	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/wgl.xml
+
+EXTRA_DIST = \
+	gen_dispatch.py \
+	$()

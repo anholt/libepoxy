@@ -486,8 +486,12 @@ class Generator(object):
             if self.target == "egl":
                 self.outln('#include "EGL/eglplatform.h"')
         else:
-            # Add some ridiculous inttypes.h redefinitions that are from
-            # khrplatform.h and not included in the XML.
+            # Add some ridiculous inttypes.h redefinitions that are
+            # from khrplatform.h and not included in the XML.  We
+            # don't directly include khrplatform.h because it's not
+            # present on many systems, and coming up with #ifdefs to
+            # decide when it's not present would be hard.
+            self.outln('#define __khrplatform_h_ 1')
             self.outln('typedef int8_t khronos_int8_t;')
             self.outln('typedef int16_t khronos_int16_t;')
             self.outln('typedef int32_t khronos_int32_t;')
@@ -497,10 +501,18 @@ class Generator(object):
             self.outln('typedef uint32_t khronos_uint32_t;')
             self.outln('typedef uint64_t khronos_uint64_t;')
             self.outln('typedef float khronos_float_t;')
-            self.outln('typedef intptr_t khronos_intptr_t;')
-            self.outln('typedef ptrdiff_t khronos_ssize_t;')
+            self.outln('typedef long khronos_intptr_t;')
+            self.outln('typedef long khronos_ssize_t;')
+            self.outln('typedef unsigned long khronos_usize_t;')
             self.outln('typedef uint64_t khronos_utime_nanoseconds_t;')
             self.outln('typedef int64_t khronos_stime_nanoseconds_t;')
+            self.outln('#define KHRONOS_MAX_ENUM 0x7FFFFFFF')
+            self.outln('typedef enum {')
+            self.outln('    KHRONOS_FALSE = 0,')
+            self.outln('    KHRONOS_TRUE  = 1,')
+            self.outln('    KHRONOS_BOOLEAN_ENUM_FORCE_SIZE = KHRONOS_MAX_ENUM')
+            self.outln('} khronos_boolean_enum_t;')
+            self.outln('typedef uintptr_t khronos_uintptr_t;')
 
         if self.target == "glx":
             self.outln('#include <X11/Xlib.h>')
@@ -847,9 +859,9 @@ for file in args.files:
     generator.sort_functions()
     generator.resolve_aliases()
     generator.fixup_bootstrap_function('glGetString',
-                                       'epoxy_get_core_proc_address({0}, 10)')
+                                       'epoxy_get_bootstrap_proc_address({0})')
     generator.fixup_bootstrap_function('glGetIntegerv',
-                                       'epoxy_get_core_proc_address({0}, 10)')
+                                       'epoxy_get_bootstrap_proc_address({0})')
 
     # While this is technically exposed as a GLX extension, it's
     # required to be present as a public symbol by the Linux OpenGL

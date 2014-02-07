@@ -26,7 +26,7 @@
 Display *
 get_display_or_skip(void);
 
-GLXContext
+void
 make_glx_context_current_or_skip(Display *dpy);
 
 GLXFBConfig

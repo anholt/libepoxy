@@ -59,7 +59,7 @@ main(int argc, char **argv)
     }
 
     if (!epoxy_has_egl_extension(dpy, an_extension))
-        errx(1, "Implementation reported absence of GLX_ARB_get_proc_address");
+        errx(1, "Implementation reported absence of %s", an_extension);
 
     free(an_extension);
 

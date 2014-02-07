@@ -8,3 +8,4 @@ Description: epoxy GL dispatch Library
 Version: @PACKAGE_VERSION@
 Cflags: -I${includedir}
 Libs: -L${libdir} -lepoxy
+Libs.private: @DLOPEN_LIBS@

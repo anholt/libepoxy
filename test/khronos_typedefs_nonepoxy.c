@@ -1,5 +1,5 @@
 /*
- * Copyright © 2013 Intel Corporation
+ * Copyright © 2014 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -21,37 +21,49 @@
  * IN THE SOFTWARE.
  */
 
-/**
- * @file glx_glxgetprocaddress_nocontext.c
- *
- * Catches a bug in early development where glXGetProcAddress() with
- * no context bound would fail out in dispatch.
- */
-
 #include <stdio.h>
-#include <assert.h>
-#include <err.h>
-#include "epoxy/gl.h"
-#include "epoxy/glx.h"
-#include <X11/Xlib.h>
+#include <stdlib.h>
 
-#include "glx_common.h"
+#include "config.h"
+#include "khronos_typedefs.h"
 
-static Display *dpy;
+#ifdef HAVE_KHRPLATFORM_H
 
-int
-main(int argc, char **argv)
+#include <KHR/khrplatform.h>
+
+#define GET_SIZE(type) sizes[type ## _slot] = sizeof(type)
+
+void
+get_system_typedef_sizes(uint32_t *sizes)
 {
-    bool pass = true;
-    void *func;
-
-    dpy = get_display_or_skip();
-    if (epoxy_glx_version(dpy, 0) < 14)
-        errx(77, "GLX version 1.4 required for glXGetProcAddress().\n");
-
-    func = glXGetProcAddress((const GLubyte *)"glGetString");
-    if (!func)
-        errx(1, "glXGetProcAddress() returned NULL\n");
-
-    return pass != true;
+    GET_SIZE(khronos_int8_t);
+    GET_SIZE(khronos_uint8_t);
+    GET_SIZE(khronos_int16_t);
+    GET_SIZE(khronos_uint16_t);
+    GET_SIZE(khronos_int32_t);
+    GET_SIZE(khronos_uint32_t);
+    GET_SIZE(khronos_int64_t);
+    GET_SIZE(khronos_uint64_t);
+    GET_SIZE(khronos_intptr_t);
+    GET_SIZE(khronos_uintptr_t);
+    GET_SIZE(khronos_ssize_t);
+    GET_SIZE(khronos_usize_t);
+    GET_SIZE(khronos_float_t);
+    GET_SIZE(khronos_utime_nanoseconds_t);
+    GET_SIZE(khronos_stime_nanoseconds_t);
+    GET_SIZE(khronos_boolean_enum_t);
 }
+
+#else /* !HAVE_KHRPLATFORM_H */
+
+/* Don't care -- this is a conditional case in test code. */
+#pragma GCC diagnostic ignored "-Wsuggest-attribute=noreturn"
+
+void
+get_system_typedef_sizes(uint32_t *sizes)
+{
+    fprintf(stderr, "./configure failed to find khrplatform.h\n");
+    exit(77);
+}
+
+#endif

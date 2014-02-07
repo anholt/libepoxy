@@ -1,5 +1,5 @@
 /*
- * Copyright © 2013 Intel Corporation
+ * Copyright © 2014 Intel Corporation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -21,37 +21,27 @@
  * IN THE SOFTWARE.
  */
 
-/**
- * @file glx_glxgetprocaddress_nocontext.c
- *
- * Catches a bug in early development where glXGetProcAddress() with
- * no context bound would fail out in dispatch.
- */
+#include <stdint.h>
 
-#include <stdio.h>
-#include <assert.h>
-#include <err.h>
-#include "epoxy/gl.h"
-#include "epoxy/glx.h"
-#include <X11/Xlib.h>
+enum typedef_slot {
+    khronos_int8_t_slot,
+    khronos_uint8_t_slot,
+    khronos_int16_t_slot,
+    khronos_uint16_t_slot,
+    khronos_int32_t_slot,
+    khronos_uint32_t_slot,
+    khronos_int64_t_slot,
+    khronos_uint64_t_slot,
+    khronos_intptr_t_slot,
+    khronos_uintptr_t_slot,
+    khronos_ssize_t_slot,
+    khronos_usize_t_slot,
+    khronos_float_t_slot,
+    /* khrplatform.h claims it defines khronos_time_ns_t, but it doesn't. */
+    khronos_utime_nanoseconds_t_slot,
+    khronos_stime_nanoseconds_t_slot,
+    khronos_boolean_enum_t_slot,
+    khronos_typedef_count
+};
 
-#include "glx_common.h"
-
-static Display *dpy;
-
-int
-main(int argc, char **argv)
-{
-    bool pass = true;
-    void *func;
-
-    dpy = get_display_or_skip();
-    if (epoxy_glx_version(dpy, 0) < 14)
-        errx(77, "GLX version 1.4 required for glXGetProcAddress().\n");
-
-    func = glXGetProcAddress((const GLubyte *)"glGetString");
-    if (!func)
-        errx(1, "glXGetProcAddress() returned NULL\n");
-
-    return pass != true;
-}
+void get_system_typedef_sizes(uint32_t *sizes);

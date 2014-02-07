@@ -22,7 +22,7 @@
 # Initialize Autoconf
 AC_PREREQ([2.60])
 AC_INIT([libepoxy],
-        [1.0],
+        [1.1],
         [https://people.freedesktop.org/~anholt/libepoxy],
         [libepoxy])
 AC_CONFIG_SRCDIR([Makefile.am])
@@ -47,6 +47,12 @@ AC_DISABLE_STATIC
 AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 AC_SYS_LARGEFILE
+
+AC_CHECK_HEADER([KHR/khrplatform.h],
+                [AC_DEFINE([HAVE_KHRPLATFORM_H], [1],
+                           [Define to 1 if you have <KHR/khrplatform.h> (used for tests)]
+                           )]
+               )
 
 # OS X defaults to having -Wint-conversion ("warn when passing
 # uintptr_t to a void *") by default.  Kill that.
@@ -105,6 +111,9 @@ if test x$build_wgl = xyes; then
 fi
 
 AM_CONDITIONAL(HAS_ZNOW, test x$has_znow = xyes)
+
+AC_CHECK_LIB([dl], [dlopen], [DLOPEN_LIBS="-ldl"])
+AC_SUBST([DLOPEN_LIBS])
 
 case $host_os in
     mingw*)
