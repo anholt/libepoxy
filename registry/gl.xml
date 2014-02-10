@@ -12096,6 +12096,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>target</name></param>
             <param><ptype>GLintptr</ptype> <name>offset</name></param>
             <param><ptype>GLsizeiptr</ptype> <name>length</name></param>
+            <alias name="glFlushMappedBufferRange"/>
         </command>
         <command>
             <proto>void <name>glFlushMappedNamedBufferRangeEXT</name></proto>
@@ -16598,6 +16599,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLintptr</ptype> <name>offset</name></param>
             <param><ptype>GLsizeiptr</ptype> <name>length</name></param>
             <param><ptype>GLbitfield</ptype> <name>access</name></param>
+            <alias name="glMapBufferRange"/>
         </command>
         <command>
             <proto>void <name>glMapControlPointsNV</name></proto>
