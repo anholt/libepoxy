@@ -8499,6 +8499,7 @@ typedef unsigned int GLhandleARB;
         <command>
             <proto>void <name>glBindVertexArrayOES</name></proto>
             <param><ptype>GLuint</ptype> <name>array</name></param>
+            <alias name="glBindVertexArray"/>
         </command>
         <command>
             <proto>void <name>glBindVertexBuffer</name></proto>
@@ -11101,6 +11102,7 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glDeleteVertexArraysOES</name></proto>
             <param><ptype>GLsizei</ptype> <name>n</name></param>
             <param>const <ptype>GLuint</ptype> *<name>arrays</name></param>
+            <alias name="glDeleteVertexArrays"/>
         </command>
         <command>
             <proto>void <name>glDeleteVertexShaderEXT</name></proto>
@@ -12776,6 +12778,7 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glGenVertexArraysOES</name></proto>
             <param><ptype>GLsizei</ptype> <name>n</name></param>
             <param><ptype>GLuint</ptype> *<name>arrays</name></param>
+            <alias name="glGenVertexArrays"/>
         </command>
         <command>
             <proto><ptype>GLuint</ptype> <name>glGenVertexShadersEXT</name></proto>
@@ -16191,6 +16194,7 @@ typedef unsigned int GLhandleARB;
         <command>
             <proto><ptype>GLboolean</ptype> <name>glIsVertexArrayOES</name></proto>
             <param><ptype>GLuint</ptype> <name>array</name></param>
+            <alias name="glIsVertexArray"/>
         </command>
         <command>
             <proto group="Boolean"><ptype>GLboolean</ptype> <name>glIsVertexAttribEnabledAPPLE</name></proto>
