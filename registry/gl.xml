@@ -11312,6 +11312,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLint</ptype> <name>first</name></param>
             <param><ptype>GLsizei</ptype> <name>count</name></param>
             <param><ptype>GLsizei</ptype> <name>primcount</name></param>
+            <alias name="glDrawArraysInstanced"/>
         </command>
         <command>
             <proto>void <name>glDrawArraysInstancedARB</name></proto>
@@ -11432,6 +11433,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>type</name></param>
             <param>const void *<name>indices</name></param>
             <param><ptype>GLsizei</ptype> <name>primcount</name></param>
+            <alias name="glDrawElementsInstanced"/>
         </command>
         <command>
             <proto>void <name>glDrawElementsInstancedARB</name></proto>
@@ -25474,6 +25476,7 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glVertexAttribDivisorANGLE</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param><ptype>GLuint</ptype> <name>divisor</name></param>
+            <alias name="glVertexAttribDivisor"/>
         </command>
         <command>
             <proto>void <name>glVertexAttribDivisorARB</name></proto>
