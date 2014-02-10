@@ -8859,6 +8859,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLint</ptype> <name>dstY1</name></param>
             <param><ptype>GLbitfield</ptype> <name>mask</name></param>
             <param><ptype>GLenum</ptype> <name>filter</name></param>
+            <alias name="glBlitFramebuffer"/>
         </command>
         <command>
             <proto>void <name>glBufferAddressRangeNV</name></proto>
