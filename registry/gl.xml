@@ -9958,6 +9958,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLint</ptype> <name>border</name></param>
             <param><ptype>GLsizei</ptype> <name>imageSize</name></param>
             <param>const void *<name>data</name></param>
+            <alias name="glCompressedTexImage3D"/>
         </command>
         <command>
             <proto>void <name>glCompressedTexSubImage1D</name></proto>
@@ -10056,6 +10057,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>format</name></param>
             <param><ptype>GLsizei</ptype> <name>imageSize</name></param>
             <param>const void *<name>data</name></param>
+            <alias name="glCompressedTexSubImage3D"/>
         </command>
         <command>
             <proto>void <name>glCompressedTextureImage1DEXT</name></proto>
@@ -10585,6 +10587,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLint</ptype> <name>y</name></param>
             <param><ptype>GLsizei</ptype> <name>width</name></param>
             <param><ptype>GLsizei</ptype> <name>height</name></param>
+            <alias name="glCopyTexSubImage3D"/>
         </command>
         <command>
             <proto>void <name>glCopyTextureImage1DEXT</name></proto>
@@ -12481,6 +12484,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLuint</ptype> <name>texture</name></param>
             <param><ptype>GLint</ptype> <name>level</name></param>
             <param><ptype>GLint</ptype> <name>zoffset</name></param>
+            <alias name="glFramebufferTexture3D"/>
         </command>
         <command>
             <proto>void <name>glFramebufferTextureARB</name></proto>
@@ -22707,6 +22711,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>format</name></param>
             <param><ptype>GLenum</ptype> <name>type</name></param>
             <param>const void *<name>pixels</name></param>
+            <alias name="glTexImage3D"/>
         </command>
         <command>
             <proto>void <name>glTexImage4DSGIS</name></proto>
@@ -22994,6 +22999,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>format</name></param>
             <param><ptype>GLenum</ptype> <name>type</name></param>
             <param>const void *<name>pixels</name></param>
+            <alias name="glTexSubImage3D"/>
         </command>
         <command>
             <proto>void <name>glTexSubImage4DSGIS</name></proto>
