@@ -22839,6 +22839,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsizei</ptype> <name>levels</name></param>
             <param><ptype>GLenum</ptype> <name>internalformat</name></param>
             <param><ptype>GLsizei</ptype> <name>width</name></param>
+            <alias name="glTexStorage1D"/>
         </command>
         <command>
             <proto>void <name>glTexStorage2D</name></proto>
@@ -22855,6 +22856,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>internalformat</name></param>
             <param><ptype>GLsizei</ptype> <name>width</name></param>
             <param><ptype>GLsizei</ptype> <name>height</name></param>
+            <alias name="glTexStorage2D"/>
         </command>
         <command>
             <proto>void <name>glTexStorage2DMultisample</name></proto>
@@ -22882,6 +22884,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsizei</ptype> <name>width</name></param>
             <param><ptype>GLsizei</ptype> <name>height</name></param>
             <param><ptype>GLsizei</ptype> <name>depth</name></param>
+            <alias name="glTexStorage3D"/>
         </command>
         <command>
             <proto>void <name>glTexStorage3DMultisample</name></proto>
