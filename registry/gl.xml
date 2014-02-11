@@ -20873,6 +20873,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>internalformat</name></param>
             <param><ptype>GLsizei</ptype> <name>width</name></param>
             <param><ptype>GLsizei</ptype> <name>height</name></param>
+            <alias name="glRenderbufferStorageMultisample"/>
         </command>
         <command>
             <proto>void <name>glRenderbufferStorageOES</name></proto>
