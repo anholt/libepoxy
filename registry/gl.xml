@@ -14453,6 +14453,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsizei</ptype> *<name>length</name></param>
             <param><ptype>GLenum</ptype> *<name>binaryFormat</name></param>
             <param len="bufSize">void *<name>binary</name></param>
+            <alias name="glGetProgramBinary"/>
         </command>
         <command>
             <proto>void <name>glGetProgramEnvParameterIivNV</name></proto>
@@ -19158,6 +19159,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>binaryFormat</name></param>
             <param>const void *<name>binary</name></param>
             <param><ptype>GLint</ptype> <name>length</name></param>
+            <alias name="glProgramBinary"/>
         </command>
         <command>
             <proto>void <name>glProgramBufferParametersIivNV</name></proto>
