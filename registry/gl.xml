@@ -9163,6 +9163,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsync</ptype> <name>sync</name></param>
             <param><ptype>GLbitfield</ptype> <name>flags</name></param>
             <param><ptype>GLuint64</ptype> <name>timeout</name></param>
+            <alias name="glClientWaitSync"/>
         </command>
         <command>
             <proto>void <name>glClipPlane</name></proto>
@@ -11066,6 +11067,7 @@ typedef unsigned int GLhandleARB;
         <command>
             <proto>void <name>glDeleteSyncAPPLE</name></proto>
             <param><ptype>GLsync</ptype> <name>sync</name></param>
+            <alias name="glDeleteSync"/>
         </command>
         <command>
             <proto>void <name>glDeleteTextures</name></proto>
@@ -12044,6 +12046,7 @@ typedef unsigned int GLhandleARB;
             <proto><ptype>GLsync</ptype> <name>glFenceSyncAPPLE</name></proto>
             <param><ptype>GLenum</ptype> <name>condition</name></param>
             <param><ptype>GLbitfield</ptype> <name>flags</name></param>
+            <alias name="glFenceSync"/>
         </command>
         <command>
             <proto>void <name>glFinalCombinerInputNV</name></proto>
@@ -13614,6 +13617,7 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glGetInteger64vAPPLE</name></proto>
             <param><ptype>GLenum</ptype> <name>pname</name></param>
             <param><ptype>GLint64</ptype> *<name>params</name></param>
+            <alias name="glGetInteger64v"/>
         </command>
         <command>
             <proto>void <name>glGetIntegerIndexedvEXT</name></proto>
@@ -14897,6 +14901,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsizei</ptype> <name>bufSize</name></param>
             <param><ptype>GLsizei</ptype> *<name>length</name></param>
             <param len="bufSize"><ptype>GLint</ptype> *<name>values</name></param>
+            <alias name="glGetSynciv"/>
         </command>
         <command>
             <proto>void <name>glGetTexBumpParameterfvATI</name></proto>
@@ -16154,6 +16159,7 @@ typedef unsigned int GLhandleARB;
         <command>
             <proto><ptype>GLboolean</ptype> <name>glIsSyncAPPLE</name></proto>
             <param><ptype>GLsync</ptype> <name>sync</name></param>
+            <alias name="glIsSync"/>
         </command>
         <command>
             <proto group="Boolean"><ptype>GLboolean</ptype> <name>glIsTexture</name></proto>
@@ -26624,6 +26630,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsync</ptype> <name>sync</name></param>
             <param><ptype>GLbitfield</ptype> <name>flags</name></param>
             <param><ptype>GLuint64</ptype> <name>timeout</name></param>
+            <alias name="glWaitSync"/>
         </command>
         <command>
             <proto>void <name>glWeightPathsNV</name></proto>
