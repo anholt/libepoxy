@@ -207,7 +207,7 @@ do_dlsym(void **handle, const char *lib_name, const char *name,
 #else
     result = dlsym(*handle, name);
 #endif
-    if (!result) {
+    if (!result && exit_on_fail) {
         fprintf(stderr,"%s() not found in %s\n", name, lib_name);
         exit(1);
     }
@@ -379,6 +379,27 @@ void *
 epoxy_gles2_dlsym(const char *name)
 {
     return do_dlsym(&api.gles2_handle, "libGLESv2.so.2", name, true);
+}
+
+/**
+ * Does the appropriate dlsym() or eglGetProcAddress() for GLES3
+ * functions.
+ *
+ * Mesa interpreted GLES as intending that the GLES3 functions were
+ * available only through eglGetProcAddress() and not dlsym(), while
+ * ARM's Mali drivers interpreted GLES as intending that GLES3
+ * functions were available only through dlsym() and not
+ * eglGetProcAddress().  Thanks, Khronos.
+ */
+void *
+epoxy_gles3_dlsym(const char *name)
+{
+    void *func = do_dlsym(&api.gles2_handle, "libGLESv2.so.2", name, false);
+
+    if (func)
+        return func;
+
+    return epoxy_get_proc_address(name);
 }
 
 /**

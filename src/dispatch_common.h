@@ -78,6 +78,7 @@ void *epoxy_glx_dlsym(const char *name);
 void *epoxy_gl_dlsym(const char *name);
 void *epoxy_gles1_dlsym(const char *name);
 void *epoxy_gles2_dlsym(const char *name);
+void *epoxy_gles3_dlsym(const char *name);
 void *epoxy_get_proc_address(const char *name);
 void *epoxy_get_core_proc_address(const char *name, int core_version);
 void *epoxy_get_bootstrap_proc_address(const char *name);
