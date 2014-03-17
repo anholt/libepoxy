@@ -344,7 +344,7 @@ class Generator(object):
                 if version <= 20:
                     loader = 'epoxy_gles2_dlsym({0})'
                 else:
-                    loader = 'epoxy_get_proc_address({0})'
+                    loader = 'epoxy_gles3_dlsym({0})'
             elif api == 'gles1':
                 human_name = 'OpenGL ES 1.0'
                 condition = '!epoxy_is_desktop_gl() && epoxy_gl_version() >= 10 && epoxy_gl_version() < 20'
