@@ -103,11 +103,11 @@ endif
 egl_has_extension_nocontext_LDADD = $(EPOXY) libegl_common.la $(X11_LIBS)
 
 egl_gles1_without_glx_CPPFLAGS = $(AM_CPPFLAGS) -DGLES_VERSION=1
-egl_gles1_without_glx_SOURCES = egl_without_glx.c egl_without_glx_overrides.c
+egl_gles1_without_glx_SOURCES = egl_without_glx.c
 egl_gles1_without_glx_LDADD = $(EPOXY) $(DLOPEN_LIBS) libegl_common.la $(X11_LIBS)
 
 egl_gles2_without_glx_CPPFLAGS = $(AM_CPPFLAGS) -DGLES_VERSION=2
-egl_gles2_without_glx_SOURCES = egl_without_glx.c egl_without_glx_overrides.c
+egl_gles2_without_glx_SOURCES = egl_without_glx.c
 egl_gles2_without_glx_LDADD = $(EPOXY) $(DLOPEN_LIBS) libegl_common.la $(X11_LIBS)
 
 glx_beginend_LDADD = $(EPOXY) libglx_common.la $(GL_LIBS) $(X11_LIBS)
