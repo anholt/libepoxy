@@ -435,29 +435,34 @@ epoxy_get_bootstrap_proc_address(const char *name)
         EGLenum save_api = eglQueryAPI();
         EGLContext ctx;
 
-        eglBindAPI(EGL_OPENGL_API);
-        ctx = eglGetCurrentContext();
-        if (ctx) {
-            eglBindAPI(save_api);
-            return epoxy_gl_dlsym(name);
+        if (eglBindAPI(EGL_OPENGL_API)) {
+            ctx = eglGetCurrentContext();
+            if (ctx) {
+                eglBindAPI(save_api);
+                return epoxy_gl_dlsym(name);
+            }
+        } else {
+            (void)eglGetError();
         }
 
-        eglBindAPI(EGL_OPENGL_ES_API);
-        ctx = eglGetCurrentContext();
-        if (ctx) {
+        if (eglBindAPI(EGL_OPENGL_ES_API)) {
+            ctx = eglGetCurrentContext();
             eglBindAPI(save_api);
-            /* We can't resolve the GL version, because
-             * epoxy_glGetString() is one of the two things calling
-             * us.  Try the GLES2 implementation first, and fall back
-             * to GLES1 otherwise.
-             */
-            get_dlopen_handle(&api.gles2_handle, "libGLESv2.so.2", false);
-            if (api.gles2_handle)
-                return epoxy_gles2_dlsym(name);
-            else
-                return epoxy_gles1_dlsym(name);
+            if (ctx) {
+                /* We can't resolve the GL version, because
+                 * epoxy_glGetString() is one of the two things calling
+                 * us.  Try the GLES2 implementation first, and fall back
+                 * to GLES1 otherwise.
+                 */
+                get_dlopen_handle(&api.gles2_handle, "libGLESv2.so.2", false);
+                if (api.gles2_handle)
+                    return epoxy_gles2_dlsym(name);
+                else
+                    return epoxy_gles1_dlsym(name);
+            }
+        } else {
+            (void)eglGetError();
         }
-        eglBindAPI(save_api);
     }
 #endif /* PLATFORM_HAS_EGL */
 
