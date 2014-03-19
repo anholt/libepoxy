@@ -53,13 +53,19 @@ AM_CFLAGS = $(CWARNFLAGS)
 TESTS = \
 	$(EGL_TESTS) \
 	$(GLX_TESTS) \
+	$(EGL_AND_GLX_TESTS) \
 	$(WGL_TESTS) \
 	headerguards$(EXEEXT) \
 	miscdefines$(EXEEXT) \
 	khronos_typedefs$(EXEEXT) \
 	$()
 
+check_BINARIES = $(EGL_AND_GLX_BIN)
+
 XFAIL_TESTS = \
+        egl_and_glx_different_pointers_egl_glx \
+        egl_and_glx_different_pointers_egl \
+        egl_and_glx_different_pointers_glx \
 	$()
 
 check_PROGRAMS = $(TESTS)
@@ -77,6 +83,16 @@ endif
 if BUILD_GLX
 if HAS_ZNOW
 GLX_SHARED_ZNOW = glx_shared_znow
+endif
+
+if BUILD_EGL
+if BUILD_GLX
+EGL_AND_GLX_TESTS = \
+	egl_and_glx_different_pointers_egl_glx \
+	egl_and_glx_different_pointers_egl \
+	egl_and_glx_different_pointers_glx \
+        $()
+endif
 endif
 
 GLX_TESTS = \
@@ -109,6 +125,21 @@ egl_gles1_without_glx_LDADD = $(EPOXY) $(DLOPEN_LIBS) libegl_common.la $(X11_LIB
 egl_gles2_without_glx_CPPFLAGS = $(AM_CPPFLAGS) -DGLES_VERSION=2
 egl_gles2_without_glx_SOURCES = egl_without_glx.c
 egl_gles2_without_glx_LDADD = $(EPOXY) $(DLOPEN_LIBS) libegl_common.la $(X11_LIBS)
+
+egl_and_glx_different_pointers_egl_SOURCES = egl_and_glx_different_pointers.c dlwrap.c dlwrap.h
+egl_and_glx_different_pointers_egl_LDADD = libegl_common.la libglx_common.la $(DLOPEN_LIBS) $(EPOXY) $(X11_LIBS)
+egl_and_glx_different_pointers_egl_LDFLAGS = -rdynamic
+egl_and_glx_different_pointers_egl_CPPFLAGS = $(AM_CPPFLAGS) -DUSE_EGL
+
+egl_and_glx_different_pointers_glx_SOURCES = egl_and_glx_different_pointers.c dlwrap.c dlwrap.h
+egl_and_glx_different_pointers_glx_LDADD = libegl_common.la libglx_common.la $(DLOPEN_LIBS) $(EPOXY) $(X11_LIBS)
+egl_and_glx_different_pointers_glx_LDFLAGS = -rdynamic
+egl_and_glx_different_pointers_glx_CPPFLAGS = $(AM_CPPFLAGS) -DUSE_GLX
+
+egl_and_glx_different_pointers_egl_glx_SOURCES = egl_and_glx_different_pointers.c dlwrap.c dlwrap.h
+egl_and_glx_different_pointers_egl_glx_LDADD = libegl_common.la libglx_common.la $(DLOPEN_LIBS) $(EPOXY) $(X11_LIBS)
+egl_and_glx_different_pointers_egl_glx_LDFLAGS = -rdynamic
+egl_and_glx_different_pointers_egl_glx_CPPFLAGS = $(AM_CPPFLAGS) -DUSE_EGL -DUSE_GLX
 
 glx_beginend_LDADD = $(EPOXY) libglx_common.la $(GL_LIBS) $(X11_LIBS)
 

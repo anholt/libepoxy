@@ -1,3 +1,6 @@
+egl_and_glx_different_pointers_egl
+egl_and_glx_different_pointers_egl_glx
+egl_and_glx_different_pointers_glx
 egl_has_extension_nocontext
 egl_gles1_without_glx
 egl_gles2_without_glx

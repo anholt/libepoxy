@@ -19,77 +19,74 @@
  * THE SOFTWARE.
  */
 
+/** @file dlwrap.c
+ *
+ * Implements a wrapper for dlopen() and dlsym() so that epoxy will
+ * end up finding symbols from the testcases named
+ * "override_EGL_eglWhatever()" or "override_GLES2_glWhatever()" or
+ * "override_GL_glWhatever()" when it tries to dlopen() and dlsym()
+ * the real GL or EGL functions in question.
+ *
+ * This lets us simulate some target systems in the test suite, or
+ * just stub out GL functions so we can be sure of what's being
+ * called.
+ */
+
 /* dladdr is a glibc extension */
 #define _GNU_SOURCE
 #include <dlfcn.h>
 
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <assert.h>
-
-#include "fips.h"
 
 #include "dlwrap.h"
 
-#include "glwrap.h"
+#define STRNCMP_LITERAL(var, literal) \
+    strncmp ((var), (literal), sizeof (literal) - 1)
+
+#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof(arr[0]))
 
 void *libfips_handle;
 
 typedef void *(*fips_dlopen_t)(const char *filename, int flag);
 typedef void *(*fips_dlsym_t)(void *handle, const char *symbol);
 
-static const char *wrapped_libs[] = {
-    "libGL.so",
-    "libEGL.so",
-    "libGLESv2.so"
-};
+void *override_EGL_eglGetProcAddress(const char *name);
+void *override_GL_glXGetProcAddress(const char *name);
+void *override_GL_glXGetProcAddressARB(const char *name);
+void __dlclose(void *handle);
 
-static void *orig_handles[ARRAY_SIZE(wrapped_libs)];
+static struct libwrap {
+    const char *filename;
+    const char *symbol_prefix;
+    void *handle;
+} wrapped_libs[] = {
+    { "libGL.so", "GL", NULL },
+    { "libEGL.so", "EGL", NULL },
+    { "libGLESv2.so", "GLES2", NULL },
+};
 
 /* Match 'filename' against an internal list of libraries for which
  * libfips has wrappers.
  *
  * Returns true and sets *index_ret if a match is found.
  * Returns false if no match is found. */
-static bool
-find_wrapped_library_index(const char *filename, unsigned *index_ret)
+static struct libwrap *
+find_wrapped_library(const char *filename)
 {
     unsigned i;
 
     for (i = 0; i < ARRAY_SIZE(wrapped_libs); i++) {
-        if (strncmp(wrapped_libs[i], filename,
-                    strlen(wrapped_libs[i])) == 0)
-            {
-                *index_ret = i;
-                return true;
-            }
+        if (strncmp(wrapped_libs[i].filename, filename,
+                    strlen(wrapped_libs[i].filename)) == 0) {
+            return &wrapped_libs[i];
+        }
     }
 
-    return false;
-}
-
-/* Perform a dlopen on the libfips library itself.
- *
- * Many places in fips need to lookup symbols within the libfips
- * library itself, (and not in any other library). This function
- * provides a reliable way to get a handle for performing such
- * lookups.
- *
- * The returned handle can be passed to dlwrap_real_dlsym for the
- * lookups. */
-void *
-dlwrap_dlopen_libfips(void)
-{
-    Dl_info info;
-
-    /* We first find our own filename by looking up a function
-     * known to exist only in libfips. This function itself
-     * (dlwrap_dlopen_libfips) is a good one for that purpose. */
-    if (dladdr(dlwrap_dlopen_libfips, &info) == 0) {
-        fprintf(stderr, "Internal error: Failed to lookup filename of "
-                "libfips library with dladdr\n");
-        exit(1);
-    }
-
-    return dlwrap_real_dlopen(info.dli_fname, RTLD_NOW);
+    return NULL;
 }
 
 /* Many (most?) OpenGL programs dlopen libGL.so.1 rather than linking
@@ -101,7 +98,7 @@ void *
 dlopen(const char *filename, int flag)
 {
     void *ret;
-    unsigned index;
+    struct libwrap *wrap;
 
     /* Before deciding whether to redirect this dlopen to our own
      * library, we call the real dlopen. This assures that any
@@ -111,27 +108,29 @@ dlopen(const char *filename, int flag)
     ret = dlwrap_real_dlopen(filename, flag);
 
     /* If filename is not a wrapped library, just return real dlopen */
-    if (!find_wrapped_library_index(filename, &index))
+    wrap = find_wrapped_library(filename);
+    if (!wrap)
         return ret;
 
-    /* When the application dlopens any wrapped library starting
-     * with 'libGL', (whether libGL.so.1 or libGLESv2.so.2), let's
-     * continue to use that library handle for future lookups of
-     * OpenGL functions. */
-    if (STRNCMP_LITERAL(filename, "libGL") == 0)
-        glwrap_set_gl_handle(ret);
+    wrap->handle = ret;
 
-    assert(index < ARRAY_SIZE(orig_handles));
-    orig_handles[index] = ret;
+    /* We use wrapped_libs as our handles to libraries. */
+    return wrap;
+}
 
-    if (libfips_handle == NULL)
-        libfips_handle = dlwrap_dlopen_libfips();
+/**
+ * Wraps dlclose to hide our faked handles from it.
+ */
+void
+__dlclose(void *handle)
+{
+    struct libwrap *wrap = handle;
 
-    /* Otherwise, we return our own handle so that we can intercept
-     * future calls to dlsym. We encode the index in the return value
-     * so that we can later map back to the originally requested
-     * dlopen-handle if necessary. */
-    return libfips_handle + index;
+    if (wrap < wrapped_libs ||
+        wrap >= wrapped_libs + ARRAY_SIZE(wrapped_libs)) {
+        void (*real_dlclose)(void *handle) = dlwrap_real_dlsym(RTLD_NEXT, "__dlclose");
+        real_dlclose(handle);
+    }
 }
 
 void *
@@ -150,6 +149,22 @@ dlwrap_real_dlopen(const char *filename, int flag)
     return real_dlopen(filename, flag);
 }
 
+/**
+ * Return the dlsym() on the application's namespace for
+ * "override_<prefix>_<name>"
+ */
+static void *
+wrapped_dlsym(const char *prefix, const char *name)
+{
+    char *wrap_name;
+    void *symbol;
+
+    asprintf(&wrap_name, "override_%s_%s", prefix, name);
+    symbol = dlwrap_real_dlsym(RTLD_DEFAULT, wrap_name);
+    free(wrap_name);
+    return symbol;
+}
+
 /* Since we redirect dlopens of libGL.so and libEGL.so to libfips we
  * need to ensure that dlysm succeeds for all functions that might be
  * defined in the real, underlying libGL library. But we're far too
@@ -160,27 +175,24 @@ dlwrap_real_dlopen(const char *filename, int flag)
 void *
 dlsym(void *handle, const char *name)
 {
-    static void *symbol;
-    unsigned index;
+    struct libwrap *wrap = handle;
 
-    /* All gl* and egl* symbols are preferentially looked up in libfips. */
-    if (STRNCMP_LITERAL(name, "gl") == 0 || STRNCMP_LITERAL(name, "egl") == 0) {
-        symbol = dlwrap_real_dlsym(libfips_handle, name);
-        if (symbol)
-            return symbol;
+    /* Make sure that handle is actually one of our wrapped libs. */
+    if (wrap < wrapped_libs ||
+        wrap >= wrapped_libs + ARRAY_SIZE(wrapped_libs)) {
+        wrap = NULL;
     }
 
     /* Failing that, anything specifically requested from the
      * libfips library should be redirected to a real GL
      * library. */
 
-    /* We subtract the index back out of the handle (see the addition
-     * of the index in our wrapper for dlopen above) to then use the
-     * correct, original dlopen'ed handle for the library of
-     * interest. */
-    index = handle - libfips_handle;
-    if (index < ARRAY_SIZE(orig_handles)) {
-        return dlwrap_real_dlsym(orig_handles[index], name);
+    if (wrap) {
+        void *symbol = wrapped_dlsym(wrap->symbol_prefix, name);
+        if (symbol)
+            return symbol;
+        else
+            return dlwrap_real_dlsym(wrap->handle, name);
     }
 
     /* And anything else is some unrelated dlsym. Just pass it
@@ -250,4 +262,51 @@ dlwrap_real_dlsym(void *handle, const char *name)
     }
 
     return real_dlsym(handle, name);
+}
+
+void *
+override_GL_glXGetProcAddress(const char *name)
+{
+    void *symbol;
+
+    symbol = wrapped_dlsym("GL", name);
+    if (symbol)
+        return symbol;
+
+    return DEFER_TO_GL("libGL.so.1", override_GL_glXGetProcAddress,
+                       "glXGetProcAddress", (name));
+}
+
+void *
+override_GL_glXGetProcAddressARB(const char *name)
+{
+    void *symbol;
+
+    symbol = wrapped_dlsym("GL", name);
+    if (symbol)
+        return symbol;
+
+    return DEFER_TO_GL("libGL.so.1", override_GL_glXGetProcAddressARB,
+                       "glXGetProcAddressARB", (name));
+}
+
+void *
+override_EGL_eglGetProcAddress(const char *name)
+{
+    void *symbol;
+
+    if (!STRNCMP_LITERAL(name, "gl")) {
+        symbol = wrapped_dlsym("GLES2", name);
+        if (symbol)
+            return symbol;
+    }
+
+    if (!STRNCMP_LITERAL(name, "egl")) {
+        symbol = wrapped_dlsym("EGL", name);
+        if (symbol)
+            return symbol;
+    }
+
+    return DEFER_TO_GL("libEGL.so.1", override_EGL_eglGetProcAddress,
+                       "eglGetProcAddress", (name));
 }

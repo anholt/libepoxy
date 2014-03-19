@@ -53,5 +53,15 @@ dlwrap_dlopen_libfips(void);
 void *
 dlwrap_real_dlsym(void *handle, const char *symbol);
 
+#define DEFER_TO_GL(library, func, name, args)                          \
+({                                                                      \
+    void *lib = dlwrap_real_dlopen(library, RTLD_LAZY | RTLD_LOCAL);    \
+    typeof(&func) real_func = dlwrap_real_dlsym(lib, name);             \
+    /* gcc extension -- func's return value is the return value of      \
+     * the statement.                                                   \
+     */                                                                 \
+    real_func args;                                                     \
+})
+
 #endif
 

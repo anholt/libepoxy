@@ -179,6 +179,8 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
         abort();
     }
 
+    fprintf(stderr, "loading %s\n", lib_name);
+
 #ifdef _WIN32
     *handle = LoadLibraryA(lib_name);
 #else
