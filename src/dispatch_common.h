@@ -76,10 +76,23 @@
 #define WRAPPER_VISIBILITY static GLAPIENTRY
 #define WRAPPER(x) x ## _wrapped
 
-#if USING_DISPATCH_TABLE
-#define GEN_GLOBAL_REWRITE_PTR(name, args, passthrough)
-#define GEN_GLOBAL_REWRITE_PTR_RET(ret, name, args, passthrough)
+#define GEN_GLOBAL_REWRITE_PTR(name, args, passthrough)          \
+    static EPOXYCALL void                                        \
+    name##_global_rewrite_ptr args                               \
+    {                                                            \
+        name = (void *)name##_resolver();                        \
+        name passthrough;                                        \
+    }
 
+#define GEN_GLOBAL_REWRITE_PTR_RET(ret, name, args, passthrough) \
+    static EPOXYCALL ret                                         \
+    name##_global_rewrite_ptr args                               \
+    {                                                            \
+        name = (void *)name##_resolver();                        \
+        return name passthrough;                                 \
+    }
+
+#if USING_DISPATCH_TABLE
 #define GEN_DISPATCH_TABLE_REWRITE_PTR(name, args, passthrough)            \
     static EPOXYCALL void                                                  \
     name##_dispatch_table_rewrite_ptr args                                 \
@@ -115,21 +128,6 @@
     }
 
 #else
-#define GEN_GLOBAL_REWRITE_PTR(name, args, passthrough)          \
-    static EPOXYCALL void                                        \
-    name##_global_rewrite_ptr args                               \
-    {                                                            \
-        name = (void *)name##_resolver();                        \
-        name passthrough;                                        \
-    }
-
-#define GEN_GLOBAL_REWRITE_PTR_RET(ret, name, args, passthrough) \
-    static EPOXYCALL ret                                         \
-    name##_global_rewrite_ptr args                               \
-    {                                                            \
-        name = (void *)name##_resolver();                        \
-        return name passthrough;                                 \
-    }
 #define GEN_DISPATCH_TABLE_REWRITE_PTR(name, args, passthrough)
 #define GEN_DISPATCH_TABLE_REWRITE_PTR_RET(ret, name, args, passthrough)
 #define GEN_DISPATCH_TABLE_THUNK(name, args, passthrough)
@@ -176,9 +174,12 @@ extern void UNWRAPPED_PROTO(glEnd_unwrapped)(void);
 
 #if USING_DISPATCH_TABLE
 void gl_init_dispatch_table(void);
+void gl_switch_to_dispatch_table(void);
 void wgl_init_dispatch_table(void);
+void wgl_switch_to_dispatch_table(void);
 extern uint32_t gl_tls_index, gl_tls_size;
 extern uint32_t wgl_tls_index, wgl_tls_size;
+
 #define wglMakeCurrent_unwrapped epoxy_wglMakeCurrent_unwrapped
 #define wglMakeContextCurrentARB_unwrapped epoxy_wglMakeContextCurrentARB_unwrapped
 #define wglMakeContextCurrentEXT_unwrapped epoxy_wglMakeContextCurrentEXT_unwrapped
@@ -187,4 +188,4 @@ extern BOOL UNWRAPPED_PROTO(wglMakeCurrent_unwrapped)(HDC hdc, HGLRC hglrc);
 extern BOOL UNWRAPPED_PROTO(wglMakeContextCurrentARB_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
 extern BOOL UNWRAPPED_PROTO(wglMakeContextCurrentEXT_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
 extern BOOL UNWRAPPED_PROTO(wglMakeAssociatedContextCurrentAMD_unwrapped)(HGLRC hglrc);
-#endif
+#endif /* _WIN32_ */

@@ -611,16 +611,10 @@ class Generator(object):
                                                                        func.args_decl,
                                                                        func.args_list))
 
-    def write_linux_function_pointer(self, func):
+    def write_function_pointer(self, func):
         self.outln('{0}{1} epoxy_{2} = epoxy_{2}_global_rewrite_ptr;'.format(func.public,
                                                                              func.ptr_type,
                                                                              func.wrapped_name))
-        self.outln('')
-
-    def write_win32_function_pointer(self, func):
-        self.outln('{0}{1} epoxy_{2} = epoxy_{2}_dispatch_table_thunk;'.format(func.public,
-                                                                               func.ptr_type,
-                                                                               func.wrapped_name))
         self.outln('')
 
     def write_provider_enums(self):
@@ -728,6 +722,7 @@ class Generator(object):
         self.outln(' */')
         self.outln('')
         self.outln('#include <stdlib.h>')
+        self.outln('#include <string.h>')
         self.outln('#include <stdio.h>')
         self.outln('')
         self.outln('#include "dispatch_common.h"')
@@ -788,15 +783,20 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-        for func in self.sorted_functions:
-            self.write_win32_function_pointer(func)
+        self.outln('void')
+        self.outln('{0}_switch_to_dispatch_table(void)'.format(self.target))
+        self.outln('{')
 
-        self.outln('#else /* !USING_DISPATCH_TABLE */')
-
         for func in self.sorted_functions:
-            self.write_linux_function_pointer(func)
+            self.outln('    epoxy_{0} = epoxy_{0}_dispatch_table_thunk;'.format(func.wrapped_name))
+
+        self.outln('}')
+        self.outln('')
 
         self.outln('#endif /* !USING_DISPATCH_TABLE */')
+
+        for func in self.sorted_functions:
+            self.write_function_pointer(func)
 
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
 argparser.add_argument('files', metavar='file.xml', nargs='+', help='GL API XML files to be parsed')

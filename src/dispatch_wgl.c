@@ -27,6 +27,9 @@
 
 #include "dispatch_common.h"
 
+static bool first_context_current = false;
+static bool already_switched_to_dispatch_table = false;
+
 /**
  * If we can determine the WGL extension support from the current
  * context, then return that, otherwise give the answer that will just
@@ -63,16 +66,27 @@ epoxy_has_wgl_extension(HDC hdc, const char *ext)
  * Does the work necessary to update the win32 per-thread dispatch
  * tables when wglMakeCurrent() is called.
  *
- * Right now, we just reset everything to "do wglGetProcAddress()
- * again".  This could be improved in the future to track a resolved
- * dispatch table per context and reuse it when the context is made
- * current again.
+ * Right now, we use global function pointers until the second
+ * MakeCurrent occurs, at which point we switch to dispatch tables.
+ * This could be improved in the future to track a resolved dispatch
+ * table per context and reuse it when the context is made current
+ * again.
  */
 PUBLIC void
 epoxy_handle_external_wglMakeCurrent(void)
 {
-    gl_init_dispatch_table();
-    wgl_init_dispatch_table();
+    if (!first_context_current) {
+        first_context_current = true;
+    } else {
+        if (!already_switched_to_dispatch_table) {
+            already_switched_to_dispatch_table = true;
+            gl_switch_to_dispatch_table();
+            wgl_switch_to_dispatch_table();
+        }
+
+        gl_init_dispatch_table();
+        wgl_init_dispatch_table();
+    }
 }
 
 /**
@@ -96,6 +110,8 @@ DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
         if (wgl_tls_index == TLS_OUT_OF_INDEXES)
             return FALSE;
 
+        first_context_current = false;
+
         /* FALLTHROUGH */
 
     case DLL_THREAD_ATTACH:
@@ -105,7 +121,6 @@ DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
         data = LocalAlloc(LPTR, wgl_tls_size);
         TlsSetValue(wgl_tls_index, data);
 
-        epoxy_handle_external_wglMakeCurrent();
         break;
 
     case DLL_THREAD_DETACH:
