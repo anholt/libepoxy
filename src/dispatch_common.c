@@ -440,12 +440,10 @@ epoxy_get_bootstrap_proc_address(const char *name)
     /* If we already have a library that links to libglapi loaded,
      * use that.
      */
-    if (api.glx_handle)
+#if PLATFORM_HAS_GLX
+    if (api.glx_handle && glXGetCurrentContext())
         return epoxy_gl_dlsym(name);
-    if (api.gles2_handle)
-        return epoxy_gles2_dlsym(name);
-    if (api.gles1_handle)
-        return epoxy_gles1_dlsym(name);
+#endif
 
     /* If epoxy hasn't loaded any API-specific library yet, try to
      * figure out what API the context is using and use that library,
