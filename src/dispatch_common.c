@@ -517,6 +517,11 @@ epoxy_get_proc_address(const char *name)
 #else
     if (api.glx_handle && glXGetCurrentContext()) {
         return glXGetProcAddressARB((const GLubyte *)name);
+#if PLATFORM_HAS_EGL
+    } else if (api.egl_handle &&
+               epoxy_egl_get_current_gl_context_api() != EGL_NONE) {
+        return eglGetProcAddress(name);
+#endif /* PLATFORM_HAS_EGL */
     } else {
         /* If the application hasn't explicitly called some of our GLX
          * or EGL code but has presumably set up a context on its own,
@@ -536,7 +541,7 @@ epoxy_get_proc_address(const char *name)
 
 #if PLATFORM_HAS_EGL
         egl_gpa = dlsym(NULL, "eglGetProcAddress");
-        if (egl_gpa)
+        if (egl_gpa && epoxy_egl_get_current_gl_context_api() != EGL_NONE)
             return egl_gpa(name);
 #endif /* PLATFORM_HAS_EGL */
 
@@ -552,7 +557,7 @@ epoxy_get_proc_address(const char *name)
 #if PLATFORM_HAS_EGL
         egl_gpa = do_dlsym(&api.egl_handle, "libEGL.so.1", "eglGetProcAddress",
                            false);
-        if (egl_gpa)
+        if (egl_gpa && epoxy_egl_get_current_gl_context_api() != EGL_NONE)
             return egl_gpa(name);
 #endif /* PLATFORM_HAS_EGL */
 
