@@ -499,13 +499,7 @@ epoxy_get_proc_address(const char *name)
 #elif defined(__APPLE__)
     return epoxy_gl_dlsym(name);
 #else
-    if (api.egl_handle) {
-#if PLATFORM_HAS_EGL
-        return eglGetProcAddress(name);
-#else
-        return NULL;
-#endif
-    } else if (api.glx_handle) {
+    if (api.glx_handle && glXGetCurrentContext()) {
         return glXGetProcAddressARB((const GLubyte *)name);
     } else {
         /* If the application hasn't explicitly called some of our GLX
@@ -516,33 +510,35 @@ epoxy_get_proc_address(const char *name)
          * application's namespace, then use that.
          */
         PFNGLXGETPROCADDRESSARBPROC glx_gpa;
-
 #if PLATFORM_HAS_EGL
         PFNEGLGETPROCADDRESSPROC egl_gpa;
-        egl_gpa = dlsym(NULL, "eglGetProcAddress");
-        if (egl_gpa)
-            return egl_gpa(name);
 #endif
 
         glx_gpa = dlsym(NULL, "glXGetProcAddressARB");
-        if (glx_gpa)
+        if (glx_gpa && glXGetCurrentContext())
             return glx_gpa((const GLubyte *)name);
 
 #if PLATFORM_HAS_EGL
+        egl_gpa = dlsym(NULL, "eglGetProcAddress");
+        if (egl_gpa)
+            return egl_gpa(name);
+#endif /* PLATFORM_HAS_EGL */
+
         /* OK, couldn't find anything in the app's address space.
          * Presumably they dlopened with RTLD_LOCAL, which hides it
          * from us.  Just go dlopen()ing likely libraries and try them.
          */
+        glx_gpa = do_dlsym(&api.glx_handle, GLX_LIB, "glXGetProcAddressARB",
+                           false);
+        if (glx_gpa && glXGetCurrentContext())
+            return glx_gpa((const GLubyte *)name);
+
+#if PLATFORM_HAS_EGL
         egl_gpa = do_dlsym(&api.egl_handle, "libEGL.so.1", "eglGetProcAddress",
                            false);
         if (egl_gpa)
             return egl_gpa(name);
 #endif /* PLATFORM_HAS_EGL */
-
-        return do_dlsym(&api.glx_handle, GLX_LIB, "glXGetProcAddressARB",
-                        false);
-        if (glx_gpa)
-            return glx_gpa((const GLubyte *)name);
 
         errx(1, "Couldn't find GLX or EGL libraries.\n");
     }
