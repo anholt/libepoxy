@@ -264,7 +264,8 @@
     </enums>
 
     <enums namespace="EGL" start="0x3070-0x307F" vendor="NOK" comment="Reserved for Jani Vaarala">
-        <unused start="0x3070" end="0x307F"/>
+        <unused start="0x3070" end="0x307E"/>
+        <enum value="0x307F" name="EGL_Y_INVERTED_NOK"/>
     </enums>
 
     <enums namespace="EGL" start="0x3080-0x30AF" vendor="KHR">
@@ -1852,6 +1853,11 @@
         <extension name="EGL_MESA_platform_gbm" supported="egl">
             <require>
                 <enum name="EGL_PLATFORM_GBM_MESA"/>
+            </require>
+        </extension>
+        <extension name="EGL_NOK_texture_from_pixmap" supported="egl">
+            <require>
+                <enum name="EGL_Y_INVERTED_NOK"/>
             </require>
         </extension>
         <extension name="EGL_NV_3dvision_surface" supported="egl">
