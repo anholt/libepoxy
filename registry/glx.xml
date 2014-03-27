@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
     <!--
-    Copyright (c) 2013 The Khronos Group Inc.
+    Copyright (c) 2013-2014 The Khronos Group Inc.
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and/or associated documentation files (the
@@ -552,7 +552,19 @@ typedef unsigned __int64 uint64_t;
         <enum value="0x8180"        name="GLX_EXCHANGE_COMPLETE_INTEL"/>
         <enum value="0x8181"        name="GLX_COPY_COMPLETE_INTEL"/>
         <enum value="0x8182"        name="GLX_FLIP_COMPLETE_INTEL"/>
-            <unused start="0x8183" end="0x818F"/>
+        <enum value="0x8183"        name="GLX_RENDERER_VENDOR_ID_MESA"/>                               
+        <enum value="0x8184"        name="GLX_RENDERER_DEVICE_ID_MESA"/>                               
+        <enum value="0x8185"        name="GLX_RENDERER_VERSION_MESA"/>                                 
+        <enum value="0x8186"        name="GLX_RENDERER_ACCELERATED_MESA"/>                             
+        <enum value="0x8187"        name="GLX_RENDERER_VIDEO_MEMORY_MESA"/>                            
+        <enum value="0x8188"        name="GLX_RENDERER_UNIFIED_MEMORY_ARCHITECTURE_MESA"/>             
+        <enum value="0x8189"        name="GLX_RENDERER_PREFERRED_PROFILE_MESA"/>                       
+        <enum value="0x818A"        name="GLX_RENDERER_OPENGL_CORE_PROFILE_VERSION_MESA"/>             
+        <enum value="0x818B"        name="GLX_RENDERER_OPENGL_COMPATIBILITY_PROFILE_VERSION_MESA"/>    
+        <enum value="0x818C"        name="GLX_RENDERER_OPENGL_ES_PROFILE_VERSION_MESA"/>               
+        <enum value="0x818D"        name="GLX_RENDERER_OPENGL_ES2_PROFILE_VERSION_MESA"/>              
+        <enum value="0x818E"        name="GLX_RENDERER_ID_MESA"/>                                      
+            <unused start="0x818F"/>
     </enums>
 
 <!-- Please remember that new enumerant allocations must be obtained by
@@ -1104,6 +1116,15 @@ typedef unsigned __int64 uint64_t;
             <param>int *<name>value</name></param>
         </command>
         <command>
+            <proto><ptype>Bool</ptype> <name>glXQueryCurrentRendererIntegerMESA</name></proto>
+            <param>int <name>attribute</name></param> 
+            <param>unsigned int *<name>value</name></param>
+        </command>
+        <command>
+            <proto>const char *<name>glXQueryCurrentRendererStringMESA</name></proto>
+            <param>int <name>attribute</name></param>
+        </command>
+        <command>
             <proto>void <name>glXQueryDrawable</name></proto>
             <param><ptype>Display</ptype> *<name>dpy</name></param>
             <param><ptype>GLXDrawable</ptype> <name>draw</name></param>
@@ -1174,6 +1195,21 @@ typedef unsigned __int64 uint64_t;
             <param>int <name>screen</name></param>
             <param><ptype>GLuint</ptype> *<name>maxGroups</name></param>
             <param><ptype>GLuint</ptype> *<name>maxBarriers</name></param>
+        </command>
+        <command>
+            <proto><ptype>Bool</ptype> <name>glXQueryRendererIntegerMESA</name></proto>
+            <param><ptype>Display</ptype> *<name>dpy</name></param> 
+            <param>int <name>screen</name></param>
+            <param>int <name>renderer</name></param> 
+            <param>int <name>attribute</name></param>
+            <param>unsigned int *<name>value</name></param>
+        </command>
+        <command>
+            <proto>const char *<name>glXQueryRendererStringMESA</name></proto>
+            <param><ptype>Display</ptype> *<name>dpy</name></param> 
+            <param>int <name>screen</name></param>
+            <param>int <name>renderer</name></param> 
+            <param>int <name>attribute</name></param>
         </command>
         <command>
             <proto>const char *<name>glXQueryServerString</name></proto>
@@ -1984,6 +2020,26 @@ typedef unsigned __int64 uint64_t;
         <extension name="GLX_EXT_buffer_age" supported="glx">
             <require>
                 <enum name="GLX_BACK_BUFFER_AGE_EXT"/>
+            </require>
+        </extension>
+        <extension name="GLX_MESA_query_renderer" supported="glx">
+            <require>
+                <enum name="GLX_RENDERER_VENDOR_ID_MESA"/>                               
+                <enum name="GLX_RENDERER_DEVICE_ID_MESA"/>                               
+                <enum name="GLX_RENDERER_VERSION_MESA"/>                                 
+                <enum name="GLX_RENDERER_ACCELERATED_MESA"/>                             
+                <enum name="GLX_RENDERER_VIDEO_MEMORY_MESA"/>                            
+                <enum name="GLX_RENDERER_UNIFIED_MEMORY_ARCHITECTURE_MESA"/>             
+                <enum name="GLX_RENDERER_PREFERRED_PROFILE_MESA"/>                       
+                <enum name="GLX_RENDERER_OPENGL_CORE_PROFILE_VERSION_MESA"/>             
+                <enum name="GLX_RENDERER_OPENGL_COMPATIBILITY_PROFILE_VERSION_MESA"/>    
+                <enum name="GLX_RENDERER_OPENGL_ES_PROFILE_VERSION_MESA"/>               
+                <enum name="GLX_RENDERER_OPENGL_ES2_PROFILE_VERSION_MESA"/>              
+                <enum name="GLX_RENDERER_ID_MESA"/>                                      
+                <command name="glXQueryCurrentRendererIntegerMESA"/>
+                <command name="glXQueryCurrentRendererStringMESA"/>
+                <command name="glXQueryRendererIntegerMESA"/>
+                <command name="glXQueryRendererStringMESA"/>
             </require>
         </extension>
     </extensions>
