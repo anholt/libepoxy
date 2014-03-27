@@ -1127,6 +1127,13 @@
             <param><ptype>EGLint</ptype> <name>n_rects</name></param>
         </command>
         <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglSwapBuffersRegion2NOK</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLSurface</ptype> <name>surface</name></param>
+            <param><ptype>EGLint</ptype> <name>numRects</name></param>
+            <param>const <ptype>EGLint</ptype> *<name>rects</name></param>
+        </command>
+        <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglSwapInterval</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLint</ptype> <name>interval</name></param>
@@ -1853,6 +1860,11 @@
         <extension name="EGL_MESA_platform_gbm" supported="egl">
             <require>
                 <enum name="EGL_PLATFORM_GBM_MESA"/>
+            </require>
+        </extension>
+        <extension name="EGL_NOK_swap_region2" supported="egl">
+            <require>
+                <command name="eglSwapBuffersRegion2NOK"/>
             </require>
         </extension>
         <extension name="EGL_NOK_texture_from_pixmap" supported="egl">
