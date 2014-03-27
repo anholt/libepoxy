@@ -15,5 +15,7 @@ headerguards
 khronos_typedefs
 miscdefines
 wgl_core_and_exts
+wgl_usefontbitmaps
+wgl_usefontbitmaps_unicode
 *.log
 *.trs
