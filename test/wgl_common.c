@@ -92,6 +92,7 @@ make_window_and_test(int (*callback)(HDC hdc))
     HWND hwnd;
     HINSTANCE hcurrentinst = NULL;
     WNDCLASS window_class;
+    MSG msg;
 
     test_callback = callback;
 
@@ -120,7 +121,6 @@ make_window_and_test(int (*callback)(HDC hdc))
     ShowWindow(hwnd, SW_SHOWDEFAULT);
     UpdateWindow(hwnd);
 
-    MSG msg;
     while (GetMessage(&msg, NULL, 0, 0)) {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
