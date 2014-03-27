@@ -855,7 +855,14 @@ for file in args.files:
     name = os.path.basename(file).split('.xml')[0]
     generator = Generator(name)
     generator.parse(file)
+
     generator.drop_weird_glx_functions()
+
+    # This is an ANSI vs Unicode function, handled specially by
+    # include/epoxy/wgl.h
+    if 'wglUseFontBitmaps' in generator.functions:
+        del generator.functions['wglUseFontBitmaps']
+
     generator.sort_functions()
     generator.resolve_aliases()
     generator.fixup_bootstrap_function('glGetString',

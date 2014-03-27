@@ -46,6 +46,12 @@ extern "C" {
 #define __wglxext_h_
 #endif
 
+#ifdef UNICODE
+#define wglUseFontBitmaps wglUseFontBitmapsW
+#else
+#define wglUseFontBitmaps wglUseFontBitmapsA
+#endif
+
 #include "epoxy/wgl_generated.h"
 
 bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
