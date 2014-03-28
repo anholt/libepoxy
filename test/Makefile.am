@@ -64,6 +64,7 @@ check_BINARIES = $(EGL_AND_GLX_BIN)
 
 XFAIL_TESTS = \
         egl_and_glx_different_pointers_egl_glx \
+        glx_gles2 \
 	$()
 
 check_PROGRAMS = $(TESTS)
@@ -94,6 +95,7 @@ endif
 endif
 
 GLX_TESTS = \
+	glx_gles2 \
 	glx_beginend \
 	glx_public_api \
 	glx_public_api_core \
@@ -142,6 +144,10 @@ egl_and_glx_different_pointers_egl_glx_LDFLAGS = -rdynamic
 egl_and_glx_different_pointers_egl_glx_CPPFLAGS = $(AM_CPPFLAGS) -DUSE_EGL -DUSE_GLX
 
 glx_beginend_LDADD = $(EPOXY) libglx_common.la $(GL_LIBS) $(X11_LIBS)
+
+glx_gles2_SOURCES = glx_gles2.c dlwrap.c dlwrap.h
+glx_gles2_LDFLAGS = -rdynamic
+glx_gles2_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS) -ldl
 
 glx_public_api_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS)
 
