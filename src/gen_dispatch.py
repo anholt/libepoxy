@@ -535,7 +535,7 @@ class Generator(object):
 
     def write_function_ptr_resolver(self, func):
         self.outln('static {0}'.format(func.ptr_type))
-        self.outln('epoxy_{0}_resolver(void)'.format(func.name))
+        self.outln('epoxy_{0}_resolver(void)'.format(func.wrapped_name))
         self.outln('{')
 
         providers = []
@@ -594,70 +594,27 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-    def write_dispatch_table_thunk(self, func):
-        # Writes out the thunk that fetches the (win32) dispatch table
-        # and calls through its entrypoint.
-
-        dispatch_table_entry = 'dispatch_table->p{0}'.format(func.name)
-
-        self.outln('static __stdcall {0}'.format(func.ret_type))
-        self.outln('epoxy_{0}_dispatch_table_thunk({1})'.format(func.wrapped_name, func.args_decl))
-        self.outln('{')
-        self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
-        self.outln('')
+    def write_thunks(self, func):
+        # Writes out the function that's initially plugged into the
+        # global function pointer, which resolves, updates the global
+        # function pointer, and calls down to it.
+        #
+        # It also writes out the actual initialized global function
+        # pointer.
         if func.ret_type == 'void':
-            self.outln('    {0}({1});'.format(dispatch_table_entry, func.args_list))
+            self.outln('GEN_THUNKS({0}, ({1}), ({2}))'.format(func.wrapped_name,
+                                                              func.args_decl,
+                                                              func.args_list))
         else:
-            self.outln('    return {0}({1});'.format(dispatch_table_entry, func.args_list))
-        self.outln('}')
-        self.outln('')
-
-    def write_dispatch_table_rewrite_stub(self, func):
-        # Writes out the initial dispatch table function pointer value
-        # that that resolves, writes the resolved value into the
-        # dispatch table, and calls down to it.
-
-        dispatch_table_entry = 'dispatch_table->p{0}'.format(func.name)
-
-        self.outln('static GLAPIENTRY {0}'.format(func.ret_type))
-        self.outln('epoxy_{0}_rewrite_stub({1})'.format(func.name, func.args_decl))
-        self.outln('{')
-        self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
-        self.outln('')
-        self.outln('    dispatch_table->p{0} = epoxy_{0}_resolver();'.format(func.name))
-        self.outln('')
-
-        if func.ret_type == 'void':
-            self.outln('    dispatch_table->p{0}({1});'.format(func.name, func.args_list))
-        else:
-            self.outln('    return dispatch_table->p{0}({1});'.format(func.name, func.args_list))
-        self.outln('}')
-        self.outln('')
+            self.outln('GEN_THUNKS_RET({0}, {1}, ({2}), ({3}))'.format(func.ret_type,
+                                                                       func.wrapped_name,
+                                                                       func.args_decl,
+                                                                       func.args_list))
 
     def write_linux_function_pointer(self, func):
-        # Writes out the function for resolving and updating the
-        # global function pointer, plus the actual global function
-        # pointer initializer.
-
-        self.outln('static {0}'.format(func.ret_type))
-        self.outln('epoxy_{0}_rewrite_ptr({1})'.format(func.wrapped_name,
-                                                       func.args_decl))
-        self.outln('{')
-        self.outln('    epoxy_{0} = (void *)epoxy_{1}_resolver();'.format(func.wrapped_name,
-                                                                          func.name))
-
-        if func.ret_type == 'void':
-            self.outln('    epoxy_{0}({1});'.format(func.wrapped_name,
-                                                    func.args_list))
-        else:
-            self.outln('    return epoxy_{0}({1});'.format(func.wrapped_name,
-                                                           func.args_list))
-
-        self.outln('}')
-
-        self.outln('{0}{1} epoxy_{2} = epoxy_{2}_rewrite_ptr;'.format(func.public,
-                                                                      func.ptr_type,
-                                                                      func.wrapped_name))
+        self.outln('{0}{1} epoxy_{2} = epoxy_{2}_global_rewrite_ptr;'.format(func.public,
+                                                                             func.ptr_type,
+                                                                             func.wrapped_name))
         self.outln('')
 
     def write_win32_function_pointer(self, func):
@@ -779,7 +736,7 @@ class Generator(object):
 
         self.outln('struct dispatch_table {')
         for func in self.sorted_functions:
-            self.outln('    {0} p{1};'.format(func.ptr_type, func.name))
+            self.outln('    {0} epoxy_{1};'.format(func.ptr_type, func.wrapped_name))
         self.outln('};')
         self.outln('')
 
@@ -801,17 +758,14 @@ class Generator(object):
         for func in self.sorted_functions:
             self.write_function_ptr_resolver(func)
 
+        for func in self.sorted_functions:
+            self.write_thunks(func)
+
         self.outln('#if USING_DISPATCH_TABLE')
-
-        for func in self.sorted_functions:
-            self.write_dispatch_table_rewrite_stub(func)
-
-        for func in self.sorted_functions:
-            self.write_dispatch_table_thunk(func)
 
         self.outln('static struct dispatch_table resolver_table = {')
         for func in self.sorted_functions:
-            self.outln('    .p{0} = epoxy_{0}_rewrite_stub,'.format(func.name))
+            self.outln('    .{0} = epoxy_{0}_dispatch_table_rewrite_ptr,'.format(func.wrapped_name))
         self.outln('};')
         self.outln('')
 
