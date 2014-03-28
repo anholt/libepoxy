@@ -94,10 +94,11 @@ endif
 endif
 
 GLX_TESTS = \
-	glx_gles2 \
+	glx_alias_prefer_same_name \
 	glx_beginend \
 	glx_public_api \
 	glx_public_api_core \
+	glx_gles2 \
 	glx_glxgetprocaddress_nocontext \
 	glx_has_extension_nocontext \
 	glx_static \
@@ -142,6 +143,10 @@ egl_and_glx_different_pointers_egl_glx_SOURCES = egl_and_glx_different_pointers.
 egl_and_glx_different_pointers_egl_glx_LDADD = libegl_common.la libglx_common.la $(DLOPEN_LIBS) $(EPOXY) $(X11_LIBS)
 egl_and_glx_different_pointers_egl_glx_LDFLAGS = -rdynamic
 egl_and_glx_different_pointers_egl_glx_CPPFLAGS = $(AM_CPPFLAGS) -DUSE_EGL -DUSE_GLX
+
+glx_alias_prefer_same_name_SOURCES = glx_gles2.c dlwrap.c dlwrap.h
+glx_alias_prefer_same_name_LDFLAGS = -rdynamic
+glx_alias_prefer_same_name_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS) -ldl
 
 glx_beginend_LDADD = $(EPOXY) libglx_common.la $(GL_LIBS) $(X11_LIBS)
 

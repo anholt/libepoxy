@@ -4,6 +4,7 @@ egl_and_glx_different_pointers_glx
 egl_has_extension_nocontext
 egl_gles1_without_glx
 egl_gles2_without_glx
+glx_alias_prefer_same_name
 glx_beginend
 glx_gles2
 glx_glxgetprocaddress_nocontext

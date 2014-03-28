@@ -540,9 +540,12 @@ class Generator(object):
 
         providers = []
         # Make a local list of all the providers for this alias group
-        for provider in func.providers.values():
+        alias_root = func;
+        if func.alias_func:
+            alias_root = func.alias_func
+        for provider in alias_root.providers.values():
             providers.append(provider)
-        for alias_func in func.alias_exts:
+        for alias_func in alias_root.alias_exts:
             for provider in alias_func.providers.values():
                 providers.append(provider)
 
@@ -561,6 +564,10 @@ class Generator(object):
             alias_func = self.functions[half_aliases[func.name]]
             for provider in alias_func.providers.values():
                 providers.append(provider)
+
+        def provider_sort(provider):
+            return (provider.name != func.name, provider.name)
+        providers.sort(key=provider_sort);
 
         if len(providers) != 1:
             self.outln('    static const enum {0}_provider providers[] = {{'.format(self.target))
@@ -591,7 +598,7 @@ class Generator(object):
         # Writes out the thunk that fetches the (win32) dispatch table
         # and calls through its entrypoint.
 
-        dispatch_table_entry = 'dispatch_table->p{0}'.format(func.alias_name)
+        dispatch_table_entry = 'dispatch_table->p{0}'.format(func.name)
 
         self.outln('static __stdcall {0}'.format(func.ret_type))
         self.outln('epoxy_{0}_dispatch_table_thunk({1})'.format(func.wrapped_name, func.args_decl))
@@ -637,7 +644,7 @@ class Generator(object):
                                                        func.args_decl))
         self.outln('{')
         self.outln('    epoxy_{0} = (void *)epoxy_{1}_resolver();'.format(func.wrapped_name,
-                                                                          func.alias_name))
+                                                                          func.name))
 
         if func.ret_type == 'void':
             self.outln('    epoxy_{0}({1});'.format(func.wrapped_name,
@@ -772,9 +779,7 @@ class Generator(object):
 
         self.outln('struct dispatch_table {')
         for func in self.sorted_functions:
-            # Aliases don't get their own slot, since they use a shared resolver.
-            if func.alias_name == func.name:
-                self.outln('    {0} p{1};'.format(func.ptr_type, func.name))
+            self.outln('    {0} p{1};'.format(func.ptr_type, func.name))
         self.outln('};')
         self.outln('')
 
@@ -794,23 +799,19 @@ class Generator(object):
         self.write_provider_resolver()
 
         for func in self.sorted_functions:
-            if not func.alias_func:
-                self.write_function_ptr_resolver(func)
+            self.write_function_ptr_resolver(func)
 
         self.outln('#if USING_DISPATCH_TABLE')
 
         for func in self.sorted_functions:
-            if not func.alias_func:
-                self.write_dispatch_table_rewrite_stub(func)
+            self.write_dispatch_table_rewrite_stub(func)
 
         for func in self.sorted_functions:
             self.write_dispatch_table_thunk(func)
 
         self.outln('static struct dispatch_table resolver_table = {')
         for func in self.sorted_functions:
-            # Aliases don't get their own slot, since they use a shared resolver.
-            if func.alias_name == func.name:
-                self.outln('    .p{0} = epoxy_{0}_rewrite_stub,'.format(func.name))
+            self.outln('    .p{0} = epoxy_{0}_rewrite_stub,'.format(func.name))
         self.outln('};')
         self.outln('')
 
