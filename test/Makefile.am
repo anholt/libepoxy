@@ -110,6 +110,7 @@ endif
 if BUILD_WGL
 WGL_TESTS = \
 	wgl_core_and_exts$(EXEEXT) \
+	wgl_per_context_funcptrs$(EXEEXT) \
 	wgl_usefontbitmaps$(EXEEXT) \
 	wgl_usefontbitmaps_unicode$(EXEEXT) \
 	$()
@@ -171,6 +172,8 @@ khronos_typedefs_SOURCES = \
 	$()
 
 wgl_core_and_exts_LDADD = $(EPOXY) libwgl_common.la -lgdi32
+
+wgl_per_context_funcptrs_LDADD = $(EPOXY) libwgl_common.la -lgdi32
 
 wgl_usefontbitmaps_LDADD = $(EPOXY) libwgl_common.la -lgdi32
 wgl_usefontbitmaps_unicode_SOURCES = wgl_usefontbitmaps.c
