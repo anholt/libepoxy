@@ -185,9 +185,13 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
     pthread_mutex_lock(&api.mutex);
     if (!*handle) {
         *handle = dlopen(lib_name, RTLD_LAZY | RTLD_LOCAL);
-        if (!*handle && exit_on_fail) {
-            fprintf(stderr, "Couldn't open %s: %s\n", lib_name, dlerror());
-            exit(1);
+        if (!*handle) {
+            if (exit_on_fail) {
+                fprintf(stderr, "Couldn't open %s: %s\n", lib_name, dlerror());
+                exit(1);
+            } else {
+                (void)dlerror();
+            }
         }
     }
     pthread_mutex_unlock(&api.mutex);
@@ -201,6 +205,7 @@ do_dlsym(void **handle, const char *lib_name, const char *name,
          bool exit_on_fail)
 {
     void *result;
+    const char *error = "";
 
     if (!get_dlopen_handle(handle, lib_name, exit_on_fail))
         return NULL;
@@ -209,9 +214,11 @@ do_dlsym(void **handle, const char *lib_name, const char *name,
     result = GetProcAddress(*handle, name);
 #else
     result = dlsym(*handle, name);
+    if (!result)
+        error = dlerror();
 #endif
     if (!result && exit_on_fail) {
-        fprintf(stderr,"%s() not found in %s\n", name, lib_name);
+        fprintf(stderr,"%s() not found in %s: %s\n", name, lib_name, error);
         exit(1);
     }
 
