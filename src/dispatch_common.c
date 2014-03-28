@@ -439,13 +439,21 @@ epoxy_gl_dlsym(const char *name)
 void *
 epoxy_gles1_dlsym(const char *name)
 {
-    return do_dlsym(&api.gles1_handle, "libGLESv1_CM.so.1", name, true);
+    if (epoxy_current_context_is_glx()) {
+        return epoxy_get_proc_address(name);
+    } else {
+        return do_dlsym(&api.gles1_handle, "libGLESv1_CM.so.1", name, true);
+    }
 }
 
 void *
 epoxy_gles2_dlsym(const char *name)
 {
-    return do_dlsym(&api.gles2_handle, "libGLESv2.so.2", name, true);
+    if (epoxy_current_context_is_glx()) {
+        return epoxy_get_proc_address(name);
+    } else {
+        return do_dlsym(&api.gles2_handle, "libGLESv2.so.2", name, true);
+    }
 }
 
 /**
@@ -461,12 +469,16 @@ epoxy_gles2_dlsym(const char *name)
 void *
 epoxy_gles3_dlsym(const char *name)
 {
-    void *func = do_dlsym(&api.gles2_handle, "libGLESv2.so.2", name, false);
+    if (epoxy_current_context_is_glx()) {
+        return epoxy_get_proc_address(name);
+    } else {
+        void *func = do_dlsym(&api.gles2_handle, "libGLESv2.so.2", name, false);
 
-    if (func)
-        return func;
+        if (func)
+            return func;
 
-    return epoxy_get_proc_address(name);
+        return epoxy_get_proc_address(name);
+    }
 }
 
 /**
