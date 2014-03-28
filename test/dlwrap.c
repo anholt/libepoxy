@@ -79,6 +79,9 @@ find_wrapped_library(const char *filename)
 {
     unsigned i;
 
+    if (!filename)
+        return NULL;
+
     for (i = 0; i < ARRAY_SIZE(wrapped_libs); i++) {
         if (strncmp(wrapped_libs[i].filename, filename,
                     strlen(wrapped_libs[i].filename)) == 0) {
