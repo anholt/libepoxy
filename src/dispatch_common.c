@@ -158,6 +158,11 @@ static struct api api = {
 
 static bool library_initialized;
 
+#if PLATFORM_HAS_EGL
+static EGLenum
+epoxy_egl_get_current_gl_context_api(void);
+#endif
+
 static void
 library_init(void) __attribute__((constructor));
 
@@ -327,6 +332,58 @@ epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode)
 
         return false;
     }
+}
+
+/**
+ * Tests whether the currently bound context is EGL or GLX, trying to
+ * avoid loading libraries unless necessary.
+ */
+static bool
+epoxy_current_context_is_glx(void)
+{
+#if !PLATFORM_HAS_GLX
+    return false;
+#else
+    /* If the application hasn't explicitly called some of our GLX
+     * or EGL code but has presumably set up a context on its own,
+     * then we need to figure out how to getprocaddress anyway.
+     *
+     * If there's a public GetProcAddress loaded in the
+     * application's namespace, then use that.
+     */
+    PFNGLXGETPROCADDRESSARBPROC glx_gpa;
+#if PLATFORM_HAS_EGL
+    PFNEGLGETPROCADDRESSPROC egl_gpa;
+#endif
+
+    glx_gpa = dlsym(NULL, "glXGetProcAddressARB");
+    if (glx_gpa && glXGetCurrentContext())
+        return true;
+
+#if PLATFORM_HAS_EGL
+    egl_gpa = dlsym(NULL, "eglGetProcAddress");
+    if (egl_gpa && epoxy_egl_get_current_gl_context_api() != EGL_NONE)
+        return false;
+#endif /* PLATFORM_HAS_EGL */
+
+    /* OK, couldn't find anything in the app's address space.
+     * Presumably they dlopened with RTLD_LOCAL, which hides it
+     * from us.  Just go dlopen()ing likely libraries and try them.
+     */
+    glx_gpa = do_dlsym(&api.glx_handle, GLX_LIB, "glXGetProcAddressARB",
+                       false);
+    if (glx_gpa && glXGetCurrentContext())
+        return true;
+
+#if PLATFORM_HAS_EGL
+    egl_gpa = do_dlsym(&api.egl_handle, "libEGL.so.1", "eglGetProcAddress",
+                       false);
+    if (egl_gpa && epoxy_egl_get_current_gl_context_api() != EGL_NONE)
+        return false;
+#endif /* PLATFORM_HAS_EGL */
+
+    return false;
+#endif /* PLATFORM_HAS_GLX */
 }
 
 /**
@@ -523,54 +580,24 @@ epoxy_get_proc_address(const char *name)
 #elif defined(__APPLE__)
     return epoxy_gl_dlsym(name);
 #else
-    if (api.glx_handle && glXGetCurrentContext()) {
+    if (epoxy_current_context_is_glx()) {
         return glXGetProcAddressARB((const GLubyte *)name);
-#if PLATFORM_HAS_EGL
-    } else if (api.egl_handle &&
-               epoxy_egl_get_current_gl_context_api() != EGL_NONE) {
-        return eglGetProcAddress(name);
-#endif /* PLATFORM_HAS_EGL */
     } else {
-        /* If the application hasn't explicitly called some of our GLX
-         * or EGL code but has presumably set up a context on its own,
-         * then we need to figure out how to getprocaddress anyway.
-         *
-         * If there's a public GetProcAddress loaded in the
-         * application's namespace, then use that.
-         */
-        PFNGLXGETPROCADDRESSARBPROC glx_gpa;
 #if PLATFORM_HAS_EGL
-        PFNEGLGETPROCADDRESSPROC egl_gpa;
+        if (api.glx_handle && glXGetCurrentContext()) {
+            GLenum egl_api = epoxy_egl_get_current_gl_context_api();
+
+            switch (egl_api) {
+            case EGL_OPENGL_API:
+            case EGL_OPENGL_ES_API:
+                return eglGetProcAddress(name);
+            case EGL_NONE:
+                break;
+            }
+        }
 #endif
-
-        glx_gpa = dlsym(NULL, "glXGetProcAddressARB");
-        if (glx_gpa && glXGetCurrentContext())
-            return glx_gpa((const GLubyte *)name);
-
-#if PLATFORM_HAS_EGL
-        egl_gpa = dlsym(NULL, "eglGetProcAddress");
-        if (egl_gpa && epoxy_egl_get_current_gl_context_api() != EGL_NONE)
-            return egl_gpa(name);
-#endif /* PLATFORM_HAS_EGL */
-
-        /* OK, couldn't find anything in the app's address space.
-         * Presumably they dlopened with RTLD_LOCAL, which hides it
-         * from us.  Just go dlopen()ing likely libraries and try them.
-         */
-        glx_gpa = do_dlsym(&api.glx_handle, GLX_LIB, "glXGetProcAddressARB",
-                           false);
-        if (glx_gpa && glXGetCurrentContext())
-            return glx_gpa((const GLubyte *)name);
-
-#if PLATFORM_HAS_EGL
-        egl_gpa = do_dlsym(&api.egl_handle, "libEGL.so.1", "eglGetProcAddress",
-                           false);
-        if (egl_gpa && epoxy_egl_get_current_gl_context_api() != EGL_NONE)
-            return egl_gpa(name);
-#endif /* PLATFORM_HAS_EGL */
-
-        errx(1, "Couldn't find GLX or EGL libraries.\n");
     }
+    errx(1, "Couldn't find current GLX or EGL context.\n");
 #endif
 }
 
