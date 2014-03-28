@@ -80,6 +80,7 @@ case $host_os in
         build_egl=no
         build_glx=yes
         build_wgl=no
+        build_apple=yes
         has_znow=no
         EPOXY_LINK_LIBS=""
         ;;
@@ -108,6 +109,11 @@ fi
 AM_CONDITIONAL(BUILD_WGL, test x$build_wgl = xyes)
 if test x$build_wgl = xyes; then
     AC_DEFINE([BUILD_WGL], [1], [build WGL tests])
+fi
+
+AM_CONDITIONAL(BUILD_APPLE, test x$build_apple = xyes)
+if test x$build_apple = xyes; then
+    AC_DEFINE([BUILD_APPLE], [1], [build APPLE is apple (for testing)])
 fi
 
 AM_CONDITIONAL(HAS_ZNOW, test x$has_znow = xyes)

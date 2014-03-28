@@ -85,6 +85,7 @@ endif
 
 if BUILD_EGL
 if BUILD_GLX
+if !BUILD_APPLE
 EGL_AND_GLX_TESTS = \
 	egl_and_glx_different_pointers_egl_glx \
 	egl_and_glx_different_pointers_egl \
@@ -92,17 +93,24 @@ EGL_AND_GLX_TESTS = \
         $()
 endif
 endif
+endif
+
+if !BUILD_APPLE
+GLX_NON_APPLE_TESTS = \
+	glx_alias_prefer_same_name \
+	glx_gles2 \
+        $()
+endif
 
 GLX_TESTS = \
-	glx_alias_prefer_same_name \
 	glx_beginend \
 	glx_public_api \
 	glx_public_api_core \
-	glx_gles2 \
 	glx_glxgetprocaddress_nocontext \
 	glx_has_extension_nocontext \
 	glx_static \
         $(GLX_SHARED_ZNOW) \
+        $(GLX_NON_APPLE_TESTS) \
 	$()
 
 GLX_LIBS = libglx_common.la
