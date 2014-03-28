@@ -167,11 +167,11 @@ library_init(void)
     library_initialized = true;
 }
 
-static void
+static bool
 get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
 {
     if (*handle)
-        return;
+        return true;
 
     if (!library_initialized) {
         fprintf(stderr,
@@ -192,6 +192,8 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
     }
     pthread_mutex_unlock(&api.mutex);
 #endif
+
+    return *handle != NULL;
 }
 
 static void *
@@ -200,7 +202,8 @@ do_dlsym(void **handle, const char *lib_name, const char *name,
 {
     void *result;
 
-    get_dlopen_handle(handle, lib_name, exit_on_fail);
+    if (!get_dlopen_handle(handle, lib_name, exit_on_fail))
+        return NULL;
 
 #ifdef _WIN32
     result = GetProcAddress(*handle, name);
