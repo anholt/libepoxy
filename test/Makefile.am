@@ -63,6 +63,7 @@ TESTS = \
 check_BINARIES = $(EGL_AND_GLX_BIN)
 
 XFAIL_TESTS = \
+        egl_gl \
         egl_and_glx_different_pointers_egl_glx \
 	$()
 
@@ -71,6 +72,7 @@ check_PROGRAMS = $(TESTS)
 if BUILD_EGL
 EGL_TESTS = \
 	egl_has_extension_nocontext \
+	egl_gl \
 	egl_gles1_without_glx \
 	egl_gles2_without_glx \
 	$()
@@ -128,6 +130,8 @@ WGL_LIBS = libwgl_common.la
 endif
 
 egl_has_extension_nocontext_LDADD = $(EPOXY) libegl_common.la $(X11_LIBS)
+
+egl_gl_LDADD = $(EPOXY) $(DLOPEN_LIBS) libegl_common.la $(X11_LIBS)
 
 egl_gles1_without_glx_CPPFLAGS = $(AM_CPPFLAGS) -DGLES_VERSION=1
 egl_gles1_without_glx_SOURCES = egl_without_glx.c
