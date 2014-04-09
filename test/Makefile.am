@@ -63,7 +63,6 @@ TESTS = \
 check_BINARIES = $(EGL_AND_GLX_BIN)
 
 XFAIL_TESTS = \
-        egl_gl \
         egl_and_glx_different_pointers_egl_glx \
 	$()
 

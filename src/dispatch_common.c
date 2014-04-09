@@ -600,16 +600,14 @@ epoxy_get_proc_address(const char *name)
         return glXGetProcAddressARB((const GLubyte *)name);
     } else {
 #if PLATFORM_HAS_EGL
-        if (api.glx_handle && glXGetCurrentContext()) {
-            GLenum egl_api = epoxy_egl_get_current_gl_context_api();
+        GLenum egl_api = epoxy_egl_get_current_gl_context_api();
 
-            switch (egl_api) {
-            case EGL_OPENGL_API:
-            case EGL_OPENGL_ES_API:
-                return eglGetProcAddress(name);
-            case EGL_NONE:
-                break;
-            }
+        switch (egl_api) {
+        case EGL_OPENGL_API:
+        case EGL_OPENGL_ES_API:
+            return eglGetProcAddress(name);
+        case EGL_NONE:
+            break;
         }
 #endif
     }
