@@ -525,7 +525,7 @@ class Generator(object):
         self.write_function_ptr_typedefs()
 
         for func in self.sorted_functions:
-            self.outln('extern EPOXYAPIENTRY {0} (*epoxy_{1})({2});'.format(func.ret_type,
+            self.outln('extern EPOXY_IMPORTEXPORT {0} (EPOXY_CALLSPEC *epoxy_{1})({2});'.format(func.ret_type,
                                                                                      func.name,
                                                                                      func.args_decl))
             self.outln('')

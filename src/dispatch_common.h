@@ -27,18 +27,17 @@
 #define PLATFORM_HAS_EGL 0
 #define PLATFORM_HAS_GLX 0
 #define PLATFORM_HAS_WGL 1
-#define EPOXYCALL __stdcall
-#define EPOXYAPIENTRY __declspec(dllexport) EPOXYCALL
+#define EPOXY_IMPORTEXPORT __declspec(dllexport)
 #elif defined(__APPLE__)
 #define PLATFORM_HAS_EGL 0
 #define PLATFORM_HAS_GLX 1
 #define PLATFORM_HAS_WGL 0
-#define EPOXYCALL
+#define EPOXY_IMPORTEXPORT
 #else
 #define PLATFORM_HAS_EGL 1
 #define PLATFORM_HAS_GLX 1
 #define PLATFORM_HAS_WGL 0
-#define EPOXYCALL
+#define EPOXY_IMPORTEXPORT
 #endif
 
 #include "epoxy/gl.h"
@@ -77,7 +76,7 @@
 #define WRAPPER(x) x ## _wrapped
 
 #define GEN_GLOBAL_REWRITE_PTR(name, args, passthrough)          \
-    static EPOXYCALL void                                        \
+    static EPOXY_CALLSPEC void                                        \
     name##_global_rewrite_ptr args                               \
     {                                                            \
         name = (void *)name##_resolver();                        \
@@ -85,7 +84,7 @@
     }
 
 #define GEN_GLOBAL_REWRITE_PTR_RET(ret, name, args, passthrough) \
-    static EPOXYCALL ret                                         \
+    static EPOXY_CALLSPEC ret                                    \
     name##_global_rewrite_ptr args                               \
     {                                                            \
         name = (void *)name##_resolver();                        \
@@ -94,7 +93,7 @@
 
 #if USING_DISPATCH_TABLE
 #define GEN_DISPATCH_TABLE_REWRITE_PTR(name, args, passthrough)            \
-    static EPOXYCALL void                                                  \
+    static EPOXY_CALLSPEC void                                             \
     name##_dispatch_table_rewrite_ptr args                                 \
     {                                                                      \
         struct dispatch_table *dispatch_table = get_dispatch_table();      \
@@ -104,7 +103,7 @@
     }
 
 #define GEN_DISPATCH_TABLE_REWRITE_PTR_RET(ret, name, args, passthrough)   \
-    static EPOXYCALL ret                                                   \
+    static EPOXY_CALLSPEC ret                                              \
     name##_dispatch_table_rewrite_ptr args                                 \
     {                                                                      \
         struct dispatch_table *dispatch_table = get_dispatch_table();      \
@@ -114,14 +113,14 @@
     }
 
 #define GEN_DISPATCH_TABLE_THUNK(name, args, passthrough)                  \
-    static EPOXYCALL void                                                  \
+    static EPOXY_CALLSPEC void                                             \
     name##_dispatch_table_thunk args                                       \
     {                                                                      \
         get_dispatch_table()->name passthrough;                            \
     }
 
 #define GEN_DISPATCH_TABLE_THUNK_RET(ret, name, args, passthrough)         \
-    static EPOXYCALL ret                                                   \
+    static EPOXY_CALLSPEC ret                                              \
     name##_dispatch_table_thunk args                                       \
     {                                                                      \
         return get_dispatch_table()->name passthrough;                     \

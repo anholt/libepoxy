@@ -51,7 +51,8 @@ extern "C" {
 /* APIENTRY and GLAPIENTRY are not used on Linux or Mac. */
 #define APIENTRY
 #define GLAPIENTRY
-#define EPOXYAPIENTRY
+#define EPOXY_IMPORTEXPORT
+#define EPOXY_CALLSPEC
 #define GLAPI
 #define KHRONOS_APIENTRY
 #define KHRONOS_APICALL
@@ -65,8 +66,12 @@ extern "C" {
 #define GLAPIENTRY APIENTRY
 #endif
 
-#ifndef EPOXYAPIENTRY
-#define EPOXYAPIENTRY __declspec(dllimport) __stdcall
+#ifndef EPOXY_CALLSPEC
+#define EPOXY_CALLSPEC __stdcall
+#endif
+
+#ifndef EPOXY_IMPORTEXPORT
+#define EPOXY_IMPORTEXPORT __declspec(dllimport)
 #endif
 
 #ifndef GLAPI
