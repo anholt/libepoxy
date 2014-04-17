@@ -74,6 +74,7 @@
         <type requires="khrplatform">typedef khronos_utime_nanoseconds_t <name>EGLTimeNV</name>;</type>
         <type requires="khrplatform">typedef khronos_utime_nanoseconds_t <name>EGLuint64NV</name>;</type>
         <type requires="khrplatform">typedef khronos_uint64_t <name>EGLuint64KHR</name>;</type>
+        <type requires="khrplatform">typedef khronos_uint64_t <name>EGLuint64MESA</name>;</type>
         <type>typedef int <name>EGLNativeFileDescriptorKHR</name>;</type>
         <type requires="khrplatform">typedef khronos_ssize_t <name>EGLsizeiANDROID</name>;</type>
         <type requires="EGLsizeiANDROID">typedef void (*<name>EGLSetBlobFuncANDROID</name>) (const void *key, EGLsizeiANDROID keySize, const void *value, EGLsizeiANDROID valueSize);</type>
@@ -935,6 +936,23 @@
             <param><ptype>EGLint</ptype> *<name>handle</name></param>
             <param><ptype>EGLint</ptype> *<name>stride</name></param>
         </command>
+        <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglExportDMABUFImageMESA</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLImageKHR</ptype> <name>image</name></param>
+            <param><ptype>EGLNativeFileDescriptorKHR</ptype> *<name>fd</name></param>
+            <param><ptype>EGLint</ptype> *<name>strides</name></param>
+            <param><ptype>EGLint</ptype> *<name>offsets</name></param>
+        </command>
+        <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglExportDMABUFImageQueryMESA</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLImageKHR</ptype> <name>image</name></param>
+            <param><ptype>EGLint</ptype> *<name>fourcc</name></param>
+            <param><ptype>EGLint</ptype> *<name>num_planes</name></param>
+            <param><ptype>EGLuint64MESA</ptype> *<name>modifiers</name></param>
+        </command>
+
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglFenceNV</name></proto>
             <param><ptype>EGLSyncNV</ptype> <name>sync</name></param>
@@ -2106,6 +2124,12 @@
                 <enum name="EGL_DRM_BUFFER_USE_SHARE_MESA"/>
                 <command name="eglCreateDRMImageMESA"/>
                 <command name="eglExportDRMImageMESA"/>
+            </require>
+        </extension>
+        <extension name="EGL_MESA_image_dma_buf_export" supported="egl">
+            <require>
+                <command name="eglExportDMABUFImageQueryMESA"/>
+                <command name="eglExportDMABUFImageMESA"/>
             </require>
         </extension>
         <extension name="EGL_MESA_platform_gbm" supported="egl">
