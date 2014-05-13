@@ -264,7 +264,8 @@
     </enums>
 
     <enums namespace="EGL" start="0x3070-0x307F" vendor="NOK" comment="Reserved for Jani Vaarala">
-        <unused start="0x3070" end="0x307F"/>
+        <unused start="0x3070" end="0x307E"/>
+        <enum value="0x307F" name="EGL_Y_INVERTED_NOK"/>
     </enums>
 
     <enums namespace="EGL" start="0x3080-0x30AF" vendor="KHR">
@@ -1126,6 +1127,20 @@
             <param><ptype>EGLint</ptype> <name>n_rects</name></param>
         </command>
         <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglSwapBuffersRegionNOK</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLSurface</ptype> <name>surface</name></param>
+            <param><ptype>EGLint</ptype> <name>numRects</name></param>
+            <param>const <ptype>EGLint</ptype> *<name>rects</name></param>
+        </command>
+        <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglSwapBuffersRegion2NOK</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLSurface</ptype> <name>surface</name></param>
+            <param><ptype>EGLint</ptype> <name>numRects</name></param>
+            <param>const <ptype>EGLint</ptype> *<name>rects</name></param>
+        </command>
+        <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglSwapInterval</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLint</ptype> <name>interval</name></param>
@@ -1852,6 +1867,21 @@
         <extension name="EGL_MESA_platform_gbm" supported="egl">
             <require>
                 <enum name="EGL_PLATFORM_GBM_MESA"/>
+            </require>
+        </extension>
+        <extension name="EGL_NOK_swap_region" supported="egl">
+            <require>
+                <command name="eglSwapBuffersRegionNOK"/>
+            </require>
+        </extension>
+        <extension name="EGL_NOK_swap_region2" supported="egl">
+            <require>
+                <command name="eglSwapBuffersRegion2NOK"/>
+            </require>
+        </extension>
+        <extension name="EGL_NOK_texture_from_pixmap" supported="egl">
+            <require>
+                <enum name="EGL_Y_INVERTED_NOK"/>
             </require>
         </extension>
         <extension name="EGL_NV_3dvision_surface" supported="egl">
