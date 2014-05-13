@@ -7600,7 +7600,8 @@ typedef unsigned int GLhandleARB;
         <enum value="0x919D" name="GL_TEXTURE_BUFFER_OFFSET"/>
         <enum value="0x919E" name="GL_TEXTURE_BUFFER_SIZE"/>
         <enum value="0x919F" name="GL_TEXTURE_BUFFER_OFFSET_ALIGNMENT"/>
-            <unused start="0x91A0" end="0x91A3"/>
+        <enum value="0x91A0" name="GL_STREAM_RASTERIZATION_AMD"/>
+            <unused start="0x91A1" end="0x91A3"/>
         <enum value="0x91A4" name="GL_VERTEX_ELEMENT_SWIZZLE_AMD"/>
         <enum value="0x91A5" name="GL_VERTEX_ID_SWIZZLE_AMD"/>
         <enum value="0x91A6" name="GL_TEXTURE_SPARSE_ARB"/>
@@ -32674,6 +32675,74 @@ typedef unsigned int GLhandleARB;
                 <command name="glBlendEquationSeparateIndexedAMD"/>
             </require>
         </extension>
+        <extension name="GL_AMD_gpu_shader_int64" supported="gl">
+            <require>
+                <enum name="GL_INT64_NV"/>
+                <enum name="GL_UNSIGNED_INT64_NV"/>
+                <enum name="GL_INT8_NV"/>
+                <enum name="GL_INT8_VEC2_NV"/>
+                <enum name="GL_INT8_VEC3_NV"/>
+                <enum name="GL_INT8_VEC4_NV"/>
+                <enum name="GL_INT16_NV"/>
+                <enum name="GL_INT16_VEC2_NV"/>
+                <enum name="GL_INT16_VEC3_NV"/>
+                <enum name="GL_INT16_VEC4_NV"/>
+                <enum name="GL_INT64_VEC2_NV"/>
+                <enum name="GL_INT64_VEC3_NV"/>
+                <enum name="GL_INT64_VEC4_NV"/>
+                <enum name="GL_UNSIGNED_INT8_NV"/>
+                <enum name="GL_UNSIGNED_INT8_VEC2_NV"/>
+                <enum name="GL_UNSIGNED_INT8_VEC3_NV"/>
+                <enum name="GL_UNSIGNED_INT8_VEC4_NV"/>
+                <enum name="GL_UNSIGNED_INT16_NV"/>
+                <enum name="GL_UNSIGNED_INT16_VEC2_NV"/>
+                <enum name="GL_UNSIGNED_INT16_VEC3_NV"/>
+                <enum name="GL_UNSIGNED_INT16_VEC4_NV"/>
+                <enum name="GL_UNSIGNED_INT64_VEC2_NV"/>
+                <enum name="GL_UNSIGNED_INT64_VEC3_NV"/>
+                <enum name="GL_UNSIGNED_INT64_VEC4_NV"/>
+                <enum name="GL_FLOAT16_NV"/>
+                <enum name="GL_FLOAT16_VEC2_NV"/>
+                <enum name="GL_FLOAT16_VEC3_NV"/>
+                <enum name="GL_FLOAT16_VEC4_NV"/>
+                <command name="glUniform1i64NV"/>
+                <command name="glUniform2i64NV"/>
+                <command name="glUniform3i64NV"/>
+                <command name="glUniform4i64NV"/>
+                <command name="glUniform1i64vNV"/>
+                <command name="glUniform2i64vNV"/>
+                <command name="glUniform3i64vNV"/>
+                <command name="glUniform4i64vNV"/>
+                <command name="glUniform1ui64NV"/>
+                <command name="glUniform2ui64NV"/>
+                <command name="glUniform3ui64NV"/>
+                <command name="glUniform4ui64NV"/>
+                <command name="glUniform1ui64vNV"/>
+                <command name="glUniform2ui64vNV"/>
+                <command name="glUniform3ui64vNV"/>
+                <command name="glUniform4ui64vNV"/>
+                <command name="glGetUniformi64vNV"/>
+                <command name="glGetUniformui64vNV"/>
+            </require>
+            <require comment="Supported only if GL_EXT_direct_state_access is supported">
+                <command name="glProgramUniform1i64NV"/>
+                <command name="glProgramUniform2i64NV"/>
+                <command name="glProgramUniform3i64NV"/>
+                <command name="glProgramUniform4i64NV"/>
+                <command name="glProgramUniform1i64vNV"/>
+                <command name="glProgramUniform2i64vNV"/>
+                <command name="glProgramUniform3i64vNV"/>
+                <command name="glProgramUniform4i64vNV"/>
+                <command name="glProgramUniform1ui64NV"/>
+                <command name="glProgramUniform2ui64NV"/>
+                <command name="glProgramUniform3ui64NV"/>
+                <command name="glProgramUniform4ui64NV"/>
+                <command name="glProgramUniform1ui64vNV"/>
+                <command name="glProgramUniform2ui64vNV"/>
+                <command name="glProgramUniform3ui64vNV"/>
+                <command name="glProgramUniform4ui64vNV"/>
+            </require>
+        </extension>
         <extension name="GL_AMD_interleaved_elements" supported="gl">
             <require>
                 <enum name="GL_VERTEX_ELEMENT_SWIZZLE_AMD"/>
@@ -32688,6 +32757,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glVertexAttribParameteriAMD"/>
             </require>
         </extension>
+        <extension name="GL_AMD_gcn_shader" supported="gl"/>
         <extension name="GL_AMD_multi_draw_indirect" supported="gl">
             <require>
                 <command name="glMultiDrawArraysIndirectAMD"/>
@@ -32796,6 +32866,11 @@ typedef unsigned int GLhandleARB;
         </extension>
         <extension name="GL_AMD_texture_texture4" supported="gl"/>
         <extension name="GL_AMD_transform_feedback3_lines_triangles" supported="gl"/>
+        <extension name="GL_AMD_transform_feedback4" supported="gl">
+            <require>
+                <enum name="GL_STREAM_RASTERIZATION_AMD"/>
+            </require>
+        </extension>
         <extension name="GL_AMD_vertex_shader_layer" supported="gl"/>
         <extension name="GL_AMD_vertex_shader_tessellator" supported="gl">
             <require>
