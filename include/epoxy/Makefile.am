@@ -25,6 +25,7 @@ epoxyinclude_HEADERS = \
 	gl.h \
         $(EGL_INCLUDES) \
         $(GLX_INCLUDES) \
+        $(WGL_INCLUDES) \
 	$()
 
 if BUILD_EGL
@@ -33,4 +34,8 @@ endif
 
 if BUILD_GLX
 GLX_INCLUDES = glx.h
+endif
+
+if BUILD_WGL
+WGL_INCLUDES = wgl.h
 endif
