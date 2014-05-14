@@ -21,44 +21,55 @@
  * IN THE SOFTWARE.
  */
 
-/** @file wgl.h
- *
- * Provides an implementation of a WGL dispatch layer using a hidden
- * vtable.
- */
+#include <config.h>
+#include <stdio.h>
 
-#ifndef EPOXY_WGL_H
-#define EPOXY_WGL_H
+#include "wgl_common.h"
+#include <epoxy/gl.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+static int
+test_function(HDC hdc)
+{
+    bool pass = true;
+    HGLRC ctx;
+    GLuint dlist[2] = {100, 101};
+    const char *string = "some string";
 
-#include <stdbool.h>
-#include <windows.h>
+    ctx = wglCreateContext(hdc);
+    if (!ctx) {
+        fprintf(stderr, "Failed to create wgl context\n");
+        return 1;
+    }
+    if (!wglMakeCurrent(hdc, ctx)) {
+        fprintf(stderr, "Failed to make context current\n");
+        return 1;
+    }
 
-#undef wglUseFontBitmaps
-#undef wglUseFontOutlines
+    /* First, use the #ifdeffed variant of the function */
+    wglUseFontBitmaps(hdc, 0, 255, dlist[1]);
+    glListBase(dlist[1]);
+    glCallLists(strlen(string), GL_UNSIGNED_BYTE, string);
 
-#if defined(__wglxext_h_)
-#error epoxy/wgl.h must be included before (or in place of) wgl.h
-#else
-#define __wglxext_h_
-#endif
-
+    /* Now, use the specific version, manually. */
 #ifdef UNICODE
-#define wglUseFontBitmaps wglUseFontBitmapsW
+    wglUseFontBitmapsW(hdc, 0, 255, dlist[2]);
 #else
-#define wglUseFontBitmaps wglUseFontBitmapsA
+    wglUseFontBitmapsA(hdc, 0, 255, dlist[2]);
 #endif
+    glListBase(dlist[2]);
+    glCallLists(strlen(string), GL_UNSIGNED_BYTE, string);
 
-#include "epoxy/wgl_generated.h"
+    wglMakeCurrent(NULL, NULL);
+    wglDeleteContext(ctx);
 
-bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
-void epoxy_handle_external_wglMakeCurrent(void);
+    return !pass;
+}
 
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
+int
+main(int argc, char **argv)
+{
+    make_window_and_test(test_function);
 
-#endif /* EPOXY_WGL_H */
+    /* UNREACHED */
+    return 1;
+}

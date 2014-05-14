@@ -344,7 +344,7 @@ class Generator(object):
                 if version <= 20:
                     loader = 'epoxy_gles2_dlsym({0})'
                 else:
-                    loader = 'epoxy_get_proc_address({0})'
+                    loader = 'epoxy_gles3_dlsym({0})'
             elif api == 'gles1':
                 human_name = 'OpenGL ES 1.0'
                 condition = '!epoxy_is_desktop_gl() && epoxy_gl_version() >= 10 && epoxy_gl_version() < 20'
@@ -525,7 +525,7 @@ class Generator(object):
         self.write_function_ptr_typedefs()
 
         for func in self.sorted_functions:
-            self.outln('extern EPOXYAPIENTRY {0} (*epoxy_{1})({2});'.format(func.ret_type,
+            self.outln('extern EPOXY_IMPORTEXPORT {0} (EPOXY_CALLSPEC *epoxy_{1})({2});'.format(func.ret_type,
                                                                                      func.name,
                                                                                      func.args_decl))
             self.outln('')
@@ -535,14 +535,17 @@ class Generator(object):
 
     def write_function_ptr_resolver(self, func):
         self.outln('static {0}'.format(func.ptr_type))
-        self.outln('epoxy_{0}_resolver(void)'.format(func.name))
+        self.outln('epoxy_{0}_resolver(void)'.format(func.wrapped_name))
         self.outln('{')
 
         providers = []
         # Make a local list of all the providers for this alias group
-        for provider in func.providers.values():
+        alias_root = func;
+        if func.alias_func:
+            alias_root = func.alias_func
+        for provider in alias_root.providers.values():
             providers.append(provider)
-        for alias_func in func.alias_exts:
+        for alias_func in alias_root.alias_exts:
             for provider in alias_func.providers.values():
                 providers.append(provider)
 
@@ -561,6 +564,10 @@ class Generator(object):
             alias_func = self.functions[half_aliases[func.name]]
             for provider in alias_func.providers.values():
                 providers.append(provider)
+
+        def provider_sort(provider):
+            return (provider.name != func.name, provider.name)
+        providers.sort(key=provider_sort);
 
         if len(providers) != 1:
             self.outln('    static const enum {0}_provider providers[] = {{'.format(self.target))
@@ -587,76 +594,27 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-    def write_dispatch_table_thunk(self, func):
-        # Writes out the thunk that fetches the (win32) dispatch table
-        # and calls through its entrypoint.
-
-        dispatch_table_entry = 'dispatch_table->p{0}'.format(func.alias_name)
-
-        self.outln('static __stdcall {0}'.format(func.ret_type))
-        self.outln('epoxy_{0}_dispatch_table_thunk({1})'.format(func.wrapped_name, func.args_decl))
-        self.outln('{')
-        self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
-        self.outln('')
+    def write_thunks(self, func):
+        # Writes out the function that's initially plugged into the
+        # global function pointer, which resolves, updates the global
+        # function pointer, and calls down to it.
+        #
+        # It also writes out the actual initialized global function
+        # pointer.
         if func.ret_type == 'void':
-            self.outln('    {0}({1});'.format(dispatch_table_entry, func.args_list))
+            self.outln('GEN_THUNKS({0}, ({1}), ({2}))'.format(func.wrapped_name,
+                                                              func.args_decl,
+                                                              func.args_list))
         else:
-            self.outln('    return {0}({1});'.format(dispatch_table_entry, func.args_list))
-        self.outln('}')
-        self.outln('')
+            self.outln('GEN_THUNKS_RET({0}, {1}, ({2}), ({3}))'.format(func.ret_type,
+                                                                       func.wrapped_name,
+                                                                       func.args_decl,
+                                                                       func.args_list))
 
-    def write_dispatch_table_rewrite_stub(self, func):
-        # Writes out the initial dispatch table function pointer value
-        # that that resolves, writes the resolved value into the
-        # dispatch table, and calls down to it.
-
-        dispatch_table_entry = 'dispatch_table->p{0}'.format(func.name)
-
-        self.outln('static GLAPIENTRY {0}'.format(func.ret_type))
-        self.outln('epoxy_{0}_rewrite_stub({1})'.format(func.name, func.args_decl))
-        self.outln('{')
-        self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
-        self.outln('')
-        self.outln('    dispatch_table->p{0} = epoxy_{0}_resolver();'.format(func.name))
-        self.outln('')
-
-        if func.ret_type == 'void':
-            self.outln('    dispatch_table->p{0}({1});'.format(func.name, func.args_list))
-        else:
-            self.outln('    return dispatch_table->p{0}({1});'.format(func.name, func.args_list))
-        self.outln('}')
-        self.outln('')
-
-    def write_linux_function_pointer(self, func):
-        # Writes out the function for resolving and updating the
-        # global function pointer, plus the actual global function
-        # pointer initializer.
-
-        self.outln('static {0}'.format(func.ret_type))
-        self.outln('epoxy_{0}_rewrite_ptr({1})'.format(func.wrapped_name,
-                                                       func.args_decl))
-        self.outln('{')
-        self.outln('    epoxy_{0} = (void *)epoxy_{1}_resolver();'.format(func.wrapped_name,
-                                                                          func.alias_name))
-
-        if func.ret_type == 'void':
-            self.outln('    epoxy_{0}({1});'.format(func.wrapped_name,
-                                                    func.args_list))
-        else:
-            self.outln('    return epoxy_{0}({1});'.format(func.wrapped_name,
-                                                           func.args_list))
-
-        self.outln('}')
-
-        self.outln('{0}{1} epoxy_{2} = epoxy_{2}_rewrite_ptr;'.format(func.public,
-                                                                      func.ptr_type,
-                                                                      func.wrapped_name))
-        self.outln('')
-
-    def write_win32_function_pointer(self, func):
-        self.outln('{0}{1} epoxy_{2} = epoxy_{2}_dispatch_table_thunk;'.format(func.public,
-                                                                               func.ptr_type,
-                                                                               func.wrapped_name))
+    def write_function_pointer(self, func):
+        self.outln('{0}{1} epoxy_{2} = epoxy_{2}_global_rewrite_ptr;'.format(func.public,
+                                                                             func.ptr_type,
+                                                                             func.wrapped_name))
         self.outln('')
 
     def write_provider_enums(self):
@@ -764,6 +722,7 @@ class Generator(object):
         self.outln(' */')
         self.outln('')
         self.outln('#include <stdlib.h>')
+        self.outln('#include <string.h>')
         self.outln('#include <stdio.h>')
         self.outln('')
         self.outln('#include "dispatch_common.h"')
@@ -772,9 +731,7 @@ class Generator(object):
 
         self.outln('struct dispatch_table {')
         for func in self.sorted_functions:
-            # Aliases don't get their own slot, since they use a shared resolver.
-            if func.alias_name == func.name:
-                self.outln('    {0} p{1};'.format(func.ptr_type, func.name))
+            self.outln('    {0} epoxy_{1};'.format(func.ptr_type, func.wrapped_name))
         self.outln('};')
         self.outln('')
 
@@ -794,23 +751,16 @@ class Generator(object):
         self.write_provider_resolver()
 
         for func in self.sorted_functions:
-            if not func.alias_func:
-                self.write_function_ptr_resolver(func)
+            self.write_function_ptr_resolver(func)
+
+        for func in self.sorted_functions:
+            self.write_thunks(func)
 
         self.outln('#if USING_DISPATCH_TABLE')
 
-        for func in self.sorted_functions:
-            if not func.alias_func:
-                self.write_dispatch_table_rewrite_stub(func)
-
-        for func in self.sorted_functions:
-            self.write_dispatch_table_thunk(func)
-
         self.outln('static struct dispatch_table resolver_table = {')
         for func in self.sorted_functions:
-            # Aliases don't get their own slot, since they use a shared resolver.
-            if func.alias_name == func.name:
-                self.outln('    .p{0} = epoxy_{0}_rewrite_stub,'.format(func.name))
+            self.outln('    .{0} = epoxy_{0}_dispatch_table_rewrite_ptr,'.format(func.wrapped_name))
         self.outln('};')
         self.outln('')
 
@@ -833,15 +783,20 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-        for func in self.sorted_functions:
-            self.write_win32_function_pointer(func)
+        self.outln('void')
+        self.outln('{0}_switch_to_dispatch_table(void)'.format(self.target))
+        self.outln('{')
 
-        self.outln('#else /* !USING_DISPATCH_TABLE */')
-
         for func in self.sorted_functions:
-            self.write_linux_function_pointer(func)
+            self.outln('    epoxy_{0} = epoxy_{0}_dispatch_table_thunk;'.format(func.wrapped_name))
+
+        self.outln('}')
+        self.outln('')
 
         self.outln('#endif /* !USING_DISPATCH_TABLE */')
+
+        for func in self.sorted_functions:
+            self.write_function_pointer(func)
 
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
 argparser.add_argument('files', metavar='file.xml', nargs='+', help='GL API XML files to be parsed')
@@ -855,7 +810,14 @@ for file in args.files:
     name = os.path.basename(file).split('.xml')[0]
     generator = Generator(name)
     generator.parse(file)
+
     generator.drop_weird_glx_functions()
+
+    # This is an ANSI vs Unicode function, handled specially by
+    # include/epoxy/wgl.h
+    if 'wglUseFontBitmaps' in generator.functions:
+        del generator.functions['wglUseFontBitmaps']
+
     generator.sort_functions()
     generator.resolve_aliases()
     generator.fixup_bootstrap_function('glGetString',

@@ -30,7 +30,7 @@
 PUBLIC int
 epoxy_conservative_egl_version(void)
 {
-    EGLDisplay *dpy = eglGetCurrentDisplay();
+    EGLDisplay dpy = eglGetCurrentDisplay();
 
     if (!dpy)
         return 14;
@@ -39,7 +39,7 @@ epoxy_conservative_egl_version(void)
 }
 
 PUBLIC int
-epoxy_egl_version(EGLDisplay *dpy)
+epoxy_egl_version(EGLDisplay dpy)
 {
     int major, minor;
     const char *version_string;
@@ -54,7 +54,7 @@ epoxy_egl_version(EGLDisplay *dpy)
 bool
 epoxy_conservative_has_egl_extension(const char *ext)
 {
-    EGLDisplay *dpy = eglGetCurrentDisplay();
+    EGLDisplay dpy = eglGetCurrentDisplay();
 
     if (!dpy)
         return true;
@@ -63,7 +63,7 @@ epoxy_conservative_has_egl_extension(const char *ext)
 }
 
 PUBLIC bool
-epoxy_has_egl_extension(EGLDisplay *dpy, const char *ext)
+epoxy_has_egl_extension(EGLDisplay dpy, const char *ext)
 {
     return epoxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext);
 }
