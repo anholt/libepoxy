@@ -4,6 +4,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_eglBindAPI@Base 1.0
  epoxy_eglBindTexImage@Base 1.0
  epoxy_eglChooseConfig@Base 1.0
+ epoxy_eglClientWaitSync@Base 1.2
  epoxy_eglClientWaitSyncKHR@Base 1.0
  epoxy_eglClientWaitSyncNV@Base 1.0
  epoxy_eglCopyBuffers@Base 1.0
@@ -15,19 +16,23 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_eglCreatePbufferSurface@Base 1.0
  epoxy_eglCreatePixmapSurface@Base 1.0
  epoxy_eglCreatePixmapSurfaceHI@Base 1.0
+ epoxy_eglCreatePlatformPixmapSurface@Base 1.2
  epoxy_eglCreatePlatformPixmapSurfaceEXT@Base 1.0
+ epoxy_eglCreatePlatformWindowSurface@Base 1.2
  epoxy_eglCreatePlatformWindowSurfaceEXT@Base 1.0
  epoxy_eglCreateStreamFromFileDescriptorKHR@Base 1.0
  epoxy_eglCreateStreamKHR@Base 1.0
  epoxy_eglCreateStreamProducerSurfaceKHR@Base 1.0
  epoxy_eglCreateStreamSyncNV@Base 1.0
  epoxy_eglCreateSync64KHR@Base 1.0
+ epoxy_eglCreateSync@Base 1.2
  epoxy_eglCreateSyncKHR@Base 1.0
  epoxy_eglCreateWindowSurface@Base 1.0
  epoxy_eglDestroyContext@Base 1.0
  epoxy_eglDestroyImageKHR@Base 1.0
  epoxy_eglDestroyStreamKHR@Base 1.0
  epoxy_eglDestroySurface@Base 1.0
+ epoxy_eglDestroySync@Base 1.2
  epoxy_eglDestroySyncKHR@Base 1.0
  epoxy_eglDestroySyncNV@Base 1.0
  epoxy_eglDupNativeFenceFDANDROID@Base 1.0
@@ -40,9 +45,11 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_eglGetCurrentSurface@Base 1.0
  epoxy_eglGetDisplay@Base 1.0
  epoxy_eglGetError@Base 1.0
+ epoxy_eglGetPlatformDisplay@Base 1.2
  epoxy_eglGetPlatformDisplayEXT@Base 1.0
  epoxy_eglGetProcAddress@Base 1.0
  epoxy_eglGetStreamFileDescriptorKHR@Base 1.0
+ epoxy_eglGetSyncAttrib@Base 1.2
  epoxy_eglGetSyncAttribKHR@Base 1.0
  epoxy_eglGetSyncAttribNV@Base 1.0
  epoxy_eglGetSystemTimeFrequencyNV@Base 1.0
@@ -74,6 +81,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_eglStreamConsumerReleaseKHR@Base 1.0
  epoxy_eglSurfaceAttrib@Base 1.0
  epoxy_eglSwapBuffers@Base 1.0
+ epoxy_eglSwapBuffersRegion2NOK@Base 1.2
+ epoxy_eglSwapBuffersRegionNOK@Base 1.2
  epoxy_eglSwapBuffersWithDamageEXT@Base 1.0
  epoxy_eglSwapInterval@Base 1.0
  epoxy_eglTerminate@Base 1.0
@@ -81,6 +90,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_eglWaitClient@Base 1.0
  epoxy_eglWaitGL@Base 1.0
  epoxy_eglWaitNative@Base 1.0
+ epoxy_eglWaitSync@Base 1.2
  epoxy_eglWaitSyncKHR@Base 1.0
  epoxy_egl_version@Base 1.0
  epoxy_glAccum@Base 1.0
@@ -191,6 +201,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glBinormalPointerEXT@Base 1.0
  epoxy_glBitmap@Base 1.0
  epoxy_glBitmapxOES@Base 1.0
+ epoxy_glBlendBarrierKHR@Base 1.2
  epoxy_glBlendBarrierNV@Base 1.0
  epoxy_glBlendColor@Base 1.0
  epoxy_glBlendColorEXT@Base 1.0
@@ -1437,8 +1448,10 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glMatrixTranslatefEXT@Base 1.0
  epoxy_glMemoryBarrier@Base 1.0
  epoxy_glMemoryBarrierEXT@Base 1.0
+ epoxy_glMemoryBarrierByRegion@Base 1.2
  epoxy_glMinSampleShading@Base 1.0
  epoxy_glMinSampleShadingARB@Base 1.0
+ epoxy_glMinSampleShadingOES@Base 1.2
  epoxy_glMinmax@Base 1.0
  epoxy_glMinmaxEXT@Base 1.0
  epoxy_glMultMatrixd@Base 1.0
@@ -2301,6 +2314,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glTexStorage3D@Base 1.0
  epoxy_glTexStorage3DEXT@Base 1.0
  epoxy_glTexStorage3DMultisample@Base 1.0
+ epoxy_glTexStorage3DMultisampleOES@Base 1.2
  epoxy_glTexStorageSparseAMD@Base 1.0
  epoxy_glTexSubImage1D@Base 1.0
  epoxy_glTexSubImage1DEXT@Base 1.0
@@ -2999,6 +3013,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glXQueryChannelRectSGIX@Base 1.0
  epoxy_glXQueryContext@Base 1.0
  epoxy_glXQueryContextInfoEXT@Base 1.0
+ epoxy_glXQueryCurrentRendererIntegerMESA@Base 1.2
+ epoxy_glXQueryCurrentRendererStringMESA@Base 1.2
  epoxy_glXQueryDrawable@Base 1.0
  epoxy_glXQueryExtension@Base 1.0
  epoxy_glXQueryExtensionsString@Base 1.0
@@ -3010,6 +3026,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glXQueryHyperpipeNetworkSGIX@Base 1.0
  epoxy_glXQueryMaxSwapBarriersSGIX@Base 1.0
  epoxy_glXQueryMaxSwapGroupsNV@Base 1.0
+ epoxy_glXQueryRendererIntegerMESA@Base 1.2
+ epoxy_glXQueryRendererStringMESA@Base 1.2
  epoxy_glXQueryServerString@Base 1.0
  epoxy_glXQuerySwapGroupNV@Base 1.0
  epoxy_glXQueryVersion@Base 1.0
