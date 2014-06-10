@@ -331,12 +331,13 @@ epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode)
         return epoxy_extension_in_string(exts, ext);
     } else {
         int num_extensions;
+        int i;
 
         glGetIntegerv(GL_NUM_EXTENSIONS, &num_extensions);
         if (num_extensions == 0)
             return invalid_op_mode;
 
-        for (int i = 0; i < num_extensions; i++) {
+        for (i = 0; i < num_extensions; i++) {
             const char *gl_ext = (const char *)glGetStringi(GL_EXTENSIONS, i);
             if (strcmp(ext, gl_ext) == 0)
                 return true;
