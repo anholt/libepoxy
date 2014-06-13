@@ -179,7 +179,7 @@ glx_static_LDFLAGS = -static
 
 glx_shared_znow_SOURCES = glx_static.c
 glx_shared_znow_LDADD = $(DLOPEN_LIBS) $(EPOXY) libglx_common.la $(X11_LIBS)
-glx_shared_znow_LDFLAGS = -z now
+glx_shared_znow_LDFLAGS = -Wl,-z,now
 
 khronos_typedefs_SOURCES = \
 	khronos_typedefs.c \
