@@ -378,7 +378,7 @@ epoxy_current_context_is_glx(void)
     sym = dlsym(NULL, "eglGetCurrentContext");
     if (sym) {
         if (epoxy_egl_get_current_gl_context_api() != EGL_NONE)
-            return true;
+            return false;
     } else {
         (void)dlerror();
     }
