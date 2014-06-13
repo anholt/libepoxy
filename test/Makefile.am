@@ -46,7 +46,9 @@ libwgl_common_la_LIBADD = $(EPOXY)
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/include \
 	-I$(top_builddir)/include \
-	$(X11_CFLAGS)
+	$(X11_CFLAGS) \
+	$(EGL_CFLAGS) \
+	$()
 
 AM_CFLAGS = $(CWARNFLAGS)
 

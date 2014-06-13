@@ -98,6 +98,7 @@ AC_SUBST(EPOXY_LINK_LIBS)
 
 AM_CONDITIONAL(BUILD_EGL, test x$build_egl = xyes)
 if test x$build_egl = xyes; then
+    PKG_CHECK_MODULES(EGL, [egl])
     AC_DEFINE([BUILD_EGL], [1], [build EGL tests])
 fi
 
