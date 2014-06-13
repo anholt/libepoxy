@@ -22,9 +22,9 @@
 EPOXY = $(builddir)/../src/libepoxy.la
 
 check_LTLIBRARIES = \
-	$(EGL_LIBS) \
-	$(GLX_LIBS) \
-	$(WGL_LIBS) \
+	$(EGL_UTIL_LIB) \
+	$(GLX_UTIL_LIB) \
+	$(WGL_UTIL_LIB) \
 	$()
 
 libegl_common_la_SOURCES = \
@@ -78,7 +78,7 @@ EGL_TESTS = \
 	egl_gles2_without_glx \
 	$()
 
-EGL_LIBS = libegl_common.la
+EGL_UTIL_LIB = libegl_common.la
 endif
 
 if BUILD_GLX
@@ -116,7 +116,7 @@ GLX_TESTS = \
         $(GLX_NON_APPLE_TESTS) \
 	$()
 
-GLX_LIBS = libglx_common.la
+GLX_UTIL_LIB = libglx_common.la
 endif
 
 if BUILD_WGL
@@ -127,7 +127,7 @@ WGL_TESTS = \
 	wgl_usefontbitmaps_unicode$(EXEEXT) \
 	$()
 
-WGL_LIBS = libwgl_common.la
+WGL_UTIL_LIB = libwgl_common.la
 endif
 
 egl_has_extension_nocontext_LDADD = $(EPOXY) libegl_common.la $(X11_LIBS)
