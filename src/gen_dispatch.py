@@ -577,8 +577,11 @@ class Generator(object):
             self.outln('    };')
 
             self.outln('    static const uint16_t entrypoints[] = {')
-            for provider in providers:
-                self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
+            if len(providers) > 1:
+                for provider in providers:
+                    self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
+            else:
+                self.outln('        0 /* None */,')
             self.outln('    };')
 
             self.outln('    return {0}_provider_resolver(entrypoint_strings + {1} /* "{2}" */,'.format(self.target,
@@ -639,13 +642,14 @@ class Generator(object):
         # Writes the mapping from enums to the strings describing them
         # for epoxy_print_failure_reasons().
 
-        self.outln('static const char *enum_strings[] = {')
-
         sorted_providers = sorted(self.provider_enum.keys())
+
+        self.outln('static const char *enum_strings[] = {')
+        self.outln('    "",')
 
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
-            self.outln('    [{0}] = "{1}",'.format(enum, human_name))
+            self.outln('    "{0}",'.format(human_name))
         self.outln('};')
         self.outln('')
 
@@ -698,8 +702,13 @@ class Generator(object):
         self.outln('')
 
         single_resolver_proto = '{0}_single_resolver(enum {0}_provider provider, uint16_t entrypoint_offset)'.format(self.target)
+        self.outln('#if defined (__GNUC__)')
         self.outln('static void *')
         self.outln('{0} __attribute__((noinline));'.format(single_resolver_proto))
+        self.outln('#elif defined (_MSC_VER)')
+        self.outln('__declspec (noinline) static void *')
+        self.outln('{0};'.format(single_resolver_proto))
+        self.outln('#endif')
         self.outln('')
         self.outln('static void *')
         self.outln('{0}'.format(single_resolver_proto))
@@ -757,11 +766,20 @@ class Generator(object):
             self.write_thunks(func)
 
         self.outln('#if USING_DISPATCH_TABLE')
-
+        self.outln('')
+        self.outln('#ifdef _MSC_VER')
+        self.outln('static struct dispatch_table resolver_table = {')
+        for func in self.sorted_functions:
+            self.outln('    epoxy_{0}_dispatch_table_rewrite_ptr,'.format(func.wrapped_name))
+        self.outln('};')
+        self.outln('')
+        self.outln('#else')
         self.outln('static struct dispatch_table resolver_table = {')
         for func in self.sorted_functions:
             self.outln('    .{0} = epoxy_{0}_dispatch_table_rewrite_ptr,'.format(func.wrapped_name))
         self.outln('};')
+        self.outln('')
+        self.outln('#endif')
         self.outln('')
 
         self.outln('uint32_t {0}_tls_index;'.format(self.target))
