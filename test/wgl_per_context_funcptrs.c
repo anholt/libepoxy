@@ -48,13 +48,13 @@
 static HGLRC ctx1, ctx2, current_context;
 static bool pass = true;
 
-#define OVERRIDE_API __declspec(dllexport) __stdcall
+#define OVERRIDE_API(type) __declspec(dllexport) type __stdcall
 
-OVERRIDE_API GLuint override_glCreateShader_ctx1(GLenum target);
-OVERRIDE_API GLuint override_glCreateShader_ctx2(GLenum target);
-OVERRIDE_API PROC override_wglGetProcAddress(LPCSTR name);
+OVERRIDE_API (GLuint) override_glCreateShader_ctx1(GLenum target);
+OVERRIDE_API (GLuint) override_glCreateShader_ctx2(GLenum target);
+OVERRIDE_API (PROC) override_wglGetProcAddress(LPCSTR name);
 
-OVERRIDE_API GLuint
+OVERRIDE_API (GLuint)
 override_glCreateShader_ctx1(GLenum target)
 {
     if (current_context != ctx1) {
@@ -64,7 +64,7 @@ override_glCreateShader_ctx1(GLenum target)
     return CREATESHADER_CTX1_VAL;
 }
 
-OVERRIDE_API GLuint
+OVERRIDE_API (GLuint)
 override_glCreateShader_ctx2(GLenum target)
 {
     if (current_context != ctx2) {
@@ -74,7 +74,7 @@ override_glCreateShader_ctx2(GLenum target)
     return CREATESHADER_CTX2_VAL;
 }
 
-OVERRIDE_API PROC
+OVERRIDE_API (PROC)
 override_wglGetProcAddress(LPCSTR name)
 {
     assert(strcmp(name, "glCreateShader") == 0);
