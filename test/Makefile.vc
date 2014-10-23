@@ -1,0 +1,62 @@
+# Copyright © 2014 Intel Corporation
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice (including the next
+# paragraph) shall be included in all copies or substantial portions of the
+# Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+
+!include ..\msvc\detectenv-msvc.mak
+!include Makefile.sources
+
+EXEEXT = .exe
+
+all:  config.h wgl_common.lib $(GENERIC_TEST_PROGS) $(WGL_TEST_PROGS)
+
+LD_CFLAGS = /link
+LDFLAGS = /libpath:..\src epoxy.lib gdi32.lib user32.lib $(EXTRA_LDFLAGS)
+
+CFLAGS_INCLUDES = /I..\include /I.
+
+khronos_typedefs.exe: $(KHRONOS_TYPEDEF_SRC) config.h
+	$(CC) $(CFLAGS_ADD) $(CFLAGS_INCLUDES) $(CFLAGS_C99_COMPAT) $(KHRONOS_TYPEDEF_SRC) /c
+	link /DEBUG $(EXTRA_LDFLAGS) $*.obj $*_nonepoxy.obj /out:$@
+	@if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
+
+wgl_usefontbitmaps_unicode.exe: wgl_usefontbitmaps.c wgl_common.lib config.h
+	$(CC) $(CFLAGS_ADD) $(CFLAGS_INCLUDES) $(CFLAGS_C99_COMPAT) /DUNICODE wgl_usefontbitmaps.c /Fe$@ $(LD_CFLAGS) $(LDFLAGS) wgl_common.lib
+	@if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
+
+wgl_common.lib: $(WGL_COMMON_SRC)
+	$(CC) $(CFLAGS_ADD) $(CFLAGS_INCLUDES) $(CFLAGS_C99_COMPAT) /c $(WGL_COMMON_SRC)
+	lib wgl_common.obj /out:$@
+
+.c$(EXEEXT):
+	$(CC) $(CFLAGS_ADD) $(CFLAGS_INCLUDES) $(CFLAGS_C99_COMPAT) $< $(LD_CFLAGS) $(LDFLAGS) wgl_common.lib
+	@if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;1
+
+config.h:
+	@echo #define BUILD_WGL 1 > config.h
+
+clean:
+	@-del *.lib
+	@-del *.exp
+	@-del *.exe
+	@-if exist *.exe.manifest del *.exe.manifest
+	@-del *.ilk
+	@-del *.pdb
+	@-del *.obj
+	@-del config.h

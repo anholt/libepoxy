@@ -124,4 +124,5 @@ $(GENERATED_WGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/wgl.xm
 
 EXTRA_DIST = \
 	gen_dispatch.py \
+	Makefile.vc \
 	$()

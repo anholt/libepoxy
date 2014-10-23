@@ -179,3 +179,5 @@ wgl_usefontbitmaps_LDADD = $(EPOXY) libwgl_common.la -lgdi32
 wgl_usefontbitmaps_unicode_SOURCES = wgl_usefontbitmaps.c
 wgl_usefontbitmaps_unicode_LDADD = $(EPOXY) libwgl_common.la -lgdi32
 wgl_usefontbitmaps_unicode_CPPFLAGS = $(AM_CPPFLAGS) -DUNICODE
+
+EXTRA_DIST = Makefile.vc

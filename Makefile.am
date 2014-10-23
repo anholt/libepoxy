@@ -33,4 +33,8 @@ EXTRA_DIST = \
 	registry/gl.xml \
 	registry/glx.xml \
 	registry/wgl.xml \
+	msvc/detectenv-msvc.mak \
+	msvc/inttypes.h \
+	msvc/stdbool.h \
+	msvc/stdint.h \
 	$()
