@@ -78,7 +78,7 @@ case $host_os in
         ;;
     darwin*)
         build_egl=no
-        build_glx=yes
+        build_glx=check
         build_wgl=no
         build_apple=yes
         has_znow=no
@@ -95,27 +95,6 @@ case $host_os in
 esac
 
 AC_SUBST(EPOXY_LINK_LIBS)
-
-AM_CONDITIONAL(BUILD_EGL, test x$build_egl = xyes)
-if test x$build_egl = xyes; then
-    PKG_CHECK_MODULES(EGL, [egl])
-    AC_DEFINE([BUILD_EGL], [1], [build EGL tests])
-fi
-
-AM_CONDITIONAL(BUILD_GLX, test x$build_glx = xyes)
-if test x$build_glx = xyes; then
-    AC_DEFINE([BUILD_GLX], [1], [build GLX tests])
-fi
-
-AM_CONDITIONAL(BUILD_WGL, test x$build_wgl = xyes)
-if test x$build_wgl = xyes; then
-    AC_DEFINE([BUILD_WGL], [1], [build WGL tests])
-fi
-
-AM_CONDITIONAL(BUILD_APPLE, test x$build_apple = xyes)
-if test x$build_apple = xyes; then
-    AC_DEFINE([BUILD_APPLE], [1], [build APPLE is apple (for testing)])
-fi
 
 AM_CONDITIONAL(HAS_ZNOW, test x$has_znow = xyes)
 
@@ -145,13 +124,40 @@ esac
 AC_SUBST([VISIBILITY_CFLAGS])
 
 PKG_CHECK_MODULES(X11, [x11], [x11=yes], [x11=no])
-if test x$x11 = xno -a x$build_glx = xyes; then
-    AC_MSG_ERROR([libX11 headers (libx11-dev) required to build with GLX support])
+if test x$x11 = xno; then
+    if x$build_glx = xyes; then
+        AC_MSG_ERROR([libX11 headers (libx11-dev) required to build with GLX support])
+    else
+        build_glx=no;
+    fi
+else
+    build_glx=yes
 fi
 
 AM_CONDITIONAL(HAVE_X11, test x$x11 = xyes)
 
 PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
+
+AM_CONDITIONAL(BUILD_EGL, test x$build_egl = xyes)
+if test x$build_egl = xyes; then
+    PKG_CHECK_MODULES(EGL, [egl])
+    AC_DEFINE([BUILD_EGL], [1], [build EGL tests])
+fi
+
+AM_CONDITIONAL(BUILD_GLX, test x$build_glx = xyes)
+if test x$build_glx = xyes; then
+    AC_DEFINE([BUILD_GLX], [1], [build GLX tests])
+fi
+
+AM_CONDITIONAL(BUILD_WGL, test x$build_wgl = xyes)
+if test x$build_wgl = xyes; then
+    AC_DEFINE([BUILD_WGL], [1], [build WGL tests])
+fi
+
+AM_CONDITIONAL(BUILD_APPLE, test x$build_apple = xyes)
+if test x$build_apple = xyes; then
+    AC_DEFINE([BUILD_APPLE], [1], [build APPLE is apple (for testing)])
+fi
 
 AC_CONFIG_FILES([
                 epoxy.pc
