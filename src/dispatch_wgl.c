@@ -130,7 +130,6 @@ DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
 
         data = TlsGetValue(wgl_tls_index);
         LocalFree(data);
-        break;
 
         if (reason == DLL_PROCESS_DETACH) {
             TlsFree(gl_tls_index);
