@@ -84,11 +84,14 @@ typedef unsigned __int64 uint64_t;
         <type name="Status"/>
         <type name="Window"/>
         <type name="XVisualInfo"/>
+        <type name="GLbitfield"/>
         <type name="GLboolean"/>
         <type name="GLenum"/>
         <type name="GLfloat"/>
         <type name="GLint"/>
+        <type name="GLintptr"/>
         <type name="GLsizei"/>
+        <type name="GLsizeiptr"/>
         <type name="GLubyte"/>
         <type name="GLuint"/>
         <type name="DMbuffer"/>
@@ -331,6 +334,7 @@ typedef unsigned __int64 uint64_t;
     <enums namespace="GLX" start="0x0000" end="0x2FFF" vendor="ARB"           comment="Miscellaneous OpenGL 1.0/1.1 enums. Most parts of this range are unused and should remain unused."/>
 
     <enums namespace="GLX" group="SpecialNumbers"  vendor="ARB" comment="Tokens whose numeric value is intrinsically meaningful">
+        <enum value="0"             name="GLX_CONTEXT_RELEASE_BEHAVIOR_NONE_ARB"/>
         <enum value="0xFFFFFFFF"    name="GLX_DONT_CARE"                            comment="For ChooseFBConfig attributes"/>
     </enums>
 
@@ -385,7 +389,9 @@ typedef unsigned __int64 uint64_t;
             <!-- 0x2095 collides with WGL_ERROR_INVALID_VERSION_ARB! -->
         <enum value="0x2095"        name="GLX_CONTEXT_ALLOW_BUFFER_BYTE_ORDER_MISMATCH_ARB"/>
             <!-- 0x2096 used for WGL_ERROR_INVALID_PROFILE_ARB -->
-            <unused start="0x2097" end="0x209F"/>
+        <enum value="0x2097"        name="GLX_CONTEXT_RELEASE_BEHAVIOR_ARB"/>
+        <enum value="0x2098"        name="GLX_CONTEXT_RELEASE_BEHAVIOR_FLUSH_ARB"/>
+            <unused start="0x2099" end="0x209F"/>
     </enums>
 
     <enums namespace="GLX" start="0x20A0" end="0x219F" vendor="NV" comment="Shared with WGL">
@@ -677,6 +683,20 @@ typedef unsigned __int64 uint64_t;
             <param>int <name>iVideoBuffer</name></param>
         </command>
         <command>
+            <proto>void <name>glXBlitContextFramebufferAMD</name></proto>
+            <param><ptype>GLXContext</ptype> <name>dstCtx</name></param>
+            <param><ptype>GLint</ptype> <name>srcX0</name></param>
+            <param><ptype>GLint</ptype> <name>srcY0</name></param>
+            <param><ptype>GLint</ptype> <name>srcX1</name></param>
+            <param><ptype>GLint</ptype> <name>srcY1</name></param>
+            <param><ptype>GLint</ptype> <name>dstX0</name></param>
+            <param><ptype>GLint</ptype> <name>dstY0</name></param>
+            <param><ptype>GLint</ptype> <name>dstX1</name></param>
+            <param><ptype>GLint</ptype> <name>dstY1</name></param>
+            <param><ptype>GLbitfield</ptype> <name>mask</name></param>
+            <param><ptype>GLenum</ptype> <name>filter</name></param>
+        </command>
+        <command>
             <proto>int <name>glXChannelRectSGIX</name></proto>
             <param><ptype>Display</ptype> *<name>display</name></param>
             <param>int <name>screen</name></param>
@@ -714,6 +734,28 @@ typedef unsigned __int64 uint64_t;
             <param>int *<name>attribList</name></param>
         </command>
         <command>
+            <proto>void <name>glXCopyBufferSubDataNV</name></proto>
+            <param><ptype>Display</ptype> *<name>dpy</name></param>
+            <param><ptype>GLXContext</ptype> <name>readCtx</name></param>
+            <param><ptype>GLXContext</ptype> <name>writeCtx</name></param>
+            <param><ptype>GLenum</ptype> <name>readTarget</name></param>
+            <param><ptype>GLenum</ptype> <name>writeTarget</name></param>
+            <param><ptype>GLintptr</ptype> <name>readOffset</name></param>
+            <param><ptype>GLintptr</ptype> <name>writeOffset</name></param>
+            <param><ptype>GLsizeiptr</ptype> <name>size</name></param>
+        </command>
+        <command>
+            <proto>void <name>glXNamedCopyBufferSubDataNV</name></proto>
+            <param><ptype>Display</ptype> *<name>dpy</name></param>
+            <param><ptype>GLXContext</ptype> <name>readCtx</name></param>
+            <param><ptype>GLXContext</ptype> <name>writeCtx</name></param>
+            <param><ptype>GLuint</ptype> <name>readBuffer</name></param>
+            <param><ptype>GLuint</ptype> <name>writeBuffer</name></param>
+            <param><ptype>GLintptr</ptype> <name>readOffset</name></param>
+            <param><ptype>GLintptr</ptype> <name>writeOffset</name></param>
+            <param><ptype>GLsizeiptr</ptype> <name>size</name></param>
+        </command>
+        <command>
             <proto>void <name>glXCopyContext</name></proto>
             <param><ptype>Display</ptype> *<name>dpy</name></param>
             <param><ptype>GLXContext</ptype> <name>src</name></param>
@@ -749,6 +791,17 @@ typedef unsigned __int64 uint64_t;
             <param>int <name>y</name></param>
             <param>int <name>width</name></param>
             <param>int <name>height</name></param>
+        </command>
+        <command>
+            <proto><ptype>GLXContext</ptype> <name>glXCreateAssociatedContextAMD</name></proto>
+            <param>unsigned int <name>id</name></param>
+            <param><ptype>GLXContext</ptype> <name>share_list</name></param>
+        </command>
+        <command>
+            <proto><ptype>GLXContext</ptype> <name>glXCreateAssociatedContextAttribsAMD</name></proto>
+            <param>unsigned int <name>id</name></param>
+            <param><ptype>GLXContext</ptype> <name>share_context</name></param>
+            <param>const int *<name>attribList</name></param>
         </command>
         <command>
             <proto><ptype>GLXContext</ptype> <name>glXCreateContextAttribsARB</name></proto>
@@ -850,6 +903,10 @@ typedef unsigned __int64 uint64_t;
             <param><ptype>GLfloat</ptype> <name>seconds</name></param>
         </command>
         <command>
+            <proto><ptype>Bool</ptype> <name>glXDeleteAssociatedContextAMD</name></proto>
+            <param><ptype>GLXContext</ptype> <name>ctx</name></param>
+        </command>
+        <command>
             <proto>void <name>glXDestroyContext</name></proto>
             <param><ptype>Display</ptype> *<name>dpy</name></param>
             <param><ptype>GLXContext</ptype> <name>ctx</name></param>
@@ -896,9 +953,19 @@ typedef unsigned __int64 uint64_t;
             <param>int *<name>nelements</name></param>
         </command>
         <command>
+            <proto>unsigned int *<name>glXEnumerateVideoDevicesNV</name></proto>
+            <param><ptype>Display</ptype> *<name>dpy</name></param>
+            <param>int <name>screen</name></param>
+            <param>int *<name>nelements</name></param>
+        </command>
+        <command>
             <proto>void <name>glXFreeContextEXT</name></proto>
             <param><ptype>Display</ptype> *<name>dpy</name></param>
             <param><ptype>GLXContext</ptype> <name>context</name></param>
+        </command>
+        <command>
+            <proto>unsigned int <name>glXGetAGPOffsetMESA</name></proto>
+            <param>const void *<name>pointer</name></param>
         </command>
         <command>
             <proto>const char *<name>glXGetClientString</name></proto>
@@ -913,8 +980,15 @@ typedef unsigned __int64 uint64_t;
             <param>int *<name>value</name></param>
         </command>
         <command>
+            <proto>unsigned int <name>glXGetContextGPUIDAMD</name></proto>
+            <param><ptype>GLXContext</ptype> <name>ctx</name></param>
+        </command>
+        <command>
             <proto><ptype>GLXContextID</ptype> <name>glXGetContextIDEXT</name></proto>
             <param>const <ptype>GLXContext</ptype> <name>context</name></param>
+        </command>
+        <command>
+            <proto><ptype>GLXContext</ptype> <name>glXGetCurrentAssociatedContextAMD</name></proto>
         </command>
         <command>
             <proto><ptype>GLXContext</ptype> <name>glXGetCurrentContext</name></proto>
@@ -958,6 +1032,19 @@ typedef unsigned __int64 uint64_t;
             <param><ptype>Display</ptype> *<name>dpy</name></param>
             <param>int <name>screen</name></param>
             <param>int *<name>nelements</name></param>
+        </command>
+        <command>
+            <proto>unsigned int <name>glXGetGPUIDsAMD</name></proto>
+            <param>unsigned int <name>maxCount</name></param>
+            <param>unsigned int *<name>ids</name></param>
+        </command>
+        <command>
+            <proto>int <name>glXGetGPUInfoAMD</name></proto>
+            <param>unsigned int <name>id</name></param>
+            <param>int <name>property</name></param>
+            <param><ptype>GLenum</ptype> <name>dataType</name></param>
+            <param>unsigned int <name>size</name></param>
+            <param>void *<name>data</name></param>
         </command>
         <command>
             <proto><ptype>Bool</ptype> <name>glXGetMscRateOML</name></proto>
@@ -1072,6 +1159,10 @@ typedef unsigned __int64 uint64_t;
             <proto>void <name>glXLockVideoCaptureDeviceNV</name></proto>
             <param><ptype>Display</ptype> *<name>dpy</name></param>
             <param><ptype>GLXVideoCaptureDeviceNV</ptype> <name>device</name></param>
+        </command>
+        <command>
+            <proto><ptype>Bool</ptype> <name>glXMakeAssociatedContextCurrentAMD</name></proto>
+            <param><ptype>GLXContext</ptype> <name>ctx</name></param>
         </command>
         <command>
             <proto><ptype>Bool</ptype> <name>glXMakeContextCurrent</name></proto>
@@ -1367,16 +1458,6 @@ typedef unsigned __int64 uint64_t;
         <command>
             <proto>void <name>glXWaitX</name></proto>
         </command>
-        <command>
-            <proto>unsigned int *<name>glXEnumerateVideoDevicesNV</name></proto>
-            <param><ptype>Display</ptype> *<name>dpy</name></param>
-            <param>int <name>screen</name></param>
-            <param>int *<name>nelements</name></param>
-        </command>
-        <command>
-            <proto>unsigned int <name>glXGetAGPOffsetMESA</name></proto>
-            <param>const void *<name>pointer</name></param>
-        </command>
     </commands>
 
     <!-- SECTION: GLX API interface definitions. -->
@@ -1559,6 +1640,22 @@ typedef unsigned __int64 uint64_t;
                 <enum name="GLX_GPU_NUM_SIMD_AMD"/>
                 <enum name="GLX_GPU_NUM_RB_AMD"/>
                 <enum name="GLX_GPU_NUM_SPI_AMD"/>
+                <command name="glXGetGPUIDsAMD"/>
+                <command name="glXGetGPUInfoAMD"/>
+                <command name="glXGetContextGPUIDAMD"/>
+                <command name="glXCreateAssociatedContextAMD"/>
+                <command name="glXCreateAssociatedContextAttribsAMD"/>
+                <command name="glXDeleteAssociatedContextAMD"/>
+                <command name="glXMakeAssociatedContextCurrentAMD"/>
+                <command name="glXGetCurrentAssociatedContextAMD"/>
+                <command name="glXBlitContextFramebufferAMD"/>
+            </require>
+        </extension>
+        <extension name="GLX_ARB_context_flush_control" supported="glx">
+            <require>
+                <enum name="GLX_CONTEXT_RELEASE_BEHAVIOR_ARB"/>
+                <enum name="GLX_CONTEXT_RELEASE_BEHAVIOR_NONE_ARB"/>
+                <enum name="GLX_CONTEXT_RELEASE_BEHAVIOR_FLUSH_ARB"/>
             </require>
         </extension>
         <extension name="GLX_ARB_create_context" supported="glx">
@@ -1803,6 +1900,12 @@ typedef unsigned __int64 uint64_t;
                 <command name="glXSet3DfxModeMESA"/>
             </require>
         </extension>
+        <extension name="GLX_NV_copy_buffer" supported="glx">
+            <require>
+                <command name="glXCopyBufferSubDataNV"/>
+                <command name="glXNamedCopyBufferSubDataNV"/>
+            </require>
+        </extension>
         <extension name="GLX_NV_copy_image" supported="glx">
             <require>
                 <command name="glXCopyImageSubDataNV"/>
@@ -1853,7 +1956,7 @@ typedef unsigned __int64 uint64_t;
                 <command name="glXReleaseVideoCaptureDeviceNV"/>
             </require>
         </extension>
-        <extension name="GLX_NV_video_output" supported="glx">
+        <extension name="GLX_NV_video_out" supported="glx">
             <require>
                 <enum name="GLX_VIDEO_OUT_COLOR_NV"/>
                 <enum name="GLX_VIDEO_OUT_ALPHA_NV"/>
