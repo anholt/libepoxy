@@ -22,7 +22,7 @@
 # Note: To build and use libepoxy for Visual Studio prior to Visual Studio 2013,
 #       you need to ensure that you have stdint.h, inttypes.h and stdbool.h
 #       that will work for your installation of Visual Studio, which can be
-#       found by the compiler.  One possibitility would be to use msinttypes
+#       found by the compiler.  One possibility would be to use msinttypes
 #       and adapting gnulib's stdbool.h.in for your use.
 
 !include ..\msvc\detectenv-msvc.mak
