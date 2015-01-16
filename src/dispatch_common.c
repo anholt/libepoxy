@@ -178,8 +178,8 @@ epoxy_egl_get_current_gl_context_api(void);
 #endif
 
 #ifdef __GNUC__
-#define CONSTRUCT(_func ) static void _func (void) __attribute((constructor));
-#define DESTRUCT(_func ) static void _func (void) __attribute((destructor));
+#define CONSTRUCT(_func) static void _func (void) __attribute__((constructor));
+#define DESTRUCT(_func) static void _func (void) __attribute__((destructor));
 
 #elif defined (_MSC_VER) && (_MSC_VER >= 1500)
 #define CONSTRUCT(_func) \
