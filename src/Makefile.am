@@ -19,6 +19,8 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+include Makefile.sources
+
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/include \
 	-I$(top_builddir)/include \
@@ -34,84 +36,61 @@ AM_CFLAGS = \
 epoxyincludedir = $(includedir)/epoxy
 lib_LTLIBRARIES = libepoxy.la
 
-epoxyinclude_DATA = \
+nodist_epoxyinclude_DATA = \
 	$(GENERATED_GL_INCLUDES) \
 	$(INSTALL_GLX_INCLUDES) \
 	$(INSTALL_EGL_INCLUDES) \
 	$(INSTALL_WGL_INCLUDES) \
 	$()
 
+c_sources = $(EPOXY_C_SRC)
+h_sources = $(EPOXY_SRC_HDR)
+
+gen_c_sources = $(GENERATED_GL_SOURCE)
+gen_headers = $(GENERATED_GL_INCLUDES)
+
 if BUILD_EGL
 INSTALL_EGL_INCLUDES = $(GENERATED_EGL_INCLUDES)
+c_sources += $(EPOXY_EGL_C_SRC)
+gen_c_sources += $(GENERATED_EGL_SOURCE)
+gen_headers += $(GENERATED_EGL_INCLUDES)
 endif
 
 if BUILD_GLX
 INSTALL_GLX_INCLUDES = $(GENERATED_GLX_INCLUDES)
+c_sources += $(EPOXY_GLX_C_SRC)
+gen_c_sources += $(GENERATED_GLX_SOURCE)
+gen_headers += $(GENERATED_GLX_INCLUDES)
 endif
 
 if BUILD_WGL
 INSTALL_WGL_INCLUDES = $(GENERATED_WGL_INCLUDES)
+c_sources += $(EPOXY_WGL_C_SRC)
+gen_c_sources += $(GENERATED_WGL_SOURCE)
+gen_headers += $(GENERATED_WGL_INCLUDES)
 endif
 
-GENERATED_GL_INCLUDES = \
-	$(builddir)/../include/epoxy/gl_generated.h \
-	$()
+GENERATED_GL_INCLUDES = $(builddir)/../$(GL_GEN_HEADER)
 
-GENERATED_GLX_INCLUDES = \
-	$(builddir)/../include/epoxy/glx_generated.h \
-	$()
+GENERATED_GLX_INCLUDES = $(builddir)/../$(GLX_GEN_HEADER)
 
-GENERATED_EGL_INCLUDES = \
-	$(builddir)/../include/epoxy/egl_generated.h \
-	$()
+GENERATED_EGL_INCLUDES = $(builddir)/../$(EGL_GEN_HEADER)
 
-GENERATED_WGL_INCLUDES = \
-	$(builddir)/../include/epoxy/wgl_generated.h \
-	$()
-
-GENERATED_GL_SOURCE = gl_generated_dispatch.c
-
-GENERATED_GL = \
-	$(GENERATED_GL_SOURCE) \
-	$(GENERATED_GL_INCLUDES) \
-	$()
-
-GENERATED_GLX_SOURCE = glx_generated_dispatch.c
-
-GENERATED_GLX = \
-	$(GENERATED_GLX_SOURCE) \
-	$(GENERATED_GLX_INCLUDES) \
-	$()
-
-GENERATED_EGL_SOURCE = egl_generated_dispatch.c
-
-GENERATED_EGL = \
-	$(GENERATED_EGL_SOURCE) \
-	$(GENERATED_EGL_INCLUDES) \
-	$()
-
-GENERATED_WGL_SOURCE = wgl_generated_dispatch.c
-
-GENERATED_WGL = \
-	$(GENERATED_WGL_SOURCE) \
-	$(GENERATED_WGL_INCLUDES) \
-	$()
+GENERATED_WGL_INCLUDES = $(builddir)/../$(WGL_GEN_HEADER)
 
 BUILT_SOURCES = \
-	$(GENERATED_GL) \
-	$(GENERATED_GLX) \
-	$(GENERATED_EGL) \
-	$(GENERATED_WGL) \
+	$(gen_c_sources) \
+	$(gen_headers) \
 	$()
 CLEANFILES = $(BUILT_SOURCES)
 
 libepoxy_la_SOURCES = \
-	dispatch_common.c \
-	dispatch_common.h \
-	$(GENERATED_GL) \
-	$(BUILD_EGL_CODE) \
-	$(BUILD_GLX_CODE) \
-	$(BUILD_WGL_CODE) \
+	$(c_sources) \
+	$(h_sources) \
+	$()
+
+nodist_libepoxy_la_SOURCES = \
+	$(gen_c_sources) \
 	$()
 
 libepoxy_la_LDFLAGS = \
@@ -123,27 +102,6 @@ libepoxy_la_LIBADD = \
 	$(EPOXY_LINK_LIBS) \
         $(DLOPEN_LIBS) \
 	$()
-
-if BUILD_EGL
-BUILD_EGL_CODE = \
-	$(GENERATED_EGL) \
-	dispatch_egl.c \
-	$()
-endif
-
-if BUILD_GLX
-BUILD_GLX_CODE = \
-	$(GENERATED_GLX) \
-	dispatch_glx.c \
-	$()
-endif
-
-if BUILD_WGL
-BUILD_WGL_CODE = \
-	$(GENERATED_WGL) \
-	dispatch_wgl.c \
-	$()
-endif
 
 # These are generated alongside the .c file.
 $(GENERATED_GL_INCLUDES): $(GENERATED_GL_SOURCE)
@@ -166,4 +124,5 @@ $(GENERATED_WGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/wgl.xm
 
 EXTRA_DIST = \
 	gen_dispatch.py \
+	Makefile.vc \
 	$()

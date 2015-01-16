@@ -1,4 +1,4 @@
-# Copyright © 2013 Intel Corporation
+# Copyright © 2014 Intel Corporation
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -19,19 +19,55 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-SUBDIRS = include/epoxy src
+EGL_TESTS_PROGS = \
+	egl_has_extension_nocontext \
+	egl_gl \
+	egl_gles1_without_glx \
+	egl_gles2_without_glx
 
-SUBDIRS += test
+EGL_GLX_TEST_PROGS = \
+	egl_and_glx_different_pointers_egl_glx \
+	egl_and_glx_different_pointers_egl \
+	egl_and_glx_different_pointers_glx
 
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = epoxy.pc
+GLX_TEST_PROGS = \
+	glx_beginend \
+	glx_public_api \
+	glx_public_api_core \
+	glx_glxgetprocaddress_nocontext \
+	glx_has_extension_nocontext \
+	glx_static
 
-EXTRA_DIST = \
-	README.md \
-	epoxy.pc.in \
-	registry/egl.xml \
-	registry/gl.xml \
-	registry/glx.xml \
-	registry/wgl.xml \
-	msvc/detectenv-msvc.mak \
-	$()
+GLX_NON_APPLE_PROGS = \
+	glx_alias_prefer_same_name \
+	glx_gles2
+
+WGL_TEST_PROGS = \
+	wgl_core_and_exts$(EXEEXT) \
+	wgl_per_context_funcptrs$(EXEEXT) \
+	wgl_usefontbitmaps$(EXEEXT) \
+	wgl_usefontbitmaps_unicode$(EXEEXT)
+
+GENERIC_TEST_PROGS = \
+	headerguards$(EXEEXT) \
+	miscdefines$(EXEEXT) \
+	khronos_typedefs$(EXEEXT)
+
+DLWRAP_SRC = dlwrap.c dlwrap.h
+
+KHRONOS_TYPEDEF_SRC = \
+	khronos_typedefs.c \
+	khronos_typedefs.h \
+	khronos_typedefs_nonepoxy.c
+
+EGL_COMMON_SRC = \
+	egl_common.c \
+	egl_common.h
+
+GLX_COMMON_SRC = \
+	glx_common.c \
+	glx_common.h
+
+WGL_COMMON_SRC = \
+	wgl_common.c \
+	wgl_common.h
