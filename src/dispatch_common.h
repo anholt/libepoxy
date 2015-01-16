@@ -30,7 +30,7 @@
 #define EPOXY_IMPORTEXPORT __declspec(dllexport)
 #elif defined(__APPLE__)
 #define PLATFORM_HAS_EGL 0
-#define PLATFORM_HAS_GLX 1
+#define PLATFORM_HAS_GLX 0
 #define PLATFORM_HAS_WGL 0
 #define EPOXY_IMPORTEXPORT
 #elif defined(ANDROID)

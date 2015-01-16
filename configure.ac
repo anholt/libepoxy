@@ -78,7 +78,7 @@ case $host_os in
         ;;
     darwin*)
         build_egl=no
-        build_glx=yes
+        build_glx=no
         build_wgl=no
         build_apple=yes
         has_znow=no
