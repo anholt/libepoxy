@@ -1,4 +1,4 @@
-# Copyright © 2014 Intel Corporation
+# Copyright © 2015 Intel Corporation
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -18,6 +18,12 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
+
+# Note: To build and use libepoxy for Visual Studio prior to Visual Studio 2013,
+#       you need to ensure that you have stdint.h, inttypes.h and stdbool.h
+#       that will work for your installation of Visual Studio, which can be
+#       found by the compiler.  One possibitility would be to use msinttypes
+#       and adapting gnulib's stdbool.h.in for your use.
 
 # Adjust this to where your Python interpretor resides in
 PYTHONDIR=c:\python27
@@ -40,7 +46,7 @@ EPOXY_DLL_BASENAME = $(EPOXY_BASENAME)-vs$(VSVER)
 all: $(EPOXY_DLL_BASENAME).dll
 
 $(EPOXY_DLL_BASENAME).dll: ../$(GL_GEN_HEADER) ../$(WGL_GEN_HEADER) $(GENERATED_GL_SOURCE) $(GENERATED_WGL_SOURCE) $(EPOXY_WGL_C_SRC) $(EPOXY_C_SRC)
-	$(CC) $(CFLAGS_ADD) /I..\include $(CFLAGS_C99_COMPAT) $(EPOXY_C_SRC) $(EPOXY_WGL_C_SRC) $(GENERATED_GL_SOURCE) $(GENERATED_WGL_SOURCE)	\
+	$(CC) $(CFLAGS_ADD) $(CFLAGS_C99_COMPAT) $(EPOXY_C_SRC) $(EPOXY_WGL_C_SRC) $(GENERATED_GL_SOURCE) $(GENERATED_WGL_SOURCE)	\
 	/link /DLL /DEBUG $(EXTRA_LDFLAGS) /pdb:$(EPOXY_DLL_BASENAME).pdb /out:$@ /implib:$(EPOXY_BASENAME).lib
 	@if exist $@.manifest mt /manifest $@.manifest /outputresource:$@;2
 

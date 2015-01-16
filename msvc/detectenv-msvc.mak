@@ -1,3 +1,24 @@
+# Copyright © 2015 Intel Corporation
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice (including the next
+# paragraph) shall be included in all copies or substantial portions of the
+# Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+
 # Check to see we are configured to build with MSVC (MSDEVDIR, MSVCDIR or
 # VCINSTALLDIR) or with the MS Platform SDK (MSSDK or WindowsSDKDir)
 !if !defined(VCINSTALLDIR) && !defined(WINDOWSSDKDIR)
@@ -63,10 +84,10 @@ You need to specify CFG=release or CFG=debug.
 !endif
 
 !if "$(CFG)" == "release"
-CFLAGS_ADD = /MD /O2 /Zi
+CFLAGS_ADD = /MD /O2 /Zi /I..\include /I..\..\vs$(VSVER)\$(PLAT)\include
 EXTRA_LDFLAGS = /opt:ref
 !else
-CFLAGS_ADD = /MDd /Od /Zi
+CFLAGS_ADD = /MDd /Od /Zi /I..\include /I..\..\vs$(VSVER)\$(PLAT)\include
 EXTRA_LDFLAGS =
 !endif
 
@@ -76,8 +97,4 @@ LDFLAGS_ARCH = /machine:x64
 LDFLAGS_ARCH = /machine:x86
 !endif
 
-!if "$(C99_COMPAT_NEEDED)" == "1"
-CFLAGS_C99_COMPAT = /I..\msvc /Dinline=__inline
-!else
 CFLAGS_C99_COMPAT = /Dinline=__inline
-!endif
