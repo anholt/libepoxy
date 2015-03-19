@@ -71,7 +71,17 @@ extern "C" {
 #endif
 
 #ifndef EPOXY_IMPORTEXPORT
+// On any reasonably modern compiler and linker, decorating functions with
+// __declspec(dllimport) is completely optional, and only provides a very minor
+// optimization, bypassing a tiny (~2 instructions) and readily pipelinable
+// "thunk", which is likely to be optimized out anyway if LTO is enabled.
+// The problems it creates with static linking and portability make it arguably
+// not worth the bother. But for those that need it, or think they need it...
+#ifdef EPOXY_USE_DLLIMPORT
 #define EPOXY_IMPORTEXPORT __declspec(dllimport)
+#else
+#define EPOXY_IMPORTEXPORT
+#endif
 #endif
 
 #ifndef GLAPI
@@ -79,7 +89,7 @@ extern "C" {
 #endif
 
 #define KHRONOS_APIENTRY __stdcall
-#define KHRONOS_APICALL __declspec(dllimport) __stdcall
+#define KHRONOS_APICALL EPOXY_IMPORTEXPORT __stdcall
 
 #endif /* _WIN32 */
 
