@@ -89,7 +89,11 @@ extern "C" {
 #endif
 
 #define KHRONOS_APIENTRY __stdcall
-#define KHRONOS_APICALL EPOXY_IMPORTEXPORT __stdcall
+#ifdef EPOXY_USE_DLLIMPORT
+#define KHRONOS_APICALL __declspec(dllimport) __stdcall
+#else
+#define KHRONOS_APICALL __stdcall
+#endif
 
 #endif /* _WIN32 */
 
