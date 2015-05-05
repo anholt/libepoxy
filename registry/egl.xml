@@ -181,8 +181,8 @@
         <enum value="((EGLImageKHR)0)" name="EGL_NO_IMAGE_KHR"/>
         <enum value="((EGLNativeDisplayType)0)" name="EGL_DEFAULT_DISPLAY"/>
         <enum value="((EGLNativeFileDescriptorKHR)(-1))" name="EGL_NO_FILE_DESCRIPTOR_KHR"/>
-        <enum value="((EGLOutputLayerEXT)0)" name="EGL_NO_OUTPUT_LAYER_EXT"/>                 
-        <enum value="((EGLOutputPortEXT)0)" name="EGL_NO_OUTPUT_PORT_EXT"/>                  
+        <enum value="((EGLOutputLayerEXT)0)" name="EGL_NO_OUTPUT_LAYER_EXT"/>
+        <enum value="((EGLOutputPortEXT)0)" name="EGL_NO_OUTPUT_PORT_EXT"/>
         <enum value="((EGLStreamKHR)0)" name="EGL_NO_STREAM_KHR"/>
         <enum value="((EGLSurface)0)" name="EGL_NO_SURFACE"/>
         <enum value="((EGLSync)0)" name="EGL_NO_SYNC"/>
@@ -586,17 +586,17 @@
             <unused start="0x3220" end="0x322A"/>
         <enum value="0x322B" name="EGL_BAD_DEVICE_EXT"/>
         <enum value="0x322C" name="EGL_DEVICE_EXT"/>
-        <enum value="0x322D" name="EGL_BAD_OUTPUT_LAYER_EXT"/>                
-        <enum value="0x322E" name="EGL_BAD_OUTPUT_PORT_EXT"/>                 
-        <enum value="0x322F" name="EGL_SWAP_INTERVAL_EXT"/>                   
+        <enum value="0x322D" name="EGL_BAD_OUTPUT_LAYER_EXT"/>
+        <enum value="0x322E" name="EGL_BAD_OUTPUT_PORT_EXT"/>
+        <enum value="0x322F" name="EGL_SWAP_INTERVAL_EXT"/>
             <unused start="0x3230" end="0x3232"/>
-        <enum value="0x3233" name="EGL_DRM_DEVICE_FILE_EXT"/>                 
-        <enum value="0x3234" name="EGL_DRM_CRTC_EXT"/>                        
-        <enum value="0x3235" name="EGL_DRM_PLANE_EXT"/>                       
-        <enum value="0x3236" name="EGL_DRM_CONNECTOR_EXT"/>                   
-        <enum value="0x3237" name="EGL_OPENWF_DEVICE_ID_EXT"/>                
-        <enum value="0x3238" name="EGL_OPENWF_PIPELINE_ID_EXT"/>              
-        <enum value="0x3239" name="EGL_OPENWF_PORT_ID_EXT"/>                  
+        <enum value="0x3233" name="EGL_DRM_DEVICE_FILE_EXT"/>
+        <enum value="0x3234" name="EGL_DRM_CRTC_EXT"/>
+        <enum value="0x3235" name="EGL_DRM_PLANE_EXT"/>
+        <enum value="0x3236" name="EGL_DRM_CONNECTOR_EXT"/>
+        <enum value="0x3237" name="EGL_OPENWF_DEVICE_ID_EXT"/>
+        <enum value="0x3238" name="EGL_OPENWF_PIPELINE_ID_EXT"/>
+        <enum value="0x3239" name="EGL_OPENWF_PORT_ID_EXT"/>
         <enum value="0x323A" name="EGL_CUDA_DEVICE_NV"/>
         <enum value="0x323B" name="EGL_CUDA_EVENT_HANDLE_NV"/>
         <enum value="0x323C" name="EGL_SYNC_CUDA_EVENT_NV"/>
@@ -662,8 +662,36 @@
             <unused start="0x32F0" end="0x32FF"/>
     </enums>
 
-    <enums namespace="EGL" start="0x3300" end="0x331F" vendor="QCOM" comment="Reserved for Jeff Vigil (Bug 12973) - EGL_EXT_yuv_surface spec TBD">
-            <unused start="0x3300" end="0x331F"/>
+    <enums namespace="EGL" start="0x3300" end="0x331F" vendor="QCOM" comment="Reserved for Jeff Vigil (Bugs 12973,12849) - EGL_EXT_yuv_surface spec TBD">
+        <enum value="0x3300" name="EGL_YUV_BUFFER_EXT"/>
+        <enum value="0x3301" name="EGL_YUV_ORDER_EXT"/>
+        <enum value="0x3302" name="EGL_YUV_ORDER_YUV_EXT"/>
+        <enum value="0x3303" name="EGL_YUV_ORDER_YVU_EXT"/>
+        <enum value="0x3304" name="EGL_YUV_ORDER_YUYV_EXT"/>
+        <enum value="0x3305" name="EGL_YUV_ORDER_UYVY_EXT"/>
+        <enum value="0x3306" name="EGL_YUV_ORDER_YVYU_EXT"/>
+        <enum value="0x3307" name="EGL_YUV_ORDER_VYUY_EXT"/>
+        <enum value="0x3308" name="EGL_YUV_ORDER_AYUV_EXT"/>
+            <unused start="0x3309"/>
+        <enum value="0x330A" name="EGL_YUV_CSC_STANDARD_EXT"/>
+        <enum value="0x330B" name="EGL_YUV_CSC_STANDARD_601_EXT"/>
+        <enum value="0x330C" name="EGL_YUV_CSC_STANDARD_709_EXT"/>
+        <enum value="0x330D" name="EGL_YUV_CSC_STANDARD_2020_EXT"/>
+            <unused start="0x330E" end="0x3310"/>
+        <enum value="0x3311" name="EGL_YUV_NUMBER_OF_PLANES_EXT"/>
+        <enum value="0x3312" name="EGL_YUV_SUBSAMPLE_EXT"/>
+        <enum value="0x3313" name="EGL_YUV_SUBSAMPLE_4_2_0_EXT"/>
+        <enum value="0x3314" name="EGL_YUV_SUBSAMPLE_4_2_2_EXT"/>
+        <enum value="0x3315" name="EGL_YUV_SUBSAMPLE_4_4_4_EXT"/>
+            <unused start="0x3316"/>
+        <enum value="0x3317" name="EGL_YUV_DEPTH_RANGE_EXT"/>
+        <enum value="0x3318" name="EGL_YUV_DEPTH_RANGE_LIMITED_EXT"/>
+        <enum value="0x3319" name="EGL_YUV_DEPTH_RANGE_FULL_EXT"/>
+        <enum value="0x331A" name="EGL_YUV_PLANE_BPP_EXT"/>
+        <enum value="0x331B" name="EGL_YUV_PLANE_BPP_0_EXT"/>
+        <enum value="0x331C" name="EGL_YUV_PLANE_BPP_8_EXT"/>
+        <enum value="0x331D" name="EGL_YUV_PLANE_BPP_10_EXT"/>
+            <unused start="0x331E" end="0x331F"/>
     </enums>
 
     <enums namespace="EGL" start="0x3320" end="0x339F" vendor="NV" comment="Reserved for James Jones (Bug 13209)">
@@ -671,7 +699,21 @@
     </enums>
 
     <enums namespace="EGL" start="0x33A0" end="0x33AF" vendor="ANGLE" comment="Reserved for Shannon Woods (Bug 13175)">
-            <unused start="0x33A0" end="0x33AF"/>
+        <enum value="0x33A0" name="EGL_D3D9_DEVICE_ANGLE"/>
+        <enum value="0x33A1" name="EGL_D3D11_DEVICE_ANGLE"/>
+            <unused start="0x33A2" end="0x33AF"/>
+    </enums>
+
+    <enums namespace="EGL" start="0x33B0" end="0x33BF" vendor="KHR" comment="Reserved for Jeff Vigil (Bug 13357)">
+            <unused start="0x33B0" end="0x33BF"/>
+    </enums>
+
+    <enums namespace="EGL" start="0x33C0" end="0x33DF" vendor="BCOM" comment="Reserved for Gary Sweet (Bug 12203)">
+            <unused start="0x33C0" end="0x33DF"/>
+    </enums>
+
+    <enums namespace="EGL" start="0x33E0" end="0x342F" vendor="QCOM" comment="Reserved for Jeff Vigil (Bugs 10663,13364)">
+            <unused start="0x33E0" end="0x342F"/>
     </enums>
 
 <!-- Please remember that new enumerant allocations must be obtained by
@@ -683,8 +725,8 @@
 
 <!-- Reservable for future use. To generate a new range, allocate multiples
      of 16 starting at the lowest available point in this block. -->
-    <enums namespace="EGL" start="0x33B0" end="0x3FFF" vendor="KHR">
-            <unused start="0x33B0" end="0x3FFF" comment="Reserved for future use"/>
+    <enums namespace="EGL" start="0x3420" end="0x3FFF" vendor="KHR">
+            <unused start="0x3420" end="0x3FFF" comment="Reserved for future use"/>
     </enums>
 
     <enums namespace="EGL" start="0x8F70" end="0x8F7F" vendor="HI" comment="For Mark Callow, Khronos bug 4055. Shared with GL.">
@@ -928,6 +970,22 @@
             <param><ptype>EGLSyncKHR</ptype> <name>sync</name></param>
         </command>
         <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglExportDMABUFImageMESA</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLImageKHR</ptype> <name>image</name></param>
+            <param>int *<name>fds</name></param>
+            <param><ptype>EGLint</ptype> *<name>strides</name></param>
+            <param><ptype>EGLint</ptype> *<name>offsets</name></param>
+        </command>
+        <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglExportDMABUFImageQueryMESA</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLImageKHR</ptype> <name>image</name></param>
+            <param>int *<name>fourcc</name></param>
+            <param>int *<name>num_planes</name></param>
+            <param><ptype>EGLuint64KHR</ptype> *<name>modifiers</name></param>
+        </command>
+        <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglExportDRMImageMESA</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLImageKHR</ptype> <name>image</name></param>
@@ -1087,26 +1145,26 @@
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglQueryDeviceAttribEXT</name></proto>
-            <param><ptype>EGLDeviceEXT</ptype> <name>device</name></param>                            
-            <param><ptype>EGLint</ptype> <name>attribute</name></param>                               
-            <param><ptype>EGLAttrib</ptype> *<name>value</name></param>   
+            <param><ptype>EGLDeviceEXT</ptype> <name>device</name></param>
+            <param><ptype>EGLint</ptype> <name>attribute</name></param>
+            <param><ptype>EGLAttrib</ptype> *<name>value</name></param>
         </command>
         <command>
             <proto>const char *<name>eglQueryDeviceStringEXT</name></proto>
-            <param><ptype>EGLDeviceEXT</ptype> <name>device</name></param>                            
-            <param><ptype>EGLint</ptype> <name>name</name></param>       
+            <param><ptype>EGLDeviceEXT</ptype> <name>device</name></param>
+            <param><ptype>EGLint</ptype> <name>name</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglQueryDevicesEXT</name></proto>
-            <param><ptype>EGLint</ptype> <name>max_devices</name></param>                         
-            <param><ptype>EGLDeviceEXT</ptype> *<name>devices</name></param>                      
-            <param><ptype>EGLint</ptype> *<name>num_devices</name></param> 
+            <param><ptype>EGLint</ptype> <name>max_devices</name></param>
+            <param><ptype>EGLDeviceEXT</ptype> *<name>devices</name></param>
+            <param><ptype>EGLint</ptype> *<name>num_devices</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglQueryDisplayAttribEXT</name></proto>
-            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>                                 
-            <param><ptype>EGLint</ptype> <name>attribute</name></param>                               
-            <param><ptype>EGLAttrib</ptype> *<name>value</name></param>  
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLint</ptype> <name>attribute</name></param>
+            <param><ptype>EGLAttrib</ptype> *<name>value</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglQueryNativeDisplayNV</name></proto>
@@ -1215,9 +1273,9 @@
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglSetDamageRegionKHR</name></proto>
-            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>                                     
-            <param><ptype>EGLSurface</ptype> <name>surface</name></param>                                 
-            <param><ptype>EGLint</ptype> *<name>rects</name></param>                                      
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLSurface</ptype> <name>surface</name></param>
+            <param><ptype>EGLint</ptype> *<name>rects</name></param>
             <param><ptype>EGLint</ptype> <name>n_rects</name></param>
         </command>
         <command>
@@ -1636,6 +1694,12 @@
                 <enum name="EGL_D3D_TEXTURE_2D_SHARE_HANDLE_ANGLE"/>
             </require>
         </extension>
+        <extension name="EGL_ANGLE_device_d3d" supported="egl">
+            <require>
+                <enum name="EGL_D3D9_DEVICE_ANGLE"/>
+                <enum name="EGL_D3D11_DEVICE_ANGLE"/>
+            </require>
+        </extension>
         <extension name="EGL_ANGLE_query_surface_pointer" supported="egl">
             <require>
                 <command name="eglQuerySurfacePointerANGLE"/>
@@ -1686,9 +1750,24 @@
                 <enum name="EGL_DRM_DEVICE_FILE_EXT"/>
             </require>
         </extension>
+        <extension name="EGL_EXT_device_enumeration" supported="egl">
+            <require>
+                <command name="eglQueryDevicesEXT"/>
+            </require>
+        </extension>
         <extension name="EGL_EXT_device_openwf" supported="egl">
             <require>
                 <enum name="EGL_OPENWF_DEVICE_ID_EXT"/>
+            </require>
+        </extension>
+        <extension name="EGL_EXT_device_query" supported="egl">
+            <require>
+                <enum name="EGL_NO_DEVICE_EXT"/>
+                <enum name="EGL_BAD_DEVICE_EXT"/>
+                <enum name="EGL_DEVICE_EXT"/>
+                <command name="eglQueryDeviceAttribEXT"/>
+                <command name="eglQueryDeviceStringEXT"/>
+                <command name="eglQueryDisplayAttribEXT"/>
             </require>
         </extension>
         <extension name="EGL_EXT_image_dma_buf_import" supported="egl">
@@ -1792,6 +1871,35 @@
                 <command name="eglSwapBuffersWithDamageEXT"/>
             </require>
         </extension>
+        <extension name="EGL_EXT_yuv_surface" supported="egl">
+            <require>
+                <enum name="EGL_YUV_ORDER_EXT"/>
+                <enum name="EGL_YUV_NUMBER_OF_PLANES_EXT"/>
+                <enum name="EGL_YUV_SUBSAMPLE_EXT"/>
+                <enum name="EGL_YUV_DEPTH_RANGE_EXT"/>
+                <enum name="EGL_YUV_CSC_STANDARD_EXT"/>
+                <enum name="EGL_YUV_PLANE_BPP_EXT"/>
+                <enum name="EGL_YUV_BUFFER_EXT"/>
+                <enum name="EGL_YUV_ORDER_YUV_EXT"/>
+                <enum name="EGL_YUV_ORDER_YVU_EXT"/>
+                <enum name="EGL_YUV_ORDER_YUYV_EXT"/>
+                <enum name="EGL_YUV_ORDER_UYVY_EXT"/>
+                <enum name="EGL_YUV_ORDER_YVYU_EXT"/>
+                <enum name="EGL_YUV_ORDER_VYUY_EXT"/>
+                <enum name="EGL_YUV_ORDER_AYUV_EXT"/>
+                <enum name="EGL_YUV_SUBSAMPLE_4_2_0_EXT"/>
+                <enum name="EGL_YUV_SUBSAMPLE_4_2_2_EXT"/>
+                <enum name="EGL_YUV_SUBSAMPLE_4_4_4_EXT"/>
+                <enum name="EGL_YUV_DEPTH_RANGE_LIMITED_EXT"/>
+                <enum name="EGL_YUV_DEPTH_RANGE_FULL_EXT"/>
+                <enum name="EGL_YUV_CSC_STANDARD_601_EXT"/>
+                <enum name="EGL_YUV_CSC_STANDARD_709_EXT"/>
+                <enum name="EGL_YUV_CSC_STANDARD_2020_EXT"/>
+                <enum name="EGL_YUV_PLANE_BPP_0_EXT"/>
+                <enum name="EGL_YUV_PLANE_BPP_8_EXT"/>
+                <enum name="EGL_YUV_PLANE_BPP_10_EXT"/>
+            </require>
+        </extension>
         <extension name="EGL_HI_clientpixmap" supported="egl">
             <require>
                 <enum name="EGL_CLIENT_PIXMAP_POINTER_HI"/>
@@ -1857,10 +1965,14 @@
         </extension>
         <extension name="EGL_KHR_fence_sync" protect="KHRONOS_SUPPORT_INT64" supported="egl">
             <require>
-                <!-- @ Most interfaces defined by EGL_KHR_reusable sync -->
+                <!-- Most interfaces also defined by EGL_KHR_reusable sync -->
                 <enum name="EGL_SYNC_PRIOR_COMMANDS_COMPLETE_KHR"/>
                 <enum name="EGL_SYNC_CONDITION_KHR"/>
                 <enum name="EGL_SYNC_FENCE_KHR"/>
+                <command name="eglCreateSyncKHR"/>
+                <command name="eglDestroySyncKHR"/>
+                <command name="eglClientWaitSyncKHR"/>
+                <command name="eglGetSyncAttribKHR"/>
             </require>
         </extension>
         <extension name="EGL_KHR_get_all_proc_addresses" supported="egl"/>
@@ -1983,7 +2095,7 @@
         <extension name="EGL_KHR_partial_update" supported="egl">
             <require>
                 <enum name="EGL_BUFFER_AGE_KHR"/>
-                <command name="eglSetDamageRegionKHR"/> 
+                <command name="eglSetDamageRegionKHR"/>
             </require>
         </extension>
         <extension name="EGL_KHR_platform_android" supported="egl">
@@ -2106,6 +2218,13 @@
                 <enum name="EGL_DRM_BUFFER_USE_SHARE_MESA"/>
                 <command name="eglCreateDRMImageMESA"/>
                 <command name="eglExportDRMImageMESA"/>
+            </require>
+        </extension>
+        <extension name="EGL_MESA_image_dma_buf_export" supported="egl">
+            <require>
+                <type name="EGLuint64KHR"/>
+                <command name="eglExportDMABUFImageQueryMESA"/>
+                <command name="eglExportDMABUFImageMESA"/>
             </require>
         </extension>
         <extension name="EGL_MESA_platform_gbm" supported="egl">
