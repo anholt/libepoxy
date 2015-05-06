@@ -58,7 +58,14 @@ AC_CHECK_HEADER([KHR/khrplatform.h],
 # uintptr_t to a void *") by default.  Kill that.
 XORG_TESTSET_CFLAG(CWARNFLAGS, [-Wno-int-conversion])
 
-PKG_CHECK_MODULES(X11, [x11], [x11=yes], [x11=no])
+AC_ARG_ENABLE([glx],
+                [AS_HELP_STRING([--disable-glx],
+				[disable if you don't want x11/glx support])],
+                [],
+                [enable_glx=yes]
+             )
+
+PKG_CHECK_MODULES(X11, [x11], [x11=$enable_glx], [x11=no])
 
 AM_CONDITIONAL(HAVE_X11, test x$x11 = xyes)
 
