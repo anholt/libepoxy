@@ -615,10 +615,13 @@ epoxy_get_proc_address(const char *name)
 #elif defined(__APPLE__)
     return epoxy_gl_dlsym(name);
 #else
+#if PLATFORM_HAS_GLX
     if (epoxy_current_context_is_glx()) {
         return glXGetProcAddressARB((const GLubyte *)name);
-    } else {
+    } else
+#endif /* PLATFORM_HAS_GLX */
 #if PLATFORM_HAS_EGL
+    {
         GLenum egl_api = epoxy_egl_get_current_gl_context_api();
 
         switch (egl_api) {
@@ -628,10 +631,10 @@ epoxy_get_proc_address(const char *name)
         case EGL_NONE:
             break;
         }
-#endif
     }
+#endif /* PLATFORM_HAS_EGL */
     errx(1, "Couldn't find current GLX or EGL context.\n");
-#endif
+#endif /* _WIN32 | __APPLE__*/
 }
 
 void

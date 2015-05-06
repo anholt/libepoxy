@@ -58,6 +58,10 @@ AC_CHECK_HEADER([KHR/khrplatform.h],
 # uintptr_t to a void *") by default.  Kill that.
 XORG_TESTSET_CFLAG(CWARNFLAGS, [-Wno-int-conversion])
 
+PKG_CHECK_MODULES(X11, [x11], [x11=yes], [x11=no])
+
+AM_CONDITIONAL(HAVE_X11, test x$x11 = xyes)
+
 has_znow=yes
 
 case $host_os in
@@ -86,7 +90,7 @@ case $host_os in
         ;;
     *)
         build_egl=yes
-        build_glx=yes
+        build_glx=$x11
         build_wgl=no
         # On platforms with dlopen, we load everything dynamically and
         # don't link against a specific window system or GL implementation.
@@ -143,13 +147,6 @@ case $host_os in
 esac
 
 AC_SUBST([VISIBILITY_CFLAGS])
-
-PKG_CHECK_MODULES(X11, [x11], [x11=yes], [x11=no])
-if test x$x11 = xno -a x$build_glx = xyes; then
-    AC_MSG_ERROR([libX11 headers (libx11-dev) required to build with GLX support])
-fi
-
-AM_CONDITIONAL(HAVE_X11, test x$x11 = xyes)
 
 PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
 
