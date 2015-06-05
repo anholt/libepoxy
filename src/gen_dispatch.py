@@ -643,12 +643,13 @@ class Generator(object):
         # for epoxy_print_failure_reasons().
 
         self.outln('static const char *enum_strings[] = {')
+        self.outln('    "", /* {0}_provider_terminator */'.format(self.target))
 
         sorted_providers = sorted(self.provider_enum.keys())
 
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
-            self.outln('    [{0}] = "{1}",'.format(enum, human_name))
+            self.outln('    "{1}", /* {0} */'.format(enum, human_name))
         self.outln('};')
         self.outln('')
 
@@ -768,7 +769,7 @@ class Generator(object):
 
         self.outln('static struct dispatch_table resolver_table = {')
         for func in self.sorted_functions:
-            self.outln('    .{0} = epoxy_{0}_dispatch_table_rewrite_ptr,'.format(func.wrapped_name))
+            self.outln('    epoxy_{0}_dispatch_table_rewrite_ptr, /* {0} */'.format(func.wrapped_name))
         self.outln('};')
         self.outln('')
 
