@@ -23,7 +23,7 @@
 AC_PREREQ([2.60])
 AC_INIT([libepoxy],
         [1.2],
-        [https://people.freedesktop.org/~anholt/libepoxy],
+        [https://github.com/anholt/libepoxy],
         [libepoxy])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
