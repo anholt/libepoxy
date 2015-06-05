@@ -77,11 +77,11 @@
 #endif
 
 #define UNWRAPPED_PROTO(x) (GLAPIENTRY *x)
-#define WRAPPER_VISIBILITY static GLAPIENTRY
+#define WRAPPER_VISIBILITY(type) static type GLAPIENTRY
 #define WRAPPER(x) x ## _wrapped
 
 #define GEN_GLOBAL_REWRITE_PTR(name, args, passthrough)          \
-    static EPOXY_CALLSPEC void                                        \
+    static void EPOXY_CALLSPEC                                        \
     name##_global_rewrite_ptr args                               \
     {                                                            \
         name = (void *)name##_resolver();                        \
@@ -89,7 +89,7 @@
     }
 
 #define GEN_GLOBAL_REWRITE_PTR_RET(ret, name, args, passthrough) \
-    static EPOXY_CALLSPEC ret                                    \
+    static ret EPOXY_CALLSPEC                                    \
     name##_global_rewrite_ptr args                               \
     {                                                            \
         name = (void *)name##_resolver();                        \
@@ -98,7 +98,7 @@
 
 #if USING_DISPATCH_TABLE
 #define GEN_DISPATCH_TABLE_REWRITE_PTR(name, args, passthrough)            \
-    static EPOXY_CALLSPEC void                                             \
+    static void EPOXY_CALLSPEC                                             \
     name##_dispatch_table_rewrite_ptr args                                 \
     {                                                                      \
         struct dispatch_table *dispatch_table = get_dispatch_table();      \
@@ -108,7 +108,7 @@
     }
 
 #define GEN_DISPATCH_TABLE_REWRITE_PTR_RET(ret, name, args, passthrough)   \
-    static EPOXY_CALLSPEC ret                                              \
+    static ret EPOXY_CALLSPEC                                              \
     name##_dispatch_table_rewrite_ptr args                                 \
     {                                                                      \
         struct dispatch_table *dispatch_table = get_dispatch_table();      \
@@ -118,14 +118,14 @@
     }
 
 #define GEN_DISPATCH_TABLE_THUNK(name, args, passthrough)                  \
-    static EPOXY_CALLSPEC void                                             \
+    static void EPOXY_CALLSPEC                                             \
     name##_dispatch_table_thunk args                                       \
     {                                                                      \
         get_dispatch_table()->name passthrough;                            \
     }
 
 #define GEN_DISPATCH_TABLE_THUNK_RET(ret, name, args, passthrough)         \
-    static EPOXY_CALLSPEC ret                                              \
+    static ret EPOXY_CALLSPEC                                              \
     name##_dispatch_table_thunk args                                       \
     {                                                                      \
         return get_dispatch_table()->name passthrough;                     \
@@ -148,48 +148,48 @@
     GEN_DISPATCH_TABLE_REWRITE_PTR_RET(ret, name, args, passthrough) \
     GEN_DISPATCH_TABLE_THUNK_RET(ret, name, args, passthrough)
 
-void *epoxy_egl_dlsym(const char *name);
-void *epoxy_glx_dlsym(const char *name);
-void *epoxy_gl_dlsym(const char *name);
-void *epoxy_gles1_dlsym(const char *name);
-void *epoxy_gles2_dlsym(const char *name);
-void *epoxy_gles3_dlsym(const char *name);
-void *epoxy_get_proc_address(const char *name);
-void *epoxy_get_core_proc_address(const char *name, int core_version);
-void *epoxy_get_bootstrap_proc_address(const char *name);
+PUBLIC void *epoxy_egl_dlsym(const char *name);
+PUBLIC void *epoxy_glx_dlsym(const char *name);
+PUBLIC void *epoxy_gl_dlsym(const char *name);
+PUBLIC void *epoxy_gles1_dlsym(const char *name);
+PUBLIC void *epoxy_gles2_dlsym(const char *name);
+PUBLIC void *epoxy_gles3_dlsym(const char *name);
+PUBLIC void *epoxy_get_proc_address(const char *name);
+PUBLIC void *epoxy_get_core_proc_address(const char *name, int core_version);
+PUBLIC void *epoxy_get_bootstrap_proc_address(const char *name);
 
-int epoxy_conservative_gl_version(void);
-bool epoxy_conservative_has_gl_extension(const char *name);
-int epoxy_conservative_glx_version(void);
-bool epoxy_conservative_has_glx_extension(const char *name);
-int epoxy_conservative_egl_version(void);
-bool epoxy_conservative_has_egl_extension(const char *name);
-bool epoxy_conservative_has_wgl_extension(const char *name);
-void epoxy_print_failure_reasons(const char *name,
-                                 const char **provider_names,
-                                 const int *providers);
+PUBLIC int epoxy_conservative_gl_version(void);
+PUBLIC bool epoxy_conservative_has_gl_extension(const char *name);
+PUBLIC int epoxy_conservative_glx_version(void);
+PUBLIC bool epoxy_conservative_has_glx_extension(const char *name);
+PUBLIC int epoxy_conservative_egl_version(void);
+PUBLIC bool epoxy_conservative_has_egl_extension(const char *name);
+PUBLIC bool epoxy_conservative_has_wgl_extension(const char *name);
+PUBLIC void epoxy_print_failure_reasons(const char *name,
+                                        const char **provider_names,
+                                        const int *providers);
 
-bool epoxy_extension_in_string(const char *extension_list, const char *ext);
+PUBLIC bool epoxy_extension_in_string(const char *extension_list, const char *ext);
 
 #define glBegin_unwrapped epoxy_glBegin_unwrapped
 #define glEnd_unwrapped epoxy_glEnd_unwrapped
-extern void UNWRAPPED_PROTO(glBegin_unwrapped)(GLenum primtype);
-extern void UNWRAPPED_PROTO(glEnd_unwrapped)(void);
+PUBLIC extern void UNWRAPPED_PROTO(glBegin_unwrapped)(GLenum primtype);
+PUBLIC extern void UNWRAPPED_PROTO(glEnd_unwrapped)(void);
 
 #if USING_DISPATCH_TABLE
-void gl_init_dispatch_table(void);
-void gl_switch_to_dispatch_table(void);
-void wgl_init_dispatch_table(void);
-void wgl_switch_to_dispatch_table(void);
-extern uint32_t gl_tls_index, gl_tls_size;
-extern uint32_t wgl_tls_index, wgl_tls_size;
+PUBLIC void gl_init_dispatch_table(void);
+PUBLIC void gl_switch_to_dispatch_table(void);
+PUBLIC void wgl_init_dispatch_table(void);
+PUBLIC void wgl_switch_to_dispatch_table(void);
+EPOXY_IMPORTEXPORT extern uint32_t gl_tls_index, gl_tls_size;
+EPOXY_IMPORTEXPORT extern uint32_t wgl_tls_index, wgl_tls_size;
 
 #define wglMakeCurrent_unwrapped epoxy_wglMakeCurrent_unwrapped
 #define wglMakeContextCurrentARB_unwrapped epoxy_wglMakeContextCurrentARB_unwrapped
 #define wglMakeContextCurrentEXT_unwrapped epoxy_wglMakeContextCurrentEXT_unwrapped
 #define wglMakeAssociatedContextCurrentAMD_unwrapped epoxy_wglMakeAssociatedContextCurrentAMD_unwrapped
-extern BOOL UNWRAPPED_PROTO(wglMakeCurrent_unwrapped)(HDC hdc, HGLRC hglrc);
-extern BOOL UNWRAPPED_PROTO(wglMakeContextCurrentARB_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
-extern BOOL UNWRAPPED_PROTO(wglMakeContextCurrentEXT_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
-extern BOOL UNWRAPPED_PROTO(wglMakeAssociatedContextCurrentAMD_unwrapped)(HGLRC hglrc);
+PUBLIC extern BOOL UNWRAPPED_PROTO(wglMakeCurrent_unwrapped)(HDC hdc, HGLRC hglrc);
+PUBLIC extern BOOL UNWRAPPED_PROTO(wglMakeContextCurrentARB_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
+PUBLIC extern BOOL UNWRAPPED_PROTO(wglMakeContextCurrentEXT_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
+PUBLIC extern BOOL UNWRAPPED_PROTO(wglMakeAssociatedContextCurrentAMD_unwrapped)(HGLRC hglrc);
 #endif /* _WIN32_ */

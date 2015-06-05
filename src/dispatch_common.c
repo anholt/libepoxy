@@ -120,6 +120,26 @@
 #define GLES2_LIB "libGLESv2.so.2"
 #endif
 
+#ifdef __GNUC__
+#define CONSTRUCT(_func) static void _func (void) __attribute__((constructor));
+#define DESTRUCT(_func) static void _func (void) __attribute__((destructor));
+#elif defined (_MSC_VER) && (_MSC_VER >= 1500)
+#define CONSTRUCT(_func) \
+  static void _func(void); \
+  static int _func ## _wrapper(void) { _func(); return 0; } \
+  __pragma(section(".CRT$XCU",read)) \
+  __declspec(allocate(".CRT$XCU")) static int (* _array ## _func)(void) = _func ## _wrapper;
+
+#define DESTRUCT(_func) \
+  static void _func(void); \
+  static int _func ## _constructor(void) { atexit (_func); return 0; } \
+  __pragma(section(".CRT$XCU",read)) \
+  __declspec(allocate(".CRT$XCU")) static int (* _array ## _func)(void) = _func ## _constructor;
+
+#else
+#error "You will need constructor support for your compiler"
+#endif
+
 struct api {
 #ifndef _WIN32
     /**
@@ -165,6 +185,8 @@ struct api {
 static struct api api = {
 #ifndef _WIN32
     .mutex = PTHREAD_MUTEX_INITIALIZER,
+#else
+	0,
 #endif
 };
 
@@ -175,8 +197,7 @@ static EGLenum
 epoxy_egl_get_current_gl_context_api(void);
 #endif
 
-static void
-library_init(void) __attribute__((constructor));
+CONSTRUCT (library_init)
 
 static void
 library_init(void)
@@ -653,7 +674,7 @@ epoxy_print_failure_reasons(const char *name,
     }
 }
 
-WRAPPER_VISIBILITY void
+WRAPPER_VISIBILITY (void)
 WRAPPER(epoxy_glBegin)(GLenum primtype)
 {
 #ifdef _WIN32
@@ -667,7 +688,7 @@ WRAPPER(epoxy_glBegin)(GLenum primtype)
     epoxy_glBegin_unwrapped(primtype);
 }
 
-WRAPPER_VISIBILITY void
+WRAPPER_VISIBILITY (void)
 WRAPPER(epoxy_glEnd)(void)
 {
     epoxy_glEnd_unwrapped();
