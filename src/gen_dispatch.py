@@ -577,8 +577,11 @@ class Generator(object):
             self.outln('    };')
 
             self.outln('    static const uint16_t entrypoints[] = {')
-            for provider in providers:
-                self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
+            if len(providers) > 1:
+                for provider in providers:
+                    self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
+            else:
+                    self.outln('        0 /* None */,')
             self.outln('    };')
 
             self.outln('    return {0}_provider_resolver(entrypoint_strings + {1} /* "{2}" */,'.format(self.target,
@@ -698,8 +701,8 @@ class Generator(object):
         self.outln('')
 
         single_resolver_proto = '{0}_single_resolver(enum {0}_provider provider, uint16_t entrypoint_offset)'.format(self.target)
-        self.outln('static void *')
-        self.outln('{0} __attribute__((noinline));'.format(single_resolver_proto))
+        self.outln('EPOXY_NOINLINE static void *')
+        self.outln('{0};'.format(single_resolver_proto))
         self.outln('')
         self.outln('static void *')
         self.outln('{0}'.format(single_resolver_proto))
@@ -728,6 +731,11 @@ class Generator(object):
         self.outln('#include "dispatch_common.h"')
         self.outln('#include "epoxy/{0}.h"'.format(self.target))
         self.outln('')
+        self.outln('#ifdef __GNUC__')
+        self.outln('#define EPOXY_NOINLINE __attribute__((noinline))')
+        self.outln('#elif defined (_MSC_VER)')
+        self.outln('#define EPOXY_NOINLINE __declspec(noinline)')
+        self.outln('#endif')
 
         self.outln('struct dispatch_table {')
         for func in self.sorted_functions:
