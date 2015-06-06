@@ -141,7 +141,7 @@ DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
     return TRUE;
 }
 
-WRAPPER_VISIBILITY BOOL
+WRAPPER_VISIBILITY (BOOL)
 WRAPPER(epoxy_wglMakeCurrent)(HDC hdc, HGLRC hglrc)
 {
     BOOL ret = epoxy_wglMakeCurrent_unwrapped(hdc, hglrc);
@@ -152,7 +152,7 @@ WRAPPER(epoxy_wglMakeCurrent)(HDC hdc, HGLRC hglrc)
 }
 
 
-WRAPPER_VISIBILITY BOOL
+WRAPPER_VISIBILITY (BOOL)
 WRAPPER(epoxy_wglMakeContextCurrentARB)(HDC hDrawDC,
                                         HDC hReadDC,
                                         HGLRC hglrc)
@@ -166,7 +166,7 @@ WRAPPER(epoxy_wglMakeContextCurrentARB)(HDC hDrawDC,
 }
 
 
-WRAPPER_VISIBILITY BOOL
+WRAPPER_VISIBILITY (BOOL)
 WRAPPER(epoxy_wglMakeContextCurrentEXT)(HDC hDrawDC,
                                         HDC hReadDC,
                                         HGLRC hglrc)
@@ -180,7 +180,7 @@ WRAPPER(epoxy_wglMakeContextCurrentEXT)(HDC hDrawDC,
 }
 
 
-WRAPPER_VISIBILITY BOOL
+WRAPPER_VISIBILITY (BOOL)
 WRAPPER(epoxy_wglMakeAssociatedContextCurrentAMD)(HGLRC hglrc)
 {
     BOOL ret = epoxy_wglMakeAssociatedContextCurrentAMD_unwrapped(hglrc);

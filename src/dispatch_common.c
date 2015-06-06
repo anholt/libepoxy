@@ -674,7 +674,7 @@ epoxy_print_failure_reasons(const char *name,
     }
 }
 
-WRAPPER_VISIBILITY void
+WRAPPER_VISIBILITY (void)
 WRAPPER(epoxy_glBegin)(GLenum primtype)
 {
 #ifdef _WIN32
@@ -688,7 +688,7 @@ WRAPPER(epoxy_glBegin)(GLenum primtype)
     epoxy_glBegin_unwrapped(primtype);
 }
 
-WRAPPER_VISIBILITY void
+WRAPPER_VISIBILITY (void)
 WRAPPER(epoxy_glEnd)(void)
 {
     epoxy_glEnd_unwrapped();
