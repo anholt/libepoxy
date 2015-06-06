@@ -566,8 +566,8 @@ class Generator(object):
                 providers.append(provider)
 
         def provider_sort(provider):
-            return (provider.name != func.name, provider.name)
-        providers.sort(key=provider_sort);
+            return (provider.name != func.name, provider.enum)
+        providers.sort(key=provider_sort)
 
         if len(providers) != 1:
             self.outln('    static const enum {0}_provider providers[] = {{'.format(self.target))
