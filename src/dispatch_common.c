@@ -185,6 +185,8 @@ struct api {
 static struct api api = {
 #ifndef _WIN32
     .mutex = PTHREAD_MUTEX_INITIALIZER,
+#else
+	0,
 #endif
 };
 
