@@ -566,7 +566,7 @@ class Generator(object):
                 providers.append(provider)
 
         def provider_sort(provider):
-            return (provider.name != func.name, provider.name)
+            return (provider.name != func.name, provider.name, provider.enum)
         providers.sort(key=provider_sort);
 
         if len(providers) != 1:
