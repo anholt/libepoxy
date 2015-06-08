@@ -158,7 +158,7 @@ void *epoxy_get_proc_address(const char *name);
 void *epoxy_get_core_proc_address(const char *name, int core_version);
 void *epoxy_get_bootstrap_proc_address(const char *name);
 
-int epoxy_conservative_gl_version(void);
+PUBLIC int epoxy_conservative_gl_version(void);
 bool epoxy_conservative_has_gl_extension(const char *name);
 int epoxy_conservative_glx_version(void);
 bool epoxy_conservative_has_glx_extension(const char *name);
