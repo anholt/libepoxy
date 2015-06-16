@@ -27,6 +27,7 @@ AC_INIT([libepoxy],
         [libepoxy])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIRS([m4])
 
 # Initialize Automake
 AM_INIT_AUTOMAKE([foreign dist-bzip2 subdir-objects])
