@@ -315,7 +315,7 @@ epoxy_gl_version(void)
     return epoxy_internal_gl_version(0);
 }
 
-PUBLIC int
+int
 epoxy_conservative_gl_version(void)
 {
     if (api.begin_count)
