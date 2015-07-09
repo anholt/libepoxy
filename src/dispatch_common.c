@@ -192,6 +192,8 @@ static struct api api = {
 
 static bool library_initialized;
 
+static bool epoxy_current_context_is_glx(void);
+
 #if PLATFORM_HAS_EGL
 static EGLenum
 epoxy_egl_get_current_gl_context_api(void);
@@ -268,6 +270,22 @@ epoxy_is_desktop_gl(void)
 {
     const char *es_prefix = "OpenGL ES";
     const char *version;
+
+#if PLATFORM_HAS_EGL
+    /* PowerVR's OpenGL ES implementation (and perhaps other) don't comply with the standard,
+       which states that "glGetString(GL_VERSION)" should return a string starting with
+       "OpenGL ES". Therefore, to distinguish desktop OpenGL from OpenGL ES, we must also
+       check the context type through EGL (we can do that as PowerVR is only usable through
+       EGL). */
+    if (!epoxy_current_context_is_glx())
+        switch (epoxy_egl_get_current_gl_context_api())
+        {
+        case EGL_OPENGL_API:     return true;
+        case EGL_OPENGL_ES_API:  return false;
+        case EGL_NONE:
+        default:  break;
+        }
+#endif
 
     if (api.begin_count)
         return true;
