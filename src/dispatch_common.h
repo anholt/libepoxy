@@ -30,7 +30,12 @@
 #define EPOXY_IMPORTEXPORT __declspec(dllexport)
 #elif defined(__APPLE__)
 #define PLATFORM_HAS_EGL 0
-#define PLATFORM_HAS_GLX 1
+#define PLATFORM_HAS_GLX 0
+#define PLATFORM_HAS_WGL 0
+#define EPOXY_IMPORTEXPORT
+#elif defined(ANDROID)
+#define PLATFORM_HAS_EGL 1
+#define PLATFORM_HAS_GLX 0
 #define PLATFORM_HAS_WGL 0
 #define EPOXY_IMPORTEXPORT
 #else
@@ -61,6 +66,12 @@
 #  endif
 #endif
 
+#if defined(__GNUC__)
+#define PACKED __attribute__((__packed__))
+#else
+#define PACKED
+#endif
+
 /* On win32, we're going to need to keep a per-thread dispatch table,
  * since the function pointers depend on the device and pixel format
  * of the current context.
@@ -72,11 +83,11 @@
 #endif
 
 #define UNWRAPPED_PROTO(x) (GLAPIENTRY *x)
-#define WRAPPER_VISIBILITY static GLAPIENTRY
+#define WRAPPER_VISIBILITY(type) static type GLAPIENTRY
 #define WRAPPER(x) x ## _wrapped
 
 #define GEN_GLOBAL_REWRITE_PTR(name, args, passthrough)          \
-    static EPOXY_CALLSPEC void                                        \
+    static void EPOXY_CALLSPEC                                        \
     name##_global_rewrite_ptr args                               \
     {                                                            \
         name = (void *)name##_resolver();                        \
@@ -84,7 +95,7 @@
     }
 
 #define GEN_GLOBAL_REWRITE_PTR_RET(ret, name, args, passthrough) \
-    static EPOXY_CALLSPEC ret                                    \
+    static ret EPOXY_CALLSPEC                                    \
     name##_global_rewrite_ptr args                               \
     {                                                            \
         name = (void *)name##_resolver();                        \
@@ -93,7 +104,7 @@
 
 #if USING_DISPATCH_TABLE
 #define GEN_DISPATCH_TABLE_REWRITE_PTR(name, args, passthrough)            \
-    static EPOXY_CALLSPEC void                                             \
+    static void EPOXY_CALLSPEC                                             \
     name##_dispatch_table_rewrite_ptr args                                 \
     {                                                                      \
         struct dispatch_table *dispatch_table = get_dispatch_table();      \
@@ -103,7 +114,7 @@
     }
 
 #define GEN_DISPATCH_TABLE_REWRITE_PTR_RET(ret, name, args, passthrough)   \
-    static EPOXY_CALLSPEC ret                                              \
+    static ret EPOXY_CALLSPEC                                              \
     name##_dispatch_table_rewrite_ptr args                                 \
     {                                                                      \
         struct dispatch_table *dispatch_table = get_dispatch_table();      \
@@ -113,14 +124,14 @@
     }
 
 #define GEN_DISPATCH_TABLE_THUNK(name, args, passthrough)                  \
-    static EPOXY_CALLSPEC void                                             \
+    static void EPOXY_CALLSPEC                                             \
     name##_dispatch_table_thunk args                                       \
     {                                                                      \
         get_dispatch_table()->name passthrough;                            \
     }
 
 #define GEN_DISPATCH_TABLE_THUNK_RET(ret, name, args, passthrough)         \
-    static EPOXY_CALLSPEC ret                                              \
+    static ret EPOXY_CALLSPEC                                              \
     name##_dispatch_table_thunk args                                       \
     {                                                                      \
         return get_dispatch_table()->name passthrough;                     \
@@ -160,9 +171,6 @@ bool epoxy_conservative_has_glx_extension(const char *name);
 int epoxy_conservative_egl_version(void);
 bool epoxy_conservative_has_egl_extension(const char *name);
 bool epoxy_conservative_has_wgl_extension(const char *name);
-void epoxy_print_failure_reasons(const char *name,
-                                 const char **provider_names,
-                                 const int *providers);
 
 bool epoxy_extension_in_string(const char *extension_list, const char *ext);
 

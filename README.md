@@ -42,11 +42,6 @@ Dependencies for OS X (macports):
 * autoconf
 * xorg-util-macros
 * pkgconfig
-* xorg-libX11
-
-Other dependencies for OS X:
-
-* [XQuartz](http://xquartz.macosforge.org/landing/)
 
 The test suite has additional dependencies depending on the platform.
 (X11, EGL, a running X Server).
