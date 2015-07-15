@@ -1,6 +1,4 @@
 libepoxy.so.0 libepoxy0 #MINVER#
- epoxy_conservative_egl_version@Base 1.0
- epoxy_conservative_gl_version@Base 1.0
  epoxy_eglBindAPI@Base 1.0
  epoxy_eglBindTexImage@Base 1.0
  epoxy_eglChooseConfig@Base 1.0
@@ -11,6 +9,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_eglCreateContext@Base 1.0
  epoxy_eglCreateDRMImageMESA@Base 1.0
  epoxy_eglCreateFenceSyncNV@Base 1.0
+ epoxy_eglCreateImage@Base 1.3
  epoxy_eglCreateImageKHR@Base 1.0
  epoxy_eglCreatePbufferFromClientBuffer@Base 1.0
  epoxy_eglCreatePbufferSurface@Base 1.0
@@ -29,6 +28,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_eglCreateSyncKHR@Base 1.0
  epoxy_eglCreateWindowSurface@Base 1.0
  epoxy_eglDestroyContext@Base 1.0
+ epoxy_eglDestroyImage@Base 1.3
  epoxy_eglDestroyImageKHR@Base 1.0
  epoxy_eglDestroyStreamKHR@Base 1.0
  epoxy_eglDestroySurface@Base 1.0
@@ -36,6 +36,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_eglDestroySyncKHR@Base 1.0
  epoxy_eglDestroySyncNV@Base 1.0
  epoxy_eglDupNativeFenceFDANDROID@Base 1.0
+ epoxy_eglExportDMABUFImageMESA@Base 1.3
+ epoxy_eglExportDMABUFImageQueryMESA@Base 1.3
  epoxy_eglExportDRMImageMESA@Base 1.0
  epoxy_eglFenceNV@Base 1.0
  epoxy_eglGetConfigAttrib@Base 1.0
@@ -45,6 +47,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_eglGetCurrentSurface@Base 1.0
  epoxy_eglGetDisplay@Base 1.0
  epoxy_eglGetError@Base 1.0
+ epoxy_eglGetOutputLayersEXT@Base 1.3
+ epoxy_eglGetOutputPortsEXT@Base 1.3
  epoxy_eglGetPlatformDisplay@Base 1.2
  epoxy_eglGetPlatformDisplayEXT@Base 1.0
  epoxy_eglGetProcAddress@Base 1.0
@@ -57,12 +61,22 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_eglInitialize@Base 1.0
  epoxy_eglLockSurfaceKHR@Base 1.0
  epoxy_eglMakeCurrent@Base 1.0
+ epoxy_eglOutputLayerAttribEXT@Base 1.3
+ epoxy_eglOutputPortAttribEXT@Base 1.3
  epoxy_eglPostSubBufferNV@Base 1.0
  epoxy_eglQueryAPI@Base 1.0
  epoxy_eglQueryContext@Base 1.0
+ epoxy_eglQueryDeviceAttribEXT@Base 1.3
+ epoxy_eglQueryDeviceStringEXT@Base 1.3
+ epoxy_eglQueryDevicesEXT@Base 1.3
+ epoxy_eglQueryDisplayAttribEXT@Base 1.3
  epoxy_eglQueryNativeDisplayNV@Base 1.0
  epoxy_eglQueryNativePixmapNV@Base 1.0
  epoxy_eglQueryNativeWindowNV@Base 1.0
+ epoxy_eglQueryOutputLayerAttribEXT@Base 1.3
+ epoxy_eglQueryOutputLayerStringEXT@Base 1.3
+ epoxy_eglQueryOutputPortAttribEXT@Base 1.3
+ epoxy_eglQueryOutputPortStringEXT@Base 1.3
  epoxy_eglQueryStreamKHR@Base 1.0
  epoxy_eglQueryStreamTimeKHR@Base 1.0
  epoxy_eglQueryStreamu64KHR@Base 1.0
@@ -73,17 +87,20 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_eglReleaseTexImage@Base 1.0
  epoxy_eglReleaseThread@Base 1.0
  epoxy_eglSetBlobCacheFuncsANDROID@Base 1.0
+ epoxy_eglSetDamageRegionKHR@Base 1.3
  epoxy_eglSignalSyncKHR@Base 1.0
  epoxy_eglSignalSyncNV@Base 1.0
  epoxy_eglStreamAttribKHR@Base 1.0
  epoxy_eglStreamConsumerAcquireKHR@Base 1.0
  epoxy_eglStreamConsumerGLTextureExternalKHR@Base 1.0
+ epoxy_eglStreamConsumerOutputEXT@Base 1.3
  epoxy_eglStreamConsumerReleaseKHR@Base 1.0
  epoxy_eglSurfaceAttrib@Base 1.0
  epoxy_eglSwapBuffers@Base 1.0
  epoxy_eglSwapBuffersRegion2NOK@Base 1.2
  epoxy_eglSwapBuffersRegionNOK@Base 1.2
  epoxy_eglSwapBuffersWithDamageEXT@Base 1.0
+ epoxy_eglSwapBuffersWithDamageKHR@Base 1.3
  epoxy_eglSwapInterval@Base 1.0
  epoxy_eglTerminate@Base 1.0
  epoxy_eglUnlockSurfaceKHR@Base 1.0
@@ -176,6 +193,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glBindTexGenParameterEXT@Base 1.0
  epoxy_glBindTexture@Base 1.0
  epoxy_glBindTextureEXT@Base 1.0
+ epoxy_glBindTextureUnit@Base 1.3
  epoxy_glBindTextureUnitParameterEXT@Base 1.0
  epoxy_glBindTextures@Base 1.0
  epoxy_glBindTransformFeedback@Base 1.0
@@ -216,8 +234,12 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glBlendEquationSeparateOES@Base 1.0
  epoxy_glBlendEquationSeparatei@Base 1.0
  epoxy_glBlendEquationSeparateiARB@Base 1.0
+ epoxy_glBlendEquationSeparateiEXT@Base 1.3
+ epoxy_glBlendEquationSeparateiOES@Base 1.3
  epoxy_glBlendEquationi@Base 1.0
  epoxy_glBlendEquationiARB@Base 1.0
+ epoxy_glBlendEquationiEXT@Base 1.3
+ epoxy_glBlendEquationiOES@Base 1.3
  epoxy_glBlendFunc@Base 1.0
  epoxy_glBlendFuncIndexedAMD@Base 1.0
  epoxy_glBlendFuncSeparate@Base 1.0
@@ -227,25 +249,34 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glBlendFuncSeparateOES@Base 1.0
  epoxy_glBlendFuncSeparatei@Base 1.0
  epoxy_glBlendFuncSeparateiARB@Base 1.0
+ epoxy_glBlendFuncSeparateiEXT@Base 1.3
+ epoxy_glBlendFuncSeparateiOES@Base 1.3
  epoxy_glBlendFunci@Base 1.0
  epoxy_glBlendFunciARB@Base 1.0
+ epoxy_glBlendFunciEXT@Base 1.3
+ epoxy_glBlendFunciOES@Base 1.3
  epoxy_glBlendParameteriNV@Base 1.0
  epoxy_glBlitFramebuffer@Base 1.0
  epoxy_glBlitFramebufferANGLE@Base 1.0
  epoxy_glBlitFramebufferEXT@Base 1.0
  epoxy_glBlitFramebufferNV@Base 1.0
+ epoxy_glBlitNamedFramebuffer@Base 1.3
  epoxy_glBufferAddressRangeNV@Base 1.0
  epoxy_glBufferData@Base 1.0
  epoxy_glBufferDataARB@Base 1.0
+ epoxy_glBufferPageCommitmentARB@Base 1.3
  epoxy_glBufferParameteriAPPLE@Base 1.0
  epoxy_glBufferStorage@Base 1.0
+ epoxy_glBufferStorageEXT@Base 1.3
  epoxy_glBufferSubData@Base 1.0
  epoxy_glBufferSubDataARB@Base 1.0
+ epoxy_glCallCommandListNV@Base 1.3
  epoxy_glCallList@Base 1.0
  epoxy_glCallLists@Base 1.0
  epoxy_glCheckFramebufferStatus@Base 1.0
  epoxy_glCheckFramebufferStatusEXT@Base 1.0
  epoxy_glCheckFramebufferStatusOES@Base 1.0
+ epoxy_glCheckNamedFramebufferStatus@Base 1.3
  epoxy_glCheckNamedFramebufferStatusEXT@Base 1.0
  epoxy_glClampColor@Base 1.0
  epoxy_glClampColorARB@Base 1.0
@@ -270,8 +301,14 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glClearDepthx@Base 1.0
  epoxy_glClearDepthxOES@Base 1.0
  epoxy_glClearIndex@Base 1.0
+ epoxy_glClearNamedBufferData@Base 1.3
  epoxy_glClearNamedBufferDataEXT@Base 1.0
+ epoxy_glClearNamedBufferSubData@Base 1.3
  epoxy_glClearNamedBufferSubDataEXT@Base 1.0
+ epoxy_glClearNamedFramebufferfi@Base 1.3
+ epoxy_glClearNamedFramebufferfv@Base 1.3
+ epoxy_glClearNamedFramebufferiv@Base 1.3
+ epoxy_glClearNamedFramebufferuiv@Base 1.3
  epoxy_glClearStencil@Base 1.0
  epoxy_glClearTexImage@Base 1.0
  epoxy_glClearTexSubImage@Base 1.0
@@ -281,6 +318,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glClientAttribDefaultEXT@Base 1.0
  epoxy_glClientWaitSync@Base 1.0
  epoxy_glClientWaitSyncAPPLE@Base 1.0
+ epoxy_glClipControl@Base 1.3
  epoxy_glClipPlane@Base 1.0
  epoxy_glClipPlanef@Base 1.0
  epoxy_glClipPlanefIMG@Base 1.0
@@ -344,6 +382,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glColorMask@Base 1.0
  epoxy_glColorMaskIndexedEXT@Base 1.0
  epoxy_glColorMaski@Base 1.0
+ epoxy_glColorMaskiEXT@Base 1.3
+ epoxy_glColorMaskiOES@Base 1.3
  epoxy_glColorMaterial@Base 1.0
  epoxy_glColorP3ui@Base 1.0
  epoxy_glColorP3uiv@Base 1.0
@@ -369,6 +409,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glCombinerParameteriNV@Base 1.0
  epoxy_glCombinerParameterivNV@Base 1.0
  epoxy_glCombinerStageParameterfvNV@Base 1.0
+ epoxy_glCommandListSegmentsNV@Base 1.3
+ epoxy_glCompileCommandListNV@Base 1.3
  epoxy_glCompileShader@Base 1.0
  epoxy_glCompileShaderARB@Base 1.0
  epoxy_glCompileShaderIncludeARB@Base 1.0
@@ -395,8 +437,11 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glCompressedTextureImage1DEXT@Base 1.0
  epoxy_glCompressedTextureImage2DEXT@Base 1.0
  epoxy_glCompressedTextureImage3DEXT@Base 1.0
+ epoxy_glCompressedTextureSubImage1D@Base 1.3
  epoxy_glCompressedTextureSubImage1DEXT@Base 1.0
+ epoxy_glCompressedTextureSubImage2D@Base 1.3
  epoxy_glCompressedTextureSubImage2DEXT@Base 1.0
+ epoxy_glCompressedTextureSubImage3D@Base 1.3
  epoxy_glCompressedTextureSubImage3DEXT@Base 1.0
  epoxy_glConvolutionFilter1D@Base 1.0
  epoxy_glConvolutionFilter1DEXT@Base 1.0
@@ -423,12 +468,15 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glCopyConvolutionFilter2D@Base 1.0
  epoxy_glCopyConvolutionFilter2DEXT@Base 1.0
  epoxy_glCopyImageSubData@Base 1.0
+ epoxy_glCopyImageSubDataEXT@Base 1.3
  epoxy_glCopyImageSubDataNV@Base 1.0
+ epoxy_glCopyImageSubDataOES@Base 1.3
  epoxy_glCopyMultiTexImage1DEXT@Base 1.0
  epoxy_glCopyMultiTexImage2DEXT@Base 1.0
  epoxy_glCopyMultiTexSubImage1DEXT@Base 1.0
  epoxy_glCopyMultiTexSubImage2DEXT@Base 1.0
  epoxy_glCopyMultiTexSubImage3DEXT@Base 1.0
+ epoxy_glCopyNamedBufferSubData@Base 1.3
  epoxy_glCopyPathNV@Base 1.0
  epoxy_glCopyPixels@Base 1.0
  epoxy_glCopyTexImage1D@Base 1.0
@@ -445,24 +493,40 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glCopyTextureImage1DEXT@Base 1.0
  epoxy_glCopyTextureImage2DEXT@Base 1.0
  epoxy_glCopyTextureLevelsAPPLE@Base 1.0
+ epoxy_glCopyTextureSubImage1D@Base 1.3
  epoxy_glCopyTextureSubImage1DEXT@Base 1.0
+ epoxy_glCopyTextureSubImage2D@Base 1.3
  epoxy_glCopyTextureSubImage2DEXT@Base 1.0
+ epoxy_glCopyTextureSubImage3D@Base 1.3
  epoxy_glCopyTextureSubImage3DEXT@Base 1.0
  epoxy_glCoverFillPathInstancedNV@Base 1.0
  epoxy_glCoverFillPathNV@Base 1.0
  epoxy_glCoverStrokePathInstancedNV@Base 1.0
  epoxy_glCoverStrokePathNV@Base 1.0
  epoxy_glCoverageMaskNV@Base 1.0
+ epoxy_glCoverageModulationNV@Base 1.3
+ epoxy_glCoverageModulationTableNV@Base 1.3
  epoxy_glCoverageOperationNV@Base 1.0
+ epoxy_glCreateBuffers@Base 1.3
+ epoxy_glCreateCommandListsNV@Base 1.3
+ epoxy_glCreateFramebuffers@Base 1.3
  epoxy_glCreatePerfQueryINTEL@Base 1.0
  epoxy_glCreateProgram@Base 1.0
  epoxy_glCreateProgramObjectARB@Base 1.0
+ epoxy_glCreateProgramPipelines@Base 1.3
+ epoxy_glCreateQueries@Base 1.3
+ epoxy_glCreateRenderbuffers@Base 1.3
+ epoxy_glCreateSamplers@Base 1.3
  epoxy_glCreateShader@Base 1.0
  epoxy_glCreateShaderObjectARB@Base 1.0
  epoxy_glCreateShaderProgramEXT@Base 1.0
  epoxy_glCreateShaderProgramv@Base 1.0
  epoxy_glCreateShaderProgramvEXT@Base 1.0
+ epoxy_glCreateStatesNV@Base 1.3
  epoxy_glCreateSyncFromCLeventARB@Base 1.0
+ epoxy_glCreateTextures@Base 1.3
+ epoxy_glCreateTransformFeedbacks@Base 1.3
+ epoxy_glCreateVertexArrays@Base 1.3
  epoxy_glCullFace@Base 1.0
  epoxy_glCullParameterdvEXT@Base 1.0
  epoxy_glCullParameterfvEXT@Base 1.0
@@ -486,6 +550,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glDeleteAsyncMarkersSGIX@Base 1.0
  epoxy_glDeleteBuffers@Base 1.0
  epoxy_glDeleteBuffersARB@Base 1.0
+ epoxy_glDeleteCommandListsNV@Base 1.3
  epoxy_glDeleteFencesAPPLE@Base 1.0
  epoxy_glDeleteFencesNV@Base 1.0
  epoxy_glDeleteFragmentShaderATI@Base 1.0
@@ -513,6 +578,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glDeleteRenderbuffersOES@Base 1.0
  epoxy_glDeleteSamplers@Base 1.0
  epoxy_glDeleteShader@Base 1.0
+ epoxy_glDeleteStatesNV@Base 1.3
  epoxy_glDeleteSync@Base 1.0
  epoxy_glDeleteSyncAPPLE@Base 1.0
  epoxy_glDeleteTextures@Base 1.0
@@ -528,8 +594,10 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glDepthFunc@Base 1.0
  epoxy_glDepthMask@Base 1.0
  epoxy_glDepthRange@Base 1.0
+ epoxy_glDepthRangeArrayfvNV@Base 1.3
  epoxy_glDepthRangeArrayv@Base 1.0
  epoxy_glDepthRangeIndexed@Base 1.0
+ epoxy_glDepthRangeIndexedfNV@Base 1.3
  epoxy_glDepthRangedNV@Base 1.0
  epoxy_glDepthRangef@Base 1.0
  epoxy_glDepthRangefOES@Base 1.0
@@ -545,12 +613,16 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glDisableDriverControlQCOM@Base 1.0
  epoxy_glDisableIndexedEXT@Base 1.0
  epoxy_glDisableVariantClientStateEXT@Base 1.0
+ epoxy_glDisableVertexArrayAttrib@Base 1.3
  epoxy_glDisableVertexArrayAttribEXT@Base 1.0
  epoxy_glDisableVertexArrayEXT@Base 1.0
  epoxy_glDisableVertexAttribAPPLE@Base 1.0
  epoxy_glDisableVertexAttribArray@Base 1.0
  epoxy_glDisableVertexAttribArrayARB@Base 1.0
  epoxy_glDisablei@Base 1.0
+ epoxy_glDisableiEXT@Base 1.3
+ epoxy_glDisableiNV@Base 1.3
+ epoxy_glDisableiOES@Base 1.3
  epoxy_glDiscardFramebufferEXT@Base 1.0
  epoxy_glDispatchCompute@Base 1.0
  epoxy_glDispatchComputeGroupSizeARB@Base 1.0
@@ -562,6 +634,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glDrawArraysInstancedANGLE@Base 1.0
  epoxy_glDrawArraysInstancedARB@Base 1.0
  epoxy_glDrawArraysInstancedBaseInstance@Base 1.0
+ epoxy_glDrawArraysInstancedBaseInstanceEXT@Base 1.3
  epoxy_glDrawArraysInstancedEXT@Base 1.0
  epoxy_glDrawArraysInstancedNV@Base 1.0
  epoxy_glDrawBuffer@Base 1.0
@@ -571,17 +644,27 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glDrawBuffersEXT@Base 1.0
  epoxy_glDrawBuffersIndexedEXT@Base 1.0
  epoxy_glDrawBuffersNV@Base 1.0
+ epoxy_glDrawCommandsAddressNV@Base 1.3
+ epoxy_glDrawCommandsNV@Base 1.3
+ epoxy_glDrawCommandsStatesAddressNV@Base 1.3
+ epoxy_glDrawCommandsStatesNV@Base 1.3
  epoxy_glDrawElementArrayAPPLE@Base 1.0
  epoxy_glDrawElementArrayATI@Base 1.0
  epoxy_glDrawElements@Base 1.0
  epoxy_glDrawElementsBaseVertex@Base 1.0
+ epoxy_glDrawElementsBaseVertexEXT@Base 1.3
+ epoxy_glDrawElementsBaseVertexOES@Base 1.3
  epoxy_glDrawElementsIndirect@Base 1.0
  epoxy_glDrawElementsInstanced@Base 1.0
  epoxy_glDrawElementsInstancedANGLE@Base 1.0
  epoxy_glDrawElementsInstancedARB@Base 1.0
  epoxy_glDrawElementsInstancedBaseInstance@Base 1.0
+ epoxy_glDrawElementsInstancedBaseInstanceEXT@Base 1.3
  epoxy_glDrawElementsInstancedBaseVertex@Base 1.0
  epoxy_glDrawElementsInstancedBaseVertexBaseInstance@Base 1.0
+ epoxy_glDrawElementsInstancedBaseVertexBaseInstanceEXT@Base 1.3
+ epoxy_glDrawElementsInstancedBaseVertexEXT@Base 1.3
+ epoxy_glDrawElementsInstancedBaseVertexOES@Base 1.3
  epoxy_glDrawElementsInstancedEXT@Base 1.0
  epoxy_glDrawElementsInstancedNV@Base 1.0
  epoxy_glDrawMeshArraysSUN@Base 1.0
@@ -590,6 +673,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glDrawRangeElementArrayATI@Base 1.0
  epoxy_glDrawRangeElements@Base 1.0
  epoxy_glDrawRangeElementsBaseVertex@Base 1.0
+ epoxy_glDrawRangeElementsBaseVertexEXT@Base 1.3
+ epoxy_glDrawRangeElementsBaseVertexOES@Base 1.3
  epoxy_glDrawRangeElementsEXT@Base 1.0
  epoxy_glDrawTexfOES@Base 1.0
  epoxy_glDrawTexfvOES@Base 1.0
@@ -622,12 +707,16 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glEnableDriverControlQCOM@Base 1.0
  epoxy_glEnableIndexedEXT@Base 1.0
  epoxy_glEnableVariantClientStateEXT@Base 1.0
+ epoxy_glEnableVertexArrayAttrib@Base 1.3
  epoxy_glEnableVertexArrayAttribEXT@Base 1.0
  epoxy_glEnableVertexArrayEXT@Base 1.0
  epoxy_glEnableVertexAttribAPPLE@Base 1.0
  epoxy_glEnableVertexAttribArray@Base 1.0
  epoxy_glEnableVertexAttribArrayARB@Base 1.0
  epoxy_glEnablei@Base 1.0
+ epoxy_glEnableiEXT@Base 1.3
+ epoxy_glEnableiNV@Base 1.3
+ epoxy_glEnableiOES@Base 1.3
  epoxy_glEnd@Base 1.0
  epoxy_glEndConditionalRender@Base 1.0
  epoxy_glEndConditionalRenderNV@Base 1.0
@@ -693,6 +782,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glFlushMappedBufferRange@Base 1.0
  epoxy_glFlushMappedBufferRangeAPPLE@Base 1.0
  epoxy_glFlushMappedBufferRangeEXT@Base 1.0
+ epoxy_glFlushMappedNamedBufferRange@Base 1.3
  epoxy_glFlushMappedNamedBufferRangeEXT@Base 1.0
  epoxy_glFlushPixelDataRangeNV@Base 1.0
  epoxy_glFlushRasterSGIX@Base 1.0
@@ -723,6 +813,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glFogxv@Base 1.0
  epoxy_glFogxvOES@Base 1.0
  epoxy_glFragmentColorMaterialSGIX@Base 1.0
+ epoxy_glFragmentCoverageColorNV@Base 1.3
  epoxy_glFragmentLightModelfSGIX@Base 1.0
  epoxy_glFragmentLightModelfvSGIX@Base 1.0
  epoxy_glFragmentLightModeliSGIX@Base 1.0
@@ -744,6 +835,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glFramebufferRenderbuffer@Base 1.0
  epoxy_glFramebufferRenderbufferEXT@Base 1.0
  epoxy_glFramebufferRenderbufferOES@Base 1.0
+ epoxy_glFramebufferSampleLocationsfvNV@Base 1.3
  epoxy_glFramebufferTexture1D@Base 1.0
  epoxy_glFramebufferTexture1DEXT@Base 1.0
  epoxy_glFramebufferTexture2D@Base 1.0
@@ -762,6 +854,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glFramebufferTextureLayer@Base 1.0
  epoxy_glFramebufferTextureLayerARB@Base 1.0
  epoxy_glFramebufferTextureLayerEXT@Base 1.0
+ epoxy_glFramebufferTextureMultiviewOVR@Base 1.3
+ epoxy_glFramebufferTextureOES@Base 1.3
  epoxy_glFreeObjectBufferATI@Base 1.0
  epoxy_glFrontFace@Base 1.0
  epoxy_glFrustum@Base 1.0
@@ -807,6 +901,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGenerateMipmapEXT@Base 1.0
  epoxy_glGenerateMipmapOES@Base 1.0
  epoxy_glGenerateMultiTexMipmapEXT@Base 1.0
+ epoxy_glGenerateTextureMipmap@Base 1.3
  epoxy_glGenerateTextureMipmapEXT@Base 1.0
  epoxy_glGetActiveAtomicCounterBufferiv@Base 1.0
  epoxy_glGetActiveAttrib@Base 1.0
@@ -858,10 +953,13 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetCombinerOutputParameterfvNV@Base 1.0
  epoxy_glGetCombinerOutputParameterivNV@Base 1.0
  epoxy_glGetCombinerStageParameterfvNV@Base 1.0
+ epoxy_glGetCommandHeaderNV@Base 1.3
  epoxy_glGetCompressedMultiTexImageEXT@Base 1.0
  epoxy_glGetCompressedTexImage@Base 1.0
  epoxy_glGetCompressedTexImageARB@Base 1.0
+ epoxy_glGetCompressedTextureImage@Base 1.3
  epoxy_glGetCompressedTextureImageEXT@Base 1.0
+ epoxy_glGetCompressedTextureSubImage@Base 1.3
  epoxy_glGetConvolutionFilter@Base 1.0
  epoxy_glGetConvolutionFilterEXT@Base 1.0
  epoxy_glGetConvolutionParameterfv@Base 1.0
@@ -869,6 +967,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetConvolutionParameteriv@Base 1.0
  epoxy_glGetConvolutionParameterivEXT@Base 1.0
  epoxy_glGetConvolutionParameterxvOES@Base 1.0
+ epoxy_glGetCoverageModulationTableNV@Base 1.3
  epoxy_glGetDebugMessageLog@Base 1.0
  epoxy_glGetDebugMessageLogAMD@Base 1.0
  epoxy_glGetDebugMessageLogARB@Base 1.0
@@ -890,6 +989,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetFloatIndexedvEXT@Base 1.0
  epoxy_glGetFloati_v@Base 1.0
  epoxy_glGetFloati_vEXT@Base 1.0
+ epoxy_glGetFloati_vNV@Base 1.3
  epoxy_glGetFloatv@Base 1.0
  epoxy_glGetFogFuncSGIS@Base 1.0
  epoxy_glGetFragDataIndex@Base 1.0
@@ -904,8 +1004,10 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetFramebufferAttachmentParameterivOES@Base 1.0
  epoxy_glGetFramebufferParameteriv@Base 1.0
  epoxy_glGetFramebufferParameterivEXT@Base 1.0
+ epoxy_glGetGraphicsResetStatus@Base 1.3
  epoxy_glGetGraphicsResetStatusARB@Base 1.0
  epoxy_glGetGraphicsResetStatusEXT@Base 1.0
+ epoxy_glGetGraphicsResetStatusKHR@Base 1.3
  epoxy_glGetHandleARB@Base 1.0
  epoxy_glGetHistogram@Base 1.0
  epoxy_glGetHistogramEXT@Base 1.0
@@ -929,6 +1031,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetIntegerui64i_vNV@Base 1.0
  epoxy_glGetIntegerui64vNV@Base 1.0
  epoxy_glGetIntegerv@Base 1.0
+ epoxy_glGetInternalformatSampleivNV@Base 1.3
  epoxy_glGetInternalformati64v@Base 1.0
  epoxy_glGetInternalformativ@Base 1.0
  epoxy_glGetInvariantBooleanvEXT@Base 1.0
@@ -978,11 +1081,17 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetMultiTexParameterivEXT@Base 1.0
  epoxy_glGetMultisamplefv@Base 1.0
  epoxy_glGetMultisamplefvNV@Base 1.0
+ epoxy_glGetNamedBufferParameteri64v@Base 1.3
+ epoxy_glGetNamedBufferParameteriv@Base 1.3
  epoxy_glGetNamedBufferParameterivEXT@Base 1.0
  epoxy_glGetNamedBufferParameterui64vNV@Base 1.0
+ epoxy_glGetNamedBufferPointerv@Base 1.3
  epoxy_glGetNamedBufferPointervEXT@Base 1.0
+ epoxy_glGetNamedBufferSubData@Base 1.3
  epoxy_glGetNamedBufferSubDataEXT@Base 1.0
+ epoxy_glGetNamedFramebufferAttachmentParameteriv@Base 1.3
  epoxy_glGetNamedFramebufferAttachmentParameterivEXT@Base 1.0
+ epoxy_glGetNamedFramebufferParameteriv@Base 1.3
  epoxy_glGetNamedFramebufferParameterivEXT@Base 1.0
  epoxy_glGetNamedProgramLocalParameterIivEXT@Base 1.0
  epoxy_glGetNamedProgramLocalParameterIuivEXT@Base 1.0
@@ -990,6 +1099,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetNamedProgramLocalParameterfvEXT@Base 1.0
  epoxy_glGetNamedProgramStringEXT@Base 1.0
  epoxy_glGetNamedProgramivEXT@Base 1.0
+ epoxy_glGetNamedRenderbufferParameteriv@Base 1.3
  epoxy_glGetNamedRenderbufferParameterivEXT@Base 1.0
  epoxy_glGetNamedStringARB@Base 1.0
  epoxy_glGetNamedStringivARB@Base 1.0
@@ -1067,6 +1177,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetProgramResourceLocation@Base 1.0
  epoxy_glGetProgramResourceLocationIndex@Base 1.0
  epoxy_glGetProgramResourceName@Base 1.0
+ epoxy_glGetProgramResourcefvNV@Base 1.3
  epoxy_glGetProgramResourceiv@Base 1.0
  epoxy_glGetProgramStageiv@Base 1.0
  epoxy_glGetProgramStringARB@Base 1.0
@@ -1075,6 +1186,10 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetProgramiv@Base 1.0
  epoxy_glGetProgramivARB@Base 1.0
  epoxy_glGetProgramivNV@Base 1.0
+ epoxy_glGetQueryBufferObjecti64v@Base 1.3
+ epoxy_glGetQueryBufferObjectiv@Base 1.3
+ epoxy_glGetQueryBufferObjectui64v@Base 1.3
+ epoxy_glGetQueryBufferObjectuiv@Base 1.3
  epoxy_glGetQueryIndexediv@Base 1.0
  epoxy_glGetQueryObjecti64v@Base 1.0
  epoxy_glGetQueryObjecti64vEXT@Base 1.0
@@ -1093,7 +1208,11 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetRenderbufferParameterivEXT@Base 1.0
  epoxy_glGetRenderbufferParameterivOES@Base 1.0
  epoxy_glGetSamplerParameterIiv@Base 1.0
+ epoxy_glGetSamplerParameterIivEXT@Base 1.3
+ epoxy_glGetSamplerParameterIivOES@Base 1.3
  epoxy_glGetSamplerParameterIuiv@Base 1.0
+ epoxy_glGetSamplerParameterIuivEXT@Base 1.3
+ epoxy_glGetSamplerParameterIuivOES@Base 1.3
  epoxy_glGetSamplerParameterfv@Base 1.0
  epoxy_glGetSamplerParameteriv@Base 1.0
  epoxy_glGetSeparableFilter@Base 1.0
@@ -1104,6 +1223,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetShaderSourceARB@Base 1.0
  epoxy_glGetShaderiv@Base 1.0
  epoxy_glGetSharpenTexFuncSGIS@Base 1.0
+ epoxy_glGetStageIndexNV@Base 1.3
  epoxy_glGetString@Base 1.0
  epoxy_glGetStringi@Base 1.0
  epoxy_glGetSubroutineIndex@Base 1.0
@@ -1129,8 +1249,10 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetTexLevelParameterxvOES@Base 1.0
  epoxy_glGetTexParameterIiv@Base 1.0
  epoxy_glGetTexParameterIivEXT@Base 1.0
+ epoxy_glGetTexParameterIivOES@Base 1.3
  epoxy_glGetTexParameterIuiv@Base 1.0
  epoxy_glGetTexParameterIuivEXT@Base 1.0
+ epoxy_glGetTexParameterIuivOES@Base 1.3
  epoxy_glGetTexParameterPointervAPPLE@Base 1.0
  epoxy_glGetTexParameterfv@Base 1.0
  epoxy_glGetTexParameteriv@Base 1.0
@@ -1138,19 +1260,30 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetTexParameterxvOES@Base 1.0
  epoxy_glGetTextureHandleARB@Base 1.0
  epoxy_glGetTextureHandleNV@Base 1.0
+ epoxy_glGetTextureImage@Base 1.3
  epoxy_glGetTextureImageEXT@Base 1.0
+ epoxy_glGetTextureLevelParameterfv@Base 1.3
  epoxy_glGetTextureLevelParameterfvEXT@Base 1.0
+ epoxy_glGetTextureLevelParameteriv@Base 1.3
  epoxy_glGetTextureLevelParameterivEXT@Base 1.0
+ epoxy_glGetTextureParameterIiv@Base 1.3
  epoxy_glGetTextureParameterIivEXT@Base 1.0
+ epoxy_glGetTextureParameterIuiv@Base 1.3
  epoxy_glGetTextureParameterIuivEXT@Base 1.0
+ epoxy_glGetTextureParameterfv@Base 1.3
  epoxy_glGetTextureParameterfvEXT@Base 1.0
+ epoxy_glGetTextureParameteriv@Base 1.3
  epoxy_glGetTextureParameterivEXT@Base 1.0
  epoxy_glGetTextureSamplerHandleARB@Base 1.0
  epoxy_glGetTextureSamplerHandleNV@Base 1.0
+ epoxy_glGetTextureSubImage@Base 1.3
  epoxy_glGetTrackMatrixivNV@Base 1.0
  epoxy_glGetTransformFeedbackVarying@Base 1.0
  epoxy_glGetTransformFeedbackVaryingEXT@Base 1.0
  epoxy_glGetTransformFeedbackVaryingNV@Base 1.0
+ epoxy_glGetTransformFeedbacki64_v@Base 1.3
+ epoxy_glGetTransformFeedbacki_v@Base 1.3
+ epoxy_glGetTransformFeedbackiv@Base 1.3
  epoxy_glGetTranslatedShaderSourceANGLE@Base 1.0
  epoxy_glGetUniformBlockIndex@Base 1.0
  epoxy_glGetUniformBufferSizeEXT@Base 1.0
@@ -1175,10 +1308,13 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetVariantIntegervEXT@Base 1.0
  epoxy_glGetVariantPointervEXT@Base 1.0
  epoxy_glGetVaryingLocationNV@Base 1.0
+ epoxy_glGetVertexArrayIndexed64iv@Base 1.3
+ epoxy_glGetVertexArrayIndexediv@Base 1.3
  epoxy_glGetVertexArrayIntegeri_vEXT@Base 1.0
  epoxy_glGetVertexArrayIntegervEXT@Base 1.0
  epoxy_glGetVertexArrayPointeri_vEXT@Base 1.0
  epoxy_glGetVertexArrayPointervEXT@Base 1.0
+ epoxy_glGetVertexArrayiv@Base 1.3
  epoxy_glGetVertexAttribArrayObjectfvATI@Base 1.0
  epoxy_glGetVertexAttribArrayObjectivATI@Base 1.0
  epoxy_glGetVertexAttribIiv@Base 1.0
@@ -1210,26 +1346,47 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glGetVideoivNV@Base 1.0
  epoxy_glGetVideoui64vNV@Base 1.0
  epoxy_glGetVideouivNV@Base 1.0
+ epoxy_glGetnColorTable@Base 1.3
  epoxy_glGetnColorTableARB@Base 1.0
+ epoxy_glGetnCompressedTexImage@Base 1.3
  epoxy_glGetnCompressedTexImageARB@Base 1.0
+ epoxy_glGetnConvolutionFilter@Base 1.3
  epoxy_glGetnConvolutionFilterARB@Base 1.0
+ epoxy_glGetnHistogram@Base 1.3
  epoxy_glGetnHistogramARB@Base 1.0
+ epoxy_glGetnMapdv@Base 1.3
  epoxy_glGetnMapdvARB@Base 1.0
+ epoxy_glGetnMapfv@Base 1.3
  epoxy_glGetnMapfvARB@Base 1.0
+ epoxy_glGetnMapiv@Base 1.3
  epoxy_glGetnMapivARB@Base 1.0
+ epoxy_glGetnMinmax@Base 1.3
  epoxy_glGetnMinmaxARB@Base 1.0
+ epoxy_glGetnPixelMapfv@Base 1.3
  epoxy_glGetnPixelMapfvARB@Base 1.0
+ epoxy_glGetnPixelMapuiv@Base 1.3
  epoxy_glGetnPixelMapuivARB@Base 1.0
+ epoxy_glGetnPixelMapusv@Base 1.3
  epoxy_glGetnPixelMapusvARB@Base 1.0
+ epoxy_glGetnPolygonStipple@Base 1.3
  epoxy_glGetnPolygonStippleARB@Base 1.0
+ epoxy_glGetnSeparableFilter@Base 1.3
  epoxy_glGetnSeparableFilterARB@Base 1.0
+ epoxy_glGetnTexImage@Base 1.3
  epoxy_glGetnTexImageARB@Base 1.0
+ epoxy_glGetnUniformdv@Base 1.3
  epoxy_glGetnUniformdvARB@Base 1.0
+ epoxy_glGetnUniformfv@Base 1.3
  epoxy_glGetnUniformfvARB@Base 1.0
  epoxy_glGetnUniformfvEXT@Base 1.0
+ epoxy_glGetnUniformfvKHR@Base 1.3
+ epoxy_glGetnUniformiv@Base 1.3
  epoxy_glGetnUniformivARB@Base 1.0
  epoxy_glGetnUniformivEXT@Base 1.0
+ epoxy_glGetnUniformivKHR@Base 1.3
+ epoxy_glGetnUniformuiv@Base 1.3
  epoxy_glGetnUniformuivARB@Base 1.0
+ epoxy_glGetnUniformuivKHR@Base 1.3
  epoxy_glGlobalAlphaFactorbSUN@Base 1.0
  epoxy_glGlobalAlphaFactordSUN@Base 1.0
  epoxy_glGlobalAlphaFactorfSUN@Base 1.0
@@ -1276,6 +1433,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glInvalidateBufferData@Base 1.0
  epoxy_glInvalidateBufferSubData@Base 1.0
  epoxy_glInvalidateFramebuffer@Base 1.0
+ epoxy_glInvalidateNamedFramebufferData@Base 1.3
+ epoxy_glInvalidateNamedFramebufferSubData@Base 1.3
  epoxy_glInvalidateSubFramebuffer@Base 1.0
  epoxy_glInvalidateTexImage@Base 1.0
  epoxy_glInvalidateTexSubImage@Base 1.0
@@ -1283,9 +1442,13 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glIsBuffer@Base 1.0
  epoxy_glIsBufferARB@Base 1.0
  epoxy_glIsBufferResidentNV@Base 1.0
+ epoxy_glIsCommandListNV@Base 1.3
  epoxy_glIsEnabled@Base 1.0
  epoxy_glIsEnabledIndexedEXT@Base 1.0
  epoxy_glIsEnabledi@Base 1.0
+ epoxy_glIsEnablediEXT@Base 1.3
+ epoxy_glIsEnablediNV@Base 1.3
+ epoxy_glIsEnablediOES@Base 1.3
  epoxy_glIsFenceAPPLE@Base 1.0
  epoxy_glIsFenceNV@Base 1.0
  epoxy_glIsFramebuffer@Base 1.0
@@ -1315,6 +1478,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glIsRenderbufferOES@Base 1.0
  epoxy_glIsSampler@Base 1.0
  epoxy_glIsShader@Base 1.0
+ epoxy_glIsStateNV@Base 1.3
  epoxy_glIsSync@Base 1.0
  epoxy_glIsSyncAPPLE@Base 1.0
  epoxy_glIsTexture@Base 1.0
@@ -1353,6 +1517,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glLinkProgram@Base 1.0
  epoxy_glLinkProgramARB@Base 1.0
  epoxy_glListBase@Base 1.0
+ epoxy_glListDrawCommandsStatesClientNV@Base 1.3
  epoxy_glListParameterfSGIX@Base 1.0
  epoxy_glListParameterfvSGIX@Base 1.0
  epoxy_glListParameteriSGIX@Base 1.0
@@ -1403,7 +1568,9 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glMapGrid2d@Base 1.0
  epoxy_glMapGrid2f@Base 1.0
  epoxy_glMapGrid2xOES@Base 1.0
+ epoxy_glMapNamedBuffer@Base 1.3
  epoxy_glMapNamedBufferEXT@Base 1.0
+ epoxy_glMapNamedBufferRange@Base 1.3
  epoxy_glMapNamedBufferRangeEXT@Base 1.0
  epoxy_glMapObjectBufferATI@Base 1.0
  epoxy_glMapParameterfvNV@Base 1.0
@@ -1427,12 +1594,18 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glMatrixIndexubvARB@Base 1.0
  epoxy_glMatrixIndexuivARB@Base 1.0
  epoxy_glMatrixIndexusvARB@Base 1.0
+ epoxy_glMatrixLoad3x2fNV@Base 1.3
+ epoxy_glMatrixLoad3x3fNV@Base 1.3
  epoxy_glMatrixLoadIdentityEXT@Base 1.0
+ epoxy_glMatrixLoadTranspose3x3fNV@Base 1.3
  epoxy_glMatrixLoadTransposedEXT@Base 1.0
  epoxy_glMatrixLoadTransposefEXT@Base 1.0
  epoxy_glMatrixLoaddEXT@Base 1.0
  epoxy_glMatrixLoadfEXT@Base 1.0
  epoxy_glMatrixMode@Base 1.0
+ epoxy_glMatrixMult3x2fNV@Base 1.3
+ epoxy_glMatrixMult3x3fNV@Base 1.3
+ epoxy_glMatrixMultTranspose3x3fNV@Base 1.3
  epoxy_glMatrixMultTransposedEXT@Base 1.0
  epoxy_glMatrixMultTransposefEXT@Base 1.0
  epoxy_glMatrixMultdEXT@Base 1.0
@@ -1467,16 +1640,22 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glMultiDrawArraysEXT@Base 1.0
  epoxy_glMultiDrawArraysIndirect@Base 1.0
  epoxy_glMultiDrawArraysIndirectAMD@Base 1.0
+ epoxy_glMultiDrawArraysIndirectBindlessCountNV@Base 1.3
  epoxy_glMultiDrawArraysIndirectBindlessNV@Base 1.0
  epoxy_glMultiDrawArraysIndirectCountARB@Base 1.0
+ epoxy_glMultiDrawArraysIndirectEXT@Base 1.3
  epoxy_glMultiDrawElementArrayAPPLE@Base 1.0
  epoxy_glMultiDrawElements@Base 1.0
  epoxy_glMultiDrawElementsBaseVertex@Base 1.0
+ epoxy_glMultiDrawElementsBaseVertexEXT@Base 1.3
+ epoxy_glMultiDrawElementsBaseVertexOES@Base 1.3
  epoxy_glMultiDrawElementsEXT@Base 1.0
  epoxy_glMultiDrawElementsIndirect@Base 1.0
  epoxy_glMultiDrawElementsIndirectAMD@Base 1.0
+ epoxy_glMultiDrawElementsIndirectBindlessCountNV@Base 1.3
  epoxy_glMultiDrawElementsIndirectBindlessNV@Base 1.0
  epoxy_glMultiDrawElementsIndirectCountARB@Base 1.0
+ epoxy_glMultiDrawElementsIndirectEXT@Base 1.3
  epoxy_glMultiDrawRangeElementArrayAPPLE@Base 1.0
  epoxy_glMultiModeDrawArraysIBM@Base 1.0
  epoxy_glMultiModeDrawElementsIBM@Base 1.0
@@ -1602,17 +1781,30 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glMultiTexSubImage1DEXT@Base 1.0
  epoxy_glMultiTexSubImage2DEXT@Base 1.0
  epoxy_glMultiTexSubImage3DEXT@Base 1.0
+ epoxy_glNamedBufferData@Base 1.3
  epoxy_glNamedBufferDataEXT@Base 1.0
+ epoxy_glNamedBufferPageCommitmentARB@Base 1.3
+ epoxy_glNamedBufferPageCommitmentEXT@Base 1.3
+ epoxy_glNamedBufferStorage@Base 1.3
  epoxy_glNamedBufferStorageEXT@Base 1.0
+ epoxy_glNamedBufferSubData@Base 1.3
  epoxy_glNamedBufferSubDataEXT@Base 1.0
  epoxy_glNamedCopyBufferSubDataEXT@Base 1.0
+ epoxy_glNamedFramebufferDrawBuffer@Base 1.3
+ epoxy_glNamedFramebufferDrawBuffers@Base 1.3
+ epoxy_glNamedFramebufferParameteri@Base 1.3
  epoxy_glNamedFramebufferParameteriEXT@Base 1.0
+ epoxy_glNamedFramebufferReadBuffer@Base 1.3
+ epoxy_glNamedFramebufferRenderbuffer@Base 1.3
  epoxy_glNamedFramebufferRenderbufferEXT@Base 1.0
+ epoxy_glNamedFramebufferSampleLocationsfvNV@Base 1.3
  epoxy_glNamedFramebufferTexture1DEXT@Base 1.0
  epoxy_glNamedFramebufferTexture2DEXT@Base 1.0
  epoxy_glNamedFramebufferTexture3DEXT@Base 1.0
+ epoxy_glNamedFramebufferTexture@Base 1.3
  epoxy_glNamedFramebufferTextureEXT@Base 1.0
  epoxy_glNamedFramebufferTextureFaceEXT@Base 1.0
+ epoxy_glNamedFramebufferTextureLayer@Base 1.3
  epoxy_glNamedFramebufferTextureLayerEXT@Base 1.0
  epoxy_glNamedProgramLocalParameter4dEXT@Base 1.0
  epoxy_glNamedProgramLocalParameter4dvEXT@Base 1.0
@@ -1626,7 +1818,9 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glNamedProgramLocalParametersI4ivEXT@Base 1.0
  epoxy_glNamedProgramLocalParametersI4uivEXT@Base 1.0
  epoxy_glNamedProgramStringEXT@Base 1.0
+ epoxy_glNamedRenderbufferStorage@Base 1.3
  epoxy_glNamedRenderbufferStorageEXT@Base 1.0
+ epoxy_glNamedRenderbufferStorageMultisample@Base 1.3
  epoxy_glNamedRenderbufferStorageMultisampleCoverageEXT@Base 1.0
  epoxy_glNamedRenderbufferStorageMultisampleEXT@Base 1.0
  epoxy_glNamedStringARB@Base 1.0
@@ -1684,14 +1878,19 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glPassThroughxOES@Base 1.0
  epoxy_glPatchParameterfv@Base 1.0
  epoxy_glPatchParameteri@Base 1.0
+ epoxy_glPatchParameteriEXT@Base 1.3
+ epoxy_glPatchParameteriOES@Base 1.3
  epoxy_glPathColorGenNV@Base 1.0
  epoxy_glPathCommandsNV@Base 1.0
  epoxy_glPathCoordsNV@Base 1.0
  epoxy_glPathCoverDepthFuncNV@Base 1.0
  epoxy_glPathDashArrayNV@Base 1.0
  epoxy_glPathFogGenNV@Base 1.0
+ epoxy_glPathGlyphIndexArrayNV@Base 1.3
+ epoxy_glPathGlyphIndexRangeNV@Base 1.3
  epoxy_glPathGlyphRangeNV@Base 1.0
  epoxy_glPathGlyphsNV@Base 1.0
+ epoxy_glPathMemoryGlyphIndexArrayNV@Base 1.3
  epoxy_glPathParameterfNV@Base 1.0
  epoxy_glPathParameterfvNV@Base 1.0
  epoxy_glPathParameteriNV@Base 1.0
@@ -1750,7 +1949,9 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glPollAsyncSGIX@Base 1.0
  epoxy_glPollInstrumentsSGIX@Base 1.0
  epoxy_glPolygonMode@Base 1.0
+ epoxy_glPolygonModeNV@Base 1.3
  epoxy_glPolygonOffset@Base 1.0
+ epoxy_glPolygonOffsetClampEXT@Base 1.3
  epoxy_glPolygonOffsetEXT@Base 1.0
  epoxy_glPolygonOffsetx@Base 1.0
  epoxy_glPolygonOffsetxOES@Base 1.0
@@ -1764,6 +1965,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glPopName@Base 1.0
  epoxy_glPresentFrameDualFillNV@Base 1.0
  epoxy_glPresentFrameKeyedNV@Base 1.0
+ epoxy_glPrimitiveBoundingBoxEXT@Base 1.3
+ epoxy_glPrimitiveBoundingBoxOES@Base 1.3
  epoxy_glPrimitiveRestartIndex@Base 1.0
  epoxy_glPrimitiveRestartIndexNV@Base 1.0
  epoxy_glPrimitiveRestartNV@Base 1.0
@@ -1810,6 +2013,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glProgramParameteriEXT@Base 1.0
  epoxy_glProgramParameters4dvNV@Base 1.0
  epoxy_glProgramParameters4fvNV@Base 1.0
+ epoxy_glProgramPathFragmentInputGenNV@Base 1.3
  epoxy_glProgramStringARB@Base 1.0
  epoxy_glProgramSubroutineParametersuivNV@Base 1.0
  epoxy_glProgramUniform1d@Base 1.0
@@ -1979,13 +2183,16 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glRasterPos4sv@Base 1.0
  epoxy_glRasterPos4xOES@Base 1.0
  epoxy_glRasterPos4xvOES@Base 1.0
+ epoxy_glRasterSamplesEXT@Base 1.3
  epoxy_glReadBuffer@Base 1.0
  epoxy_glReadBufferIndexedEXT@Base 1.0
  epoxy_glReadBufferNV@Base 1.0
  epoxy_glReadInstrumentsSGIX@Base 1.0
  epoxy_glReadPixels@Base 1.0
+ epoxy_glReadnPixels@Base 1.3
  epoxy_glReadnPixelsARB@Base 1.0
  epoxy_glReadnPixelsEXT@Base 1.0
+ epoxy_glReadnPixelsKHR@Base 1.3
  epoxy_glRectd@Base 1.0
  epoxy_glRectdv@Base 1.0
  epoxy_glRectf@Base 1.0
@@ -2038,6 +2245,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glResetMinmax@Base 1.0
  epoxy_glResetMinmaxEXT@Base 1.0
  epoxy_glResizeBuffersMESA@Base 1.0
+ epoxy_glResolveDepthValuesNV@Base 1.3
  epoxy_glResolveMultisampleFramebufferAPPLE@Base 1.0
  epoxy_glResumeTransformFeedback@Base 1.0
  epoxy_glResumeTransformFeedbackNV@Base 1.0
@@ -2047,7 +2255,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glRotatexOES@Base 1.0
  epoxy_glSampleCoverage@Base 1.0
  epoxy_glSampleCoverageARB@Base 1.0
- epoxy_glSampleCoverageOES@Base 1.0
+#MISSING: 1.3# epoxy_glSampleCoverageOES@Base 1.0
  epoxy_glSampleCoveragex@Base 1.0
  epoxy_glSampleCoveragexOES@Base 1.0
  epoxy_glSampleMapATI@Base 1.0
@@ -2058,7 +2266,11 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glSamplePatternEXT@Base 1.0
  epoxy_glSamplePatternSGIS@Base 1.0
  epoxy_glSamplerParameterIiv@Base 1.0
+ epoxy_glSamplerParameterIivEXT@Base 1.3
+ epoxy_glSamplerParameterIivOES@Base 1.3
  epoxy_glSamplerParameterIuiv@Base 1.0
+ epoxy_glSamplerParameterIuivEXT@Base 1.3
+ epoxy_glSamplerParameterIuivOES@Base 1.3
  epoxy_glSamplerParameterf@Base 1.0
  epoxy_glSamplerParameterfv@Base 1.0
  epoxy_glSamplerParameteri@Base 1.0
@@ -2069,8 +2281,11 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glScalexOES@Base 1.0
  epoxy_glScissor@Base 1.0
  epoxy_glScissorArrayv@Base 1.0
+ epoxy_glScissorArrayvNV@Base 1.3
  epoxy_glScissorIndexed@Base 1.0
+ epoxy_glScissorIndexedNV@Base 1.3
  epoxy_glScissorIndexedv@Base 1.0
+ epoxy_glScissorIndexedvNV@Base 1.3
  epoxy_glSecondaryColor3b@Base 1.0
  epoxy_glSecondaryColor3bEXT@Base 1.0
  epoxy_glSecondaryColor3bv@Base 1.0
@@ -2136,6 +2351,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glSpriteParameterivSGIX@Base 1.0
  epoxy_glStartInstrumentsSGIX@Base 1.0
  epoxy_glStartTilingQCOM@Base 1.0
+ epoxy_glStateCaptureNV@Base 1.3
  epoxy_glStencilClearTagEXT@Base 1.0
  epoxy_glStencilFillPathInstancedNV@Base 1.0
  epoxy_glStencilFillPathNV@Base 1.0
@@ -2150,8 +2366,13 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glStencilOpValueAMD@Base 1.0
  epoxy_glStencilStrokePathInstancedNV@Base 1.0
  epoxy_glStencilStrokePathNV@Base 1.0
+ epoxy_glStencilThenCoverFillPathInstancedNV@Base 1.3
+ epoxy_glStencilThenCoverFillPathNV@Base 1.3
+ epoxy_glStencilThenCoverStrokePathInstancedNV@Base 1.3
+ epoxy_glStencilThenCoverStrokePathNV@Base 1.3
  epoxy_glStopInstrumentsSGIX@Base 1.0
  epoxy_glStringMarkerGREMEDY@Base 1.0
+ epoxy_glSubpixelPrecisionBiasNV@Base 1.3
  epoxy_glSwizzleEXT@Base 1.0
  epoxy_glSyncTextureINTEL@Base 1.0
  epoxy_glTagSampleBufferSGIX@Base 1.0
@@ -2175,7 +2396,10 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glTexBuffer@Base 1.0
  epoxy_glTexBufferARB@Base 1.0
  epoxy_glTexBufferEXT@Base 1.0
+ epoxy_glTexBufferOES@Base 1.3
  epoxy_glTexBufferRange@Base 1.0
+ epoxy_glTexBufferRangeEXT@Base 1.3
+ epoxy_glTexBufferRangeOES@Base 1.3
  epoxy_glTexBumpParameterfvATI@Base 1.0
  epoxy_glTexBumpParameterivATI@Base 1.0
  epoxy_glTexCoord1bOES@Base 1.0
@@ -2293,10 +2517,13 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glTexImage3DOES@Base 1.0
  epoxy_glTexImage4DSGIS@Base 1.0
  epoxy_glTexPageCommitmentARB@Base 1.0
+ epoxy_glTexPageCommitmentEXT@Base 1.3
  epoxy_glTexParameterIiv@Base 1.0
  epoxy_glTexParameterIivEXT@Base 1.0
+ epoxy_glTexParameterIivOES@Base 1.3
  epoxy_glTexParameterIuiv@Base 1.0
  epoxy_glTexParameterIuivEXT@Base 1.0
+ epoxy_glTexParameterIuivOES@Base 1.3
  epoxy_glTexParameterf@Base 1.0
  epoxy_glTexParameterfv@Base 1.0
  epoxy_glTexParameteri@Base 1.0
@@ -2324,8 +2551,11 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glTexSubImage3DEXT@Base 1.0
  epoxy_glTexSubImage3DOES@Base 1.0
  epoxy_glTexSubImage4DSGIS@Base 1.0
+ epoxy_glTextureBarrier@Base 1.3
  epoxy_glTextureBarrierNV@Base 1.0
+ epoxy_glTextureBuffer@Base 1.3
  epoxy_glTextureBufferEXT@Base 1.0
+ epoxy_glTextureBufferRange@Base 1.3
  epoxy_glTextureBufferRangeEXT@Base 1.0
  epoxy_glTextureColorMaskSGIS@Base 1.0
  epoxy_glTextureImage1DEXT@Base 1.0
@@ -2339,26 +2569,44 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glTextureMaterialEXT@Base 1.0
  epoxy_glTextureNormalEXT@Base 1.0
  epoxy_glTexturePageCommitmentEXT@Base 1.0
+ epoxy_glTextureParameterIiv@Base 1.3
  epoxy_glTextureParameterIivEXT@Base 1.0
+ epoxy_glTextureParameterIuiv@Base 1.3
  epoxy_glTextureParameterIuivEXT@Base 1.0
+ epoxy_glTextureParameterf@Base 1.3
  epoxy_glTextureParameterfEXT@Base 1.0
+ epoxy_glTextureParameterfv@Base 1.3
  epoxy_glTextureParameterfvEXT@Base 1.0
+ epoxy_glTextureParameteri@Base 1.3
  epoxy_glTextureParameteriEXT@Base 1.0
+ epoxy_glTextureParameteriv@Base 1.3
  epoxy_glTextureParameterivEXT@Base 1.0
  epoxy_glTextureRangeAPPLE@Base 1.0
  epoxy_glTextureRenderbufferEXT@Base 1.0
+ epoxy_glTextureStorage1D@Base 1.3
  epoxy_glTextureStorage1DEXT@Base 1.0
+ epoxy_glTextureStorage2D@Base 1.3
  epoxy_glTextureStorage2DEXT@Base 1.0
+ epoxy_glTextureStorage2DMultisample@Base 1.3
  epoxy_glTextureStorage2DMultisampleEXT@Base 1.0
+ epoxy_glTextureStorage3D@Base 1.3
  epoxy_glTextureStorage3DEXT@Base 1.0
+ epoxy_glTextureStorage3DMultisample@Base 1.3
  epoxy_glTextureStorage3DMultisampleEXT@Base 1.0
  epoxy_glTextureStorageSparseAMD@Base 1.0
+ epoxy_glTextureSubImage1D@Base 1.3
  epoxy_glTextureSubImage1DEXT@Base 1.0
+ epoxy_glTextureSubImage2D@Base 1.3
  epoxy_glTextureSubImage2DEXT@Base 1.0
+ epoxy_glTextureSubImage3D@Base 1.3
  epoxy_glTextureSubImage3DEXT@Base 1.0
  epoxy_glTextureView@Base 1.0
+ epoxy_glTextureViewEXT@Base 1.3
+ epoxy_glTextureViewOES@Base 1.3
  epoxy_glTrackMatrixNV@Base 1.0
  epoxy_glTransformFeedbackAttribsNV@Base 1.0
+ epoxy_glTransformFeedbackBufferBase@Base 1.3
+ epoxy_glTransformFeedbackBufferRange@Base 1.3
  epoxy_glTransformFeedbackStreamAttribsNV@Base 1.0
  epoxy_glTransformFeedbackVaryings@Base 1.0
  epoxy_glTransformFeedbackVaryingsEXT@Base 1.0
@@ -2480,6 +2728,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glUnmapBuffer@Base 1.0
  epoxy_glUnmapBufferARB@Base 1.0
  epoxy_glUnmapBufferOES@Base 1.0
+ epoxy_glUnmapNamedBuffer@Base 1.3
  epoxy_glUnmapNamedBufferEXT@Base 1.0
  epoxy_glUnmapObjectBufferATI@Base 1.0
  epoxy_glUnmapTexture2DINTEL@Base 1.0
@@ -2555,9 +2804,15 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glVertex4sv@Base 1.0
  epoxy_glVertex4xOES@Base 1.0
  epoxy_glVertex4xvOES@Base 1.0
+ epoxy_glVertexArrayAttribBinding@Base 1.3
+ epoxy_glVertexArrayAttribFormat@Base 1.3
+ epoxy_glVertexArrayAttribIFormat@Base 1.3
+ epoxy_glVertexArrayAttribLFormat@Base 1.3
  epoxy_glVertexArrayBindVertexBufferEXT@Base 1.0
+ epoxy_glVertexArrayBindingDivisor@Base 1.3
  epoxy_glVertexArrayColorOffsetEXT@Base 1.0
  epoxy_glVertexArrayEdgeFlagOffsetEXT@Base 1.0
+ epoxy_glVertexArrayElementBuffer@Base 1.3
  epoxy_glVertexArrayFogCoordOffsetEXT@Base 1.0
  epoxy_glVertexArrayIndexOffsetEXT@Base 1.0
  epoxy_glVertexArrayMultiTexCoordOffsetEXT@Base 1.0
@@ -2576,6 +2831,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glVertexArrayVertexAttribLOffsetEXT@Base 1.0
  epoxy_glVertexArrayVertexAttribOffsetEXT@Base 1.0
  epoxy_glVertexArrayVertexBindingDivisorEXT@Base 1.0
+ epoxy_glVertexArrayVertexBuffer@Base 1.3
+ epoxy_glVertexArrayVertexBuffers@Base 1.3
  epoxy_glVertexArrayVertexOffsetEXT@Base 1.0
  epoxy_glVertexAttrib1d@Base 1.0
  epoxy_glVertexAttrib1dARB@Base 1.0
@@ -2861,8 +3118,11 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glVideoCaptureStreamParameterivNV@Base 1.0
  epoxy_glViewport@Base 1.0
  epoxy_glViewportArrayv@Base 1.0
+ epoxy_glViewportArrayvNV@Base 1.3
  epoxy_glViewportIndexedf@Base 1.0
+ epoxy_glViewportIndexedfNV@Base 1.3
  epoxy_glViewportIndexedfv@Base 1.0
+ epoxy_glViewportIndexedfvNV@Base 1.3
  epoxy_glWaitSync@Base 1.0
  epoxy_glWaitSyncAPPLE@Base 1.0
  epoxy_glWeightPathsNV@Base 1.0
@@ -2941,14 +3201,18 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glXBindVideoCaptureDeviceNV@Base 1.0
  epoxy_glXBindVideoDeviceNV@Base 1.0
  epoxy_glXBindVideoImageNV@Base 1.0
+ epoxy_glXBlitContextFramebufferAMD@Base 1.3
  epoxy_glXChannelRectSGIX@Base 1.0
  epoxy_glXChannelRectSyncSGIX@Base 1.0
  epoxy_glXChooseFBConfig@Base 1.0
  epoxy_glXChooseFBConfigSGIX@Base 1.0
  epoxy_glXChooseVisual@Base 1.0
+ epoxy_glXCopyBufferSubDataNV@Base 1.3
  epoxy_glXCopyContext@Base 1.0
  epoxy_glXCopyImageSubDataNV@Base 1.0
  epoxy_glXCopySubBufferMESA@Base 1.0
+ epoxy_glXCreateAssociatedContextAMD@Base 1.3
+ epoxy_glXCreateAssociatedContextAttribsAMD@Base 1.3
  epoxy_glXCreateContext@Base 1.0
  epoxy_glXCreateContextAttribsARB@Base 1.0
  epoxy_glXCreateContextWithConfigSGIX@Base 1.0
@@ -2962,6 +3226,7 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glXCreateWindow@Base 1.0
  epoxy_glXCushionSGI@Base 1.0
  epoxy_glXDelayBeforeSwapNV@Base 1.0
+ epoxy_glXDeleteAssociatedContextAMD@Base 1.3
  epoxy_glXDestroyContext@Base 1.0
  epoxy_glXDestroyGLXPbufferSGIX@Base 1.0
  epoxy_glXDestroyGLXPixmap@Base 1.0
@@ -2976,7 +3241,9 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glXGetAGPOffsetMESA@Base 1.0
  epoxy_glXGetClientString@Base 1.0
  epoxy_glXGetConfig@Base 1.0
+ epoxy_glXGetContextGPUIDAMD@Base 1.3
  epoxy_glXGetContextIDEXT@Base 1.0
+ epoxy_glXGetCurrentAssociatedContextAMD@Base 1.3
  epoxy_glXGetCurrentContext@Base 1.0
  epoxy_glXGetCurrentDisplay@Base 1.0
  epoxy_glXGetCurrentDisplayEXT@Base 1.0
@@ -2987,6 +3254,8 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glXGetFBConfigAttribSGIX@Base 1.0
  epoxy_glXGetFBConfigFromVisualSGIX@Base 1.0
  epoxy_glXGetFBConfigs@Base 1.0
+ epoxy_glXGetGPUIDsAMD@Base 1.3
+ epoxy_glXGetGPUInfoAMD@Base 1.3
  epoxy_glXGetMscRateOML@Base 1.0
  epoxy_glXGetProcAddress@Base 1.0
  epoxy_glXGetProcAddressARB@Base 1.0
@@ -3006,9 +3275,11 @@ libepoxy.so.0 libepoxy0 #MINVER#
  epoxy_glXJoinSwapGroupNV@Base 1.0
  epoxy_glXJoinSwapGroupSGIX@Base 1.0
  epoxy_glXLockVideoCaptureDeviceNV@Base 1.0
+ epoxy_glXMakeAssociatedContextCurrentAMD@Base 1.3
  epoxy_glXMakeContextCurrent@Base 1.0
  epoxy_glXMakeCurrent@Base 1.0
  epoxy_glXMakeCurrentReadSGI@Base 1.0
+ epoxy_glXNamedCopyBufferSubDataNV@Base 1.3
  epoxy_glXQueryChannelDeltasSGIX@Base 1.0
  epoxy_glXQueryChannelRectSGIX@Base 1.0
  epoxy_glXQueryContext@Base 1.0
