@@ -783,6 +783,7 @@ class Generator(object):
 
         for func in self.sorted_functions:
             self.write_thunks(func)
+        self.outln('')
 
         self.outln('#if USING_DISPATCH_TABLE')
 
