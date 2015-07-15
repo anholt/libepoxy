@@ -1,9 +1,7 @@
 #!/usr/bin/make -f
 
-# We use dh_autoreconf because we're not building from tarballs, so
-# there are no generated Makefiles and configure script in our tree.
 %:
-	dh $@ --with autoreconf
+	dh $@
 
 # Running make check is unsuitable because the tests require a working
 # X environment currently, so we disable dh_auto_test.

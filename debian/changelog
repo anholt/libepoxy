@@ -1,3 +1,10 @@
+libepoxy (1.3.1-1) unstable; urgency=low
+
+  * Upgrade to upstream v1.3.1 release and make the -dev package multi-arch.
+    (Closes: #787314)
+
+ -- Eric Anholt <eric@anholt.net>  Wed, 15 Jul 2015 16:36:27 -0700
+
 libepoxy (1.2-1) unstable; urgency=low
 
   * Upgrade to upstream v1.2 release.
