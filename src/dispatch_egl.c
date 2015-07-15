@@ -27,7 +27,7 @@
 
 #include "dispatch_common.h"
 
-PUBLIC int
+int
 epoxy_conservative_egl_version(void)
 {
     EGLDisplay dpy = eglGetCurrentDisplay();
