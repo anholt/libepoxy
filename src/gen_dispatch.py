@@ -644,13 +644,24 @@ class Generator(object):
         # Writes the mapping from enums to the strings describing them
         # for epoxy_print_failure_reasons().
 
-        self.outln('static const char *enum_strings[] = {')
-
         sorted_providers = sorted(self.provider_enum.keys())
 
+        self.enum_string_offset = {}
+        offset = 0
+        self.outln('static const char *enum_string =')
+        for human_name in sorted_providers:
+            self.outln('    "{0}\\0"'.format(human_name));
+            self.enum_string_offset[human_name] = offset
+            offset += len(human_name.replace('\\', '')) + 1
+        self.outln('     ;')
+        self.outln('')
+        # We're using uint16_t for the offsets.
+        assert(offset < 65536)
+
+        self.outln('static const uint16_t enum_string_offsets[] = {')
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
-            self.outln('    [{0}] = "{1}",'.format(enum, human_name))
+            self.outln('    [{0}] = {1},'.format(enum, self.enum_string_offset[human_name]))
         self.outln('};')
         self.outln('')
 
@@ -697,8 +708,8 @@ class Generator(object):
         # aborting.  (In non-epoxy GL usage, the app developer would
         # call into some blank stub function and segfault).
         self.outln('    fprintf(stderr, "No provider of %s found.  Requires one of:\\n", name);')
-        self.outln('    for (i = 0; providers[i] != 0; i++) {')
-        self.outln('        fprintf(stderr, "    %s\\n", enum_strings[providers[i]]);')
+        self.outln('    for (i = 0; providers[i] != {0}_provider_terminator; i++) {{'.format(self.target))
+        self.outln('        fprintf(stderr, "    %s\\n", enum_string + enum_string_offsets[providers[i]]);')
         self.outln('    }')
         self.outln('    if (providers[0] == {0}_provider_terminator) {{'.format(self.target))
         self.outln('        fprintf(stderr, "    No known providers.  This is likely a bug "')
