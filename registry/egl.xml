@@ -499,7 +499,8 @@
         <enum value="0x31B0" name="EGL_CONTEXT_OPENGL_DEBUG"/>
         <enum value="0x31B1" name="EGL_CONTEXT_OPENGL_FORWARD_COMPATIBLE"/>
         <enum value="0x31B2" name="EGL_CONTEXT_OPENGL_ROBUST_ACCESS"/>
-            <unused start="0x31B3" end="0x31BC" comment="Formerly reserved for EGL_image_stream"/>
+        <enum value="0x31B3" name="EGL_CONTEXT_OPENGL_NO_ERROR_KHR"/>
+            <unused start="0x31B4" end="0x31BC" comment="0x31B3-0x31BC formerly reserved for EGL_image_stream"/>
         <enum value="0x31BD" name="EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY_KHR" alias="EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY"/>
         <enum value="0x31BD" name="EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY"/>
         <enum value="0x31BE" name="EGL_NO_RESET_NOTIFICATION"/>
@@ -1961,6 +1962,11 @@
                 <enum name="EGL_CONTEXT_OPENGL_COMPATIBILITY_PROFILE_BIT_KHR"/>
                 <enum name="EGL_OPENGL_ES3_BIT"/>
                 <enum name="EGL_OPENGL_ES3_BIT_KHR"/>
+            </require>
+        </extension>
+        <extension name="EGL_KHR_create_context_no_error" supported="egl">
+            <require>
+                <enum name="EGL_CONTEXT_OPENGL_NO_ERROR_KHR"/>
             </require>
         </extension>
         <extension name="EGL_KHR_fence_sync" protect="KHRONOS_SUPPORT_INT64" supported="egl">
