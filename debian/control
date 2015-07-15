@@ -18,6 +18,7 @@ Vcs-Browser: https://github.com/anholt/libepoxy
 Package: libepoxy-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: libepoxy0 (= ${binary:Version}), ${misc:Depends}
 Description: OpenGL function pointer management library- development
  It hides the complexity of dlopen(), dlsym(), glXGetProcAddress(),
@@ -30,6 +31,8 @@ Description: OpenGL function pointer management library- development
 
 Package: libepoxy0
 Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: OpenGL function pointer management library
  It hides the complexity of dlopen(), dlsym(), glXGetProcAddress(),
