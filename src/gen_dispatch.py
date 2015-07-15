@@ -218,6 +218,8 @@ class Generator(object):
                 self.typedefs += t.text
 
             for child in t:
+                if child.tag == 'apientry':
+                    self.typedefs += 'APIENTRY'
                 if child.text:
                     self.typedefs += child.text
                 if child.tail:
@@ -566,7 +568,7 @@ class Generator(object):
                 providers.append(provider)
 
         def provider_sort(provider):
-            return (provider.name != func.name, provider.name)
+            return (provider.name != func.name, provider.name, provider.enum)
         providers.sort(key=provider_sort);
 
         if len(providers) != 1:
@@ -577,8 +579,11 @@ class Generator(object):
             self.outln('    };')
 
             self.outln('    static const uint16_t entrypoints[] = {')
-            for provider in providers:
-                self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
+            if len(providers) > 1:
+                for provider in providers:
+                    self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
+            else:
+                    self.outln('        0 /* None */,')
             self.outln('    };')
 
             self.outln('    return {0}_provider_resolver(entrypoint_strings + {1} /* "{2}" */,'.format(self.target,
@@ -632,20 +637,31 @@ class Generator(object):
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
             self.outln('    {0},'.format(enum))
-        self.outln('};')
+        self.outln('} PACKED;')
         self.outln('')
 
     def write_provider_enum_strings(self):
         # Writes the mapping from enums to the strings describing them
         # for epoxy_print_failure_reasons().
 
-        self.outln('static const char *enum_strings[] = {')
-
         sorted_providers = sorted(self.provider_enum.keys())
 
+        self.enum_string_offset = {}
+        offset = 0
+        self.outln('static const char *enum_string =')
+        for human_name in sorted_providers:
+            self.outln('    "{0}\\0"'.format(human_name));
+            self.enum_string_offset[human_name] = offset
+            offset += len(human_name.replace('\\', '')) + 1
+        self.outln('     ;')
+        self.outln('')
+        # We're using uint16_t for the offsets.
+        assert(offset < 65536)
+
+        self.outln('static const uint16_t enum_string_offsets[] = {')
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
-            self.outln('    [{0}] = "{1}",'.format(enum, human_name))
+            self.outln('    [{0}] = {1},'.format(enum, self.enum_string_offset[human_name]))
         self.outln('};')
         self.outln('')
 
@@ -691,15 +707,22 @@ class Generator(object):
         # something useful for the poor application developer before
         # aborting.  (In non-epoxy GL usage, the app developer would
         # call into some blank stub function and segfault).
-        self.outln('    epoxy_print_failure_reasons(name, enum_strings, (const int *)providers);')
+        self.outln('    fprintf(stderr, "No provider of %s found.  Requires one of:\\n", name);')
+        self.outln('    for (i = 0; providers[i] != {0}_provider_terminator; i++) {{'.format(self.target))
+        self.outln('        fprintf(stderr, "    %s\\n", enum_string + enum_string_offsets[providers[i]]);')
+        self.outln('    }')
+        self.outln('    if (providers[0] == {0}_provider_terminator) {{'.format(self.target))
+        self.outln('        fprintf(stderr, "    No known providers.  This is likely a bug "')
+        self.outln('                        "in libepoxy code generation\\n");')
+        self.outln('    }')
         self.outln('    abort();')
 
         self.outln('}')
         self.outln('')
 
         single_resolver_proto = '{0}_single_resolver(enum {0}_provider provider, uint16_t entrypoint_offset)'.format(self.target)
-        self.outln('static void *')
-        self.outln('{0} __attribute__((noinline));'.format(single_resolver_proto))
+        self.outln('EPOXY_NOINLINE static void *')
+        self.outln('{0};'.format(single_resolver_proto))
         self.outln('')
         self.outln('static void *')
         self.outln('{0}'.format(single_resolver_proto))
@@ -728,6 +751,11 @@ class Generator(object):
         self.outln('#include "dispatch_common.h"')
         self.outln('#include "epoxy/{0}.h"'.format(self.target))
         self.outln('')
+        self.outln('#ifdef __GNUC__')
+        self.outln('#define EPOXY_NOINLINE __attribute__((noinline))')
+        self.outln('#elif defined (_MSC_VER)')
+        self.outln('#define EPOXY_NOINLINE __declspec(noinline)')
+        self.outln('#endif')
 
         self.outln('struct dispatch_table {')
         for func in self.sorted_functions:
@@ -755,6 +783,7 @@ class Generator(object):
 
         for func in self.sorted_functions:
             self.write_thunks(func)
+        self.outln('')
 
         self.outln('#if USING_DISPATCH_TABLE')
 

@@ -22,8 +22,8 @@
 # Initialize Autoconf
 AC_PREREQ([2.60])
 AC_INIT([libepoxy],
-        [1.2],
-        [https://people.freedesktop.org/~anholt/libepoxy],
+        [1.3],
+        [https://github.com/anholt/libepoxy],
         [libepoxy])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
@@ -78,7 +78,7 @@ case $host_os in
         ;;
     darwin*)
         build_egl=no
-        build_glx=yes
+        build_glx=no
         build_wgl=no
         build_apple=yes
         has_znow=no
@@ -98,6 +98,7 @@ AC_SUBST(EPOXY_LINK_LIBS)
 
 AM_CONDITIONAL(BUILD_EGL, test x$build_egl = xyes)
 if test x$build_egl = xyes; then
+    PKG_CHECK_MODULES(EGL, [egl])
     AC_DEFINE([BUILD_EGL], [1], [build EGL tests])
 fi
 
