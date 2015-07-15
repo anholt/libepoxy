@@ -527,7 +527,7 @@ void *
 epoxy_get_core_proc_address(const char *name, int core_version)
 {
 #ifdef _WIN32
-    int core_symbol_support = 10;
+    int core_symbol_support = 11;
 #elif defined(ANDROID)
     /**
      * All symbols must be resolved through eglGetProcAddress
