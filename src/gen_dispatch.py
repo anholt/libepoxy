@@ -218,6 +218,8 @@ class Generator(object):
                 self.typedefs += t.text
 
             for child in t:
+                if child.tag == 'apientry':
+                    self.typedefs += 'APIENTRY'
                 if child.text:
                     self.typedefs += child.text
                 if child.tail:
