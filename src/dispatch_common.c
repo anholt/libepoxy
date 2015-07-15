@@ -675,25 +675,6 @@ epoxy_get_proc_address(const char *name)
 #endif
 }
 
-void
-epoxy_print_failure_reasons(const char *name,
-                            const char **provider_names,
-                            const int *providers)
-{
-    int i;
-
-    fprintf(stderr, "No provider of %s found.  Requires one of:\n", name);
-
-    for (i = 0; providers[i] != 0; i++)
-        fprintf(stderr, "    %s\n",
-                provider_names[providers[i]]);
-
-    if (providers[0] == 0) {
-        fprintf(stderr, "    No known providers.  This is likely a bug "
-                "in libepoxy code generation\n");
-    }
-}
-
 WRAPPER_VISIBILITY (void)
 WRAPPER(epoxy_glBegin)(GLenum primtype)
 {

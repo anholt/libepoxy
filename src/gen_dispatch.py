@@ -637,7 +637,7 @@ class Generator(object):
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
             self.outln('    {0},'.format(enum))
-        self.outln('};')
+        self.outln('} PACKED;')
         self.outln('')
 
     def write_provider_enum_strings(self):
@@ -696,7 +696,14 @@ class Generator(object):
         # something useful for the poor application developer before
         # aborting.  (In non-epoxy GL usage, the app developer would
         # call into some blank stub function and segfault).
-        self.outln('    epoxy_print_failure_reasons(name, enum_strings, (const int *)providers);')
+        self.outln('    fprintf(stderr, "No provider of %s found.  Requires one of:\\n", name);')
+        self.outln('    for (i = 0; providers[i] != 0; i++) {')
+        self.outln('        fprintf(stderr, "    %s\\n", enum_strings[providers[i]]);')
+        self.outln('    }')
+        self.outln('    if (providers[0] == {0}_provider_terminator) {{'.format(self.target))
+        self.outln('        fprintf(stderr, "    No known providers.  This is likely a bug "')
+        self.outln('                        "in libepoxy code generation\\n");')
+        self.outln('    }')
         self.outln('    abort();')
 
         self.outln('}')

@@ -66,6 +66,12 @@
 #  endif
 #endif
 
+#if defined(__GNUC__)
+#define PACKED __attribute__((__packed__))
+#else
+#define PACKED
+#endif
+
 /* On win32, we're going to need to keep a per-thread dispatch table,
  * since the function pointers depend on the device and pixel format
  * of the current context.
@@ -165,9 +171,6 @@ bool epoxy_conservative_has_glx_extension(const char *name);
 int epoxy_conservative_egl_version(void);
 bool epoxy_conservative_has_egl_extension(const char *name);
 bool epoxy_conservative_has_wgl_extension(const char *name);
-void epoxy_print_failure_reasons(const char *name,
-                                 const char **provider_names,
-                                 const int *providers);
 
 bool epoxy_extension_in_string(const char *extension_list, const char *ext);
 
