@@ -46,9 +46,9 @@ static int last_call;
 #define EXT_FUNC_VAL 101
 
 void
-override_GL_glBindTexture(GLenum target, GLenum texture);
+override_GL_glBindTexture(GLenum target);
 void
-override_GL_glBindTextureEXT(GLenum target, GLenum texture);
+override_GL_glBindTextureEXT(GLenum target);
 
 void
 override_GL_glBindTexture(GLenum target)
@@ -57,7 +57,7 @@ override_GL_glBindTexture(GLenum target)
 }
 
 void
-override_GL_glBindTexture(GLenum target)
+override_GL_glBindTextureEXT(GLenum target)
 {
     last_call = EXT_FUNC_VAL;
 }
@@ -66,28 +66,17 @@ int
 main(int argc, char **argv)
 {
     bool pass = true;
-    XVisualInfo *vis;
-    Window win;
-    GLXContext ctx;
-    GLXFBConfig config;
-    int context_attribs[] = {
-        GLX_CONTEXT_PROFILE_MASK_ARB, GLX_CONTEXT_ES2_PROFILE_BIT_EXT,
-        GLX_CONTEXT_MAJOR_VERSION_ARB, 2,
-        GLX_CONTEXT_MINOR_VERSION_ARB, 0,
-        0
-    };
-    GLuint shader;
 
     dpy = get_display_or_skip();
     make_glx_context_current_or_skip(dpy);
 
-    if (!epoxy_has_gl_extension(dpy, 0, "GLX_EXT_texture_object"))
-        errx(77, "Test requires GLX_EXT_texture_object");
+    if (!epoxy_has_gl_extension("GL_EXT_texture_object"))
+        errx(77, "Test requires GL_EXT_texture_object");
 
     glBindTexture(GL_TEXTURE_2D, 1);
-    pass = pass && last_call == CORE_VAL;
+    pass = pass && last_call == CORE_FUNC_VAL;
     glBindTextureEXT(GL_TEXTURE_2D, 1);
-    pass = pass && last_call == EXT_VAL;
+    pass = pass && last_call == EXT_FUNC_VAL;
 
     return pass != true;
 }
