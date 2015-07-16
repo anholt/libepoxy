@@ -27,7 +27,9 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = epoxy.pc
 
 EXTRA_DIST = \
+	.dir-locals.el \
 	README.md \
+	autogen.sh \
 	epoxy.pc.in \
 	registry/egl.xml \
 	registry/gl.xml \
