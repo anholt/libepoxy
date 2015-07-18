@@ -23,8 +23,8 @@ Features
 * EGL, GLX, and WGL support.
 * Can be mixed with non-epoxy GL usage.
 
-Building
---------
+Building (Unix)
+---------------
 
     ./autogen.sh
     make
@@ -45,6 +45,14 @@ Dependencies for OS X (macports):
 
 The test suite has additional dependencies depending on the platform.
 (X11, EGL, a running X Server).
+
+Building (MSVC 2013)
+--------------------
+1) Check src\Makefile.vc to ensure that PYTHONDIR is pointing to your Python installation, either a 32-bit or a 64-bit (x64) installation of Python will do.
+2) Open an MSVC Command prompt and run "nmake Makefile.vc CFG=release" or "nmake Makefile.vc CFG=debug" in src\ for a release or debug build.
+3) Optionally, add src\ into your PATH and run the previous step in test\. Run the tests by running the built .exe's.
+4) Assuming you want to install in %INSTALL_DIR%, copy gl.h, gl_generated.h, wgl.h, wgl_generated.h, egl.h and egl_generated.h from include\epoxy\ to %INSTALL_DIR%\include\epoxy\, copy src\epoxy.lib to %INSTALL_DIR%\lib\ and copy epoxy-vs12.dll and epoxy-vs12.pdb (if you've built a debug build) from src\ to %INSTALL_DIR%\bin\. Create directories as needed.
+5) To clean the project, repeat steps 2 and 3, adding " clean" to the commands.
 
 Switching your code to using epoxy
 ----------------------------------

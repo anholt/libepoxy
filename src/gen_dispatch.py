@@ -606,7 +606,7 @@ class Generator(object):
         #
         # It also writes out the actual initialized global function
         # pointer.
-        if func.ret_type == 'void':
+        if func.ret_type == 'void' or func.ret_type=='VOID':
             self.outln('GEN_THUNKS({0}, ({1}), ({2}))'.format(func.wrapped_name,
                                                               func.args_decl,
                                                               func.args_list))

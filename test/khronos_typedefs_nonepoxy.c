@@ -56,8 +56,10 @@ get_system_typedef_sizes(uint32_t *sizes)
 
 #else /* !HAVE_KHRPLATFORM_H */
 
+#ifndef _MSC_VER
 /* Don't care -- this is a conditional case in test code. */
 #pragma GCC diagnostic ignored "-Wsuggest-attribute=noreturn"
+#endif
 
 void
 get_system_typedef_sizes(uint32_t *sizes)

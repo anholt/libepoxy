@@ -24,7 +24,7 @@
 #include <stdbool.h>
 
 #ifdef _WIN32
-#define PLATFORM_HAS_EGL 0
+#define PLATFORM_HAS_EGL 1
 #define PLATFORM_HAS_GLX 0
 #define PLATFORM_HAS_WGL 1
 #define EPOXY_IMPORTEXPORT __declspec(dllexport)
@@ -45,17 +45,6 @@
 #define EPOXY_IMPORTEXPORT
 #endif
 
-#include "epoxy/gl.h"
-#if PLATFORM_HAS_GLX
-#include "epoxy/glx.h"
-#endif
-#if PLATFORM_HAS_EGL
-#include "epoxy/egl.h"
-#endif
-#if PLATFORM_HAS_WGL
-#include "epoxy/wgl.h"
-#endif
-
 #ifndef PUBLIC
 #  ifdef _WIN32
 #    define PUBLIC __declspec(dllexport)
@@ -64,6 +53,17 @@
 #  else
 #    define PUBLIC
 #  endif
+#endif
+
+#if PLATFORM_HAS_WGL
+#include "epoxy/wgl.h"
+#endif
+#include "epoxy/gl.h"
+#if PLATFORM_HAS_GLX
+#include "epoxy/glx.h"
+#endif
+#if PLATFORM_HAS_EGL
+#include "epoxy/egl.h"
 #endif
 
 #if defined(__GNUC__)
