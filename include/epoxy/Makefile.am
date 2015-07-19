@@ -22,6 +22,7 @@
 epoxyincludedir = $(includedir)/epoxy
 
 epoxyinclude_HEADERS = \
+	common.h \
 	gl.h \
         $(EGL_INCLUDES) \
         $(GLX_INCLUDES) \
