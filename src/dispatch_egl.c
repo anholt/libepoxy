@@ -38,7 +38,7 @@ epoxy_conservative_egl_version(void)
     return epoxy_egl_version(dpy);
 }
 
-PUBLIC int
+EPOXY_IMPORTEXPORT int
 epoxy_egl_version(EGLDisplay dpy)
 {
     int major, minor;
@@ -62,7 +62,7 @@ epoxy_conservative_has_egl_extension(const char *ext)
     return epoxy_has_egl_extension(dpy, ext);
 }
 
-PUBLIC bool
+EPOXY_IMPORTEXPORT bool
 epoxy_has_egl_extension(EGLDisplay dpy, const char *ext)
 {
     return epoxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext);

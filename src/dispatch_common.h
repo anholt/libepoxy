@@ -27,32 +27,18 @@
 #define PLATFORM_HAS_EGL 1
 #define PLATFORM_HAS_GLX 0
 #define PLATFORM_HAS_WGL 1
-#define EPOXY_IMPORTEXPORT __declspec(dllexport)
 #elif defined(__APPLE__)
 #define PLATFORM_HAS_EGL 0
 #define PLATFORM_HAS_GLX 0
 #define PLATFORM_HAS_WGL 0
-#define EPOXY_IMPORTEXPORT
 #elif defined(ANDROID)
 #define PLATFORM_HAS_EGL 1
 #define PLATFORM_HAS_GLX 0
 #define PLATFORM_HAS_WGL 0
-#define EPOXY_IMPORTEXPORT
 #else
 #define PLATFORM_HAS_EGL 1
 #define PLATFORM_HAS_GLX 1
 #define PLATFORM_HAS_WGL 0
-#define EPOXY_IMPORTEXPORT
-#endif
-
-#ifndef PUBLIC
-#  ifdef _WIN32
-#    define PUBLIC __declspec(dllexport)
-#  elif (defined(__GNUC__) && __GNUC__ >= 4) || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))
-#    define PUBLIC __attribute__((visibility("default")))
-#  else
-#    define PUBLIC
-#  endif
 #endif
 
 #if PLATFORM_HAS_WGL

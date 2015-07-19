@@ -265,7 +265,7 @@ do_dlsym(void **handle, const char *lib_name, const char *name,
     return result;
 }
 
-PUBLIC bool
+EPOXY_IMPORTEXPORT bool
 epoxy_is_desktop_gl(void)
 {
     const char *es_prefix = "OpenGL ES";
@@ -329,7 +329,7 @@ epoxy_internal_gl_version(int error_version)
     return 10 * major + minor;
 }
 
-PUBLIC int
+EPOXY_IMPORTEXPORT int
 epoxy_gl_version(void)
 {
     return epoxy_internal_gl_version(0);
@@ -452,7 +452,7 @@ epoxy_current_context_is_glx(void)
  * \sa epoxy_has_egl_extension()
  * \sa epoxy_has_glx_extension()
  */
-PUBLIC bool
+EPOXY_IMPORTEXPORT bool
 epoxy_has_gl_extension(const char *ext)
 {
     return epoxy_internal_has_gl_extension(ext, false);
@@ -703,5 +703,5 @@ WRAPPER(epoxy_glEnd)(void)
 #endif
 }
 
-PUBLIC PFNGLBEGINPROC epoxy_glBegin = epoxy_glBegin_wrapped;
-PUBLIC PFNGLENDPROC epoxy_glEnd = epoxy_glEnd_wrapped;
+EPOXY_IMPORTEXPORT PFNGLBEGINPROC epoxy_glBegin = epoxy_glBegin_wrapped;
+EPOXY_IMPORTEXPORT PFNGLENDPROC epoxy_glEnd = epoxy_glEnd_wrapped;

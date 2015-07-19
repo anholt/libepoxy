@@ -29,6 +29,7 @@ AM_CFLAGS = \
 	$(VISIBILITY_CFLAGS) \
 	$(X11_CFLAGS) \
 	$(EGL_CFLAGS) \
+        -DEPOXY_EXPORTS \
 	$()
 
 epoxyincludedir = $(includedir)/epoxy

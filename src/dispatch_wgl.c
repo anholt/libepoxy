@@ -46,7 +46,7 @@ epoxy_conservative_has_wgl_extension(const char *ext)
     return epoxy_has_wgl_extension(hdc, ext);
 }
 
-PUBLIC bool
+EPOXY_IMPORTEXPORT bool
 epoxy_has_wgl_extension(HDC hdc, const char *ext)
  {
      PFNWGLGETEXTENSIONSSTRINGARBPROC getext;
@@ -72,7 +72,7 @@ epoxy_has_wgl_extension(HDC hdc, const char *ext)
  * table per context and reuse it when the context is made current
  * again.
  */
-PUBLIC void
+EPOXY_IMPORTEXPORT void
 epoxy_handle_external_wglMakeCurrent(void)
 {
     if (!first_context_current) {
@@ -190,7 +190,7 @@ WRAPPER(epoxy_wglMakeAssociatedContextCurrentAMD)(HGLRC hglrc)
     return ret;
 }
 
-PUBLIC PFNWGLMAKECURRENTPROC epoxy_wglMakeCurrent = epoxy_wglMakeCurrent_wrapped;
-PUBLIC PFNWGLMAKECONTEXTCURRENTEXTPROC epoxy_wglMakeContextCurrentEXT = epoxy_wglMakeContextCurrentEXT_wrapped;
-PUBLIC PFNWGLMAKECONTEXTCURRENTARBPROC epoxy_wglMakeContextCurrentARB = epoxy_wglMakeContextCurrentARB_wrapped;
-PUBLIC PFNWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC epoxy_wglMakeAssociatedContextCurrentEXT = epoxy_wglMakeAssociatedContextCurrentAMD_wrapped;
+EPOXY_IMPORTEXPORT PFNWGLMAKECURRENTPROC epoxy_wglMakeCurrent = epoxy_wglMakeCurrent_wrapped;
+EPOXY_IMPORTEXPORT PFNWGLMAKECONTEXTCURRENTEXTPROC epoxy_wglMakeContextCurrentEXT = epoxy_wglMakeContextCurrentEXT_wrapped;
+EPOXY_IMPORTEXPORT PFNWGLMAKECONTEXTCURRENTARBPROC epoxy_wglMakeContextCurrentARB = epoxy_wglMakeContextCurrentARB_wrapped;
+EPOXY_IMPORTEXPORT PFNWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC epoxy_wglMakeAssociatedContextCurrentEXT = epoxy_wglMakeAssociatedContextCurrentAMD_wrapped;

@@ -30,11 +30,12 @@
 #ifndef EPOXY_GL_H
 #define EPOXY_GL_H
 
+#include <epoxy/common.h>
+#include <stdbool.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include <stdbool.h>
 
 #if defined(__gl_h_) || defined(__glext_h_)
 #error epoxy/gl.h must be included before (or in place of) GL/gl.h
@@ -51,7 +52,6 @@ extern "C" {
 /* APIENTRY and GLAPIENTRY are not used on Linux or Mac. */
 #define APIENTRY
 #define GLAPIENTRY
-#define EPOXY_IMPORTEXPORT
 #define EPOXY_CALLSPEC
 #define GLAPI
 #define KHRONOS_APIENTRY
@@ -68,10 +68,6 @@ extern "C" {
 
 #ifndef EPOXY_CALLSPEC
 #define EPOXY_CALLSPEC __stdcall
-#endif
-
-#ifndef EPOXY_IMPORTEXPORT
-#define EPOXY_IMPORTEXPORT __declspec(dllimport)
 #endif
 
 #ifndef GLAPI

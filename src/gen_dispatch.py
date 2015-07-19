@@ -77,7 +77,7 @@ class GLFunction(object):
             self.public = ''
         else:
             self.wrapped_name = name
-            self.public = 'PUBLIC '
+            self.public = 'EPOXY_IMPORTEXPORT '
 
         # This is the string of C code for passing through the
         # arguments to the function.

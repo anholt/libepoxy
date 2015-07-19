@@ -21,38 +21,42 @@
  * IN THE SOFTWARE.
  */
 
-/** @file glx.h
+/** @file common.h
  *
- * Provides an implementation of a GLX dispatch layer using global
- * function pointers.
+ * Provides basic definitions for Epoxy. Included by all other Epoxy files.
  */
 
-#ifndef EPOXY_GLX_H
-#define EPOXY_GLX_H
-
-#include <epoxy/gl.h>
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <stdbool.h>
+#ifndef EPOXY_COMMON_H
+#define EPOXY_COMMON_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#if defined(GLX_H) || defined(__glxext_h_)
-#error epoxy/glx.h must be included before (or in place of) GL/glx.h
+#if defined _WIN32 || defined __CYGWIN__
+    #ifdef EPOXY_EXPORTS
+        #ifdef __GNUC__
+            #define EPOXY_IMPORTEXPORT __attribute__ ((dllexport))
+        #else
+            #define EPOXY_IMPORTEXPORT __declspec(dllexport)
+        #endif
+    #else
+        #ifdef __GNUC__
+            #define EPOXY_IMPORTEXPORT __attribute__ ((dllimport))
+        #else
+            #define EPOXY_IMPORTEXPORT __declspec(dllimport)
+        #endif
+    #endif
 #else
-#define GLX_H
-#define __glxext_h_
+    #if __GNUC__ >= 4
+        #define EPOXY_IMPORTEXPORT __attribute__ ((visibility ("default")))
+    #else
+        #define EPOXY_IMPORTEXPORT
+    #endif
 #endif
-
-#include "epoxy/glx_generated.h"
-
-EPOXY_IMPORTEXPORT bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
-EPOXY_IMPORTEXPORT int epoxy_glx_version(Display *dpy, int screen);
 
 #ifdef __cplusplus
-} /* extern "C" */
+}
 #endif
 
-#endif /* EPOXY_GLX_H */
+#endif /* EPOXY_COMMON_H */
