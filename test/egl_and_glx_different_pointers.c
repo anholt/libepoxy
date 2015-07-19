@@ -136,7 +136,7 @@ init_glx(Display **out_dpy, GLXContext *out_ctx, Drawable *out_draw)
 
 #ifdef USE_EGL
 static bool
-make_egl_current_and_test(EGLDisplay *dpy, EGLContext ctx)
+make_egl_current_and_test(EGLDisplay dpy, EGLContext ctx)
 {
     const char *string;
     GLuint shader;
@@ -171,15 +171,15 @@ make_egl_current_and_test(EGLDisplay *dpy, EGLContext ctx)
 }
 
 static void
-init_egl(EGLDisplay **out_dpy, EGLContext *out_ctx)
+init_egl(EGLDisplay *out_dpy, EGLContext *out_ctx)
 {
-    EGLDisplay *dpy = get_egl_display_or_skip();
+    EGLDisplay dpy = get_egl_display_or_skip();
     static const EGLint config_attribs[] = {
 	EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
 	EGL_RED_SIZE, 1,
 	EGL_GREEN_SIZE, 1,
 	EGL_BLUE_SIZE, 1,
-	EGL_RENDERABLE_TYPE, EGL_OPENGL_BIT,
+	EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
 	EGL_NONE
     };
     static const EGLint context_attribs[] = {
@@ -212,7 +212,7 @@ main(int argc, char **argv)
 {
     bool pass = true;
 #ifdef USE_EGL
-    EGLDisplay *egl_dpy;
+    EGLDisplay egl_dpy;
     EGLContext egl_ctx;
 #endif
 #ifdef USE_GLX

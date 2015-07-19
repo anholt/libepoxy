@@ -44,7 +44,7 @@
 #include "dlwrap.h"
 
 static bool
-make_egl_current_and_test(EGLDisplay *dpy, EGLContext ctx)
+make_egl_current_and_test(EGLDisplay dpy, EGLContext ctx)
 {
     const char *string;
     GLuint shader;
@@ -73,9 +73,9 @@ make_egl_current_and_test(EGLDisplay *dpy, EGLContext ctx)
 }
 
 static void
-init_egl(EGLDisplay **out_dpy, EGLContext *out_ctx)
+init_egl(EGLDisplay *out_dpy, EGLContext *out_ctx)
 {
-    EGLDisplay *dpy = get_egl_display_or_skip();
+    EGLDisplay dpy = get_egl_display_or_skip();
     static const EGLint config_attribs[] = {
 	EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
 	EGL_RED_SIZE, 1,
@@ -113,7 +113,7 @@ int
 main(int argc, char **argv)
 {
     bool pass = true;
-    EGLDisplay *egl_dpy;
+    EGLDisplay egl_dpy;
     EGLContext egl_ctx;
 
     /* Force epoxy to have loaded both EGL and GLX libs already -- we

@@ -43,34 +43,6 @@
 
 #include "egl_common.h"
 
-/**
- * Wraps the system dlopen(), which libepoxy will end up calling when
- * it tries to dlopen() the API libraries, and errors out the
- * libraries we're trying to simulate not being installed on the
- * system.
- */
-void *
-dlopen(const char *filename, int flag)
-{
-    void * (*dlopen_unwrapped)(const char *filename, int flag);
-
-    if (!strcmp(filename, "libGL.so.1"))
-        return NULL;
-#if GLES_VERSION == 2
-    if (!strcmp(filename, "libGLESv1_CM.so.1"))
-        return NULL;
-#else
-    if (!strcmp(filename, "libGLESv2.so.2"))
-        return NULL;
-#endif
-
-    dlopen_unwrapped = dlsym(RTLD_NEXT, "dlopen");
-    assert(dlopen_unwrapped);
-
-    return dlopen_unwrapped(filename, flag);
-}
-
-
 static EGLenum last_api;
 static EGLenum extra_error = EGL_SUCCESS;
 
@@ -119,7 +91,7 @@ int
 main(int argc, char **argv)
 {
     bool pass = true;
-    EGLDisplay *dpy = get_egl_display_or_skip();
+    EGLDisplay dpy = get_egl_display_or_skip();
     EGLint context_attribs[] = {
         EGL_CONTEXT_CLIENT_VERSION, GLES_VERSION,
         EGL_NONE
@@ -130,7 +102,11 @@ main(int argc, char **argv)
 	EGL_RED_SIZE, 1,
 	EGL_GREEN_SIZE, 1,
 	EGL_BLUE_SIZE, 1,
-	EGL_RENDERABLE_TYPE, EGL_OPENGL_BIT,
+#if GLES_VERSION == 2
+	EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
+#else
+	EGL_RENDERABLE_TYPE, EGL_OPENGL_ES_BIT,
+#endif
 	EGL_NONE
     };
     EGLint count;
