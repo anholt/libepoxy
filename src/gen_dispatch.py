@@ -628,6 +628,7 @@ class Generator(object):
         # Writes the enum declaration for the list of providers
         # supported by gl_provider_resolver()
 
+        self.outln('')
         self.outln('enum {0}_provider {{'.format(self.target))
 
         sorted_providers = sorted(self.provider_enum.keys())
@@ -640,6 +641,7 @@ class Generator(object):
             enum = self.provider_enum[human_name]
             self.outln('    {0},'.format(enum))
         self.outln('} PACKED;')
+        self.outln('ENDPACKED')
         self.outln('')
 
     def write_provider_enum_strings(self):

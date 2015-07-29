@@ -68,8 +68,13 @@
 
 #if defined(__GNUC__)
 #define PACKED __attribute__((__packed__))
+#define ENDPACKED
+#elif defined (_MSC_VER)
+#define PACKED __pragma(pack(push,1))
+#define ENDPACKED __pragma(pack(pop))
 #else
 #define PACKED
+#define ENDPACKED
 #endif
 
 /* On win32, we're going to need to keep a per-thread dispatch table,
