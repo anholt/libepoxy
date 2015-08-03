@@ -36,6 +36,7 @@ epoxyincludedir = $(includedir)/epoxy
 lib_LTLIBRARIES = libepoxy.la
 
 epoxyinclude_DATA = \
+	$(GENERATED_CONFIG) \
 	$(GENERATED_GL_INCLUDES) \
 	$(INSTALL_GLX_INCLUDES) \
 	$(INSTALL_EGL_INCLUDES) \
@@ -53,6 +54,10 @@ endif
 if BUILD_WGL
 INSTALL_WGL_INCLUDES = $(GENERATED_WGL_INCLUDES)
 endif
+
+GENERATED_CONFIG = \
+	$(builddir)/../include/epoxy/config.h \
+	$()
 
 GENERATED_GL_INCLUDES = \
 	$(builddir)/../include/epoxy/gl_generated.h \
@@ -99,6 +104,7 @@ GENERATED_WGL = \
 	$()
 
 BUILT_SOURCES = \
+	$(GENERATED_CONFIG) \
 	$(GENERATED_GL) \
 	$(GENERATED_GLX) \
 	$(GENERATED_EGL) \
@@ -109,6 +115,7 @@ CLEANFILES = $(BUILT_SOURCES)
 libepoxy_la_SOURCES = \
 	dispatch_common.c \
 	dispatch_common.h \
+	$(GENERATED_CONFIG) \
 	$(GENERATED_GL) \
 	$(BUILD_EGL_CODE) \
 	$(BUILD_GLX_CODE) \
@@ -145,6 +152,9 @@ BUILD_WGL_CODE = \
 	dispatch_wgl.c \
 	$()
 endif
+
+$(GENERATED_CONFIG): $(srcdir)/../include/epoxy/config.h.guess
+	cp $(srcdir)/../include/epoxy/config.h.guess $(builddir)/../include/epoxy/config.h
 
 # These are generated alongside the .c file.
 $(GENERATED_GL_INCLUDES): $(GENERATED_GL_SOURCE)

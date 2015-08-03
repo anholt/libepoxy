@@ -18,7 +18,6 @@ config.py
 config.status
 config.status.lineno
 config.sub
-configure
 configure.scan
 depcomp
 .deps/

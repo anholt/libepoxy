@@ -29,6 +29,10 @@
 #ifndef EPOXY_COMMON_H
 #define EPOXY_COMMON_H
 
+#include "epoxy/config.h"
+
+#include <stdbool.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -47,12 +51,13 @@ extern "C" {
             #define EPOXY_IMPORTEXPORT __declspec(dllimport)
         #endif
     #endif
+#elif defined __ANDROID__
+    #include <sys/cdefs.h>
+    #define EPOXY_IMPORTEXPORT __attribute__((visibility("default"))) __NDK_FPABI__
+#elif (defined __GNUC__ && __GNUC__ >= 4) || (defined __SUNPRO_C && __SUNPRO_C >= 0x590)
+    #define EPOXY_IMPORTEXPORT __attribute__ ((visibility ("default")))
 #else
-    #if __GNUC__ >= 4
-        #define EPOXY_IMPORTEXPORT __attribute__ ((visibility ("default")))
-    #else
-        #define EPOXY_IMPORTEXPORT
-    #endif
+    #define EPOXY_IMPORTEXPORT
 #endif
 
 #ifdef __cplusplus

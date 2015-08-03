@@ -23,32 +23,19 @@
 
 #include <stdbool.h>
 
-#ifdef _WIN32
-#define PLATFORM_HAS_EGL 1
-#define PLATFORM_HAS_GLX 0
-#define PLATFORM_HAS_WGL 1
-#elif defined(__APPLE__)
-#define PLATFORM_HAS_EGL 0
-#define PLATFORM_HAS_GLX 0
-#define PLATFORM_HAS_WGL 0
-#elif defined(ANDROID)
-#define PLATFORM_HAS_EGL 1
-#define PLATFORM_HAS_GLX 0
-#define PLATFORM_HAS_WGL 0
-#else
-#define PLATFORM_HAS_EGL 1
-#define PLATFORM_HAS_GLX 1
-#define PLATFORM_HAS_WGL 0
-#endif
+#include "epoxy/config.h"
 
-#if PLATFORM_HAS_WGL
+#if EPOXY_SUPPORT_WGL
 #include "epoxy/wgl.h"
 #endif
+
 #include "epoxy/gl.h"
-#if PLATFORM_HAS_GLX
+
+#if EPOXY_SUPPORT_GLX
 #include "epoxy/glx.h"
 #endif
-#if PLATFORM_HAS_EGL
+
+#if EPOXY_SUPPORT_EGL
 #include "epoxy/egl.h"
 #endif
 

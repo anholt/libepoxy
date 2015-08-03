@@ -21,43 +21,36 @@
  * IN THE SOFTWARE.
  */
 
-/** @file wgl.h
+/** @file config.h
  *
- * Provides an implementation of a WGL dispatch layer using a hidden
- * vtable.
+ * Provides configuration options for Epoxy.
  */
 
-#ifndef EPOXY_WGL_H
-#define EPOXY_WGL_H
-
-#if defined(__wglxext_h_)
-#error "epoxy/wgl.h" must be included before (or in place of) "wglext.h"
-#endif
-
-#define __wglxext_h_
-
-#include "epoxy/gl.h"
+#ifndef EPOXY_CONFIG_H
+#define EPOXY_CONFIG_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#undef wglUseFontBitmaps
-#undef wglUseFontOutlines
+#define EPOXY_SUPPORT_EGL 1
 
-#ifdef UNICODE
-#define wglUseFontBitmaps wglUseFontBitmapsW
+#if defined _WIN32
+#define EPOXY_SUPPORT_GLX 0
+#define EPOXY_SUPPORT_WGL 1
+#elif defined __APPLE__
+#define EPOXY_SUPPORT_GLX 0
+#define EPOXY_SUPPORT_WGL 0
+#elif defined __ANDROID__
+#define EPOXY_SUPPORT_GLX 0
+#define EPOXY_SUPPORT_WGL 0
 #else
-#define wglUseFontBitmaps wglUseFontBitmapsA
+#define EPOXY_SUPPORT_GLX 1
+#define EPOXY_SUPPORT_WGL 0
 #endif
-
-#include "epoxy/wgl_generated.h"
-
-EPOXY_IMPORTEXPORT bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
-EPOXY_IMPORTEXPORT void epoxy_handle_external_wglMakeCurrent(void);
 
 #ifdef __cplusplus
-} /* extern "C" */
+}
 #endif
 
-#endif /* EPOXY_WGL_H */
+#endif /* EPOXY_CONFIG_H */

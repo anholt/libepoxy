@@ -104,13 +104,13 @@
 
 #ifdef __APPLE__
 #define GLX_LIB "/opt/X11/lib/libGL.1.dylib"
-#elif defined(ANDROID)
+#elif defined(__ANDROID__)
 #define GLX_LIB "libGLESv2.so"
 #else
 #define GLX_LIB "libGL.so.1"
 #endif
 
-#ifdef ANDROID
+#ifdef __ANDROID__
 #define EGL_LIB "libEGL.so"
 #define GLES1_LIB "libGLESv1_CM.so"
 #define GLES2_LIB "libGLESv2.so"
@@ -198,7 +198,7 @@ static bool library_initialized;
 
 static bool epoxy_current_context_is_egl(void);
 
-#if PLATFORM_HAS_EGL
+#if EPOXY_SUPPORT_EGL
 static EGLenum
 epoxy_egl_get_current_gl_context_api(void);
 #endif
@@ -275,7 +275,7 @@ epoxy_is_desktop_gl(void)
     const char *es_prefix = "OpenGL ES";
     const char *version;
 
-#if PLATFORM_HAS_EGL
+#if EPOXY_SUPPORT_EGL
     /* PowerVR's OpenGL ES implementation (and perhaps other) don't
      * comply with the standard, which states that
      * "glGetString(GL_VERSION)" should return a string starting with
@@ -309,6 +309,11 @@ epoxy_is_desktop_gl(void)
     return strncmp(es_prefix, version, strlen(es_prefix));
 }
 
+#if defined _MSC_VER
+#pragma warning(push)
+#pragma warning(disable: 4996)
+#endif
+
 static int
 epoxy_internal_gl_version(int error_version)
 {
@@ -332,6 +337,10 @@ epoxy_internal_gl_version(int error_version)
     }
     return 10 * major + minor;
 }
+
+#if defined _MSC_VER
+#pragma warning(pop)
+#endif
 
 EPOXY_IMPORTEXPORT int
 epoxy_gl_version(void)
@@ -398,7 +407,7 @@ epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode)
 static bool
 epoxy_current_context_is_egl(void)
 {
-#if PLATFORM_HAS_EGL
+#if EPOXY_SUPPORT_EGL
     if (      get_dlopen_handle (&api.egl_handle, EGL_LIB, false)
           &&  epoxy_egl_get_current_gl_context_api() != EGL_NONE)
         return true;
@@ -511,7 +520,7 @@ epoxy_get_core_proc_address(const char *name, int core_version)
 {
 #ifdef _WIN32
     int core_symbol_support = 11;
-#elif defined(ANDROID)
+#elif defined(__ANDROID__)
     /**
      * All symbols must be resolved through eglGetProcAddress
      * on Android
@@ -528,7 +537,7 @@ epoxy_get_core_proc_address(const char *name, int core_version)
     }
 }
 
-#if PLATFORM_HAS_EGL
+#if EPOXY_SUPPORT_EGL
 static EGLenum
 epoxy_egl_get_current_gl_context_api(void)
 {
@@ -558,7 +567,7 @@ epoxy_egl_get_current_gl_context_api(void)
 
     return EGL_NONE;
 }
-#endif /* PLATFORM_HAS_EGL */
+#endif /* EPOXY_SUPPORT_EGL */
 
 /**
  * Performs the dlsym() for the core GL 1.0 functions that we use for
@@ -578,7 +587,7 @@ epoxy_get_bootstrap_proc_address(const char *name)
      * since future calls will also use that API (this prevents a
      * non-X11 ES2 context from loading a bunch of X11 junk).
      */
-#if PLATFORM_HAS_EGL
+#if EPOXY_SUPPORT_EGL
     get_dlopen_handle(&api.egl_handle, EGL_LIB, false);
     if (api.egl_handle) {
         switch (epoxy_egl_get_current_gl_context_api()) {
@@ -598,12 +607,12 @@ epoxy_get_bootstrap_proc_address(const char *name)
         }
         }
     }
-#endif /* PLATFORM_HAS_EGL */
+#endif /* EPOXY_SUPPORT_EGL */
 
     /* If we already have a library that links to libglapi loaded,
      * use that.
      */ 
-#if PLATFORM_HAS_GLX
+#if EPOXY_SUPPORT_GLX
     if (api.glx_handle && glXGetCurrentContext())
         return epoxy_gl_dlsym(name);
 #endif
@@ -615,18 +624,21 @@ epoxy_get_bootstrap_proc_address(const char *name)
 void *
 epoxy_get_proc_address(const char *name)
 {
-#if PLATFORM_HAS_EGL
+#if EPOXY_SUPPORT_EGL
     if (epoxy_current_context_is_egl())
         return eglGetProcAddress(name);
 #endif
-#ifdef _WIN32
+#if EPOXY_SUPPORT_WGL
     void *func = wglGetProcAddress(name);
     return func  ?  func  :  epoxy_gl_dlsym(name);
-#elif defined(__APPLE__)
+#endif
+#if defined(__APPLE__)
     return epoxy_gl_dlsym(name);
-#else
+#endif
+#if EPOXY_SUPPORT_GLX
     return glXGetProcAddressARB((const GLubyte *)name);
 #endif
+    return NULL;
 }
 
 WRAPPER_VISIBILITY (void)

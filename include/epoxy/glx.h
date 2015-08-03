@@ -30,20 +30,19 @@
 #ifndef EPOXY_GLX_H
 #define EPOXY_GLX_H
 
-#include <epoxy/gl.h>
+#if defined(GLX_H) || defined(__glxext_h_)
+#error "epoxy/glx.h" must be included before (or in place of) "GL/glx.h".
+#endif
+
+#define GLX_H
+#define __glxext_h_
+
+#include "epoxy/gl.h"
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
-#include <stdbool.h>
 
 #ifdef __cplusplus
 extern "C" {
-#endif
-
-#if defined(GLX_H) || defined(__glxext_h_)
-#error epoxy/glx.h must be included before (or in place of) GL/glx.h
-#else
-#define GLX_H
-#define __glxext_h_
 #endif
 
 #include "epoxy/glx_generated.h"

@@ -38,6 +38,11 @@ epoxy_conservative_egl_version(void)
     return epoxy_egl_version(dpy);
 }
 
+#if defined _MSC_VER
+#pragma warning(push)
+#pragma warning(disable: 4996)
+#endif
+
 EPOXY_IMPORTEXPORT int
 epoxy_egl_version(EGLDisplay dpy)
 {
@@ -47,9 +52,14 @@ epoxy_egl_version(EGLDisplay dpy)
 
     version_string = eglQueryString(dpy, EGL_VERSION);
     ret = sscanf(version_string, "%d.%d", &major, &minor);
+    (void)ret; // Prevent "warning: variable 'ret' set but not used".
     assert(ret == 2);
     return major * 10 + minor;
 }
+
+#if defined _MSC_VER
+#pragma warning(pop)
+#endif
 
 bool
 epoxy_conservative_has_egl_extension(const char *ext)
