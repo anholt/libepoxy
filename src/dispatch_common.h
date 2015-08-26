@@ -23,8 +23,6 @@
 
 #include <stdbool.h>
 
-#include "epoxy/config.h"
-
 #if EPOXY_SUPPORT_WGL
 #include "epoxy/wgl.h"
 #endif
