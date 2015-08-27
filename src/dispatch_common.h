@@ -23,11 +23,11 @@
 
 #include <stdbool.h>
 
+#include "epoxy/gl.h"
+
 #if EPOXY_SUPPORT_WGL
 #include "epoxy/wgl.h"
 #endif
-
-#include "epoxy/gl.h"
 
 #if EPOXY_SUPPORT_GLX
 #include "epoxy/glx.h"

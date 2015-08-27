@@ -63,28 +63,51 @@ if (EPOXY_SUPPORT_WGL)
                          "${CMAKE_CURRENT_BINARY_DIR}/../include/epoxy/wgl_generated.h")
 endif ()
 
-add_library ("${TARGET_NAME}" SHARED ${SOURCES} ${HEADERS})
+set (TARGET_OBJS_NAME "${TARGET_NAME}_objs")
+add_library ("${TARGET_NAME}_objs" OBJECT ${SOURCES} ${HEADERS})
+set_target_properties ("${TARGET_NAME}_objs" PROPERTIES
+                           POSITION_INDEPENDENT_CODE  TRUE)
+target_include_directories ("${TARGET_NAME}_objs" PUBLIC
+                                "../include"
+                                "${CMAKE_CURRENT_BINARY_DIR}/../include"
+                                "${CMAKE_CURRENT_SOURCE_DIR}")
 if (CMAKE_C_COMPILER_ID STREQUAL "MSVC")
-    target_compile_definitions("${TARGET_NAME}" PUBLIC "inline=__inline")
-endif()
-set_target_properties("${TARGET_NAME}" PROPERTIES
-                        DEFINE_SYMBOL  EPOXY_EXPORTS)
-if (NOT ANDROID)
-    set_target_properties("${TARGET_NAME}" PROPERTIES
-                            VERSION    "1.3.1_yaronct-2"
-                            SOVERSION  "${EPOXY_ABI_VER}")
+    target_compile_definitions ("${TARGET_NAME}_objs" PUBLIC "inline=__inline" EPOXY_EXPORTS)
 endif ()
-
-target_include_directories ("${TARGET_NAME}" PUBLIC
-                              "../include"
-                              "${CMAKE_CURRENT_BINARY_DIR}/../include"
-                              "${CMAKE_CURRENT_SOURCE_DIR}")
+set (TARGETS_BUILT_NAMES "")
+if (EPOXY_BUILD_SHARED)
+    list (APPEND TARGETS_BUILT_NAMES "${TARGET_NAME}_shared")
+    add_library ("${TARGET_NAME}_shared" SHARED $<TARGET_OBJECTS:${TARGET_NAME}_objs>)
+    if (WIN32 OR ANDROID)
+        set_target_properties ("${TARGET_NAME}_shared" PROPERTIES
+                                  OUTPUT_NAME "${TARGET_OUTPUT_NAME}_${TARGET_ABI_VER}")
+    else ()
+        set_target_properties ("${TARGET_NAME}_shared" PROPERTIES
+                                  OUTPUT_NAME "${TARGET_OUTPUT_NAME}")
+    endif ()
+    if (NOT ANDROID)
+        set_target_properties("${TARGET_NAME}_shared" PROPERTIES
+                                  VERSION    "${TARGET_VER}"
+                                  SOVERSION  "${TARGET_ABI_VER}")
+    endif ()
+endif()
+if (EPOXY_BUILD_STATIC)
+    list (APPEND TARGETS_BUILT_NAMES "${TARGET_NAME}_static")
+    add_library ("${TARGET_NAME}_static" STATIC $<TARGET_OBJECTS:${TARGET_NAME}_objs>)
+    if (WIN32)
+        set_target_properties ("${TARGET_NAME}_static" PROPERTIES
+                                  OUTPUT_NAME "${TARGET_OUTPUT_NAME}_static_${TARGET_ABI_VER}")
+    else ()
+        set_target_properties ("${TARGET_NAME}_static" PROPERTIES
+                                  OUTPUT_NAME "${TARGET_OUTPUT_NAME}_${TARGET_ABI_VER}")
+    endif ()
+endif()
 install (FILES ${HEADERS} DESTINATION "include/epoxy")
-install (TARGETS "${TARGET_NAME}"
+install (TARGETS ${TARGETS_BUILT_NAMES}
            RUNTIME DESTINATION bin
            LIBRARY DESTINATION lib
            ARCHIVE DESTINATION lib)
 if (CMAKE_C_COMPILER_ID STREQUAL "MSVC")
-    INSTALL (FILES "${CMAKE_CURRENT_BINARY_DIR}/Debug/${TARGET_NAME}.pdb"
+    INSTALL (FILES "${CMAKE_CURRENT_BINARY_DIR}/Debug/${TARGET_OUTPUT_NAME}_${TARGET_ABI_VER}.pdb"
              DESTINATION lib  CONFIGURATIONS Debug)
 endif ()

@@ -27,22 +27,34 @@ Features
 
 Building (CMake)
 -----------------
-CMake is now the recommended way to build epoxy. It should be as cample as:
+
+CMake is now the recommended way to build epoxy. It should be as simple as:
 
     cd <my-build_dir>
     cmake <my-source-dir>
 
 And then build the project, depending on the type of your toolset, e.g. for Unix
-type "make", for MSVC open the solution in Visual studio and build the solution.
+type "make", and for MSVC open the solution in Visual studio and build the
+solution.
 
-To rebuild the generated headers from the specs, add
+* To rebuild the generated headers from the specs, add
 "-DEPOXY_REBUILD_FROM_SPECS=ON" to the "cmake" invocation.
 
-Note that building with CMake currently doesn't support testing.
+* To build also static libraries, add
+"-DEPOXY_BUILD_STATIC=ON" to the "cmake" invocation.
+
+* To disable building shared libraries, add
+"-DEPOXY_BUILD_SHARED=OFF" to the "cmake" invocation.
+
+Note that building with CMake currently doesn't support building or running
+tests.
 
 Building (Autotools)
 ---------------------
-On unix you can also use autotools to build:
+
+On Unix you can also use autotools to build. This type of build only supports
+building shared libraries. However it also supports building and running tests.
+To build with autotools, write:
 
     ./autogen.sh
     make
@@ -51,14 +63,11 @@ On unix you can also use autotools to build:
 
 Dependencies for debian:
 
-* automake
 * libegl1-mesa-dev
 * xutils-dev
 
 Dependencies for OS X (macports):
 
-* automake
-* autoconf
 * xorg-util-macros
 * pkgconfig
 
@@ -67,17 +76,29 @@ The test suite has additional dependencies depending on the platform.
 
 Building (NMAKE)
 -----------------
-With MSVC you can also build directly with NMAKE:
 
-1) Check src\Makefile.vc to ensure that PYTHONDIR is pointing to your Python installation, either a 32-bit or a 64-bit (x64) installation of Python 2 or 3 will do.
+With MSVC you can also build directly with NMAKE. This type of build only
+supports building shared libraries. However it also supports building
+tests.
+
+1) Check src\Makefile.vc to ensure that PYTHONDIR is pointing to your Python
+   installation, either a 32-bit or a 64-bit (x64) installation of Python 2 or 3
+   will do.
 2) Copy "include\epoxy\config.h.guess" to "include\epoxy\config.h".
-3) Open an MSVC Command prompt and run "nmake Makefile.vc CFG=release" or "nmake Makefile.vc CFG=debug" in src\ for a release or debug build.
-4) Optionally, add src\ into your PATH and run the previous step in test\. Run the tests by running the built .exe's.
-5) Assuming you want to install in %INSTALL_DIR%, copy common.h, config.h, khrplatform.h, eglplatform.h, gl.h, gl_generated.h, wgl.h, wgl_generated.h, egl.h and egl_generated.h from include\epoxy\ to %INSTALL_DIR%\include\epoxy\, copy src\epoxy.lib to %INSTALL_DIR%\lib\ and copy epoxy-vs12.dll and epoxy-vs12.pdb (if you've built a debug build) from src\ to %INSTALL_DIR%\bin\. Create directories as needed.
+3) Open an MSVC Command prompt and run "nmake Makefile.vc CFG=release" or
+   "nmake Makefile.vc CFG=debug" in src\ for a release or debug build.
+4) Optionally, add src\ into your PATH and run the previous step in test\. Run
+   the tests by running the built ".exe"-s.
+5) Assuming you want to install in %INSTALL_DIR%, copy common.h, config.h,
+   khrplatform.h, eglplatform.h, gl.h, gl_generated.h, wgl.h, wgl_generated.h,
+   egl.h and egl_generated.h from include\epoxy\ to
+   %INSTALL_DIR%\include\epoxy\, copy src\epoxy.lib to %INSTALL_DIR%\lib\ and
+   copy epoxy-vs12.dll and epoxy-vs12.pdb (if you've built a debug build) from
+   src\ to %INSTALL_DIR%\bin\. Create directories as needed.
 6) To clean the project, repeat steps 2 and 3, adding " clean" to the commands.
 
-Switching your code to using epoxy
-----------------------------------
+Switching your Code to Use Epoxy
+---------------------------------
 
 It should be as easy as replacing:
 
@@ -111,7 +132,31 @@ available (```GL_ARB_texture_buffer_object```, for example).
 Note that this is not terribly fast, so keep it out of your hot paths,
 ok?
 
-Why not use libGLEW?
+Using OpenGL ES / EGL
+----------------------
+
+Building Epoxy with OpenGL ES / EGL support is now built-in. However, to
+actually make use OpenGL ES and/or EGL on a computer, it's recommended (and in
+some platforms necessary) to use an OpenGL ES / EGL emulator. I recommend using
+[PowerVR SDK](http://community.imgtec.com/developers/powervr/graphics-sdk/),
+which is available for Linux, OS X and Windows. Download it and run the
+installer. In the installer, you don't have to check everything: Enough to check
+"PowerVR Tools -> PVRVFrame" and "PowerVR SDK -> Native SDK". There's no need to
+add anything from PowerVR SDK to the include directories to build or use Epoxy,
+as it already includes all the necessary headers for using OpenGL ES / EGL.
+There's also no need to link with anything from PowerVR SDK to build or use
+Epoxy, as it loads the necessary libraries at run-time. However, when running
+your app, if want to use EGL / OpenGL ES, you'll have to add the directory that
+contains the right shared libraries ("GLES_CM", "GLESv2" and "EGL") to you
+"PATH" environment variable. For instance, if you're on Windows, and used the
+default locations when installing PowerVR SDK, then add
+"C:\Imagination\PowerVR_Graphics\PowerVR_Tools\PVRVFrame\Library\Windows_x86_64"
+to your "PATH" (for Windows 64 bit) or
+"C:\Imagination\PowerVR_Graphics\PowerVR_Tools\PVRVFrame\Library\Windows_x86_32"
+(for Windows 32 bit). For other platforms it would be something similar. Of
+course, feel free to copy the shared libraries somewhere else.
+
+Why not use GLEW?
 --------------------
 
 GLEW has several issues:
@@ -138,8 +183,8 @@ meant replacing every single piece of GLEW, so we built
 piglit-dispatch from scratch.  And since we wanted to reuse it in
 other GL-related projects, this is the result.
 
-win32 issues
-------------
+Windows issues
+---------------
 
 The automatic per-context symbol resolution for win32 requires that
 epoxy knows when ```wglMakeCurrent()``` is called, because
