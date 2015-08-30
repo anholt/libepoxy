@@ -609,16 +609,8 @@ epoxy_get_bootstrap_proc_address(const char *name)
     }
 #endif /* EPOXY_SUPPORT_EGL */
 
-    /* If we already have a library that links to libglapi loaded,
-     * use that.
-     */ 
-#if EPOXY_SUPPORT_GLX
-    if (api.glx_handle && glXGetCurrentContext())
-        return epoxy_gl_dlsym(name);
-#endif
-
-    /* Fall back to GLX */
     return epoxy_gl_dlsym(name);
+    
 }
 
 void *
