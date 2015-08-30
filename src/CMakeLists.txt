@@ -63,21 +63,28 @@ if (EPOXY_SUPPORT_WGL)
                          "${CMAKE_CURRENT_BINARY_DIR}/../include/epoxy/wgl_generated.h")
 endif ()
 
+set (EPOXY_INCLUDE_DIRS  "../include"
+                         "${CMAKE_CURRENT_BINARY_DIR}/../include"
+                         "${CMAKE_CURRENT_SOURCE_DIR}")
+
 set (TARGET_OBJS_NAME "${TARGET_NAME}_objs")
 add_library ("${TARGET_NAME}_objs" OBJECT ${SOURCES} ${HEADERS})
 set_target_properties ("${TARGET_NAME}_objs" PROPERTIES
                            POSITION_INDEPENDENT_CODE  TRUE)
-target_include_directories ("${TARGET_NAME}_objs" PUBLIC
-                                "../include"
-                                "${CMAKE_CURRENT_BINARY_DIR}/../include"
-                                "${CMAKE_CURRENT_SOURCE_DIR}")
+target_include_directories ("${TARGET_NAME}_objs" PUBLIC ${EPOXY_INCLUDE_DIRS})
 if (CMAKE_C_COMPILER_ID STREQUAL "MSVC")
     target_compile_definitions ("${TARGET_NAME}_objs" PUBLIC "inline=__inline" EPOXY_EXPORTS)
+endif ()
+set (EPOXY_LIBS_FILES $<TARGET_OBJECTS:${TARGET_NAME}_objs>)
+if (WIN32)
+    set (EPOXY_LIBS_EXTRA_FILES dllmain.c)
+else ()
+    set (EPOXY_LIBS_EXTRA_FILES "")
 endif ()
 set (TARGETS_BUILT_NAMES "")
 if (EPOXY_BUILD_SHARED)
     list (APPEND TARGETS_BUILT_NAMES "${TARGET_NAME}_shared")
-    add_library ("${TARGET_NAME}_shared" SHARED $<TARGET_OBJECTS:${TARGET_NAME}_objs>)
+    add_library ("${TARGET_NAME}_shared" SHARED $<TARGET_OBJECTS:${TARGET_NAME}_objs> ${EPOXY_LIBS_EXTRA_FILES})
     if (WIN32 OR ANDROID)
         set_target_properties ("${TARGET_NAME}_shared" PROPERTIES
                                   OUTPUT_NAME "${TARGET_OUTPUT_NAME}_${TARGET_ABI_VER}")
@@ -90,10 +97,12 @@ if (EPOXY_BUILD_SHARED)
                                   VERSION    "${TARGET_VER}"
                                   SOVERSION  "${TARGET_ABI_VER}")
     endif ()
-endif()
+    target_include_directories ("${TARGET_NAME}_shared" PUBLIC ${EPOXY_INCLUDE_DIRS})
+    target_compile_definitions ("${TARGET_NAME}_shared" PUBLIC EPOXY_EXPORTS EPOXY_BUILDING_SHARED_LIB)
+endif ()
 if (EPOXY_BUILD_STATIC)
     list (APPEND TARGETS_BUILT_NAMES "${TARGET_NAME}_static")
-    add_library ("${TARGET_NAME}_static" STATIC $<TARGET_OBJECTS:${TARGET_NAME}_objs>)
+    add_library ("${TARGET_NAME}_static" STATIC $<TARGET_OBJECTS:${TARGET_NAME}_objs> ${EPOXY_LIBS_EXTRA_FILES})
     if (WIN32)
         set_target_properties ("${TARGET_NAME}_static" PROPERTIES
                                   OUTPUT_NAME "${TARGET_OUTPUT_NAME}_static_${TARGET_ABI_VER}")
@@ -101,7 +110,9 @@ if (EPOXY_BUILD_STATIC)
         set_target_properties ("${TARGET_NAME}_static" PROPERTIES
                                   OUTPUT_NAME "${TARGET_OUTPUT_NAME}_${TARGET_ABI_VER}")
     endif ()
-endif()
+    target_include_directories ("${TARGET_NAME}_static" PUBLIC ${EPOXY_INCLUDE_DIRS})
+    target_compile_definitions ("${TARGET_NAME}_static" PUBLIC EPOXY_EXPORTS EPOXY_BUILDING_STATIC_LIB)
+endif ()
 install (FILES ${HEADERS} DESTINATION "include/epoxy")
 install (TARGETS ${TARGETS_BUILT_NAMES}
            RUNTIME DESTINATION bin

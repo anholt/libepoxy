@@ -166,4 +166,8 @@ extern BOOL UNWRAPPED_PROTO(wglMakeCurrent_unwrapped)(HDC hdc, HGLRC hglrc);
 extern BOOL UNWRAPPED_PROTO(wglMakeContextCurrentARB_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
 extern BOOL UNWRAPPED_PROTO(wglMakeContextCurrentEXT_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
 extern BOOL UNWRAPPED_PROTO(wglMakeAssociatedContextCurrentAMD_unwrapped)(HGLRC hglrc);
-#endif /* _WIN32_ */
+#endif /* _WIN32 */
+
+#if EPOXY_SUPPORT_WGL
+extern bool epoxy_first_context_current;
+#endif
