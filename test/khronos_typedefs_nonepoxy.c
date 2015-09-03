@@ -24,12 +24,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "config.h"
 #include "khronos_typedefs.h"
 
-#ifdef HAVE_KHRPLATFORM_H
-
-#include <KHR/khrplatform.h>
+#include "epoxy/khrplatform.h"
 
 #define GET_SIZE(type) sizes[type ## _slot] = sizeof(type)
 
@@ -53,19 +50,3 @@ get_system_typedef_sizes(uint32_t *sizes)
     GET_SIZE(khronos_stime_nanoseconds_t);
     GET_SIZE(khronos_boolean_enum_t);
 }
-
-#else /* !HAVE_KHRPLATFORM_H */
-
-#ifndef _MSC_VER
-/* Don't care -- this is a conditional case in test code. */
-#pragma GCC diagnostic ignored "-Wsuggest-attribute=noreturn"
-#endif
-
-void
-get_system_typedef_sizes(uint32_t *sizes)
-{
-    fprintf(stderr, "./configure failed to find khrplatform.h\n");
-    exit(77);
-}
-
-#endif

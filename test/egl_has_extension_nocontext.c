@@ -38,8 +38,7 @@
 
 #include "egl_common.h"
 
-int
-main(int argc, char **argv)
+int main(void)
 {
     bool pass = true;
 

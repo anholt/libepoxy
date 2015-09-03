@@ -53,17 +53,18 @@ override_GL_glBindTextureEXT(GLenum target);
 void
 override_GL_glBindTexture(GLenum target)
 {
+    EPOXY_UNUSED(target);
     last_call = CORE_FUNC_VAL;
 }
 
 void
 override_GL_glBindTextureEXT(GLenum target)
 {
+    EPOXY_UNUSED(target);
     last_call = EXT_FUNC_VAL;
 }
 
-int
-main(int argc, char **argv)
+int main(void)
 {
     bool pass = true;
 

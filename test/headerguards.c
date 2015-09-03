@@ -21,40 +21,31 @@
  * IN THE SOFTWARE.
  */
 
-#include <config.h>
-
 #include <epoxy/gl.h>
 
-#ifdef BUILD_EGL
-#include <epoxy/egl.h>
-#include <epoxy/egl.h>
+#if EPOXY_SUPPORT_EGL
+    #include <epoxy/egl.h>
+    #include <epoxy/egl.h>
 #endif
 
-#ifdef BUILD_GLX
-#include <epoxy/glx.h>
-#include <epoxy/glx.h>
+#if EPOXY_SUPPORT_GLX
+    #include <epoxy/glx.h>
+    #include <epoxy/glx.h>
 #endif
 
-#ifdef BUILD_EGL
-#include <EGL/egl.h>
-#include <EGL/egl.h>
-#include <EGL/eglext.h>
-#include <EGL/eglext.h>
+#if EPOXY_SUPPORT_GLX
+    #ifdef __APPLE__
+        #include <OpenGL/gl.h>
+        #include <OpenGL/glext.h>
+    #else
+        #include <GL/gl.h>
+        #include <GL/glext.h>
+    #endif
+    #include <GL/glx.h>
+    #include <GL/glxext.h>
 #endif
 
-#ifdef BUILD_GLX
-#ifdef __APPLE__
-#include <OpenGL/gl.h>
-#include <OpenGL/glext.h>
-#else
-#include <GL/gl.h>
-#include <GL/glext.h>
-#endif
-#include <GL/glx.h>
-#include <GL/glxext.h>
-#endif
-
-int main(int argc, char **argv)
+int main(void)
 {
     return 0;
 }

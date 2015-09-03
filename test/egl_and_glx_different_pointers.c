@@ -83,12 +83,14 @@ override_GLES2_glGetString(GLenum e)
 GLuint
 override_GL_glCreateShader(GLenum type)
 {
+    EPOXY_UNUSED(type);
     return GL_CREATESHADER_VALUE;
 }
 
 GLuint
 override_GLES2_glCreateShader(GLenum type)
 {
+    EPOXY_UNUSED(type);
     return GLES2_CREATESHADER_VALUE;
 }
 
@@ -207,8 +209,7 @@ init_egl(EGLDisplay *out_dpy, EGLContext *out_ctx)
 }
 #endif /* USE_EGL */
 
-int
-main(int argc, char **argv)
+int main(void)
 {
     bool pass = true;
 #ifdef USE_EGL

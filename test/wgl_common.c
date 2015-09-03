@@ -85,8 +85,8 @@ window_proc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 void
 make_window_and_test(int (*callback)(HDC hdc))
 {
-    const char *class_name = "epoxy";
-    const char *window_name = "epoxy";
+    LPCTSTR class_name = TEXT("epoxy");
+    LPCTSTR window_name = TEXT("epoxy");
     int width = 150;
     int height = 150;
     HWND hwnd;

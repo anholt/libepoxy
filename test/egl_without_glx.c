@@ -87,8 +87,7 @@ override_eglGetError(void)
     return real_eglGetError();
 }
 
-int
-main(int argc, char **argv)
+int main(void)
 {
     bool pass = true;
     EGLDisplay dpy = get_egl_display_or_skip();

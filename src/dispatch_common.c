@@ -224,6 +224,7 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
     }
 
 #ifdef _WIN32
+    EPOXY_UNUSED(exit_on_fail);
     *handle = LoadLibraryA(lib_name);
 #else
     pthread_mutex_lock(&api.mutex);
@@ -361,7 +362,7 @@ bool
 epoxy_extension_in_string(const char *extension_list, const char *ext)
 {
     const char *ptr = extension_list;
-    int len = strlen(ext);
+    size_t len = strlen(ext);
 
     /* Make sure that don't just find an extension with our name as a prefix. */
     while (true) {

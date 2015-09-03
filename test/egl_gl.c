@@ -109,8 +109,7 @@ init_egl(EGLDisplay *out_dpy, EGLContext *out_ctx)
     *out_ctx = ctx;
 }
 
-int
-main(int argc, char **argv)
+int main(void)
 {
     bool pass = true;
     EGLDisplay egl_dpy;

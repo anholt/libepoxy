@@ -130,8 +130,7 @@ test_glx_version(void)
     return true;
 }
 
-int
-main(int argc, char **argv)
+int main(void)
 {
     bool pass = true;
     XVisualInfo *visinfo;

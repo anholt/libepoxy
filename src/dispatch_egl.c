@@ -52,7 +52,7 @@ epoxy_egl_version(EGLDisplay dpy)
 
     version_string = eglQueryString(dpy, EGL_VERSION);
     ret = sscanf(version_string, "%d.%d", &major, &minor);
-    (void)ret; // Prevent "warning: variable 'ret' set but not used".
+    EPOXY_UNUSED(ret);
     assert(ret == 2);
     return major * 10 + minor;
 }

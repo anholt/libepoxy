@@ -38,27 +38,34 @@ extern "C" {
 #endif
 
 #if defined _WIN32 || defined __CYGWIN__
-    #ifdef EPOXY_EXPORTS
-        #ifdef __GNUC__
-            #define EPOXY_IMPORTEXPORT __attribute__ ((dllexport))
-        #else
-            #define EPOXY_IMPORTEXPORT __declspec(dllexport)
-        #endif
+    #if defined EPOXY_STATIC_LIB
+        #define EPOXY_IMPORTEXPORT
     #else
-        #ifdef __GNUC__
-            #define EPOXY_IMPORTEXPORT __attribute__ ((dllimport))
+        #if defined EPOXY_BUILDING_LIB
+            #ifdef __GNUC__
+                #define EPOXY_IMPORTEXPORT __attribute__((dllexport))
+            #else
+                #define EPOXY_IMPORTEXPORT __declspec(dllexport)
+            #endif
         #else
-            #define EPOXY_IMPORTEXPORT __declspec(dllimport)
+            #ifdef __GNUC__
+                #define EPOXY_IMPORTEXPORT __attribute__((dllimport))
+            #else
+                #define EPOXY_IMPORTEXPORT __declspec(dllimport)
+            #endif
         #endif
     #endif
 #elif defined __ANDROID__
     #include <sys/cdefs.h>
     #define EPOXY_IMPORTEXPORT __attribute__((visibility("default"))) __NDK_FPABI__
-#elif (defined __GNUC__ && __GNUC__ >= 4) || (defined __SUNPRO_C && __SUNPRO_C >= 0x590)
-    #define EPOXY_IMPORTEXPORT __attribute__ ((visibility ("default")))
+#elif (defined __GNUC__ && __GNUC__ >= 4)  ||  (defined __SUNPRO_C && __SUNPRO_C >= 0x590)
+    #define EPOXY_IMPORTEXPORT __attribute__((visibility("default")))
 #else
     #define EPOXY_IMPORTEXPORT
 #endif
+
+// Prevent "unused variable/parameter" warnings.
+#define EPOXY_UNUSED(var) ((void)var)
 
 #ifdef __cplusplus
 }

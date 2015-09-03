@@ -46,6 +46,7 @@ override_GLES2_glCreateShader(GLenum target);
 GLuint
 override_GLES2_glCreateShader(GLenum target)
 {
+    EPOXY_UNUSED(target);
     return 0;
 }
 
@@ -60,8 +61,7 @@ override_GLES2_glGenQueries(GLsizei n, GLuint *ids)
         ids[i] = 0;
 }
 
-int
-main(int argc, char **argv)
+int main(void)
 {
     bool pass = true;
     XVisualInfo *vis;

@@ -28,7 +28,11 @@ Features
 Building (CMake)
 -----------------
 
-CMake is now the recommended way to build epoxy. It should be as simple as:
+CMake is now the recommended way to build epoxy. It supports building both
+shared and static libraries (by default only shared library is built). It also
+supports building and running tests, both for the static and the shared library.
+
+Building with CMake should be as simple as:
 
     cd <my-build_dir>
     cmake <my-source-dir>
@@ -46,8 +50,11 @@ solution.
 * To disable building shared libraries, add
 "-DEPOXY_BUILD_SHARED=OFF" to the "cmake" invocation.
 
-Note that building with CMake currently doesn't support building or running
-tests.
+* To disable building tests, add
+"-DEPOXY_BUILD_TESTS=OFF" to the "cmake" invocation.
+
+* To link to the static Runtime Library with MSVC (rather than to the DLL), add
+"-DEPOXY_MSVC_USE_RUNTIME_LIBRARY_DLL=OFF" to the "cmake" invocation.
 
 Building (Autotools)
 ---------------------
@@ -99,6 +106,9 @@ tests.
 
 Switching your Code to Use Epoxy
 ---------------------------------
+
+* NOTE: If you use the static version of Epoxy, you must build your project with
+  "EPOXY_STATIC_LIB" defined!
 
 It should be as easy as replacing:
 
