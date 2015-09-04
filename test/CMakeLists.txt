@@ -88,11 +88,11 @@ if (EPOXY_BUILD_TESTS)
         epoxy_add_test (egl_has_extension_nocontext "${EPOXY_EGL_TESTS_COMMON};egl_has_extension_nocontext.c"
                         "${X11_LIBRARIES}")
         epoxy_add_test (egl_gl "${EPOXY_EGL_TESTS_COMMON};egl_gl.c" "${X11_LIBRARIES}")
-        if (GLESv1_FOUND)
+        if (GLES_V1_FOUND)
             epoxy_add_test (egl_gles1_without_glx "${EPOXY_EGL_TESTS_COMMON};egl_without_glx.c" "${X11_LIBRARIES}"
                             "GLES_VERSION=1")
         endif ()
-        if (GLESv2_FOUND)
+        if (GLES_V2_FOUND)
             epoxy_add_test (egl_gles2_without_glx "${EPOXY_EGL_TESTS_COMMON};egl_without_glx.c" "${X11_LIBRARIES}"
                             "GLES_VERSION=2")
         endif ()
@@ -115,7 +115,7 @@ if (EPOXY_BUILD_TESTS)
             epoxy_add_test (glx_alias_prefer_same_name
               "${EPOXY_GLX_TESTS_COMMON};glx_alias_prefer_same_name.c;dlwrap.c;dlwrap.h" "${X11_LIBRARIES}"
               "" "-rdynamic")
-            if (GLESv2_FOUND)
+            if (GLES_V2_FOUND)
                 epoxy_add_test (test_glx_gles2
                   "${EPOXY_GLX_TESTS_COMMON};glx_gles2.c;dlwrap.c;dlwrap.h" "${X11_LIBRARIES}" "" "-rdynamic")
             endif ()
