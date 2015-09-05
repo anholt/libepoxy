@@ -32,14 +32,17 @@ CMake is now the recommended way to build epoxy. It supports building both
 shared and static libraries (by default only shared library is built). It also
 supports building and running tests, both for the static and the shared library.
 
-Building with CMake should be as simple as:
+Building with CMake should be as simple as running:
 
     cd <my-build_dir>
-    cmake <my-source-dir>
+    cmake -G <my-generator> <my-source-dir>
 
-And then build the project, depending on the type of your toolset, e.g. for Unix
-type "make", and for MSVC open the solution in Visual studio and build the
-solution.
+(run "cmake -h" see a list of possible generators). Then, to build the project,
+depending on the type of generator you use, e.g. for Unix type "make", and for
+MSVC open the solution in Visual studio and build the solution.
+
+* NOTE: To build for 64 bit with MSVC add " Win64" to the generator name, e.g.
+  "Visual studio 14 2015 Win64".
 
 * To rebuild the generated headers from the specs, add
 "-DEPOXY_REBUILD_FROM_SPECS=ON" to the "cmake" invocation.
