@@ -578,7 +578,7 @@ class Generator(object):
             self.outln('        {0}_provider_terminator'.format(self.target))
             self.outln('    };')
 
-            self.outln('    static const uint16_t entrypoints[] = {')
+            self.outln('    static const uint32_t entrypoints[] = {')
             if len(providers) > 1:
                 for provider in providers:
                     self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
@@ -669,22 +669,24 @@ class Generator(object):
     def write_entrypoint_strings(self):
         self.entrypoint_string_offset = {}
 
-        self.outln('static const char entrypoint_strings[] = ')
+        self.outln('static const char entrypoint_strings[] = {')
         offset = 0
         for func in self.sorted_functions:
             if func.name not in self.entrypoint_string_offset:
                 self.entrypoint_string_offset[func.name] = offset
                 offset += len(func.name) + 1
-                self.outln('   "{0}\\0"'.format(func.name))
-        self.outln('    ;')
+                for c in func.name:
+                    self.outln("   '{0}',".format(c))
+                self.outln('   0, // {0}'.format(func.name))
+        self.outln('    0 };')
         # We're using uint16_t for the offsets.
-        assert(offset < 65536)
+        #assert(offset < 65536)
         self.outln('')
 
     def write_provider_resolver(self):
         self.outln('static void *{0}_provider_resolver(const char *name,'.format(self.target))
         self.outln('                                   const enum {0}_provider *providers,'.format(self.target))
-        self.outln('                                   const uint16_t *entrypoints)')
+        self.outln('                                   const uint32_t *entrypoints)')
         self.outln('{')
         self.outln('    int i;')
 
@@ -721,7 +723,7 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-        single_resolver_proto = '{0}_single_resolver(enum {0}_provider provider, uint16_t entrypoint_offset)'.format(self.target)
+        single_resolver_proto = '{0}_single_resolver(enum {0}_provider provider, uint32_t entrypoint_offset)'.format(self.target)
         self.outln('EPOXY_NOINLINE static void *')
         self.outln('{0};'.format(single_resolver_proto))
         self.outln('')
