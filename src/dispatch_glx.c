@@ -54,22 +54,23 @@ epoxy_glx_version(Display *dpy, int screen)
     int client_major, client_minor;
     int server, client;
     const char *version_string;
-    int ret;
+    int ret=0, sscanf_ret;
 
-    version_string = glXQueryServerString(dpy, screen, GLX_VERSION);
-    ret = sscanf(version_string, "%d.%d", &server_major, &server_minor);
-    assert(ret == 2);
-    server = server_major * 10 + server_minor;
+    if ((version_string = glXQueryServerString(dpy, screen, GLX_VERSION)))
+    {
+        sscanf_ret = sscanf(version_string, "%d.%d", &server_major, &server_minor);
+        assert(sscanf_ret == 2);
+        server = server_major * 10 + server_minor;
+        if ((version_string = glXGetClientString(dpy, GLX_VERSION)))
+        {
+            sscanf_ret = sscanf(version_string, "%d.%d", &client_major, &client_minor);
+            assert(sscanf_ret == 2);
+            client = client_major * 10 + client_minor;
+            ret = client <= server  ?  client  :  server;
+        }
+    }
 
-    version_string = glXGetClientString(dpy, GLX_VERSION);
-    ret = sscanf(version_string, "%d.%d", &client_major, &client_minor);
-    assert(ret == 2);
-    client = client_major * 10 + client_minor;
-
-    if (client < server)
-        return client;
-    else
-        return server;
+    return ret;
 }
 
 /**
