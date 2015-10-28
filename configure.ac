@@ -60,7 +60,7 @@ XORG_TESTSET_CFLAG(CWARNFLAGS, [-Wno-int-conversion])
 
 has_znow=yes
 
-case $host_os in
+case $target_os in
     mingw*)
         build_egl=no
         build_glx=no
@@ -122,7 +122,7 @@ AM_CONDITIONAL(HAS_ZNOW, test x$has_znow = xyes)
 AC_CHECK_LIB([dl], [dlopen], [DLOPEN_LIBS="-ldl"])
 AC_SUBST([DLOPEN_LIBS])
 
-case $host_os in
+case $target_os in
     mingw*)
         # visibility flags aren't supported for windows DLLs, and the
         # compiler whines to tell you so, so don't set them up.
