@@ -86,6 +86,7 @@ extern "C" {
 EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *extension);
 EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void);
 EPOXY_IMPORTEXPORT int epoxy_gl_version(void);
+EPOXY_IMPORTEXPORT bool epoxy_current_context_is_egl(void);
 
 #ifdef __cplusplus
 } /* extern "C" */
