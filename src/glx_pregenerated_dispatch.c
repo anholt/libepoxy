@@ -234,43 +234,44 @@ static const char *enum_string =
      ;
 
 static const uint16_t enum_string_offsets[] = {
-    [GLX_10] = 0,
-    [GLX_11] = 7,
-    [GLX_12] = 14,
-    [GLX_13] = 21,
-    [GLX_extension_GLX_AMD_gpu_association] = 28,
-    [GLX_extension_GLX_ARB_create_context] = 68,
-    [GLX_extension_GLX_ARB_get_proc_address] = 107,
-    [GLX_extension_GLX_EXT_import_context] = 148,
-    [GLX_extension_GLX_EXT_swap_control] = 187,
-    [GLX_extension_GLX_EXT_texture_from_pixmap] = 224,
-    [GLX_extension_GLX_MESA_agp_offset] = 268,
-    [GLX_extension_GLX_MESA_copy_sub_buffer] = 304,
-    [GLX_extension_GLX_MESA_pixmap_colormap] = 345,
-    [GLX_extension_GLX_MESA_query_renderer] = 386,
-    [GLX_extension_GLX_MESA_release_buffers] = 426,
-    [GLX_extension_GLX_MESA_set_3dfx_mode] = 467,
-    [GLX_extension_GLX_NV_copy_buffer] = 506,
-    [GLX_extension_GLX_NV_copy_image] = 541,
-    [GLX_extension_GLX_NV_delay_before_swap] = 575,
-    [GLX_extension_GLX_NV_present_video] = 616,
-    [GLX_extension_GLX_NV_swap_group] = 653,
-    [GLX_extension_GLX_NV_video_capture] = 687,
-    [GLX_extension_GLX_NV_video_out] = 724,
-    [GLX_extension_GLX_OML_sync_control] = 757,
-    [GLX_extension_GLX_SGIX_fbconfig] = 794,
-    [GLX_extension_GLX_SGIX_hyperpipe] = 828,
-    [GLX_extension_GLX_SGIX_pbuffer] = 863,
-    [GLX_extension_GLX_SGIX_swap_barrier] = 896,
-    [GLX_extension_GLX_SGIX_swap_group] = 934,
-    [GLX_extension_GLX_SGIX_video_resize] = 970,
-    [GLX_extension_GLX_SGIX_video_source] = 1008,
-    [GLX_extension_GLX_SGI_cushion] = 1046,
-    [GLX_extension_GLX_SGI_make_current_read] = 1078,
-    [GLX_extension_GLX_SGI_swap_control] = 1120,
-    [GLX_extension_GLX_SGI_video_sync] = 1157,
-    [GLX_extension_GLX_SUN_get_transparent_index] = 1192,
-    [always_present] = 1238,
+    -1, /* glx_provider_terminator, unused */
+    0, /* GLX_10 */
+    7, /* GLX_11 */
+    14, /* GLX_12 */
+    21, /* GLX_13 */
+    28, /* GLX_extension_GLX_AMD_gpu_association */
+    68, /* GLX_extension_GLX_ARB_create_context */
+    107, /* GLX_extension_GLX_ARB_get_proc_address */
+    148, /* GLX_extension_GLX_EXT_import_context */
+    187, /* GLX_extension_GLX_EXT_swap_control */
+    224, /* GLX_extension_GLX_EXT_texture_from_pixmap */
+    268, /* GLX_extension_GLX_MESA_agp_offset */
+    304, /* GLX_extension_GLX_MESA_copy_sub_buffer */
+    345, /* GLX_extension_GLX_MESA_pixmap_colormap */
+    386, /* GLX_extension_GLX_MESA_query_renderer */
+    426, /* GLX_extension_GLX_MESA_release_buffers */
+    467, /* GLX_extension_GLX_MESA_set_3dfx_mode */
+    506, /* GLX_extension_GLX_NV_copy_buffer */
+    541, /* GLX_extension_GLX_NV_copy_image */
+    575, /* GLX_extension_GLX_NV_delay_before_swap */
+    616, /* GLX_extension_GLX_NV_present_video */
+    653, /* GLX_extension_GLX_NV_swap_group */
+    687, /* GLX_extension_GLX_NV_video_capture */
+    724, /* GLX_extension_GLX_NV_video_out */
+    757, /* GLX_extension_GLX_OML_sync_control */
+    794, /* GLX_extension_GLX_SGIX_fbconfig */
+    828, /* GLX_extension_GLX_SGIX_hyperpipe */
+    863, /* GLX_extension_GLX_SGIX_pbuffer */
+    896, /* GLX_extension_GLX_SGIX_swap_barrier */
+    934, /* GLX_extension_GLX_SGIX_swap_group */
+    970, /* GLX_extension_GLX_SGIX_video_resize */
+    1008, /* GLX_extension_GLX_SGIX_video_source */
+    1046, /* GLX_extension_GLX_SGI_cushion */
+    1078, /* GLX_extension_GLX_SGI_make_current_read */
+    1120, /* GLX_extension_GLX_SGI_swap_control */
+    1157, /* GLX_extension_GLX_SGI_video_sync */
+    1192, /* GLX_extension_GLX_SUN_get_transparent_index */
+    1238, /* always_present */
 };
 
 static const char entrypoint_strings[] = {
@@ -4260,136 +4261,136 @@ GEN_THUNKS(glXWaitX, (void), ())
 
 #if USING_DISPATCH_TABLE
 static struct dispatch_table resolver_table = {
-    .glXBindChannelToWindowSGIX = epoxy_glXBindChannelToWindowSGIX_dispatch_table_rewrite_ptr,
-    .glXBindHyperpipeSGIX = epoxy_glXBindHyperpipeSGIX_dispatch_table_rewrite_ptr,
-    .glXBindSwapBarrierNV = epoxy_glXBindSwapBarrierNV_dispatch_table_rewrite_ptr,
-    .glXBindSwapBarrierSGIX = epoxy_glXBindSwapBarrierSGIX_dispatch_table_rewrite_ptr,
-    .glXBindTexImageEXT = epoxy_glXBindTexImageEXT_dispatch_table_rewrite_ptr,
-    .glXBindVideoCaptureDeviceNV = epoxy_glXBindVideoCaptureDeviceNV_dispatch_table_rewrite_ptr,
-    .glXBindVideoDeviceNV = epoxy_glXBindVideoDeviceNV_dispatch_table_rewrite_ptr,
-    .glXBindVideoImageNV = epoxy_glXBindVideoImageNV_dispatch_table_rewrite_ptr,
-    .glXBlitContextFramebufferAMD = epoxy_glXBlitContextFramebufferAMD_dispatch_table_rewrite_ptr,
-    .glXChannelRectSGIX = epoxy_glXChannelRectSGIX_dispatch_table_rewrite_ptr,
-    .glXChannelRectSyncSGIX = epoxy_glXChannelRectSyncSGIX_dispatch_table_rewrite_ptr,
-    .glXChooseFBConfig = epoxy_glXChooseFBConfig_dispatch_table_rewrite_ptr,
-    .glXChooseFBConfigSGIX = epoxy_glXChooseFBConfigSGIX_dispatch_table_rewrite_ptr,
-    .glXChooseVisual = epoxy_glXChooseVisual_dispatch_table_rewrite_ptr,
-    .glXCopyBufferSubDataNV = epoxy_glXCopyBufferSubDataNV_dispatch_table_rewrite_ptr,
-    .glXCopyContext = epoxy_glXCopyContext_dispatch_table_rewrite_ptr,
-    .glXCopyImageSubDataNV = epoxy_glXCopyImageSubDataNV_dispatch_table_rewrite_ptr,
-    .glXCopySubBufferMESA = epoxy_glXCopySubBufferMESA_dispatch_table_rewrite_ptr,
-    .glXCreateAssociatedContextAMD = epoxy_glXCreateAssociatedContextAMD_dispatch_table_rewrite_ptr,
-    .glXCreateAssociatedContextAttribsAMD = epoxy_glXCreateAssociatedContextAttribsAMD_dispatch_table_rewrite_ptr,
-    .glXCreateContext = epoxy_glXCreateContext_dispatch_table_rewrite_ptr,
-    .glXCreateContextAttribsARB = epoxy_glXCreateContextAttribsARB_dispatch_table_rewrite_ptr,
-    .glXCreateContextWithConfigSGIX = epoxy_glXCreateContextWithConfigSGIX_dispatch_table_rewrite_ptr,
-    .glXCreateGLXPbufferSGIX = epoxy_glXCreateGLXPbufferSGIX_dispatch_table_rewrite_ptr,
-    .glXCreateGLXPixmap = epoxy_glXCreateGLXPixmap_dispatch_table_rewrite_ptr,
-    .glXCreateGLXPixmapMESA = epoxy_glXCreateGLXPixmapMESA_dispatch_table_rewrite_ptr,
-    .glXCreateGLXPixmapWithConfigSGIX = epoxy_glXCreateGLXPixmapWithConfigSGIX_dispatch_table_rewrite_ptr,
-    .glXCreateNewContext = epoxy_glXCreateNewContext_dispatch_table_rewrite_ptr,
-    .glXCreatePbuffer = epoxy_glXCreatePbuffer_dispatch_table_rewrite_ptr,
-    .glXCreatePixmap = epoxy_glXCreatePixmap_dispatch_table_rewrite_ptr,
-    .glXCreateWindow = epoxy_glXCreateWindow_dispatch_table_rewrite_ptr,
-    .glXCushionSGI = epoxy_glXCushionSGI_dispatch_table_rewrite_ptr,
-    .glXDelayBeforeSwapNV = epoxy_glXDelayBeforeSwapNV_dispatch_table_rewrite_ptr,
-    .glXDeleteAssociatedContextAMD = epoxy_glXDeleteAssociatedContextAMD_dispatch_table_rewrite_ptr,
-    .glXDestroyContext = epoxy_glXDestroyContext_dispatch_table_rewrite_ptr,
-    .glXDestroyGLXPbufferSGIX = epoxy_glXDestroyGLXPbufferSGIX_dispatch_table_rewrite_ptr,
-    .glXDestroyGLXPixmap = epoxy_glXDestroyGLXPixmap_dispatch_table_rewrite_ptr,
-    .glXDestroyGLXVideoSourceSGIX = epoxy_glXDestroyGLXVideoSourceSGIX_dispatch_table_rewrite_ptr,
-    .glXDestroyHyperpipeConfigSGIX = epoxy_glXDestroyHyperpipeConfigSGIX_dispatch_table_rewrite_ptr,
-    .glXDestroyPbuffer = epoxy_glXDestroyPbuffer_dispatch_table_rewrite_ptr,
-    .glXDestroyPixmap = epoxy_glXDestroyPixmap_dispatch_table_rewrite_ptr,
-    .glXDestroyWindow = epoxy_glXDestroyWindow_dispatch_table_rewrite_ptr,
-    .glXEnumerateVideoCaptureDevicesNV = epoxy_glXEnumerateVideoCaptureDevicesNV_dispatch_table_rewrite_ptr,
-    .glXEnumerateVideoDevicesNV = epoxy_glXEnumerateVideoDevicesNV_dispatch_table_rewrite_ptr,
-    .glXFreeContextEXT = epoxy_glXFreeContextEXT_dispatch_table_rewrite_ptr,
-    .glXGetAGPOffsetMESA = epoxy_glXGetAGPOffsetMESA_dispatch_table_rewrite_ptr,
-    .glXGetClientString = epoxy_glXGetClientString_dispatch_table_rewrite_ptr,
-    .glXGetConfig = epoxy_glXGetConfig_dispatch_table_rewrite_ptr,
-    .glXGetContextGPUIDAMD = epoxy_glXGetContextGPUIDAMD_dispatch_table_rewrite_ptr,
-    .glXGetContextIDEXT = epoxy_glXGetContextIDEXT_dispatch_table_rewrite_ptr,
-    .glXGetCurrentAssociatedContextAMD = epoxy_glXGetCurrentAssociatedContextAMD_dispatch_table_rewrite_ptr,
-    .glXGetCurrentContext = epoxy_glXGetCurrentContext_dispatch_table_rewrite_ptr,
-    .glXGetCurrentDisplay = epoxy_glXGetCurrentDisplay_dispatch_table_rewrite_ptr,
-    .glXGetCurrentDisplayEXT = epoxy_glXGetCurrentDisplayEXT_dispatch_table_rewrite_ptr,
-    .glXGetCurrentDrawable = epoxy_glXGetCurrentDrawable_dispatch_table_rewrite_ptr,
-    .glXGetCurrentReadDrawable = epoxy_glXGetCurrentReadDrawable_dispatch_table_rewrite_ptr,
-    .glXGetCurrentReadDrawableSGI = epoxy_glXGetCurrentReadDrawableSGI_dispatch_table_rewrite_ptr,
-    .glXGetFBConfigAttrib = epoxy_glXGetFBConfigAttrib_dispatch_table_rewrite_ptr,
-    .glXGetFBConfigAttribSGIX = epoxy_glXGetFBConfigAttribSGIX_dispatch_table_rewrite_ptr,
-    .glXGetFBConfigFromVisualSGIX = epoxy_glXGetFBConfigFromVisualSGIX_dispatch_table_rewrite_ptr,
-    .glXGetFBConfigs = epoxy_glXGetFBConfigs_dispatch_table_rewrite_ptr,
-    .glXGetGPUIDsAMD = epoxy_glXGetGPUIDsAMD_dispatch_table_rewrite_ptr,
-    .glXGetGPUInfoAMD = epoxy_glXGetGPUInfoAMD_dispatch_table_rewrite_ptr,
-    .glXGetMscRateOML = epoxy_glXGetMscRateOML_dispatch_table_rewrite_ptr,
-    .glXGetProcAddress = epoxy_glXGetProcAddress_dispatch_table_rewrite_ptr,
-    .glXGetProcAddressARB = epoxy_glXGetProcAddressARB_dispatch_table_rewrite_ptr,
-    .glXGetSelectedEvent = epoxy_glXGetSelectedEvent_dispatch_table_rewrite_ptr,
-    .glXGetSelectedEventSGIX = epoxy_glXGetSelectedEventSGIX_dispatch_table_rewrite_ptr,
-    .glXGetSyncValuesOML = epoxy_glXGetSyncValuesOML_dispatch_table_rewrite_ptr,
-    .glXGetTransparentIndexSUN = epoxy_glXGetTransparentIndexSUN_dispatch_table_rewrite_ptr,
-    .glXGetVideoDeviceNV = epoxy_glXGetVideoDeviceNV_dispatch_table_rewrite_ptr,
-    .glXGetVideoInfoNV = epoxy_glXGetVideoInfoNV_dispatch_table_rewrite_ptr,
-    .glXGetVideoSyncSGI = epoxy_glXGetVideoSyncSGI_dispatch_table_rewrite_ptr,
-    .glXGetVisualFromFBConfig = epoxy_glXGetVisualFromFBConfig_dispatch_table_rewrite_ptr,
-    .glXGetVisualFromFBConfigSGIX = epoxy_glXGetVisualFromFBConfigSGIX_dispatch_table_rewrite_ptr,
-    .glXHyperpipeAttribSGIX = epoxy_glXHyperpipeAttribSGIX_dispatch_table_rewrite_ptr,
-    .glXHyperpipeConfigSGIX = epoxy_glXHyperpipeConfigSGIX_dispatch_table_rewrite_ptr,
-    .glXImportContextEXT = epoxy_glXImportContextEXT_dispatch_table_rewrite_ptr,
-    .glXIsDirect = epoxy_glXIsDirect_dispatch_table_rewrite_ptr,
-    .glXJoinSwapGroupNV = epoxy_glXJoinSwapGroupNV_dispatch_table_rewrite_ptr,
-    .glXJoinSwapGroupSGIX = epoxy_glXJoinSwapGroupSGIX_dispatch_table_rewrite_ptr,
-    .glXLockVideoCaptureDeviceNV = epoxy_glXLockVideoCaptureDeviceNV_dispatch_table_rewrite_ptr,
-    .glXMakeAssociatedContextCurrentAMD = epoxy_glXMakeAssociatedContextCurrentAMD_dispatch_table_rewrite_ptr,
-    .glXMakeContextCurrent = epoxy_glXMakeContextCurrent_dispatch_table_rewrite_ptr,
-    .glXMakeCurrent = epoxy_glXMakeCurrent_dispatch_table_rewrite_ptr,
-    .glXMakeCurrentReadSGI = epoxy_glXMakeCurrentReadSGI_dispatch_table_rewrite_ptr,
-    .glXNamedCopyBufferSubDataNV = epoxy_glXNamedCopyBufferSubDataNV_dispatch_table_rewrite_ptr,
-    .glXQueryChannelDeltasSGIX = epoxy_glXQueryChannelDeltasSGIX_dispatch_table_rewrite_ptr,
-    .glXQueryChannelRectSGIX = epoxy_glXQueryChannelRectSGIX_dispatch_table_rewrite_ptr,
-    .glXQueryContext = epoxy_glXQueryContext_dispatch_table_rewrite_ptr,
-    .glXQueryContextInfoEXT = epoxy_glXQueryContextInfoEXT_dispatch_table_rewrite_ptr,
-    .glXQueryCurrentRendererIntegerMESA = epoxy_glXQueryCurrentRendererIntegerMESA_dispatch_table_rewrite_ptr,
-    .glXQueryCurrentRendererStringMESA = epoxy_glXQueryCurrentRendererStringMESA_dispatch_table_rewrite_ptr,
-    .glXQueryDrawable = epoxy_glXQueryDrawable_dispatch_table_rewrite_ptr,
-    .glXQueryExtension = epoxy_glXQueryExtension_dispatch_table_rewrite_ptr,
-    .glXQueryExtensionsString = epoxy_glXQueryExtensionsString_dispatch_table_rewrite_ptr,
-    .glXQueryFrameCountNV = epoxy_glXQueryFrameCountNV_dispatch_table_rewrite_ptr,
-    .glXQueryGLXPbufferSGIX = epoxy_glXQueryGLXPbufferSGIX_dispatch_table_rewrite_ptr,
-    .glXQueryHyperpipeAttribSGIX = epoxy_glXQueryHyperpipeAttribSGIX_dispatch_table_rewrite_ptr,
-    .glXQueryHyperpipeBestAttribSGIX = epoxy_glXQueryHyperpipeBestAttribSGIX_dispatch_table_rewrite_ptr,
-    .glXQueryHyperpipeConfigSGIX = epoxy_glXQueryHyperpipeConfigSGIX_dispatch_table_rewrite_ptr,
-    .glXQueryHyperpipeNetworkSGIX = epoxy_glXQueryHyperpipeNetworkSGIX_dispatch_table_rewrite_ptr,
-    .glXQueryMaxSwapBarriersSGIX = epoxy_glXQueryMaxSwapBarriersSGIX_dispatch_table_rewrite_ptr,
-    .glXQueryMaxSwapGroupsNV = epoxy_glXQueryMaxSwapGroupsNV_dispatch_table_rewrite_ptr,
-    .glXQueryRendererIntegerMESA = epoxy_glXQueryRendererIntegerMESA_dispatch_table_rewrite_ptr,
-    .glXQueryRendererStringMESA = epoxy_glXQueryRendererStringMESA_dispatch_table_rewrite_ptr,
-    .glXQueryServerString = epoxy_glXQueryServerString_dispatch_table_rewrite_ptr,
-    .glXQuerySwapGroupNV = epoxy_glXQuerySwapGroupNV_dispatch_table_rewrite_ptr,
-    .glXQueryVersion = epoxy_glXQueryVersion_dispatch_table_rewrite_ptr,
-    .glXQueryVideoCaptureDeviceNV = epoxy_glXQueryVideoCaptureDeviceNV_dispatch_table_rewrite_ptr,
-    .glXReleaseBuffersMESA = epoxy_glXReleaseBuffersMESA_dispatch_table_rewrite_ptr,
-    .glXReleaseTexImageEXT = epoxy_glXReleaseTexImageEXT_dispatch_table_rewrite_ptr,
-    .glXReleaseVideoCaptureDeviceNV = epoxy_glXReleaseVideoCaptureDeviceNV_dispatch_table_rewrite_ptr,
-    .glXReleaseVideoDeviceNV = epoxy_glXReleaseVideoDeviceNV_dispatch_table_rewrite_ptr,
-    .glXReleaseVideoImageNV = epoxy_glXReleaseVideoImageNV_dispatch_table_rewrite_ptr,
-    .glXResetFrameCountNV = epoxy_glXResetFrameCountNV_dispatch_table_rewrite_ptr,
-    .glXSelectEvent = epoxy_glXSelectEvent_dispatch_table_rewrite_ptr,
-    .glXSelectEventSGIX = epoxy_glXSelectEventSGIX_dispatch_table_rewrite_ptr,
-    .glXSendPbufferToVideoNV = epoxy_glXSendPbufferToVideoNV_dispatch_table_rewrite_ptr,
-    .glXSet3DfxModeMESA = epoxy_glXSet3DfxModeMESA_dispatch_table_rewrite_ptr,
-    .glXSwapBuffers = epoxy_glXSwapBuffers_dispatch_table_rewrite_ptr,
-    .glXSwapBuffersMscOML = epoxy_glXSwapBuffersMscOML_dispatch_table_rewrite_ptr,
-    .glXSwapIntervalEXT = epoxy_glXSwapIntervalEXT_dispatch_table_rewrite_ptr,
-    .glXSwapIntervalSGI = epoxy_glXSwapIntervalSGI_dispatch_table_rewrite_ptr,
-    .glXUseXFont = epoxy_glXUseXFont_dispatch_table_rewrite_ptr,
-    .glXWaitForMscOML = epoxy_glXWaitForMscOML_dispatch_table_rewrite_ptr,
-    .glXWaitForSbcOML = epoxy_glXWaitForSbcOML_dispatch_table_rewrite_ptr,
-    .glXWaitGL = epoxy_glXWaitGL_dispatch_table_rewrite_ptr,
-    .glXWaitVideoSyncSGI = epoxy_glXWaitVideoSyncSGI_dispatch_table_rewrite_ptr,
-    .glXWaitX = epoxy_glXWaitX_dispatch_table_rewrite_ptr,
+    epoxy_glXBindChannelToWindowSGIX_dispatch_table_rewrite_ptr, /* glXBindChannelToWindowSGIX */
+    epoxy_glXBindHyperpipeSGIX_dispatch_table_rewrite_ptr, /* glXBindHyperpipeSGIX */
+    epoxy_glXBindSwapBarrierNV_dispatch_table_rewrite_ptr, /* glXBindSwapBarrierNV */
+    epoxy_glXBindSwapBarrierSGIX_dispatch_table_rewrite_ptr, /* glXBindSwapBarrierSGIX */
+    epoxy_glXBindTexImageEXT_dispatch_table_rewrite_ptr, /* glXBindTexImageEXT */
+    epoxy_glXBindVideoCaptureDeviceNV_dispatch_table_rewrite_ptr, /* glXBindVideoCaptureDeviceNV */
+    epoxy_glXBindVideoDeviceNV_dispatch_table_rewrite_ptr, /* glXBindVideoDeviceNV */
+    epoxy_glXBindVideoImageNV_dispatch_table_rewrite_ptr, /* glXBindVideoImageNV */
+    epoxy_glXBlitContextFramebufferAMD_dispatch_table_rewrite_ptr, /* glXBlitContextFramebufferAMD */
+    epoxy_glXChannelRectSGIX_dispatch_table_rewrite_ptr, /* glXChannelRectSGIX */
+    epoxy_glXChannelRectSyncSGIX_dispatch_table_rewrite_ptr, /* glXChannelRectSyncSGIX */
+    epoxy_glXChooseFBConfig_dispatch_table_rewrite_ptr, /* glXChooseFBConfig */
+    epoxy_glXChooseFBConfigSGIX_dispatch_table_rewrite_ptr, /* glXChooseFBConfigSGIX */
+    epoxy_glXChooseVisual_dispatch_table_rewrite_ptr, /* glXChooseVisual */
+    epoxy_glXCopyBufferSubDataNV_dispatch_table_rewrite_ptr, /* glXCopyBufferSubDataNV */
+    epoxy_glXCopyContext_dispatch_table_rewrite_ptr, /* glXCopyContext */
+    epoxy_glXCopyImageSubDataNV_dispatch_table_rewrite_ptr, /* glXCopyImageSubDataNV */
+    epoxy_glXCopySubBufferMESA_dispatch_table_rewrite_ptr, /* glXCopySubBufferMESA */
+    epoxy_glXCreateAssociatedContextAMD_dispatch_table_rewrite_ptr, /* glXCreateAssociatedContextAMD */
+    epoxy_glXCreateAssociatedContextAttribsAMD_dispatch_table_rewrite_ptr, /* glXCreateAssociatedContextAttribsAMD */
+    epoxy_glXCreateContext_dispatch_table_rewrite_ptr, /* glXCreateContext */
+    epoxy_glXCreateContextAttribsARB_dispatch_table_rewrite_ptr, /* glXCreateContextAttribsARB */
+    epoxy_glXCreateContextWithConfigSGIX_dispatch_table_rewrite_ptr, /* glXCreateContextWithConfigSGIX */
+    epoxy_glXCreateGLXPbufferSGIX_dispatch_table_rewrite_ptr, /* glXCreateGLXPbufferSGIX */
+    epoxy_glXCreateGLXPixmap_dispatch_table_rewrite_ptr, /* glXCreateGLXPixmap */
+    epoxy_glXCreateGLXPixmapMESA_dispatch_table_rewrite_ptr, /* glXCreateGLXPixmapMESA */
+    epoxy_glXCreateGLXPixmapWithConfigSGIX_dispatch_table_rewrite_ptr, /* glXCreateGLXPixmapWithConfigSGIX */
+    epoxy_glXCreateNewContext_dispatch_table_rewrite_ptr, /* glXCreateNewContext */
+    epoxy_glXCreatePbuffer_dispatch_table_rewrite_ptr, /* glXCreatePbuffer */
+    epoxy_glXCreatePixmap_dispatch_table_rewrite_ptr, /* glXCreatePixmap */
+    epoxy_glXCreateWindow_dispatch_table_rewrite_ptr, /* glXCreateWindow */
+    epoxy_glXCushionSGI_dispatch_table_rewrite_ptr, /* glXCushionSGI */
+    epoxy_glXDelayBeforeSwapNV_dispatch_table_rewrite_ptr, /* glXDelayBeforeSwapNV */
+    epoxy_glXDeleteAssociatedContextAMD_dispatch_table_rewrite_ptr, /* glXDeleteAssociatedContextAMD */
+    epoxy_glXDestroyContext_dispatch_table_rewrite_ptr, /* glXDestroyContext */
+    epoxy_glXDestroyGLXPbufferSGIX_dispatch_table_rewrite_ptr, /* glXDestroyGLXPbufferSGIX */
+    epoxy_glXDestroyGLXPixmap_dispatch_table_rewrite_ptr, /* glXDestroyGLXPixmap */
+    epoxy_glXDestroyGLXVideoSourceSGIX_dispatch_table_rewrite_ptr, /* glXDestroyGLXVideoSourceSGIX */
+    epoxy_glXDestroyHyperpipeConfigSGIX_dispatch_table_rewrite_ptr, /* glXDestroyHyperpipeConfigSGIX */
+    epoxy_glXDestroyPbuffer_dispatch_table_rewrite_ptr, /* glXDestroyPbuffer */
+    epoxy_glXDestroyPixmap_dispatch_table_rewrite_ptr, /* glXDestroyPixmap */
+    epoxy_glXDestroyWindow_dispatch_table_rewrite_ptr, /* glXDestroyWindow */
+    epoxy_glXEnumerateVideoCaptureDevicesNV_dispatch_table_rewrite_ptr, /* glXEnumerateVideoCaptureDevicesNV */
+    epoxy_glXEnumerateVideoDevicesNV_dispatch_table_rewrite_ptr, /* glXEnumerateVideoDevicesNV */
+    epoxy_glXFreeContextEXT_dispatch_table_rewrite_ptr, /* glXFreeContextEXT */
+    epoxy_glXGetAGPOffsetMESA_dispatch_table_rewrite_ptr, /* glXGetAGPOffsetMESA */
+    epoxy_glXGetClientString_dispatch_table_rewrite_ptr, /* glXGetClientString */
+    epoxy_glXGetConfig_dispatch_table_rewrite_ptr, /* glXGetConfig */
+    epoxy_glXGetContextGPUIDAMD_dispatch_table_rewrite_ptr, /* glXGetContextGPUIDAMD */
+    epoxy_glXGetContextIDEXT_dispatch_table_rewrite_ptr, /* glXGetContextIDEXT */
+    epoxy_glXGetCurrentAssociatedContextAMD_dispatch_table_rewrite_ptr, /* glXGetCurrentAssociatedContextAMD */
+    epoxy_glXGetCurrentContext_dispatch_table_rewrite_ptr, /* glXGetCurrentContext */
+    epoxy_glXGetCurrentDisplay_dispatch_table_rewrite_ptr, /* glXGetCurrentDisplay */
+    epoxy_glXGetCurrentDisplayEXT_dispatch_table_rewrite_ptr, /* glXGetCurrentDisplayEXT */
+    epoxy_glXGetCurrentDrawable_dispatch_table_rewrite_ptr, /* glXGetCurrentDrawable */
+    epoxy_glXGetCurrentReadDrawable_dispatch_table_rewrite_ptr, /* glXGetCurrentReadDrawable */
+    epoxy_glXGetCurrentReadDrawableSGI_dispatch_table_rewrite_ptr, /* glXGetCurrentReadDrawableSGI */
+    epoxy_glXGetFBConfigAttrib_dispatch_table_rewrite_ptr, /* glXGetFBConfigAttrib */
+    epoxy_glXGetFBConfigAttribSGIX_dispatch_table_rewrite_ptr, /* glXGetFBConfigAttribSGIX */
+    epoxy_glXGetFBConfigFromVisualSGIX_dispatch_table_rewrite_ptr, /* glXGetFBConfigFromVisualSGIX */
+    epoxy_glXGetFBConfigs_dispatch_table_rewrite_ptr, /* glXGetFBConfigs */
+    epoxy_glXGetGPUIDsAMD_dispatch_table_rewrite_ptr, /* glXGetGPUIDsAMD */
+    epoxy_glXGetGPUInfoAMD_dispatch_table_rewrite_ptr, /* glXGetGPUInfoAMD */
+    epoxy_glXGetMscRateOML_dispatch_table_rewrite_ptr, /* glXGetMscRateOML */
+    epoxy_glXGetProcAddress_dispatch_table_rewrite_ptr, /* glXGetProcAddress */
+    epoxy_glXGetProcAddressARB_dispatch_table_rewrite_ptr, /* glXGetProcAddressARB */
+    epoxy_glXGetSelectedEvent_dispatch_table_rewrite_ptr, /* glXGetSelectedEvent */
+    epoxy_glXGetSelectedEventSGIX_dispatch_table_rewrite_ptr, /* glXGetSelectedEventSGIX */
+    epoxy_glXGetSyncValuesOML_dispatch_table_rewrite_ptr, /* glXGetSyncValuesOML */
+    epoxy_glXGetTransparentIndexSUN_dispatch_table_rewrite_ptr, /* glXGetTransparentIndexSUN */
+    epoxy_glXGetVideoDeviceNV_dispatch_table_rewrite_ptr, /* glXGetVideoDeviceNV */
+    epoxy_glXGetVideoInfoNV_dispatch_table_rewrite_ptr, /* glXGetVideoInfoNV */
+    epoxy_glXGetVideoSyncSGI_dispatch_table_rewrite_ptr, /* glXGetVideoSyncSGI */
+    epoxy_glXGetVisualFromFBConfig_dispatch_table_rewrite_ptr, /* glXGetVisualFromFBConfig */
+    epoxy_glXGetVisualFromFBConfigSGIX_dispatch_table_rewrite_ptr, /* glXGetVisualFromFBConfigSGIX */
+    epoxy_glXHyperpipeAttribSGIX_dispatch_table_rewrite_ptr, /* glXHyperpipeAttribSGIX */
+    epoxy_glXHyperpipeConfigSGIX_dispatch_table_rewrite_ptr, /* glXHyperpipeConfigSGIX */
+    epoxy_glXImportContextEXT_dispatch_table_rewrite_ptr, /* glXImportContextEXT */
+    epoxy_glXIsDirect_dispatch_table_rewrite_ptr, /* glXIsDirect */
+    epoxy_glXJoinSwapGroupNV_dispatch_table_rewrite_ptr, /* glXJoinSwapGroupNV */
+    epoxy_glXJoinSwapGroupSGIX_dispatch_table_rewrite_ptr, /* glXJoinSwapGroupSGIX */
+    epoxy_glXLockVideoCaptureDeviceNV_dispatch_table_rewrite_ptr, /* glXLockVideoCaptureDeviceNV */
+    epoxy_glXMakeAssociatedContextCurrentAMD_dispatch_table_rewrite_ptr, /* glXMakeAssociatedContextCurrentAMD */
+    epoxy_glXMakeContextCurrent_dispatch_table_rewrite_ptr, /* glXMakeContextCurrent */
+    epoxy_glXMakeCurrent_dispatch_table_rewrite_ptr, /* glXMakeCurrent */
+    epoxy_glXMakeCurrentReadSGI_dispatch_table_rewrite_ptr, /* glXMakeCurrentReadSGI */
+    epoxy_glXNamedCopyBufferSubDataNV_dispatch_table_rewrite_ptr, /* glXNamedCopyBufferSubDataNV */
+    epoxy_glXQueryChannelDeltasSGIX_dispatch_table_rewrite_ptr, /* glXQueryChannelDeltasSGIX */
+    epoxy_glXQueryChannelRectSGIX_dispatch_table_rewrite_ptr, /* glXQueryChannelRectSGIX */
+    epoxy_glXQueryContext_dispatch_table_rewrite_ptr, /* glXQueryContext */
+    epoxy_glXQueryContextInfoEXT_dispatch_table_rewrite_ptr, /* glXQueryContextInfoEXT */
+    epoxy_glXQueryCurrentRendererIntegerMESA_dispatch_table_rewrite_ptr, /* glXQueryCurrentRendererIntegerMESA */
+    epoxy_glXQueryCurrentRendererStringMESA_dispatch_table_rewrite_ptr, /* glXQueryCurrentRendererStringMESA */
+    epoxy_glXQueryDrawable_dispatch_table_rewrite_ptr, /* glXQueryDrawable */
+    epoxy_glXQueryExtension_dispatch_table_rewrite_ptr, /* glXQueryExtension */
+    epoxy_glXQueryExtensionsString_dispatch_table_rewrite_ptr, /* glXQueryExtensionsString */
+    epoxy_glXQueryFrameCountNV_dispatch_table_rewrite_ptr, /* glXQueryFrameCountNV */
+    epoxy_glXQueryGLXPbufferSGIX_dispatch_table_rewrite_ptr, /* glXQueryGLXPbufferSGIX */
+    epoxy_glXQueryHyperpipeAttribSGIX_dispatch_table_rewrite_ptr, /* glXQueryHyperpipeAttribSGIX */
+    epoxy_glXQueryHyperpipeBestAttribSGIX_dispatch_table_rewrite_ptr, /* glXQueryHyperpipeBestAttribSGIX */
+    epoxy_glXQueryHyperpipeConfigSGIX_dispatch_table_rewrite_ptr, /* glXQueryHyperpipeConfigSGIX */
+    epoxy_glXQueryHyperpipeNetworkSGIX_dispatch_table_rewrite_ptr, /* glXQueryHyperpipeNetworkSGIX */
+    epoxy_glXQueryMaxSwapBarriersSGIX_dispatch_table_rewrite_ptr, /* glXQueryMaxSwapBarriersSGIX */
+    epoxy_glXQueryMaxSwapGroupsNV_dispatch_table_rewrite_ptr, /* glXQueryMaxSwapGroupsNV */
+    epoxy_glXQueryRendererIntegerMESA_dispatch_table_rewrite_ptr, /* glXQueryRendererIntegerMESA */
+    epoxy_glXQueryRendererStringMESA_dispatch_table_rewrite_ptr, /* glXQueryRendererStringMESA */
+    epoxy_glXQueryServerString_dispatch_table_rewrite_ptr, /* glXQueryServerString */
+    epoxy_glXQuerySwapGroupNV_dispatch_table_rewrite_ptr, /* glXQuerySwapGroupNV */
+    epoxy_glXQueryVersion_dispatch_table_rewrite_ptr, /* glXQueryVersion */
+    epoxy_glXQueryVideoCaptureDeviceNV_dispatch_table_rewrite_ptr, /* glXQueryVideoCaptureDeviceNV */
+    epoxy_glXReleaseBuffersMESA_dispatch_table_rewrite_ptr, /* glXReleaseBuffersMESA */
+    epoxy_glXReleaseTexImageEXT_dispatch_table_rewrite_ptr, /* glXReleaseTexImageEXT */
+    epoxy_glXReleaseVideoCaptureDeviceNV_dispatch_table_rewrite_ptr, /* glXReleaseVideoCaptureDeviceNV */
+    epoxy_glXReleaseVideoDeviceNV_dispatch_table_rewrite_ptr, /* glXReleaseVideoDeviceNV */
+    epoxy_glXReleaseVideoImageNV_dispatch_table_rewrite_ptr, /* glXReleaseVideoImageNV */
+    epoxy_glXResetFrameCountNV_dispatch_table_rewrite_ptr, /* glXResetFrameCountNV */
+    epoxy_glXSelectEvent_dispatch_table_rewrite_ptr, /* glXSelectEvent */
+    epoxy_glXSelectEventSGIX_dispatch_table_rewrite_ptr, /* glXSelectEventSGIX */
+    epoxy_glXSendPbufferToVideoNV_dispatch_table_rewrite_ptr, /* glXSendPbufferToVideoNV */
+    epoxy_glXSet3DfxModeMESA_dispatch_table_rewrite_ptr, /* glXSet3DfxModeMESA */
+    epoxy_glXSwapBuffers_dispatch_table_rewrite_ptr, /* glXSwapBuffers */
+    epoxy_glXSwapBuffersMscOML_dispatch_table_rewrite_ptr, /* glXSwapBuffersMscOML */
+    epoxy_glXSwapIntervalEXT_dispatch_table_rewrite_ptr, /* glXSwapIntervalEXT */
+    epoxy_glXSwapIntervalSGI_dispatch_table_rewrite_ptr, /* glXSwapIntervalSGI */
+    epoxy_glXUseXFont_dispatch_table_rewrite_ptr, /* glXUseXFont */
+    epoxy_glXWaitForMscOML_dispatch_table_rewrite_ptr, /* glXWaitForMscOML */
+    epoxy_glXWaitForSbcOML_dispatch_table_rewrite_ptr, /* glXWaitForSbcOML */
+    epoxy_glXWaitGL_dispatch_table_rewrite_ptr, /* glXWaitGL */
+    epoxy_glXWaitVideoSyncSGI_dispatch_table_rewrite_ptr, /* glXWaitVideoSyncSGI */
+    epoxy_glXWaitX_dispatch_table_rewrite_ptr, /* glXWaitX */
 };
 
 uint32_t glx_tls_index;

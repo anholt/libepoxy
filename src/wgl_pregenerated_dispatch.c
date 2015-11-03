@@ -233,38 +233,39 @@ static const char *enum_string =
      ;
 
 static const uint16_t enum_string_offsets[] = {
-    [WGL_10] = 0,
-    [WGL_extension_WGL_3DL_stereo_control] = 7,
-    [WGL_extension_WGL_AMD_gpu_association] = 46,
-    [WGL_extension_WGL_ARB_buffer_region] = 86,
-    [WGL_extension_WGL_ARB_create_context] = 124,
-    [WGL_extension_WGL_ARB_extensions_string] = 163,
-    [WGL_extension_WGL_ARB_make_current_read] = 205,
-    [WGL_extension_WGL_ARB_pbuffer] = 247,
-    [WGL_extension_WGL_ARB_pixel_format] = 279,
-    [WGL_extension_WGL_ARB_render_texture] = 316,
-    [WGL_extension_WGL_EXT_display_color_table] = 355,
-    [WGL_extension_WGL_EXT_extensions_string] = 399,
-    [WGL_extension_WGL_EXT_make_current_read] = 441,
-    [WGL_extension_WGL_EXT_pbuffer] = 483,
-    [WGL_extension_WGL_EXT_pixel_format] = 515,
-    [WGL_extension_WGL_EXT_swap_control] = 552,
-    [WGL_extension_WGL_I3D_digital_video_control] = 589,
-    [WGL_extension_WGL_I3D_gamma] = 635,
-    [WGL_extension_WGL_I3D_genlock] = 665,
-    [WGL_extension_WGL_I3D_image_buffer] = 697,
-    [WGL_extension_WGL_I3D_swap_frame_lock] = 734,
-    [WGL_extension_WGL_I3D_swap_frame_usage] = 774,
-    [WGL_extension_WGL_NV_DX_interop] = 815,
-    [WGL_extension_WGL_NV_copy_image] = 849,
-    [WGL_extension_WGL_NV_delay_before_swap] = 883,
-    [WGL_extension_WGL_NV_gpu_affinity] = 924,
-    [WGL_extension_WGL_NV_present_video] = 960,
-    [WGL_extension_WGL_NV_swap_group] = 997,
-    [WGL_extension_WGL_NV_vertex_array_range] = 1031,
-    [WGL_extension_WGL_NV_video_capture] = 1073,
-    [WGL_extension_WGL_NV_video_output] = 1110,
-    [WGL_extension_WGL_OML_sync_control] = 1146,
+    -1, /* wgl_provider_terminator, unused */
+    0, /* WGL_10 */
+    7, /* WGL_extension_WGL_3DL_stereo_control */
+    46, /* WGL_extension_WGL_AMD_gpu_association */
+    86, /* WGL_extension_WGL_ARB_buffer_region */
+    124, /* WGL_extension_WGL_ARB_create_context */
+    163, /* WGL_extension_WGL_ARB_extensions_string */
+    205, /* WGL_extension_WGL_ARB_make_current_read */
+    247, /* WGL_extension_WGL_ARB_pbuffer */
+    279, /* WGL_extension_WGL_ARB_pixel_format */
+    316, /* WGL_extension_WGL_ARB_render_texture */
+    355, /* WGL_extension_WGL_EXT_display_color_table */
+    399, /* WGL_extension_WGL_EXT_extensions_string */
+    441, /* WGL_extension_WGL_EXT_make_current_read */
+    483, /* WGL_extension_WGL_EXT_pbuffer */
+    515, /* WGL_extension_WGL_EXT_pixel_format */
+    552, /* WGL_extension_WGL_EXT_swap_control */
+    589, /* WGL_extension_WGL_I3D_digital_video_control */
+    635, /* WGL_extension_WGL_I3D_gamma */
+    665, /* WGL_extension_WGL_I3D_genlock */
+    697, /* WGL_extension_WGL_I3D_image_buffer */
+    734, /* WGL_extension_WGL_I3D_swap_frame_lock */
+    774, /* WGL_extension_WGL_I3D_swap_frame_usage */
+    815, /* WGL_extension_WGL_NV_DX_interop */
+    849, /* WGL_extension_WGL_NV_copy_image */
+    883, /* WGL_extension_WGL_NV_delay_before_swap */
+    924, /* WGL_extension_WGL_NV_gpu_affinity */
+    960, /* WGL_extension_WGL_NV_present_video */
+    997, /* WGL_extension_WGL_NV_swap_group */
+    1031, /* WGL_extension_WGL_NV_vertex_array_range */
+    1073, /* WGL_extension_WGL_NV_video_capture */
+    1110, /* WGL_extension_WGL_NV_video_output */
+    1146, /* WGL_extension_WGL_OML_sync_control */
 };
 
 static const char entrypoint_strings[] = {
@@ -4662,145 +4663,145 @@ GEN_THUNKS_RET(BOOL, wglWaitForSbcOML, (HDC hdc, INT64 target_sbc, INT64 * ust, 
 
 #if USING_DISPATCH_TABLE
 static struct dispatch_table resolver_table = {
-    .wglAllocateMemoryNV = epoxy_wglAllocateMemoryNV_dispatch_table_rewrite_ptr,
-    .wglAssociateImageBufferEventsI3D = epoxy_wglAssociateImageBufferEventsI3D_dispatch_table_rewrite_ptr,
-    .wglBeginFrameTrackingI3D = epoxy_wglBeginFrameTrackingI3D_dispatch_table_rewrite_ptr,
-    .wglBindDisplayColorTableEXT = epoxy_wglBindDisplayColorTableEXT_dispatch_table_rewrite_ptr,
-    .wglBindSwapBarrierNV = epoxy_wglBindSwapBarrierNV_dispatch_table_rewrite_ptr,
-    .wglBindTexImageARB = epoxy_wglBindTexImageARB_dispatch_table_rewrite_ptr,
-    .wglBindVideoCaptureDeviceNV = epoxy_wglBindVideoCaptureDeviceNV_dispatch_table_rewrite_ptr,
-    .wglBindVideoDeviceNV = epoxy_wglBindVideoDeviceNV_dispatch_table_rewrite_ptr,
-    .wglBindVideoImageNV = epoxy_wglBindVideoImageNV_dispatch_table_rewrite_ptr,
-    .wglBlitContextFramebufferAMD = epoxy_wglBlitContextFramebufferAMD_dispatch_table_rewrite_ptr,
-    .wglChoosePixelFormatARB = epoxy_wglChoosePixelFormatARB_dispatch_table_rewrite_ptr,
-    .wglChoosePixelFormatEXT = epoxy_wglChoosePixelFormatEXT_dispatch_table_rewrite_ptr,
-    .wglCopyContext = epoxy_wglCopyContext_dispatch_table_rewrite_ptr,
-    .wglCopyImageSubDataNV = epoxy_wglCopyImageSubDataNV_dispatch_table_rewrite_ptr,
-    .wglCreateAffinityDCNV = epoxy_wglCreateAffinityDCNV_dispatch_table_rewrite_ptr,
-    .wglCreateAssociatedContextAMD = epoxy_wglCreateAssociatedContextAMD_dispatch_table_rewrite_ptr,
-    .wglCreateAssociatedContextAttribsAMD = epoxy_wglCreateAssociatedContextAttribsAMD_dispatch_table_rewrite_ptr,
-    .wglCreateBufferRegionARB = epoxy_wglCreateBufferRegionARB_dispatch_table_rewrite_ptr,
-    .wglCreateContext = epoxy_wglCreateContext_dispatch_table_rewrite_ptr,
-    .wglCreateContextAttribsARB = epoxy_wglCreateContextAttribsARB_dispatch_table_rewrite_ptr,
-    .wglCreateDisplayColorTableEXT = epoxy_wglCreateDisplayColorTableEXT_dispatch_table_rewrite_ptr,
-    .wglCreateImageBufferI3D = epoxy_wglCreateImageBufferI3D_dispatch_table_rewrite_ptr,
-    .wglCreateLayerContext = epoxy_wglCreateLayerContext_dispatch_table_rewrite_ptr,
-    .wglCreatePbufferARB = epoxy_wglCreatePbufferARB_dispatch_table_rewrite_ptr,
-    .wglCreatePbufferEXT = epoxy_wglCreatePbufferEXT_dispatch_table_rewrite_ptr,
-    .wglDXCloseDeviceNV = epoxy_wglDXCloseDeviceNV_dispatch_table_rewrite_ptr,
-    .wglDXLockObjectsNV = epoxy_wglDXLockObjectsNV_dispatch_table_rewrite_ptr,
-    .wglDXObjectAccessNV = epoxy_wglDXObjectAccessNV_dispatch_table_rewrite_ptr,
-    .wglDXOpenDeviceNV = epoxy_wglDXOpenDeviceNV_dispatch_table_rewrite_ptr,
-    .wglDXRegisterObjectNV = epoxy_wglDXRegisterObjectNV_dispatch_table_rewrite_ptr,
-    .wglDXSetResourceShareHandleNV = epoxy_wglDXSetResourceShareHandleNV_dispatch_table_rewrite_ptr,
-    .wglDXUnlockObjectsNV = epoxy_wglDXUnlockObjectsNV_dispatch_table_rewrite_ptr,
-    .wglDXUnregisterObjectNV = epoxy_wglDXUnregisterObjectNV_dispatch_table_rewrite_ptr,
-    .wglDelayBeforeSwapNV = epoxy_wglDelayBeforeSwapNV_dispatch_table_rewrite_ptr,
-    .wglDeleteAssociatedContextAMD = epoxy_wglDeleteAssociatedContextAMD_dispatch_table_rewrite_ptr,
-    .wglDeleteBufferRegionARB = epoxy_wglDeleteBufferRegionARB_dispatch_table_rewrite_ptr,
-    .wglDeleteContext = epoxy_wglDeleteContext_dispatch_table_rewrite_ptr,
-    .wglDeleteDCNV = epoxy_wglDeleteDCNV_dispatch_table_rewrite_ptr,
-    .wglDescribeLayerPlane = epoxy_wglDescribeLayerPlane_dispatch_table_rewrite_ptr,
-    .wglDestroyDisplayColorTableEXT = epoxy_wglDestroyDisplayColorTableEXT_dispatch_table_rewrite_ptr,
-    .wglDestroyImageBufferI3D = epoxy_wglDestroyImageBufferI3D_dispatch_table_rewrite_ptr,
-    .wglDestroyPbufferARB = epoxy_wglDestroyPbufferARB_dispatch_table_rewrite_ptr,
-    .wglDestroyPbufferEXT = epoxy_wglDestroyPbufferEXT_dispatch_table_rewrite_ptr,
-    .wglDisableFrameLockI3D = epoxy_wglDisableFrameLockI3D_dispatch_table_rewrite_ptr,
-    .wglDisableGenlockI3D = epoxy_wglDisableGenlockI3D_dispatch_table_rewrite_ptr,
-    .wglEnableFrameLockI3D = epoxy_wglEnableFrameLockI3D_dispatch_table_rewrite_ptr,
-    .wglEnableGenlockI3D = epoxy_wglEnableGenlockI3D_dispatch_table_rewrite_ptr,
-    .wglEndFrameTrackingI3D = epoxy_wglEndFrameTrackingI3D_dispatch_table_rewrite_ptr,
-    .wglEnumGpuDevicesNV = epoxy_wglEnumGpuDevicesNV_dispatch_table_rewrite_ptr,
-    .wglEnumGpusFromAffinityDCNV = epoxy_wglEnumGpusFromAffinityDCNV_dispatch_table_rewrite_ptr,
-    .wglEnumGpusNV = epoxy_wglEnumGpusNV_dispatch_table_rewrite_ptr,
-    .wglEnumerateVideoCaptureDevicesNV = epoxy_wglEnumerateVideoCaptureDevicesNV_dispatch_table_rewrite_ptr,
-    .wglEnumerateVideoDevicesNV = epoxy_wglEnumerateVideoDevicesNV_dispatch_table_rewrite_ptr,
-    .wglFreeMemoryNV = epoxy_wglFreeMemoryNV_dispatch_table_rewrite_ptr,
-    .wglGenlockSampleRateI3D = epoxy_wglGenlockSampleRateI3D_dispatch_table_rewrite_ptr,
-    .wglGenlockSourceDelayI3D = epoxy_wglGenlockSourceDelayI3D_dispatch_table_rewrite_ptr,
-    .wglGenlockSourceEdgeI3D = epoxy_wglGenlockSourceEdgeI3D_dispatch_table_rewrite_ptr,
-    .wglGenlockSourceI3D = epoxy_wglGenlockSourceI3D_dispatch_table_rewrite_ptr,
-    .wglGetContextGPUIDAMD = epoxy_wglGetContextGPUIDAMD_dispatch_table_rewrite_ptr,
-    .wglGetCurrentAssociatedContextAMD = epoxy_wglGetCurrentAssociatedContextAMD_dispatch_table_rewrite_ptr,
-    .wglGetCurrentContext = epoxy_wglGetCurrentContext_dispatch_table_rewrite_ptr,
-    .wglGetCurrentDC = epoxy_wglGetCurrentDC_dispatch_table_rewrite_ptr,
-    .wglGetCurrentReadDCARB = epoxy_wglGetCurrentReadDCARB_dispatch_table_rewrite_ptr,
-    .wglGetCurrentReadDCEXT = epoxy_wglGetCurrentReadDCEXT_dispatch_table_rewrite_ptr,
-    .wglGetDefaultProcAddress = epoxy_wglGetDefaultProcAddress_dispatch_table_rewrite_ptr,
-    .wglGetDigitalVideoParametersI3D = epoxy_wglGetDigitalVideoParametersI3D_dispatch_table_rewrite_ptr,
-    .wglGetExtensionsStringARB = epoxy_wglGetExtensionsStringARB_dispatch_table_rewrite_ptr,
-    .wglGetExtensionsStringEXT = epoxy_wglGetExtensionsStringEXT_dispatch_table_rewrite_ptr,
-    .wglGetFrameUsageI3D = epoxy_wglGetFrameUsageI3D_dispatch_table_rewrite_ptr,
-    .wglGetGPUIDsAMD = epoxy_wglGetGPUIDsAMD_dispatch_table_rewrite_ptr,
-    .wglGetGPUInfoAMD = epoxy_wglGetGPUInfoAMD_dispatch_table_rewrite_ptr,
-    .wglGetGammaTableI3D = epoxy_wglGetGammaTableI3D_dispatch_table_rewrite_ptr,
-    .wglGetGammaTableParametersI3D = epoxy_wglGetGammaTableParametersI3D_dispatch_table_rewrite_ptr,
-    .wglGetGenlockSampleRateI3D = epoxy_wglGetGenlockSampleRateI3D_dispatch_table_rewrite_ptr,
-    .wglGetGenlockSourceDelayI3D = epoxy_wglGetGenlockSourceDelayI3D_dispatch_table_rewrite_ptr,
-    .wglGetGenlockSourceEdgeI3D = epoxy_wglGetGenlockSourceEdgeI3D_dispatch_table_rewrite_ptr,
-    .wglGetGenlockSourceI3D = epoxy_wglGetGenlockSourceI3D_dispatch_table_rewrite_ptr,
-    .wglGetLayerPaletteEntries = epoxy_wglGetLayerPaletteEntries_dispatch_table_rewrite_ptr,
-    .wglGetMscRateOML = epoxy_wglGetMscRateOML_dispatch_table_rewrite_ptr,
-    .wglGetPbufferDCARB = epoxy_wglGetPbufferDCARB_dispatch_table_rewrite_ptr,
-    .wglGetPbufferDCEXT = epoxy_wglGetPbufferDCEXT_dispatch_table_rewrite_ptr,
-    .wglGetPixelFormatAttribfvARB = epoxy_wglGetPixelFormatAttribfvARB_dispatch_table_rewrite_ptr,
-    .wglGetPixelFormatAttribfvEXT = epoxy_wglGetPixelFormatAttribfvEXT_dispatch_table_rewrite_ptr,
-    .wglGetPixelFormatAttribivARB = epoxy_wglGetPixelFormatAttribivARB_dispatch_table_rewrite_ptr,
-    .wglGetPixelFormatAttribivEXT = epoxy_wglGetPixelFormatAttribivEXT_dispatch_table_rewrite_ptr,
-    .wglGetProcAddress = epoxy_wglGetProcAddress_dispatch_table_rewrite_ptr,
-    .wglGetSwapIntervalEXT = epoxy_wglGetSwapIntervalEXT_dispatch_table_rewrite_ptr,
-    .wglGetSyncValuesOML = epoxy_wglGetSyncValuesOML_dispatch_table_rewrite_ptr,
-    .wglGetVideoDeviceNV = epoxy_wglGetVideoDeviceNV_dispatch_table_rewrite_ptr,
-    .wglGetVideoInfoNV = epoxy_wglGetVideoInfoNV_dispatch_table_rewrite_ptr,
-    .wglIsEnabledFrameLockI3D = epoxy_wglIsEnabledFrameLockI3D_dispatch_table_rewrite_ptr,
-    .wglIsEnabledGenlockI3D = epoxy_wglIsEnabledGenlockI3D_dispatch_table_rewrite_ptr,
-    .wglJoinSwapGroupNV = epoxy_wglJoinSwapGroupNV_dispatch_table_rewrite_ptr,
-    .wglLoadDisplayColorTableEXT = epoxy_wglLoadDisplayColorTableEXT_dispatch_table_rewrite_ptr,
-    .wglLockVideoCaptureDeviceNV = epoxy_wglLockVideoCaptureDeviceNV_dispatch_table_rewrite_ptr,
-    .wglMakeAssociatedContextCurrentAMD_unwrapped = epoxy_wglMakeAssociatedContextCurrentAMD_unwrapped_dispatch_table_rewrite_ptr,
-    .wglMakeContextCurrentARB_unwrapped = epoxy_wglMakeContextCurrentARB_unwrapped_dispatch_table_rewrite_ptr,
-    .wglMakeContextCurrentEXT_unwrapped = epoxy_wglMakeContextCurrentEXT_unwrapped_dispatch_table_rewrite_ptr,
-    .wglMakeCurrent_unwrapped = epoxy_wglMakeCurrent_unwrapped_dispatch_table_rewrite_ptr,
-    .wglQueryCurrentContextNV = epoxy_wglQueryCurrentContextNV_dispatch_table_rewrite_ptr,
-    .wglQueryFrameCountNV = epoxy_wglQueryFrameCountNV_dispatch_table_rewrite_ptr,
-    .wglQueryFrameLockMasterI3D = epoxy_wglQueryFrameLockMasterI3D_dispatch_table_rewrite_ptr,
-    .wglQueryFrameTrackingI3D = epoxy_wglQueryFrameTrackingI3D_dispatch_table_rewrite_ptr,
-    .wglQueryGenlockMaxSourceDelayI3D = epoxy_wglQueryGenlockMaxSourceDelayI3D_dispatch_table_rewrite_ptr,
-    .wglQueryMaxSwapGroupsNV = epoxy_wglQueryMaxSwapGroupsNV_dispatch_table_rewrite_ptr,
-    .wglQueryPbufferARB = epoxy_wglQueryPbufferARB_dispatch_table_rewrite_ptr,
-    .wglQueryPbufferEXT = epoxy_wglQueryPbufferEXT_dispatch_table_rewrite_ptr,
-    .wglQuerySwapGroupNV = epoxy_wglQuerySwapGroupNV_dispatch_table_rewrite_ptr,
-    .wglQueryVideoCaptureDeviceNV = epoxy_wglQueryVideoCaptureDeviceNV_dispatch_table_rewrite_ptr,
-    .wglRealizeLayerPalette = epoxy_wglRealizeLayerPalette_dispatch_table_rewrite_ptr,
-    .wglReleaseImageBufferEventsI3D = epoxy_wglReleaseImageBufferEventsI3D_dispatch_table_rewrite_ptr,
-    .wglReleasePbufferDCARB = epoxy_wglReleasePbufferDCARB_dispatch_table_rewrite_ptr,
-    .wglReleasePbufferDCEXT = epoxy_wglReleasePbufferDCEXT_dispatch_table_rewrite_ptr,
-    .wglReleaseTexImageARB = epoxy_wglReleaseTexImageARB_dispatch_table_rewrite_ptr,
-    .wglReleaseVideoCaptureDeviceNV = epoxy_wglReleaseVideoCaptureDeviceNV_dispatch_table_rewrite_ptr,
-    .wglReleaseVideoDeviceNV = epoxy_wglReleaseVideoDeviceNV_dispatch_table_rewrite_ptr,
-    .wglReleaseVideoImageNV = epoxy_wglReleaseVideoImageNV_dispatch_table_rewrite_ptr,
-    .wglResetFrameCountNV = epoxy_wglResetFrameCountNV_dispatch_table_rewrite_ptr,
-    .wglRestoreBufferRegionARB = epoxy_wglRestoreBufferRegionARB_dispatch_table_rewrite_ptr,
-    .wglSaveBufferRegionARB = epoxy_wglSaveBufferRegionARB_dispatch_table_rewrite_ptr,
-    .wglSendPbufferToVideoNV = epoxy_wglSendPbufferToVideoNV_dispatch_table_rewrite_ptr,
-    .wglSetDigitalVideoParametersI3D = epoxy_wglSetDigitalVideoParametersI3D_dispatch_table_rewrite_ptr,
-    .wglSetGammaTableI3D = epoxy_wglSetGammaTableI3D_dispatch_table_rewrite_ptr,
-    .wglSetGammaTableParametersI3D = epoxy_wglSetGammaTableParametersI3D_dispatch_table_rewrite_ptr,
-    .wglSetLayerPaletteEntries = epoxy_wglSetLayerPaletteEntries_dispatch_table_rewrite_ptr,
-    .wglSetPbufferAttribARB = epoxy_wglSetPbufferAttribARB_dispatch_table_rewrite_ptr,
-    .wglSetStereoEmitterState3DL = epoxy_wglSetStereoEmitterState3DL_dispatch_table_rewrite_ptr,
-    .wglShareLists = epoxy_wglShareLists_dispatch_table_rewrite_ptr,
-    .wglSwapBuffersMscOML = epoxy_wglSwapBuffersMscOML_dispatch_table_rewrite_ptr,
-    .wglSwapIntervalEXT = epoxy_wglSwapIntervalEXT_dispatch_table_rewrite_ptr,
-    .wglSwapLayerBuffers = epoxy_wglSwapLayerBuffers_dispatch_table_rewrite_ptr,
-    .wglSwapLayerBuffersMscOML = epoxy_wglSwapLayerBuffersMscOML_dispatch_table_rewrite_ptr,
-    .wglUseFontBitmapsA = epoxy_wglUseFontBitmapsA_dispatch_table_rewrite_ptr,
-    .wglUseFontBitmapsW = epoxy_wglUseFontBitmapsW_dispatch_table_rewrite_ptr,
-    .wglUseFontOutlines = epoxy_wglUseFontOutlines_dispatch_table_rewrite_ptr,
-    .wglUseFontOutlinesA = epoxy_wglUseFontOutlinesA_dispatch_table_rewrite_ptr,
-    .wglUseFontOutlinesW = epoxy_wglUseFontOutlinesW_dispatch_table_rewrite_ptr,
-    .wglWaitForMscOML = epoxy_wglWaitForMscOML_dispatch_table_rewrite_ptr,
-    .wglWaitForSbcOML = epoxy_wglWaitForSbcOML_dispatch_table_rewrite_ptr,
+    epoxy_wglAllocateMemoryNV_dispatch_table_rewrite_ptr, /* wglAllocateMemoryNV */
+    epoxy_wglAssociateImageBufferEventsI3D_dispatch_table_rewrite_ptr, /* wglAssociateImageBufferEventsI3D */
+    epoxy_wglBeginFrameTrackingI3D_dispatch_table_rewrite_ptr, /* wglBeginFrameTrackingI3D */
+    epoxy_wglBindDisplayColorTableEXT_dispatch_table_rewrite_ptr, /* wglBindDisplayColorTableEXT */
+    epoxy_wglBindSwapBarrierNV_dispatch_table_rewrite_ptr, /* wglBindSwapBarrierNV */
+    epoxy_wglBindTexImageARB_dispatch_table_rewrite_ptr, /* wglBindTexImageARB */
+    epoxy_wglBindVideoCaptureDeviceNV_dispatch_table_rewrite_ptr, /* wglBindVideoCaptureDeviceNV */
+    epoxy_wglBindVideoDeviceNV_dispatch_table_rewrite_ptr, /* wglBindVideoDeviceNV */
+    epoxy_wglBindVideoImageNV_dispatch_table_rewrite_ptr, /* wglBindVideoImageNV */
+    epoxy_wglBlitContextFramebufferAMD_dispatch_table_rewrite_ptr, /* wglBlitContextFramebufferAMD */
+    epoxy_wglChoosePixelFormatARB_dispatch_table_rewrite_ptr, /* wglChoosePixelFormatARB */
+    epoxy_wglChoosePixelFormatEXT_dispatch_table_rewrite_ptr, /* wglChoosePixelFormatEXT */
+    epoxy_wglCopyContext_dispatch_table_rewrite_ptr, /* wglCopyContext */
+    epoxy_wglCopyImageSubDataNV_dispatch_table_rewrite_ptr, /* wglCopyImageSubDataNV */
+    epoxy_wglCreateAffinityDCNV_dispatch_table_rewrite_ptr, /* wglCreateAffinityDCNV */
+    epoxy_wglCreateAssociatedContextAMD_dispatch_table_rewrite_ptr, /* wglCreateAssociatedContextAMD */
+    epoxy_wglCreateAssociatedContextAttribsAMD_dispatch_table_rewrite_ptr, /* wglCreateAssociatedContextAttribsAMD */
+    epoxy_wglCreateBufferRegionARB_dispatch_table_rewrite_ptr, /* wglCreateBufferRegionARB */
+    epoxy_wglCreateContext_dispatch_table_rewrite_ptr, /* wglCreateContext */
+    epoxy_wglCreateContextAttribsARB_dispatch_table_rewrite_ptr, /* wglCreateContextAttribsARB */
+    epoxy_wglCreateDisplayColorTableEXT_dispatch_table_rewrite_ptr, /* wglCreateDisplayColorTableEXT */
+    epoxy_wglCreateImageBufferI3D_dispatch_table_rewrite_ptr, /* wglCreateImageBufferI3D */
+    epoxy_wglCreateLayerContext_dispatch_table_rewrite_ptr, /* wglCreateLayerContext */
+    epoxy_wglCreatePbufferARB_dispatch_table_rewrite_ptr, /* wglCreatePbufferARB */
+    epoxy_wglCreatePbufferEXT_dispatch_table_rewrite_ptr, /* wglCreatePbufferEXT */
+    epoxy_wglDXCloseDeviceNV_dispatch_table_rewrite_ptr, /* wglDXCloseDeviceNV */
+    epoxy_wglDXLockObjectsNV_dispatch_table_rewrite_ptr, /* wglDXLockObjectsNV */
+    epoxy_wglDXObjectAccessNV_dispatch_table_rewrite_ptr, /* wglDXObjectAccessNV */
+    epoxy_wglDXOpenDeviceNV_dispatch_table_rewrite_ptr, /* wglDXOpenDeviceNV */
+    epoxy_wglDXRegisterObjectNV_dispatch_table_rewrite_ptr, /* wglDXRegisterObjectNV */
+    epoxy_wglDXSetResourceShareHandleNV_dispatch_table_rewrite_ptr, /* wglDXSetResourceShareHandleNV */
+    epoxy_wglDXUnlockObjectsNV_dispatch_table_rewrite_ptr, /* wglDXUnlockObjectsNV */
+    epoxy_wglDXUnregisterObjectNV_dispatch_table_rewrite_ptr, /* wglDXUnregisterObjectNV */
+    epoxy_wglDelayBeforeSwapNV_dispatch_table_rewrite_ptr, /* wglDelayBeforeSwapNV */
+    epoxy_wglDeleteAssociatedContextAMD_dispatch_table_rewrite_ptr, /* wglDeleteAssociatedContextAMD */
+    epoxy_wglDeleteBufferRegionARB_dispatch_table_rewrite_ptr, /* wglDeleteBufferRegionARB */
+    epoxy_wglDeleteContext_dispatch_table_rewrite_ptr, /* wglDeleteContext */
+    epoxy_wglDeleteDCNV_dispatch_table_rewrite_ptr, /* wglDeleteDCNV */
+    epoxy_wglDescribeLayerPlane_dispatch_table_rewrite_ptr, /* wglDescribeLayerPlane */
+    epoxy_wglDestroyDisplayColorTableEXT_dispatch_table_rewrite_ptr, /* wglDestroyDisplayColorTableEXT */
+    epoxy_wglDestroyImageBufferI3D_dispatch_table_rewrite_ptr, /* wglDestroyImageBufferI3D */
+    epoxy_wglDestroyPbufferARB_dispatch_table_rewrite_ptr, /* wglDestroyPbufferARB */
+    epoxy_wglDestroyPbufferEXT_dispatch_table_rewrite_ptr, /* wglDestroyPbufferEXT */
+    epoxy_wglDisableFrameLockI3D_dispatch_table_rewrite_ptr, /* wglDisableFrameLockI3D */
+    epoxy_wglDisableGenlockI3D_dispatch_table_rewrite_ptr, /* wglDisableGenlockI3D */
+    epoxy_wglEnableFrameLockI3D_dispatch_table_rewrite_ptr, /* wglEnableFrameLockI3D */
+    epoxy_wglEnableGenlockI3D_dispatch_table_rewrite_ptr, /* wglEnableGenlockI3D */
+    epoxy_wglEndFrameTrackingI3D_dispatch_table_rewrite_ptr, /* wglEndFrameTrackingI3D */
+    epoxy_wglEnumGpuDevicesNV_dispatch_table_rewrite_ptr, /* wglEnumGpuDevicesNV */
+    epoxy_wglEnumGpusFromAffinityDCNV_dispatch_table_rewrite_ptr, /* wglEnumGpusFromAffinityDCNV */
+    epoxy_wglEnumGpusNV_dispatch_table_rewrite_ptr, /* wglEnumGpusNV */
+    epoxy_wglEnumerateVideoCaptureDevicesNV_dispatch_table_rewrite_ptr, /* wglEnumerateVideoCaptureDevicesNV */
+    epoxy_wglEnumerateVideoDevicesNV_dispatch_table_rewrite_ptr, /* wglEnumerateVideoDevicesNV */
+    epoxy_wglFreeMemoryNV_dispatch_table_rewrite_ptr, /* wglFreeMemoryNV */
+    epoxy_wglGenlockSampleRateI3D_dispatch_table_rewrite_ptr, /* wglGenlockSampleRateI3D */
+    epoxy_wglGenlockSourceDelayI3D_dispatch_table_rewrite_ptr, /* wglGenlockSourceDelayI3D */
+    epoxy_wglGenlockSourceEdgeI3D_dispatch_table_rewrite_ptr, /* wglGenlockSourceEdgeI3D */
+    epoxy_wglGenlockSourceI3D_dispatch_table_rewrite_ptr, /* wglGenlockSourceI3D */
+    epoxy_wglGetContextGPUIDAMD_dispatch_table_rewrite_ptr, /* wglGetContextGPUIDAMD */
+    epoxy_wglGetCurrentAssociatedContextAMD_dispatch_table_rewrite_ptr, /* wglGetCurrentAssociatedContextAMD */
+    epoxy_wglGetCurrentContext_dispatch_table_rewrite_ptr, /* wglGetCurrentContext */
+    epoxy_wglGetCurrentDC_dispatch_table_rewrite_ptr, /* wglGetCurrentDC */
+    epoxy_wglGetCurrentReadDCARB_dispatch_table_rewrite_ptr, /* wglGetCurrentReadDCARB */
+    epoxy_wglGetCurrentReadDCEXT_dispatch_table_rewrite_ptr, /* wglGetCurrentReadDCEXT */
+    epoxy_wglGetDefaultProcAddress_dispatch_table_rewrite_ptr, /* wglGetDefaultProcAddress */
+    epoxy_wglGetDigitalVideoParametersI3D_dispatch_table_rewrite_ptr, /* wglGetDigitalVideoParametersI3D */
+    epoxy_wglGetExtensionsStringARB_dispatch_table_rewrite_ptr, /* wglGetExtensionsStringARB */
+    epoxy_wglGetExtensionsStringEXT_dispatch_table_rewrite_ptr, /* wglGetExtensionsStringEXT */
+    epoxy_wglGetFrameUsageI3D_dispatch_table_rewrite_ptr, /* wglGetFrameUsageI3D */
+    epoxy_wglGetGPUIDsAMD_dispatch_table_rewrite_ptr, /* wglGetGPUIDsAMD */
+    epoxy_wglGetGPUInfoAMD_dispatch_table_rewrite_ptr, /* wglGetGPUInfoAMD */
+    epoxy_wglGetGammaTableI3D_dispatch_table_rewrite_ptr, /* wglGetGammaTableI3D */
+    epoxy_wglGetGammaTableParametersI3D_dispatch_table_rewrite_ptr, /* wglGetGammaTableParametersI3D */
+    epoxy_wglGetGenlockSampleRateI3D_dispatch_table_rewrite_ptr, /* wglGetGenlockSampleRateI3D */
+    epoxy_wglGetGenlockSourceDelayI3D_dispatch_table_rewrite_ptr, /* wglGetGenlockSourceDelayI3D */
+    epoxy_wglGetGenlockSourceEdgeI3D_dispatch_table_rewrite_ptr, /* wglGetGenlockSourceEdgeI3D */
+    epoxy_wglGetGenlockSourceI3D_dispatch_table_rewrite_ptr, /* wglGetGenlockSourceI3D */
+    epoxy_wglGetLayerPaletteEntries_dispatch_table_rewrite_ptr, /* wglGetLayerPaletteEntries */
+    epoxy_wglGetMscRateOML_dispatch_table_rewrite_ptr, /* wglGetMscRateOML */
+    epoxy_wglGetPbufferDCARB_dispatch_table_rewrite_ptr, /* wglGetPbufferDCARB */
+    epoxy_wglGetPbufferDCEXT_dispatch_table_rewrite_ptr, /* wglGetPbufferDCEXT */
+    epoxy_wglGetPixelFormatAttribfvARB_dispatch_table_rewrite_ptr, /* wglGetPixelFormatAttribfvARB */
+    epoxy_wglGetPixelFormatAttribfvEXT_dispatch_table_rewrite_ptr, /* wglGetPixelFormatAttribfvEXT */
+    epoxy_wglGetPixelFormatAttribivARB_dispatch_table_rewrite_ptr, /* wglGetPixelFormatAttribivARB */
+    epoxy_wglGetPixelFormatAttribivEXT_dispatch_table_rewrite_ptr, /* wglGetPixelFormatAttribivEXT */
+    epoxy_wglGetProcAddress_dispatch_table_rewrite_ptr, /* wglGetProcAddress */
+    epoxy_wglGetSwapIntervalEXT_dispatch_table_rewrite_ptr, /* wglGetSwapIntervalEXT */
+    epoxy_wglGetSyncValuesOML_dispatch_table_rewrite_ptr, /* wglGetSyncValuesOML */
+    epoxy_wglGetVideoDeviceNV_dispatch_table_rewrite_ptr, /* wglGetVideoDeviceNV */
+    epoxy_wglGetVideoInfoNV_dispatch_table_rewrite_ptr, /* wglGetVideoInfoNV */
+    epoxy_wglIsEnabledFrameLockI3D_dispatch_table_rewrite_ptr, /* wglIsEnabledFrameLockI3D */
+    epoxy_wglIsEnabledGenlockI3D_dispatch_table_rewrite_ptr, /* wglIsEnabledGenlockI3D */
+    epoxy_wglJoinSwapGroupNV_dispatch_table_rewrite_ptr, /* wglJoinSwapGroupNV */
+    epoxy_wglLoadDisplayColorTableEXT_dispatch_table_rewrite_ptr, /* wglLoadDisplayColorTableEXT */
+    epoxy_wglLockVideoCaptureDeviceNV_dispatch_table_rewrite_ptr, /* wglLockVideoCaptureDeviceNV */
+    epoxy_wglMakeAssociatedContextCurrentAMD_unwrapped_dispatch_table_rewrite_ptr, /* wglMakeAssociatedContextCurrentAMD_unwrapped */
+    epoxy_wglMakeContextCurrentARB_unwrapped_dispatch_table_rewrite_ptr, /* wglMakeContextCurrentARB_unwrapped */
+    epoxy_wglMakeContextCurrentEXT_unwrapped_dispatch_table_rewrite_ptr, /* wglMakeContextCurrentEXT_unwrapped */
+    epoxy_wglMakeCurrent_unwrapped_dispatch_table_rewrite_ptr, /* wglMakeCurrent_unwrapped */
+    epoxy_wglQueryCurrentContextNV_dispatch_table_rewrite_ptr, /* wglQueryCurrentContextNV */
+    epoxy_wglQueryFrameCountNV_dispatch_table_rewrite_ptr, /* wglQueryFrameCountNV */
+    epoxy_wglQueryFrameLockMasterI3D_dispatch_table_rewrite_ptr, /* wglQueryFrameLockMasterI3D */
+    epoxy_wglQueryFrameTrackingI3D_dispatch_table_rewrite_ptr, /* wglQueryFrameTrackingI3D */
+    epoxy_wglQueryGenlockMaxSourceDelayI3D_dispatch_table_rewrite_ptr, /* wglQueryGenlockMaxSourceDelayI3D */
+    epoxy_wglQueryMaxSwapGroupsNV_dispatch_table_rewrite_ptr, /* wglQueryMaxSwapGroupsNV */
+    epoxy_wglQueryPbufferARB_dispatch_table_rewrite_ptr, /* wglQueryPbufferARB */
+    epoxy_wglQueryPbufferEXT_dispatch_table_rewrite_ptr, /* wglQueryPbufferEXT */
+    epoxy_wglQuerySwapGroupNV_dispatch_table_rewrite_ptr, /* wglQuerySwapGroupNV */
+    epoxy_wglQueryVideoCaptureDeviceNV_dispatch_table_rewrite_ptr, /* wglQueryVideoCaptureDeviceNV */
+    epoxy_wglRealizeLayerPalette_dispatch_table_rewrite_ptr, /* wglRealizeLayerPalette */
+    epoxy_wglReleaseImageBufferEventsI3D_dispatch_table_rewrite_ptr, /* wglReleaseImageBufferEventsI3D */
+    epoxy_wglReleasePbufferDCARB_dispatch_table_rewrite_ptr, /* wglReleasePbufferDCARB */
+    epoxy_wglReleasePbufferDCEXT_dispatch_table_rewrite_ptr, /* wglReleasePbufferDCEXT */
+    epoxy_wglReleaseTexImageARB_dispatch_table_rewrite_ptr, /* wglReleaseTexImageARB */
+    epoxy_wglReleaseVideoCaptureDeviceNV_dispatch_table_rewrite_ptr, /* wglReleaseVideoCaptureDeviceNV */
+    epoxy_wglReleaseVideoDeviceNV_dispatch_table_rewrite_ptr, /* wglReleaseVideoDeviceNV */
+    epoxy_wglReleaseVideoImageNV_dispatch_table_rewrite_ptr, /* wglReleaseVideoImageNV */
+    epoxy_wglResetFrameCountNV_dispatch_table_rewrite_ptr, /* wglResetFrameCountNV */
+    epoxy_wglRestoreBufferRegionARB_dispatch_table_rewrite_ptr, /* wglRestoreBufferRegionARB */
+    epoxy_wglSaveBufferRegionARB_dispatch_table_rewrite_ptr, /* wglSaveBufferRegionARB */
+    epoxy_wglSendPbufferToVideoNV_dispatch_table_rewrite_ptr, /* wglSendPbufferToVideoNV */
+    epoxy_wglSetDigitalVideoParametersI3D_dispatch_table_rewrite_ptr, /* wglSetDigitalVideoParametersI3D */
+    epoxy_wglSetGammaTableI3D_dispatch_table_rewrite_ptr, /* wglSetGammaTableI3D */
+    epoxy_wglSetGammaTableParametersI3D_dispatch_table_rewrite_ptr, /* wglSetGammaTableParametersI3D */
+    epoxy_wglSetLayerPaletteEntries_dispatch_table_rewrite_ptr, /* wglSetLayerPaletteEntries */
+    epoxy_wglSetPbufferAttribARB_dispatch_table_rewrite_ptr, /* wglSetPbufferAttribARB */
+    epoxy_wglSetStereoEmitterState3DL_dispatch_table_rewrite_ptr, /* wglSetStereoEmitterState3DL */
+    epoxy_wglShareLists_dispatch_table_rewrite_ptr, /* wglShareLists */
+    epoxy_wglSwapBuffersMscOML_dispatch_table_rewrite_ptr, /* wglSwapBuffersMscOML */
+    epoxy_wglSwapIntervalEXT_dispatch_table_rewrite_ptr, /* wglSwapIntervalEXT */
+    epoxy_wglSwapLayerBuffers_dispatch_table_rewrite_ptr, /* wglSwapLayerBuffers */
+    epoxy_wglSwapLayerBuffersMscOML_dispatch_table_rewrite_ptr, /* wglSwapLayerBuffersMscOML */
+    epoxy_wglUseFontBitmapsA_dispatch_table_rewrite_ptr, /* wglUseFontBitmapsA */
+    epoxy_wglUseFontBitmapsW_dispatch_table_rewrite_ptr, /* wglUseFontBitmapsW */
+    epoxy_wglUseFontOutlines_dispatch_table_rewrite_ptr, /* wglUseFontOutlines */
+    epoxy_wglUseFontOutlinesA_dispatch_table_rewrite_ptr, /* wglUseFontOutlinesA */
+    epoxy_wglUseFontOutlinesW_dispatch_table_rewrite_ptr, /* wglUseFontOutlinesW */
+    epoxy_wglWaitForMscOML_dispatch_table_rewrite_ptr, /* wglWaitForMscOML */
+    epoxy_wglWaitForSbcOML_dispatch_table_rewrite_ptr, /* wglWaitForSbcOML */
 };
 
 uint32_t wgl_tls_index;

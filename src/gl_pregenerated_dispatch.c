@@ -3856,367 +3856,368 @@ static const char *enum_string =
      ;
 
 static const uint16_t enum_string_offsets[] = {
-    [Desktop_OpenGL_1_0] = 0,
-    [Desktop_OpenGL_1_1] = 19,
-    [Desktop_OpenGL_1_2] = 38,
-    [Desktop_OpenGL_1_3] = 57,
-    [Desktop_OpenGL_1_4] = 76,
-    [Desktop_OpenGL_1_5] = 95,
-    [Desktop_OpenGL_2_0] = 114,
-    [Desktop_OpenGL_2_1] = 133,
-    [Desktop_OpenGL_3_0] = 152,
-    [Desktop_OpenGL_3_1] = 171,
-    [Desktop_OpenGL_3_2] = 190,
-    [Desktop_OpenGL_3_3] = 209,
-    [Desktop_OpenGL_4_0] = 228,
-    [Desktop_OpenGL_4_1] = 247,
-    [Desktop_OpenGL_4_2] = 266,
-    [Desktop_OpenGL_4_3] = 285,
-    [Desktop_OpenGL_4_4] = 304,
-    [Desktop_OpenGL_4_5] = 323,
-    [GL_extension_GL_3DFX_tbuffer] = 342,
-    [GL_extension_GL_AMD_debug_output] = 373,
-    [GL_extension_GL_AMD_draw_buffers_blend] = 408,
-    [GL_extension_GL_AMD_gpu_shader_int64] = 449,
-    [GL_extension_GL_AMD_interleaved_elements] = 488,
-    [GL_extension_GL_AMD_multi_draw_indirect] = 531,
-    [GL_extension_GL_AMD_name_gen_delete] = 573,
-    [GL_extension_GL_AMD_occlusion_query_event] = 611,
-    [GL_extension_GL_AMD_performance_monitor] = 655,
-    [GL_extension_GL_AMD_sample_positions] = 697,
-    [GL_extension_GL_AMD_sparse_texture] = 736,
-    [GL_extension_GL_AMD_stencil_operation_extended] = 773,
-    [GL_extension_GL_AMD_vertex_shader_tessellator] = 822,
-    [GL_extension_GL_ANGLE_framebuffer_blit] = 870,
-    [GL_extension_GL_ANGLE_framebuffer_multisample] = 911,
-    [GL_extension_GL_ANGLE_instanced_arrays] = 959,
-    [GL_extension_GL_ANGLE_translated_shader_source] = 1000,
-    [GL_extension_GL_APPLE_copy_texture_levels] = 1049,
-    [GL_extension_GL_APPLE_element_array] = 1093,
-    [GL_extension_GL_APPLE_fence] = 1131,
-    [GL_extension_GL_APPLE_flush_buffer_range] = 1161,
-    [GL_extension_GL_APPLE_framebuffer_multisample] = 1204,
-    [GL_extension_GL_APPLE_object_purgeable] = 1252,
-    [GL_extension_GL_APPLE_sync] = 1293,
-    [GL_extension_GL_APPLE_texture_range] = 1322,
-    [GL_extension_GL_APPLE_vertex_array_object] = 1360,
-    [GL_extension_GL_APPLE_vertex_array_range] = 1404,
-    [GL_extension_GL_APPLE_vertex_program_evaluators] = 1447,
-    [GL_extension_GL_ARB_ES2_compatibility] = 1497,
-    [GL_extension_GL_ARB_ES3_1_compatibility] = 1537,
-    [GL_extension_GL_ARB_base_instance] = 1579,
-    [GL_extension_GL_ARB_bindless_texture] = 1615,
-    [GL_extension_GL_ARB_blend_func_extended] = 1654,
-    [GL_extension_GL_ARB_buffer_storage] = 1696,
-    [GL_extension_GL_ARB_cl_event] = 1733,
-    [GL_extension_GL_ARB_clear_buffer_object] = 1764,
-    [GL_extension_GL_ARB_clear_texture] = 1806,
-    [GL_extension_GL_ARB_clip_control] = 1842,
-    [GL_extension_GL_ARB_color_buffer_float] = 1877,
-    [GL_extension_GL_ARB_compute_shader] = 1918,
-    [GL_extension_GL_ARB_compute_variable_group_size] = 1955,
-    [GL_extension_GL_ARB_copy_buffer] = 2005,
-    [GL_extension_GL_ARB_copy_image] = 2039,
-    [GL_extension_GL_ARB_debug_output] = 2072,
-    [GL_extension_GL_ARB_direct_state_access] = 2107,
-    [GL_extension_GL_ARB_draw_buffers] = 2149,
-    [GL_extension_GL_ARB_draw_buffers_blend] = 2184,
-    [GL_extension_GL_ARB_draw_elements_base_vertex] = 2225,
-    [GL_extension_GL_ARB_draw_indirect] = 2273,
-    [GL_extension_GL_ARB_draw_instanced] = 2309,
-    [GL_extension_GL_ARB_fragment_program] = 2346,
-    [GL_extension_GL_ARB_framebuffer_no_attachments] = 2385,
-    [GL_extension_GL_ARB_framebuffer_object] = 2434,
-    [GL_extension_GL_ARB_geometry_shader4] = 2475,
-    [GL_extension_GL_ARB_get_program_binary] = 2514,
-    [GL_extension_GL_ARB_get_texture_sub_image] = 2555,
-    [GL_extension_GL_ARB_gpu_shader_fp64] = 2599,
-    [GL_extension_GL_ARB_imaging] = 2637,
-    [GL_extension_GL_ARB_indirect_parameters] = 2667,
-    [GL_extension_GL_ARB_instanced_arrays] = 2709,
-    [GL_extension_GL_ARB_internalformat_query2] = 2748,
-    [GL_extension_GL_ARB_internalformat_query] = 2792,
-    [GL_extension_GL_ARB_invalidate_subdata] = 2835,
-    [GL_extension_GL_ARB_map_buffer_range] = 2876,
-    [GL_extension_GL_ARB_matrix_palette] = 2915,
-    [GL_extension_GL_ARB_multi_bind] = 2952,
-    [GL_extension_GL_ARB_multi_draw_indirect] = 2985,
-    [GL_extension_GL_ARB_multisample] = 3027,
-    [GL_extension_GL_ARB_multitexture] = 3061,
-    [GL_extension_GL_ARB_occlusion_query] = 3096,
-    [GL_extension_GL_ARB_point_parameters] = 3134,
-    [GL_extension_GL_ARB_program_interface_query] = 3173,
-    [GL_extension_GL_ARB_provoking_vertex] = 3219,
-    [GL_extension_GL_ARB_robustness] = 3258,
-    [GL_extension_GL_ARB_sample_shading] = 3291,
-    [GL_extension_GL_ARB_sampler_objects] = 3328,
-    [GL_extension_GL_ARB_separate_shader_objects] = 3366,
-    [GL_extension_GL_ARB_shader_atomic_counters] = 3412,
-    [GL_extension_GL_ARB_shader_image_load_store] = 3457,
-    [GL_extension_GL_ARB_shader_objects] = 3503,
-    [GL_extension_GL_ARB_shader_storage_buffer_object] = 3540,
-    [GL_extension_GL_ARB_shader_subroutine] = 3591,
-    [GL_extension_GL_ARB_shading_language_include] = 3631,
-    [GL_extension_GL_ARB_sparse_buffer] = 3678,
-    [GL_extension_GL_ARB_sparse_texture] = 3714,
-    [GL_extension_GL_ARB_sync] = 3751,
-    [GL_extension_GL_ARB_tessellation_shader] = 3778,
-    [GL_extension_GL_ARB_texture_barrier] = 3820,
-    [GL_extension_GL_ARB_texture_buffer_object] = 3858,
-    [GL_extension_GL_ARB_texture_buffer_range] = 3902,
-    [GL_extension_GL_ARB_texture_compression] = 3945,
-    [GL_extension_GL_ARB_texture_multisample] = 3987,
-    [GL_extension_GL_ARB_texture_storage] = 4029,
-    [GL_extension_GL_ARB_texture_storage_multisample] = 4067,
-    [GL_extension_GL_ARB_texture_view] = 4117,
-    [GL_extension_GL_ARB_timer_query] = 4152,
-    [GL_extension_GL_ARB_transform_feedback2] = 4186,
-    [GL_extension_GL_ARB_transform_feedback3] = 4228,
-    [GL_extension_GL_ARB_transform_feedback_instanced] = 4270,
-    [GL_extension_GL_ARB_transpose_matrix] = 4321,
-    [GL_extension_GL_ARB_uniform_buffer_object] = 4360,
-    [GL_extension_GL_ARB_vertex_array_object] = 4404,
-    [GL_extension_GL_ARB_vertex_attrib_64bit] = 4446,
-    [GL_extension_GL_ARB_vertex_attrib_binding] = 4488,
-    [GL_extension_GL_ARB_vertex_blend] = 4532,
-    [GL_extension_GL_ARB_vertex_buffer_object] = 4567,
-    [GL_extension_GL_ARB_vertex_program] = 4610,
-    [GL_extension_GL_ARB_vertex_shader] = 4647,
-    [GL_extension_GL_ARB_vertex_type_2_10_10_10_rev] = 4683,
-    [GL_extension_GL_ARB_viewport_array] = 4732,
-    [GL_extension_GL_ARB_window_pos] = 4769,
-    [GL_extension_GL_ATI_draw_buffers] = 4802,
-    [GL_extension_GL_ATI_element_array] = 4837,
-    [GL_extension_GL_ATI_envmap_bumpmap] = 4873,
-    [GL_extension_GL_ATI_fragment_shader] = 4910,
-    [GL_extension_GL_ATI_map_object_buffer] = 4948,
-    [GL_extension_GL_ATI_pn_triangles] = 4988,
-    [GL_extension_GL_ATI_separate_stencil] = 5023,
-    [GL_extension_GL_ATI_vertex_array_object] = 5062,
-    [GL_extension_GL_ATI_vertex_attrib_array_object] = 5104,
-    [GL_extension_GL_ATI_vertex_streams] = 5153,
-    [GL_extension_GL_EXT_base_instance] = 5190,
-    [GL_extension_GL_EXT_bindable_uniform] = 5226,
-    [GL_extension_GL_EXT_blend_color] = 5265,
-    [GL_extension_GL_EXT_blend_equation_separate] = 5299,
-    [GL_extension_GL_EXT_blend_func_separate] = 5345,
-    [GL_extension_GL_EXT_blend_minmax] = 5387,
-    [GL_extension_GL_EXT_buffer_storage] = 5422,
-    [GL_extension_GL_EXT_color_subtable] = 5459,
-    [GL_extension_GL_EXT_compiled_vertex_array] = 5496,
-    [GL_extension_GL_EXT_convolution] = 5540,
-    [GL_extension_GL_EXT_coordinate_frame] = 5574,
-    [GL_extension_GL_EXT_copy_image] = 5613,
-    [GL_extension_GL_EXT_copy_texture] = 5646,
-    [GL_extension_GL_EXT_cull_vertex] = 5681,
-    [GL_extension_GL_EXT_debug_label] = 5715,
-    [GL_extension_GL_EXT_debug_marker] = 5749,
-    [GL_extension_GL_EXT_depth_bounds_test] = 5784,
-    [GL_extension_GL_EXT_direct_state_access] = 5824,
-    [GL_extension_GL_EXT_discard_framebuffer] = 5866,
-    [GL_extension_GL_EXT_disjoint_timer_query] = 5908,
-    [GL_extension_GL_EXT_draw_buffers2] = 5951,
-    [GL_extension_GL_EXT_draw_buffers] = 5987,
-    [GL_extension_GL_EXT_draw_buffers_indexed] = 6022,
-    [GL_extension_GL_EXT_draw_elements_base_vertex] = 6065,
-    [GL_extension_GL_EXT_draw_instanced] = 6113,
-    [GL_extension_GL_EXT_draw_range_elements] = 6150,
-    [GL_extension_GL_EXT_fog_coord] = 6192,
-    [GL_extension_GL_EXT_framebuffer_blit] = 6224,
-    [GL_extension_GL_EXT_framebuffer_multisample] = 6263,
-    [GL_extension_GL_EXT_framebuffer_object] = 6309,
-    [GL_extension_GL_EXT_geometry_shader4] = 6350,
-    [GL_extension_GL_EXT_geometry_shader] = 6389,
-    [GL_extension_GL_EXT_gpu_program_parameters] = 6427,
-    [GL_extension_GL_EXT_gpu_shader4] = 6472,
-    [GL_extension_GL_EXT_histogram] = 6506,
-    [GL_extension_GL_EXT_index_func] = 6538,
-    [GL_extension_GL_EXT_index_material] = 6571,
-    [GL_extension_GL_EXT_instanced_arrays] = 6608,
-    [GL_extension_GL_EXT_light_texture] = 6647,
-    [GL_extension_GL_EXT_map_buffer_range] = 6683,
-    [GL_extension_GL_EXT_multi_draw_arrays] = 6722,
-    [GL_extension_GL_EXT_multi_draw_indirect] = 6762,
-    [GL_extension_GL_EXT_multisample] = 6804,
-    [GL_extension_GL_EXT_multisampled_render_to_texture] = 6838,
-    [GL_extension_GL_EXT_multiview_draw_buffers] = 6891,
-    [GL_extension_GL_EXT_occlusion_query_boolean] = 6936,
-    [GL_extension_GL_EXT_paletted_texture] = 6982,
-    [GL_extension_GL_EXT_pixel_transform] = 7021,
-    [GL_extension_GL_EXT_point_parameters] = 7059,
-    [GL_extension_GL_EXT_polygon_offset] = 7098,
-    [GL_extension_GL_EXT_polygon_offset_clamp] = 7135,
-    [GL_extension_GL_EXT_primitive_bounding_box] = 7178,
-    [GL_extension_GL_EXT_provoking_vertex] = 7223,
-    [GL_extension_GL_EXT_raster_multisample] = 7262,
-    [GL_extension_GL_EXT_robustness] = 7303,
-    [GL_extension_GL_EXT_secondary_color] = 7336,
-    [GL_extension_GL_EXT_separate_shader_objects] = 7374,
-    [GL_extension_GL_EXT_shader_image_load_store] = 7420,
-    [GL_extension_GL_EXT_sparse_texture] = 7466,
-    [GL_extension_GL_EXT_stencil_clear_tag] = 7503,
-    [GL_extension_GL_EXT_stencil_two_side] = 7543,
-    [GL_extension_GL_EXT_subtexture] = 7582,
-    [GL_extension_GL_EXT_tessellation_shader] = 7615,
-    [GL_extension_GL_EXT_texture3D] = 7657,
-    [GL_extension_GL_EXT_texture_array] = 7689,
-    [GL_extension_GL_EXT_texture_border_clamp] = 7725,
-    [GL_extension_GL_EXT_texture_buffer] = 7768,
-    [GL_extension_GL_EXT_texture_buffer_object] = 7805,
-    [GL_extension_GL_EXT_texture_filter_minmax] = 7849,
-    [GL_extension_GL_EXT_texture_integer] = 7893,
-    [GL_extension_GL_EXT_texture_object] = 7931,
-    [GL_extension_GL_EXT_texture_perturb_normal] = 7968,
-    [GL_extension_GL_EXT_texture_storage] = 8013,
-    [GL_extension_GL_EXT_texture_view] = 8051,
-    [GL_extension_GL_EXT_timer_query] = 8086,
-    [GL_extension_GL_EXT_transform_feedback] = 8120,
-    [GL_extension_GL_EXT_vertex_array] = 8161,
-    [GL_extension_GL_EXT_vertex_attrib_64bit] = 8196,
-    [GL_extension_GL_EXT_vertex_shader] = 8238,
-    [GL_extension_GL_EXT_vertex_weighting] = 8274,
-    [GL_extension_GL_EXT_x11_sync_object] = 8313,
-    [GL_extension_GL_GREMEDY_frame_terminator] = 8351,
-    [GL_extension_GL_GREMEDY_string_marker] = 8394,
-    [GL_extension_GL_HP_image_transform] = 8434,
-    [GL_extension_GL_IBM_multimode_draw_arrays] = 8471,
-    [GL_extension_GL_IBM_static_data] = 8515,
-    [GL_extension_GL_IBM_vertex_array_lists] = 8549,
-    [GL_extension_GL_IMG_multisampled_render_to_texture] = 8590,
-    [GL_extension_GL_IMG_user_clip_plane] = 8643,
-    [GL_extension_GL_INGR_blend_func_separate] = 8681,
-    [GL_extension_GL_INTEL_map_texture] = 8724,
-    [GL_extension_GL_INTEL_parallel_arrays] = 8760,
-    [GL_extension_GL_INTEL_performance_query] = 8800,
-    [GL_extension_GL_KHR_blend_equation_advanced] = 8842,
-    [GL_extension_GL_KHR_debug] = 8888,
-    [GL_extension_GL_KHR_robustness] = 8916,
-    [GL_extension_GL_MESA_resize_buffers] = 8949,
-    [GL_extension_GL_MESA_window_pos] = 8987,
-    [GL_extension_GL_NVX_conditional_render] = 9021,
-    [GL_extension_GL_NV_bindless_multi_draw_indirect] = 9062,
-    [GL_extension_GL_NV_bindless_multi_draw_indirect_count] = 9112,
-    [GL_extension_GL_NV_bindless_texture] = 9168,
-    [GL_extension_GL_NV_blend_equation_advanced] = 9206,
-    [GL_extension_GL_NV_command_list] = 9251,
-    [GL_extension_GL_NV_conditional_render] = 9285,
-    [GL_extension_GL_NV_conservative_raster] = 9325,
-    [GL_extension_GL_NV_copy_buffer] = 9366,
-    [GL_extension_GL_NV_copy_image] = 9399,
-    [GL_extension_GL_NV_coverage_sample] = 9431,
-    [GL_extension_GL_NV_depth_buffer_float] = 9468,
-    [GL_extension_GL_NV_draw_buffers] = 9508,
-    [GL_extension_GL_NV_draw_instanced] = 9542,
-    [GL_extension_GL_NV_draw_texture] = 9578,
-    [GL_extension_GL_NV_evaluators] = 9612,
-    [GL_extension_GL_NV_explicit_multisample] = 9644,
-    [GL_extension_GL_NV_fence] = 9686,
-    [GL_extension_GL_NV_fragment_coverage_to_color] = 9713,
-    [GL_extension_GL_NV_fragment_program] = 9761,
-    [GL_extension_GL_NV_framebuffer_blit] = 9799,
-    [GL_extension_GL_NV_framebuffer_mixed_samples] = 9837,
-    [GL_extension_GL_NV_framebuffer_multisample] = 9884,
-    [GL_extension_GL_NV_framebuffer_multisample_coverage] = 9929,
-    [GL_extension_GL_NV_geometry_program4] = 9983,
-    [GL_extension_GL_NV_gpu_program4] = 10022,
-    [GL_extension_GL_NV_gpu_program5] = 10056,
-    [GL_extension_GL_NV_gpu_shader5] = 10090,
-    [GL_extension_GL_NV_half_float] = 10123,
-    [GL_extension_GL_NV_instanced_arrays] = 10155,
-    [GL_extension_GL_NV_internalformat_sample_query] = 10193,
-    [GL_extension_GL_NV_non_square_matrices] = 10242,
-    [GL_extension_GL_NV_occlusion_query] = 10283,
-    [GL_extension_GL_NV_parameter_buffer_object] = 10320,
-    [GL_extension_GL_NV_path_rendering] = 10365,
-    [GL_extension_GL_NV_pixel_data_range] = 10401,
-    [GL_extension_GL_NV_point_sprite] = 10439,
-    [GL_extension_GL_NV_polygon_mode] = 10473,
-    [GL_extension_GL_NV_present_video] = 10507,
-    [GL_extension_GL_NV_primitive_restart] = 10542,
-    [GL_extension_GL_NV_read_buffer] = 10581,
-    [GL_extension_GL_NV_register_combiners2] = 10614,
-    [GL_extension_GL_NV_register_combiners] = 10655,
-    [GL_extension_GL_NV_sample_locations] = 10695,
-    [GL_extension_GL_NV_shader_buffer_load] = 10733,
-    [GL_extension_GL_NV_texture_barrier] = 10773,
-    [GL_extension_GL_NV_texture_multisample] = 10810,
-    [GL_extension_GL_NV_transform_feedback2] = 10851,
-    [GL_extension_GL_NV_transform_feedback] = 10892,
-    [GL_extension_GL_NV_vdpau_interop] = 10932,
-    [GL_extension_GL_NV_vertex_array_range] = 10967,
-    [GL_extension_GL_NV_vertex_attrib_integer_64bit] = 11007,
-    [GL_extension_GL_NV_vertex_buffer_unified_memory] = 11056,
-    [GL_extension_GL_NV_vertex_program4] = 11106,
-    [GL_extension_GL_NV_vertex_program] = 11143,
-    [GL_extension_GL_NV_video_capture] = 11179,
-    [GL_extension_GL_NV_viewport_array] = 11214,
-    [GL_extension_GL_OES_EGL_image] = 11250,
-    [GL_extension_GL_OES_blend_equation_separate] = 11282,
-    [GL_extension_GL_OES_blend_func_separate] = 11328,
-    [GL_extension_GL_OES_blend_subtract] = 11370,
-    [GL_extension_GL_OES_byte_coordinates] = 11407,
-    [GL_extension_GL_OES_copy_image] = 11446,
-    [GL_extension_GL_OES_draw_buffers_indexed] = 11479,
-    [GL_extension_GL_OES_draw_elements_base_vertex] = 11522,
-    [GL_extension_GL_OES_draw_texture] = 11570,
-    [GL_extension_GL_OES_fixed_point] = 11605,
-    [GL_extension_GL_OES_framebuffer_object] = 11639,
-    [GL_extension_GL_OES_geometry_shader] = 11680,
-    [GL_extension_GL_OES_get_program_binary] = 11718,
-    [GL_extension_GL_OES_mapbuffer] = 11759,
-    [GL_extension_GL_OES_matrix_palette] = 11791,
-    [GL_extension_GL_OES_point_size_array] = 11828,
-    [GL_extension_GL_OES_primitive_bounding_box] = 11867,
-    [GL_extension_GL_OES_query_matrix] = 11912,
-    [GL_extension_GL_OES_sample_shading] = 11947,
-    [GL_extension_GL_OES_single_precision] = 11984,
-    [GL_extension_GL_OES_tessellation_shader] = 12023,
-    [GL_extension_GL_OES_texture_3D] = 12065,
-    [GL_extension_GL_OES_texture_border_clamp] = 12098,
-    [GL_extension_GL_OES_texture_buffer] = 12141,
-    [GL_extension_GL_OES_texture_cube_map] = 12178,
-    [GL_extension_GL_OES_texture_storage_multisample_2d_array] = 12217,
-    [GL_extension_GL_OES_texture_view] = 12276,
-    [GL_extension_GL_OES_vertex_array_object] = 12311,
-    [GL_extension_GL_OVR_multiview] = 12353,
-    [GL_extension_GL_PGI_misc_hints] = 12385,
-    [GL_extension_GL_QCOM_alpha_test] = 12418,
-    [GL_extension_GL_QCOM_driver_control] = 12452,
-    [GL_extension_GL_QCOM_extended_get2] = 12490,
-    [GL_extension_GL_QCOM_extended_get] = 12527,
-    [GL_extension_GL_QCOM_tiled_rendering] = 12563,
-    [GL_extension_GL_SGIS_detail_texture] = 12602,
-    [GL_extension_GL_SGIS_fog_function] = 12640,
-    [GL_extension_GL_SGIS_multisample] = 12676,
-    [GL_extension_GL_SGIS_pixel_texture] = 12711,
-    [GL_extension_GL_SGIS_point_parameters] = 12748,
-    [GL_extension_GL_SGIS_sharpen_texture] = 12788,
-    [GL_extension_GL_SGIS_texture4D] = 12827,
-    [GL_extension_GL_SGIS_texture_color_mask] = 12860,
-    [GL_extension_GL_SGIS_texture_filter4] = 12902,
-    [GL_extension_GL_SGIX_async] = 12941,
-    [GL_extension_GL_SGIX_flush_raster] = 12970,
-    [GL_extension_GL_SGIX_fragment_lighting] = 13006,
-    [GL_extension_GL_SGIX_framezoom] = 13047,
-    [GL_extension_GL_SGIX_igloo_interface] = 13080,
-    [GL_extension_GL_SGIX_instruments] = 13119,
-    [GL_extension_GL_SGIX_list_priority] = 13154,
-    [GL_extension_GL_SGIX_pixel_texture] = 13191,
-    [GL_extension_GL_SGIX_polynomial_ffd] = 13228,
-    [GL_extension_GL_SGIX_reference_plane] = 13266,
-    [GL_extension_GL_SGIX_sprite] = 13305,
-    [GL_extension_GL_SGIX_tag_sample_buffer] = 13335,
-    [GL_extension_GL_SGI_color_table] = 13376,
-    [GL_extension_GL_SUNX_constant_data] = 13410,
-    [GL_extension_GL_SUN_global_alpha] = 13447,
-    [GL_extension_GL_SUN_mesh_array] = 13482,
-    [GL_extension_GL_SUN_triangle_list] = 13515,
-    [GL_extension_GL_SUN_vertex] = 13551,
-    [OpenGL_ES_1_0] = 13580,
-    [OpenGL_ES_2_0] = 13594,
-    [OpenGL_ES_3_0] = 13608,
-    [OpenGL_ES_3_1] = 13622,
-    [always_present] = 13636,
+    -1, /* gl_provider_terminator, unused */
+    0, /* Desktop_OpenGL_1_0 */
+    19, /* Desktop_OpenGL_1_1 */
+    38, /* Desktop_OpenGL_1_2 */
+    57, /* Desktop_OpenGL_1_3 */
+    76, /* Desktop_OpenGL_1_4 */
+    95, /* Desktop_OpenGL_1_5 */
+    114, /* Desktop_OpenGL_2_0 */
+    133, /* Desktop_OpenGL_2_1 */
+    152, /* Desktop_OpenGL_3_0 */
+    171, /* Desktop_OpenGL_3_1 */
+    190, /* Desktop_OpenGL_3_2 */
+    209, /* Desktop_OpenGL_3_3 */
+    228, /* Desktop_OpenGL_4_0 */
+    247, /* Desktop_OpenGL_4_1 */
+    266, /* Desktop_OpenGL_4_2 */
+    285, /* Desktop_OpenGL_4_3 */
+    304, /* Desktop_OpenGL_4_4 */
+    323, /* Desktop_OpenGL_4_5 */
+    342, /* GL_extension_GL_3DFX_tbuffer */
+    373, /* GL_extension_GL_AMD_debug_output */
+    408, /* GL_extension_GL_AMD_draw_buffers_blend */
+    449, /* GL_extension_GL_AMD_gpu_shader_int64 */
+    488, /* GL_extension_GL_AMD_interleaved_elements */
+    531, /* GL_extension_GL_AMD_multi_draw_indirect */
+    573, /* GL_extension_GL_AMD_name_gen_delete */
+    611, /* GL_extension_GL_AMD_occlusion_query_event */
+    655, /* GL_extension_GL_AMD_performance_monitor */
+    697, /* GL_extension_GL_AMD_sample_positions */
+    736, /* GL_extension_GL_AMD_sparse_texture */
+    773, /* GL_extension_GL_AMD_stencil_operation_extended */
+    822, /* GL_extension_GL_AMD_vertex_shader_tessellator */
+    870, /* GL_extension_GL_ANGLE_framebuffer_blit */
+    911, /* GL_extension_GL_ANGLE_framebuffer_multisample */
+    959, /* GL_extension_GL_ANGLE_instanced_arrays */
+    1000, /* GL_extension_GL_ANGLE_translated_shader_source */
+    1049, /* GL_extension_GL_APPLE_copy_texture_levels */
+    1093, /* GL_extension_GL_APPLE_element_array */
+    1131, /* GL_extension_GL_APPLE_fence */
+    1161, /* GL_extension_GL_APPLE_flush_buffer_range */
+    1204, /* GL_extension_GL_APPLE_framebuffer_multisample */
+    1252, /* GL_extension_GL_APPLE_object_purgeable */
+    1293, /* GL_extension_GL_APPLE_sync */
+    1322, /* GL_extension_GL_APPLE_texture_range */
+    1360, /* GL_extension_GL_APPLE_vertex_array_object */
+    1404, /* GL_extension_GL_APPLE_vertex_array_range */
+    1447, /* GL_extension_GL_APPLE_vertex_program_evaluators */
+    1497, /* GL_extension_GL_ARB_ES2_compatibility */
+    1537, /* GL_extension_GL_ARB_ES3_1_compatibility */
+    1579, /* GL_extension_GL_ARB_base_instance */
+    1615, /* GL_extension_GL_ARB_bindless_texture */
+    1654, /* GL_extension_GL_ARB_blend_func_extended */
+    1696, /* GL_extension_GL_ARB_buffer_storage */
+    1733, /* GL_extension_GL_ARB_cl_event */
+    1764, /* GL_extension_GL_ARB_clear_buffer_object */
+    1806, /* GL_extension_GL_ARB_clear_texture */
+    1842, /* GL_extension_GL_ARB_clip_control */
+    1877, /* GL_extension_GL_ARB_color_buffer_float */
+    1918, /* GL_extension_GL_ARB_compute_shader */
+    1955, /* GL_extension_GL_ARB_compute_variable_group_size */
+    2005, /* GL_extension_GL_ARB_copy_buffer */
+    2039, /* GL_extension_GL_ARB_copy_image */
+    2072, /* GL_extension_GL_ARB_debug_output */
+    2107, /* GL_extension_GL_ARB_direct_state_access */
+    2149, /* GL_extension_GL_ARB_draw_buffers */
+    2184, /* GL_extension_GL_ARB_draw_buffers_blend */
+    2225, /* GL_extension_GL_ARB_draw_elements_base_vertex */
+    2273, /* GL_extension_GL_ARB_draw_indirect */
+    2309, /* GL_extension_GL_ARB_draw_instanced */
+    2346, /* GL_extension_GL_ARB_fragment_program */
+    2385, /* GL_extension_GL_ARB_framebuffer_no_attachments */
+    2434, /* GL_extension_GL_ARB_framebuffer_object */
+    2475, /* GL_extension_GL_ARB_geometry_shader4 */
+    2514, /* GL_extension_GL_ARB_get_program_binary */
+    2555, /* GL_extension_GL_ARB_get_texture_sub_image */
+    2599, /* GL_extension_GL_ARB_gpu_shader_fp64 */
+    2637, /* GL_extension_GL_ARB_imaging */
+    2667, /* GL_extension_GL_ARB_indirect_parameters */
+    2709, /* GL_extension_GL_ARB_instanced_arrays */
+    2748, /* GL_extension_GL_ARB_internalformat_query2 */
+    2792, /* GL_extension_GL_ARB_internalformat_query */
+    2835, /* GL_extension_GL_ARB_invalidate_subdata */
+    2876, /* GL_extension_GL_ARB_map_buffer_range */
+    2915, /* GL_extension_GL_ARB_matrix_palette */
+    2952, /* GL_extension_GL_ARB_multi_bind */
+    2985, /* GL_extension_GL_ARB_multi_draw_indirect */
+    3027, /* GL_extension_GL_ARB_multisample */
+    3061, /* GL_extension_GL_ARB_multitexture */
+    3096, /* GL_extension_GL_ARB_occlusion_query */
+    3134, /* GL_extension_GL_ARB_point_parameters */
+    3173, /* GL_extension_GL_ARB_program_interface_query */
+    3219, /* GL_extension_GL_ARB_provoking_vertex */
+    3258, /* GL_extension_GL_ARB_robustness */
+    3291, /* GL_extension_GL_ARB_sample_shading */
+    3328, /* GL_extension_GL_ARB_sampler_objects */
+    3366, /* GL_extension_GL_ARB_separate_shader_objects */
+    3412, /* GL_extension_GL_ARB_shader_atomic_counters */
+    3457, /* GL_extension_GL_ARB_shader_image_load_store */
+    3503, /* GL_extension_GL_ARB_shader_objects */
+    3540, /* GL_extension_GL_ARB_shader_storage_buffer_object */
+    3591, /* GL_extension_GL_ARB_shader_subroutine */
+    3631, /* GL_extension_GL_ARB_shading_language_include */
+    3678, /* GL_extension_GL_ARB_sparse_buffer */
+    3714, /* GL_extension_GL_ARB_sparse_texture */
+    3751, /* GL_extension_GL_ARB_sync */
+    3778, /* GL_extension_GL_ARB_tessellation_shader */
+    3820, /* GL_extension_GL_ARB_texture_barrier */
+    3858, /* GL_extension_GL_ARB_texture_buffer_object */
+    3902, /* GL_extension_GL_ARB_texture_buffer_range */
+    3945, /* GL_extension_GL_ARB_texture_compression */
+    3987, /* GL_extension_GL_ARB_texture_multisample */
+    4029, /* GL_extension_GL_ARB_texture_storage */
+    4067, /* GL_extension_GL_ARB_texture_storage_multisample */
+    4117, /* GL_extension_GL_ARB_texture_view */
+    4152, /* GL_extension_GL_ARB_timer_query */
+    4186, /* GL_extension_GL_ARB_transform_feedback2 */
+    4228, /* GL_extension_GL_ARB_transform_feedback3 */
+    4270, /* GL_extension_GL_ARB_transform_feedback_instanced */
+    4321, /* GL_extension_GL_ARB_transpose_matrix */
+    4360, /* GL_extension_GL_ARB_uniform_buffer_object */
+    4404, /* GL_extension_GL_ARB_vertex_array_object */
+    4446, /* GL_extension_GL_ARB_vertex_attrib_64bit */
+    4488, /* GL_extension_GL_ARB_vertex_attrib_binding */
+    4532, /* GL_extension_GL_ARB_vertex_blend */
+    4567, /* GL_extension_GL_ARB_vertex_buffer_object */
+    4610, /* GL_extension_GL_ARB_vertex_program */
+    4647, /* GL_extension_GL_ARB_vertex_shader */
+    4683, /* GL_extension_GL_ARB_vertex_type_2_10_10_10_rev */
+    4732, /* GL_extension_GL_ARB_viewport_array */
+    4769, /* GL_extension_GL_ARB_window_pos */
+    4802, /* GL_extension_GL_ATI_draw_buffers */
+    4837, /* GL_extension_GL_ATI_element_array */
+    4873, /* GL_extension_GL_ATI_envmap_bumpmap */
+    4910, /* GL_extension_GL_ATI_fragment_shader */
+    4948, /* GL_extension_GL_ATI_map_object_buffer */
+    4988, /* GL_extension_GL_ATI_pn_triangles */
+    5023, /* GL_extension_GL_ATI_separate_stencil */
+    5062, /* GL_extension_GL_ATI_vertex_array_object */
+    5104, /* GL_extension_GL_ATI_vertex_attrib_array_object */
+    5153, /* GL_extension_GL_ATI_vertex_streams */
+    5190, /* GL_extension_GL_EXT_base_instance */
+    5226, /* GL_extension_GL_EXT_bindable_uniform */
+    5265, /* GL_extension_GL_EXT_blend_color */
+    5299, /* GL_extension_GL_EXT_blend_equation_separate */
+    5345, /* GL_extension_GL_EXT_blend_func_separate */
+    5387, /* GL_extension_GL_EXT_blend_minmax */
+    5422, /* GL_extension_GL_EXT_buffer_storage */
+    5459, /* GL_extension_GL_EXT_color_subtable */
+    5496, /* GL_extension_GL_EXT_compiled_vertex_array */
+    5540, /* GL_extension_GL_EXT_convolution */
+    5574, /* GL_extension_GL_EXT_coordinate_frame */
+    5613, /* GL_extension_GL_EXT_copy_image */
+    5646, /* GL_extension_GL_EXT_copy_texture */
+    5681, /* GL_extension_GL_EXT_cull_vertex */
+    5715, /* GL_extension_GL_EXT_debug_label */
+    5749, /* GL_extension_GL_EXT_debug_marker */
+    5784, /* GL_extension_GL_EXT_depth_bounds_test */
+    5824, /* GL_extension_GL_EXT_direct_state_access */
+    5866, /* GL_extension_GL_EXT_discard_framebuffer */
+    5908, /* GL_extension_GL_EXT_disjoint_timer_query */
+    5951, /* GL_extension_GL_EXT_draw_buffers2 */
+    5987, /* GL_extension_GL_EXT_draw_buffers */
+    6022, /* GL_extension_GL_EXT_draw_buffers_indexed */
+    6065, /* GL_extension_GL_EXT_draw_elements_base_vertex */
+    6113, /* GL_extension_GL_EXT_draw_instanced */
+    6150, /* GL_extension_GL_EXT_draw_range_elements */
+    6192, /* GL_extension_GL_EXT_fog_coord */
+    6224, /* GL_extension_GL_EXT_framebuffer_blit */
+    6263, /* GL_extension_GL_EXT_framebuffer_multisample */
+    6309, /* GL_extension_GL_EXT_framebuffer_object */
+    6350, /* GL_extension_GL_EXT_geometry_shader4 */
+    6389, /* GL_extension_GL_EXT_geometry_shader */
+    6427, /* GL_extension_GL_EXT_gpu_program_parameters */
+    6472, /* GL_extension_GL_EXT_gpu_shader4 */
+    6506, /* GL_extension_GL_EXT_histogram */
+    6538, /* GL_extension_GL_EXT_index_func */
+    6571, /* GL_extension_GL_EXT_index_material */
+    6608, /* GL_extension_GL_EXT_instanced_arrays */
+    6647, /* GL_extension_GL_EXT_light_texture */
+    6683, /* GL_extension_GL_EXT_map_buffer_range */
+    6722, /* GL_extension_GL_EXT_multi_draw_arrays */
+    6762, /* GL_extension_GL_EXT_multi_draw_indirect */
+    6804, /* GL_extension_GL_EXT_multisample */
+    6838, /* GL_extension_GL_EXT_multisampled_render_to_texture */
+    6891, /* GL_extension_GL_EXT_multiview_draw_buffers */
+    6936, /* GL_extension_GL_EXT_occlusion_query_boolean */
+    6982, /* GL_extension_GL_EXT_paletted_texture */
+    7021, /* GL_extension_GL_EXT_pixel_transform */
+    7059, /* GL_extension_GL_EXT_point_parameters */
+    7098, /* GL_extension_GL_EXT_polygon_offset */
+    7135, /* GL_extension_GL_EXT_polygon_offset_clamp */
+    7178, /* GL_extension_GL_EXT_primitive_bounding_box */
+    7223, /* GL_extension_GL_EXT_provoking_vertex */
+    7262, /* GL_extension_GL_EXT_raster_multisample */
+    7303, /* GL_extension_GL_EXT_robustness */
+    7336, /* GL_extension_GL_EXT_secondary_color */
+    7374, /* GL_extension_GL_EXT_separate_shader_objects */
+    7420, /* GL_extension_GL_EXT_shader_image_load_store */
+    7466, /* GL_extension_GL_EXT_sparse_texture */
+    7503, /* GL_extension_GL_EXT_stencil_clear_tag */
+    7543, /* GL_extension_GL_EXT_stencil_two_side */
+    7582, /* GL_extension_GL_EXT_subtexture */
+    7615, /* GL_extension_GL_EXT_tessellation_shader */
+    7657, /* GL_extension_GL_EXT_texture3D */
+    7689, /* GL_extension_GL_EXT_texture_array */
+    7725, /* GL_extension_GL_EXT_texture_border_clamp */
+    7768, /* GL_extension_GL_EXT_texture_buffer */
+    7805, /* GL_extension_GL_EXT_texture_buffer_object */
+    7849, /* GL_extension_GL_EXT_texture_filter_minmax */
+    7893, /* GL_extension_GL_EXT_texture_integer */
+    7931, /* GL_extension_GL_EXT_texture_object */
+    7968, /* GL_extension_GL_EXT_texture_perturb_normal */
+    8013, /* GL_extension_GL_EXT_texture_storage */
+    8051, /* GL_extension_GL_EXT_texture_view */
+    8086, /* GL_extension_GL_EXT_timer_query */
+    8120, /* GL_extension_GL_EXT_transform_feedback */
+    8161, /* GL_extension_GL_EXT_vertex_array */
+    8196, /* GL_extension_GL_EXT_vertex_attrib_64bit */
+    8238, /* GL_extension_GL_EXT_vertex_shader */
+    8274, /* GL_extension_GL_EXT_vertex_weighting */
+    8313, /* GL_extension_GL_EXT_x11_sync_object */
+    8351, /* GL_extension_GL_GREMEDY_frame_terminator */
+    8394, /* GL_extension_GL_GREMEDY_string_marker */
+    8434, /* GL_extension_GL_HP_image_transform */
+    8471, /* GL_extension_GL_IBM_multimode_draw_arrays */
+    8515, /* GL_extension_GL_IBM_static_data */
+    8549, /* GL_extension_GL_IBM_vertex_array_lists */
+    8590, /* GL_extension_GL_IMG_multisampled_render_to_texture */
+    8643, /* GL_extension_GL_IMG_user_clip_plane */
+    8681, /* GL_extension_GL_INGR_blend_func_separate */
+    8724, /* GL_extension_GL_INTEL_map_texture */
+    8760, /* GL_extension_GL_INTEL_parallel_arrays */
+    8800, /* GL_extension_GL_INTEL_performance_query */
+    8842, /* GL_extension_GL_KHR_blend_equation_advanced */
+    8888, /* GL_extension_GL_KHR_debug */
+    8916, /* GL_extension_GL_KHR_robustness */
+    8949, /* GL_extension_GL_MESA_resize_buffers */
+    8987, /* GL_extension_GL_MESA_window_pos */
+    9021, /* GL_extension_GL_NVX_conditional_render */
+    9062, /* GL_extension_GL_NV_bindless_multi_draw_indirect */
+    9112, /* GL_extension_GL_NV_bindless_multi_draw_indirect_count */
+    9168, /* GL_extension_GL_NV_bindless_texture */
+    9206, /* GL_extension_GL_NV_blend_equation_advanced */
+    9251, /* GL_extension_GL_NV_command_list */
+    9285, /* GL_extension_GL_NV_conditional_render */
+    9325, /* GL_extension_GL_NV_conservative_raster */
+    9366, /* GL_extension_GL_NV_copy_buffer */
+    9399, /* GL_extension_GL_NV_copy_image */
+    9431, /* GL_extension_GL_NV_coverage_sample */
+    9468, /* GL_extension_GL_NV_depth_buffer_float */
+    9508, /* GL_extension_GL_NV_draw_buffers */
+    9542, /* GL_extension_GL_NV_draw_instanced */
+    9578, /* GL_extension_GL_NV_draw_texture */
+    9612, /* GL_extension_GL_NV_evaluators */
+    9644, /* GL_extension_GL_NV_explicit_multisample */
+    9686, /* GL_extension_GL_NV_fence */
+    9713, /* GL_extension_GL_NV_fragment_coverage_to_color */
+    9761, /* GL_extension_GL_NV_fragment_program */
+    9799, /* GL_extension_GL_NV_framebuffer_blit */
+    9837, /* GL_extension_GL_NV_framebuffer_mixed_samples */
+    9884, /* GL_extension_GL_NV_framebuffer_multisample */
+    9929, /* GL_extension_GL_NV_framebuffer_multisample_coverage */
+    9983, /* GL_extension_GL_NV_geometry_program4 */
+    10022, /* GL_extension_GL_NV_gpu_program4 */
+    10056, /* GL_extension_GL_NV_gpu_program5 */
+    10090, /* GL_extension_GL_NV_gpu_shader5 */
+    10123, /* GL_extension_GL_NV_half_float */
+    10155, /* GL_extension_GL_NV_instanced_arrays */
+    10193, /* GL_extension_GL_NV_internalformat_sample_query */
+    10242, /* GL_extension_GL_NV_non_square_matrices */
+    10283, /* GL_extension_GL_NV_occlusion_query */
+    10320, /* GL_extension_GL_NV_parameter_buffer_object */
+    10365, /* GL_extension_GL_NV_path_rendering */
+    10401, /* GL_extension_GL_NV_pixel_data_range */
+    10439, /* GL_extension_GL_NV_point_sprite */
+    10473, /* GL_extension_GL_NV_polygon_mode */
+    10507, /* GL_extension_GL_NV_present_video */
+    10542, /* GL_extension_GL_NV_primitive_restart */
+    10581, /* GL_extension_GL_NV_read_buffer */
+    10614, /* GL_extension_GL_NV_register_combiners2 */
+    10655, /* GL_extension_GL_NV_register_combiners */
+    10695, /* GL_extension_GL_NV_sample_locations */
+    10733, /* GL_extension_GL_NV_shader_buffer_load */
+    10773, /* GL_extension_GL_NV_texture_barrier */
+    10810, /* GL_extension_GL_NV_texture_multisample */
+    10851, /* GL_extension_GL_NV_transform_feedback2 */
+    10892, /* GL_extension_GL_NV_transform_feedback */
+    10932, /* GL_extension_GL_NV_vdpau_interop */
+    10967, /* GL_extension_GL_NV_vertex_array_range */
+    11007, /* GL_extension_GL_NV_vertex_attrib_integer_64bit */
+    11056, /* GL_extension_GL_NV_vertex_buffer_unified_memory */
+    11106, /* GL_extension_GL_NV_vertex_program4 */
+    11143, /* GL_extension_GL_NV_vertex_program */
+    11179, /* GL_extension_GL_NV_video_capture */
+    11214, /* GL_extension_GL_NV_viewport_array */
+    11250, /* GL_extension_GL_OES_EGL_image */
+    11282, /* GL_extension_GL_OES_blend_equation_separate */
+    11328, /* GL_extension_GL_OES_blend_func_separate */
+    11370, /* GL_extension_GL_OES_blend_subtract */
+    11407, /* GL_extension_GL_OES_byte_coordinates */
+    11446, /* GL_extension_GL_OES_copy_image */
+    11479, /* GL_extension_GL_OES_draw_buffers_indexed */
+    11522, /* GL_extension_GL_OES_draw_elements_base_vertex */
+    11570, /* GL_extension_GL_OES_draw_texture */
+    11605, /* GL_extension_GL_OES_fixed_point */
+    11639, /* GL_extension_GL_OES_framebuffer_object */
+    11680, /* GL_extension_GL_OES_geometry_shader */
+    11718, /* GL_extension_GL_OES_get_program_binary */
+    11759, /* GL_extension_GL_OES_mapbuffer */
+    11791, /* GL_extension_GL_OES_matrix_palette */
+    11828, /* GL_extension_GL_OES_point_size_array */
+    11867, /* GL_extension_GL_OES_primitive_bounding_box */
+    11912, /* GL_extension_GL_OES_query_matrix */
+    11947, /* GL_extension_GL_OES_sample_shading */
+    11984, /* GL_extension_GL_OES_single_precision */
+    12023, /* GL_extension_GL_OES_tessellation_shader */
+    12065, /* GL_extension_GL_OES_texture_3D */
+    12098, /* GL_extension_GL_OES_texture_border_clamp */
+    12141, /* GL_extension_GL_OES_texture_buffer */
+    12178, /* GL_extension_GL_OES_texture_cube_map */
+    12217, /* GL_extension_GL_OES_texture_storage_multisample_2d_array */
+    12276, /* GL_extension_GL_OES_texture_view */
+    12311, /* GL_extension_GL_OES_vertex_array_object */
+    12353, /* GL_extension_GL_OVR_multiview */
+    12385, /* GL_extension_GL_PGI_misc_hints */
+    12418, /* GL_extension_GL_QCOM_alpha_test */
+    12452, /* GL_extension_GL_QCOM_driver_control */
+    12490, /* GL_extension_GL_QCOM_extended_get2 */
+    12527, /* GL_extension_GL_QCOM_extended_get */
+    12563, /* GL_extension_GL_QCOM_tiled_rendering */
+    12602, /* GL_extension_GL_SGIS_detail_texture */
+    12640, /* GL_extension_GL_SGIS_fog_function */
+    12676, /* GL_extension_GL_SGIS_multisample */
+    12711, /* GL_extension_GL_SGIS_pixel_texture */
+    12748, /* GL_extension_GL_SGIS_point_parameters */
+    12788, /* GL_extension_GL_SGIS_sharpen_texture */
+    12827, /* GL_extension_GL_SGIS_texture4D */
+    12860, /* GL_extension_GL_SGIS_texture_color_mask */
+    12902, /* GL_extension_GL_SGIS_texture_filter4 */
+    12941, /* GL_extension_GL_SGIX_async */
+    12970, /* GL_extension_GL_SGIX_flush_raster */
+    13006, /* GL_extension_GL_SGIX_fragment_lighting */
+    13047, /* GL_extension_GL_SGIX_framezoom */
+    13080, /* GL_extension_GL_SGIX_igloo_interface */
+    13119, /* GL_extension_GL_SGIX_instruments */
+    13154, /* GL_extension_GL_SGIX_list_priority */
+    13191, /* GL_extension_GL_SGIX_pixel_texture */
+    13228, /* GL_extension_GL_SGIX_polynomial_ffd */
+    13266, /* GL_extension_GL_SGIX_reference_plane */
+    13305, /* GL_extension_GL_SGIX_sprite */
+    13335, /* GL_extension_GL_SGIX_tag_sample_buffer */
+    13376, /* GL_extension_GL_SGI_color_table */
+    13410, /* GL_extension_GL_SUNX_constant_data */
+    13447, /* GL_extension_GL_SUN_global_alpha */
+    13482, /* GL_extension_GL_SUN_mesh_array */
+    13515, /* GL_extension_GL_SUN_triangle_list */
+    13551, /* GL_extension_GL_SUN_vertex */
+    13580, /* OpenGL_ES_1_0 */
+    13594, /* OpenGL_ES_2_0 */
+    13608, /* OpenGL_ES_3_0 */
+    13622, /* OpenGL_ES_3_1 */
+    13636, /* always_present */
 };
 
 static const char entrypoint_strings[] = {
@@ -71237,12 +71238,14 @@ epoxy_glBindRenderbuffer_resolver(void)
         Desktop_OpenGL_3_0,
         GL_extension_GL_ARB_framebuffer_object,
         OpenGL_ES_2_0,
+        GL_extension_GL_EXT_framebuffer_object,
         gl_provider_terminator
     };
     static const uint32_t entrypoints[] = {
         1511 /* "glBindRenderbuffer" */,
         1511 /* "glBindRenderbuffer" */,
         1511 /* "glBindRenderbuffer" */,
+        1530 /* "glBindRenderbufferEXT" */,
     };
     return gl_provider_resolver(entrypoint_strings + 1511 /* "glBindRenderbuffer" */,
                                 providers, entrypoints);
@@ -71251,7 +71254,21 @@ epoxy_glBindRenderbuffer_resolver(void)
 static PFNGLBINDRENDERBUFFEREXTPROC
 epoxy_glBindRenderbufferEXT_resolver(void)
 {
-    return gl_single_resolver(GL_extension_GL_EXT_framebuffer_object, 1530 /* glBindRenderbufferEXT */);
+    static const enum gl_provider providers[] = {
+        GL_extension_GL_EXT_framebuffer_object,
+        Desktop_OpenGL_3_0,
+        GL_extension_GL_ARB_framebuffer_object,
+        OpenGL_ES_2_0,
+        gl_provider_terminator
+    };
+    static const uint32_t entrypoints[] = {
+        1530 /* "glBindRenderbufferEXT" */,
+        1511 /* "glBindRenderbuffer" */,
+        1511 /* "glBindRenderbuffer" */,
+        1511 /* "glBindRenderbuffer" */,
+    };
+    return gl_provider_resolver(entrypoint_strings + 1530 /* "glBindRenderbufferEXT" */,
+                                providers, entrypoints);
 }
 
 static PFNGLBINDRENDERBUFFEROESPROC
@@ -109899,3088 +109916,3088 @@ GEN_THUNKS(glWriteMaskEXT, (GLuint res, GLuint in, GLenum outX, GLenum outY, GLe
 
 #if USING_DISPATCH_TABLE
 static struct dispatch_table resolver_table = {
-    .glAccum = epoxy_glAccum_dispatch_table_rewrite_ptr,
-    .glAccumxOES = epoxy_glAccumxOES_dispatch_table_rewrite_ptr,
-    .glActiveProgramEXT = epoxy_glActiveProgramEXT_dispatch_table_rewrite_ptr,
-    .glActiveShaderProgram = epoxy_glActiveShaderProgram_dispatch_table_rewrite_ptr,
-    .glActiveShaderProgramEXT = epoxy_glActiveShaderProgramEXT_dispatch_table_rewrite_ptr,
-    .glActiveStencilFaceEXT = epoxy_glActiveStencilFaceEXT_dispatch_table_rewrite_ptr,
-    .glActiveTexture = epoxy_glActiveTexture_dispatch_table_rewrite_ptr,
-    .glActiveTextureARB = epoxy_glActiveTextureARB_dispatch_table_rewrite_ptr,
-    .glActiveVaryingNV = epoxy_glActiveVaryingNV_dispatch_table_rewrite_ptr,
-    .glAlphaFragmentOp1ATI = epoxy_glAlphaFragmentOp1ATI_dispatch_table_rewrite_ptr,
-    .glAlphaFragmentOp2ATI = epoxy_glAlphaFragmentOp2ATI_dispatch_table_rewrite_ptr,
-    .glAlphaFragmentOp3ATI = epoxy_glAlphaFragmentOp3ATI_dispatch_table_rewrite_ptr,
-    .glAlphaFunc = epoxy_glAlphaFunc_dispatch_table_rewrite_ptr,
-    .glAlphaFuncQCOM = epoxy_glAlphaFuncQCOM_dispatch_table_rewrite_ptr,
-    .glAlphaFuncx = epoxy_glAlphaFuncx_dispatch_table_rewrite_ptr,
-    .glAlphaFuncxOES = epoxy_glAlphaFuncxOES_dispatch_table_rewrite_ptr,
-    .glApplyTextureEXT = epoxy_glApplyTextureEXT_dispatch_table_rewrite_ptr,
-    .glAreProgramsResidentNV = epoxy_glAreProgramsResidentNV_dispatch_table_rewrite_ptr,
-    .glAreTexturesResident = epoxy_glAreTexturesResident_dispatch_table_rewrite_ptr,
-    .glAreTexturesResidentEXT = epoxy_glAreTexturesResidentEXT_dispatch_table_rewrite_ptr,
-    .glArrayElement = epoxy_glArrayElement_dispatch_table_rewrite_ptr,
-    .glArrayElementEXT = epoxy_glArrayElementEXT_dispatch_table_rewrite_ptr,
-    .glArrayObjectATI = epoxy_glArrayObjectATI_dispatch_table_rewrite_ptr,
-    .glAsyncMarkerSGIX = epoxy_glAsyncMarkerSGIX_dispatch_table_rewrite_ptr,
-    .glAttachObjectARB = epoxy_glAttachObjectARB_dispatch_table_rewrite_ptr,
-    .glAttachShader = epoxy_glAttachShader_dispatch_table_rewrite_ptr,
-    .glBegin_unwrapped = epoxy_glBegin_unwrapped_dispatch_table_rewrite_ptr,
-    .glBeginConditionalRender = epoxy_glBeginConditionalRender_dispatch_table_rewrite_ptr,
-    .glBeginConditionalRenderNV = epoxy_glBeginConditionalRenderNV_dispatch_table_rewrite_ptr,
-    .glBeginConditionalRenderNVX = epoxy_glBeginConditionalRenderNVX_dispatch_table_rewrite_ptr,
-    .glBeginFragmentShaderATI = epoxy_glBeginFragmentShaderATI_dispatch_table_rewrite_ptr,
-    .glBeginOcclusionQueryNV = epoxy_glBeginOcclusionQueryNV_dispatch_table_rewrite_ptr,
-    .glBeginPerfMonitorAMD = epoxy_glBeginPerfMonitorAMD_dispatch_table_rewrite_ptr,
-    .glBeginPerfQueryINTEL = epoxy_glBeginPerfQueryINTEL_dispatch_table_rewrite_ptr,
-    .glBeginQuery = epoxy_glBeginQuery_dispatch_table_rewrite_ptr,
-    .glBeginQueryARB = epoxy_glBeginQueryARB_dispatch_table_rewrite_ptr,
-    .glBeginQueryEXT = epoxy_glBeginQueryEXT_dispatch_table_rewrite_ptr,
-    .glBeginQueryIndexed = epoxy_glBeginQueryIndexed_dispatch_table_rewrite_ptr,
-    .glBeginTransformFeedback = epoxy_glBeginTransformFeedback_dispatch_table_rewrite_ptr,
-    .glBeginTransformFeedbackEXT = epoxy_glBeginTransformFeedbackEXT_dispatch_table_rewrite_ptr,
-    .glBeginTransformFeedbackNV = epoxy_glBeginTransformFeedbackNV_dispatch_table_rewrite_ptr,
-    .glBeginVertexShaderEXT = epoxy_glBeginVertexShaderEXT_dispatch_table_rewrite_ptr,
-    .glBeginVideoCaptureNV = epoxy_glBeginVideoCaptureNV_dispatch_table_rewrite_ptr,
-    .glBindAttribLocation = epoxy_glBindAttribLocation_dispatch_table_rewrite_ptr,
-    .glBindAttribLocationARB = epoxy_glBindAttribLocationARB_dispatch_table_rewrite_ptr,
-    .glBindBuffer = epoxy_glBindBuffer_dispatch_table_rewrite_ptr,
-    .glBindBufferARB = epoxy_glBindBufferARB_dispatch_table_rewrite_ptr,
-    .glBindBufferBase = epoxy_glBindBufferBase_dispatch_table_rewrite_ptr,
-    .glBindBufferBaseEXT = epoxy_glBindBufferBaseEXT_dispatch_table_rewrite_ptr,
-    .glBindBufferBaseNV = epoxy_glBindBufferBaseNV_dispatch_table_rewrite_ptr,
-    .glBindBufferOffsetEXT = epoxy_glBindBufferOffsetEXT_dispatch_table_rewrite_ptr,
-    .glBindBufferOffsetNV = epoxy_glBindBufferOffsetNV_dispatch_table_rewrite_ptr,
-    .glBindBufferRange = epoxy_glBindBufferRange_dispatch_table_rewrite_ptr,
-    .glBindBufferRangeEXT = epoxy_glBindBufferRangeEXT_dispatch_table_rewrite_ptr,
-    .glBindBufferRangeNV = epoxy_glBindBufferRangeNV_dispatch_table_rewrite_ptr,
-    .glBindBuffersBase = epoxy_glBindBuffersBase_dispatch_table_rewrite_ptr,
-    .glBindBuffersRange = epoxy_glBindBuffersRange_dispatch_table_rewrite_ptr,
-    .glBindFragDataLocation = epoxy_glBindFragDataLocation_dispatch_table_rewrite_ptr,
-    .glBindFragDataLocationEXT = epoxy_glBindFragDataLocationEXT_dispatch_table_rewrite_ptr,
-    .glBindFragDataLocationIndexed = epoxy_glBindFragDataLocationIndexed_dispatch_table_rewrite_ptr,
-    .glBindFragmentShaderATI = epoxy_glBindFragmentShaderATI_dispatch_table_rewrite_ptr,
-    .glBindFramebuffer = epoxy_glBindFramebuffer_dispatch_table_rewrite_ptr,
-    .glBindFramebufferEXT = epoxy_glBindFramebufferEXT_dispatch_table_rewrite_ptr,
-    .glBindFramebufferOES = epoxy_glBindFramebufferOES_dispatch_table_rewrite_ptr,
-    .glBindImageTexture = epoxy_glBindImageTexture_dispatch_table_rewrite_ptr,
-    .glBindImageTextureEXT = epoxy_glBindImageTextureEXT_dispatch_table_rewrite_ptr,
-    .glBindImageTextures = epoxy_glBindImageTextures_dispatch_table_rewrite_ptr,
-    .glBindLightParameterEXT = epoxy_glBindLightParameterEXT_dispatch_table_rewrite_ptr,
-    .glBindMaterialParameterEXT = epoxy_glBindMaterialParameterEXT_dispatch_table_rewrite_ptr,
-    .glBindMultiTextureEXT = epoxy_glBindMultiTextureEXT_dispatch_table_rewrite_ptr,
-    .glBindParameterEXT = epoxy_glBindParameterEXT_dispatch_table_rewrite_ptr,
-    .glBindProgramARB = epoxy_glBindProgramARB_dispatch_table_rewrite_ptr,
-    .glBindProgramNV = epoxy_glBindProgramNV_dispatch_table_rewrite_ptr,
-    .glBindProgramPipeline = epoxy_glBindProgramPipeline_dispatch_table_rewrite_ptr,
-    .glBindProgramPipelineEXT = epoxy_glBindProgramPipelineEXT_dispatch_table_rewrite_ptr,
-    .glBindRenderbuffer = epoxy_glBindRenderbuffer_dispatch_table_rewrite_ptr,
-    .glBindRenderbufferEXT = epoxy_glBindRenderbufferEXT_dispatch_table_rewrite_ptr,
-    .glBindRenderbufferOES = epoxy_glBindRenderbufferOES_dispatch_table_rewrite_ptr,
-    .glBindSampler = epoxy_glBindSampler_dispatch_table_rewrite_ptr,
-    .glBindSamplers = epoxy_glBindSamplers_dispatch_table_rewrite_ptr,
-    .glBindTexGenParameterEXT = epoxy_glBindTexGenParameterEXT_dispatch_table_rewrite_ptr,
-    .glBindTexture = epoxy_glBindTexture_dispatch_table_rewrite_ptr,
-    .glBindTextureEXT = epoxy_glBindTextureEXT_dispatch_table_rewrite_ptr,
-    .glBindTextureUnit = epoxy_glBindTextureUnit_dispatch_table_rewrite_ptr,
-    .glBindTextureUnitParameterEXT = epoxy_glBindTextureUnitParameterEXT_dispatch_table_rewrite_ptr,
-    .glBindTextures = epoxy_glBindTextures_dispatch_table_rewrite_ptr,
-    .glBindTransformFeedback = epoxy_glBindTransformFeedback_dispatch_table_rewrite_ptr,
-    .glBindTransformFeedbackNV = epoxy_glBindTransformFeedbackNV_dispatch_table_rewrite_ptr,
-    .glBindVertexArray = epoxy_glBindVertexArray_dispatch_table_rewrite_ptr,
-    .glBindVertexArrayAPPLE = epoxy_glBindVertexArrayAPPLE_dispatch_table_rewrite_ptr,
-    .glBindVertexArrayOES = epoxy_glBindVertexArrayOES_dispatch_table_rewrite_ptr,
-    .glBindVertexBuffer = epoxy_glBindVertexBuffer_dispatch_table_rewrite_ptr,
-    .glBindVertexBuffers = epoxy_glBindVertexBuffers_dispatch_table_rewrite_ptr,
-    .glBindVertexShaderEXT = epoxy_glBindVertexShaderEXT_dispatch_table_rewrite_ptr,
-    .glBindVideoCaptureStreamBufferNV = epoxy_glBindVideoCaptureStreamBufferNV_dispatch_table_rewrite_ptr,
-    .glBindVideoCaptureStreamTextureNV = epoxy_glBindVideoCaptureStreamTextureNV_dispatch_table_rewrite_ptr,
-    .glBinormal3bEXT = epoxy_glBinormal3bEXT_dispatch_table_rewrite_ptr,
-    .glBinormal3bvEXT = epoxy_glBinormal3bvEXT_dispatch_table_rewrite_ptr,
-    .glBinormal3dEXT = epoxy_glBinormal3dEXT_dispatch_table_rewrite_ptr,
-    .glBinormal3dvEXT = epoxy_glBinormal3dvEXT_dispatch_table_rewrite_ptr,
-    .glBinormal3fEXT = epoxy_glBinormal3fEXT_dispatch_table_rewrite_ptr,
-    .glBinormal3fvEXT = epoxy_glBinormal3fvEXT_dispatch_table_rewrite_ptr,
-    .glBinormal3iEXT = epoxy_glBinormal3iEXT_dispatch_table_rewrite_ptr,
-    .glBinormal3ivEXT = epoxy_glBinormal3ivEXT_dispatch_table_rewrite_ptr,
-    .glBinormal3sEXT = epoxy_glBinormal3sEXT_dispatch_table_rewrite_ptr,
-    .glBinormal3svEXT = epoxy_glBinormal3svEXT_dispatch_table_rewrite_ptr,
-    .glBinormalPointerEXT = epoxy_glBinormalPointerEXT_dispatch_table_rewrite_ptr,
-    .glBitmap = epoxy_glBitmap_dispatch_table_rewrite_ptr,
-    .glBitmapxOES = epoxy_glBitmapxOES_dispatch_table_rewrite_ptr,
-    .glBlendBarrierKHR = epoxy_glBlendBarrierKHR_dispatch_table_rewrite_ptr,
-    .glBlendBarrierNV = epoxy_glBlendBarrierNV_dispatch_table_rewrite_ptr,
-    .glBlendColor = epoxy_glBlendColor_dispatch_table_rewrite_ptr,
-    .glBlendColorEXT = epoxy_glBlendColorEXT_dispatch_table_rewrite_ptr,
-    .glBlendColorxOES = epoxy_glBlendColorxOES_dispatch_table_rewrite_ptr,
-    .glBlendEquation = epoxy_glBlendEquation_dispatch_table_rewrite_ptr,
-    .glBlendEquationEXT = epoxy_glBlendEquationEXT_dispatch_table_rewrite_ptr,
-    .glBlendEquationIndexedAMD = epoxy_glBlendEquationIndexedAMD_dispatch_table_rewrite_ptr,
-    .glBlendEquationOES = epoxy_glBlendEquationOES_dispatch_table_rewrite_ptr,
-    .glBlendEquationSeparate = epoxy_glBlendEquationSeparate_dispatch_table_rewrite_ptr,
-    .glBlendEquationSeparateEXT = epoxy_glBlendEquationSeparateEXT_dispatch_table_rewrite_ptr,
-    .glBlendEquationSeparateIndexedAMD = epoxy_glBlendEquationSeparateIndexedAMD_dispatch_table_rewrite_ptr,
-    .glBlendEquationSeparateOES = epoxy_glBlendEquationSeparateOES_dispatch_table_rewrite_ptr,
-    .glBlendEquationSeparatei = epoxy_glBlendEquationSeparatei_dispatch_table_rewrite_ptr,
-    .glBlendEquationSeparateiARB = epoxy_glBlendEquationSeparateiARB_dispatch_table_rewrite_ptr,
-    .glBlendEquationSeparateiEXT = epoxy_glBlendEquationSeparateiEXT_dispatch_table_rewrite_ptr,
-    .glBlendEquationSeparateiOES = epoxy_glBlendEquationSeparateiOES_dispatch_table_rewrite_ptr,
-    .glBlendEquationi = epoxy_glBlendEquationi_dispatch_table_rewrite_ptr,
-    .glBlendEquationiARB = epoxy_glBlendEquationiARB_dispatch_table_rewrite_ptr,
-    .glBlendEquationiEXT = epoxy_glBlendEquationiEXT_dispatch_table_rewrite_ptr,
-    .glBlendEquationiOES = epoxy_glBlendEquationiOES_dispatch_table_rewrite_ptr,
-    .glBlendFunc = epoxy_glBlendFunc_dispatch_table_rewrite_ptr,
-    .glBlendFuncIndexedAMD = epoxy_glBlendFuncIndexedAMD_dispatch_table_rewrite_ptr,
-    .glBlendFuncSeparate = epoxy_glBlendFuncSeparate_dispatch_table_rewrite_ptr,
-    .glBlendFuncSeparateEXT = epoxy_glBlendFuncSeparateEXT_dispatch_table_rewrite_ptr,
-    .glBlendFuncSeparateINGR = epoxy_glBlendFuncSeparateINGR_dispatch_table_rewrite_ptr,
-    .glBlendFuncSeparateIndexedAMD = epoxy_glBlendFuncSeparateIndexedAMD_dispatch_table_rewrite_ptr,
-    .glBlendFuncSeparateOES = epoxy_glBlendFuncSeparateOES_dispatch_table_rewrite_ptr,
-    .glBlendFuncSeparatei = epoxy_glBlendFuncSeparatei_dispatch_table_rewrite_ptr,
-    .glBlendFuncSeparateiARB = epoxy_glBlendFuncSeparateiARB_dispatch_table_rewrite_ptr,
-    .glBlendFuncSeparateiEXT = epoxy_glBlendFuncSeparateiEXT_dispatch_table_rewrite_ptr,
-    .glBlendFuncSeparateiOES = epoxy_glBlendFuncSeparateiOES_dispatch_table_rewrite_ptr,
-    .glBlendFunci = epoxy_glBlendFunci_dispatch_table_rewrite_ptr,
-    .glBlendFunciARB = epoxy_glBlendFunciARB_dispatch_table_rewrite_ptr,
-    .glBlendFunciEXT = epoxy_glBlendFunciEXT_dispatch_table_rewrite_ptr,
-    .glBlendFunciOES = epoxy_glBlendFunciOES_dispatch_table_rewrite_ptr,
-    .glBlendParameteriNV = epoxy_glBlendParameteriNV_dispatch_table_rewrite_ptr,
-    .glBlitFramebuffer = epoxy_glBlitFramebuffer_dispatch_table_rewrite_ptr,
-    .glBlitFramebufferANGLE = epoxy_glBlitFramebufferANGLE_dispatch_table_rewrite_ptr,
-    .glBlitFramebufferEXT = epoxy_glBlitFramebufferEXT_dispatch_table_rewrite_ptr,
-    .glBlitFramebufferNV = epoxy_glBlitFramebufferNV_dispatch_table_rewrite_ptr,
-    .glBlitNamedFramebuffer = epoxy_glBlitNamedFramebuffer_dispatch_table_rewrite_ptr,
-    .glBufferAddressRangeNV = epoxy_glBufferAddressRangeNV_dispatch_table_rewrite_ptr,
-    .glBufferData = epoxy_glBufferData_dispatch_table_rewrite_ptr,
-    .glBufferDataARB = epoxy_glBufferDataARB_dispatch_table_rewrite_ptr,
-    .glBufferPageCommitmentARB = epoxy_glBufferPageCommitmentARB_dispatch_table_rewrite_ptr,
-    .glBufferParameteriAPPLE = epoxy_glBufferParameteriAPPLE_dispatch_table_rewrite_ptr,
-    .glBufferStorage = epoxy_glBufferStorage_dispatch_table_rewrite_ptr,
-    .glBufferStorageEXT = epoxy_glBufferStorageEXT_dispatch_table_rewrite_ptr,
-    .glBufferSubData = epoxy_glBufferSubData_dispatch_table_rewrite_ptr,
-    .glBufferSubDataARB = epoxy_glBufferSubDataARB_dispatch_table_rewrite_ptr,
-    .glCallCommandListNV = epoxy_glCallCommandListNV_dispatch_table_rewrite_ptr,
-    .glCallList = epoxy_glCallList_dispatch_table_rewrite_ptr,
-    .glCallLists = epoxy_glCallLists_dispatch_table_rewrite_ptr,
-    .glCheckFramebufferStatus = epoxy_glCheckFramebufferStatus_dispatch_table_rewrite_ptr,
-    .glCheckFramebufferStatusEXT = epoxy_glCheckFramebufferStatusEXT_dispatch_table_rewrite_ptr,
-    .glCheckFramebufferStatusOES = epoxy_glCheckFramebufferStatusOES_dispatch_table_rewrite_ptr,
-    .glCheckNamedFramebufferStatus = epoxy_glCheckNamedFramebufferStatus_dispatch_table_rewrite_ptr,
-    .glCheckNamedFramebufferStatusEXT = epoxy_glCheckNamedFramebufferStatusEXT_dispatch_table_rewrite_ptr,
-    .glClampColor = epoxy_glClampColor_dispatch_table_rewrite_ptr,
-    .glClampColorARB = epoxy_glClampColorARB_dispatch_table_rewrite_ptr,
-    .glClear = epoxy_glClear_dispatch_table_rewrite_ptr,
-    .glClearAccum = epoxy_glClearAccum_dispatch_table_rewrite_ptr,
-    .glClearAccumxOES = epoxy_glClearAccumxOES_dispatch_table_rewrite_ptr,
-    .glClearBufferData = epoxy_glClearBufferData_dispatch_table_rewrite_ptr,
-    .glClearBufferSubData = epoxy_glClearBufferSubData_dispatch_table_rewrite_ptr,
-    .glClearBufferfi = epoxy_glClearBufferfi_dispatch_table_rewrite_ptr,
-    .glClearBufferfv = epoxy_glClearBufferfv_dispatch_table_rewrite_ptr,
-    .glClearBufferiv = epoxy_glClearBufferiv_dispatch_table_rewrite_ptr,
-    .glClearBufferuiv = epoxy_glClearBufferuiv_dispatch_table_rewrite_ptr,
-    .glClearColor = epoxy_glClearColor_dispatch_table_rewrite_ptr,
-    .glClearColorIiEXT = epoxy_glClearColorIiEXT_dispatch_table_rewrite_ptr,
-    .glClearColorIuiEXT = epoxy_glClearColorIuiEXT_dispatch_table_rewrite_ptr,
-    .glClearColorx = epoxy_glClearColorx_dispatch_table_rewrite_ptr,
-    .glClearColorxOES = epoxy_glClearColorxOES_dispatch_table_rewrite_ptr,
-    .glClearDepth = epoxy_glClearDepth_dispatch_table_rewrite_ptr,
-    .glClearDepthdNV = epoxy_glClearDepthdNV_dispatch_table_rewrite_ptr,
-    .glClearDepthf = epoxy_glClearDepthf_dispatch_table_rewrite_ptr,
-    .glClearDepthfOES = epoxy_glClearDepthfOES_dispatch_table_rewrite_ptr,
-    .glClearDepthx = epoxy_glClearDepthx_dispatch_table_rewrite_ptr,
-    .glClearDepthxOES = epoxy_glClearDepthxOES_dispatch_table_rewrite_ptr,
-    .glClearIndex = epoxy_glClearIndex_dispatch_table_rewrite_ptr,
-    .glClearNamedBufferData = epoxy_glClearNamedBufferData_dispatch_table_rewrite_ptr,
-    .glClearNamedBufferDataEXT = epoxy_glClearNamedBufferDataEXT_dispatch_table_rewrite_ptr,
-    .glClearNamedBufferSubData = epoxy_glClearNamedBufferSubData_dispatch_table_rewrite_ptr,
-    .glClearNamedBufferSubDataEXT = epoxy_glClearNamedBufferSubDataEXT_dispatch_table_rewrite_ptr,
-    .glClearNamedFramebufferfi = epoxy_glClearNamedFramebufferfi_dispatch_table_rewrite_ptr,
-    .glClearNamedFramebufferfv = epoxy_glClearNamedFramebufferfv_dispatch_table_rewrite_ptr,
-    .glClearNamedFramebufferiv = epoxy_glClearNamedFramebufferiv_dispatch_table_rewrite_ptr,
-    .glClearNamedFramebufferuiv = epoxy_glClearNamedFramebufferuiv_dispatch_table_rewrite_ptr,
-    .glClearStencil = epoxy_glClearStencil_dispatch_table_rewrite_ptr,
-    .glClearTexImage = epoxy_glClearTexImage_dispatch_table_rewrite_ptr,
-    .glClearTexSubImage = epoxy_glClearTexSubImage_dispatch_table_rewrite_ptr,
-    .glClientActiveTexture = epoxy_glClientActiveTexture_dispatch_table_rewrite_ptr,
-    .glClientActiveTextureARB = epoxy_glClientActiveTextureARB_dispatch_table_rewrite_ptr,
-    .glClientActiveVertexStreamATI = epoxy_glClientActiveVertexStreamATI_dispatch_table_rewrite_ptr,
-    .glClientAttribDefaultEXT = epoxy_glClientAttribDefaultEXT_dispatch_table_rewrite_ptr,
-    .glClientWaitSync = epoxy_glClientWaitSync_dispatch_table_rewrite_ptr,
-    .glClientWaitSyncAPPLE = epoxy_glClientWaitSyncAPPLE_dispatch_table_rewrite_ptr,
-    .glClipControl = epoxy_glClipControl_dispatch_table_rewrite_ptr,
-    .glClipPlane = epoxy_glClipPlane_dispatch_table_rewrite_ptr,
-    .glClipPlanef = epoxy_glClipPlanef_dispatch_table_rewrite_ptr,
-    .glClipPlanefIMG = epoxy_glClipPlanefIMG_dispatch_table_rewrite_ptr,
-    .glClipPlanefOES = epoxy_glClipPlanefOES_dispatch_table_rewrite_ptr,
-    .glClipPlanex = epoxy_glClipPlanex_dispatch_table_rewrite_ptr,
-    .glClipPlanexIMG = epoxy_glClipPlanexIMG_dispatch_table_rewrite_ptr,
-    .glClipPlanexOES = epoxy_glClipPlanexOES_dispatch_table_rewrite_ptr,
-    .glColor3b = epoxy_glColor3b_dispatch_table_rewrite_ptr,
-    .glColor3bv = epoxy_glColor3bv_dispatch_table_rewrite_ptr,
-    .glColor3d = epoxy_glColor3d_dispatch_table_rewrite_ptr,
-    .glColor3dv = epoxy_glColor3dv_dispatch_table_rewrite_ptr,
-    .glColor3f = epoxy_glColor3f_dispatch_table_rewrite_ptr,
-    .glColor3fVertex3fSUN = epoxy_glColor3fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glColor3fVertex3fvSUN = epoxy_glColor3fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glColor3fv = epoxy_glColor3fv_dispatch_table_rewrite_ptr,
-    .glColor3hNV = epoxy_glColor3hNV_dispatch_table_rewrite_ptr,
-    .glColor3hvNV = epoxy_glColor3hvNV_dispatch_table_rewrite_ptr,
-    .glColor3i = epoxy_glColor3i_dispatch_table_rewrite_ptr,
-    .glColor3iv = epoxy_glColor3iv_dispatch_table_rewrite_ptr,
-    .glColor3s = epoxy_glColor3s_dispatch_table_rewrite_ptr,
-    .glColor3sv = epoxy_glColor3sv_dispatch_table_rewrite_ptr,
-    .glColor3ub = epoxy_glColor3ub_dispatch_table_rewrite_ptr,
-    .glColor3ubv = epoxy_glColor3ubv_dispatch_table_rewrite_ptr,
-    .glColor3ui = epoxy_glColor3ui_dispatch_table_rewrite_ptr,
-    .glColor3uiv = epoxy_glColor3uiv_dispatch_table_rewrite_ptr,
-    .glColor3us = epoxy_glColor3us_dispatch_table_rewrite_ptr,
-    .glColor3usv = epoxy_glColor3usv_dispatch_table_rewrite_ptr,
-    .glColor3xOES = epoxy_glColor3xOES_dispatch_table_rewrite_ptr,
-    .glColor3xvOES = epoxy_glColor3xvOES_dispatch_table_rewrite_ptr,
-    .glColor4b = epoxy_glColor4b_dispatch_table_rewrite_ptr,
-    .glColor4bv = epoxy_glColor4bv_dispatch_table_rewrite_ptr,
-    .glColor4d = epoxy_glColor4d_dispatch_table_rewrite_ptr,
-    .glColor4dv = epoxy_glColor4dv_dispatch_table_rewrite_ptr,
-    .glColor4f = epoxy_glColor4f_dispatch_table_rewrite_ptr,
-    .glColor4fNormal3fVertex3fSUN = epoxy_glColor4fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glColor4fNormal3fVertex3fvSUN = epoxy_glColor4fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glColor4fv = epoxy_glColor4fv_dispatch_table_rewrite_ptr,
-    .glColor4hNV = epoxy_glColor4hNV_dispatch_table_rewrite_ptr,
-    .glColor4hvNV = epoxy_glColor4hvNV_dispatch_table_rewrite_ptr,
-    .glColor4i = epoxy_glColor4i_dispatch_table_rewrite_ptr,
-    .glColor4iv = epoxy_glColor4iv_dispatch_table_rewrite_ptr,
-    .glColor4s = epoxy_glColor4s_dispatch_table_rewrite_ptr,
-    .glColor4sv = epoxy_glColor4sv_dispatch_table_rewrite_ptr,
-    .glColor4ub = epoxy_glColor4ub_dispatch_table_rewrite_ptr,
-    .glColor4ubVertex2fSUN = epoxy_glColor4ubVertex2fSUN_dispatch_table_rewrite_ptr,
-    .glColor4ubVertex2fvSUN = epoxy_glColor4ubVertex2fvSUN_dispatch_table_rewrite_ptr,
-    .glColor4ubVertex3fSUN = epoxy_glColor4ubVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glColor4ubVertex3fvSUN = epoxy_glColor4ubVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glColor4ubv = epoxy_glColor4ubv_dispatch_table_rewrite_ptr,
-    .glColor4ui = epoxy_glColor4ui_dispatch_table_rewrite_ptr,
-    .glColor4uiv = epoxy_glColor4uiv_dispatch_table_rewrite_ptr,
-    .glColor4us = epoxy_glColor4us_dispatch_table_rewrite_ptr,
-    .glColor4usv = epoxy_glColor4usv_dispatch_table_rewrite_ptr,
-    .glColor4x = epoxy_glColor4x_dispatch_table_rewrite_ptr,
-    .glColor4xOES = epoxy_glColor4xOES_dispatch_table_rewrite_ptr,
-    .glColor4xvOES = epoxy_glColor4xvOES_dispatch_table_rewrite_ptr,
-    .glColorFormatNV = epoxy_glColorFormatNV_dispatch_table_rewrite_ptr,
-    .glColorFragmentOp1ATI = epoxy_glColorFragmentOp1ATI_dispatch_table_rewrite_ptr,
-    .glColorFragmentOp2ATI = epoxy_glColorFragmentOp2ATI_dispatch_table_rewrite_ptr,
-    .glColorFragmentOp3ATI = epoxy_glColorFragmentOp3ATI_dispatch_table_rewrite_ptr,
-    .glColorMask = epoxy_glColorMask_dispatch_table_rewrite_ptr,
-    .glColorMaskIndexedEXT = epoxy_glColorMaskIndexedEXT_dispatch_table_rewrite_ptr,
-    .glColorMaski = epoxy_glColorMaski_dispatch_table_rewrite_ptr,
-    .glColorMaskiEXT = epoxy_glColorMaskiEXT_dispatch_table_rewrite_ptr,
-    .glColorMaskiOES = epoxy_glColorMaskiOES_dispatch_table_rewrite_ptr,
-    .glColorMaterial = epoxy_glColorMaterial_dispatch_table_rewrite_ptr,
-    .glColorP3ui = epoxy_glColorP3ui_dispatch_table_rewrite_ptr,
-    .glColorP3uiv = epoxy_glColorP3uiv_dispatch_table_rewrite_ptr,
-    .glColorP4ui = epoxy_glColorP4ui_dispatch_table_rewrite_ptr,
-    .glColorP4uiv = epoxy_glColorP4uiv_dispatch_table_rewrite_ptr,
-    .glColorPointer = epoxy_glColorPointer_dispatch_table_rewrite_ptr,
-    .glColorPointerEXT = epoxy_glColorPointerEXT_dispatch_table_rewrite_ptr,
-    .glColorPointerListIBM = epoxy_glColorPointerListIBM_dispatch_table_rewrite_ptr,
-    .glColorPointervINTEL = epoxy_glColorPointervINTEL_dispatch_table_rewrite_ptr,
-    .glColorSubTable = epoxy_glColorSubTable_dispatch_table_rewrite_ptr,
-    .glColorSubTableEXT = epoxy_glColorSubTableEXT_dispatch_table_rewrite_ptr,
-    .glColorTable = epoxy_glColorTable_dispatch_table_rewrite_ptr,
-    .glColorTableEXT = epoxy_glColorTableEXT_dispatch_table_rewrite_ptr,
-    .glColorTableParameterfv = epoxy_glColorTableParameterfv_dispatch_table_rewrite_ptr,
-    .glColorTableParameterfvSGI = epoxy_glColorTableParameterfvSGI_dispatch_table_rewrite_ptr,
-    .glColorTableParameteriv = epoxy_glColorTableParameteriv_dispatch_table_rewrite_ptr,
-    .glColorTableParameterivSGI = epoxy_glColorTableParameterivSGI_dispatch_table_rewrite_ptr,
-    .glColorTableSGI = epoxy_glColorTableSGI_dispatch_table_rewrite_ptr,
-    .glCombinerInputNV = epoxy_glCombinerInputNV_dispatch_table_rewrite_ptr,
-    .glCombinerOutputNV = epoxy_glCombinerOutputNV_dispatch_table_rewrite_ptr,
-    .glCombinerParameterfNV = epoxy_glCombinerParameterfNV_dispatch_table_rewrite_ptr,
-    .glCombinerParameterfvNV = epoxy_glCombinerParameterfvNV_dispatch_table_rewrite_ptr,
-    .glCombinerParameteriNV = epoxy_glCombinerParameteriNV_dispatch_table_rewrite_ptr,
-    .glCombinerParameterivNV = epoxy_glCombinerParameterivNV_dispatch_table_rewrite_ptr,
-    .glCombinerStageParameterfvNV = epoxy_glCombinerStageParameterfvNV_dispatch_table_rewrite_ptr,
-    .glCommandListSegmentsNV = epoxy_glCommandListSegmentsNV_dispatch_table_rewrite_ptr,
-    .glCompileCommandListNV = epoxy_glCompileCommandListNV_dispatch_table_rewrite_ptr,
-    .glCompileShader = epoxy_glCompileShader_dispatch_table_rewrite_ptr,
-    .glCompileShaderARB = epoxy_glCompileShaderARB_dispatch_table_rewrite_ptr,
-    .glCompileShaderIncludeARB = epoxy_glCompileShaderIncludeARB_dispatch_table_rewrite_ptr,
-    .glCompressedMultiTexImage1DEXT = epoxy_glCompressedMultiTexImage1DEXT_dispatch_table_rewrite_ptr,
-    .glCompressedMultiTexImage2DEXT = epoxy_glCompressedMultiTexImage2DEXT_dispatch_table_rewrite_ptr,
-    .glCompressedMultiTexImage3DEXT = epoxy_glCompressedMultiTexImage3DEXT_dispatch_table_rewrite_ptr,
-    .glCompressedMultiTexSubImage1DEXT = epoxy_glCompressedMultiTexSubImage1DEXT_dispatch_table_rewrite_ptr,
-    .glCompressedMultiTexSubImage2DEXT = epoxy_glCompressedMultiTexSubImage2DEXT_dispatch_table_rewrite_ptr,
-    .glCompressedMultiTexSubImage3DEXT = epoxy_glCompressedMultiTexSubImage3DEXT_dispatch_table_rewrite_ptr,
-    .glCompressedTexImage1D = epoxy_glCompressedTexImage1D_dispatch_table_rewrite_ptr,
-    .glCompressedTexImage1DARB = epoxy_glCompressedTexImage1DARB_dispatch_table_rewrite_ptr,
-    .glCompressedTexImage2D = epoxy_glCompressedTexImage2D_dispatch_table_rewrite_ptr,
-    .glCompressedTexImage2DARB = epoxy_glCompressedTexImage2DARB_dispatch_table_rewrite_ptr,
-    .glCompressedTexImage3D = epoxy_glCompressedTexImage3D_dispatch_table_rewrite_ptr,
-    .glCompressedTexImage3DARB = epoxy_glCompressedTexImage3DARB_dispatch_table_rewrite_ptr,
-    .glCompressedTexImage3DOES = epoxy_glCompressedTexImage3DOES_dispatch_table_rewrite_ptr,
-    .glCompressedTexSubImage1D = epoxy_glCompressedTexSubImage1D_dispatch_table_rewrite_ptr,
-    .glCompressedTexSubImage1DARB = epoxy_glCompressedTexSubImage1DARB_dispatch_table_rewrite_ptr,
-    .glCompressedTexSubImage2D = epoxy_glCompressedTexSubImage2D_dispatch_table_rewrite_ptr,
-    .glCompressedTexSubImage2DARB = epoxy_glCompressedTexSubImage2DARB_dispatch_table_rewrite_ptr,
-    .glCompressedTexSubImage3D = epoxy_glCompressedTexSubImage3D_dispatch_table_rewrite_ptr,
-    .glCompressedTexSubImage3DARB = epoxy_glCompressedTexSubImage3DARB_dispatch_table_rewrite_ptr,
-    .glCompressedTexSubImage3DOES = epoxy_glCompressedTexSubImage3DOES_dispatch_table_rewrite_ptr,
-    .glCompressedTextureImage1DEXT = epoxy_glCompressedTextureImage1DEXT_dispatch_table_rewrite_ptr,
-    .glCompressedTextureImage2DEXT = epoxy_glCompressedTextureImage2DEXT_dispatch_table_rewrite_ptr,
-    .glCompressedTextureImage3DEXT = epoxy_glCompressedTextureImage3DEXT_dispatch_table_rewrite_ptr,
-    .glCompressedTextureSubImage1D = epoxy_glCompressedTextureSubImage1D_dispatch_table_rewrite_ptr,
-    .glCompressedTextureSubImage1DEXT = epoxy_glCompressedTextureSubImage1DEXT_dispatch_table_rewrite_ptr,
-    .glCompressedTextureSubImage2D = epoxy_glCompressedTextureSubImage2D_dispatch_table_rewrite_ptr,
-    .glCompressedTextureSubImage2DEXT = epoxy_glCompressedTextureSubImage2DEXT_dispatch_table_rewrite_ptr,
-    .glCompressedTextureSubImage3D = epoxy_glCompressedTextureSubImage3D_dispatch_table_rewrite_ptr,
-    .glCompressedTextureSubImage3DEXT = epoxy_glCompressedTextureSubImage3DEXT_dispatch_table_rewrite_ptr,
-    .glConvolutionFilter1D = epoxy_glConvolutionFilter1D_dispatch_table_rewrite_ptr,
-    .glConvolutionFilter1DEXT = epoxy_glConvolutionFilter1DEXT_dispatch_table_rewrite_ptr,
-    .glConvolutionFilter2D = epoxy_glConvolutionFilter2D_dispatch_table_rewrite_ptr,
-    .glConvolutionFilter2DEXT = epoxy_glConvolutionFilter2DEXT_dispatch_table_rewrite_ptr,
-    .glConvolutionParameterf = epoxy_glConvolutionParameterf_dispatch_table_rewrite_ptr,
-    .glConvolutionParameterfEXT = epoxy_glConvolutionParameterfEXT_dispatch_table_rewrite_ptr,
-    .glConvolutionParameterfv = epoxy_glConvolutionParameterfv_dispatch_table_rewrite_ptr,
-    .glConvolutionParameterfvEXT = epoxy_glConvolutionParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glConvolutionParameteri = epoxy_glConvolutionParameteri_dispatch_table_rewrite_ptr,
-    .glConvolutionParameteriEXT = epoxy_glConvolutionParameteriEXT_dispatch_table_rewrite_ptr,
-    .glConvolutionParameteriv = epoxy_glConvolutionParameteriv_dispatch_table_rewrite_ptr,
-    .glConvolutionParameterivEXT = epoxy_glConvolutionParameterivEXT_dispatch_table_rewrite_ptr,
-    .glConvolutionParameterxOES = epoxy_glConvolutionParameterxOES_dispatch_table_rewrite_ptr,
-    .glConvolutionParameterxvOES = epoxy_glConvolutionParameterxvOES_dispatch_table_rewrite_ptr,
-    .glCopyBufferSubData = epoxy_glCopyBufferSubData_dispatch_table_rewrite_ptr,
-    .glCopyBufferSubDataNV = epoxy_glCopyBufferSubDataNV_dispatch_table_rewrite_ptr,
-    .glCopyColorSubTable = epoxy_glCopyColorSubTable_dispatch_table_rewrite_ptr,
-    .glCopyColorSubTableEXT = epoxy_glCopyColorSubTableEXT_dispatch_table_rewrite_ptr,
-    .glCopyColorTable = epoxy_glCopyColorTable_dispatch_table_rewrite_ptr,
-    .glCopyColorTableSGI = epoxy_glCopyColorTableSGI_dispatch_table_rewrite_ptr,
-    .glCopyConvolutionFilter1D = epoxy_glCopyConvolutionFilter1D_dispatch_table_rewrite_ptr,
-    .glCopyConvolutionFilter1DEXT = epoxy_glCopyConvolutionFilter1DEXT_dispatch_table_rewrite_ptr,
-    .glCopyConvolutionFilter2D = epoxy_glCopyConvolutionFilter2D_dispatch_table_rewrite_ptr,
-    .glCopyConvolutionFilter2DEXT = epoxy_glCopyConvolutionFilter2DEXT_dispatch_table_rewrite_ptr,
-    .glCopyImageSubData = epoxy_glCopyImageSubData_dispatch_table_rewrite_ptr,
-    .glCopyImageSubDataEXT = epoxy_glCopyImageSubDataEXT_dispatch_table_rewrite_ptr,
-    .glCopyImageSubDataNV = epoxy_glCopyImageSubDataNV_dispatch_table_rewrite_ptr,
-    .glCopyImageSubDataOES = epoxy_glCopyImageSubDataOES_dispatch_table_rewrite_ptr,
-    .glCopyMultiTexImage1DEXT = epoxy_glCopyMultiTexImage1DEXT_dispatch_table_rewrite_ptr,
-    .glCopyMultiTexImage2DEXT = epoxy_glCopyMultiTexImage2DEXT_dispatch_table_rewrite_ptr,
-    .glCopyMultiTexSubImage1DEXT = epoxy_glCopyMultiTexSubImage1DEXT_dispatch_table_rewrite_ptr,
-    .glCopyMultiTexSubImage2DEXT = epoxy_glCopyMultiTexSubImage2DEXT_dispatch_table_rewrite_ptr,
-    .glCopyMultiTexSubImage3DEXT = epoxy_glCopyMultiTexSubImage3DEXT_dispatch_table_rewrite_ptr,
-    .glCopyNamedBufferSubData = epoxy_glCopyNamedBufferSubData_dispatch_table_rewrite_ptr,
-    .glCopyPathNV = epoxy_glCopyPathNV_dispatch_table_rewrite_ptr,
-    .glCopyPixels = epoxy_glCopyPixels_dispatch_table_rewrite_ptr,
-    .glCopyTexImage1D = epoxy_glCopyTexImage1D_dispatch_table_rewrite_ptr,
-    .glCopyTexImage1DEXT = epoxy_glCopyTexImage1DEXT_dispatch_table_rewrite_ptr,
-    .glCopyTexImage2D = epoxy_glCopyTexImage2D_dispatch_table_rewrite_ptr,
-    .glCopyTexImage2DEXT = epoxy_glCopyTexImage2DEXT_dispatch_table_rewrite_ptr,
-    .glCopyTexSubImage1D = epoxy_glCopyTexSubImage1D_dispatch_table_rewrite_ptr,
-    .glCopyTexSubImage1DEXT = epoxy_glCopyTexSubImage1DEXT_dispatch_table_rewrite_ptr,
-    .glCopyTexSubImage2D = epoxy_glCopyTexSubImage2D_dispatch_table_rewrite_ptr,
-    .glCopyTexSubImage2DEXT = epoxy_glCopyTexSubImage2DEXT_dispatch_table_rewrite_ptr,
-    .glCopyTexSubImage3D = epoxy_glCopyTexSubImage3D_dispatch_table_rewrite_ptr,
-    .glCopyTexSubImage3DEXT = epoxy_glCopyTexSubImage3DEXT_dispatch_table_rewrite_ptr,
-    .glCopyTexSubImage3DOES = epoxy_glCopyTexSubImage3DOES_dispatch_table_rewrite_ptr,
-    .glCopyTextureImage1DEXT = epoxy_glCopyTextureImage1DEXT_dispatch_table_rewrite_ptr,
-    .glCopyTextureImage2DEXT = epoxy_glCopyTextureImage2DEXT_dispatch_table_rewrite_ptr,
-    .glCopyTextureLevelsAPPLE = epoxy_glCopyTextureLevelsAPPLE_dispatch_table_rewrite_ptr,
-    .glCopyTextureSubImage1D = epoxy_glCopyTextureSubImage1D_dispatch_table_rewrite_ptr,
-    .glCopyTextureSubImage1DEXT = epoxy_glCopyTextureSubImage1DEXT_dispatch_table_rewrite_ptr,
-    .glCopyTextureSubImage2D = epoxy_glCopyTextureSubImage2D_dispatch_table_rewrite_ptr,
-    .glCopyTextureSubImage2DEXT = epoxy_glCopyTextureSubImage2DEXT_dispatch_table_rewrite_ptr,
-    .glCopyTextureSubImage3D = epoxy_glCopyTextureSubImage3D_dispatch_table_rewrite_ptr,
-    .glCopyTextureSubImage3DEXT = epoxy_glCopyTextureSubImage3DEXT_dispatch_table_rewrite_ptr,
-    .glCoverFillPathInstancedNV = epoxy_glCoverFillPathInstancedNV_dispatch_table_rewrite_ptr,
-    .glCoverFillPathNV = epoxy_glCoverFillPathNV_dispatch_table_rewrite_ptr,
-    .glCoverStrokePathInstancedNV = epoxy_glCoverStrokePathInstancedNV_dispatch_table_rewrite_ptr,
-    .glCoverStrokePathNV = epoxy_glCoverStrokePathNV_dispatch_table_rewrite_ptr,
-    .glCoverageMaskNV = epoxy_glCoverageMaskNV_dispatch_table_rewrite_ptr,
-    .glCoverageModulationNV = epoxy_glCoverageModulationNV_dispatch_table_rewrite_ptr,
-    .glCoverageModulationTableNV = epoxy_glCoverageModulationTableNV_dispatch_table_rewrite_ptr,
-    .glCoverageOperationNV = epoxy_glCoverageOperationNV_dispatch_table_rewrite_ptr,
-    .glCreateBuffers = epoxy_glCreateBuffers_dispatch_table_rewrite_ptr,
-    .glCreateCommandListsNV = epoxy_glCreateCommandListsNV_dispatch_table_rewrite_ptr,
-    .glCreateFramebuffers = epoxy_glCreateFramebuffers_dispatch_table_rewrite_ptr,
-    .glCreatePerfQueryINTEL = epoxy_glCreatePerfQueryINTEL_dispatch_table_rewrite_ptr,
-    .glCreateProgram = epoxy_glCreateProgram_dispatch_table_rewrite_ptr,
-    .glCreateProgramObjectARB = epoxy_glCreateProgramObjectARB_dispatch_table_rewrite_ptr,
-    .glCreateProgramPipelines = epoxy_glCreateProgramPipelines_dispatch_table_rewrite_ptr,
-    .glCreateQueries = epoxy_glCreateQueries_dispatch_table_rewrite_ptr,
-    .glCreateRenderbuffers = epoxy_glCreateRenderbuffers_dispatch_table_rewrite_ptr,
-    .glCreateSamplers = epoxy_glCreateSamplers_dispatch_table_rewrite_ptr,
-    .glCreateShader = epoxy_glCreateShader_dispatch_table_rewrite_ptr,
-    .glCreateShaderObjectARB = epoxy_glCreateShaderObjectARB_dispatch_table_rewrite_ptr,
-    .glCreateShaderProgramEXT = epoxy_glCreateShaderProgramEXT_dispatch_table_rewrite_ptr,
-    .glCreateShaderProgramv = epoxy_glCreateShaderProgramv_dispatch_table_rewrite_ptr,
-    .glCreateShaderProgramvEXT = epoxy_glCreateShaderProgramvEXT_dispatch_table_rewrite_ptr,
-    .glCreateStatesNV = epoxy_glCreateStatesNV_dispatch_table_rewrite_ptr,
-    .glCreateSyncFromCLeventARB = epoxy_glCreateSyncFromCLeventARB_dispatch_table_rewrite_ptr,
-    .glCreateTextures = epoxy_glCreateTextures_dispatch_table_rewrite_ptr,
-    .glCreateTransformFeedbacks = epoxy_glCreateTransformFeedbacks_dispatch_table_rewrite_ptr,
-    .glCreateVertexArrays = epoxy_glCreateVertexArrays_dispatch_table_rewrite_ptr,
-    .glCullFace = epoxy_glCullFace_dispatch_table_rewrite_ptr,
-    .glCullParameterdvEXT = epoxy_glCullParameterdvEXT_dispatch_table_rewrite_ptr,
-    .glCullParameterfvEXT = epoxy_glCullParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glCurrentPaletteMatrixARB = epoxy_glCurrentPaletteMatrixARB_dispatch_table_rewrite_ptr,
-    .glCurrentPaletteMatrixOES = epoxy_glCurrentPaletteMatrixOES_dispatch_table_rewrite_ptr,
-    .glDebugMessageCallback = epoxy_glDebugMessageCallback_dispatch_table_rewrite_ptr,
-    .glDebugMessageCallbackAMD = epoxy_glDebugMessageCallbackAMD_dispatch_table_rewrite_ptr,
-    .glDebugMessageCallbackARB = epoxy_glDebugMessageCallbackARB_dispatch_table_rewrite_ptr,
-    .glDebugMessageCallbackKHR = epoxy_glDebugMessageCallbackKHR_dispatch_table_rewrite_ptr,
-    .glDebugMessageControl = epoxy_glDebugMessageControl_dispatch_table_rewrite_ptr,
-    .glDebugMessageControlARB = epoxy_glDebugMessageControlARB_dispatch_table_rewrite_ptr,
-    .glDebugMessageControlKHR = epoxy_glDebugMessageControlKHR_dispatch_table_rewrite_ptr,
-    .glDebugMessageEnableAMD = epoxy_glDebugMessageEnableAMD_dispatch_table_rewrite_ptr,
-    .glDebugMessageInsert = epoxy_glDebugMessageInsert_dispatch_table_rewrite_ptr,
-    .glDebugMessageInsertAMD = epoxy_glDebugMessageInsertAMD_dispatch_table_rewrite_ptr,
-    .glDebugMessageInsertARB = epoxy_glDebugMessageInsertARB_dispatch_table_rewrite_ptr,
-    .glDebugMessageInsertKHR = epoxy_glDebugMessageInsertKHR_dispatch_table_rewrite_ptr,
-    .glDeformSGIX = epoxy_glDeformSGIX_dispatch_table_rewrite_ptr,
-    .glDeformationMap3dSGIX = epoxy_glDeformationMap3dSGIX_dispatch_table_rewrite_ptr,
-    .glDeformationMap3fSGIX = epoxy_glDeformationMap3fSGIX_dispatch_table_rewrite_ptr,
-    .glDeleteAsyncMarkersSGIX = epoxy_glDeleteAsyncMarkersSGIX_dispatch_table_rewrite_ptr,
-    .glDeleteBuffers = epoxy_glDeleteBuffers_dispatch_table_rewrite_ptr,
-    .glDeleteBuffersARB = epoxy_glDeleteBuffersARB_dispatch_table_rewrite_ptr,
-    .glDeleteCommandListsNV = epoxy_glDeleteCommandListsNV_dispatch_table_rewrite_ptr,
-    .glDeleteFencesAPPLE = epoxy_glDeleteFencesAPPLE_dispatch_table_rewrite_ptr,
-    .glDeleteFencesNV = epoxy_glDeleteFencesNV_dispatch_table_rewrite_ptr,
-    .glDeleteFragmentShaderATI = epoxy_glDeleteFragmentShaderATI_dispatch_table_rewrite_ptr,
-    .glDeleteFramebuffers = epoxy_glDeleteFramebuffers_dispatch_table_rewrite_ptr,
-    .glDeleteFramebuffersEXT = epoxy_glDeleteFramebuffersEXT_dispatch_table_rewrite_ptr,
-    .glDeleteFramebuffersOES = epoxy_glDeleteFramebuffersOES_dispatch_table_rewrite_ptr,
-    .glDeleteLists = epoxy_glDeleteLists_dispatch_table_rewrite_ptr,
-    .glDeleteNamedStringARB = epoxy_glDeleteNamedStringARB_dispatch_table_rewrite_ptr,
-    .glDeleteNamesAMD = epoxy_glDeleteNamesAMD_dispatch_table_rewrite_ptr,
-    .glDeleteObjectARB = epoxy_glDeleteObjectARB_dispatch_table_rewrite_ptr,
-    .glDeleteOcclusionQueriesNV = epoxy_glDeleteOcclusionQueriesNV_dispatch_table_rewrite_ptr,
-    .glDeletePathsNV = epoxy_glDeletePathsNV_dispatch_table_rewrite_ptr,
-    .glDeletePerfMonitorsAMD = epoxy_glDeletePerfMonitorsAMD_dispatch_table_rewrite_ptr,
-    .glDeletePerfQueryINTEL = epoxy_glDeletePerfQueryINTEL_dispatch_table_rewrite_ptr,
-    .glDeleteProgram = epoxy_glDeleteProgram_dispatch_table_rewrite_ptr,
-    .glDeleteProgramPipelines = epoxy_glDeleteProgramPipelines_dispatch_table_rewrite_ptr,
-    .glDeleteProgramPipelinesEXT = epoxy_glDeleteProgramPipelinesEXT_dispatch_table_rewrite_ptr,
-    .glDeleteProgramsARB = epoxy_glDeleteProgramsARB_dispatch_table_rewrite_ptr,
-    .glDeleteProgramsNV = epoxy_glDeleteProgramsNV_dispatch_table_rewrite_ptr,
-    .glDeleteQueries = epoxy_glDeleteQueries_dispatch_table_rewrite_ptr,
-    .glDeleteQueriesARB = epoxy_glDeleteQueriesARB_dispatch_table_rewrite_ptr,
-    .glDeleteQueriesEXT = epoxy_glDeleteQueriesEXT_dispatch_table_rewrite_ptr,
-    .glDeleteRenderbuffers = epoxy_glDeleteRenderbuffers_dispatch_table_rewrite_ptr,
-    .glDeleteRenderbuffersEXT = epoxy_glDeleteRenderbuffersEXT_dispatch_table_rewrite_ptr,
-    .glDeleteRenderbuffersOES = epoxy_glDeleteRenderbuffersOES_dispatch_table_rewrite_ptr,
-    .glDeleteSamplers = epoxy_glDeleteSamplers_dispatch_table_rewrite_ptr,
-    .glDeleteShader = epoxy_glDeleteShader_dispatch_table_rewrite_ptr,
-    .glDeleteStatesNV = epoxy_glDeleteStatesNV_dispatch_table_rewrite_ptr,
-    .glDeleteSync = epoxy_glDeleteSync_dispatch_table_rewrite_ptr,
-    .glDeleteSyncAPPLE = epoxy_glDeleteSyncAPPLE_dispatch_table_rewrite_ptr,
-    .glDeleteTextures = epoxy_glDeleteTextures_dispatch_table_rewrite_ptr,
-    .glDeleteTexturesEXT = epoxy_glDeleteTexturesEXT_dispatch_table_rewrite_ptr,
-    .glDeleteTransformFeedbacks = epoxy_glDeleteTransformFeedbacks_dispatch_table_rewrite_ptr,
-    .glDeleteTransformFeedbacksNV = epoxy_glDeleteTransformFeedbacksNV_dispatch_table_rewrite_ptr,
-    .glDeleteVertexArrays = epoxy_glDeleteVertexArrays_dispatch_table_rewrite_ptr,
-    .glDeleteVertexArraysAPPLE = epoxy_glDeleteVertexArraysAPPLE_dispatch_table_rewrite_ptr,
-    .glDeleteVertexArraysOES = epoxy_glDeleteVertexArraysOES_dispatch_table_rewrite_ptr,
-    .glDeleteVertexShaderEXT = epoxy_glDeleteVertexShaderEXT_dispatch_table_rewrite_ptr,
-    .glDepthBoundsEXT = epoxy_glDepthBoundsEXT_dispatch_table_rewrite_ptr,
-    .glDepthBoundsdNV = epoxy_glDepthBoundsdNV_dispatch_table_rewrite_ptr,
-    .glDepthFunc = epoxy_glDepthFunc_dispatch_table_rewrite_ptr,
-    .glDepthMask = epoxy_glDepthMask_dispatch_table_rewrite_ptr,
-    .glDepthRange = epoxy_glDepthRange_dispatch_table_rewrite_ptr,
-    .glDepthRangeArrayfvNV = epoxy_glDepthRangeArrayfvNV_dispatch_table_rewrite_ptr,
-    .glDepthRangeArrayv = epoxy_glDepthRangeArrayv_dispatch_table_rewrite_ptr,
-    .glDepthRangeIndexed = epoxy_glDepthRangeIndexed_dispatch_table_rewrite_ptr,
-    .glDepthRangeIndexedfNV = epoxy_glDepthRangeIndexedfNV_dispatch_table_rewrite_ptr,
-    .glDepthRangedNV = epoxy_glDepthRangedNV_dispatch_table_rewrite_ptr,
-    .glDepthRangef = epoxy_glDepthRangef_dispatch_table_rewrite_ptr,
-    .glDepthRangefOES = epoxy_glDepthRangefOES_dispatch_table_rewrite_ptr,
-    .glDepthRangex = epoxy_glDepthRangex_dispatch_table_rewrite_ptr,
-    .glDepthRangexOES = epoxy_glDepthRangexOES_dispatch_table_rewrite_ptr,
-    .glDetachObjectARB = epoxy_glDetachObjectARB_dispatch_table_rewrite_ptr,
-    .glDetachShader = epoxy_glDetachShader_dispatch_table_rewrite_ptr,
-    .glDetailTexFuncSGIS = epoxy_glDetailTexFuncSGIS_dispatch_table_rewrite_ptr,
-    .glDisable = epoxy_glDisable_dispatch_table_rewrite_ptr,
-    .glDisableClientState = epoxy_glDisableClientState_dispatch_table_rewrite_ptr,
-    .glDisableClientStateIndexedEXT = epoxy_glDisableClientStateIndexedEXT_dispatch_table_rewrite_ptr,
-    .glDisableClientStateiEXT = epoxy_glDisableClientStateiEXT_dispatch_table_rewrite_ptr,
-    .glDisableDriverControlQCOM = epoxy_glDisableDriverControlQCOM_dispatch_table_rewrite_ptr,
-    .glDisableIndexedEXT = epoxy_glDisableIndexedEXT_dispatch_table_rewrite_ptr,
-    .glDisableVariantClientStateEXT = epoxy_glDisableVariantClientStateEXT_dispatch_table_rewrite_ptr,
-    .glDisableVertexArrayAttrib = epoxy_glDisableVertexArrayAttrib_dispatch_table_rewrite_ptr,
-    .glDisableVertexArrayAttribEXT = epoxy_glDisableVertexArrayAttribEXT_dispatch_table_rewrite_ptr,
-    .glDisableVertexArrayEXT = epoxy_glDisableVertexArrayEXT_dispatch_table_rewrite_ptr,
-    .glDisableVertexAttribAPPLE = epoxy_glDisableVertexAttribAPPLE_dispatch_table_rewrite_ptr,
-    .glDisableVertexAttribArray = epoxy_glDisableVertexAttribArray_dispatch_table_rewrite_ptr,
-    .glDisableVertexAttribArrayARB = epoxy_glDisableVertexAttribArrayARB_dispatch_table_rewrite_ptr,
-    .glDisablei = epoxy_glDisablei_dispatch_table_rewrite_ptr,
-    .glDisableiEXT = epoxy_glDisableiEXT_dispatch_table_rewrite_ptr,
-    .glDisableiNV = epoxy_glDisableiNV_dispatch_table_rewrite_ptr,
-    .glDisableiOES = epoxy_glDisableiOES_dispatch_table_rewrite_ptr,
-    .glDiscardFramebufferEXT = epoxy_glDiscardFramebufferEXT_dispatch_table_rewrite_ptr,
-    .glDispatchCompute = epoxy_glDispatchCompute_dispatch_table_rewrite_ptr,
-    .glDispatchComputeGroupSizeARB = epoxy_glDispatchComputeGroupSizeARB_dispatch_table_rewrite_ptr,
-    .glDispatchComputeIndirect = epoxy_glDispatchComputeIndirect_dispatch_table_rewrite_ptr,
-    .glDrawArrays = epoxy_glDrawArrays_dispatch_table_rewrite_ptr,
-    .glDrawArraysEXT = epoxy_glDrawArraysEXT_dispatch_table_rewrite_ptr,
-    .glDrawArraysIndirect = epoxy_glDrawArraysIndirect_dispatch_table_rewrite_ptr,
-    .glDrawArraysInstanced = epoxy_glDrawArraysInstanced_dispatch_table_rewrite_ptr,
-    .glDrawArraysInstancedANGLE = epoxy_glDrawArraysInstancedANGLE_dispatch_table_rewrite_ptr,
-    .glDrawArraysInstancedARB = epoxy_glDrawArraysInstancedARB_dispatch_table_rewrite_ptr,
-    .glDrawArraysInstancedBaseInstance = epoxy_glDrawArraysInstancedBaseInstance_dispatch_table_rewrite_ptr,
-    .glDrawArraysInstancedBaseInstanceEXT = epoxy_glDrawArraysInstancedBaseInstanceEXT_dispatch_table_rewrite_ptr,
-    .glDrawArraysInstancedEXT = epoxy_glDrawArraysInstancedEXT_dispatch_table_rewrite_ptr,
-    .glDrawArraysInstancedNV = epoxy_glDrawArraysInstancedNV_dispatch_table_rewrite_ptr,
-    .glDrawBuffer = epoxy_glDrawBuffer_dispatch_table_rewrite_ptr,
-    .glDrawBuffers = epoxy_glDrawBuffers_dispatch_table_rewrite_ptr,
-    .glDrawBuffersARB = epoxy_glDrawBuffersARB_dispatch_table_rewrite_ptr,
-    .glDrawBuffersATI = epoxy_glDrawBuffersATI_dispatch_table_rewrite_ptr,
-    .glDrawBuffersEXT = epoxy_glDrawBuffersEXT_dispatch_table_rewrite_ptr,
-    .glDrawBuffersIndexedEXT = epoxy_glDrawBuffersIndexedEXT_dispatch_table_rewrite_ptr,
-    .glDrawBuffersNV = epoxy_glDrawBuffersNV_dispatch_table_rewrite_ptr,
-    .glDrawCommandsAddressNV = epoxy_glDrawCommandsAddressNV_dispatch_table_rewrite_ptr,
-    .glDrawCommandsNV = epoxy_glDrawCommandsNV_dispatch_table_rewrite_ptr,
-    .glDrawCommandsStatesAddressNV = epoxy_glDrawCommandsStatesAddressNV_dispatch_table_rewrite_ptr,
-    .glDrawCommandsStatesNV = epoxy_glDrawCommandsStatesNV_dispatch_table_rewrite_ptr,
-    .glDrawElementArrayAPPLE = epoxy_glDrawElementArrayAPPLE_dispatch_table_rewrite_ptr,
-    .glDrawElementArrayATI = epoxy_glDrawElementArrayATI_dispatch_table_rewrite_ptr,
-    .glDrawElements = epoxy_glDrawElements_dispatch_table_rewrite_ptr,
-    .glDrawElementsBaseVertex = epoxy_glDrawElementsBaseVertex_dispatch_table_rewrite_ptr,
-    .glDrawElementsBaseVertexEXT = epoxy_glDrawElementsBaseVertexEXT_dispatch_table_rewrite_ptr,
-    .glDrawElementsBaseVertexOES = epoxy_glDrawElementsBaseVertexOES_dispatch_table_rewrite_ptr,
-    .glDrawElementsIndirect = epoxy_glDrawElementsIndirect_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstanced = epoxy_glDrawElementsInstanced_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstancedANGLE = epoxy_glDrawElementsInstancedANGLE_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstancedARB = epoxy_glDrawElementsInstancedARB_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstancedBaseInstance = epoxy_glDrawElementsInstancedBaseInstance_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstancedBaseInstanceEXT = epoxy_glDrawElementsInstancedBaseInstanceEXT_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstancedBaseVertex = epoxy_glDrawElementsInstancedBaseVertex_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstancedBaseVertexBaseInstance = epoxy_glDrawElementsInstancedBaseVertexBaseInstance_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstancedBaseVertexBaseInstanceEXT = epoxy_glDrawElementsInstancedBaseVertexBaseInstanceEXT_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstancedBaseVertexEXT = epoxy_glDrawElementsInstancedBaseVertexEXT_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstancedBaseVertexOES = epoxy_glDrawElementsInstancedBaseVertexOES_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstancedEXT = epoxy_glDrawElementsInstancedEXT_dispatch_table_rewrite_ptr,
-    .glDrawElementsInstancedNV = epoxy_glDrawElementsInstancedNV_dispatch_table_rewrite_ptr,
-    .glDrawMeshArraysSUN = epoxy_glDrawMeshArraysSUN_dispatch_table_rewrite_ptr,
-    .glDrawPixels = epoxy_glDrawPixels_dispatch_table_rewrite_ptr,
-    .glDrawRangeElementArrayAPPLE = epoxy_glDrawRangeElementArrayAPPLE_dispatch_table_rewrite_ptr,
-    .glDrawRangeElementArrayATI = epoxy_glDrawRangeElementArrayATI_dispatch_table_rewrite_ptr,
-    .glDrawRangeElements = epoxy_glDrawRangeElements_dispatch_table_rewrite_ptr,
-    .glDrawRangeElementsBaseVertex = epoxy_glDrawRangeElementsBaseVertex_dispatch_table_rewrite_ptr,
-    .glDrawRangeElementsBaseVertexEXT = epoxy_glDrawRangeElementsBaseVertexEXT_dispatch_table_rewrite_ptr,
-    .glDrawRangeElementsBaseVertexOES = epoxy_glDrawRangeElementsBaseVertexOES_dispatch_table_rewrite_ptr,
-    .glDrawRangeElementsEXT = epoxy_glDrawRangeElementsEXT_dispatch_table_rewrite_ptr,
-    .glDrawTexfOES = epoxy_glDrawTexfOES_dispatch_table_rewrite_ptr,
-    .glDrawTexfvOES = epoxy_glDrawTexfvOES_dispatch_table_rewrite_ptr,
-    .glDrawTexiOES = epoxy_glDrawTexiOES_dispatch_table_rewrite_ptr,
-    .glDrawTexivOES = epoxy_glDrawTexivOES_dispatch_table_rewrite_ptr,
-    .glDrawTexsOES = epoxy_glDrawTexsOES_dispatch_table_rewrite_ptr,
-    .glDrawTexsvOES = epoxy_glDrawTexsvOES_dispatch_table_rewrite_ptr,
-    .glDrawTextureNV = epoxy_glDrawTextureNV_dispatch_table_rewrite_ptr,
-    .glDrawTexxOES = epoxy_glDrawTexxOES_dispatch_table_rewrite_ptr,
-    .glDrawTexxvOES = epoxy_glDrawTexxvOES_dispatch_table_rewrite_ptr,
-    .glDrawTransformFeedback = epoxy_glDrawTransformFeedback_dispatch_table_rewrite_ptr,
-    .glDrawTransformFeedbackInstanced = epoxy_glDrawTransformFeedbackInstanced_dispatch_table_rewrite_ptr,
-    .glDrawTransformFeedbackNV = epoxy_glDrawTransformFeedbackNV_dispatch_table_rewrite_ptr,
-    .glDrawTransformFeedbackStream = epoxy_glDrawTransformFeedbackStream_dispatch_table_rewrite_ptr,
-    .glDrawTransformFeedbackStreamInstanced = epoxy_glDrawTransformFeedbackStreamInstanced_dispatch_table_rewrite_ptr,
-    .glEGLImageTargetRenderbufferStorageOES = epoxy_glEGLImageTargetRenderbufferStorageOES_dispatch_table_rewrite_ptr,
-    .glEGLImageTargetTexture2DOES = epoxy_glEGLImageTargetTexture2DOES_dispatch_table_rewrite_ptr,
-    .glEdgeFlag = epoxy_glEdgeFlag_dispatch_table_rewrite_ptr,
-    .glEdgeFlagFormatNV = epoxy_glEdgeFlagFormatNV_dispatch_table_rewrite_ptr,
-    .glEdgeFlagPointer = epoxy_glEdgeFlagPointer_dispatch_table_rewrite_ptr,
-    .glEdgeFlagPointerEXT = epoxy_glEdgeFlagPointerEXT_dispatch_table_rewrite_ptr,
-    .glEdgeFlagPointerListIBM = epoxy_glEdgeFlagPointerListIBM_dispatch_table_rewrite_ptr,
-    .glEdgeFlagv = epoxy_glEdgeFlagv_dispatch_table_rewrite_ptr,
-    .glElementPointerAPPLE = epoxy_glElementPointerAPPLE_dispatch_table_rewrite_ptr,
-    .glElementPointerATI = epoxy_glElementPointerATI_dispatch_table_rewrite_ptr,
-    .glEnable = epoxy_glEnable_dispatch_table_rewrite_ptr,
-    .glEnableClientState = epoxy_glEnableClientState_dispatch_table_rewrite_ptr,
-    .glEnableClientStateIndexedEXT = epoxy_glEnableClientStateIndexedEXT_dispatch_table_rewrite_ptr,
-    .glEnableClientStateiEXT = epoxy_glEnableClientStateiEXT_dispatch_table_rewrite_ptr,
-    .glEnableDriverControlQCOM = epoxy_glEnableDriverControlQCOM_dispatch_table_rewrite_ptr,
-    .glEnableIndexedEXT = epoxy_glEnableIndexedEXT_dispatch_table_rewrite_ptr,
-    .glEnableVariantClientStateEXT = epoxy_glEnableVariantClientStateEXT_dispatch_table_rewrite_ptr,
-    .glEnableVertexArrayAttrib = epoxy_glEnableVertexArrayAttrib_dispatch_table_rewrite_ptr,
-    .glEnableVertexArrayAttribEXT = epoxy_glEnableVertexArrayAttribEXT_dispatch_table_rewrite_ptr,
-    .glEnableVertexArrayEXT = epoxy_glEnableVertexArrayEXT_dispatch_table_rewrite_ptr,
-    .glEnableVertexAttribAPPLE = epoxy_glEnableVertexAttribAPPLE_dispatch_table_rewrite_ptr,
-    .glEnableVertexAttribArray = epoxy_glEnableVertexAttribArray_dispatch_table_rewrite_ptr,
-    .glEnableVertexAttribArrayARB = epoxy_glEnableVertexAttribArrayARB_dispatch_table_rewrite_ptr,
-    .glEnablei = epoxy_glEnablei_dispatch_table_rewrite_ptr,
-    .glEnableiEXT = epoxy_glEnableiEXT_dispatch_table_rewrite_ptr,
-    .glEnableiNV = epoxy_glEnableiNV_dispatch_table_rewrite_ptr,
-    .glEnableiOES = epoxy_glEnableiOES_dispatch_table_rewrite_ptr,
-    .glEnd_unwrapped = epoxy_glEnd_unwrapped_dispatch_table_rewrite_ptr,
-    .glEndConditionalRender = epoxy_glEndConditionalRender_dispatch_table_rewrite_ptr,
-    .glEndConditionalRenderNV = epoxy_glEndConditionalRenderNV_dispatch_table_rewrite_ptr,
-    .glEndConditionalRenderNVX = epoxy_glEndConditionalRenderNVX_dispatch_table_rewrite_ptr,
-    .glEndFragmentShaderATI = epoxy_glEndFragmentShaderATI_dispatch_table_rewrite_ptr,
-    .glEndList = epoxy_glEndList_dispatch_table_rewrite_ptr,
-    .glEndOcclusionQueryNV = epoxy_glEndOcclusionQueryNV_dispatch_table_rewrite_ptr,
-    .glEndPerfMonitorAMD = epoxy_glEndPerfMonitorAMD_dispatch_table_rewrite_ptr,
-    .glEndPerfQueryINTEL = epoxy_glEndPerfQueryINTEL_dispatch_table_rewrite_ptr,
-    .glEndQuery = epoxy_glEndQuery_dispatch_table_rewrite_ptr,
-    .glEndQueryARB = epoxy_glEndQueryARB_dispatch_table_rewrite_ptr,
-    .glEndQueryEXT = epoxy_glEndQueryEXT_dispatch_table_rewrite_ptr,
-    .glEndQueryIndexed = epoxy_glEndQueryIndexed_dispatch_table_rewrite_ptr,
-    .glEndTilingQCOM = epoxy_glEndTilingQCOM_dispatch_table_rewrite_ptr,
-    .glEndTransformFeedback = epoxy_glEndTransformFeedback_dispatch_table_rewrite_ptr,
-    .glEndTransformFeedbackEXT = epoxy_glEndTransformFeedbackEXT_dispatch_table_rewrite_ptr,
-    .glEndTransformFeedbackNV = epoxy_glEndTransformFeedbackNV_dispatch_table_rewrite_ptr,
-    .glEndVertexShaderEXT = epoxy_glEndVertexShaderEXT_dispatch_table_rewrite_ptr,
-    .glEndVideoCaptureNV = epoxy_glEndVideoCaptureNV_dispatch_table_rewrite_ptr,
-    .glEvalCoord1d = epoxy_glEvalCoord1d_dispatch_table_rewrite_ptr,
-    .glEvalCoord1dv = epoxy_glEvalCoord1dv_dispatch_table_rewrite_ptr,
-    .glEvalCoord1f = epoxy_glEvalCoord1f_dispatch_table_rewrite_ptr,
-    .glEvalCoord1fv = epoxy_glEvalCoord1fv_dispatch_table_rewrite_ptr,
-    .glEvalCoord1xOES = epoxy_glEvalCoord1xOES_dispatch_table_rewrite_ptr,
-    .glEvalCoord1xvOES = epoxy_glEvalCoord1xvOES_dispatch_table_rewrite_ptr,
-    .glEvalCoord2d = epoxy_glEvalCoord2d_dispatch_table_rewrite_ptr,
-    .glEvalCoord2dv = epoxy_glEvalCoord2dv_dispatch_table_rewrite_ptr,
-    .glEvalCoord2f = epoxy_glEvalCoord2f_dispatch_table_rewrite_ptr,
-    .glEvalCoord2fv = epoxy_glEvalCoord2fv_dispatch_table_rewrite_ptr,
-    .glEvalCoord2xOES = epoxy_glEvalCoord2xOES_dispatch_table_rewrite_ptr,
-    .glEvalCoord2xvOES = epoxy_glEvalCoord2xvOES_dispatch_table_rewrite_ptr,
-    .glEvalMapsNV = epoxy_glEvalMapsNV_dispatch_table_rewrite_ptr,
-    .glEvalMesh1 = epoxy_glEvalMesh1_dispatch_table_rewrite_ptr,
-    .glEvalMesh2 = epoxy_glEvalMesh2_dispatch_table_rewrite_ptr,
-    .glEvalPoint1 = epoxy_glEvalPoint1_dispatch_table_rewrite_ptr,
-    .glEvalPoint2 = epoxy_glEvalPoint2_dispatch_table_rewrite_ptr,
-    .glExecuteProgramNV = epoxy_glExecuteProgramNV_dispatch_table_rewrite_ptr,
-    .glExtGetBufferPointervQCOM = epoxy_glExtGetBufferPointervQCOM_dispatch_table_rewrite_ptr,
-    .glExtGetBuffersQCOM = epoxy_glExtGetBuffersQCOM_dispatch_table_rewrite_ptr,
-    .glExtGetFramebuffersQCOM = epoxy_glExtGetFramebuffersQCOM_dispatch_table_rewrite_ptr,
-    .glExtGetProgramBinarySourceQCOM = epoxy_glExtGetProgramBinarySourceQCOM_dispatch_table_rewrite_ptr,
-    .glExtGetProgramsQCOM = epoxy_glExtGetProgramsQCOM_dispatch_table_rewrite_ptr,
-    .glExtGetRenderbuffersQCOM = epoxy_glExtGetRenderbuffersQCOM_dispatch_table_rewrite_ptr,
-    .glExtGetShadersQCOM = epoxy_glExtGetShadersQCOM_dispatch_table_rewrite_ptr,
-    .glExtGetTexLevelParameterivQCOM = epoxy_glExtGetTexLevelParameterivQCOM_dispatch_table_rewrite_ptr,
-    .glExtGetTexSubImageQCOM = epoxy_glExtGetTexSubImageQCOM_dispatch_table_rewrite_ptr,
-    .glExtGetTexturesQCOM = epoxy_glExtGetTexturesQCOM_dispatch_table_rewrite_ptr,
-    .glExtIsProgramBinaryQCOM = epoxy_glExtIsProgramBinaryQCOM_dispatch_table_rewrite_ptr,
-    .glExtTexObjectStateOverrideiQCOM = epoxy_glExtTexObjectStateOverrideiQCOM_dispatch_table_rewrite_ptr,
-    .glExtractComponentEXT = epoxy_glExtractComponentEXT_dispatch_table_rewrite_ptr,
-    .glFeedbackBuffer = epoxy_glFeedbackBuffer_dispatch_table_rewrite_ptr,
-    .glFeedbackBufferxOES = epoxy_glFeedbackBufferxOES_dispatch_table_rewrite_ptr,
-    .glFenceSync = epoxy_glFenceSync_dispatch_table_rewrite_ptr,
-    .glFenceSyncAPPLE = epoxy_glFenceSyncAPPLE_dispatch_table_rewrite_ptr,
-    .glFinalCombinerInputNV = epoxy_glFinalCombinerInputNV_dispatch_table_rewrite_ptr,
-    .glFinish = epoxy_glFinish_dispatch_table_rewrite_ptr,
-    .glFinishAsyncSGIX = epoxy_glFinishAsyncSGIX_dispatch_table_rewrite_ptr,
-    .glFinishFenceAPPLE = epoxy_glFinishFenceAPPLE_dispatch_table_rewrite_ptr,
-    .glFinishFenceNV = epoxy_glFinishFenceNV_dispatch_table_rewrite_ptr,
-    .glFinishObjectAPPLE = epoxy_glFinishObjectAPPLE_dispatch_table_rewrite_ptr,
-    .glFinishTextureSUNX = epoxy_glFinishTextureSUNX_dispatch_table_rewrite_ptr,
-    .glFlush = epoxy_glFlush_dispatch_table_rewrite_ptr,
-    .glFlushMappedBufferRange = epoxy_glFlushMappedBufferRange_dispatch_table_rewrite_ptr,
-    .glFlushMappedBufferRangeAPPLE = epoxy_glFlushMappedBufferRangeAPPLE_dispatch_table_rewrite_ptr,
-    .glFlushMappedBufferRangeEXT = epoxy_glFlushMappedBufferRangeEXT_dispatch_table_rewrite_ptr,
-    .glFlushMappedNamedBufferRange = epoxy_glFlushMappedNamedBufferRange_dispatch_table_rewrite_ptr,
-    .glFlushMappedNamedBufferRangeEXT = epoxy_glFlushMappedNamedBufferRangeEXT_dispatch_table_rewrite_ptr,
-    .glFlushPixelDataRangeNV = epoxy_glFlushPixelDataRangeNV_dispatch_table_rewrite_ptr,
-    .glFlushRasterSGIX = epoxy_glFlushRasterSGIX_dispatch_table_rewrite_ptr,
-    .glFlushStaticDataIBM = epoxy_glFlushStaticDataIBM_dispatch_table_rewrite_ptr,
-    .glFlushVertexArrayRangeAPPLE = epoxy_glFlushVertexArrayRangeAPPLE_dispatch_table_rewrite_ptr,
-    .glFlushVertexArrayRangeNV = epoxy_glFlushVertexArrayRangeNV_dispatch_table_rewrite_ptr,
-    .glFogCoordFormatNV = epoxy_glFogCoordFormatNV_dispatch_table_rewrite_ptr,
-    .glFogCoordPointer = epoxy_glFogCoordPointer_dispatch_table_rewrite_ptr,
-    .glFogCoordPointerEXT = epoxy_glFogCoordPointerEXT_dispatch_table_rewrite_ptr,
-    .glFogCoordPointerListIBM = epoxy_glFogCoordPointerListIBM_dispatch_table_rewrite_ptr,
-    .glFogCoordd = epoxy_glFogCoordd_dispatch_table_rewrite_ptr,
-    .glFogCoorddEXT = epoxy_glFogCoorddEXT_dispatch_table_rewrite_ptr,
-    .glFogCoorddv = epoxy_glFogCoorddv_dispatch_table_rewrite_ptr,
-    .glFogCoorddvEXT = epoxy_glFogCoorddvEXT_dispatch_table_rewrite_ptr,
-    .glFogCoordf = epoxy_glFogCoordf_dispatch_table_rewrite_ptr,
-    .glFogCoordfEXT = epoxy_glFogCoordfEXT_dispatch_table_rewrite_ptr,
-    .glFogCoordfv = epoxy_glFogCoordfv_dispatch_table_rewrite_ptr,
-    .glFogCoordfvEXT = epoxy_glFogCoordfvEXT_dispatch_table_rewrite_ptr,
-    .glFogCoordhNV = epoxy_glFogCoordhNV_dispatch_table_rewrite_ptr,
-    .glFogCoordhvNV = epoxy_glFogCoordhvNV_dispatch_table_rewrite_ptr,
-    .glFogFuncSGIS = epoxy_glFogFuncSGIS_dispatch_table_rewrite_ptr,
-    .glFogf = epoxy_glFogf_dispatch_table_rewrite_ptr,
-    .glFogfv = epoxy_glFogfv_dispatch_table_rewrite_ptr,
-    .glFogi = epoxy_glFogi_dispatch_table_rewrite_ptr,
-    .glFogiv = epoxy_glFogiv_dispatch_table_rewrite_ptr,
-    .glFogx = epoxy_glFogx_dispatch_table_rewrite_ptr,
-    .glFogxOES = epoxy_glFogxOES_dispatch_table_rewrite_ptr,
-    .glFogxv = epoxy_glFogxv_dispatch_table_rewrite_ptr,
-    .glFogxvOES = epoxy_glFogxvOES_dispatch_table_rewrite_ptr,
-    .glFragmentColorMaterialSGIX = epoxy_glFragmentColorMaterialSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentCoverageColorNV = epoxy_glFragmentCoverageColorNV_dispatch_table_rewrite_ptr,
-    .glFragmentLightModelfSGIX = epoxy_glFragmentLightModelfSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentLightModelfvSGIX = epoxy_glFragmentLightModelfvSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentLightModeliSGIX = epoxy_glFragmentLightModeliSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentLightModelivSGIX = epoxy_glFragmentLightModelivSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentLightfSGIX = epoxy_glFragmentLightfSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentLightfvSGIX = epoxy_glFragmentLightfvSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentLightiSGIX = epoxy_glFragmentLightiSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentLightivSGIX = epoxy_glFragmentLightivSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentMaterialfSGIX = epoxy_glFragmentMaterialfSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentMaterialfvSGIX = epoxy_glFragmentMaterialfvSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentMaterialiSGIX = epoxy_glFragmentMaterialiSGIX_dispatch_table_rewrite_ptr,
-    .glFragmentMaterialivSGIX = epoxy_glFragmentMaterialivSGIX_dispatch_table_rewrite_ptr,
-    .glFrameTerminatorGREMEDY = epoxy_glFrameTerminatorGREMEDY_dispatch_table_rewrite_ptr,
-    .glFrameZoomSGIX = epoxy_glFrameZoomSGIX_dispatch_table_rewrite_ptr,
-    .glFramebufferDrawBufferEXT = epoxy_glFramebufferDrawBufferEXT_dispatch_table_rewrite_ptr,
-    .glFramebufferDrawBuffersEXT = epoxy_glFramebufferDrawBuffersEXT_dispatch_table_rewrite_ptr,
-    .glFramebufferParameteri = epoxy_glFramebufferParameteri_dispatch_table_rewrite_ptr,
-    .glFramebufferReadBufferEXT = epoxy_glFramebufferReadBufferEXT_dispatch_table_rewrite_ptr,
-    .glFramebufferRenderbuffer = epoxy_glFramebufferRenderbuffer_dispatch_table_rewrite_ptr,
-    .glFramebufferRenderbufferEXT = epoxy_glFramebufferRenderbufferEXT_dispatch_table_rewrite_ptr,
-    .glFramebufferRenderbufferOES = epoxy_glFramebufferRenderbufferOES_dispatch_table_rewrite_ptr,
-    .glFramebufferSampleLocationsfvNV = epoxy_glFramebufferSampleLocationsfvNV_dispatch_table_rewrite_ptr,
-    .glFramebufferTexture = epoxy_glFramebufferTexture_dispatch_table_rewrite_ptr,
-    .glFramebufferTexture1D = epoxy_glFramebufferTexture1D_dispatch_table_rewrite_ptr,
-    .glFramebufferTexture1DEXT = epoxy_glFramebufferTexture1DEXT_dispatch_table_rewrite_ptr,
-    .glFramebufferTexture2D = epoxy_glFramebufferTexture2D_dispatch_table_rewrite_ptr,
-    .glFramebufferTexture2DEXT = epoxy_glFramebufferTexture2DEXT_dispatch_table_rewrite_ptr,
-    .glFramebufferTexture2DMultisampleEXT = epoxy_glFramebufferTexture2DMultisampleEXT_dispatch_table_rewrite_ptr,
-    .glFramebufferTexture2DMultisampleIMG = epoxy_glFramebufferTexture2DMultisampleIMG_dispatch_table_rewrite_ptr,
-    .glFramebufferTexture2DOES = epoxy_glFramebufferTexture2DOES_dispatch_table_rewrite_ptr,
-    .glFramebufferTexture3D = epoxy_glFramebufferTexture3D_dispatch_table_rewrite_ptr,
-    .glFramebufferTexture3DEXT = epoxy_glFramebufferTexture3DEXT_dispatch_table_rewrite_ptr,
-    .glFramebufferTexture3DOES = epoxy_glFramebufferTexture3DOES_dispatch_table_rewrite_ptr,
-    .glFramebufferTextureARB = epoxy_glFramebufferTextureARB_dispatch_table_rewrite_ptr,
-    .glFramebufferTextureEXT = epoxy_glFramebufferTextureEXT_dispatch_table_rewrite_ptr,
-    .glFramebufferTextureFaceARB = epoxy_glFramebufferTextureFaceARB_dispatch_table_rewrite_ptr,
-    .glFramebufferTextureFaceEXT = epoxy_glFramebufferTextureFaceEXT_dispatch_table_rewrite_ptr,
-    .glFramebufferTextureLayer = epoxy_glFramebufferTextureLayer_dispatch_table_rewrite_ptr,
-    .glFramebufferTextureLayerARB = epoxy_glFramebufferTextureLayerARB_dispatch_table_rewrite_ptr,
-    .glFramebufferTextureLayerEXT = epoxy_glFramebufferTextureLayerEXT_dispatch_table_rewrite_ptr,
-    .glFramebufferTextureMultiviewOVR = epoxy_glFramebufferTextureMultiviewOVR_dispatch_table_rewrite_ptr,
-    .glFramebufferTextureOES = epoxy_glFramebufferTextureOES_dispatch_table_rewrite_ptr,
-    .glFreeObjectBufferATI = epoxy_glFreeObjectBufferATI_dispatch_table_rewrite_ptr,
-    .glFrontFace = epoxy_glFrontFace_dispatch_table_rewrite_ptr,
-    .glFrustum = epoxy_glFrustum_dispatch_table_rewrite_ptr,
-    .glFrustumf = epoxy_glFrustumf_dispatch_table_rewrite_ptr,
-    .glFrustumfOES = epoxy_glFrustumfOES_dispatch_table_rewrite_ptr,
-    .glFrustumx = epoxy_glFrustumx_dispatch_table_rewrite_ptr,
-    .glFrustumxOES = epoxy_glFrustumxOES_dispatch_table_rewrite_ptr,
-    .glGenAsyncMarkersSGIX = epoxy_glGenAsyncMarkersSGIX_dispatch_table_rewrite_ptr,
-    .glGenBuffers = epoxy_glGenBuffers_dispatch_table_rewrite_ptr,
-    .glGenBuffersARB = epoxy_glGenBuffersARB_dispatch_table_rewrite_ptr,
-    .glGenFencesAPPLE = epoxy_glGenFencesAPPLE_dispatch_table_rewrite_ptr,
-    .glGenFencesNV = epoxy_glGenFencesNV_dispatch_table_rewrite_ptr,
-    .glGenFragmentShadersATI = epoxy_glGenFragmentShadersATI_dispatch_table_rewrite_ptr,
-    .glGenFramebuffers = epoxy_glGenFramebuffers_dispatch_table_rewrite_ptr,
-    .glGenFramebuffersEXT = epoxy_glGenFramebuffersEXT_dispatch_table_rewrite_ptr,
-    .glGenFramebuffersOES = epoxy_glGenFramebuffersOES_dispatch_table_rewrite_ptr,
-    .glGenLists = epoxy_glGenLists_dispatch_table_rewrite_ptr,
-    .glGenNamesAMD = epoxy_glGenNamesAMD_dispatch_table_rewrite_ptr,
-    .glGenOcclusionQueriesNV = epoxy_glGenOcclusionQueriesNV_dispatch_table_rewrite_ptr,
-    .glGenPathsNV = epoxy_glGenPathsNV_dispatch_table_rewrite_ptr,
-    .glGenPerfMonitorsAMD = epoxy_glGenPerfMonitorsAMD_dispatch_table_rewrite_ptr,
-    .glGenProgramPipelines = epoxy_glGenProgramPipelines_dispatch_table_rewrite_ptr,
-    .glGenProgramPipelinesEXT = epoxy_glGenProgramPipelinesEXT_dispatch_table_rewrite_ptr,
-    .glGenProgramsARB = epoxy_glGenProgramsARB_dispatch_table_rewrite_ptr,
-    .glGenProgramsNV = epoxy_glGenProgramsNV_dispatch_table_rewrite_ptr,
-    .glGenQueries = epoxy_glGenQueries_dispatch_table_rewrite_ptr,
-    .glGenQueriesARB = epoxy_glGenQueriesARB_dispatch_table_rewrite_ptr,
-    .glGenQueriesEXT = epoxy_glGenQueriesEXT_dispatch_table_rewrite_ptr,
-    .glGenRenderbuffers = epoxy_glGenRenderbuffers_dispatch_table_rewrite_ptr,
-    .glGenRenderbuffersEXT = epoxy_glGenRenderbuffersEXT_dispatch_table_rewrite_ptr,
-    .glGenRenderbuffersOES = epoxy_glGenRenderbuffersOES_dispatch_table_rewrite_ptr,
-    .glGenSamplers = epoxy_glGenSamplers_dispatch_table_rewrite_ptr,
-    .glGenSymbolsEXT = epoxy_glGenSymbolsEXT_dispatch_table_rewrite_ptr,
-    .glGenTextures = epoxy_glGenTextures_dispatch_table_rewrite_ptr,
-    .glGenTexturesEXT = epoxy_glGenTexturesEXT_dispatch_table_rewrite_ptr,
-    .glGenTransformFeedbacks = epoxy_glGenTransformFeedbacks_dispatch_table_rewrite_ptr,
-    .glGenTransformFeedbacksNV = epoxy_glGenTransformFeedbacksNV_dispatch_table_rewrite_ptr,
-    .glGenVertexArrays = epoxy_glGenVertexArrays_dispatch_table_rewrite_ptr,
-    .glGenVertexArraysAPPLE = epoxy_glGenVertexArraysAPPLE_dispatch_table_rewrite_ptr,
-    .glGenVertexArraysOES = epoxy_glGenVertexArraysOES_dispatch_table_rewrite_ptr,
-    .glGenVertexShadersEXT = epoxy_glGenVertexShadersEXT_dispatch_table_rewrite_ptr,
-    .glGenerateMipmap = epoxy_glGenerateMipmap_dispatch_table_rewrite_ptr,
-    .glGenerateMipmapEXT = epoxy_glGenerateMipmapEXT_dispatch_table_rewrite_ptr,
-    .glGenerateMipmapOES = epoxy_glGenerateMipmapOES_dispatch_table_rewrite_ptr,
-    .glGenerateMultiTexMipmapEXT = epoxy_glGenerateMultiTexMipmapEXT_dispatch_table_rewrite_ptr,
-    .glGenerateTextureMipmap = epoxy_glGenerateTextureMipmap_dispatch_table_rewrite_ptr,
-    .glGenerateTextureMipmapEXT = epoxy_glGenerateTextureMipmapEXT_dispatch_table_rewrite_ptr,
-    .glGetActiveAtomicCounterBufferiv = epoxy_glGetActiveAtomicCounterBufferiv_dispatch_table_rewrite_ptr,
-    .glGetActiveAttrib = epoxy_glGetActiveAttrib_dispatch_table_rewrite_ptr,
-    .glGetActiveAttribARB = epoxy_glGetActiveAttribARB_dispatch_table_rewrite_ptr,
-    .glGetActiveSubroutineName = epoxy_glGetActiveSubroutineName_dispatch_table_rewrite_ptr,
-    .glGetActiveSubroutineUniformName = epoxy_glGetActiveSubroutineUniformName_dispatch_table_rewrite_ptr,
-    .glGetActiveSubroutineUniformiv = epoxy_glGetActiveSubroutineUniformiv_dispatch_table_rewrite_ptr,
-    .glGetActiveUniform = epoxy_glGetActiveUniform_dispatch_table_rewrite_ptr,
-    .glGetActiveUniformARB = epoxy_glGetActiveUniformARB_dispatch_table_rewrite_ptr,
-    .glGetActiveUniformBlockName = epoxy_glGetActiveUniformBlockName_dispatch_table_rewrite_ptr,
-    .glGetActiveUniformBlockiv = epoxy_glGetActiveUniformBlockiv_dispatch_table_rewrite_ptr,
-    .glGetActiveUniformName = epoxy_glGetActiveUniformName_dispatch_table_rewrite_ptr,
-    .glGetActiveUniformsiv = epoxy_glGetActiveUniformsiv_dispatch_table_rewrite_ptr,
-    .glGetActiveVaryingNV = epoxy_glGetActiveVaryingNV_dispatch_table_rewrite_ptr,
-    .glGetArrayObjectfvATI = epoxy_glGetArrayObjectfvATI_dispatch_table_rewrite_ptr,
-    .glGetArrayObjectivATI = epoxy_glGetArrayObjectivATI_dispatch_table_rewrite_ptr,
-    .glGetAttachedObjectsARB = epoxy_glGetAttachedObjectsARB_dispatch_table_rewrite_ptr,
-    .glGetAttachedShaders = epoxy_glGetAttachedShaders_dispatch_table_rewrite_ptr,
-    .glGetAttribLocation = epoxy_glGetAttribLocation_dispatch_table_rewrite_ptr,
-    .glGetAttribLocationARB = epoxy_glGetAttribLocationARB_dispatch_table_rewrite_ptr,
-    .glGetBooleanIndexedvEXT = epoxy_glGetBooleanIndexedvEXT_dispatch_table_rewrite_ptr,
-    .glGetBooleani_v = epoxy_glGetBooleani_v_dispatch_table_rewrite_ptr,
-    .glGetBooleanv = epoxy_glGetBooleanv_dispatch_table_rewrite_ptr,
-    .glGetBufferParameteri64v = epoxy_glGetBufferParameteri64v_dispatch_table_rewrite_ptr,
-    .glGetBufferParameteriv = epoxy_glGetBufferParameteriv_dispatch_table_rewrite_ptr,
-    .glGetBufferParameterivARB = epoxy_glGetBufferParameterivARB_dispatch_table_rewrite_ptr,
-    .glGetBufferParameterui64vNV = epoxy_glGetBufferParameterui64vNV_dispatch_table_rewrite_ptr,
-    .glGetBufferPointerv = epoxy_glGetBufferPointerv_dispatch_table_rewrite_ptr,
-    .glGetBufferPointervARB = epoxy_glGetBufferPointervARB_dispatch_table_rewrite_ptr,
-    .glGetBufferPointervOES = epoxy_glGetBufferPointervOES_dispatch_table_rewrite_ptr,
-    .glGetBufferSubData = epoxy_glGetBufferSubData_dispatch_table_rewrite_ptr,
-    .glGetBufferSubDataARB = epoxy_glGetBufferSubDataARB_dispatch_table_rewrite_ptr,
-    .glGetClipPlane = epoxy_glGetClipPlane_dispatch_table_rewrite_ptr,
-    .glGetClipPlanef = epoxy_glGetClipPlanef_dispatch_table_rewrite_ptr,
-    .glGetClipPlanefOES = epoxy_glGetClipPlanefOES_dispatch_table_rewrite_ptr,
-    .glGetClipPlanex = epoxy_glGetClipPlanex_dispatch_table_rewrite_ptr,
-    .glGetClipPlanexOES = epoxy_glGetClipPlanexOES_dispatch_table_rewrite_ptr,
-    .glGetColorTable = epoxy_glGetColorTable_dispatch_table_rewrite_ptr,
-    .glGetColorTableEXT = epoxy_glGetColorTableEXT_dispatch_table_rewrite_ptr,
-    .glGetColorTableParameterfv = epoxy_glGetColorTableParameterfv_dispatch_table_rewrite_ptr,
-    .glGetColorTableParameterfvEXT = epoxy_glGetColorTableParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glGetColorTableParameterfvSGI = epoxy_glGetColorTableParameterfvSGI_dispatch_table_rewrite_ptr,
-    .glGetColorTableParameteriv = epoxy_glGetColorTableParameteriv_dispatch_table_rewrite_ptr,
-    .glGetColorTableParameterivEXT = epoxy_glGetColorTableParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetColorTableParameterivSGI = epoxy_glGetColorTableParameterivSGI_dispatch_table_rewrite_ptr,
-    .glGetColorTableSGI = epoxy_glGetColorTableSGI_dispatch_table_rewrite_ptr,
-    .glGetCombinerInputParameterfvNV = epoxy_glGetCombinerInputParameterfvNV_dispatch_table_rewrite_ptr,
-    .glGetCombinerInputParameterivNV = epoxy_glGetCombinerInputParameterivNV_dispatch_table_rewrite_ptr,
-    .glGetCombinerOutputParameterfvNV = epoxy_glGetCombinerOutputParameterfvNV_dispatch_table_rewrite_ptr,
-    .glGetCombinerOutputParameterivNV = epoxy_glGetCombinerOutputParameterivNV_dispatch_table_rewrite_ptr,
-    .glGetCombinerStageParameterfvNV = epoxy_glGetCombinerStageParameterfvNV_dispatch_table_rewrite_ptr,
-    .glGetCommandHeaderNV = epoxy_glGetCommandHeaderNV_dispatch_table_rewrite_ptr,
-    .glGetCompressedMultiTexImageEXT = epoxy_glGetCompressedMultiTexImageEXT_dispatch_table_rewrite_ptr,
-    .glGetCompressedTexImage = epoxy_glGetCompressedTexImage_dispatch_table_rewrite_ptr,
-    .glGetCompressedTexImageARB = epoxy_glGetCompressedTexImageARB_dispatch_table_rewrite_ptr,
-    .glGetCompressedTextureImage = epoxy_glGetCompressedTextureImage_dispatch_table_rewrite_ptr,
-    .glGetCompressedTextureImageEXT = epoxy_glGetCompressedTextureImageEXT_dispatch_table_rewrite_ptr,
-    .glGetCompressedTextureSubImage = epoxy_glGetCompressedTextureSubImage_dispatch_table_rewrite_ptr,
-    .glGetConvolutionFilter = epoxy_glGetConvolutionFilter_dispatch_table_rewrite_ptr,
-    .glGetConvolutionFilterEXT = epoxy_glGetConvolutionFilterEXT_dispatch_table_rewrite_ptr,
-    .glGetConvolutionParameterfv = epoxy_glGetConvolutionParameterfv_dispatch_table_rewrite_ptr,
-    .glGetConvolutionParameterfvEXT = epoxy_glGetConvolutionParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glGetConvolutionParameteriv = epoxy_glGetConvolutionParameteriv_dispatch_table_rewrite_ptr,
-    .glGetConvolutionParameterivEXT = epoxy_glGetConvolutionParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetConvolutionParameterxvOES = epoxy_glGetConvolutionParameterxvOES_dispatch_table_rewrite_ptr,
-    .glGetCoverageModulationTableNV = epoxy_glGetCoverageModulationTableNV_dispatch_table_rewrite_ptr,
-    .glGetDebugMessageLog = epoxy_glGetDebugMessageLog_dispatch_table_rewrite_ptr,
-    .glGetDebugMessageLogAMD = epoxy_glGetDebugMessageLogAMD_dispatch_table_rewrite_ptr,
-    .glGetDebugMessageLogARB = epoxy_glGetDebugMessageLogARB_dispatch_table_rewrite_ptr,
-    .glGetDebugMessageLogKHR = epoxy_glGetDebugMessageLogKHR_dispatch_table_rewrite_ptr,
-    .glGetDetailTexFuncSGIS = epoxy_glGetDetailTexFuncSGIS_dispatch_table_rewrite_ptr,
-    .glGetDoubleIndexedvEXT = epoxy_glGetDoubleIndexedvEXT_dispatch_table_rewrite_ptr,
-    .glGetDoublei_v = epoxy_glGetDoublei_v_dispatch_table_rewrite_ptr,
-    .glGetDoublei_vEXT = epoxy_glGetDoublei_vEXT_dispatch_table_rewrite_ptr,
-    .glGetDoublev = epoxy_glGetDoublev_dispatch_table_rewrite_ptr,
-    .glGetDriverControlStringQCOM = epoxy_glGetDriverControlStringQCOM_dispatch_table_rewrite_ptr,
-    .glGetDriverControlsQCOM = epoxy_glGetDriverControlsQCOM_dispatch_table_rewrite_ptr,
-    .glGetError = epoxy_glGetError_dispatch_table_rewrite_ptr,
-    .glGetFenceivNV = epoxy_glGetFenceivNV_dispatch_table_rewrite_ptr,
-    .glGetFinalCombinerInputParameterfvNV = epoxy_glGetFinalCombinerInputParameterfvNV_dispatch_table_rewrite_ptr,
-    .glGetFinalCombinerInputParameterivNV = epoxy_glGetFinalCombinerInputParameterivNV_dispatch_table_rewrite_ptr,
-    .glGetFirstPerfQueryIdINTEL = epoxy_glGetFirstPerfQueryIdINTEL_dispatch_table_rewrite_ptr,
-    .glGetFixedv = epoxy_glGetFixedv_dispatch_table_rewrite_ptr,
-    .glGetFixedvOES = epoxy_glGetFixedvOES_dispatch_table_rewrite_ptr,
-    .glGetFloatIndexedvEXT = epoxy_glGetFloatIndexedvEXT_dispatch_table_rewrite_ptr,
-    .glGetFloati_v = epoxy_glGetFloati_v_dispatch_table_rewrite_ptr,
-    .glGetFloati_vEXT = epoxy_glGetFloati_vEXT_dispatch_table_rewrite_ptr,
-    .glGetFloati_vNV = epoxy_glGetFloati_vNV_dispatch_table_rewrite_ptr,
-    .glGetFloatv = epoxy_glGetFloatv_dispatch_table_rewrite_ptr,
-    .glGetFogFuncSGIS = epoxy_glGetFogFuncSGIS_dispatch_table_rewrite_ptr,
-    .glGetFragDataIndex = epoxy_glGetFragDataIndex_dispatch_table_rewrite_ptr,
-    .glGetFragDataLocation = epoxy_glGetFragDataLocation_dispatch_table_rewrite_ptr,
-    .glGetFragDataLocationEXT = epoxy_glGetFragDataLocationEXT_dispatch_table_rewrite_ptr,
-    .glGetFragmentLightfvSGIX = epoxy_glGetFragmentLightfvSGIX_dispatch_table_rewrite_ptr,
-    .glGetFragmentLightivSGIX = epoxy_glGetFragmentLightivSGIX_dispatch_table_rewrite_ptr,
-    .glGetFragmentMaterialfvSGIX = epoxy_glGetFragmentMaterialfvSGIX_dispatch_table_rewrite_ptr,
-    .glGetFragmentMaterialivSGIX = epoxy_glGetFragmentMaterialivSGIX_dispatch_table_rewrite_ptr,
-    .glGetFramebufferAttachmentParameteriv = epoxy_glGetFramebufferAttachmentParameteriv_dispatch_table_rewrite_ptr,
-    .glGetFramebufferAttachmentParameterivEXT = epoxy_glGetFramebufferAttachmentParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetFramebufferAttachmentParameterivOES = epoxy_glGetFramebufferAttachmentParameterivOES_dispatch_table_rewrite_ptr,
-    .glGetFramebufferParameteriv = epoxy_glGetFramebufferParameteriv_dispatch_table_rewrite_ptr,
-    .glGetFramebufferParameterivEXT = epoxy_glGetFramebufferParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetGraphicsResetStatus = epoxy_glGetGraphicsResetStatus_dispatch_table_rewrite_ptr,
-    .glGetGraphicsResetStatusARB = epoxy_glGetGraphicsResetStatusARB_dispatch_table_rewrite_ptr,
-    .glGetGraphicsResetStatusEXT = epoxy_glGetGraphicsResetStatusEXT_dispatch_table_rewrite_ptr,
-    .glGetGraphicsResetStatusKHR = epoxy_glGetGraphicsResetStatusKHR_dispatch_table_rewrite_ptr,
-    .glGetHandleARB = epoxy_glGetHandleARB_dispatch_table_rewrite_ptr,
-    .glGetHistogram = epoxy_glGetHistogram_dispatch_table_rewrite_ptr,
-    .glGetHistogramEXT = epoxy_glGetHistogramEXT_dispatch_table_rewrite_ptr,
-    .glGetHistogramParameterfv = epoxy_glGetHistogramParameterfv_dispatch_table_rewrite_ptr,
-    .glGetHistogramParameterfvEXT = epoxy_glGetHistogramParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glGetHistogramParameteriv = epoxy_glGetHistogramParameteriv_dispatch_table_rewrite_ptr,
-    .glGetHistogramParameterivEXT = epoxy_glGetHistogramParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetHistogramParameterxvOES = epoxy_glGetHistogramParameterxvOES_dispatch_table_rewrite_ptr,
-    .glGetImageHandleARB = epoxy_glGetImageHandleARB_dispatch_table_rewrite_ptr,
-    .glGetImageHandleNV = epoxy_glGetImageHandleNV_dispatch_table_rewrite_ptr,
-    .glGetImageTransformParameterfvHP = epoxy_glGetImageTransformParameterfvHP_dispatch_table_rewrite_ptr,
-    .glGetImageTransformParameterivHP = epoxy_glGetImageTransformParameterivHP_dispatch_table_rewrite_ptr,
-    .glGetInfoLogARB = epoxy_glGetInfoLogARB_dispatch_table_rewrite_ptr,
-    .glGetInstrumentsSGIX = epoxy_glGetInstrumentsSGIX_dispatch_table_rewrite_ptr,
-    .glGetInteger64i_v = epoxy_glGetInteger64i_v_dispatch_table_rewrite_ptr,
-    .glGetInteger64v = epoxy_glGetInteger64v_dispatch_table_rewrite_ptr,
-    .glGetInteger64vAPPLE = epoxy_glGetInteger64vAPPLE_dispatch_table_rewrite_ptr,
-    .glGetIntegerIndexedvEXT = epoxy_glGetIntegerIndexedvEXT_dispatch_table_rewrite_ptr,
-    .glGetIntegeri_v = epoxy_glGetIntegeri_v_dispatch_table_rewrite_ptr,
-    .glGetIntegeri_vEXT = epoxy_glGetIntegeri_vEXT_dispatch_table_rewrite_ptr,
-    .glGetIntegerui64i_vNV = epoxy_glGetIntegerui64i_vNV_dispatch_table_rewrite_ptr,
-    .glGetIntegerui64vNV = epoxy_glGetIntegerui64vNV_dispatch_table_rewrite_ptr,
-    .glGetIntegerv = epoxy_glGetIntegerv_dispatch_table_rewrite_ptr,
-    .glGetInternalformatSampleivNV = epoxy_glGetInternalformatSampleivNV_dispatch_table_rewrite_ptr,
-    .glGetInternalformati64v = epoxy_glGetInternalformati64v_dispatch_table_rewrite_ptr,
-    .glGetInternalformativ = epoxy_glGetInternalformativ_dispatch_table_rewrite_ptr,
-    .glGetInvariantBooleanvEXT = epoxy_glGetInvariantBooleanvEXT_dispatch_table_rewrite_ptr,
-    .glGetInvariantFloatvEXT = epoxy_glGetInvariantFloatvEXT_dispatch_table_rewrite_ptr,
-    .glGetInvariantIntegervEXT = epoxy_glGetInvariantIntegervEXT_dispatch_table_rewrite_ptr,
-    .glGetLightfv = epoxy_glGetLightfv_dispatch_table_rewrite_ptr,
-    .glGetLightiv = epoxy_glGetLightiv_dispatch_table_rewrite_ptr,
-    .glGetLightxOES = epoxy_glGetLightxOES_dispatch_table_rewrite_ptr,
-    .glGetLightxv = epoxy_glGetLightxv_dispatch_table_rewrite_ptr,
-    .glGetLightxvOES = epoxy_glGetLightxvOES_dispatch_table_rewrite_ptr,
-    .glGetListParameterfvSGIX = epoxy_glGetListParameterfvSGIX_dispatch_table_rewrite_ptr,
-    .glGetListParameterivSGIX = epoxy_glGetListParameterivSGIX_dispatch_table_rewrite_ptr,
-    .glGetLocalConstantBooleanvEXT = epoxy_glGetLocalConstantBooleanvEXT_dispatch_table_rewrite_ptr,
-    .glGetLocalConstantFloatvEXT = epoxy_glGetLocalConstantFloatvEXT_dispatch_table_rewrite_ptr,
-    .glGetLocalConstantIntegervEXT = epoxy_glGetLocalConstantIntegervEXT_dispatch_table_rewrite_ptr,
-    .glGetMapAttribParameterfvNV = epoxy_glGetMapAttribParameterfvNV_dispatch_table_rewrite_ptr,
-    .glGetMapAttribParameterivNV = epoxy_glGetMapAttribParameterivNV_dispatch_table_rewrite_ptr,
-    .glGetMapControlPointsNV = epoxy_glGetMapControlPointsNV_dispatch_table_rewrite_ptr,
-    .glGetMapParameterfvNV = epoxy_glGetMapParameterfvNV_dispatch_table_rewrite_ptr,
-    .glGetMapParameterivNV = epoxy_glGetMapParameterivNV_dispatch_table_rewrite_ptr,
-    .glGetMapdv = epoxy_glGetMapdv_dispatch_table_rewrite_ptr,
-    .glGetMapfv = epoxy_glGetMapfv_dispatch_table_rewrite_ptr,
-    .glGetMapiv = epoxy_glGetMapiv_dispatch_table_rewrite_ptr,
-    .glGetMapxvOES = epoxy_glGetMapxvOES_dispatch_table_rewrite_ptr,
-    .glGetMaterialfv = epoxy_glGetMaterialfv_dispatch_table_rewrite_ptr,
-    .glGetMaterialiv = epoxy_glGetMaterialiv_dispatch_table_rewrite_ptr,
-    .glGetMaterialxOES = epoxy_glGetMaterialxOES_dispatch_table_rewrite_ptr,
-    .glGetMaterialxv = epoxy_glGetMaterialxv_dispatch_table_rewrite_ptr,
-    .glGetMaterialxvOES = epoxy_glGetMaterialxvOES_dispatch_table_rewrite_ptr,
-    .glGetMinmax = epoxy_glGetMinmax_dispatch_table_rewrite_ptr,
-    .glGetMinmaxEXT = epoxy_glGetMinmaxEXT_dispatch_table_rewrite_ptr,
-    .glGetMinmaxParameterfv = epoxy_glGetMinmaxParameterfv_dispatch_table_rewrite_ptr,
-    .glGetMinmaxParameterfvEXT = epoxy_glGetMinmaxParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glGetMinmaxParameteriv = epoxy_glGetMinmaxParameteriv_dispatch_table_rewrite_ptr,
-    .glGetMinmaxParameterivEXT = epoxy_glGetMinmaxParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexEnvfvEXT = epoxy_glGetMultiTexEnvfvEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexEnvivEXT = epoxy_glGetMultiTexEnvivEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexGendvEXT = epoxy_glGetMultiTexGendvEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexGenfvEXT = epoxy_glGetMultiTexGenfvEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexGenivEXT = epoxy_glGetMultiTexGenivEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexImageEXT = epoxy_glGetMultiTexImageEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexLevelParameterfvEXT = epoxy_glGetMultiTexLevelParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexLevelParameterivEXT = epoxy_glGetMultiTexLevelParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexParameterIivEXT = epoxy_glGetMultiTexParameterIivEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexParameterIuivEXT = epoxy_glGetMultiTexParameterIuivEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexParameterfvEXT = epoxy_glGetMultiTexParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glGetMultiTexParameterivEXT = epoxy_glGetMultiTexParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetMultisamplefv = epoxy_glGetMultisamplefv_dispatch_table_rewrite_ptr,
-    .glGetMultisamplefvNV = epoxy_glGetMultisamplefvNV_dispatch_table_rewrite_ptr,
-    .glGetNamedBufferParameteri64v = epoxy_glGetNamedBufferParameteri64v_dispatch_table_rewrite_ptr,
-    .glGetNamedBufferParameteriv = epoxy_glGetNamedBufferParameteriv_dispatch_table_rewrite_ptr,
-    .glGetNamedBufferParameterivEXT = epoxy_glGetNamedBufferParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedBufferParameterui64vNV = epoxy_glGetNamedBufferParameterui64vNV_dispatch_table_rewrite_ptr,
-    .glGetNamedBufferPointerv = epoxy_glGetNamedBufferPointerv_dispatch_table_rewrite_ptr,
-    .glGetNamedBufferPointervEXT = epoxy_glGetNamedBufferPointervEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedBufferSubData = epoxy_glGetNamedBufferSubData_dispatch_table_rewrite_ptr,
-    .glGetNamedBufferSubDataEXT = epoxy_glGetNamedBufferSubDataEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedFramebufferAttachmentParameteriv = epoxy_glGetNamedFramebufferAttachmentParameteriv_dispatch_table_rewrite_ptr,
-    .glGetNamedFramebufferAttachmentParameterivEXT = epoxy_glGetNamedFramebufferAttachmentParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedFramebufferParameteriv = epoxy_glGetNamedFramebufferParameteriv_dispatch_table_rewrite_ptr,
-    .glGetNamedFramebufferParameterivEXT = epoxy_glGetNamedFramebufferParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedProgramLocalParameterIivEXT = epoxy_glGetNamedProgramLocalParameterIivEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedProgramLocalParameterIuivEXT = epoxy_glGetNamedProgramLocalParameterIuivEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedProgramLocalParameterdvEXT = epoxy_glGetNamedProgramLocalParameterdvEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedProgramLocalParameterfvEXT = epoxy_glGetNamedProgramLocalParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedProgramStringEXT = epoxy_glGetNamedProgramStringEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedProgramivEXT = epoxy_glGetNamedProgramivEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedRenderbufferParameteriv = epoxy_glGetNamedRenderbufferParameteriv_dispatch_table_rewrite_ptr,
-    .glGetNamedRenderbufferParameterivEXT = epoxy_glGetNamedRenderbufferParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetNamedStringARB = epoxy_glGetNamedStringARB_dispatch_table_rewrite_ptr,
-    .glGetNamedStringivARB = epoxy_glGetNamedStringivARB_dispatch_table_rewrite_ptr,
-    .glGetNextPerfQueryIdINTEL = epoxy_glGetNextPerfQueryIdINTEL_dispatch_table_rewrite_ptr,
-    .glGetObjectBufferfvATI = epoxy_glGetObjectBufferfvATI_dispatch_table_rewrite_ptr,
-    .glGetObjectBufferivATI = epoxy_glGetObjectBufferivATI_dispatch_table_rewrite_ptr,
-    .glGetObjectLabel = epoxy_glGetObjectLabel_dispatch_table_rewrite_ptr,
-    .glGetObjectLabelEXT = epoxy_glGetObjectLabelEXT_dispatch_table_rewrite_ptr,
-    .glGetObjectLabelKHR = epoxy_glGetObjectLabelKHR_dispatch_table_rewrite_ptr,
-    .glGetObjectParameterfvARB = epoxy_glGetObjectParameterfvARB_dispatch_table_rewrite_ptr,
-    .glGetObjectParameterivAPPLE = epoxy_glGetObjectParameterivAPPLE_dispatch_table_rewrite_ptr,
-    .glGetObjectParameterivARB = epoxy_glGetObjectParameterivARB_dispatch_table_rewrite_ptr,
-    .glGetObjectPtrLabel = epoxy_glGetObjectPtrLabel_dispatch_table_rewrite_ptr,
-    .glGetObjectPtrLabelKHR = epoxy_glGetObjectPtrLabelKHR_dispatch_table_rewrite_ptr,
-    .glGetOcclusionQueryivNV = epoxy_glGetOcclusionQueryivNV_dispatch_table_rewrite_ptr,
-    .glGetOcclusionQueryuivNV = epoxy_glGetOcclusionQueryuivNV_dispatch_table_rewrite_ptr,
-    .glGetPathColorGenfvNV = epoxy_glGetPathColorGenfvNV_dispatch_table_rewrite_ptr,
-    .glGetPathColorGenivNV = epoxy_glGetPathColorGenivNV_dispatch_table_rewrite_ptr,
-    .glGetPathCommandsNV = epoxy_glGetPathCommandsNV_dispatch_table_rewrite_ptr,
-    .glGetPathCoordsNV = epoxy_glGetPathCoordsNV_dispatch_table_rewrite_ptr,
-    .glGetPathDashArrayNV = epoxy_glGetPathDashArrayNV_dispatch_table_rewrite_ptr,
-    .glGetPathLengthNV = epoxy_glGetPathLengthNV_dispatch_table_rewrite_ptr,
-    .glGetPathMetricRangeNV = epoxy_glGetPathMetricRangeNV_dispatch_table_rewrite_ptr,
-    .glGetPathMetricsNV = epoxy_glGetPathMetricsNV_dispatch_table_rewrite_ptr,
-    .glGetPathParameterfvNV = epoxy_glGetPathParameterfvNV_dispatch_table_rewrite_ptr,
-    .glGetPathParameterivNV = epoxy_glGetPathParameterivNV_dispatch_table_rewrite_ptr,
-    .glGetPathSpacingNV = epoxy_glGetPathSpacingNV_dispatch_table_rewrite_ptr,
-    .glGetPathTexGenfvNV = epoxy_glGetPathTexGenfvNV_dispatch_table_rewrite_ptr,
-    .glGetPathTexGenivNV = epoxy_glGetPathTexGenivNV_dispatch_table_rewrite_ptr,
-    .glGetPerfCounterInfoINTEL = epoxy_glGetPerfCounterInfoINTEL_dispatch_table_rewrite_ptr,
-    .glGetPerfMonitorCounterDataAMD = epoxy_glGetPerfMonitorCounterDataAMD_dispatch_table_rewrite_ptr,
-    .glGetPerfMonitorCounterInfoAMD = epoxy_glGetPerfMonitorCounterInfoAMD_dispatch_table_rewrite_ptr,
-    .glGetPerfMonitorCounterStringAMD = epoxy_glGetPerfMonitorCounterStringAMD_dispatch_table_rewrite_ptr,
-    .glGetPerfMonitorCountersAMD = epoxy_glGetPerfMonitorCountersAMD_dispatch_table_rewrite_ptr,
-    .glGetPerfMonitorGroupStringAMD = epoxy_glGetPerfMonitorGroupStringAMD_dispatch_table_rewrite_ptr,
-    .glGetPerfMonitorGroupsAMD = epoxy_glGetPerfMonitorGroupsAMD_dispatch_table_rewrite_ptr,
-    .glGetPerfQueryDataINTEL = epoxy_glGetPerfQueryDataINTEL_dispatch_table_rewrite_ptr,
-    .glGetPerfQueryIdByNameINTEL = epoxy_glGetPerfQueryIdByNameINTEL_dispatch_table_rewrite_ptr,
-    .glGetPerfQueryInfoINTEL = epoxy_glGetPerfQueryInfoINTEL_dispatch_table_rewrite_ptr,
-    .glGetPixelMapfv = epoxy_glGetPixelMapfv_dispatch_table_rewrite_ptr,
-    .glGetPixelMapuiv = epoxy_glGetPixelMapuiv_dispatch_table_rewrite_ptr,
-    .glGetPixelMapusv = epoxy_glGetPixelMapusv_dispatch_table_rewrite_ptr,
-    .glGetPixelMapxv = epoxy_glGetPixelMapxv_dispatch_table_rewrite_ptr,
-    .glGetPixelTexGenParameterfvSGIS = epoxy_glGetPixelTexGenParameterfvSGIS_dispatch_table_rewrite_ptr,
-    .glGetPixelTexGenParameterivSGIS = epoxy_glGetPixelTexGenParameterivSGIS_dispatch_table_rewrite_ptr,
-    .glGetPixelTransformParameterfvEXT = epoxy_glGetPixelTransformParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glGetPixelTransformParameterivEXT = epoxy_glGetPixelTransformParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetPointerIndexedvEXT = epoxy_glGetPointerIndexedvEXT_dispatch_table_rewrite_ptr,
-    .glGetPointeri_vEXT = epoxy_glGetPointeri_vEXT_dispatch_table_rewrite_ptr,
-    .glGetPointerv = epoxy_glGetPointerv_dispatch_table_rewrite_ptr,
-    .glGetPointervEXT = epoxy_glGetPointervEXT_dispatch_table_rewrite_ptr,
-    .glGetPointervKHR = epoxy_glGetPointervKHR_dispatch_table_rewrite_ptr,
-    .glGetPolygonStipple = epoxy_glGetPolygonStipple_dispatch_table_rewrite_ptr,
-    .glGetProgramBinary = epoxy_glGetProgramBinary_dispatch_table_rewrite_ptr,
-    .glGetProgramBinaryOES = epoxy_glGetProgramBinaryOES_dispatch_table_rewrite_ptr,
-    .glGetProgramEnvParameterIivNV = epoxy_glGetProgramEnvParameterIivNV_dispatch_table_rewrite_ptr,
-    .glGetProgramEnvParameterIuivNV = epoxy_glGetProgramEnvParameterIuivNV_dispatch_table_rewrite_ptr,
-    .glGetProgramEnvParameterdvARB = epoxy_glGetProgramEnvParameterdvARB_dispatch_table_rewrite_ptr,
-    .glGetProgramEnvParameterfvARB = epoxy_glGetProgramEnvParameterfvARB_dispatch_table_rewrite_ptr,
-    .glGetProgramInfoLog = epoxy_glGetProgramInfoLog_dispatch_table_rewrite_ptr,
-    .glGetProgramInterfaceiv = epoxy_glGetProgramInterfaceiv_dispatch_table_rewrite_ptr,
-    .glGetProgramLocalParameterIivNV = epoxy_glGetProgramLocalParameterIivNV_dispatch_table_rewrite_ptr,
-    .glGetProgramLocalParameterIuivNV = epoxy_glGetProgramLocalParameterIuivNV_dispatch_table_rewrite_ptr,
-    .glGetProgramLocalParameterdvARB = epoxy_glGetProgramLocalParameterdvARB_dispatch_table_rewrite_ptr,
-    .glGetProgramLocalParameterfvARB = epoxy_glGetProgramLocalParameterfvARB_dispatch_table_rewrite_ptr,
-    .glGetProgramNamedParameterdvNV = epoxy_glGetProgramNamedParameterdvNV_dispatch_table_rewrite_ptr,
-    .glGetProgramNamedParameterfvNV = epoxy_glGetProgramNamedParameterfvNV_dispatch_table_rewrite_ptr,
-    .glGetProgramParameterdvNV = epoxy_glGetProgramParameterdvNV_dispatch_table_rewrite_ptr,
-    .glGetProgramParameterfvNV = epoxy_glGetProgramParameterfvNV_dispatch_table_rewrite_ptr,
-    .glGetProgramPipelineInfoLog = epoxy_glGetProgramPipelineInfoLog_dispatch_table_rewrite_ptr,
-    .glGetProgramPipelineInfoLogEXT = epoxy_glGetProgramPipelineInfoLogEXT_dispatch_table_rewrite_ptr,
-    .glGetProgramPipelineiv = epoxy_glGetProgramPipelineiv_dispatch_table_rewrite_ptr,
-    .glGetProgramPipelineivEXT = epoxy_glGetProgramPipelineivEXT_dispatch_table_rewrite_ptr,
-    .glGetProgramResourceIndex = epoxy_glGetProgramResourceIndex_dispatch_table_rewrite_ptr,
-    .glGetProgramResourceLocation = epoxy_glGetProgramResourceLocation_dispatch_table_rewrite_ptr,
-    .glGetProgramResourceLocationIndex = epoxy_glGetProgramResourceLocationIndex_dispatch_table_rewrite_ptr,
-    .glGetProgramResourceName = epoxy_glGetProgramResourceName_dispatch_table_rewrite_ptr,
-    .glGetProgramResourcefvNV = epoxy_glGetProgramResourcefvNV_dispatch_table_rewrite_ptr,
-    .glGetProgramResourceiv = epoxy_glGetProgramResourceiv_dispatch_table_rewrite_ptr,
-    .glGetProgramStageiv = epoxy_glGetProgramStageiv_dispatch_table_rewrite_ptr,
-    .glGetProgramStringARB = epoxy_glGetProgramStringARB_dispatch_table_rewrite_ptr,
-    .glGetProgramStringNV = epoxy_glGetProgramStringNV_dispatch_table_rewrite_ptr,
-    .glGetProgramSubroutineParameteruivNV = epoxy_glGetProgramSubroutineParameteruivNV_dispatch_table_rewrite_ptr,
-    .glGetProgramiv = epoxy_glGetProgramiv_dispatch_table_rewrite_ptr,
-    .glGetProgramivARB = epoxy_glGetProgramivARB_dispatch_table_rewrite_ptr,
-    .glGetProgramivNV = epoxy_glGetProgramivNV_dispatch_table_rewrite_ptr,
-    .glGetQueryBufferObjecti64v = epoxy_glGetQueryBufferObjecti64v_dispatch_table_rewrite_ptr,
-    .glGetQueryBufferObjectiv = epoxy_glGetQueryBufferObjectiv_dispatch_table_rewrite_ptr,
-    .glGetQueryBufferObjectui64v = epoxy_glGetQueryBufferObjectui64v_dispatch_table_rewrite_ptr,
-    .glGetQueryBufferObjectuiv = epoxy_glGetQueryBufferObjectuiv_dispatch_table_rewrite_ptr,
-    .glGetQueryIndexediv = epoxy_glGetQueryIndexediv_dispatch_table_rewrite_ptr,
-    .glGetQueryObjecti64v = epoxy_glGetQueryObjecti64v_dispatch_table_rewrite_ptr,
-    .glGetQueryObjecti64vEXT = epoxy_glGetQueryObjecti64vEXT_dispatch_table_rewrite_ptr,
-    .glGetQueryObjectiv = epoxy_glGetQueryObjectiv_dispatch_table_rewrite_ptr,
-    .glGetQueryObjectivARB = epoxy_glGetQueryObjectivARB_dispatch_table_rewrite_ptr,
-    .glGetQueryObjectivEXT = epoxy_glGetQueryObjectivEXT_dispatch_table_rewrite_ptr,
-    .glGetQueryObjectui64v = epoxy_glGetQueryObjectui64v_dispatch_table_rewrite_ptr,
-    .glGetQueryObjectui64vEXT = epoxy_glGetQueryObjectui64vEXT_dispatch_table_rewrite_ptr,
-    .glGetQueryObjectuiv = epoxy_glGetQueryObjectuiv_dispatch_table_rewrite_ptr,
-    .glGetQueryObjectuivARB = epoxy_glGetQueryObjectuivARB_dispatch_table_rewrite_ptr,
-    .glGetQueryObjectuivEXT = epoxy_glGetQueryObjectuivEXT_dispatch_table_rewrite_ptr,
-    .glGetQueryiv = epoxy_glGetQueryiv_dispatch_table_rewrite_ptr,
-    .glGetQueryivARB = epoxy_glGetQueryivARB_dispatch_table_rewrite_ptr,
-    .glGetQueryivEXT = epoxy_glGetQueryivEXT_dispatch_table_rewrite_ptr,
-    .glGetRenderbufferParameteriv = epoxy_glGetRenderbufferParameteriv_dispatch_table_rewrite_ptr,
-    .glGetRenderbufferParameterivEXT = epoxy_glGetRenderbufferParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetRenderbufferParameterivOES = epoxy_glGetRenderbufferParameterivOES_dispatch_table_rewrite_ptr,
-    .glGetSamplerParameterIiv = epoxy_glGetSamplerParameterIiv_dispatch_table_rewrite_ptr,
-    .glGetSamplerParameterIivEXT = epoxy_glGetSamplerParameterIivEXT_dispatch_table_rewrite_ptr,
-    .glGetSamplerParameterIivOES = epoxy_glGetSamplerParameterIivOES_dispatch_table_rewrite_ptr,
-    .glGetSamplerParameterIuiv = epoxy_glGetSamplerParameterIuiv_dispatch_table_rewrite_ptr,
-    .glGetSamplerParameterIuivEXT = epoxy_glGetSamplerParameterIuivEXT_dispatch_table_rewrite_ptr,
-    .glGetSamplerParameterIuivOES = epoxy_glGetSamplerParameterIuivOES_dispatch_table_rewrite_ptr,
-    .glGetSamplerParameterfv = epoxy_glGetSamplerParameterfv_dispatch_table_rewrite_ptr,
-    .glGetSamplerParameteriv = epoxy_glGetSamplerParameteriv_dispatch_table_rewrite_ptr,
-    .glGetSeparableFilter = epoxy_glGetSeparableFilter_dispatch_table_rewrite_ptr,
-    .glGetSeparableFilterEXT = epoxy_glGetSeparableFilterEXT_dispatch_table_rewrite_ptr,
-    .glGetShaderInfoLog = epoxy_glGetShaderInfoLog_dispatch_table_rewrite_ptr,
-    .glGetShaderPrecisionFormat = epoxy_glGetShaderPrecisionFormat_dispatch_table_rewrite_ptr,
-    .glGetShaderSource = epoxy_glGetShaderSource_dispatch_table_rewrite_ptr,
-    .glGetShaderSourceARB = epoxy_glGetShaderSourceARB_dispatch_table_rewrite_ptr,
-    .glGetShaderiv = epoxy_glGetShaderiv_dispatch_table_rewrite_ptr,
-    .glGetSharpenTexFuncSGIS = epoxy_glGetSharpenTexFuncSGIS_dispatch_table_rewrite_ptr,
-    .glGetStageIndexNV = epoxy_glGetStageIndexNV_dispatch_table_rewrite_ptr,
-    .glGetString = epoxy_glGetString_dispatch_table_rewrite_ptr,
-    .glGetStringi = epoxy_glGetStringi_dispatch_table_rewrite_ptr,
-    .glGetSubroutineIndex = epoxy_glGetSubroutineIndex_dispatch_table_rewrite_ptr,
-    .glGetSubroutineUniformLocation = epoxy_glGetSubroutineUniformLocation_dispatch_table_rewrite_ptr,
-    .glGetSynciv = epoxy_glGetSynciv_dispatch_table_rewrite_ptr,
-    .glGetSyncivAPPLE = epoxy_glGetSyncivAPPLE_dispatch_table_rewrite_ptr,
-    .glGetTexBumpParameterfvATI = epoxy_glGetTexBumpParameterfvATI_dispatch_table_rewrite_ptr,
-    .glGetTexBumpParameterivATI = epoxy_glGetTexBumpParameterivATI_dispatch_table_rewrite_ptr,
-    .glGetTexEnvfv = epoxy_glGetTexEnvfv_dispatch_table_rewrite_ptr,
-    .glGetTexEnviv = epoxy_glGetTexEnviv_dispatch_table_rewrite_ptr,
-    .glGetTexEnvxv = epoxy_glGetTexEnvxv_dispatch_table_rewrite_ptr,
-    .glGetTexEnvxvOES = epoxy_glGetTexEnvxvOES_dispatch_table_rewrite_ptr,
-    .glGetTexFilterFuncSGIS = epoxy_glGetTexFilterFuncSGIS_dispatch_table_rewrite_ptr,
-    .glGetTexGendv = epoxy_glGetTexGendv_dispatch_table_rewrite_ptr,
-    .glGetTexGenfv = epoxy_glGetTexGenfv_dispatch_table_rewrite_ptr,
-    .glGetTexGenfvOES = epoxy_glGetTexGenfvOES_dispatch_table_rewrite_ptr,
-    .glGetTexGeniv = epoxy_glGetTexGeniv_dispatch_table_rewrite_ptr,
-    .glGetTexGenivOES = epoxy_glGetTexGenivOES_dispatch_table_rewrite_ptr,
-    .glGetTexGenxvOES = epoxy_glGetTexGenxvOES_dispatch_table_rewrite_ptr,
-    .glGetTexImage = epoxy_glGetTexImage_dispatch_table_rewrite_ptr,
-    .glGetTexLevelParameterfv = epoxy_glGetTexLevelParameterfv_dispatch_table_rewrite_ptr,
-    .glGetTexLevelParameteriv = epoxy_glGetTexLevelParameteriv_dispatch_table_rewrite_ptr,
-    .glGetTexLevelParameterxvOES = epoxy_glGetTexLevelParameterxvOES_dispatch_table_rewrite_ptr,
-    .glGetTexParameterIiv = epoxy_glGetTexParameterIiv_dispatch_table_rewrite_ptr,
-    .glGetTexParameterIivEXT = epoxy_glGetTexParameterIivEXT_dispatch_table_rewrite_ptr,
-    .glGetTexParameterIivOES = epoxy_glGetTexParameterIivOES_dispatch_table_rewrite_ptr,
-    .glGetTexParameterIuiv = epoxy_glGetTexParameterIuiv_dispatch_table_rewrite_ptr,
-    .glGetTexParameterIuivEXT = epoxy_glGetTexParameterIuivEXT_dispatch_table_rewrite_ptr,
-    .glGetTexParameterIuivOES = epoxy_glGetTexParameterIuivOES_dispatch_table_rewrite_ptr,
-    .glGetTexParameterPointervAPPLE = epoxy_glGetTexParameterPointervAPPLE_dispatch_table_rewrite_ptr,
-    .glGetTexParameterfv = epoxy_glGetTexParameterfv_dispatch_table_rewrite_ptr,
-    .glGetTexParameteriv = epoxy_glGetTexParameteriv_dispatch_table_rewrite_ptr,
-    .glGetTexParameterxv = epoxy_glGetTexParameterxv_dispatch_table_rewrite_ptr,
-    .glGetTexParameterxvOES = epoxy_glGetTexParameterxvOES_dispatch_table_rewrite_ptr,
-    .glGetTextureHandleARB = epoxy_glGetTextureHandleARB_dispatch_table_rewrite_ptr,
-    .glGetTextureHandleNV = epoxy_glGetTextureHandleNV_dispatch_table_rewrite_ptr,
-    .glGetTextureImage = epoxy_glGetTextureImage_dispatch_table_rewrite_ptr,
-    .glGetTextureImageEXT = epoxy_glGetTextureImageEXT_dispatch_table_rewrite_ptr,
-    .glGetTextureLevelParameterfv = epoxy_glGetTextureLevelParameterfv_dispatch_table_rewrite_ptr,
-    .glGetTextureLevelParameterfvEXT = epoxy_glGetTextureLevelParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glGetTextureLevelParameteriv = epoxy_glGetTextureLevelParameteriv_dispatch_table_rewrite_ptr,
-    .glGetTextureLevelParameterivEXT = epoxy_glGetTextureLevelParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetTextureParameterIiv = epoxy_glGetTextureParameterIiv_dispatch_table_rewrite_ptr,
-    .glGetTextureParameterIivEXT = epoxy_glGetTextureParameterIivEXT_dispatch_table_rewrite_ptr,
-    .glGetTextureParameterIuiv = epoxy_glGetTextureParameterIuiv_dispatch_table_rewrite_ptr,
-    .glGetTextureParameterIuivEXT = epoxy_glGetTextureParameterIuivEXT_dispatch_table_rewrite_ptr,
-    .glGetTextureParameterfv = epoxy_glGetTextureParameterfv_dispatch_table_rewrite_ptr,
-    .glGetTextureParameterfvEXT = epoxy_glGetTextureParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glGetTextureParameteriv = epoxy_glGetTextureParameteriv_dispatch_table_rewrite_ptr,
-    .glGetTextureParameterivEXT = epoxy_glGetTextureParameterivEXT_dispatch_table_rewrite_ptr,
-    .glGetTextureSamplerHandleARB = epoxy_glGetTextureSamplerHandleARB_dispatch_table_rewrite_ptr,
-    .glGetTextureSamplerHandleNV = epoxy_glGetTextureSamplerHandleNV_dispatch_table_rewrite_ptr,
-    .glGetTextureSubImage = epoxy_glGetTextureSubImage_dispatch_table_rewrite_ptr,
-    .glGetTrackMatrixivNV = epoxy_glGetTrackMatrixivNV_dispatch_table_rewrite_ptr,
-    .glGetTransformFeedbackVarying = epoxy_glGetTransformFeedbackVarying_dispatch_table_rewrite_ptr,
-    .glGetTransformFeedbackVaryingEXT = epoxy_glGetTransformFeedbackVaryingEXT_dispatch_table_rewrite_ptr,
-    .glGetTransformFeedbackVaryingNV = epoxy_glGetTransformFeedbackVaryingNV_dispatch_table_rewrite_ptr,
-    .glGetTransformFeedbacki64_v = epoxy_glGetTransformFeedbacki64_v_dispatch_table_rewrite_ptr,
-    .glGetTransformFeedbacki_v = epoxy_glGetTransformFeedbacki_v_dispatch_table_rewrite_ptr,
-    .glGetTransformFeedbackiv = epoxy_glGetTransformFeedbackiv_dispatch_table_rewrite_ptr,
-    .glGetTranslatedShaderSourceANGLE = epoxy_glGetTranslatedShaderSourceANGLE_dispatch_table_rewrite_ptr,
-    .glGetUniformBlockIndex = epoxy_glGetUniformBlockIndex_dispatch_table_rewrite_ptr,
-    .glGetUniformBufferSizeEXT = epoxy_glGetUniformBufferSizeEXT_dispatch_table_rewrite_ptr,
-    .glGetUniformIndices = epoxy_glGetUniformIndices_dispatch_table_rewrite_ptr,
-    .glGetUniformLocation = epoxy_glGetUniformLocation_dispatch_table_rewrite_ptr,
-    .glGetUniformLocationARB = epoxy_glGetUniformLocationARB_dispatch_table_rewrite_ptr,
-    .glGetUniformOffsetEXT = epoxy_glGetUniformOffsetEXT_dispatch_table_rewrite_ptr,
-    .glGetUniformSubroutineuiv = epoxy_glGetUniformSubroutineuiv_dispatch_table_rewrite_ptr,
-    .glGetUniformdv = epoxy_glGetUniformdv_dispatch_table_rewrite_ptr,
-    .glGetUniformfv = epoxy_glGetUniformfv_dispatch_table_rewrite_ptr,
-    .glGetUniformfvARB = epoxy_glGetUniformfvARB_dispatch_table_rewrite_ptr,
-    .glGetUniformi64vNV = epoxy_glGetUniformi64vNV_dispatch_table_rewrite_ptr,
-    .glGetUniformiv = epoxy_glGetUniformiv_dispatch_table_rewrite_ptr,
-    .glGetUniformivARB = epoxy_glGetUniformivARB_dispatch_table_rewrite_ptr,
-    .glGetUniformui64vNV = epoxy_glGetUniformui64vNV_dispatch_table_rewrite_ptr,
-    .glGetUniformuiv = epoxy_glGetUniformuiv_dispatch_table_rewrite_ptr,
-    .glGetUniformuivEXT = epoxy_glGetUniformuivEXT_dispatch_table_rewrite_ptr,
-    .glGetVariantArrayObjectfvATI = epoxy_glGetVariantArrayObjectfvATI_dispatch_table_rewrite_ptr,
-    .glGetVariantArrayObjectivATI = epoxy_glGetVariantArrayObjectivATI_dispatch_table_rewrite_ptr,
-    .glGetVariantBooleanvEXT = epoxy_glGetVariantBooleanvEXT_dispatch_table_rewrite_ptr,
-    .glGetVariantFloatvEXT = epoxy_glGetVariantFloatvEXT_dispatch_table_rewrite_ptr,
-    .glGetVariantIntegervEXT = epoxy_glGetVariantIntegervEXT_dispatch_table_rewrite_ptr,
-    .glGetVariantPointervEXT = epoxy_glGetVariantPointervEXT_dispatch_table_rewrite_ptr,
-    .glGetVaryingLocationNV = epoxy_glGetVaryingLocationNV_dispatch_table_rewrite_ptr,
-    .glGetVertexArrayIndexed64iv = epoxy_glGetVertexArrayIndexed64iv_dispatch_table_rewrite_ptr,
-    .glGetVertexArrayIndexediv = epoxy_glGetVertexArrayIndexediv_dispatch_table_rewrite_ptr,
-    .glGetVertexArrayIntegeri_vEXT = epoxy_glGetVertexArrayIntegeri_vEXT_dispatch_table_rewrite_ptr,
-    .glGetVertexArrayIntegervEXT = epoxy_glGetVertexArrayIntegervEXT_dispatch_table_rewrite_ptr,
-    .glGetVertexArrayPointeri_vEXT = epoxy_glGetVertexArrayPointeri_vEXT_dispatch_table_rewrite_ptr,
-    .glGetVertexArrayPointervEXT = epoxy_glGetVertexArrayPointervEXT_dispatch_table_rewrite_ptr,
-    .glGetVertexArrayiv = epoxy_glGetVertexArrayiv_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribArrayObjectfvATI = epoxy_glGetVertexAttribArrayObjectfvATI_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribArrayObjectivATI = epoxy_glGetVertexAttribArrayObjectivATI_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribIiv = epoxy_glGetVertexAttribIiv_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribIivEXT = epoxy_glGetVertexAttribIivEXT_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribIuiv = epoxy_glGetVertexAttribIuiv_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribIuivEXT = epoxy_glGetVertexAttribIuivEXT_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribLdv = epoxy_glGetVertexAttribLdv_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribLdvEXT = epoxy_glGetVertexAttribLdvEXT_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribLi64vNV = epoxy_glGetVertexAttribLi64vNV_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribLui64vARB = epoxy_glGetVertexAttribLui64vARB_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribLui64vNV = epoxy_glGetVertexAttribLui64vNV_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribPointerv = epoxy_glGetVertexAttribPointerv_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribPointervARB = epoxy_glGetVertexAttribPointervARB_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribPointervNV = epoxy_glGetVertexAttribPointervNV_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribdv = epoxy_glGetVertexAttribdv_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribdvARB = epoxy_glGetVertexAttribdvARB_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribdvNV = epoxy_glGetVertexAttribdvNV_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribfv = epoxy_glGetVertexAttribfv_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribfvARB = epoxy_glGetVertexAttribfvARB_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribfvNV = epoxy_glGetVertexAttribfvNV_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribiv = epoxy_glGetVertexAttribiv_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribivARB = epoxy_glGetVertexAttribivARB_dispatch_table_rewrite_ptr,
-    .glGetVertexAttribivNV = epoxy_glGetVertexAttribivNV_dispatch_table_rewrite_ptr,
-    .glGetVideoCaptureStreamdvNV = epoxy_glGetVideoCaptureStreamdvNV_dispatch_table_rewrite_ptr,
-    .glGetVideoCaptureStreamfvNV = epoxy_glGetVideoCaptureStreamfvNV_dispatch_table_rewrite_ptr,
-    .glGetVideoCaptureStreamivNV = epoxy_glGetVideoCaptureStreamivNV_dispatch_table_rewrite_ptr,
-    .glGetVideoCaptureivNV = epoxy_glGetVideoCaptureivNV_dispatch_table_rewrite_ptr,
-    .glGetVideoi64vNV = epoxy_glGetVideoi64vNV_dispatch_table_rewrite_ptr,
-    .glGetVideoivNV = epoxy_glGetVideoivNV_dispatch_table_rewrite_ptr,
-    .glGetVideoui64vNV = epoxy_glGetVideoui64vNV_dispatch_table_rewrite_ptr,
-    .glGetVideouivNV = epoxy_glGetVideouivNV_dispatch_table_rewrite_ptr,
-    .glGetnColorTable = epoxy_glGetnColorTable_dispatch_table_rewrite_ptr,
-    .glGetnColorTableARB = epoxy_glGetnColorTableARB_dispatch_table_rewrite_ptr,
-    .glGetnCompressedTexImage = epoxy_glGetnCompressedTexImage_dispatch_table_rewrite_ptr,
-    .glGetnCompressedTexImageARB = epoxy_glGetnCompressedTexImageARB_dispatch_table_rewrite_ptr,
-    .glGetnConvolutionFilter = epoxy_glGetnConvolutionFilter_dispatch_table_rewrite_ptr,
-    .glGetnConvolutionFilterARB = epoxy_glGetnConvolutionFilterARB_dispatch_table_rewrite_ptr,
-    .glGetnHistogram = epoxy_glGetnHistogram_dispatch_table_rewrite_ptr,
-    .glGetnHistogramARB = epoxy_glGetnHistogramARB_dispatch_table_rewrite_ptr,
-    .glGetnMapdv = epoxy_glGetnMapdv_dispatch_table_rewrite_ptr,
-    .glGetnMapdvARB = epoxy_glGetnMapdvARB_dispatch_table_rewrite_ptr,
-    .glGetnMapfv = epoxy_glGetnMapfv_dispatch_table_rewrite_ptr,
-    .glGetnMapfvARB = epoxy_glGetnMapfvARB_dispatch_table_rewrite_ptr,
-    .glGetnMapiv = epoxy_glGetnMapiv_dispatch_table_rewrite_ptr,
-    .glGetnMapivARB = epoxy_glGetnMapivARB_dispatch_table_rewrite_ptr,
-    .glGetnMinmax = epoxy_glGetnMinmax_dispatch_table_rewrite_ptr,
-    .glGetnMinmaxARB = epoxy_glGetnMinmaxARB_dispatch_table_rewrite_ptr,
-    .glGetnPixelMapfv = epoxy_glGetnPixelMapfv_dispatch_table_rewrite_ptr,
-    .glGetnPixelMapfvARB = epoxy_glGetnPixelMapfvARB_dispatch_table_rewrite_ptr,
-    .glGetnPixelMapuiv = epoxy_glGetnPixelMapuiv_dispatch_table_rewrite_ptr,
-    .glGetnPixelMapuivARB = epoxy_glGetnPixelMapuivARB_dispatch_table_rewrite_ptr,
-    .glGetnPixelMapusv = epoxy_glGetnPixelMapusv_dispatch_table_rewrite_ptr,
-    .glGetnPixelMapusvARB = epoxy_glGetnPixelMapusvARB_dispatch_table_rewrite_ptr,
-    .glGetnPolygonStipple = epoxy_glGetnPolygonStipple_dispatch_table_rewrite_ptr,
-    .glGetnPolygonStippleARB = epoxy_glGetnPolygonStippleARB_dispatch_table_rewrite_ptr,
-    .glGetnSeparableFilter = epoxy_glGetnSeparableFilter_dispatch_table_rewrite_ptr,
-    .glGetnSeparableFilterARB = epoxy_glGetnSeparableFilterARB_dispatch_table_rewrite_ptr,
-    .glGetnTexImage = epoxy_glGetnTexImage_dispatch_table_rewrite_ptr,
-    .glGetnTexImageARB = epoxy_glGetnTexImageARB_dispatch_table_rewrite_ptr,
-    .glGetnUniformdv = epoxy_glGetnUniformdv_dispatch_table_rewrite_ptr,
-    .glGetnUniformdvARB = epoxy_glGetnUniformdvARB_dispatch_table_rewrite_ptr,
-    .glGetnUniformfv = epoxy_glGetnUniformfv_dispatch_table_rewrite_ptr,
-    .glGetnUniformfvARB = epoxy_glGetnUniformfvARB_dispatch_table_rewrite_ptr,
-    .glGetnUniformfvEXT = epoxy_glGetnUniformfvEXT_dispatch_table_rewrite_ptr,
-    .glGetnUniformfvKHR = epoxy_glGetnUniformfvKHR_dispatch_table_rewrite_ptr,
-    .glGetnUniformiv = epoxy_glGetnUniformiv_dispatch_table_rewrite_ptr,
-    .glGetnUniformivARB = epoxy_glGetnUniformivARB_dispatch_table_rewrite_ptr,
-    .glGetnUniformivEXT = epoxy_glGetnUniformivEXT_dispatch_table_rewrite_ptr,
-    .glGetnUniformivKHR = epoxy_glGetnUniformivKHR_dispatch_table_rewrite_ptr,
-    .glGetnUniformuiv = epoxy_glGetnUniformuiv_dispatch_table_rewrite_ptr,
-    .glGetnUniformuivARB = epoxy_glGetnUniformuivARB_dispatch_table_rewrite_ptr,
-    .glGetnUniformuivKHR = epoxy_glGetnUniformuivKHR_dispatch_table_rewrite_ptr,
-    .glGlobalAlphaFactorbSUN = epoxy_glGlobalAlphaFactorbSUN_dispatch_table_rewrite_ptr,
-    .glGlobalAlphaFactordSUN = epoxy_glGlobalAlphaFactordSUN_dispatch_table_rewrite_ptr,
-    .glGlobalAlphaFactorfSUN = epoxy_glGlobalAlphaFactorfSUN_dispatch_table_rewrite_ptr,
-    .glGlobalAlphaFactoriSUN = epoxy_glGlobalAlphaFactoriSUN_dispatch_table_rewrite_ptr,
-    .glGlobalAlphaFactorsSUN = epoxy_glGlobalAlphaFactorsSUN_dispatch_table_rewrite_ptr,
-    .glGlobalAlphaFactorubSUN = epoxy_glGlobalAlphaFactorubSUN_dispatch_table_rewrite_ptr,
-    .glGlobalAlphaFactoruiSUN = epoxy_glGlobalAlphaFactoruiSUN_dispatch_table_rewrite_ptr,
-    .glGlobalAlphaFactorusSUN = epoxy_glGlobalAlphaFactorusSUN_dispatch_table_rewrite_ptr,
-    .glHint = epoxy_glHint_dispatch_table_rewrite_ptr,
-    .glHintPGI = epoxy_glHintPGI_dispatch_table_rewrite_ptr,
-    .glHistogram = epoxy_glHistogram_dispatch_table_rewrite_ptr,
-    .glHistogramEXT = epoxy_glHistogramEXT_dispatch_table_rewrite_ptr,
-    .glIglooInterfaceSGIX = epoxy_glIglooInterfaceSGIX_dispatch_table_rewrite_ptr,
-    .glImageTransformParameterfHP = epoxy_glImageTransformParameterfHP_dispatch_table_rewrite_ptr,
-    .glImageTransformParameterfvHP = epoxy_glImageTransformParameterfvHP_dispatch_table_rewrite_ptr,
-    .glImageTransformParameteriHP = epoxy_glImageTransformParameteriHP_dispatch_table_rewrite_ptr,
-    .glImageTransformParameterivHP = epoxy_glImageTransformParameterivHP_dispatch_table_rewrite_ptr,
-    .glImportSyncEXT = epoxy_glImportSyncEXT_dispatch_table_rewrite_ptr,
-    .glIndexFormatNV = epoxy_glIndexFormatNV_dispatch_table_rewrite_ptr,
-    .glIndexFuncEXT = epoxy_glIndexFuncEXT_dispatch_table_rewrite_ptr,
-    .glIndexMask = epoxy_glIndexMask_dispatch_table_rewrite_ptr,
-    .glIndexMaterialEXT = epoxy_glIndexMaterialEXT_dispatch_table_rewrite_ptr,
-    .glIndexPointer = epoxy_glIndexPointer_dispatch_table_rewrite_ptr,
-    .glIndexPointerEXT = epoxy_glIndexPointerEXT_dispatch_table_rewrite_ptr,
-    .glIndexPointerListIBM = epoxy_glIndexPointerListIBM_dispatch_table_rewrite_ptr,
-    .glIndexd = epoxy_glIndexd_dispatch_table_rewrite_ptr,
-    .glIndexdv = epoxy_glIndexdv_dispatch_table_rewrite_ptr,
-    .glIndexf = epoxy_glIndexf_dispatch_table_rewrite_ptr,
-    .glIndexfv = epoxy_glIndexfv_dispatch_table_rewrite_ptr,
-    .glIndexi = epoxy_glIndexi_dispatch_table_rewrite_ptr,
-    .glIndexiv = epoxy_glIndexiv_dispatch_table_rewrite_ptr,
-    .glIndexs = epoxy_glIndexs_dispatch_table_rewrite_ptr,
-    .glIndexsv = epoxy_glIndexsv_dispatch_table_rewrite_ptr,
-    .glIndexub = epoxy_glIndexub_dispatch_table_rewrite_ptr,
-    .glIndexubv = epoxy_glIndexubv_dispatch_table_rewrite_ptr,
-    .glIndexxOES = epoxy_glIndexxOES_dispatch_table_rewrite_ptr,
-    .glIndexxvOES = epoxy_glIndexxvOES_dispatch_table_rewrite_ptr,
-    .glInitNames = epoxy_glInitNames_dispatch_table_rewrite_ptr,
-    .glInsertComponentEXT = epoxy_glInsertComponentEXT_dispatch_table_rewrite_ptr,
-    .glInsertEventMarkerEXT = epoxy_glInsertEventMarkerEXT_dispatch_table_rewrite_ptr,
-    .glInstrumentsBufferSGIX = epoxy_glInstrumentsBufferSGIX_dispatch_table_rewrite_ptr,
-    .glInterleavedArrays = epoxy_glInterleavedArrays_dispatch_table_rewrite_ptr,
-    .glInterpolatePathsNV = epoxy_glInterpolatePathsNV_dispatch_table_rewrite_ptr,
-    .glInvalidateBufferData = epoxy_glInvalidateBufferData_dispatch_table_rewrite_ptr,
-    .glInvalidateBufferSubData = epoxy_glInvalidateBufferSubData_dispatch_table_rewrite_ptr,
-    .glInvalidateFramebuffer = epoxy_glInvalidateFramebuffer_dispatch_table_rewrite_ptr,
-    .glInvalidateNamedFramebufferData = epoxy_glInvalidateNamedFramebufferData_dispatch_table_rewrite_ptr,
-    .glInvalidateNamedFramebufferSubData = epoxy_glInvalidateNamedFramebufferSubData_dispatch_table_rewrite_ptr,
-    .glInvalidateSubFramebuffer = epoxy_glInvalidateSubFramebuffer_dispatch_table_rewrite_ptr,
-    .glInvalidateTexImage = epoxy_glInvalidateTexImage_dispatch_table_rewrite_ptr,
-    .glInvalidateTexSubImage = epoxy_glInvalidateTexSubImage_dispatch_table_rewrite_ptr,
-    .glIsAsyncMarkerSGIX = epoxy_glIsAsyncMarkerSGIX_dispatch_table_rewrite_ptr,
-    .glIsBuffer = epoxy_glIsBuffer_dispatch_table_rewrite_ptr,
-    .glIsBufferARB = epoxy_glIsBufferARB_dispatch_table_rewrite_ptr,
-    .glIsBufferResidentNV = epoxy_glIsBufferResidentNV_dispatch_table_rewrite_ptr,
-    .glIsCommandListNV = epoxy_glIsCommandListNV_dispatch_table_rewrite_ptr,
-    .glIsEnabled = epoxy_glIsEnabled_dispatch_table_rewrite_ptr,
-    .glIsEnabledIndexedEXT = epoxy_glIsEnabledIndexedEXT_dispatch_table_rewrite_ptr,
-    .glIsEnabledi = epoxy_glIsEnabledi_dispatch_table_rewrite_ptr,
-    .glIsEnablediEXT = epoxy_glIsEnablediEXT_dispatch_table_rewrite_ptr,
-    .glIsEnablediNV = epoxy_glIsEnablediNV_dispatch_table_rewrite_ptr,
-    .glIsEnablediOES = epoxy_glIsEnablediOES_dispatch_table_rewrite_ptr,
-    .glIsFenceAPPLE = epoxy_glIsFenceAPPLE_dispatch_table_rewrite_ptr,
-    .glIsFenceNV = epoxy_glIsFenceNV_dispatch_table_rewrite_ptr,
-    .glIsFramebuffer = epoxy_glIsFramebuffer_dispatch_table_rewrite_ptr,
-    .glIsFramebufferEXT = epoxy_glIsFramebufferEXT_dispatch_table_rewrite_ptr,
-    .glIsFramebufferOES = epoxy_glIsFramebufferOES_dispatch_table_rewrite_ptr,
-    .glIsImageHandleResidentARB = epoxy_glIsImageHandleResidentARB_dispatch_table_rewrite_ptr,
-    .glIsImageHandleResidentNV = epoxy_glIsImageHandleResidentNV_dispatch_table_rewrite_ptr,
-    .glIsList = epoxy_glIsList_dispatch_table_rewrite_ptr,
-    .glIsNameAMD = epoxy_glIsNameAMD_dispatch_table_rewrite_ptr,
-    .glIsNamedBufferResidentNV = epoxy_glIsNamedBufferResidentNV_dispatch_table_rewrite_ptr,
-    .glIsNamedStringARB = epoxy_glIsNamedStringARB_dispatch_table_rewrite_ptr,
-    .glIsObjectBufferATI = epoxy_glIsObjectBufferATI_dispatch_table_rewrite_ptr,
-    .glIsOcclusionQueryNV = epoxy_glIsOcclusionQueryNV_dispatch_table_rewrite_ptr,
-    .glIsPathNV = epoxy_glIsPathNV_dispatch_table_rewrite_ptr,
-    .glIsPointInFillPathNV = epoxy_glIsPointInFillPathNV_dispatch_table_rewrite_ptr,
-    .glIsPointInStrokePathNV = epoxy_glIsPointInStrokePathNV_dispatch_table_rewrite_ptr,
-    .glIsProgram = epoxy_glIsProgram_dispatch_table_rewrite_ptr,
-    .glIsProgramARB = epoxy_glIsProgramARB_dispatch_table_rewrite_ptr,
-    .glIsProgramNV = epoxy_glIsProgramNV_dispatch_table_rewrite_ptr,
-    .glIsProgramPipeline = epoxy_glIsProgramPipeline_dispatch_table_rewrite_ptr,
-    .glIsProgramPipelineEXT = epoxy_glIsProgramPipelineEXT_dispatch_table_rewrite_ptr,
-    .glIsQuery = epoxy_glIsQuery_dispatch_table_rewrite_ptr,
-    .glIsQueryARB = epoxy_glIsQueryARB_dispatch_table_rewrite_ptr,
-    .glIsQueryEXT = epoxy_glIsQueryEXT_dispatch_table_rewrite_ptr,
-    .glIsRenderbuffer = epoxy_glIsRenderbuffer_dispatch_table_rewrite_ptr,
-    .glIsRenderbufferEXT = epoxy_glIsRenderbufferEXT_dispatch_table_rewrite_ptr,
-    .glIsRenderbufferOES = epoxy_glIsRenderbufferOES_dispatch_table_rewrite_ptr,
-    .glIsSampler = epoxy_glIsSampler_dispatch_table_rewrite_ptr,
-    .glIsShader = epoxy_glIsShader_dispatch_table_rewrite_ptr,
-    .glIsStateNV = epoxy_glIsStateNV_dispatch_table_rewrite_ptr,
-    .glIsSync = epoxy_glIsSync_dispatch_table_rewrite_ptr,
-    .glIsSyncAPPLE = epoxy_glIsSyncAPPLE_dispatch_table_rewrite_ptr,
-    .glIsTexture = epoxy_glIsTexture_dispatch_table_rewrite_ptr,
-    .glIsTextureEXT = epoxy_glIsTextureEXT_dispatch_table_rewrite_ptr,
-    .glIsTextureHandleResidentARB = epoxy_glIsTextureHandleResidentARB_dispatch_table_rewrite_ptr,
-    .glIsTextureHandleResidentNV = epoxy_glIsTextureHandleResidentNV_dispatch_table_rewrite_ptr,
-    .glIsTransformFeedback = epoxy_glIsTransformFeedback_dispatch_table_rewrite_ptr,
-    .glIsTransformFeedbackNV = epoxy_glIsTransformFeedbackNV_dispatch_table_rewrite_ptr,
-    .glIsVariantEnabledEXT = epoxy_glIsVariantEnabledEXT_dispatch_table_rewrite_ptr,
-    .glIsVertexArray = epoxy_glIsVertexArray_dispatch_table_rewrite_ptr,
-    .glIsVertexArrayAPPLE = epoxy_glIsVertexArrayAPPLE_dispatch_table_rewrite_ptr,
-    .glIsVertexArrayOES = epoxy_glIsVertexArrayOES_dispatch_table_rewrite_ptr,
-    .glIsVertexAttribEnabledAPPLE = epoxy_glIsVertexAttribEnabledAPPLE_dispatch_table_rewrite_ptr,
-    .glLabelObjectEXT = epoxy_glLabelObjectEXT_dispatch_table_rewrite_ptr,
-    .glLightEnviSGIX = epoxy_glLightEnviSGIX_dispatch_table_rewrite_ptr,
-    .glLightModelf = epoxy_glLightModelf_dispatch_table_rewrite_ptr,
-    .glLightModelfv = epoxy_glLightModelfv_dispatch_table_rewrite_ptr,
-    .glLightModeli = epoxy_glLightModeli_dispatch_table_rewrite_ptr,
-    .glLightModeliv = epoxy_glLightModeliv_dispatch_table_rewrite_ptr,
-    .glLightModelx = epoxy_glLightModelx_dispatch_table_rewrite_ptr,
-    .glLightModelxOES = epoxy_glLightModelxOES_dispatch_table_rewrite_ptr,
-    .glLightModelxv = epoxy_glLightModelxv_dispatch_table_rewrite_ptr,
-    .glLightModelxvOES = epoxy_glLightModelxvOES_dispatch_table_rewrite_ptr,
-    .glLightf = epoxy_glLightf_dispatch_table_rewrite_ptr,
-    .glLightfv = epoxy_glLightfv_dispatch_table_rewrite_ptr,
-    .glLighti = epoxy_glLighti_dispatch_table_rewrite_ptr,
-    .glLightiv = epoxy_glLightiv_dispatch_table_rewrite_ptr,
-    .glLightx = epoxy_glLightx_dispatch_table_rewrite_ptr,
-    .glLightxOES = epoxy_glLightxOES_dispatch_table_rewrite_ptr,
-    .glLightxv = epoxy_glLightxv_dispatch_table_rewrite_ptr,
-    .glLightxvOES = epoxy_glLightxvOES_dispatch_table_rewrite_ptr,
-    .glLineStipple = epoxy_glLineStipple_dispatch_table_rewrite_ptr,
-    .glLineWidth = epoxy_glLineWidth_dispatch_table_rewrite_ptr,
-    .glLineWidthx = epoxy_glLineWidthx_dispatch_table_rewrite_ptr,
-    .glLineWidthxOES = epoxy_glLineWidthxOES_dispatch_table_rewrite_ptr,
-    .glLinkProgram = epoxy_glLinkProgram_dispatch_table_rewrite_ptr,
-    .glLinkProgramARB = epoxy_glLinkProgramARB_dispatch_table_rewrite_ptr,
-    .glListBase = epoxy_glListBase_dispatch_table_rewrite_ptr,
-    .glListDrawCommandsStatesClientNV = epoxy_glListDrawCommandsStatesClientNV_dispatch_table_rewrite_ptr,
-    .glListParameterfSGIX = epoxy_glListParameterfSGIX_dispatch_table_rewrite_ptr,
-    .glListParameterfvSGIX = epoxy_glListParameterfvSGIX_dispatch_table_rewrite_ptr,
-    .glListParameteriSGIX = epoxy_glListParameteriSGIX_dispatch_table_rewrite_ptr,
-    .glListParameterivSGIX = epoxy_glListParameterivSGIX_dispatch_table_rewrite_ptr,
-    .glLoadIdentity = epoxy_glLoadIdentity_dispatch_table_rewrite_ptr,
-    .glLoadIdentityDeformationMapSGIX = epoxy_glLoadIdentityDeformationMapSGIX_dispatch_table_rewrite_ptr,
-    .glLoadMatrixd = epoxy_glLoadMatrixd_dispatch_table_rewrite_ptr,
-    .glLoadMatrixf = epoxy_glLoadMatrixf_dispatch_table_rewrite_ptr,
-    .glLoadMatrixx = epoxy_glLoadMatrixx_dispatch_table_rewrite_ptr,
-    .glLoadMatrixxOES = epoxy_glLoadMatrixxOES_dispatch_table_rewrite_ptr,
-    .glLoadName = epoxy_glLoadName_dispatch_table_rewrite_ptr,
-    .glLoadPaletteFromModelViewMatrixOES = epoxy_glLoadPaletteFromModelViewMatrixOES_dispatch_table_rewrite_ptr,
-    .glLoadProgramNV = epoxy_glLoadProgramNV_dispatch_table_rewrite_ptr,
-    .glLoadTransposeMatrixd = epoxy_glLoadTransposeMatrixd_dispatch_table_rewrite_ptr,
-    .glLoadTransposeMatrixdARB = epoxy_glLoadTransposeMatrixdARB_dispatch_table_rewrite_ptr,
-    .glLoadTransposeMatrixf = epoxy_glLoadTransposeMatrixf_dispatch_table_rewrite_ptr,
-    .glLoadTransposeMatrixfARB = epoxy_glLoadTransposeMatrixfARB_dispatch_table_rewrite_ptr,
-    .glLoadTransposeMatrixxOES = epoxy_glLoadTransposeMatrixxOES_dispatch_table_rewrite_ptr,
-    .glLockArraysEXT = epoxy_glLockArraysEXT_dispatch_table_rewrite_ptr,
-    .glLogicOp = epoxy_glLogicOp_dispatch_table_rewrite_ptr,
-    .glMakeBufferNonResidentNV = epoxy_glMakeBufferNonResidentNV_dispatch_table_rewrite_ptr,
-    .glMakeBufferResidentNV = epoxy_glMakeBufferResidentNV_dispatch_table_rewrite_ptr,
-    .glMakeImageHandleNonResidentARB = epoxy_glMakeImageHandleNonResidentARB_dispatch_table_rewrite_ptr,
-    .glMakeImageHandleNonResidentNV = epoxy_glMakeImageHandleNonResidentNV_dispatch_table_rewrite_ptr,
-    .glMakeImageHandleResidentARB = epoxy_glMakeImageHandleResidentARB_dispatch_table_rewrite_ptr,
-    .glMakeImageHandleResidentNV = epoxy_glMakeImageHandleResidentNV_dispatch_table_rewrite_ptr,
-    .glMakeNamedBufferNonResidentNV = epoxy_glMakeNamedBufferNonResidentNV_dispatch_table_rewrite_ptr,
-    .glMakeNamedBufferResidentNV = epoxy_glMakeNamedBufferResidentNV_dispatch_table_rewrite_ptr,
-    .glMakeTextureHandleNonResidentARB = epoxy_glMakeTextureHandleNonResidentARB_dispatch_table_rewrite_ptr,
-    .glMakeTextureHandleNonResidentNV = epoxy_glMakeTextureHandleNonResidentNV_dispatch_table_rewrite_ptr,
-    .glMakeTextureHandleResidentARB = epoxy_glMakeTextureHandleResidentARB_dispatch_table_rewrite_ptr,
-    .glMakeTextureHandleResidentNV = epoxy_glMakeTextureHandleResidentNV_dispatch_table_rewrite_ptr,
-    .glMap1d = epoxy_glMap1d_dispatch_table_rewrite_ptr,
-    .glMap1f = epoxy_glMap1f_dispatch_table_rewrite_ptr,
-    .glMap1xOES = epoxy_glMap1xOES_dispatch_table_rewrite_ptr,
-    .glMap2d = epoxy_glMap2d_dispatch_table_rewrite_ptr,
-    .glMap2f = epoxy_glMap2f_dispatch_table_rewrite_ptr,
-    .glMap2xOES = epoxy_glMap2xOES_dispatch_table_rewrite_ptr,
-    .glMapBuffer = epoxy_glMapBuffer_dispatch_table_rewrite_ptr,
-    .glMapBufferARB = epoxy_glMapBufferARB_dispatch_table_rewrite_ptr,
-    .glMapBufferOES = epoxy_glMapBufferOES_dispatch_table_rewrite_ptr,
-    .glMapBufferRange = epoxy_glMapBufferRange_dispatch_table_rewrite_ptr,
-    .glMapBufferRangeEXT = epoxy_glMapBufferRangeEXT_dispatch_table_rewrite_ptr,
-    .glMapControlPointsNV = epoxy_glMapControlPointsNV_dispatch_table_rewrite_ptr,
-    .glMapGrid1d = epoxy_glMapGrid1d_dispatch_table_rewrite_ptr,
-    .glMapGrid1f = epoxy_glMapGrid1f_dispatch_table_rewrite_ptr,
-    .glMapGrid1xOES = epoxy_glMapGrid1xOES_dispatch_table_rewrite_ptr,
-    .glMapGrid2d = epoxy_glMapGrid2d_dispatch_table_rewrite_ptr,
-    .glMapGrid2f = epoxy_glMapGrid2f_dispatch_table_rewrite_ptr,
-    .glMapGrid2xOES = epoxy_glMapGrid2xOES_dispatch_table_rewrite_ptr,
-    .glMapNamedBuffer = epoxy_glMapNamedBuffer_dispatch_table_rewrite_ptr,
-    .glMapNamedBufferEXT = epoxy_glMapNamedBufferEXT_dispatch_table_rewrite_ptr,
-    .glMapNamedBufferRange = epoxy_glMapNamedBufferRange_dispatch_table_rewrite_ptr,
-    .glMapNamedBufferRangeEXT = epoxy_glMapNamedBufferRangeEXT_dispatch_table_rewrite_ptr,
-    .glMapObjectBufferATI = epoxy_glMapObjectBufferATI_dispatch_table_rewrite_ptr,
-    .glMapParameterfvNV = epoxy_glMapParameterfvNV_dispatch_table_rewrite_ptr,
-    .glMapParameterivNV = epoxy_glMapParameterivNV_dispatch_table_rewrite_ptr,
-    .glMapTexture2DINTEL = epoxy_glMapTexture2DINTEL_dispatch_table_rewrite_ptr,
-    .glMapVertexAttrib1dAPPLE = epoxy_glMapVertexAttrib1dAPPLE_dispatch_table_rewrite_ptr,
-    .glMapVertexAttrib1fAPPLE = epoxy_glMapVertexAttrib1fAPPLE_dispatch_table_rewrite_ptr,
-    .glMapVertexAttrib2dAPPLE = epoxy_glMapVertexAttrib2dAPPLE_dispatch_table_rewrite_ptr,
-    .glMapVertexAttrib2fAPPLE = epoxy_glMapVertexAttrib2fAPPLE_dispatch_table_rewrite_ptr,
-    .glMaterialf = epoxy_glMaterialf_dispatch_table_rewrite_ptr,
-    .glMaterialfv = epoxy_glMaterialfv_dispatch_table_rewrite_ptr,
-    .glMateriali = epoxy_glMateriali_dispatch_table_rewrite_ptr,
-    .glMaterialiv = epoxy_glMaterialiv_dispatch_table_rewrite_ptr,
-    .glMaterialx = epoxy_glMaterialx_dispatch_table_rewrite_ptr,
-    .glMaterialxOES = epoxy_glMaterialxOES_dispatch_table_rewrite_ptr,
-    .glMaterialxv = epoxy_glMaterialxv_dispatch_table_rewrite_ptr,
-    .glMaterialxvOES = epoxy_glMaterialxvOES_dispatch_table_rewrite_ptr,
-    .glMatrixFrustumEXT = epoxy_glMatrixFrustumEXT_dispatch_table_rewrite_ptr,
-    .glMatrixIndexPointerARB = epoxy_glMatrixIndexPointerARB_dispatch_table_rewrite_ptr,
-    .glMatrixIndexPointerOES = epoxy_glMatrixIndexPointerOES_dispatch_table_rewrite_ptr,
-    .glMatrixIndexubvARB = epoxy_glMatrixIndexubvARB_dispatch_table_rewrite_ptr,
-    .glMatrixIndexuivARB = epoxy_glMatrixIndexuivARB_dispatch_table_rewrite_ptr,
-    .glMatrixIndexusvARB = epoxy_glMatrixIndexusvARB_dispatch_table_rewrite_ptr,
-    .glMatrixLoad3x2fNV = epoxy_glMatrixLoad3x2fNV_dispatch_table_rewrite_ptr,
-    .glMatrixLoad3x3fNV = epoxy_glMatrixLoad3x3fNV_dispatch_table_rewrite_ptr,
-    .glMatrixLoadIdentityEXT = epoxy_glMatrixLoadIdentityEXT_dispatch_table_rewrite_ptr,
-    .glMatrixLoadTranspose3x3fNV = epoxy_glMatrixLoadTranspose3x3fNV_dispatch_table_rewrite_ptr,
-    .glMatrixLoadTransposedEXT = epoxy_glMatrixLoadTransposedEXT_dispatch_table_rewrite_ptr,
-    .glMatrixLoadTransposefEXT = epoxy_glMatrixLoadTransposefEXT_dispatch_table_rewrite_ptr,
-    .glMatrixLoaddEXT = epoxy_glMatrixLoaddEXT_dispatch_table_rewrite_ptr,
-    .glMatrixLoadfEXT = epoxy_glMatrixLoadfEXT_dispatch_table_rewrite_ptr,
-    .glMatrixMode = epoxy_glMatrixMode_dispatch_table_rewrite_ptr,
-    .glMatrixMult3x2fNV = epoxy_glMatrixMult3x2fNV_dispatch_table_rewrite_ptr,
-    .glMatrixMult3x3fNV = epoxy_glMatrixMult3x3fNV_dispatch_table_rewrite_ptr,
-    .glMatrixMultTranspose3x3fNV = epoxy_glMatrixMultTranspose3x3fNV_dispatch_table_rewrite_ptr,
-    .glMatrixMultTransposedEXT = epoxy_glMatrixMultTransposedEXT_dispatch_table_rewrite_ptr,
-    .glMatrixMultTransposefEXT = epoxy_glMatrixMultTransposefEXT_dispatch_table_rewrite_ptr,
-    .glMatrixMultdEXT = epoxy_glMatrixMultdEXT_dispatch_table_rewrite_ptr,
-    .glMatrixMultfEXT = epoxy_glMatrixMultfEXT_dispatch_table_rewrite_ptr,
-    .glMatrixOrthoEXT = epoxy_glMatrixOrthoEXT_dispatch_table_rewrite_ptr,
-    .glMatrixPopEXT = epoxy_glMatrixPopEXT_dispatch_table_rewrite_ptr,
-    .glMatrixPushEXT = epoxy_glMatrixPushEXT_dispatch_table_rewrite_ptr,
-    .glMatrixRotatedEXT = epoxy_glMatrixRotatedEXT_dispatch_table_rewrite_ptr,
-    .glMatrixRotatefEXT = epoxy_glMatrixRotatefEXT_dispatch_table_rewrite_ptr,
-    .glMatrixScaledEXT = epoxy_glMatrixScaledEXT_dispatch_table_rewrite_ptr,
-    .glMatrixScalefEXT = epoxy_glMatrixScalefEXT_dispatch_table_rewrite_ptr,
-    .glMatrixTranslatedEXT = epoxy_glMatrixTranslatedEXT_dispatch_table_rewrite_ptr,
-    .glMatrixTranslatefEXT = epoxy_glMatrixTranslatefEXT_dispatch_table_rewrite_ptr,
-    .glMemoryBarrier = epoxy_glMemoryBarrier_dispatch_table_rewrite_ptr,
-    .glMemoryBarrierByRegion = epoxy_glMemoryBarrierByRegion_dispatch_table_rewrite_ptr,
-    .glMemoryBarrierEXT = epoxy_glMemoryBarrierEXT_dispatch_table_rewrite_ptr,
-    .glMinSampleShading = epoxy_glMinSampleShading_dispatch_table_rewrite_ptr,
-    .glMinSampleShadingARB = epoxy_glMinSampleShadingARB_dispatch_table_rewrite_ptr,
-    .glMinSampleShadingOES = epoxy_glMinSampleShadingOES_dispatch_table_rewrite_ptr,
-    .glMinmax = epoxy_glMinmax_dispatch_table_rewrite_ptr,
-    .glMinmaxEXT = epoxy_glMinmaxEXT_dispatch_table_rewrite_ptr,
-    .glMultMatrixd = epoxy_glMultMatrixd_dispatch_table_rewrite_ptr,
-    .glMultMatrixf = epoxy_glMultMatrixf_dispatch_table_rewrite_ptr,
-    .glMultMatrixx = epoxy_glMultMatrixx_dispatch_table_rewrite_ptr,
-    .glMultMatrixxOES = epoxy_glMultMatrixxOES_dispatch_table_rewrite_ptr,
-    .glMultTransposeMatrixd = epoxy_glMultTransposeMatrixd_dispatch_table_rewrite_ptr,
-    .glMultTransposeMatrixdARB = epoxy_glMultTransposeMatrixdARB_dispatch_table_rewrite_ptr,
-    .glMultTransposeMatrixf = epoxy_glMultTransposeMatrixf_dispatch_table_rewrite_ptr,
-    .glMultTransposeMatrixfARB = epoxy_glMultTransposeMatrixfARB_dispatch_table_rewrite_ptr,
-    .glMultTransposeMatrixxOES = epoxy_glMultTransposeMatrixxOES_dispatch_table_rewrite_ptr,
-    .glMultiDrawArrays = epoxy_glMultiDrawArrays_dispatch_table_rewrite_ptr,
-    .glMultiDrawArraysEXT = epoxy_glMultiDrawArraysEXT_dispatch_table_rewrite_ptr,
-    .glMultiDrawArraysIndirect = epoxy_glMultiDrawArraysIndirect_dispatch_table_rewrite_ptr,
-    .glMultiDrawArraysIndirectAMD = epoxy_glMultiDrawArraysIndirectAMD_dispatch_table_rewrite_ptr,
-    .glMultiDrawArraysIndirectBindlessCountNV = epoxy_glMultiDrawArraysIndirectBindlessCountNV_dispatch_table_rewrite_ptr,
-    .glMultiDrawArraysIndirectBindlessNV = epoxy_glMultiDrawArraysIndirectBindlessNV_dispatch_table_rewrite_ptr,
-    .glMultiDrawArraysIndirectCountARB = epoxy_glMultiDrawArraysIndirectCountARB_dispatch_table_rewrite_ptr,
-    .glMultiDrawArraysIndirectEXT = epoxy_glMultiDrawArraysIndirectEXT_dispatch_table_rewrite_ptr,
-    .glMultiDrawElementArrayAPPLE = epoxy_glMultiDrawElementArrayAPPLE_dispatch_table_rewrite_ptr,
-    .glMultiDrawElements = epoxy_glMultiDrawElements_dispatch_table_rewrite_ptr,
-    .glMultiDrawElementsBaseVertex = epoxy_glMultiDrawElementsBaseVertex_dispatch_table_rewrite_ptr,
-    .glMultiDrawElementsBaseVertexEXT = epoxy_glMultiDrawElementsBaseVertexEXT_dispatch_table_rewrite_ptr,
-    .glMultiDrawElementsBaseVertexOES = epoxy_glMultiDrawElementsBaseVertexOES_dispatch_table_rewrite_ptr,
-    .glMultiDrawElementsEXT = epoxy_glMultiDrawElementsEXT_dispatch_table_rewrite_ptr,
-    .glMultiDrawElementsIndirect = epoxy_glMultiDrawElementsIndirect_dispatch_table_rewrite_ptr,
-    .glMultiDrawElementsIndirectAMD = epoxy_glMultiDrawElementsIndirectAMD_dispatch_table_rewrite_ptr,
-    .glMultiDrawElementsIndirectBindlessCountNV = epoxy_glMultiDrawElementsIndirectBindlessCountNV_dispatch_table_rewrite_ptr,
-    .glMultiDrawElementsIndirectBindlessNV = epoxy_glMultiDrawElementsIndirectBindlessNV_dispatch_table_rewrite_ptr,
-    .glMultiDrawElementsIndirectCountARB = epoxy_glMultiDrawElementsIndirectCountARB_dispatch_table_rewrite_ptr,
-    .glMultiDrawElementsIndirectEXT = epoxy_glMultiDrawElementsIndirectEXT_dispatch_table_rewrite_ptr,
-    .glMultiDrawRangeElementArrayAPPLE = epoxy_glMultiDrawRangeElementArrayAPPLE_dispatch_table_rewrite_ptr,
-    .glMultiModeDrawArraysIBM = epoxy_glMultiModeDrawArraysIBM_dispatch_table_rewrite_ptr,
-    .glMultiModeDrawElementsIBM = epoxy_glMultiModeDrawElementsIBM_dispatch_table_rewrite_ptr,
-    .glMultiTexBufferEXT = epoxy_glMultiTexBufferEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1bOES = epoxy_glMultiTexCoord1bOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1bvOES = epoxy_glMultiTexCoord1bvOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1d = epoxy_glMultiTexCoord1d_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1dARB = epoxy_glMultiTexCoord1dARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1dv = epoxy_glMultiTexCoord1dv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1dvARB = epoxy_glMultiTexCoord1dvARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1f = epoxy_glMultiTexCoord1f_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1fARB = epoxy_glMultiTexCoord1fARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1fv = epoxy_glMultiTexCoord1fv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1fvARB = epoxy_glMultiTexCoord1fvARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1hNV = epoxy_glMultiTexCoord1hNV_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1hvNV = epoxy_glMultiTexCoord1hvNV_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1i = epoxy_glMultiTexCoord1i_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1iARB = epoxy_glMultiTexCoord1iARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1iv = epoxy_glMultiTexCoord1iv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1ivARB = epoxy_glMultiTexCoord1ivARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1s = epoxy_glMultiTexCoord1s_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1sARB = epoxy_glMultiTexCoord1sARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1sv = epoxy_glMultiTexCoord1sv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1svARB = epoxy_glMultiTexCoord1svARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1xOES = epoxy_glMultiTexCoord1xOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord1xvOES = epoxy_glMultiTexCoord1xvOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2bOES = epoxy_glMultiTexCoord2bOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2bvOES = epoxy_glMultiTexCoord2bvOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2d = epoxy_glMultiTexCoord2d_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2dARB = epoxy_glMultiTexCoord2dARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2dv = epoxy_glMultiTexCoord2dv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2dvARB = epoxy_glMultiTexCoord2dvARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2f = epoxy_glMultiTexCoord2f_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2fARB = epoxy_glMultiTexCoord2fARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2fv = epoxy_glMultiTexCoord2fv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2fvARB = epoxy_glMultiTexCoord2fvARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2hNV = epoxy_glMultiTexCoord2hNV_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2hvNV = epoxy_glMultiTexCoord2hvNV_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2i = epoxy_glMultiTexCoord2i_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2iARB = epoxy_glMultiTexCoord2iARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2iv = epoxy_glMultiTexCoord2iv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2ivARB = epoxy_glMultiTexCoord2ivARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2s = epoxy_glMultiTexCoord2s_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2sARB = epoxy_glMultiTexCoord2sARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2sv = epoxy_glMultiTexCoord2sv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2svARB = epoxy_glMultiTexCoord2svARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2xOES = epoxy_glMultiTexCoord2xOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord2xvOES = epoxy_glMultiTexCoord2xvOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3bOES = epoxy_glMultiTexCoord3bOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3bvOES = epoxy_glMultiTexCoord3bvOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3d = epoxy_glMultiTexCoord3d_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3dARB = epoxy_glMultiTexCoord3dARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3dv = epoxy_glMultiTexCoord3dv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3dvARB = epoxy_glMultiTexCoord3dvARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3f = epoxy_glMultiTexCoord3f_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3fARB = epoxy_glMultiTexCoord3fARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3fv = epoxy_glMultiTexCoord3fv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3fvARB = epoxy_glMultiTexCoord3fvARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3hNV = epoxy_glMultiTexCoord3hNV_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3hvNV = epoxy_glMultiTexCoord3hvNV_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3i = epoxy_glMultiTexCoord3i_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3iARB = epoxy_glMultiTexCoord3iARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3iv = epoxy_glMultiTexCoord3iv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3ivARB = epoxy_glMultiTexCoord3ivARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3s = epoxy_glMultiTexCoord3s_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3sARB = epoxy_glMultiTexCoord3sARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3sv = epoxy_glMultiTexCoord3sv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3svARB = epoxy_glMultiTexCoord3svARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3xOES = epoxy_glMultiTexCoord3xOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord3xvOES = epoxy_glMultiTexCoord3xvOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4bOES = epoxy_glMultiTexCoord4bOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4bvOES = epoxy_glMultiTexCoord4bvOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4d = epoxy_glMultiTexCoord4d_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4dARB = epoxy_glMultiTexCoord4dARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4dv = epoxy_glMultiTexCoord4dv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4dvARB = epoxy_glMultiTexCoord4dvARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4f = epoxy_glMultiTexCoord4f_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4fARB = epoxy_glMultiTexCoord4fARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4fv = epoxy_glMultiTexCoord4fv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4fvARB = epoxy_glMultiTexCoord4fvARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4hNV = epoxy_glMultiTexCoord4hNV_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4hvNV = epoxy_glMultiTexCoord4hvNV_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4i = epoxy_glMultiTexCoord4i_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4iARB = epoxy_glMultiTexCoord4iARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4iv = epoxy_glMultiTexCoord4iv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4ivARB = epoxy_glMultiTexCoord4ivARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4s = epoxy_glMultiTexCoord4s_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4sARB = epoxy_glMultiTexCoord4sARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4sv = epoxy_glMultiTexCoord4sv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4svARB = epoxy_glMultiTexCoord4svARB_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4x = epoxy_glMultiTexCoord4x_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4xOES = epoxy_glMultiTexCoord4xOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoord4xvOES = epoxy_glMultiTexCoord4xvOES_dispatch_table_rewrite_ptr,
-    .glMultiTexCoordP1ui = epoxy_glMultiTexCoordP1ui_dispatch_table_rewrite_ptr,
-    .glMultiTexCoordP1uiv = epoxy_glMultiTexCoordP1uiv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoordP2ui = epoxy_glMultiTexCoordP2ui_dispatch_table_rewrite_ptr,
-    .glMultiTexCoordP2uiv = epoxy_glMultiTexCoordP2uiv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoordP3ui = epoxy_glMultiTexCoordP3ui_dispatch_table_rewrite_ptr,
-    .glMultiTexCoordP3uiv = epoxy_glMultiTexCoordP3uiv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoordP4ui = epoxy_glMultiTexCoordP4ui_dispatch_table_rewrite_ptr,
-    .glMultiTexCoordP4uiv = epoxy_glMultiTexCoordP4uiv_dispatch_table_rewrite_ptr,
-    .glMultiTexCoordPointerEXT = epoxy_glMultiTexCoordPointerEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexEnvfEXT = epoxy_glMultiTexEnvfEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexEnvfvEXT = epoxy_glMultiTexEnvfvEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexEnviEXT = epoxy_glMultiTexEnviEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexEnvivEXT = epoxy_glMultiTexEnvivEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexGendEXT = epoxy_glMultiTexGendEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexGendvEXT = epoxy_glMultiTexGendvEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexGenfEXT = epoxy_glMultiTexGenfEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexGenfvEXT = epoxy_glMultiTexGenfvEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexGeniEXT = epoxy_glMultiTexGeniEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexGenivEXT = epoxy_glMultiTexGenivEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexImage1DEXT = epoxy_glMultiTexImage1DEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexImage2DEXT = epoxy_glMultiTexImage2DEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexImage3DEXT = epoxy_glMultiTexImage3DEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexParameterIivEXT = epoxy_glMultiTexParameterIivEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexParameterIuivEXT = epoxy_glMultiTexParameterIuivEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexParameterfEXT = epoxy_glMultiTexParameterfEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexParameterfvEXT = epoxy_glMultiTexParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexParameteriEXT = epoxy_glMultiTexParameteriEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexParameterivEXT = epoxy_glMultiTexParameterivEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexRenderbufferEXT = epoxy_glMultiTexRenderbufferEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexSubImage1DEXT = epoxy_glMultiTexSubImage1DEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexSubImage2DEXT = epoxy_glMultiTexSubImage2DEXT_dispatch_table_rewrite_ptr,
-    .glMultiTexSubImage3DEXT = epoxy_glMultiTexSubImage3DEXT_dispatch_table_rewrite_ptr,
-    .glNamedBufferData = epoxy_glNamedBufferData_dispatch_table_rewrite_ptr,
-    .glNamedBufferDataEXT = epoxy_glNamedBufferDataEXT_dispatch_table_rewrite_ptr,
-    .glNamedBufferPageCommitmentARB = epoxy_glNamedBufferPageCommitmentARB_dispatch_table_rewrite_ptr,
-    .glNamedBufferPageCommitmentEXT = epoxy_glNamedBufferPageCommitmentEXT_dispatch_table_rewrite_ptr,
-    .glNamedBufferStorage = epoxy_glNamedBufferStorage_dispatch_table_rewrite_ptr,
-    .glNamedBufferStorageEXT = epoxy_glNamedBufferStorageEXT_dispatch_table_rewrite_ptr,
-    .glNamedBufferSubData = epoxy_glNamedBufferSubData_dispatch_table_rewrite_ptr,
-    .glNamedBufferSubDataEXT = epoxy_glNamedBufferSubDataEXT_dispatch_table_rewrite_ptr,
-    .glNamedCopyBufferSubDataEXT = epoxy_glNamedCopyBufferSubDataEXT_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferDrawBuffer = epoxy_glNamedFramebufferDrawBuffer_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferDrawBuffers = epoxy_glNamedFramebufferDrawBuffers_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferParameteri = epoxy_glNamedFramebufferParameteri_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferParameteriEXT = epoxy_glNamedFramebufferParameteriEXT_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferReadBuffer = epoxy_glNamedFramebufferReadBuffer_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferRenderbuffer = epoxy_glNamedFramebufferRenderbuffer_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferRenderbufferEXT = epoxy_glNamedFramebufferRenderbufferEXT_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferSampleLocationsfvNV = epoxy_glNamedFramebufferSampleLocationsfvNV_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferTexture = epoxy_glNamedFramebufferTexture_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferTexture1DEXT = epoxy_glNamedFramebufferTexture1DEXT_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferTexture2DEXT = epoxy_glNamedFramebufferTexture2DEXT_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferTexture3DEXT = epoxy_glNamedFramebufferTexture3DEXT_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferTextureEXT = epoxy_glNamedFramebufferTextureEXT_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferTextureFaceEXT = epoxy_glNamedFramebufferTextureFaceEXT_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferTextureLayer = epoxy_glNamedFramebufferTextureLayer_dispatch_table_rewrite_ptr,
-    .glNamedFramebufferTextureLayerEXT = epoxy_glNamedFramebufferTextureLayerEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramLocalParameter4dEXT = epoxy_glNamedProgramLocalParameter4dEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramLocalParameter4dvEXT = epoxy_glNamedProgramLocalParameter4dvEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramLocalParameter4fEXT = epoxy_glNamedProgramLocalParameter4fEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramLocalParameter4fvEXT = epoxy_glNamedProgramLocalParameter4fvEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramLocalParameterI4iEXT = epoxy_glNamedProgramLocalParameterI4iEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramLocalParameterI4ivEXT = epoxy_glNamedProgramLocalParameterI4ivEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramLocalParameterI4uiEXT = epoxy_glNamedProgramLocalParameterI4uiEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramLocalParameterI4uivEXT = epoxy_glNamedProgramLocalParameterI4uivEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramLocalParameters4fvEXT = epoxy_glNamedProgramLocalParameters4fvEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramLocalParametersI4ivEXT = epoxy_glNamedProgramLocalParametersI4ivEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramLocalParametersI4uivEXT = epoxy_glNamedProgramLocalParametersI4uivEXT_dispatch_table_rewrite_ptr,
-    .glNamedProgramStringEXT = epoxy_glNamedProgramStringEXT_dispatch_table_rewrite_ptr,
-    .glNamedRenderbufferStorage = epoxy_glNamedRenderbufferStorage_dispatch_table_rewrite_ptr,
-    .glNamedRenderbufferStorageEXT = epoxy_glNamedRenderbufferStorageEXT_dispatch_table_rewrite_ptr,
-    .glNamedRenderbufferStorageMultisample = epoxy_glNamedRenderbufferStorageMultisample_dispatch_table_rewrite_ptr,
-    .glNamedRenderbufferStorageMultisampleCoverageEXT = epoxy_glNamedRenderbufferStorageMultisampleCoverageEXT_dispatch_table_rewrite_ptr,
-    .glNamedRenderbufferStorageMultisampleEXT = epoxy_glNamedRenderbufferStorageMultisampleEXT_dispatch_table_rewrite_ptr,
-    .glNamedStringARB = epoxy_glNamedStringARB_dispatch_table_rewrite_ptr,
-    .glNewList = epoxy_glNewList_dispatch_table_rewrite_ptr,
-    .glNewObjectBufferATI = epoxy_glNewObjectBufferATI_dispatch_table_rewrite_ptr,
-    .glNormal3b = epoxy_glNormal3b_dispatch_table_rewrite_ptr,
-    .glNormal3bv = epoxy_glNormal3bv_dispatch_table_rewrite_ptr,
-    .glNormal3d = epoxy_glNormal3d_dispatch_table_rewrite_ptr,
-    .glNormal3dv = epoxy_glNormal3dv_dispatch_table_rewrite_ptr,
-    .glNormal3f = epoxy_glNormal3f_dispatch_table_rewrite_ptr,
-    .glNormal3fVertex3fSUN = epoxy_glNormal3fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glNormal3fVertex3fvSUN = epoxy_glNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glNormal3fv = epoxy_glNormal3fv_dispatch_table_rewrite_ptr,
-    .glNormal3hNV = epoxy_glNormal3hNV_dispatch_table_rewrite_ptr,
-    .glNormal3hvNV = epoxy_glNormal3hvNV_dispatch_table_rewrite_ptr,
-    .glNormal3i = epoxy_glNormal3i_dispatch_table_rewrite_ptr,
-    .glNormal3iv = epoxy_glNormal3iv_dispatch_table_rewrite_ptr,
-    .glNormal3s = epoxy_glNormal3s_dispatch_table_rewrite_ptr,
-    .glNormal3sv = epoxy_glNormal3sv_dispatch_table_rewrite_ptr,
-    .glNormal3x = epoxy_glNormal3x_dispatch_table_rewrite_ptr,
-    .glNormal3xOES = epoxy_glNormal3xOES_dispatch_table_rewrite_ptr,
-    .glNormal3xvOES = epoxy_glNormal3xvOES_dispatch_table_rewrite_ptr,
-    .glNormalFormatNV = epoxy_glNormalFormatNV_dispatch_table_rewrite_ptr,
-    .glNormalP3ui = epoxy_glNormalP3ui_dispatch_table_rewrite_ptr,
-    .glNormalP3uiv = epoxy_glNormalP3uiv_dispatch_table_rewrite_ptr,
-    .glNormalPointer = epoxy_glNormalPointer_dispatch_table_rewrite_ptr,
-    .glNormalPointerEXT = epoxy_glNormalPointerEXT_dispatch_table_rewrite_ptr,
-    .glNormalPointerListIBM = epoxy_glNormalPointerListIBM_dispatch_table_rewrite_ptr,
-    .glNormalPointervINTEL = epoxy_glNormalPointervINTEL_dispatch_table_rewrite_ptr,
-    .glNormalStream3bATI = epoxy_glNormalStream3bATI_dispatch_table_rewrite_ptr,
-    .glNormalStream3bvATI = epoxy_glNormalStream3bvATI_dispatch_table_rewrite_ptr,
-    .glNormalStream3dATI = epoxy_glNormalStream3dATI_dispatch_table_rewrite_ptr,
-    .glNormalStream3dvATI = epoxy_glNormalStream3dvATI_dispatch_table_rewrite_ptr,
-    .glNormalStream3fATI = epoxy_glNormalStream3fATI_dispatch_table_rewrite_ptr,
-    .glNormalStream3fvATI = epoxy_glNormalStream3fvATI_dispatch_table_rewrite_ptr,
-    .glNormalStream3iATI = epoxy_glNormalStream3iATI_dispatch_table_rewrite_ptr,
-    .glNormalStream3ivATI = epoxy_glNormalStream3ivATI_dispatch_table_rewrite_ptr,
-    .glNormalStream3sATI = epoxy_glNormalStream3sATI_dispatch_table_rewrite_ptr,
-    .glNormalStream3svATI = epoxy_glNormalStream3svATI_dispatch_table_rewrite_ptr,
-    .glObjectLabel = epoxy_glObjectLabel_dispatch_table_rewrite_ptr,
-    .glObjectLabelKHR = epoxy_glObjectLabelKHR_dispatch_table_rewrite_ptr,
-    .glObjectPtrLabel = epoxy_glObjectPtrLabel_dispatch_table_rewrite_ptr,
-    .glObjectPtrLabelKHR = epoxy_glObjectPtrLabelKHR_dispatch_table_rewrite_ptr,
-    .glObjectPurgeableAPPLE = epoxy_glObjectPurgeableAPPLE_dispatch_table_rewrite_ptr,
-    .glObjectUnpurgeableAPPLE = epoxy_glObjectUnpurgeableAPPLE_dispatch_table_rewrite_ptr,
-    .glOrtho = epoxy_glOrtho_dispatch_table_rewrite_ptr,
-    .glOrthof = epoxy_glOrthof_dispatch_table_rewrite_ptr,
-    .glOrthofOES = epoxy_glOrthofOES_dispatch_table_rewrite_ptr,
-    .glOrthox = epoxy_glOrthox_dispatch_table_rewrite_ptr,
-    .glOrthoxOES = epoxy_glOrthoxOES_dispatch_table_rewrite_ptr,
-    .glPNTrianglesfATI = epoxy_glPNTrianglesfATI_dispatch_table_rewrite_ptr,
-    .glPNTrianglesiATI = epoxy_glPNTrianglesiATI_dispatch_table_rewrite_ptr,
-    .glPassTexCoordATI = epoxy_glPassTexCoordATI_dispatch_table_rewrite_ptr,
-    .glPassThrough = epoxy_glPassThrough_dispatch_table_rewrite_ptr,
-    .glPassThroughxOES = epoxy_glPassThroughxOES_dispatch_table_rewrite_ptr,
-    .glPatchParameterfv = epoxy_glPatchParameterfv_dispatch_table_rewrite_ptr,
-    .glPatchParameteri = epoxy_glPatchParameteri_dispatch_table_rewrite_ptr,
-    .glPatchParameteriEXT = epoxy_glPatchParameteriEXT_dispatch_table_rewrite_ptr,
-    .glPatchParameteriOES = epoxy_glPatchParameteriOES_dispatch_table_rewrite_ptr,
-    .glPathColorGenNV = epoxy_glPathColorGenNV_dispatch_table_rewrite_ptr,
-    .glPathCommandsNV = epoxy_glPathCommandsNV_dispatch_table_rewrite_ptr,
-    .glPathCoordsNV = epoxy_glPathCoordsNV_dispatch_table_rewrite_ptr,
-    .glPathCoverDepthFuncNV = epoxy_glPathCoverDepthFuncNV_dispatch_table_rewrite_ptr,
-    .glPathDashArrayNV = epoxy_glPathDashArrayNV_dispatch_table_rewrite_ptr,
-    .glPathFogGenNV = epoxy_glPathFogGenNV_dispatch_table_rewrite_ptr,
-    .glPathGlyphIndexArrayNV = epoxy_glPathGlyphIndexArrayNV_dispatch_table_rewrite_ptr,
-    .glPathGlyphIndexRangeNV = epoxy_glPathGlyphIndexRangeNV_dispatch_table_rewrite_ptr,
-    .glPathGlyphRangeNV = epoxy_glPathGlyphRangeNV_dispatch_table_rewrite_ptr,
-    .glPathGlyphsNV = epoxy_glPathGlyphsNV_dispatch_table_rewrite_ptr,
-    .glPathMemoryGlyphIndexArrayNV = epoxy_glPathMemoryGlyphIndexArrayNV_dispatch_table_rewrite_ptr,
-    .glPathParameterfNV = epoxy_glPathParameterfNV_dispatch_table_rewrite_ptr,
-    .glPathParameterfvNV = epoxy_glPathParameterfvNV_dispatch_table_rewrite_ptr,
-    .glPathParameteriNV = epoxy_glPathParameteriNV_dispatch_table_rewrite_ptr,
-    .glPathParameterivNV = epoxy_glPathParameterivNV_dispatch_table_rewrite_ptr,
-    .glPathStencilDepthOffsetNV = epoxy_glPathStencilDepthOffsetNV_dispatch_table_rewrite_ptr,
-    .glPathStencilFuncNV = epoxy_glPathStencilFuncNV_dispatch_table_rewrite_ptr,
-    .glPathStringNV = epoxy_glPathStringNV_dispatch_table_rewrite_ptr,
-    .glPathSubCommandsNV = epoxy_glPathSubCommandsNV_dispatch_table_rewrite_ptr,
-    .glPathSubCoordsNV = epoxy_glPathSubCoordsNV_dispatch_table_rewrite_ptr,
-    .glPathTexGenNV = epoxy_glPathTexGenNV_dispatch_table_rewrite_ptr,
-    .glPauseTransformFeedback = epoxy_glPauseTransformFeedback_dispatch_table_rewrite_ptr,
-    .glPauseTransformFeedbackNV = epoxy_glPauseTransformFeedbackNV_dispatch_table_rewrite_ptr,
-    .glPixelDataRangeNV = epoxy_glPixelDataRangeNV_dispatch_table_rewrite_ptr,
-    .glPixelMapfv = epoxy_glPixelMapfv_dispatch_table_rewrite_ptr,
-    .glPixelMapuiv = epoxy_glPixelMapuiv_dispatch_table_rewrite_ptr,
-    .glPixelMapusv = epoxy_glPixelMapusv_dispatch_table_rewrite_ptr,
-    .glPixelMapx = epoxy_glPixelMapx_dispatch_table_rewrite_ptr,
-    .glPixelStoref = epoxy_glPixelStoref_dispatch_table_rewrite_ptr,
-    .glPixelStorei = epoxy_glPixelStorei_dispatch_table_rewrite_ptr,
-    .glPixelStorex = epoxy_glPixelStorex_dispatch_table_rewrite_ptr,
-    .glPixelTexGenParameterfSGIS = epoxy_glPixelTexGenParameterfSGIS_dispatch_table_rewrite_ptr,
-    .glPixelTexGenParameterfvSGIS = epoxy_glPixelTexGenParameterfvSGIS_dispatch_table_rewrite_ptr,
-    .glPixelTexGenParameteriSGIS = epoxy_glPixelTexGenParameteriSGIS_dispatch_table_rewrite_ptr,
-    .glPixelTexGenParameterivSGIS = epoxy_glPixelTexGenParameterivSGIS_dispatch_table_rewrite_ptr,
-    .glPixelTexGenSGIX = epoxy_glPixelTexGenSGIX_dispatch_table_rewrite_ptr,
-    .glPixelTransferf = epoxy_glPixelTransferf_dispatch_table_rewrite_ptr,
-    .glPixelTransferi = epoxy_glPixelTransferi_dispatch_table_rewrite_ptr,
-    .glPixelTransferxOES = epoxy_glPixelTransferxOES_dispatch_table_rewrite_ptr,
-    .glPixelTransformParameterfEXT = epoxy_glPixelTransformParameterfEXT_dispatch_table_rewrite_ptr,
-    .glPixelTransformParameterfvEXT = epoxy_glPixelTransformParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glPixelTransformParameteriEXT = epoxy_glPixelTransformParameteriEXT_dispatch_table_rewrite_ptr,
-    .glPixelTransformParameterivEXT = epoxy_glPixelTransformParameterivEXT_dispatch_table_rewrite_ptr,
-    .glPixelZoom = epoxy_glPixelZoom_dispatch_table_rewrite_ptr,
-    .glPixelZoomxOES = epoxy_glPixelZoomxOES_dispatch_table_rewrite_ptr,
-    .glPointAlongPathNV = epoxy_glPointAlongPathNV_dispatch_table_rewrite_ptr,
-    .glPointParameterf = epoxy_glPointParameterf_dispatch_table_rewrite_ptr,
-    .glPointParameterfARB = epoxy_glPointParameterfARB_dispatch_table_rewrite_ptr,
-    .glPointParameterfEXT = epoxy_glPointParameterfEXT_dispatch_table_rewrite_ptr,
-    .glPointParameterfSGIS = epoxy_glPointParameterfSGIS_dispatch_table_rewrite_ptr,
-    .glPointParameterfv = epoxy_glPointParameterfv_dispatch_table_rewrite_ptr,
-    .glPointParameterfvARB = epoxy_glPointParameterfvARB_dispatch_table_rewrite_ptr,
-    .glPointParameterfvEXT = epoxy_glPointParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glPointParameterfvSGIS = epoxy_glPointParameterfvSGIS_dispatch_table_rewrite_ptr,
-    .glPointParameteri = epoxy_glPointParameteri_dispatch_table_rewrite_ptr,
-    .glPointParameteriNV = epoxy_glPointParameteriNV_dispatch_table_rewrite_ptr,
-    .glPointParameteriv = epoxy_glPointParameteriv_dispatch_table_rewrite_ptr,
-    .glPointParameterivNV = epoxy_glPointParameterivNV_dispatch_table_rewrite_ptr,
-    .glPointParameterx = epoxy_glPointParameterx_dispatch_table_rewrite_ptr,
-    .glPointParameterxOES = epoxy_glPointParameterxOES_dispatch_table_rewrite_ptr,
-    .glPointParameterxv = epoxy_glPointParameterxv_dispatch_table_rewrite_ptr,
-    .glPointParameterxvOES = epoxy_glPointParameterxvOES_dispatch_table_rewrite_ptr,
-    .glPointSize = epoxy_glPointSize_dispatch_table_rewrite_ptr,
-    .glPointSizePointerOES = epoxy_glPointSizePointerOES_dispatch_table_rewrite_ptr,
-    .glPointSizex = epoxy_glPointSizex_dispatch_table_rewrite_ptr,
-    .glPointSizexOES = epoxy_glPointSizexOES_dispatch_table_rewrite_ptr,
-    .glPollAsyncSGIX = epoxy_glPollAsyncSGIX_dispatch_table_rewrite_ptr,
-    .glPollInstrumentsSGIX = epoxy_glPollInstrumentsSGIX_dispatch_table_rewrite_ptr,
-    .glPolygonMode = epoxy_glPolygonMode_dispatch_table_rewrite_ptr,
-    .glPolygonModeNV = epoxy_glPolygonModeNV_dispatch_table_rewrite_ptr,
-    .glPolygonOffset = epoxy_glPolygonOffset_dispatch_table_rewrite_ptr,
-    .glPolygonOffsetClampEXT = epoxy_glPolygonOffsetClampEXT_dispatch_table_rewrite_ptr,
-    .glPolygonOffsetEXT = epoxy_glPolygonOffsetEXT_dispatch_table_rewrite_ptr,
-    .glPolygonOffsetx = epoxy_glPolygonOffsetx_dispatch_table_rewrite_ptr,
-    .glPolygonOffsetxOES = epoxy_glPolygonOffsetxOES_dispatch_table_rewrite_ptr,
-    .glPolygonStipple = epoxy_glPolygonStipple_dispatch_table_rewrite_ptr,
-    .glPopAttrib = epoxy_glPopAttrib_dispatch_table_rewrite_ptr,
-    .glPopClientAttrib = epoxy_glPopClientAttrib_dispatch_table_rewrite_ptr,
-    .glPopDebugGroup = epoxy_glPopDebugGroup_dispatch_table_rewrite_ptr,
-    .glPopDebugGroupKHR = epoxy_glPopDebugGroupKHR_dispatch_table_rewrite_ptr,
-    .glPopGroupMarkerEXT = epoxy_glPopGroupMarkerEXT_dispatch_table_rewrite_ptr,
-    .glPopMatrix = epoxy_glPopMatrix_dispatch_table_rewrite_ptr,
-    .glPopName = epoxy_glPopName_dispatch_table_rewrite_ptr,
-    .glPresentFrameDualFillNV = epoxy_glPresentFrameDualFillNV_dispatch_table_rewrite_ptr,
-    .glPresentFrameKeyedNV = epoxy_glPresentFrameKeyedNV_dispatch_table_rewrite_ptr,
-    .glPrimitiveBoundingBoxEXT = epoxy_glPrimitiveBoundingBoxEXT_dispatch_table_rewrite_ptr,
-    .glPrimitiveBoundingBoxOES = epoxy_glPrimitiveBoundingBoxOES_dispatch_table_rewrite_ptr,
-    .glPrimitiveRestartIndex = epoxy_glPrimitiveRestartIndex_dispatch_table_rewrite_ptr,
-    .glPrimitiveRestartIndexNV = epoxy_glPrimitiveRestartIndexNV_dispatch_table_rewrite_ptr,
-    .glPrimitiveRestartNV = epoxy_glPrimitiveRestartNV_dispatch_table_rewrite_ptr,
-    .glPrioritizeTextures = epoxy_glPrioritizeTextures_dispatch_table_rewrite_ptr,
-    .glPrioritizeTexturesEXT = epoxy_glPrioritizeTexturesEXT_dispatch_table_rewrite_ptr,
-    .glPrioritizeTexturesxOES = epoxy_glPrioritizeTexturesxOES_dispatch_table_rewrite_ptr,
-    .glProgramBinary = epoxy_glProgramBinary_dispatch_table_rewrite_ptr,
-    .glProgramBinaryOES = epoxy_glProgramBinaryOES_dispatch_table_rewrite_ptr,
-    .glProgramBufferParametersIivNV = epoxy_glProgramBufferParametersIivNV_dispatch_table_rewrite_ptr,
-    .glProgramBufferParametersIuivNV = epoxy_glProgramBufferParametersIuivNV_dispatch_table_rewrite_ptr,
-    .glProgramBufferParametersfvNV = epoxy_glProgramBufferParametersfvNV_dispatch_table_rewrite_ptr,
-    .glProgramEnvParameter4dARB = epoxy_glProgramEnvParameter4dARB_dispatch_table_rewrite_ptr,
-    .glProgramEnvParameter4dvARB = epoxy_glProgramEnvParameter4dvARB_dispatch_table_rewrite_ptr,
-    .glProgramEnvParameter4fARB = epoxy_glProgramEnvParameter4fARB_dispatch_table_rewrite_ptr,
-    .glProgramEnvParameter4fvARB = epoxy_glProgramEnvParameter4fvARB_dispatch_table_rewrite_ptr,
-    .glProgramEnvParameterI4iNV = epoxy_glProgramEnvParameterI4iNV_dispatch_table_rewrite_ptr,
-    .glProgramEnvParameterI4ivNV = epoxy_glProgramEnvParameterI4ivNV_dispatch_table_rewrite_ptr,
-    .glProgramEnvParameterI4uiNV = epoxy_glProgramEnvParameterI4uiNV_dispatch_table_rewrite_ptr,
-    .glProgramEnvParameterI4uivNV = epoxy_glProgramEnvParameterI4uivNV_dispatch_table_rewrite_ptr,
-    .glProgramEnvParameters4fvEXT = epoxy_glProgramEnvParameters4fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramEnvParametersI4ivNV = epoxy_glProgramEnvParametersI4ivNV_dispatch_table_rewrite_ptr,
-    .glProgramEnvParametersI4uivNV = epoxy_glProgramEnvParametersI4uivNV_dispatch_table_rewrite_ptr,
-    .glProgramLocalParameter4dARB = epoxy_glProgramLocalParameter4dARB_dispatch_table_rewrite_ptr,
-    .glProgramLocalParameter4dvARB = epoxy_glProgramLocalParameter4dvARB_dispatch_table_rewrite_ptr,
-    .glProgramLocalParameter4fARB = epoxy_glProgramLocalParameter4fARB_dispatch_table_rewrite_ptr,
-    .glProgramLocalParameter4fvARB = epoxy_glProgramLocalParameter4fvARB_dispatch_table_rewrite_ptr,
-    .glProgramLocalParameterI4iNV = epoxy_glProgramLocalParameterI4iNV_dispatch_table_rewrite_ptr,
-    .glProgramLocalParameterI4ivNV = epoxy_glProgramLocalParameterI4ivNV_dispatch_table_rewrite_ptr,
-    .glProgramLocalParameterI4uiNV = epoxy_glProgramLocalParameterI4uiNV_dispatch_table_rewrite_ptr,
-    .glProgramLocalParameterI4uivNV = epoxy_glProgramLocalParameterI4uivNV_dispatch_table_rewrite_ptr,
-    .glProgramLocalParameters4fvEXT = epoxy_glProgramLocalParameters4fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramLocalParametersI4ivNV = epoxy_glProgramLocalParametersI4ivNV_dispatch_table_rewrite_ptr,
-    .glProgramLocalParametersI4uivNV = epoxy_glProgramLocalParametersI4uivNV_dispatch_table_rewrite_ptr,
-    .glProgramNamedParameter4dNV = epoxy_glProgramNamedParameter4dNV_dispatch_table_rewrite_ptr,
-    .glProgramNamedParameter4dvNV = epoxy_glProgramNamedParameter4dvNV_dispatch_table_rewrite_ptr,
-    .glProgramNamedParameter4fNV = epoxy_glProgramNamedParameter4fNV_dispatch_table_rewrite_ptr,
-    .glProgramNamedParameter4fvNV = epoxy_glProgramNamedParameter4fvNV_dispatch_table_rewrite_ptr,
-    .glProgramParameter4dNV = epoxy_glProgramParameter4dNV_dispatch_table_rewrite_ptr,
-    .glProgramParameter4dvNV = epoxy_glProgramParameter4dvNV_dispatch_table_rewrite_ptr,
-    .glProgramParameter4fNV = epoxy_glProgramParameter4fNV_dispatch_table_rewrite_ptr,
-    .glProgramParameter4fvNV = epoxy_glProgramParameter4fvNV_dispatch_table_rewrite_ptr,
-    .glProgramParameteri = epoxy_glProgramParameteri_dispatch_table_rewrite_ptr,
-    .glProgramParameteriARB = epoxy_glProgramParameteriARB_dispatch_table_rewrite_ptr,
-    .glProgramParameteriEXT = epoxy_glProgramParameteriEXT_dispatch_table_rewrite_ptr,
-    .glProgramParameters4dvNV = epoxy_glProgramParameters4dvNV_dispatch_table_rewrite_ptr,
-    .glProgramParameters4fvNV = epoxy_glProgramParameters4fvNV_dispatch_table_rewrite_ptr,
-    .glProgramPathFragmentInputGenNV = epoxy_glProgramPathFragmentInputGenNV_dispatch_table_rewrite_ptr,
-    .glProgramStringARB = epoxy_glProgramStringARB_dispatch_table_rewrite_ptr,
-    .glProgramSubroutineParametersuivNV = epoxy_glProgramSubroutineParametersuivNV_dispatch_table_rewrite_ptr,
-    .glProgramUniform1d = epoxy_glProgramUniform1d_dispatch_table_rewrite_ptr,
-    .glProgramUniform1dEXT = epoxy_glProgramUniform1dEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform1dv = epoxy_glProgramUniform1dv_dispatch_table_rewrite_ptr,
-    .glProgramUniform1dvEXT = epoxy_glProgramUniform1dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform1f = epoxy_glProgramUniform1f_dispatch_table_rewrite_ptr,
-    .glProgramUniform1fEXT = epoxy_glProgramUniform1fEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform1fv = epoxy_glProgramUniform1fv_dispatch_table_rewrite_ptr,
-    .glProgramUniform1fvEXT = epoxy_glProgramUniform1fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform1i = epoxy_glProgramUniform1i_dispatch_table_rewrite_ptr,
-    .glProgramUniform1i64NV = epoxy_glProgramUniform1i64NV_dispatch_table_rewrite_ptr,
-    .glProgramUniform1i64vNV = epoxy_glProgramUniform1i64vNV_dispatch_table_rewrite_ptr,
-    .glProgramUniform1iEXT = epoxy_glProgramUniform1iEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform1iv = epoxy_glProgramUniform1iv_dispatch_table_rewrite_ptr,
-    .glProgramUniform1ivEXT = epoxy_glProgramUniform1ivEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform1ui = epoxy_glProgramUniform1ui_dispatch_table_rewrite_ptr,
-    .glProgramUniform1ui64NV = epoxy_glProgramUniform1ui64NV_dispatch_table_rewrite_ptr,
-    .glProgramUniform1ui64vNV = epoxy_glProgramUniform1ui64vNV_dispatch_table_rewrite_ptr,
-    .glProgramUniform1uiEXT = epoxy_glProgramUniform1uiEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform1uiv = epoxy_glProgramUniform1uiv_dispatch_table_rewrite_ptr,
-    .glProgramUniform1uivEXT = epoxy_glProgramUniform1uivEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform2d = epoxy_glProgramUniform2d_dispatch_table_rewrite_ptr,
-    .glProgramUniform2dEXT = epoxy_glProgramUniform2dEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform2dv = epoxy_glProgramUniform2dv_dispatch_table_rewrite_ptr,
-    .glProgramUniform2dvEXT = epoxy_glProgramUniform2dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform2f = epoxy_glProgramUniform2f_dispatch_table_rewrite_ptr,
-    .glProgramUniform2fEXT = epoxy_glProgramUniform2fEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform2fv = epoxy_glProgramUniform2fv_dispatch_table_rewrite_ptr,
-    .glProgramUniform2fvEXT = epoxy_glProgramUniform2fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform2i = epoxy_glProgramUniform2i_dispatch_table_rewrite_ptr,
-    .glProgramUniform2i64NV = epoxy_glProgramUniform2i64NV_dispatch_table_rewrite_ptr,
-    .glProgramUniform2i64vNV = epoxy_glProgramUniform2i64vNV_dispatch_table_rewrite_ptr,
-    .glProgramUniform2iEXT = epoxy_glProgramUniform2iEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform2iv = epoxy_glProgramUniform2iv_dispatch_table_rewrite_ptr,
-    .glProgramUniform2ivEXT = epoxy_glProgramUniform2ivEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform2ui = epoxy_glProgramUniform2ui_dispatch_table_rewrite_ptr,
-    .glProgramUniform2ui64NV = epoxy_glProgramUniform2ui64NV_dispatch_table_rewrite_ptr,
-    .glProgramUniform2ui64vNV = epoxy_glProgramUniform2ui64vNV_dispatch_table_rewrite_ptr,
-    .glProgramUniform2uiEXT = epoxy_glProgramUniform2uiEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform2uiv = epoxy_glProgramUniform2uiv_dispatch_table_rewrite_ptr,
-    .glProgramUniform2uivEXT = epoxy_glProgramUniform2uivEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform3d = epoxy_glProgramUniform3d_dispatch_table_rewrite_ptr,
-    .glProgramUniform3dEXT = epoxy_glProgramUniform3dEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform3dv = epoxy_glProgramUniform3dv_dispatch_table_rewrite_ptr,
-    .glProgramUniform3dvEXT = epoxy_glProgramUniform3dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform3f = epoxy_glProgramUniform3f_dispatch_table_rewrite_ptr,
-    .glProgramUniform3fEXT = epoxy_glProgramUniform3fEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform3fv = epoxy_glProgramUniform3fv_dispatch_table_rewrite_ptr,
-    .glProgramUniform3fvEXT = epoxy_glProgramUniform3fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform3i = epoxy_glProgramUniform3i_dispatch_table_rewrite_ptr,
-    .glProgramUniform3i64NV = epoxy_glProgramUniform3i64NV_dispatch_table_rewrite_ptr,
-    .glProgramUniform3i64vNV = epoxy_glProgramUniform3i64vNV_dispatch_table_rewrite_ptr,
-    .glProgramUniform3iEXT = epoxy_glProgramUniform3iEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform3iv = epoxy_glProgramUniform3iv_dispatch_table_rewrite_ptr,
-    .glProgramUniform3ivEXT = epoxy_glProgramUniform3ivEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform3ui = epoxy_glProgramUniform3ui_dispatch_table_rewrite_ptr,
-    .glProgramUniform3ui64NV = epoxy_glProgramUniform3ui64NV_dispatch_table_rewrite_ptr,
-    .glProgramUniform3ui64vNV = epoxy_glProgramUniform3ui64vNV_dispatch_table_rewrite_ptr,
-    .glProgramUniform3uiEXT = epoxy_glProgramUniform3uiEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform3uiv = epoxy_glProgramUniform3uiv_dispatch_table_rewrite_ptr,
-    .glProgramUniform3uivEXT = epoxy_glProgramUniform3uivEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform4d = epoxy_glProgramUniform4d_dispatch_table_rewrite_ptr,
-    .glProgramUniform4dEXT = epoxy_glProgramUniform4dEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform4dv = epoxy_glProgramUniform4dv_dispatch_table_rewrite_ptr,
-    .glProgramUniform4dvEXT = epoxy_glProgramUniform4dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform4f = epoxy_glProgramUniform4f_dispatch_table_rewrite_ptr,
-    .glProgramUniform4fEXT = epoxy_glProgramUniform4fEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform4fv = epoxy_glProgramUniform4fv_dispatch_table_rewrite_ptr,
-    .glProgramUniform4fvEXT = epoxy_glProgramUniform4fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform4i = epoxy_glProgramUniform4i_dispatch_table_rewrite_ptr,
-    .glProgramUniform4i64NV = epoxy_glProgramUniform4i64NV_dispatch_table_rewrite_ptr,
-    .glProgramUniform4i64vNV = epoxy_glProgramUniform4i64vNV_dispatch_table_rewrite_ptr,
-    .glProgramUniform4iEXT = epoxy_glProgramUniform4iEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform4iv = epoxy_glProgramUniform4iv_dispatch_table_rewrite_ptr,
-    .glProgramUniform4ivEXT = epoxy_glProgramUniform4ivEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform4ui = epoxy_glProgramUniform4ui_dispatch_table_rewrite_ptr,
-    .glProgramUniform4ui64NV = epoxy_glProgramUniform4ui64NV_dispatch_table_rewrite_ptr,
-    .glProgramUniform4ui64vNV = epoxy_glProgramUniform4ui64vNV_dispatch_table_rewrite_ptr,
-    .glProgramUniform4uiEXT = epoxy_glProgramUniform4uiEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniform4uiv = epoxy_glProgramUniform4uiv_dispatch_table_rewrite_ptr,
-    .glProgramUniform4uivEXT = epoxy_glProgramUniform4uivEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformHandleui64ARB = epoxy_glProgramUniformHandleui64ARB_dispatch_table_rewrite_ptr,
-    .glProgramUniformHandleui64NV = epoxy_glProgramUniformHandleui64NV_dispatch_table_rewrite_ptr,
-    .glProgramUniformHandleui64vARB = epoxy_glProgramUniformHandleui64vARB_dispatch_table_rewrite_ptr,
-    .glProgramUniformHandleui64vNV = epoxy_glProgramUniformHandleui64vNV_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2dv = epoxy_glProgramUniformMatrix2dv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2dvEXT = epoxy_glProgramUniformMatrix2dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2fv = epoxy_glProgramUniformMatrix2fv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2fvEXT = epoxy_glProgramUniformMatrix2fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2x3dv = epoxy_glProgramUniformMatrix2x3dv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2x3dvEXT = epoxy_glProgramUniformMatrix2x3dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2x3fv = epoxy_glProgramUniformMatrix2x3fv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2x3fvEXT = epoxy_glProgramUniformMatrix2x3fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2x4dv = epoxy_glProgramUniformMatrix2x4dv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2x4dvEXT = epoxy_glProgramUniformMatrix2x4dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2x4fv = epoxy_glProgramUniformMatrix2x4fv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix2x4fvEXT = epoxy_glProgramUniformMatrix2x4fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3dv = epoxy_glProgramUniformMatrix3dv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3dvEXT = epoxy_glProgramUniformMatrix3dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3fv = epoxy_glProgramUniformMatrix3fv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3fvEXT = epoxy_glProgramUniformMatrix3fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3x2dv = epoxy_glProgramUniformMatrix3x2dv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3x2dvEXT = epoxy_glProgramUniformMatrix3x2dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3x2fv = epoxy_glProgramUniformMatrix3x2fv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3x2fvEXT = epoxy_glProgramUniformMatrix3x2fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3x4dv = epoxy_glProgramUniformMatrix3x4dv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3x4dvEXT = epoxy_glProgramUniformMatrix3x4dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3x4fv = epoxy_glProgramUniformMatrix3x4fv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix3x4fvEXT = epoxy_glProgramUniformMatrix3x4fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4dv = epoxy_glProgramUniformMatrix4dv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4dvEXT = epoxy_glProgramUniformMatrix4dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4fv = epoxy_glProgramUniformMatrix4fv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4fvEXT = epoxy_glProgramUniformMatrix4fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4x2dv = epoxy_glProgramUniformMatrix4x2dv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4x2dvEXT = epoxy_glProgramUniformMatrix4x2dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4x2fv = epoxy_glProgramUniformMatrix4x2fv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4x2fvEXT = epoxy_glProgramUniformMatrix4x2fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4x3dv = epoxy_glProgramUniformMatrix4x3dv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4x3dvEXT = epoxy_glProgramUniformMatrix4x3dvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4x3fv = epoxy_glProgramUniformMatrix4x3fv_dispatch_table_rewrite_ptr,
-    .glProgramUniformMatrix4x3fvEXT = epoxy_glProgramUniformMatrix4x3fvEXT_dispatch_table_rewrite_ptr,
-    .glProgramUniformui64NV = epoxy_glProgramUniformui64NV_dispatch_table_rewrite_ptr,
-    .glProgramUniformui64vNV = epoxy_glProgramUniformui64vNV_dispatch_table_rewrite_ptr,
-    .glProgramVertexLimitNV = epoxy_glProgramVertexLimitNV_dispatch_table_rewrite_ptr,
-    .glProvokingVertex = epoxy_glProvokingVertex_dispatch_table_rewrite_ptr,
-    .glProvokingVertexEXT = epoxy_glProvokingVertexEXT_dispatch_table_rewrite_ptr,
-    .glPushAttrib = epoxy_glPushAttrib_dispatch_table_rewrite_ptr,
-    .glPushClientAttrib = epoxy_glPushClientAttrib_dispatch_table_rewrite_ptr,
-    .glPushClientAttribDefaultEXT = epoxy_glPushClientAttribDefaultEXT_dispatch_table_rewrite_ptr,
-    .glPushDebugGroup = epoxy_glPushDebugGroup_dispatch_table_rewrite_ptr,
-    .glPushDebugGroupKHR = epoxy_glPushDebugGroupKHR_dispatch_table_rewrite_ptr,
-    .glPushGroupMarkerEXT = epoxy_glPushGroupMarkerEXT_dispatch_table_rewrite_ptr,
-    .glPushMatrix = epoxy_glPushMatrix_dispatch_table_rewrite_ptr,
-    .glPushName = epoxy_glPushName_dispatch_table_rewrite_ptr,
-    .glQueryCounter = epoxy_glQueryCounter_dispatch_table_rewrite_ptr,
-    .glQueryCounterEXT = epoxy_glQueryCounterEXT_dispatch_table_rewrite_ptr,
-    .glQueryMatrixxOES = epoxy_glQueryMatrixxOES_dispatch_table_rewrite_ptr,
-    .glQueryObjectParameteruiAMD = epoxy_glQueryObjectParameteruiAMD_dispatch_table_rewrite_ptr,
-    .glRasterPos2d = epoxy_glRasterPos2d_dispatch_table_rewrite_ptr,
-    .glRasterPos2dv = epoxy_glRasterPos2dv_dispatch_table_rewrite_ptr,
-    .glRasterPos2f = epoxy_glRasterPos2f_dispatch_table_rewrite_ptr,
-    .glRasterPos2fv = epoxy_glRasterPos2fv_dispatch_table_rewrite_ptr,
-    .glRasterPos2i = epoxy_glRasterPos2i_dispatch_table_rewrite_ptr,
-    .glRasterPos2iv = epoxy_glRasterPos2iv_dispatch_table_rewrite_ptr,
-    .glRasterPos2s = epoxy_glRasterPos2s_dispatch_table_rewrite_ptr,
-    .glRasterPos2sv = epoxy_glRasterPos2sv_dispatch_table_rewrite_ptr,
-    .glRasterPos2xOES = epoxy_glRasterPos2xOES_dispatch_table_rewrite_ptr,
-    .glRasterPos2xvOES = epoxy_glRasterPos2xvOES_dispatch_table_rewrite_ptr,
-    .glRasterPos3d = epoxy_glRasterPos3d_dispatch_table_rewrite_ptr,
-    .glRasterPos3dv = epoxy_glRasterPos3dv_dispatch_table_rewrite_ptr,
-    .glRasterPos3f = epoxy_glRasterPos3f_dispatch_table_rewrite_ptr,
-    .glRasterPos3fv = epoxy_glRasterPos3fv_dispatch_table_rewrite_ptr,
-    .glRasterPos3i = epoxy_glRasterPos3i_dispatch_table_rewrite_ptr,
-    .glRasterPos3iv = epoxy_glRasterPos3iv_dispatch_table_rewrite_ptr,
-    .glRasterPos3s = epoxy_glRasterPos3s_dispatch_table_rewrite_ptr,
-    .glRasterPos3sv = epoxy_glRasterPos3sv_dispatch_table_rewrite_ptr,
-    .glRasterPos3xOES = epoxy_glRasterPos3xOES_dispatch_table_rewrite_ptr,
-    .glRasterPos3xvOES = epoxy_glRasterPos3xvOES_dispatch_table_rewrite_ptr,
-    .glRasterPos4d = epoxy_glRasterPos4d_dispatch_table_rewrite_ptr,
-    .glRasterPos4dv = epoxy_glRasterPos4dv_dispatch_table_rewrite_ptr,
-    .glRasterPos4f = epoxy_glRasterPos4f_dispatch_table_rewrite_ptr,
-    .glRasterPos4fv = epoxy_glRasterPos4fv_dispatch_table_rewrite_ptr,
-    .glRasterPos4i = epoxy_glRasterPos4i_dispatch_table_rewrite_ptr,
-    .glRasterPos4iv = epoxy_glRasterPos4iv_dispatch_table_rewrite_ptr,
-    .glRasterPos4s = epoxy_glRasterPos4s_dispatch_table_rewrite_ptr,
-    .glRasterPos4sv = epoxy_glRasterPos4sv_dispatch_table_rewrite_ptr,
-    .glRasterPos4xOES = epoxy_glRasterPos4xOES_dispatch_table_rewrite_ptr,
-    .glRasterPos4xvOES = epoxy_glRasterPos4xvOES_dispatch_table_rewrite_ptr,
-    .glRasterSamplesEXT = epoxy_glRasterSamplesEXT_dispatch_table_rewrite_ptr,
-    .glReadBuffer = epoxy_glReadBuffer_dispatch_table_rewrite_ptr,
-    .glReadBufferIndexedEXT = epoxy_glReadBufferIndexedEXT_dispatch_table_rewrite_ptr,
-    .glReadBufferNV = epoxy_glReadBufferNV_dispatch_table_rewrite_ptr,
-    .glReadInstrumentsSGIX = epoxy_glReadInstrumentsSGIX_dispatch_table_rewrite_ptr,
-    .glReadPixels = epoxy_glReadPixels_dispatch_table_rewrite_ptr,
-    .glReadnPixels = epoxy_glReadnPixels_dispatch_table_rewrite_ptr,
-    .glReadnPixelsARB = epoxy_glReadnPixelsARB_dispatch_table_rewrite_ptr,
-    .glReadnPixelsEXT = epoxy_glReadnPixelsEXT_dispatch_table_rewrite_ptr,
-    .glReadnPixelsKHR = epoxy_glReadnPixelsKHR_dispatch_table_rewrite_ptr,
-    .glRectd = epoxy_glRectd_dispatch_table_rewrite_ptr,
-    .glRectdv = epoxy_glRectdv_dispatch_table_rewrite_ptr,
-    .glRectf = epoxy_glRectf_dispatch_table_rewrite_ptr,
-    .glRectfv = epoxy_glRectfv_dispatch_table_rewrite_ptr,
-    .glRecti = epoxy_glRecti_dispatch_table_rewrite_ptr,
-    .glRectiv = epoxy_glRectiv_dispatch_table_rewrite_ptr,
-    .glRects = epoxy_glRects_dispatch_table_rewrite_ptr,
-    .glRectsv = epoxy_glRectsv_dispatch_table_rewrite_ptr,
-    .glRectxOES = epoxy_glRectxOES_dispatch_table_rewrite_ptr,
-    .glRectxvOES = epoxy_glRectxvOES_dispatch_table_rewrite_ptr,
-    .glReferencePlaneSGIX = epoxy_glReferencePlaneSGIX_dispatch_table_rewrite_ptr,
-    .glReleaseShaderCompiler = epoxy_glReleaseShaderCompiler_dispatch_table_rewrite_ptr,
-    .glRenderMode = epoxy_glRenderMode_dispatch_table_rewrite_ptr,
-    .glRenderbufferStorage = epoxy_glRenderbufferStorage_dispatch_table_rewrite_ptr,
-    .glRenderbufferStorageEXT = epoxy_glRenderbufferStorageEXT_dispatch_table_rewrite_ptr,
-    .glRenderbufferStorageMultisample = epoxy_glRenderbufferStorageMultisample_dispatch_table_rewrite_ptr,
-    .glRenderbufferStorageMultisampleANGLE = epoxy_glRenderbufferStorageMultisampleANGLE_dispatch_table_rewrite_ptr,
-    .glRenderbufferStorageMultisampleAPPLE = epoxy_glRenderbufferStorageMultisampleAPPLE_dispatch_table_rewrite_ptr,
-    .glRenderbufferStorageMultisampleCoverageNV = epoxy_glRenderbufferStorageMultisampleCoverageNV_dispatch_table_rewrite_ptr,
-    .glRenderbufferStorageMultisampleEXT = epoxy_glRenderbufferStorageMultisampleEXT_dispatch_table_rewrite_ptr,
-    .glRenderbufferStorageMultisampleIMG = epoxy_glRenderbufferStorageMultisampleIMG_dispatch_table_rewrite_ptr,
-    .glRenderbufferStorageMultisampleNV = epoxy_glRenderbufferStorageMultisampleNV_dispatch_table_rewrite_ptr,
-    .glRenderbufferStorageOES = epoxy_glRenderbufferStorageOES_dispatch_table_rewrite_ptr,
-    .glReplacementCodePointerSUN = epoxy_glReplacementCodePointerSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeubSUN = epoxy_glReplacementCodeubSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeubvSUN = epoxy_glReplacementCodeubvSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiColor3fVertex3fSUN = epoxy_glReplacementCodeuiColor3fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiColor3fVertex3fvSUN = epoxy_glReplacementCodeuiColor3fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiColor4fNormal3fVertex3fSUN = epoxy_glReplacementCodeuiColor4fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiColor4fNormal3fVertex3fvSUN = epoxy_glReplacementCodeuiColor4fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiColor4ubVertex3fSUN = epoxy_glReplacementCodeuiColor4ubVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiColor4ubVertex3fvSUN = epoxy_glReplacementCodeuiColor4ubVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiNormal3fVertex3fSUN = epoxy_glReplacementCodeuiNormal3fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiNormal3fVertex3fvSUN = epoxy_glReplacementCodeuiNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiSUN = epoxy_glReplacementCodeuiSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN = epoxy_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN = epoxy_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN = epoxy_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN = epoxy_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiTexCoord2fVertex3fSUN = epoxy_glReplacementCodeuiTexCoord2fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiTexCoord2fVertex3fvSUN = epoxy_glReplacementCodeuiTexCoord2fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiVertex3fSUN = epoxy_glReplacementCodeuiVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuiVertex3fvSUN = epoxy_glReplacementCodeuiVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeuivSUN = epoxy_glReplacementCodeuivSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeusSUN = epoxy_glReplacementCodeusSUN_dispatch_table_rewrite_ptr,
-    .glReplacementCodeusvSUN = epoxy_glReplacementCodeusvSUN_dispatch_table_rewrite_ptr,
-    .glRequestResidentProgramsNV = epoxy_glRequestResidentProgramsNV_dispatch_table_rewrite_ptr,
-    .glResetHistogram = epoxy_glResetHistogram_dispatch_table_rewrite_ptr,
-    .glResetHistogramEXT = epoxy_glResetHistogramEXT_dispatch_table_rewrite_ptr,
-    .glResetMinmax = epoxy_glResetMinmax_dispatch_table_rewrite_ptr,
-    .glResetMinmaxEXT = epoxy_glResetMinmaxEXT_dispatch_table_rewrite_ptr,
-    .glResizeBuffersMESA = epoxy_glResizeBuffersMESA_dispatch_table_rewrite_ptr,
-    .glResolveDepthValuesNV = epoxy_glResolveDepthValuesNV_dispatch_table_rewrite_ptr,
-    .glResolveMultisampleFramebufferAPPLE = epoxy_glResolveMultisampleFramebufferAPPLE_dispatch_table_rewrite_ptr,
-    .glResumeTransformFeedback = epoxy_glResumeTransformFeedback_dispatch_table_rewrite_ptr,
-    .glResumeTransformFeedbackNV = epoxy_glResumeTransformFeedbackNV_dispatch_table_rewrite_ptr,
-    .glRotated = epoxy_glRotated_dispatch_table_rewrite_ptr,
-    .glRotatef = epoxy_glRotatef_dispatch_table_rewrite_ptr,
-    .glRotatex = epoxy_glRotatex_dispatch_table_rewrite_ptr,
-    .glRotatexOES = epoxy_glRotatexOES_dispatch_table_rewrite_ptr,
-    .glSampleCoverage = epoxy_glSampleCoverage_dispatch_table_rewrite_ptr,
-    .glSampleCoverageARB = epoxy_glSampleCoverageARB_dispatch_table_rewrite_ptr,
-    .glSampleCoveragex = epoxy_glSampleCoveragex_dispatch_table_rewrite_ptr,
-    .glSampleCoveragexOES = epoxy_glSampleCoveragexOES_dispatch_table_rewrite_ptr,
-    .glSampleMapATI = epoxy_glSampleMapATI_dispatch_table_rewrite_ptr,
-    .glSampleMaskEXT = epoxy_glSampleMaskEXT_dispatch_table_rewrite_ptr,
-    .glSampleMaskIndexedNV = epoxy_glSampleMaskIndexedNV_dispatch_table_rewrite_ptr,
-    .glSampleMaskSGIS = epoxy_glSampleMaskSGIS_dispatch_table_rewrite_ptr,
-    .glSampleMaski = epoxy_glSampleMaski_dispatch_table_rewrite_ptr,
-    .glSamplePatternEXT = epoxy_glSamplePatternEXT_dispatch_table_rewrite_ptr,
-    .glSamplePatternSGIS = epoxy_glSamplePatternSGIS_dispatch_table_rewrite_ptr,
-    .glSamplerParameterIiv = epoxy_glSamplerParameterIiv_dispatch_table_rewrite_ptr,
-    .glSamplerParameterIivEXT = epoxy_glSamplerParameterIivEXT_dispatch_table_rewrite_ptr,
-    .glSamplerParameterIivOES = epoxy_glSamplerParameterIivOES_dispatch_table_rewrite_ptr,
-    .glSamplerParameterIuiv = epoxy_glSamplerParameterIuiv_dispatch_table_rewrite_ptr,
-    .glSamplerParameterIuivEXT = epoxy_glSamplerParameterIuivEXT_dispatch_table_rewrite_ptr,
-    .glSamplerParameterIuivOES = epoxy_glSamplerParameterIuivOES_dispatch_table_rewrite_ptr,
-    .glSamplerParameterf = epoxy_glSamplerParameterf_dispatch_table_rewrite_ptr,
-    .glSamplerParameterfv = epoxy_glSamplerParameterfv_dispatch_table_rewrite_ptr,
-    .glSamplerParameteri = epoxy_glSamplerParameteri_dispatch_table_rewrite_ptr,
-    .glSamplerParameteriv = epoxy_glSamplerParameteriv_dispatch_table_rewrite_ptr,
-    .glScaled = epoxy_glScaled_dispatch_table_rewrite_ptr,
-    .glScalef = epoxy_glScalef_dispatch_table_rewrite_ptr,
-    .glScalex = epoxy_glScalex_dispatch_table_rewrite_ptr,
-    .glScalexOES = epoxy_glScalexOES_dispatch_table_rewrite_ptr,
-    .glScissor = epoxy_glScissor_dispatch_table_rewrite_ptr,
-    .glScissorArrayv = epoxy_glScissorArrayv_dispatch_table_rewrite_ptr,
-    .glScissorArrayvNV = epoxy_glScissorArrayvNV_dispatch_table_rewrite_ptr,
-    .glScissorIndexed = epoxy_glScissorIndexed_dispatch_table_rewrite_ptr,
-    .glScissorIndexedNV = epoxy_glScissorIndexedNV_dispatch_table_rewrite_ptr,
-    .glScissorIndexedv = epoxy_glScissorIndexedv_dispatch_table_rewrite_ptr,
-    .glScissorIndexedvNV = epoxy_glScissorIndexedvNV_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3b = epoxy_glSecondaryColor3b_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3bEXT = epoxy_glSecondaryColor3bEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3bv = epoxy_glSecondaryColor3bv_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3bvEXT = epoxy_glSecondaryColor3bvEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3d = epoxy_glSecondaryColor3d_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3dEXT = epoxy_glSecondaryColor3dEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3dv = epoxy_glSecondaryColor3dv_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3dvEXT = epoxy_glSecondaryColor3dvEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3f = epoxy_glSecondaryColor3f_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3fEXT = epoxy_glSecondaryColor3fEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3fv = epoxy_glSecondaryColor3fv_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3fvEXT = epoxy_glSecondaryColor3fvEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3hNV = epoxy_glSecondaryColor3hNV_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3hvNV = epoxy_glSecondaryColor3hvNV_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3i = epoxy_glSecondaryColor3i_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3iEXT = epoxy_glSecondaryColor3iEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3iv = epoxy_glSecondaryColor3iv_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3ivEXT = epoxy_glSecondaryColor3ivEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3s = epoxy_glSecondaryColor3s_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3sEXT = epoxy_glSecondaryColor3sEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3sv = epoxy_glSecondaryColor3sv_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3svEXT = epoxy_glSecondaryColor3svEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3ub = epoxy_glSecondaryColor3ub_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3ubEXT = epoxy_glSecondaryColor3ubEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3ubv = epoxy_glSecondaryColor3ubv_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3ubvEXT = epoxy_glSecondaryColor3ubvEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3ui = epoxy_glSecondaryColor3ui_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3uiEXT = epoxy_glSecondaryColor3uiEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3uiv = epoxy_glSecondaryColor3uiv_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3uivEXT = epoxy_glSecondaryColor3uivEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3us = epoxy_glSecondaryColor3us_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3usEXT = epoxy_glSecondaryColor3usEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3usv = epoxy_glSecondaryColor3usv_dispatch_table_rewrite_ptr,
-    .glSecondaryColor3usvEXT = epoxy_glSecondaryColor3usvEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColorFormatNV = epoxy_glSecondaryColorFormatNV_dispatch_table_rewrite_ptr,
-    .glSecondaryColorP3ui = epoxy_glSecondaryColorP3ui_dispatch_table_rewrite_ptr,
-    .glSecondaryColorP3uiv = epoxy_glSecondaryColorP3uiv_dispatch_table_rewrite_ptr,
-    .glSecondaryColorPointer = epoxy_glSecondaryColorPointer_dispatch_table_rewrite_ptr,
-    .glSecondaryColorPointerEXT = epoxy_glSecondaryColorPointerEXT_dispatch_table_rewrite_ptr,
-    .glSecondaryColorPointerListIBM = epoxy_glSecondaryColorPointerListIBM_dispatch_table_rewrite_ptr,
-    .glSelectBuffer = epoxy_glSelectBuffer_dispatch_table_rewrite_ptr,
-    .glSelectPerfMonitorCountersAMD = epoxy_glSelectPerfMonitorCountersAMD_dispatch_table_rewrite_ptr,
-    .glSeparableFilter2D = epoxy_glSeparableFilter2D_dispatch_table_rewrite_ptr,
-    .glSeparableFilter2DEXT = epoxy_glSeparableFilter2DEXT_dispatch_table_rewrite_ptr,
-    .glSetFenceAPPLE = epoxy_glSetFenceAPPLE_dispatch_table_rewrite_ptr,
-    .glSetFenceNV = epoxy_glSetFenceNV_dispatch_table_rewrite_ptr,
-    .glSetFragmentShaderConstantATI = epoxy_glSetFragmentShaderConstantATI_dispatch_table_rewrite_ptr,
-    .glSetInvariantEXT = epoxy_glSetInvariantEXT_dispatch_table_rewrite_ptr,
-    .glSetLocalConstantEXT = epoxy_glSetLocalConstantEXT_dispatch_table_rewrite_ptr,
-    .glSetMultisamplefvAMD = epoxy_glSetMultisamplefvAMD_dispatch_table_rewrite_ptr,
-    .glShadeModel = epoxy_glShadeModel_dispatch_table_rewrite_ptr,
-    .glShaderBinary = epoxy_glShaderBinary_dispatch_table_rewrite_ptr,
-    .glShaderOp1EXT = epoxy_glShaderOp1EXT_dispatch_table_rewrite_ptr,
-    .glShaderOp2EXT = epoxy_glShaderOp2EXT_dispatch_table_rewrite_ptr,
-    .glShaderOp3EXT = epoxy_glShaderOp3EXT_dispatch_table_rewrite_ptr,
-    .glShaderSource = epoxy_glShaderSource_dispatch_table_rewrite_ptr,
-    .glShaderSourceARB = epoxy_glShaderSourceARB_dispatch_table_rewrite_ptr,
-    .glShaderStorageBlockBinding = epoxy_glShaderStorageBlockBinding_dispatch_table_rewrite_ptr,
-    .glSharpenTexFuncSGIS = epoxy_glSharpenTexFuncSGIS_dispatch_table_rewrite_ptr,
-    .glSpriteParameterfSGIX = epoxy_glSpriteParameterfSGIX_dispatch_table_rewrite_ptr,
-    .glSpriteParameterfvSGIX = epoxy_glSpriteParameterfvSGIX_dispatch_table_rewrite_ptr,
-    .glSpriteParameteriSGIX = epoxy_glSpriteParameteriSGIX_dispatch_table_rewrite_ptr,
-    .glSpriteParameterivSGIX = epoxy_glSpriteParameterivSGIX_dispatch_table_rewrite_ptr,
-    .glStartInstrumentsSGIX = epoxy_glStartInstrumentsSGIX_dispatch_table_rewrite_ptr,
-    .glStartTilingQCOM = epoxy_glStartTilingQCOM_dispatch_table_rewrite_ptr,
-    .glStateCaptureNV = epoxy_glStateCaptureNV_dispatch_table_rewrite_ptr,
-    .glStencilClearTagEXT = epoxy_glStencilClearTagEXT_dispatch_table_rewrite_ptr,
-    .glStencilFillPathInstancedNV = epoxy_glStencilFillPathInstancedNV_dispatch_table_rewrite_ptr,
-    .glStencilFillPathNV = epoxy_glStencilFillPathNV_dispatch_table_rewrite_ptr,
-    .glStencilFunc = epoxy_glStencilFunc_dispatch_table_rewrite_ptr,
-    .glStencilFuncSeparate = epoxy_glStencilFuncSeparate_dispatch_table_rewrite_ptr,
-    .glStencilFuncSeparateATI = epoxy_glStencilFuncSeparateATI_dispatch_table_rewrite_ptr,
-    .glStencilMask = epoxy_glStencilMask_dispatch_table_rewrite_ptr,
-    .glStencilMaskSeparate = epoxy_glStencilMaskSeparate_dispatch_table_rewrite_ptr,
-    .glStencilOp = epoxy_glStencilOp_dispatch_table_rewrite_ptr,
-    .glStencilOpSeparate = epoxy_glStencilOpSeparate_dispatch_table_rewrite_ptr,
-    .glStencilOpSeparateATI = epoxy_glStencilOpSeparateATI_dispatch_table_rewrite_ptr,
-    .glStencilOpValueAMD = epoxy_glStencilOpValueAMD_dispatch_table_rewrite_ptr,
-    .glStencilStrokePathInstancedNV = epoxy_glStencilStrokePathInstancedNV_dispatch_table_rewrite_ptr,
-    .glStencilStrokePathNV = epoxy_glStencilStrokePathNV_dispatch_table_rewrite_ptr,
-    .glStencilThenCoverFillPathInstancedNV = epoxy_glStencilThenCoverFillPathInstancedNV_dispatch_table_rewrite_ptr,
-    .glStencilThenCoverFillPathNV = epoxy_glStencilThenCoverFillPathNV_dispatch_table_rewrite_ptr,
-    .glStencilThenCoverStrokePathInstancedNV = epoxy_glStencilThenCoverStrokePathInstancedNV_dispatch_table_rewrite_ptr,
-    .glStencilThenCoverStrokePathNV = epoxy_glStencilThenCoverStrokePathNV_dispatch_table_rewrite_ptr,
-    .glStopInstrumentsSGIX = epoxy_glStopInstrumentsSGIX_dispatch_table_rewrite_ptr,
-    .glStringMarkerGREMEDY = epoxy_glStringMarkerGREMEDY_dispatch_table_rewrite_ptr,
-    .glSubpixelPrecisionBiasNV = epoxy_glSubpixelPrecisionBiasNV_dispatch_table_rewrite_ptr,
-    .glSwizzleEXT = epoxy_glSwizzleEXT_dispatch_table_rewrite_ptr,
-    .glSyncTextureINTEL = epoxy_glSyncTextureINTEL_dispatch_table_rewrite_ptr,
-    .glTagSampleBufferSGIX = epoxy_glTagSampleBufferSGIX_dispatch_table_rewrite_ptr,
-    .glTangent3bEXT = epoxy_glTangent3bEXT_dispatch_table_rewrite_ptr,
-    .glTangent3bvEXT = epoxy_glTangent3bvEXT_dispatch_table_rewrite_ptr,
-    .glTangent3dEXT = epoxy_glTangent3dEXT_dispatch_table_rewrite_ptr,
-    .glTangent3dvEXT = epoxy_glTangent3dvEXT_dispatch_table_rewrite_ptr,
-    .glTangent3fEXT = epoxy_glTangent3fEXT_dispatch_table_rewrite_ptr,
-    .glTangent3fvEXT = epoxy_glTangent3fvEXT_dispatch_table_rewrite_ptr,
-    .glTangent3iEXT = epoxy_glTangent3iEXT_dispatch_table_rewrite_ptr,
-    .glTangent3ivEXT = epoxy_glTangent3ivEXT_dispatch_table_rewrite_ptr,
-    .glTangent3sEXT = epoxy_glTangent3sEXT_dispatch_table_rewrite_ptr,
-    .glTangent3svEXT = epoxy_glTangent3svEXT_dispatch_table_rewrite_ptr,
-    .glTangentPointerEXT = epoxy_glTangentPointerEXT_dispatch_table_rewrite_ptr,
-    .glTbufferMask3DFX = epoxy_glTbufferMask3DFX_dispatch_table_rewrite_ptr,
-    .glTessellationFactorAMD = epoxy_glTessellationFactorAMD_dispatch_table_rewrite_ptr,
-    .glTessellationModeAMD = epoxy_glTessellationModeAMD_dispatch_table_rewrite_ptr,
-    .glTestFenceAPPLE = epoxy_glTestFenceAPPLE_dispatch_table_rewrite_ptr,
-    .glTestFenceNV = epoxy_glTestFenceNV_dispatch_table_rewrite_ptr,
-    .glTestObjectAPPLE = epoxy_glTestObjectAPPLE_dispatch_table_rewrite_ptr,
-    .glTexBuffer = epoxy_glTexBuffer_dispatch_table_rewrite_ptr,
-    .glTexBufferARB = epoxy_glTexBufferARB_dispatch_table_rewrite_ptr,
-    .glTexBufferEXT = epoxy_glTexBufferEXT_dispatch_table_rewrite_ptr,
-    .glTexBufferOES = epoxy_glTexBufferOES_dispatch_table_rewrite_ptr,
-    .glTexBufferRange = epoxy_glTexBufferRange_dispatch_table_rewrite_ptr,
-    .glTexBufferRangeEXT = epoxy_glTexBufferRangeEXT_dispatch_table_rewrite_ptr,
-    .glTexBufferRangeOES = epoxy_glTexBufferRangeOES_dispatch_table_rewrite_ptr,
-    .glTexBumpParameterfvATI = epoxy_glTexBumpParameterfvATI_dispatch_table_rewrite_ptr,
-    .glTexBumpParameterivATI = epoxy_glTexBumpParameterivATI_dispatch_table_rewrite_ptr,
-    .glTexCoord1bOES = epoxy_glTexCoord1bOES_dispatch_table_rewrite_ptr,
-    .glTexCoord1bvOES = epoxy_glTexCoord1bvOES_dispatch_table_rewrite_ptr,
-    .glTexCoord1d = epoxy_glTexCoord1d_dispatch_table_rewrite_ptr,
-    .glTexCoord1dv = epoxy_glTexCoord1dv_dispatch_table_rewrite_ptr,
-    .glTexCoord1f = epoxy_glTexCoord1f_dispatch_table_rewrite_ptr,
-    .glTexCoord1fv = epoxy_glTexCoord1fv_dispatch_table_rewrite_ptr,
-    .glTexCoord1hNV = epoxy_glTexCoord1hNV_dispatch_table_rewrite_ptr,
-    .glTexCoord1hvNV = epoxy_glTexCoord1hvNV_dispatch_table_rewrite_ptr,
-    .glTexCoord1i = epoxy_glTexCoord1i_dispatch_table_rewrite_ptr,
-    .glTexCoord1iv = epoxy_glTexCoord1iv_dispatch_table_rewrite_ptr,
-    .glTexCoord1s = epoxy_glTexCoord1s_dispatch_table_rewrite_ptr,
-    .glTexCoord1sv = epoxy_glTexCoord1sv_dispatch_table_rewrite_ptr,
-    .glTexCoord1xOES = epoxy_glTexCoord1xOES_dispatch_table_rewrite_ptr,
-    .glTexCoord1xvOES = epoxy_glTexCoord1xvOES_dispatch_table_rewrite_ptr,
-    .glTexCoord2bOES = epoxy_glTexCoord2bOES_dispatch_table_rewrite_ptr,
-    .glTexCoord2bvOES = epoxy_glTexCoord2bvOES_dispatch_table_rewrite_ptr,
-    .glTexCoord2d = epoxy_glTexCoord2d_dispatch_table_rewrite_ptr,
-    .glTexCoord2dv = epoxy_glTexCoord2dv_dispatch_table_rewrite_ptr,
-    .glTexCoord2f = epoxy_glTexCoord2f_dispatch_table_rewrite_ptr,
-    .glTexCoord2fColor3fVertex3fSUN = epoxy_glTexCoord2fColor3fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord2fColor3fVertex3fvSUN = epoxy_glTexCoord2fColor3fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord2fColor4fNormal3fVertex3fSUN = epoxy_glTexCoord2fColor4fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord2fColor4fNormal3fVertex3fvSUN = epoxy_glTexCoord2fColor4fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord2fColor4ubVertex3fSUN = epoxy_glTexCoord2fColor4ubVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord2fColor4ubVertex3fvSUN = epoxy_glTexCoord2fColor4ubVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord2fNormal3fVertex3fSUN = epoxy_glTexCoord2fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord2fNormal3fVertex3fvSUN = epoxy_glTexCoord2fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord2fVertex3fSUN = epoxy_glTexCoord2fVertex3fSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord2fVertex3fvSUN = epoxy_glTexCoord2fVertex3fvSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord2fv = epoxy_glTexCoord2fv_dispatch_table_rewrite_ptr,
-    .glTexCoord2hNV = epoxy_glTexCoord2hNV_dispatch_table_rewrite_ptr,
-    .glTexCoord2hvNV = epoxy_glTexCoord2hvNV_dispatch_table_rewrite_ptr,
-    .glTexCoord2i = epoxy_glTexCoord2i_dispatch_table_rewrite_ptr,
-    .glTexCoord2iv = epoxy_glTexCoord2iv_dispatch_table_rewrite_ptr,
-    .glTexCoord2s = epoxy_glTexCoord2s_dispatch_table_rewrite_ptr,
-    .glTexCoord2sv = epoxy_glTexCoord2sv_dispatch_table_rewrite_ptr,
-    .glTexCoord2xOES = epoxy_glTexCoord2xOES_dispatch_table_rewrite_ptr,
-    .glTexCoord2xvOES = epoxy_glTexCoord2xvOES_dispatch_table_rewrite_ptr,
-    .glTexCoord3bOES = epoxy_glTexCoord3bOES_dispatch_table_rewrite_ptr,
-    .glTexCoord3bvOES = epoxy_glTexCoord3bvOES_dispatch_table_rewrite_ptr,
-    .glTexCoord3d = epoxy_glTexCoord3d_dispatch_table_rewrite_ptr,
-    .glTexCoord3dv = epoxy_glTexCoord3dv_dispatch_table_rewrite_ptr,
-    .glTexCoord3f = epoxy_glTexCoord3f_dispatch_table_rewrite_ptr,
-    .glTexCoord3fv = epoxy_glTexCoord3fv_dispatch_table_rewrite_ptr,
-    .glTexCoord3hNV = epoxy_glTexCoord3hNV_dispatch_table_rewrite_ptr,
-    .glTexCoord3hvNV = epoxy_glTexCoord3hvNV_dispatch_table_rewrite_ptr,
-    .glTexCoord3i = epoxy_glTexCoord3i_dispatch_table_rewrite_ptr,
-    .glTexCoord3iv = epoxy_glTexCoord3iv_dispatch_table_rewrite_ptr,
-    .glTexCoord3s = epoxy_glTexCoord3s_dispatch_table_rewrite_ptr,
-    .glTexCoord3sv = epoxy_glTexCoord3sv_dispatch_table_rewrite_ptr,
-    .glTexCoord3xOES = epoxy_glTexCoord3xOES_dispatch_table_rewrite_ptr,
-    .glTexCoord3xvOES = epoxy_glTexCoord3xvOES_dispatch_table_rewrite_ptr,
-    .glTexCoord4bOES = epoxy_glTexCoord4bOES_dispatch_table_rewrite_ptr,
-    .glTexCoord4bvOES = epoxy_glTexCoord4bvOES_dispatch_table_rewrite_ptr,
-    .glTexCoord4d = epoxy_glTexCoord4d_dispatch_table_rewrite_ptr,
-    .glTexCoord4dv = epoxy_glTexCoord4dv_dispatch_table_rewrite_ptr,
-    .glTexCoord4f = epoxy_glTexCoord4f_dispatch_table_rewrite_ptr,
-    .glTexCoord4fColor4fNormal3fVertex4fSUN = epoxy_glTexCoord4fColor4fNormal3fVertex4fSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord4fColor4fNormal3fVertex4fvSUN = epoxy_glTexCoord4fColor4fNormal3fVertex4fvSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord4fVertex4fSUN = epoxy_glTexCoord4fVertex4fSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord4fVertex4fvSUN = epoxy_glTexCoord4fVertex4fvSUN_dispatch_table_rewrite_ptr,
-    .glTexCoord4fv = epoxy_glTexCoord4fv_dispatch_table_rewrite_ptr,
-    .glTexCoord4hNV = epoxy_glTexCoord4hNV_dispatch_table_rewrite_ptr,
-    .glTexCoord4hvNV = epoxy_glTexCoord4hvNV_dispatch_table_rewrite_ptr,
-    .glTexCoord4i = epoxy_glTexCoord4i_dispatch_table_rewrite_ptr,
-    .glTexCoord4iv = epoxy_glTexCoord4iv_dispatch_table_rewrite_ptr,
-    .glTexCoord4s = epoxy_glTexCoord4s_dispatch_table_rewrite_ptr,
-    .glTexCoord4sv = epoxy_glTexCoord4sv_dispatch_table_rewrite_ptr,
-    .glTexCoord4xOES = epoxy_glTexCoord4xOES_dispatch_table_rewrite_ptr,
-    .glTexCoord4xvOES = epoxy_glTexCoord4xvOES_dispatch_table_rewrite_ptr,
-    .glTexCoordFormatNV = epoxy_glTexCoordFormatNV_dispatch_table_rewrite_ptr,
-    .glTexCoordP1ui = epoxy_glTexCoordP1ui_dispatch_table_rewrite_ptr,
-    .glTexCoordP1uiv = epoxy_glTexCoordP1uiv_dispatch_table_rewrite_ptr,
-    .glTexCoordP2ui = epoxy_glTexCoordP2ui_dispatch_table_rewrite_ptr,
-    .glTexCoordP2uiv = epoxy_glTexCoordP2uiv_dispatch_table_rewrite_ptr,
-    .glTexCoordP3ui = epoxy_glTexCoordP3ui_dispatch_table_rewrite_ptr,
-    .glTexCoordP3uiv = epoxy_glTexCoordP3uiv_dispatch_table_rewrite_ptr,
-    .glTexCoordP4ui = epoxy_glTexCoordP4ui_dispatch_table_rewrite_ptr,
-    .glTexCoordP4uiv = epoxy_glTexCoordP4uiv_dispatch_table_rewrite_ptr,
-    .glTexCoordPointer = epoxy_glTexCoordPointer_dispatch_table_rewrite_ptr,
-    .glTexCoordPointerEXT = epoxy_glTexCoordPointerEXT_dispatch_table_rewrite_ptr,
-    .glTexCoordPointerListIBM = epoxy_glTexCoordPointerListIBM_dispatch_table_rewrite_ptr,
-    .glTexCoordPointervINTEL = epoxy_glTexCoordPointervINTEL_dispatch_table_rewrite_ptr,
-    .glTexEnvf = epoxy_glTexEnvf_dispatch_table_rewrite_ptr,
-    .glTexEnvfv = epoxy_glTexEnvfv_dispatch_table_rewrite_ptr,
-    .glTexEnvi = epoxy_glTexEnvi_dispatch_table_rewrite_ptr,
-    .glTexEnviv = epoxy_glTexEnviv_dispatch_table_rewrite_ptr,
-    .glTexEnvx = epoxy_glTexEnvx_dispatch_table_rewrite_ptr,
-    .glTexEnvxOES = epoxy_glTexEnvxOES_dispatch_table_rewrite_ptr,
-    .glTexEnvxv = epoxy_glTexEnvxv_dispatch_table_rewrite_ptr,
-    .glTexEnvxvOES = epoxy_glTexEnvxvOES_dispatch_table_rewrite_ptr,
-    .glTexFilterFuncSGIS = epoxy_glTexFilterFuncSGIS_dispatch_table_rewrite_ptr,
-    .glTexGend = epoxy_glTexGend_dispatch_table_rewrite_ptr,
-    .glTexGendv = epoxy_glTexGendv_dispatch_table_rewrite_ptr,
-    .glTexGenf = epoxy_glTexGenf_dispatch_table_rewrite_ptr,
-    .glTexGenfOES = epoxy_glTexGenfOES_dispatch_table_rewrite_ptr,
-    .glTexGenfv = epoxy_glTexGenfv_dispatch_table_rewrite_ptr,
-    .glTexGenfvOES = epoxy_glTexGenfvOES_dispatch_table_rewrite_ptr,
-    .glTexGeni = epoxy_glTexGeni_dispatch_table_rewrite_ptr,
-    .glTexGeniOES = epoxy_glTexGeniOES_dispatch_table_rewrite_ptr,
-    .glTexGeniv = epoxy_glTexGeniv_dispatch_table_rewrite_ptr,
-    .glTexGenivOES = epoxy_glTexGenivOES_dispatch_table_rewrite_ptr,
-    .glTexGenxOES = epoxy_glTexGenxOES_dispatch_table_rewrite_ptr,
-    .glTexGenxvOES = epoxy_glTexGenxvOES_dispatch_table_rewrite_ptr,
-    .glTexImage1D = epoxy_glTexImage1D_dispatch_table_rewrite_ptr,
-    .glTexImage2D = epoxy_glTexImage2D_dispatch_table_rewrite_ptr,
-    .glTexImage2DMultisample = epoxy_glTexImage2DMultisample_dispatch_table_rewrite_ptr,
-    .glTexImage2DMultisampleCoverageNV = epoxy_glTexImage2DMultisampleCoverageNV_dispatch_table_rewrite_ptr,
-    .glTexImage3D = epoxy_glTexImage3D_dispatch_table_rewrite_ptr,
-    .glTexImage3DEXT = epoxy_glTexImage3DEXT_dispatch_table_rewrite_ptr,
-    .glTexImage3DMultisample = epoxy_glTexImage3DMultisample_dispatch_table_rewrite_ptr,
-    .glTexImage3DMultisampleCoverageNV = epoxy_glTexImage3DMultisampleCoverageNV_dispatch_table_rewrite_ptr,
-    .glTexImage3DOES = epoxy_glTexImage3DOES_dispatch_table_rewrite_ptr,
-    .glTexImage4DSGIS = epoxy_glTexImage4DSGIS_dispatch_table_rewrite_ptr,
-    .glTexPageCommitmentARB = epoxy_glTexPageCommitmentARB_dispatch_table_rewrite_ptr,
-    .glTexPageCommitmentEXT = epoxy_glTexPageCommitmentEXT_dispatch_table_rewrite_ptr,
-    .glTexParameterIiv = epoxy_glTexParameterIiv_dispatch_table_rewrite_ptr,
-    .glTexParameterIivEXT = epoxy_glTexParameterIivEXT_dispatch_table_rewrite_ptr,
-    .glTexParameterIivOES = epoxy_glTexParameterIivOES_dispatch_table_rewrite_ptr,
-    .glTexParameterIuiv = epoxy_glTexParameterIuiv_dispatch_table_rewrite_ptr,
-    .glTexParameterIuivEXT = epoxy_glTexParameterIuivEXT_dispatch_table_rewrite_ptr,
-    .glTexParameterIuivOES = epoxy_glTexParameterIuivOES_dispatch_table_rewrite_ptr,
-    .glTexParameterf = epoxy_glTexParameterf_dispatch_table_rewrite_ptr,
-    .glTexParameterfv = epoxy_glTexParameterfv_dispatch_table_rewrite_ptr,
-    .glTexParameteri = epoxy_glTexParameteri_dispatch_table_rewrite_ptr,
-    .glTexParameteriv = epoxy_glTexParameteriv_dispatch_table_rewrite_ptr,
-    .glTexParameterx = epoxy_glTexParameterx_dispatch_table_rewrite_ptr,
-    .glTexParameterxOES = epoxy_glTexParameterxOES_dispatch_table_rewrite_ptr,
-    .glTexParameterxv = epoxy_glTexParameterxv_dispatch_table_rewrite_ptr,
-    .glTexParameterxvOES = epoxy_glTexParameterxvOES_dispatch_table_rewrite_ptr,
-    .glTexRenderbufferNV = epoxy_glTexRenderbufferNV_dispatch_table_rewrite_ptr,
-    .glTexStorage1D = epoxy_glTexStorage1D_dispatch_table_rewrite_ptr,
-    .glTexStorage1DEXT = epoxy_glTexStorage1DEXT_dispatch_table_rewrite_ptr,
-    .glTexStorage2D = epoxy_glTexStorage2D_dispatch_table_rewrite_ptr,
-    .glTexStorage2DEXT = epoxy_glTexStorage2DEXT_dispatch_table_rewrite_ptr,
-    .glTexStorage2DMultisample = epoxy_glTexStorage2DMultisample_dispatch_table_rewrite_ptr,
-    .glTexStorage3D = epoxy_glTexStorage3D_dispatch_table_rewrite_ptr,
-    .glTexStorage3DEXT = epoxy_glTexStorage3DEXT_dispatch_table_rewrite_ptr,
-    .glTexStorage3DMultisample = epoxy_glTexStorage3DMultisample_dispatch_table_rewrite_ptr,
-    .glTexStorage3DMultisampleOES = epoxy_glTexStorage3DMultisampleOES_dispatch_table_rewrite_ptr,
-    .glTexStorageSparseAMD = epoxy_glTexStorageSparseAMD_dispatch_table_rewrite_ptr,
-    .glTexSubImage1D = epoxy_glTexSubImage1D_dispatch_table_rewrite_ptr,
-    .glTexSubImage1DEXT = epoxy_glTexSubImage1DEXT_dispatch_table_rewrite_ptr,
-    .glTexSubImage2D = epoxy_glTexSubImage2D_dispatch_table_rewrite_ptr,
-    .glTexSubImage2DEXT = epoxy_glTexSubImage2DEXT_dispatch_table_rewrite_ptr,
-    .glTexSubImage3D = epoxy_glTexSubImage3D_dispatch_table_rewrite_ptr,
-    .glTexSubImage3DEXT = epoxy_glTexSubImage3DEXT_dispatch_table_rewrite_ptr,
-    .glTexSubImage3DOES = epoxy_glTexSubImage3DOES_dispatch_table_rewrite_ptr,
-    .glTexSubImage4DSGIS = epoxy_glTexSubImage4DSGIS_dispatch_table_rewrite_ptr,
-    .glTextureBarrier = epoxy_glTextureBarrier_dispatch_table_rewrite_ptr,
-    .glTextureBarrierNV = epoxy_glTextureBarrierNV_dispatch_table_rewrite_ptr,
-    .glTextureBuffer = epoxy_glTextureBuffer_dispatch_table_rewrite_ptr,
-    .glTextureBufferEXT = epoxy_glTextureBufferEXT_dispatch_table_rewrite_ptr,
-    .glTextureBufferRange = epoxy_glTextureBufferRange_dispatch_table_rewrite_ptr,
-    .glTextureBufferRangeEXT = epoxy_glTextureBufferRangeEXT_dispatch_table_rewrite_ptr,
-    .glTextureColorMaskSGIS = epoxy_glTextureColorMaskSGIS_dispatch_table_rewrite_ptr,
-    .glTextureImage1DEXT = epoxy_glTextureImage1DEXT_dispatch_table_rewrite_ptr,
-    .glTextureImage2DEXT = epoxy_glTextureImage2DEXT_dispatch_table_rewrite_ptr,
-    .glTextureImage2DMultisampleCoverageNV = epoxy_glTextureImage2DMultisampleCoverageNV_dispatch_table_rewrite_ptr,
-    .glTextureImage2DMultisampleNV = epoxy_glTextureImage2DMultisampleNV_dispatch_table_rewrite_ptr,
-    .glTextureImage3DEXT = epoxy_glTextureImage3DEXT_dispatch_table_rewrite_ptr,
-    .glTextureImage3DMultisampleCoverageNV = epoxy_glTextureImage3DMultisampleCoverageNV_dispatch_table_rewrite_ptr,
-    .glTextureImage3DMultisampleNV = epoxy_glTextureImage3DMultisampleNV_dispatch_table_rewrite_ptr,
-    .glTextureLightEXT = epoxy_glTextureLightEXT_dispatch_table_rewrite_ptr,
-    .glTextureMaterialEXT = epoxy_glTextureMaterialEXT_dispatch_table_rewrite_ptr,
-    .glTextureNormalEXT = epoxy_glTextureNormalEXT_dispatch_table_rewrite_ptr,
-    .glTexturePageCommitmentEXT = epoxy_glTexturePageCommitmentEXT_dispatch_table_rewrite_ptr,
-    .glTextureParameterIiv = epoxy_glTextureParameterIiv_dispatch_table_rewrite_ptr,
-    .glTextureParameterIivEXT = epoxy_glTextureParameterIivEXT_dispatch_table_rewrite_ptr,
-    .glTextureParameterIuiv = epoxy_glTextureParameterIuiv_dispatch_table_rewrite_ptr,
-    .glTextureParameterIuivEXT = epoxy_glTextureParameterIuivEXT_dispatch_table_rewrite_ptr,
-    .glTextureParameterf = epoxy_glTextureParameterf_dispatch_table_rewrite_ptr,
-    .glTextureParameterfEXT = epoxy_glTextureParameterfEXT_dispatch_table_rewrite_ptr,
-    .glTextureParameterfv = epoxy_glTextureParameterfv_dispatch_table_rewrite_ptr,
-    .glTextureParameterfvEXT = epoxy_glTextureParameterfvEXT_dispatch_table_rewrite_ptr,
-    .glTextureParameteri = epoxy_glTextureParameteri_dispatch_table_rewrite_ptr,
-    .glTextureParameteriEXT = epoxy_glTextureParameteriEXT_dispatch_table_rewrite_ptr,
-    .glTextureParameteriv = epoxy_glTextureParameteriv_dispatch_table_rewrite_ptr,
-    .glTextureParameterivEXT = epoxy_glTextureParameterivEXT_dispatch_table_rewrite_ptr,
-    .glTextureRangeAPPLE = epoxy_glTextureRangeAPPLE_dispatch_table_rewrite_ptr,
-    .glTextureRenderbufferEXT = epoxy_glTextureRenderbufferEXT_dispatch_table_rewrite_ptr,
-    .glTextureStorage1D = epoxy_glTextureStorage1D_dispatch_table_rewrite_ptr,
-    .glTextureStorage1DEXT = epoxy_glTextureStorage1DEXT_dispatch_table_rewrite_ptr,
-    .glTextureStorage2D = epoxy_glTextureStorage2D_dispatch_table_rewrite_ptr,
-    .glTextureStorage2DEXT = epoxy_glTextureStorage2DEXT_dispatch_table_rewrite_ptr,
-    .glTextureStorage2DMultisample = epoxy_glTextureStorage2DMultisample_dispatch_table_rewrite_ptr,
-    .glTextureStorage2DMultisampleEXT = epoxy_glTextureStorage2DMultisampleEXT_dispatch_table_rewrite_ptr,
-    .glTextureStorage3D = epoxy_glTextureStorage3D_dispatch_table_rewrite_ptr,
-    .glTextureStorage3DEXT = epoxy_glTextureStorage3DEXT_dispatch_table_rewrite_ptr,
-    .glTextureStorage3DMultisample = epoxy_glTextureStorage3DMultisample_dispatch_table_rewrite_ptr,
-    .glTextureStorage3DMultisampleEXT = epoxy_glTextureStorage3DMultisampleEXT_dispatch_table_rewrite_ptr,
-    .glTextureStorageSparseAMD = epoxy_glTextureStorageSparseAMD_dispatch_table_rewrite_ptr,
-    .glTextureSubImage1D = epoxy_glTextureSubImage1D_dispatch_table_rewrite_ptr,
-    .glTextureSubImage1DEXT = epoxy_glTextureSubImage1DEXT_dispatch_table_rewrite_ptr,
-    .glTextureSubImage2D = epoxy_glTextureSubImage2D_dispatch_table_rewrite_ptr,
-    .glTextureSubImage2DEXT = epoxy_glTextureSubImage2DEXT_dispatch_table_rewrite_ptr,
-    .glTextureSubImage3D = epoxy_glTextureSubImage3D_dispatch_table_rewrite_ptr,
-    .glTextureSubImage3DEXT = epoxy_glTextureSubImage3DEXT_dispatch_table_rewrite_ptr,
-    .glTextureView = epoxy_glTextureView_dispatch_table_rewrite_ptr,
-    .glTextureViewEXT = epoxy_glTextureViewEXT_dispatch_table_rewrite_ptr,
-    .glTextureViewOES = epoxy_glTextureViewOES_dispatch_table_rewrite_ptr,
-    .glTrackMatrixNV = epoxy_glTrackMatrixNV_dispatch_table_rewrite_ptr,
-    .glTransformFeedbackAttribsNV = epoxy_glTransformFeedbackAttribsNV_dispatch_table_rewrite_ptr,
-    .glTransformFeedbackBufferBase = epoxy_glTransformFeedbackBufferBase_dispatch_table_rewrite_ptr,
-    .glTransformFeedbackBufferRange = epoxy_glTransformFeedbackBufferRange_dispatch_table_rewrite_ptr,
-    .glTransformFeedbackStreamAttribsNV = epoxy_glTransformFeedbackStreamAttribsNV_dispatch_table_rewrite_ptr,
-    .glTransformFeedbackVaryings = epoxy_glTransformFeedbackVaryings_dispatch_table_rewrite_ptr,
-    .glTransformFeedbackVaryingsEXT = epoxy_glTransformFeedbackVaryingsEXT_dispatch_table_rewrite_ptr,
-    .glTransformFeedbackVaryingsNV = epoxy_glTransformFeedbackVaryingsNV_dispatch_table_rewrite_ptr,
-    .glTransformPathNV = epoxy_glTransformPathNV_dispatch_table_rewrite_ptr,
-    .glTranslated = epoxy_glTranslated_dispatch_table_rewrite_ptr,
-    .glTranslatef = epoxy_glTranslatef_dispatch_table_rewrite_ptr,
-    .glTranslatex = epoxy_glTranslatex_dispatch_table_rewrite_ptr,
-    .glTranslatexOES = epoxy_glTranslatexOES_dispatch_table_rewrite_ptr,
-    .glUniform1d = epoxy_glUniform1d_dispatch_table_rewrite_ptr,
-    .glUniform1dv = epoxy_glUniform1dv_dispatch_table_rewrite_ptr,
-    .glUniform1f = epoxy_glUniform1f_dispatch_table_rewrite_ptr,
-    .glUniform1fARB = epoxy_glUniform1fARB_dispatch_table_rewrite_ptr,
-    .glUniform1fv = epoxy_glUniform1fv_dispatch_table_rewrite_ptr,
-    .glUniform1fvARB = epoxy_glUniform1fvARB_dispatch_table_rewrite_ptr,
-    .glUniform1i = epoxy_glUniform1i_dispatch_table_rewrite_ptr,
-    .glUniform1i64NV = epoxy_glUniform1i64NV_dispatch_table_rewrite_ptr,
-    .glUniform1i64vNV = epoxy_glUniform1i64vNV_dispatch_table_rewrite_ptr,
-    .glUniform1iARB = epoxy_glUniform1iARB_dispatch_table_rewrite_ptr,
-    .glUniform1iv = epoxy_glUniform1iv_dispatch_table_rewrite_ptr,
-    .glUniform1ivARB = epoxy_glUniform1ivARB_dispatch_table_rewrite_ptr,
-    .glUniform1ui = epoxy_glUniform1ui_dispatch_table_rewrite_ptr,
-    .glUniform1ui64NV = epoxy_glUniform1ui64NV_dispatch_table_rewrite_ptr,
-    .glUniform1ui64vNV = epoxy_glUniform1ui64vNV_dispatch_table_rewrite_ptr,
-    .glUniform1uiEXT = epoxy_glUniform1uiEXT_dispatch_table_rewrite_ptr,
-    .glUniform1uiv = epoxy_glUniform1uiv_dispatch_table_rewrite_ptr,
-    .glUniform1uivEXT = epoxy_glUniform1uivEXT_dispatch_table_rewrite_ptr,
-    .glUniform2d = epoxy_glUniform2d_dispatch_table_rewrite_ptr,
-    .glUniform2dv = epoxy_glUniform2dv_dispatch_table_rewrite_ptr,
-    .glUniform2f = epoxy_glUniform2f_dispatch_table_rewrite_ptr,
-    .glUniform2fARB = epoxy_glUniform2fARB_dispatch_table_rewrite_ptr,
-    .glUniform2fv = epoxy_glUniform2fv_dispatch_table_rewrite_ptr,
-    .glUniform2fvARB = epoxy_glUniform2fvARB_dispatch_table_rewrite_ptr,
-    .glUniform2i = epoxy_glUniform2i_dispatch_table_rewrite_ptr,
-    .glUniform2i64NV = epoxy_glUniform2i64NV_dispatch_table_rewrite_ptr,
-    .glUniform2i64vNV = epoxy_glUniform2i64vNV_dispatch_table_rewrite_ptr,
-    .glUniform2iARB = epoxy_glUniform2iARB_dispatch_table_rewrite_ptr,
-    .glUniform2iv = epoxy_glUniform2iv_dispatch_table_rewrite_ptr,
-    .glUniform2ivARB = epoxy_glUniform2ivARB_dispatch_table_rewrite_ptr,
-    .glUniform2ui = epoxy_glUniform2ui_dispatch_table_rewrite_ptr,
-    .glUniform2ui64NV = epoxy_glUniform2ui64NV_dispatch_table_rewrite_ptr,
-    .glUniform2ui64vNV = epoxy_glUniform2ui64vNV_dispatch_table_rewrite_ptr,
-    .glUniform2uiEXT = epoxy_glUniform2uiEXT_dispatch_table_rewrite_ptr,
-    .glUniform2uiv = epoxy_glUniform2uiv_dispatch_table_rewrite_ptr,
-    .glUniform2uivEXT = epoxy_glUniform2uivEXT_dispatch_table_rewrite_ptr,
-    .glUniform3d = epoxy_glUniform3d_dispatch_table_rewrite_ptr,
-    .glUniform3dv = epoxy_glUniform3dv_dispatch_table_rewrite_ptr,
-    .glUniform3f = epoxy_glUniform3f_dispatch_table_rewrite_ptr,
-    .glUniform3fARB = epoxy_glUniform3fARB_dispatch_table_rewrite_ptr,
-    .glUniform3fv = epoxy_glUniform3fv_dispatch_table_rewrite_ptr,
-    .glUniform3fvARB = epoxy_glUniform3fvARB_dispatch_table_rewrite_ptr,
-    .glUniform3i = epoxy_glUniform3i_dispatch_table_rewrite_ptr,
-    .glUniform3i64NV = epoxy_glUniform3i64NV_dispatch_table_rewrite_ptr,
-    .glUniform3i64vNV = epoxy_glUniform3i64vNV_dispatch_table_rewrite_ptr,
-    .glUniform3iARB = epoxy_glUniform3iARB_dispatch_table_rewrite_ptr,
-    .glUniform3iv = epoxy_glUniform3iv_dispatch_table_rewrite_ptr,
-    .glUniform3ivARB = epoxy_glUniform3ivARB_dispatch_table_rewrite_ptr,
-    .glUniform3ui = epoxy_glUniform3ui_dispatch_table_rewrite_ptr,
-    .glUniform3ui64NV = epoxy_glUniform3ui64NV_dispatch_table_rewrite_ptr,
-    .glUniform3ui64vNV = epoxy_glUniform3ui64vNV_dispatch_table_rewrite_ptr,
-    .glUniform3uiEXT = epoxy_glUniform3uiEXT_dispatch_table_rewrite_ptr,
-    .glUniform3uiv = epoxy_glUniform3uiv_dispatch_table_rewrite_ptr,
-    .glUniform3uivEXT = epoxy_glUniform3uivEXT_dispatch_table_rewrite_ptr,
-    .glUniform4d = epoxy_glUniform4d_dispatch_table_rewrite_ptr,
-    .glUniform4dv = epoxy_glUniform4dv_dispatch_table_rewrite_ptr,
-    .glUniform4f = epoxy_glUniform4f_dispatch_table_rewrite_ptr,
-    .glUniform4fARB = epoxy_glUniform4fARB_dispatch_table_rewrite_ptr,
-    .glUniform4fv = epoxy_glUniform4fv_dispatch_table_rewrite_ptr,
-    .glUniform4fvARB = epoxy_glUniform4fvARB_dispatch_table_rewrite_ptr,
-    .glUniform4i = epoxy_glUniform4i_dispatch_table_rewrite_ptr,
-    .glUniform4i64NV = epoxy_glUniform4i64NV_dispatch_table_rewrite_ptr,
-    .glUniform4i64vNV = epoxy_glUniform4i64vNV_dispatch_table_rewrite_ptr,
-    .glUniform4iARB = epoxy_glUniform4iARB_dispatch_table_rewrite_ptr,
-    .glUniform4iv = epoxy_glUniform4iv_dispatch_table_rewrite_ptr,
-    .glUniform4ivARB = epoxy_glUniform4ivARB_dispatch_table_rewrite_ptr,
-    .glUniform4ui = epoxy_glUniform4ui_dispatch_table_rewrite_ptr,
-    .glUniform4ui64NV = epoxy_glUniform4ui64NV_dispatch_table_rewrite_ptr,
-    .glUniform4ui64vNV = epoxy_glUniform4ui64vNV_dispatch_table_rewrite_ptr,
-    .glUniform4uiEXT = epoxy_glUniform4uiEXT_dispatch_table_rewrite_ptr,
-    .glUniform4uiv = epoxy_glUniform4uiv_dispatch_table_rewrite_ptr,
-    .glUniform4uivEXT = epoxy_glUniform4uivEXT_dispatch_table_rewrite_ptr,
-    .glUniformBlockBinding = epoxy_glUniformBlockBinding_dispatch_table_rewrite_ptr,
-    .glUniformBufferEXT = epoxy_glUniformBufferEXT_dispatch_table_rewrite_ptr,
-    .glUniformHandleui64ARB = epoxy_glUniformHandleui64ARB_dispatch_table_rewrite_ptr,
-    .glUniformHandleui64NV = epoxy_glUniformHandleui64NV_dispatch_table_rewrite_ptr,
-    .glUniformHandleui64vARB = epoxy_glUniformHandleui64vARB_dispatch_table_rewrite_ptr,
-    .glUniformHandleui64vNV = epoxy_glUniformHandleui64vNV_dispatch_table_rewrite_ptr,
-    .glUniformMatrix2dv = epoxy_glUniformMatrix2dv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix2fv = epoxy_glUniformMatrix2fv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix2fvARB = epoxy_glUniformMatrix2fvARB_dispatch_table_rewrite_ptr,
-    .glUniformMatrix2x3dv = epoxy_glUniformMatrix2x3dv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix2x3fv = epoxy_glUniformMatrix2x3fv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix2x3fvNV = epoxy_glUniformMatrix2x3fvNV_dispatch_table_rewrite_ptr,
-    .glUniformMatrix2x4dv = epoxy_glUniformMatrix2x4dv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix2x4fv = epoxy_glUniformMatrix2x4fv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix2x4fvNV = epoxy_glUniformMatrix2x4fvNV_dispatch_table_rewrite_ptr,
-    .glUniformMatrix3dv = epoxy_glUniformMatrix3dv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix3fv = epoxy_glUniformMatrix3fv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix3fvARB = epoxy_glUniformMatrix3fvARB_dispatch_table_rewrite_ptr,
-    .glUniformMatrix3x2dv = epoxy_glUniformMatrix3x2dv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix3x2fv = epoxy_glUniformMatrix3x2fv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix3x2fvNV = epoxy_glUniformMatrix3x2fvNV_dispatch_table_rewrite_ptr,
-    .glUniformMatrix3x4dv = epoxy_glUniformMatrix3x4dv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix3x4fv = epoxy_glUniformMatrix3x4fv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix3x4fvNV = epoxy_glUniformMatrix3x4fvNV_dispatch_table_rewrite_ptr,
-    .glUniformMatrix4dv = epoxy_glUniformMatrix4dv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix4fv = epoxy_glUniformMatrix4fv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix4fvARB = epoxy_glUniformMatrix4fvARB_dispatch_table_rewrite_ptr,
-    .glUniformMatrix4x2dv = epoxy_glUniformMatrix4x2dv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix4x2fv = epoxy_glUniformMatrix4x2fv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix4x2fvNV = epoxy_glUniformMatrix4x2fvNV_dispatch_table_rewrite_ptr,
-    .glUniformMatrix4x3dv = epoxy_glUniformMatrix4x3dv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix4x3fv = epoxy_glUniformMatrix4x3fv_dispatch_table_rewrite_ptr,
-    .glUniformMatrix4x3fvNV = epoxy_glUniformMatrix4x3fvNV_dispatch_table_rewrite_ptr,
-    .glUniformSubroutinesuiv = epoxy_glUniformSubroutinesuiv_dispatch_table_rewrite_ptr,
-    .glUniformui64NV = epoxy_glUniformui64NV_dispatch_table_rewrite_ptr,
-    .glUniformui64vNV = epoxy_glUniformui64vNV_dispatch_table_rewrite_ptr,
-    .glUnlockArraysEXT = epoxy_glUnlockArraysEXT_dispatch_table_rewrite_ptr,
-    .glUnmapBuffer = epoxy_glUnmapBuffer_dispatch_table_rewrite_ptr,
-    .glUnmapBufferARB = epoxy_glUnmapBufferARB_dispatch_table_rewrite_ptr,
-    .glUnmapBufferOES = epoxy_glUnmapBufferOES_dispatch_table_rewrite_ptr,
-    .glUnmapNamedBuffer = epoxy_glUnmapNamedBuffer_dispatch_table_rewrite_ptr,
-    .glUnmapNamedBufferEXT = epoxy_glUnmapNamedBufferEXT_dispatch_table_rewrite_ptr,
-    .glUnmapObjectBufferATI = epoxy_glUnmapObjectBufferATI_dispatch_table_rewrite_ptr,
-    .glUnmapTexture2DINTEL = epoxy_glUnmapTexture2DINTEL_dispatch_table_rewrite_ptr,
-    .glUpdateObjectBufferATI = epoxy_glUpdateObjectBufferATI_dispatch_table_rewrite_ptr,
-    .glUseProgram = epoxy_glUseProgram_dispatch_table_rewrite_ptr,
-    .glUseProgramObjectARB = epoxy_glUseProgramObjectARB_dispatch_table_rewrite_ptr,
-    .glUseProgramStages = epoxy_glUseProgramStages_dispatch_table_rewrite_ptr,
-    .glUseProgramStagesEXT = epoxy_glUseProgramStagesEXT_dispatch_table_rewrite_ptr,
-    .glUseShaderProgramEXT = epoxy_glUseShaderProgramEXT_dispatch_table_rewrite_ptr,
-    .glVDPAUFiniNV = epoxy_glVDPAUFiniNV_dispatch_table_rewrite_ptr,
-    .glVDPAUGetSurfaceivNV = epoxy_glVDPAUGetSurfaceivNV_dispatch_table_rewrite_ptr,
-    .glVDPAUInitNV = epoxy_glVDPAUInitNV_dispatch_table_rewrite_ptr,
-    .glVDPAUIsSurfaceNV = epoxy_glVDPAUIsSurfaceNV_dispatch_table_rewrite_ptr,
-    .glVDPAUMapSurfacesNV = epoxy_glVDPAUMapSurfacesNV_dispatch_table_rewrite_ptr,
-    .glVDPAURegisterOutputSurfaceNV = epoxy_glVDPAURegisterOutputSurfaceNV_dispatch_table_rewrite_ptr,
-    .glVDPAURegisterVideoSurfaceNV = epoxy_glVDPAURegisterVideoSurfaceNV_dispatch_table_rewrite_ptr,
-    .glVDPAUSurfaceAccessNV = epoxy_glVDPAUSurfaceAccessNV_dispatch_table_rewrite_ptr,
-    .glVDPAUUnmapSurfacesNV = epoxy_glVDPAUUnmapSurfacesNV_dispatch_table_rewrite_ptr,
-    .glVDPAUUnregisterSurfaceNV = epoxy_glVDPAUUnregisterSurfaceNV_dispatch_table_rewrite_ptr,
-    .glValidateProgram = epoxy_glValidateProgram_dispatch_table_rewrite_ptr,
-    .glValidateProgramARB = epoxy_glValidateProgramARB_dispatch_table_rewrite_ptr,
-    .glValidateProgramPipeline = epoxy_glValidateProgramPipeline_dispatch_table_rewrite_ptr,
-    .glValidateProgramPipelineEXT = epoxy_glValidateProgramPipelineEXT_dispatch_table_rewrite_ptr,
-    .glVariantArrayObjectATI = epoxy_glVariantArrayObjectATI_dispatch_table_rewrite_ptr,
-    .glVariantPointerEXT = epoxy_glVariantPointerEXT_dispatch_table_rewrite_ptr,
-    .glVariantbvEXT = epoxy_glVariantbvEXT_dispatch_table_rewrite_ptr,
-    .glVariantdvEXT = epoxy_glVariantdvEXT_dispatch_table_rewrite_ptr,
-    .glVariantfvEXT = epoxy_glVariantfvEXT_dispatch_table_rewrite_ptr,
-    .glVariantivEXT = epoxy_glVariantivEXT_dispatch_table_rewrite_ptr,
-    .glVariantsvEXT = epoxy_glVariantsvEXT_dispatch_table_rewrite_ptr,
-    .glVariantubvEXT = epoxy_glVariantubvEXT_dispatch_table_rewrite_ptr,
-    .glVariantuivEXT = epoxy_glVariantuivEXT_dispatch_table_rewrite_ptr,
-    .glVariantusvEXT = epoxy_glVariantusvEXT_dispatch_table_rewrite_ptr,
-    .glVertex2bOES = epoxy_glVertex2bOES_dispatch_table_rewrite_ptr,
-    .glVertex2bvOES = epoxy_glVertex2bvOES_dispatch_table_rewrite_ptr,
-    .glVertex2d = epoxy_glVertex2d_dispatch_table_rewrite_ptr,
-    .glVertex2dv = epoxy_glVertex2dv_dispatch_table_rewrite_ptr,
-    .glVertex2f = epoxy_glVertex2f_dispatch_table_rewrite_ptr,
-    .glVertex2fv = epoxy_glVertex2fv_dispatch_table_rewrite_ptr,
-    .glVertex2hNV = epoxy_glVertex2hNV_dispatch_table_rewrite_ptr,
-    .glVertex2hvNV = epoxy_glVertex2hvNV_dispatch_table_rewrite_ptr,
-    .glVertex2i = epoxy_glVertex2i_dispatch_table_rewrite_ptr,
-    .glVertex2iv = epoxy_glVertex2iv_dispatch_table_rewrite_ptr,
-    .glVertex2s = epoxy_glVertex2s_dispatch_table_rewrite_ptr,
-    .glVertex2sv = epoxy_glVertex2sv_dispatch_table_rewrite_ptr,
-    .glVertex2xOES = epoxy_glVertex2xOES_dispatch_table_rewrite_ptr,
-    .glVertex2xvOES = epoxy_glVertex2xvOES_dispatch_table_rewrite_ptr,
-    .glVertex3bOES = epoxy_glVertex3bOES_dispatch_table_rewrite_ptr,
-    .glVertex3bvOES = epoxy_glVertex3bvOES_dispatch_table_rewrite_ptr,
-    .glVertex3d = epoxy_glVertex3d_dispatch_table_rewrite_ptr,
-    .glVertex3dv = epoxy_glVertex3dv_dispatch_table_rewrite_ptr,
-    .glVertex3f = epoxy_glVertex3f_dispatch_table_rewrite_ptr,
-    .glVertex3fv = epoxy_glVertex3fv_dispatch_table_rewrite_ptr,
-    .glVertex3hNV = epoxy_glVertex3hNV_dispatch_table_rewrite_ptr,
-    .glVertex3hvNV = epoxy_glVertex3hvNV_dispatch_table_rewrite_ptr,
-    .glVertex3i = epoxy_glVertex3i_dispatch_table_rewrite_ptr,
-    .glVertex3iv = epoxy_glVertex3iv_dispatch_table_rewrite_ptr,
-    .glVertex3s = epoxy_glVertex3s_dispatch_table_rewrite_ptr,
-    .glVertex3sv = epoxy_glVertex3sv_dispatch_table_rewrite_ptr,
-    .glVertex3xOES = epoxy_glVertex3xOES_dispatch_table_rewrite_ptr,
-    .glVertex3xvOES = epoxy_glVertex3xvOES_dispatch_table_rewrite_ptr,
-    .glVertex4bOES = epoxy_glVertex4bOES_dispatch_table_rewrite_ptr,
-    .glVertex4bvOES = epoxy_glVertex4bvOES_dispatch_table_rewrite_ptr,
-    .glVertex4d = epoxy_glVertex4d_dispatch_table_rewrite_ptr,
-    .glVertex4dv = epoxy_glVertex4dv_dispatch_table_rewrite_ptr,
-    .glVertex4f = epoxy_glVertex4f_dispatch_table_rewrite_ptr,
-    .glVertex4fv = epoxy_glVertex4fv_dispatch_table_rewrite_ptr,
-    .glVertex4hNV = epoxy_glVertex4hNV_dispatch_table_rewrite_ptr,
-    .glVertex4hvNV = epoxy_glVertex4hvNV_dispatch_table_rewrite_ptr,
-    .glVertex4i = epoxy_glVertex4i_dispatch_table_rewrite_ptr,
-    .glVertex4iv = epoxy_glVertex4iv_dispatch_table_rewrite_ptr,
-    .glVertex4s = epoxy_glVertex4s_dispatch_table_rewrite_ptr,
-    .glVertex4sv = epoxy_glVertex4sv_dispatch_table_rewrite_ptr,
-    .glVertex4xOES = epoxy_glVertex4xOES_dispatch_table_rewrite_ptr,
-    .glVertex4xvOES = epoxy_glVertex4xvOES_dispatch_table_rewrite_ptr,
-    .glVertexArrayAttribBinding = epoxy_glVertexArrayAttribBinding_dispatch_table_rewrite_ptr,
-    .glVertexArrayAttribFormat = epoxy_glVertexArrayAttribFormat_dispatch_table_rewrite_ptr,
-    .glVertexArrayAttribIFormat = epoxy_glVertexArrayAttribIFormat_dispatch_table_rewrite_ptr,
-    .glVertexArrayAttribLFormat = epoxy_glVertexArrayAttribLFormat_dispatch_table_rewrite_ptr,
-    .glVertexArrayBindVertexBufferEXT = epoxy_glVertexArrayBindVertexBufferEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayBindingDivisor = epoxy_glVertexArrayBindingDivisor_dispatch_table_rewrite_ptr,
-    .glVertexArrayColorOffsetEXT = epoxy_glVertexArrayColorOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayEdgeFlagOffsetEXT = epoxy_glVertexArrayEdgeFlagOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayElementBuffer = epoxy_glVertexArrayElementBuffer_dispatch_table_rewrite_ptr,
-    .glVertexArrayFogCoordOffsetEXT = epoxy_glVertexArrayFogCoordOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayIndexOffsetEXT = epoxy_glVertexArrayIndexOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayMultiTexCoordOffsetEXT = epoxy_glVertexArrayMultiTexCoordOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayNormalOffsetEXT = epoxy_glVertexArrayNormalOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayParameteriAPPLE = epoxy_glVertexArrayParameteriAPPLE_dispatch_table_rewrite_ptr,
-    .glVertexArrayRangeAPPLE = epoxy_glVertexArrayRangeAPPLE_dispatch_table_rewrite_ptr,
-    .glVertexArrayRangeNV = epoxy_glVertexArrayRangeNV_dispatch_table_rewrite_ptr,
-    .glVertexArraySecondaryColorOffsetEXT = epoxy_glVertexArraySecondaryColorOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayTexCoordOffsetEXT = epoxy_glVertexArrayTexCoordOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexAttribBindingEXT = epoxy_glVertexArrayVertexAttribBindingEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexAttribDivisorEXT = epoxy_glVertexArrayVertexAttribDivisorEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexAttribFormatEXT = epoxy_glVertexArrayVertexAttribFormatEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexAttribIFormatEXT = epoxy_glVertexArrayVertexAttribIFormatEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexAttribIOffsetEXT = epoxy_glVertexArrayVertexAttribIOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexAttribLFormatEXT = epoxy_glVertexArrayVertexAttribLFormatEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexAttribLOffsetEXT = epoxy_glVertexArrayVertexAttribLOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexAttribOffsetEXT = epoxy_glVertexArrayVertexAttribOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexBindingDivisorEXT = epoxy_glVertexArrayVertexBindingDivisorEXT_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexBuffer = epoxy_glVertexArrayVertexBuffer_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexBuffers = epoxy_glVertexArrayVertexBuffers_dispatch_table_rewrite_ptr,
-    .glVertexArrayVertexOffsetEXT = epoxy_glVertexArrayVertexOffsetEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1d = epoxy_glVertexAttrib1d_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1dARB = epoxy_glVertexAttrib1dARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1dNV = epoxy_glVertexAttrib1dNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1dv = epoxy_glVertexAttrib1dv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1dvARB = epoxy_glVertexAttrib1dvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1dvNV = epoxy_glVertexAttrib1dvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1f = epoxy_glVertexAttrib1f_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1fARB = epoxy_glVertexAttrib1fARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1fNV = epoxy_glVertexAttrib1fNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1fv = epoxy_glVertexAttrib1fv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1fvARB = epoxy_glVertexAttrib1fvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1fvNV = epoxy_glVertexAttrib1fvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1hNV = epoxy_glVertexAttrib1hNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1hvNV = epoxy_glVertexAttrib1hvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1s = epoxy_glVertexAttrib1s_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1sARB = epoxy_glVertexAttrib1sARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1sNV = epoxy_glVertexAttrib1sNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1sv = epoxy_glVertexAttrib1sv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1svARB = epoxy_glVertexAttrib1svARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib1svNV = epoxy_glVertexAttrib1svNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2d = epoxy_glVertexAttrib2d_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2dARB = epoxy_glVertexAttrib2dARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2dNV = epoxy_glVertexAttrib2dNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2dv = epoxy_glVertexAttrib2dv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2dvARB = epoxy_glVertexAttrib2dvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2dvNV = epoxy_glVertexAttrib2dvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2f = epoxy_glVertexAttrib2f_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2fARB = epoxy_glVertexAttrib2fARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2fNV = epoxy_glVertexAttrib2fNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2fv = epoxy_glVertexAttrib2fv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2fvARB = epoxy_glVertexAttrib2fvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2fvNV = epoxy_glVertexAttrib2fvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2hNV = epoxy_glVertexAttrib2hNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2hvNV = epoxy_glVertexAttrib2hvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2s = epoxy_glVertexAttrib2s_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2sARB = epoxy_glVertexAttrib2sARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2sNV = epoxy_glVertexAttrib2sNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2sv = epoxy_glVertexAttrib2sv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2svARB = epoxy_glVertexAttrib2svARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib2svNV = epoxy_glVertexAttrib2svNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3d = epoxy_glVertexAttrib3d_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3dARB = epoxy_glVertexAttrib3dARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3dNV = epoxy_glVertexAttrib3dNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3dv = epoxy_glVertexAttrib3dv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3dvARB = epoxy_glVertexAttrib3dvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3dvNV = epoxy_glVertexAttrib3dvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3f = epoxy_glVertexAttrib3f_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3fARB = epoxy_glVertexAttrib3fARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3fNV = epoxy_glVertexAttrib3fNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3fv = epoxy_glVertexAttrib3fv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3fvARB = epoxy_glVertexAttrib3fvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3fvNV = epoxy_glVertexAttrib3fvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3hNV = epoxy_glVertexAttrib3hNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3hvNV = epoxy_glVertexAttrib3hvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3s = epoxy_glVertexAttrib3s_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3sARB = epoxy_glVertexAttrib3sARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3sNV = epoxy_glVertexAttrib3sNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3sv = epoxy_glVertexAttrib3sv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3svARB = epoxy_glVertexAttrib3svARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib3svNV = epoxy_glVertexAttrib3svNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4Nbv = epoxy_glVertexAttrib4Nbv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4NbvARB = epoxy_glVertexAttrib4NbvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4Niv = epoxy_glVertexAttrib4Niv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4NivARB = epoxy_glVertexAttrib4NivARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4Nsv = epoxy_glVertexAttrib4Nsv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4NsvARB = epoxy_glVertexAttrib4NsvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4Nub = epoxy_glVertexAttrib4Nub_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4NubARB = epoxy_glVertexAttrib4NubARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4Nubv = epoxy_glVertexAttrib4Nubv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4NubvARB = epoxy_glVertexAttrib4NubvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4Nuiv = epoxy_glVertexAttrib4Nuiv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4NuivARB = epoxy_glVertexAttrib4NuivARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4Nusv = epoxy_glVertexAttrib4Nusv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4NusvARB = epoxy_glVertexAttrib4NusvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4bv = epoxy_glVertexAttrib4bv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4bvARB = epoxy_glVertexAttrib4bvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4d = epoxy_glVertexAttrib4d_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4dARB = epoxy_glVertexAttrib4dARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4dNV = epoxy_glVertexAttrib4dNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4dv = epoxy_glVertexAttrib4dv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4dvARB = epoxy_glVertexAttrib4dvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4dvNV = epoxy_glVertexAttrib4dvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4f = epoxy_glVertexAttrib4f_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4fARB = epoxy_glVertexAttrib4fARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4fNV = epoxy_glVertexAttrib4fNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4fv = epoxy_glVertexAttrib4fv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4fvARB = epoxy_glVertexAttrib4fvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4fvNV = epoxy_glVertexAttrib4fvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4hNV = epoxy_glVertexAttrib4hNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4hvNV = epoxy_glVertexAttrib4hvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4iv = epoxy_glVertexAttrib4iv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4ivARB = epoxy_glVertexAttrib4ivARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4s = epoxy_glVertexAttrib4s_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4sARB = epoxy_glVertexAttrib4sARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4sNV = epoxy_glVertexAttrib4sNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4sv = epoxy_glVertexAttrib4sv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4svARB = epoxy_glVertexAttrib4svARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4svNV = epoxy_glVertexAttrib4svNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4ubNV = epoxy_glVertexAttrib4ubNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4ubv = epoxy_glVertexAttrib4ubv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4ubvARB = epoxy_glVertexAttrib4ubvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4ubvNV = epoxy_glVertexAttrib4ubvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4uiv = epoxy_glVertexAttrib4uiv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4uivARB = epoxy_glVertexAttrib4uivARB_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4usv = epoxy_glVertexAttrib4usv_dispatch_table_rewrite_ptr,
-    .glVertexAttrib4usvARB = epoxy_glVertexAttrib4usvARB_dispatch_table_rewrite_ptr,
-    .glVertexAttribArrayObjectATI = epoxy_glVertexAttribArrayObjectATI_dispatch_table_rewrite_ptr,
-    .glVertexAttribBinding = epoxy_glVertexAttribBinding_dispatch_table_rewrite_ptr,
-    .glVertexAttribDivisor = epoxy_glVertexAttribDivisor_dispatch_table_rewrite_ptr,
-    .glVertexAttribDivisorANGLE = epoxy_glVertexAttribDivisorANGLE_dispatch_table_rewrite_ptr,
-    .glVertexAttribDivisorARB = epoxy_glVertexAttribDivisorARB_dispatch_table_rewrite_ptr,
-    .glVertexAttribDivisorEXT = epoxy_glVertexAttribDivisorEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribDivisorNV = epoxy_glVertexAttribDivisorNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribFormat = epoxy_glVertexAttribFormat_dispatch_table_rewrite_ptr,
-    .glVertexAttribFormatNV = epoxy_glVertexAttribFormatNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribI1i = epoxy_glVertexAttribI1i_dispatch_table_rewrite_ptr,
-    .glVertexAttribI1iEXT = epoxy_glVertexAttribI1iEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI1iv = epoxy_glVertexAttribI1iv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI1ivEXT = epoxy_glVertexAttribI1ivEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI1ui = epoxy_glVertexAttribI1ui_dispatch_table_rewrite_ptr,
-    .glVertexAttribI1uiEXT = epoxy_glVertexAttribI1uiEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI1uiv = epoxy_glVertexAttribI1uiv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI1uivEXT = epoxy_glVertexAttribI1uivEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI2i = epoxy_glVertexAttribI2i_dispatch_table_rewrite_ptr,
-    .glVertexAttribI2iEXT = epoxy_glVertexAttribI2iEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI2iv = epoxy_glVertexAttribI2iv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI2ivEXT = epoxy_glVertexAttribI2ivEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI2ui = epoxy_glVertexAttribI2ui_dispatch_table_rewrite_ptr,
-    .glVertexAttribI2uiEXT = epoxy_glVertexAttribI2uiEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI2uiv = epoxy_glVertexAttribI2uiv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI2uivEXT = epoxy_glVertexAttribI2uivEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI3i = epoxy_glVertexAttribI3i_dispatch_table_rewrite_ptr,
-    .glVertexAttribI3iEXT = epoxy_glVertexAttribI3iEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI3iv = epoxy_glVertexAttribI3iv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI3ivEXT = epoxy_glVertexAttribI3ivEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI3ui = epoxy_glVertexAttribI3ui_dispatch_table_rewrite_ptr,
-    .glVertexAttribI3uiEXT = epoxy_glVertexAttribI3uiEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI3uiv = epoxy_glVertexAttribI3uiv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI3uivEXT = epoxy_glVertexAttribI3uivEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4bv = epoxy_glVertexAttribI4bv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4bvEXT = epoxy_glVertexAttribI4bvEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4i = epoxy_glVertexAttribI4i_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4iEXT = epoxy_glVertexAttribI4iEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4iv = epoxy_glVertexAttribI4iv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4ivEXT = epoxy_glVertexAttribI4ivEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4sv = epoxy_glVertexAttribI4sv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4svEXT = epoxy_glVertexAttribI4svEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4ubv = epoxy_glVertexAttribI4ubv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4ubvEXT = epoxy_glVertexAttribI4ubvEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4ui = epoxy_glVertexAttribI4ui_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4uiEXT = epoxy_glVertexAttribI4uiEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4uiv = epoxy_glVertexAttribI4uiv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4uivEXT = epoxy_glVertexAttribI4uivEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4usv = epoxy_glVertexAttribI4usv_dispatch_table_rewrite_ptr,
-    .glVertexAttribI4usvEXT = epoxy_glVertexAttribI4usvEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribIFormat = epoxy_glVertexAttribIFormat_dispatch_table_rewrite_ptr,
-    .glVertexAttribIFormatNV = epoxy_glVertexAttribIFormatNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribIPointer = epoxy_glVertexAttribIPointer_dispatch_table_rewrite_ptr,
-    .glVertexAttribIPointerEXT = epoxy_glVertexAttribIPointerEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribL1d = epoxy_glVertexAttribL1d_dispatch_table_rewrite_ptr,
-    .glVertexAttribL1dEXT = epoxy_glVertexAttribL1dEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribL1dv = epoxy_glVertexAttribL1dv_dispatch_table_rewrite_ptr,
-    .glVertexAttribL1dvEXT = epoxy_glVertexAttribL1dvEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribL1i64NV = epoxy_glVertexAttribL1i64NV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL1i64vNV = epoxy_glVertexAttribL1i64vNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL1ui64ARB = epoxy_glVertexAttribL1ui64ARB_dispatch_table_rewrite_ptr,
-    .glVertexAttribL1ui64NV = epoxy_glVertexAttribL1ui64NV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL1ui64vARB = epoxy_glVertexAttribL1ui64vARB_dispatch_table_rewrite_ptr,
-    .glVertexAttribL1ui64vNV = epoxy_glVertexAttribL1ui64vNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL2d = epoxy_glVertexAttribL2d_dispatch_table_rewrite_ptr,
-    .glVertexAttribL2dEXT = epoxy_glVertexAttribL2dEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribL2dv = epoxy_glVertexAttribL2dv_dispatch_table_rewrite_ptr,
-    .glVertexAttribL2dvEXT = epoxy_glVertexAttribL2dvEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribL2i64NV = epoxy_glVertexAttribL2i64NV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL2i64vNV = epoxy_glVertexAttribL2i64vNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL2ui64NV = epoxy_glVertexAttribL2ui64NV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL2ui64vNV = epoxy_glVertexAttribL2ui64vNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL3d = epoxy_glVertexAttribL3d_dispatch_table_rewrite_ptr,
-    .glVertexAttribL3dEXT = epoxy_glVertexAttribL3dEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribL3dv = epoxy_glVertexAttribL3dv_dispatch_table_rewrite_ptr,
-    .glVertexAttribL3dvEXT = epoxy_glVertexAttribL3dvEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribL3i64NV = epoxy_glVertexAttribL3i64NV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL3i64vNV = epoxy_glVertexAttribL3i64vNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL3ui64NV = epoxy_glVertexAttribL3ui64NV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL3ui64vNV = epoxy_glVertexAttribL3ui64vNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL4d = epoxy_glVertexAttribL4d_dispatch_table_rewrite_ptr,
-    .glVertexAttribL4dEXT = epoxy_glVertexAttribL4dEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribL4dv = epoxy_glVertexAttribL4dv_dispatch_table_rewrite_ptr,
-    .glVertexAttribL4dvEXT = epoxy_glVertexAttribL4dvEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribL4i64NV = epoxy_glVertexAttribL4i64NV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL4i64vNV = epoxy_glVertexAttribL4i64vNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL4ui64NV = epoxy_glVertexAttribL4ui64NV_dispatch_table_rewrite_ptr,
-    .glVertexAttribL4ui64vNV = epoxy_glVertexAttribL4ui64vNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribLFormat = epoxy_glVertexAttribLFormat_dispatch_table_rewrite_ptr,
-    .glVertexAttribLFormatNV = epoxy_glVertexAttribLFormatNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribLPointer = epoxy_glVertexAttribLPointer_dispatch_table_rewrite_ptr,
-    .glVertexAttribLPointerEXT = epoxy_glVertexAttribLPointerEXT_dispatch_table_rewrite_ptr,
-    .glVertexAttribP1ui = epoxy_glVertexAttribP1ui_dispatch_table_rewrite_ptr,
-    .glVertexAttribP1uiv = epoxy_glVertexAttribP1uiv_dispatch_table_rewrite_ptr,
-    .glVertexAttribP2ui = epoxy_glVertexAttribP2ui_dispatch_table_rewrite_ptr,
-    .glVertexAttribP2uiv = epoxy_glVertexAttribP2uiv_dispatch_table_rewrite_ptr,
-    .glVertexAttribP3ui = epoxy_glVertexAttribP3ui_dispatch_table_rewrite_ptr,
-    .glVertexAttribP3uiv = epoxy_glVertexAttribP3uiv_dispatch_table_rewrite_ptr,
-    .glVertexAttribP4ui = epoxy_glVertexAttribP4ui_dispatch_table_rewrite_ptr,
-    .glVertexAttribP4uiv = epoxy_glVertexAttribP4uiv_dispatch_table_rewrite_ptr,
-    .glVertexAttribParameteriAMD = epoxy_glVertexAttribParameteriAMD_dispatch_table_rewrite_ptr,
-    .glVertexAttribPointer = epoxy_glVertexAttribPointer_dispatch_table_rewrite_ptr,
-    .glVertexAttribPointerARB = epoxy_glVertexAttribPointerARB_dispatch_table_rewrite_ptr,
-    .glVertexAttribPointerNV = epoxy_glVertexAttribPointerNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs1dvNV = epoxy_glVertexAttribs1dvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs1fvNV = epoxy_glVertexAttribs1fvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs1hvNV = epoxy_glVertexAttribs1hvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs1svNV = epoxy_glVertexAttribs1svNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs2dvNV = epoxy_glVertexAttribs2dvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs2fvNV = epoxy_glVertexAttribs2fvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs2hvNV = epoxy_glVertexAttribs2hvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs2svNV = epoxy_glVertexAttribs2svNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs3dvNV = epoxy_glVertexAttribs3dvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs3fvNV = epoxy_glVertexAttribs3fvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs3hvNV = epoxy_glVertexAttribs3hvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs3svNV = epoxy_glVertexAttribs3svNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs4dvNV = epoxy_glVertexAttribs4dvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs4fvNV = epoxy_glVertexAttribs4fvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs4hvNV = epoxy_glVertexAttribs4hvNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs4svNV = epoxy_glVertexAttribs4svNV_dispatch_table_rewrite_ptr,
-    .glVertexAttribs4ubvNV = epoxy_glVertexAttribs4ubvNV_dispatch_table_rewrite_ptr,
-    .glVertexBindingDivisor = epoxy_glVertexBindingDivisor_dispatch_table_rewrite_ptr,
-    .glVertexBlendARB = epoxy_glVertexBlendARB_dispatch_table_rewrite_ptr,
-    .glVertexBlendEnvfATI = epoxy_glVertexBlendEnvfATI_dispatch_table_rewrite_ptr,
-    .glVertexBlendEnviATI = epoxy_glVertexBlendEnviATI_dispatch_table_rewrite_ptr,
-    .glVertexFormatNV = epoxy_glVertexFormatNV_dispatch_table_rewrite_ptr,
-    .glVertexP2ui = epoxy_glVertexP2ui_dispatch_table_rewrite_ptr,
-    .glVertexP2uiv = epoxy_glVertexP2uiv_dispatch_table_rewrite_ptr,
-    .glVertexP3ui = epoxy_glVertexP3ui_dispatch_table_rewrite_ptr,
-    .glVertexP3uiv = epoxy_glVertexP3uiv_dispatch_table_rewrite_ptr,
-    .glVertexP4ui = epoxy_glVertexP4ui_dispatch_table_rewrite_ptr,
-    .glVertexP4uiv = epoxy_glVertexP4uiv_dispatch_table_rewrite_ptr,
-    .glVertexPointer = epoxy_glVertexPointer_dispatch_table_rewrite_ptr,
-    .glVertexPointerEXT = epoxy_glVertexPointerEXT_dispatch_table_rewrite_ptr,
-    .glVertexPointerListIBM = epoxy_glVertexPointerListIBM_dispatch_table_rewrite_ptr,
-    .glVertexPointervINTEL = epoxy_glVertexPointervINTEL_dispatch_table_rewrite_ptr,
-    .glVertexStream1dATI = epoxy_glVertexStream1dATI_dispatch_table_rewrite_ptr,
-    .glVertexStream1dvATI = epoxy_glVertexStream1dvATI_dispatch_table_rewrite_ptr,
-    .glVertexStream1fATI = epoxy_glVertexStream1fATI_dispatch_table_rewrite_ptr,
-    .glVertexStream1fvATI = epoxy_glVertexStream1fvATI_dispatch_table_rewrite_ptr,
-    .glVertexStream1iATI = epoxy_glVertexStream1iATI_dispatch_table_rewrite_ptr,
-    .glVertexStream1ivATI = epoxy_glVertexStream1ivATI_dispatch_table_rewrite_ptr,
-    .glVertexStream1sATI = epoxy_glVertexStream1sATI_dispatch_table_rewrite_ptr,
-    .glVertexStream1svATI = epoxy_glVertexStream1svATI_dispatch_table_rewrite_ptr,
-    .glVertexStream2dATI = epoxy_glVertexStream2dATI_dispatch_table_rewrite_ptr,
-    .glVertexStream2dvATI = epoxy_glVertexStream2dvATI_dispatch_table_rewrite_ptr,
-    .glVertexStream2fATI = epoxy_glVertexStream2fATI_dispatch_table_rewrite_ptr,
-    .glVertexStream2fvATI = epoxy_glVertexStream2fvATI_dispatch_table_rewrite_ptr,
-    .glVertexStream2iATI = epoxy_glVertexStream2iATI_dispatch_table_rewrite_ptr,
-    .glVertexStream2ivATI = epoxy_glVertexStream2ivATI_dispatch_table_rewrite_ptr,
-    .glVertexStream2sATI = epoxy_glVertexStream2sATI_dispatch_table_rewrite_ptr,
-    .glVertexStream2svATI = epoxy_glVertexStream2svATI_dispatch_table_rewrite_ptr,
-    .glVertexStream3dATI = epoxy_glVertexStream3dATI_dispatch_table_rewrite_ptr,
-    .glVertexStream3dvATI = epoxy_glVertexStream3dvATI_dispatch_table_rewrite_ptr,
-    .glVertexStream3fATI = epoxy_glVertexStream3fATI_dispatch_table_rewrite_ptr,
-    .glVertexStream3fvATI = epoxy_glVertexStream3fvATI_dispatch_table_rewrite_ptr,
-    .glVertexStream3iATI = epoxy_glVertexStream3iATI_dispatch_table_rewrite_ptr,
-    .glVertexStream3ivATI = epoxy_glVertexStream3ivATI_dispatch_table_rewrite_ptr,
-    .glVertexStream3sATI = epoxy_glVertexStream3sATI_dispatch_table_rewrite_ptr,
-    .glVertexStream3svATI = epoxy_glVertexStream3svATI_dispatch_table_rewrite_ptr,
-    .glVertexStream4dATI = epoxy_glVertexStream4dATI_dispatch_table_rewrite_ptr,
-    .glVertexStream4dvATI = epoxy_glVertexStream4dvATI_dispatch_table_rewrite_ptr,
-    .glVertexStream4fATI = epoxy_glVertexStream4fATI_dispatch_table_rewrite_ptr,
-    .glVertexStream4fvATI = epoxy_glVertexStream4fvATI_dispatch_table_rewrite_ptr,
-    .glVertexStream4iATI = epoxy_glVertexStream4iATI_dispatch_table_rewrite_ptr,
-    .glVertexStream4ivATI = epoxy_glVertexStream4ivATI_dispatch_table_rewrite_ptr,
-    .glVertexStream4sATI = epoxy_glVertexStream4sATI_dispatch_table_rewrite_ptr,
-    .glVertexStream4svATI = epoxy_glVertexStream4svATI_dispatch_table_rewrite_ptr,
-    .glVertexWeightPointerEXT = epoxy_glVertexWeightPointerEXT_dispatch_table_rewrite_ptr,
-    .glVertexWeightfEXT = epoxy_glVertexWeightfEXT_dispatch_table_rewrite_ptr,
-    .glVertexWeightfvEXT = epoxy_glVertexWeightfvEXT_dispatch_table_rewrite_ptr,
-    .glVertexWeighthNV = epoxy_glVertexWeighthNV_dispatch_table_rewrite_ptr,
-    .glVertexWeighthvNV = epoxy_glVertexWeighthvNV_dispatch_table_rewrite_ptr,
-    .glVideoCaptureNV = epoxy_glVideoCaptureNV_dispatch_table_rewrite_ptr,
-    .glVideoCaptureStreamParameterdvNV = epoxy_glVideoCaptureStreamParameterdvNV_dispatch_table_rewrite_ptr,
-    .glVideoCaptureStreamParameterfvNV = epoxy_glVideoCaptureStreamParameterfvNV_dispatch_table_rewrite_ptr,
-    .glVideoCaptureStreamParameterivNV = epoxy_glVideoCaptureStreamParameterivNV_dispatch_table_rewrite_ptr,
-    .glViewport = epoxy_glViewport_dispatch_table_rewrite_ptr,
-    .glViewportArrayv = epoxy_glViewportArrayv_dispatch_table_rewrite_ptr,
-    .glViewportArrayvNV = epoxy_glViewportArrayvNV_dispatch_table_rewrite_ptr,
-    .glViewportIndexedf = epoxy_glViewportIndexedf_dispatch_table_rewrite_ptr,
-    .glViewportIndexedfNV = epoxy_glViewportIndexedfNV_dispatch_table_rewrite_ptr,
-    .glViewportIndexedfv = epoxy_glViewportIndexedfv_dispatch_table_rewrite_ptr,
-    .glViewportIndexedfvNV = epoxy_glViewportIndexedfvNV_dispatch_table_rewrite_ptr,
-    .glWaitSync = epoxy_glWaitSync_dispatch_table_rewrite_ptr,
-    .glWaitSyncAPPLE = epoxy_glWaitSyncAPPLE_dispatch_table_rewrite_ptr,
-    .glWeightPathsNV = epoxy_glWeightPathsNV_dispatch_table_rewrite_ptr,
-    .glWeightPointerARB = epoxy_glWeightPointerARB_dispatch_table_rewrite_ptr,
-    .glWeightPointerOES = epoxy_glWeightPointerOES_dispatch_table_rewrite_ptr,
-    .glWeightbvARB = epoxy_glWeightbvARB_dispatch_table_rewrite_ptr,
-    .glWeightdvARB = epoxy_glWeightdvARB_dispatch_table_rewrite_ptr,
-    .glWeightfvARB = epoxy_glWeightfvARB_dispatch_table_rewrite_ptr,
-    .glWeightivARB = epoxy_glWeightivARB_dispatch_table_rewrite_ptr,
-    .glWeightsvARB = epoxy_glWeightsvARB_dispatch_table_rewrite_ptr,
-    .glWeightubvARB = epoxy_glWeightubvARB_dispatch_table_rewrite_ptr,
-    .glWeightuivARB = epoxy_glWeightuivARB_dispatch_table_rewrite_ptr,
-    .glWeightusvARB = epoxy_glWeightusvARB_dispatch_table_rewrite_ptr,
-    .glWindowPos2d = epoxy_glWindowPos2d_dispatch_table_rewrite_ptr,
-    .glWindowPos2dARB = epoxy_glWindowPos2dARB_dispatch_table_rewrite_ptr,
-    .glWindowPos2dMESA = epoxy_glWindowPos2dMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos2dv = epoxy_glWindowPos2dv_dispatch_table_rewrite_ptr,
-    .glWindowPos2dvARB = epoxy_glWindowPos2dvARB_dispatch_table_rewrite_ptr,
-    .glWindowPos2dvMESA = epoxy_glWindowPos2dvMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos2f = epoxy_glWindowPos2f_dispatch_table_rewrite_ptr,
-    .glWindowPos2fARB = epoxy_glWindowPos2fARB_dispatch_table_rewrite_ptr,
-    .glWindowPos2fMESA = epoxy_glWindowPos2fMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos2fv = epoxy_glWindowPos2fv_dispatch_table_rewrite_ptr,
-    .glWindowPos2fvARB = epoxy_glWindowPos2fvARB_dispatch_table_rewrite_ptr,
-    .glWindowPos2fvMESA = epoxy_glWindowPos2fvMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos2i = epoxy_glWindowPos2i_dispatch_table_rewrite_ptr,
-    .glWindowPos2iARB = epoxy_glWindowPos2iARB_dispatch_table_rewrite_ptr,
-    .glWindowPos2iMESA = epoxy_glWindowPos2iMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos2iv = epoxy_glWindowPos2iv_dispatch_table_rewrite_ptr,
-    .glWindowPos2ivARB = epoxy_glWindowPos2ivARB_dispatch_table_rewrite_ptr,
-    .glWindowPos2ivMESA = epoxy_glWindowPos2ivMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos2s = epoxy_glWindowPos2s_dispatch_table_rewrite_ptr,
-    .glWindowPos2sARB = epoxy_glWindowPos2sARB_dispatch_table_rewrite_ptr,
-    .glWindowPos2sMESA = epoxy_glWindowPos2sMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos2sv = epoxy_glWindowPos2sv_dispatch_table_rewrite_ptr,
-    .glWindowPos2svARB = epoxy_glWindowPos2svARB_dispatch_table_rewrite_ptr,
-    .glWindowPos2svMESA = epoxy_glWindowPos2svMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos3d = epoxy_glWindowPos3d_dispatch_table_rewrite_ptr,
-    .glWindowPos3dARB = epoxy_glWindowPos3dARB_dispatch_table_rewrite_ptr,
-    .glWindowPos3dMESA = epoxy_glWindowPos3dMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos3dv = epoxy_glWindowPos3dv_dispatch_table_rewrite_ptr,
-    .glWindowPos3dvARB = epoxy_glWindowPos3dvARB_dispatch_table_rewrite_ptr,
-    .glWindowPos3dvMESA = epoxy_glWindowPos3dvMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos3f = epoxy_glWindowPos3f_dispatch_table_rewrite_ptr,
-    .glWindowPos3fARB = epoxy_glWindowPos3fARB_dispatch_table_rewrite_ptr,
-    .glWindowPos3fMESA = epoxy_glWindowPos3fMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos3fv = epoxy_glWindowPos3fv_dispatch_table_rewrite_ptr,
-    .glWindowPos3fvARB = epoxy_glWindowPos3fvARB_dispatch_table_rewrite_ptr,
-    .glWindowPos3fvMESA = epoxy_glWindowPos3fvMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos3i = epoxy_glWindowPos3i_dispatch_table_rewrite_ptr,
-    .glWindowPos3iARB = epoxy_glWindowPos3iARB_dispatch_table_rewrite_ptr,
-    .glWindowPos3iMESA = epoxy_glWindowPos3iMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos3iv = epoxy_glWindowPos3iv_dispatch_table_rewrite_ptr,
-    .glWindowPos3ivARB = epoxy_glWindowPos3ivARB_dispatch_table_rewrite_ptr,
-    .glWindowPos3ivMESA = epoxy_glWindowPos3ivMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos3s = epoxy_glWindowPos3s_dispatch_table_rewrite_ptr,
-    .glWindowPos3sARB = epoxy_glWindowPos3sARB_dispatch_table_rewrite_ptr,
-    .glWindowPos3sMESA = epoxy_glWindowPos3sMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos3sv = epoxy_glWindowPos3sv_dispatch_table_rewrite_ptr,
-    .glWindowPos3svARB = epoxy_glWindowPos3svARB_dispatch_table_rewrite_ptr,
-    .glWindowPos3svMESA = epoxy_glWindowPos3svMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos4dMESA = epoxy_glWindowPos4dMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos4dvMESA = epoxy_glWindowPos4dvMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos4fMESA = epoxy_glWindowPos4fMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos4fvMESA = epoxy_glWindowPos4fvMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos4iMESA = epoxy_glWindowPos4iMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos4ivMESA = epoxy_glWindowPos4ivMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos4sMESA = epoxy_glWindowPos4sMESA_dispatch_table_rewrite_ptr,
-    .glWindowPos4svMESA = epoxy_glWindowPos4svMESA_dispatch_table_rewrite_ptr,
-    .glWriteMaskEXT = epoxy_glWriteMaskEXT_dispatch_table_rewrite_ptr,
+    epoxy_glAccum_dispatch_table_rewrite_ptr, /* glAccum */
+    epoxy_glAccumxOES_dispatch_table_rewrite_ptr, /* glAccumxOES */
+    epoxy_glActiveProgramEXT_dispatch_table_rewrite_ptr, /* glActiveProgramEXT */
+    epoxy_glActiveShaderProgram_dispatch_table_rewrite_ptr, /* glActiveShaderProgram */
+    epoxy_glActiveShaderProgramEXT_dispatch_table_rewrite_ptr, /* glActiveShaderProgramEXT */
+    epoxy_glActiveStencilFaceEXT_dispatch_table_rewrite_ptr, /* glActiveStencilFaceEXT */
+    epoxy_glActiveTexture_dispatch_table_rewrite_ptr, /* glActiveTexture */
+    epoxy_glActiveTextureARB_dispatch_table_rewrite_ptr, /* glActiveTextureARB */
+    epoxy_glActiveVaryingNV_dispatch_table_rewrite_ptr, /* glActiveVaryingNV */
+    epoxy_glAlphaFragmentOp1ATI_dispatch_table_rewrite_ptr, /* glAlphaFragmentOp1ATI */
+    epoxy_glAlphaFragmentOp2ATI_dispatch_table_rewrite_ptr, /* glAlphaFragmentOp2ATI */
+    epoxy_glAlphaFragmentOp3ATI_dispatch_table_rewrite_ptr, /* glAlphaFragmentOp3ATI */
+    epoxy_glAlphaFunc_dispatch_table_rewrite_ptr, /* glAlphaFunc */
+    epoxy_glAlphaFuncQCOM_dispatch_table_rewrite_ptr, /* glAlphaFuncQCOM */
+    epoxy_glAlphaFuncx_dispatch_table_rewrite_ptr, /* glAlphaFuncx */
+    epoxy_glAlphaFuncxOES_dispatch_table_rewrite_ptr, /* glAlphaFuncxOES */
+    epoxy_glApplyTextureEXT_dispatch_table_rewrite_ptr, /* glApplyTextureEXT */
+    epoxy_glAreProgramsResidentNV_dispatch_table_rewrite_ptr, /* glAreProgramsResidentNV */
+    epoxy_glAreTexturesResident_dispatch_table_rewrite_ptr, /* glAreTexturesResident */
+    epoxy_glAreTexturesResidentEXT_dispatch_table_rewrite_ptr, /* glAreTexturesResidentEXT */
+    epoxy_glArrayElement_dispatch_table_rewrite_ptr, /* glArrayElement */
+    epoxy_glArrayElementEXT_dispatch_table_rewrite_ptr, /* glArrayElementEXT */
+    epoxy_glArrayObjectATI_dispatch_table_rewrite_ptr, /* glArrayObjectATI */
+    epoxy_glAsyncMarkerSGIX_dispatch_table_rewrite_ptr, /* glAsyncMarkerSGIX */
+    epoxy_glAttachObjectARB_dispatch_table_rewrite_ptr, /* glAttachObjectARB */
+    epoxy_glAttachShader_dispatch_table_rewrite_ptr, /* glAttachShader */
+    epoxy_glBegin_unwrapped_dispatch_table_rewrite_ptr, /* glBegin_unwrapped */
+    epoxy_glBeginConditionalRender_dispatch_table_rewrite_ptr, /* glBeginConditionalRender */
+    epoxy_glBeginConditionalRenderNV_dispatch_table_rewrite_ptr, /* glBeginConditionalRenderNV */
+    epoxy_glBeginConditionalRenderNVX_dispatch_table_rewrite_ptr, /* glBeginConditionalRenderNVX */
+    epoxy_glBeginFragmentShaderATI_dispatch_table_rewrite_ptr, /* glBeginFragmentShaderATI */
+    epoxy_glBeginOcclusionQueryNV_dispatch_table_rewrite_ptr, /* glBeginOcclusionQueryNV */
+    epoxy_glBeginPerfMonitorAMD_dispatch_table_rewrite_ptr, /* glBeginPerfMonitorAMD */
+    epoxy_glBeginPerfQueryINTEL_dispatch_table_rewrite_ptr, /* glBeginPerfQueryINTEL */
+    epoxy_glBeginQuery_dispatch_table_rewrite_ptr, /* glBeginQuery */
+    epoxy_glBeginQueryARB_dispatch_table_rewrite_ptr, /* glBeginQueryARB */
+    epoxy_glBeginQueryEXT_dispatch_table_rewrite_ptr, /* glBeginQueryEXT */
+    epoxy_glBeginQueryIndexed_dispatch_table_rewrite_ptr, /* glBeginQueryIndexed */
+    epoxy_glBeginTransformFeedback_dispatch_table_rewrite_ptr, /* glBeginTransformFeedback */
+    epoxy_glBeginTransformFeedbackEXT_dispatch_table_rewrite_ptr, /* glBeginTransformFeedbackEXT */
+    epoxy_glBeginTransformFeedbackNV_dispatch_table_rewrite_ptr, /* glBeginTransformFeedbackNV */
+    epoxy_glBeginVertexShaderEXT_dispatch_table_rewrite_ptr, /* glBeginVertexShaderEXT */
+    epoxy_glBeginVideoCaptureNV_dispatch_table_rewrite_ptr, /* glBeginVideoCaptureNV */
+    epoxy_glBindAttribLocation_dispatch_table_rewrite_ptr, /* glBindAttribLocation */
+    epoxy_glBindAttribLocationARB_dispatch_table_rewrite_ptr, /* glBindAttribLocationARB */
+    epoxy_glBindBuffer_dispatch_table_rewrite_ptr, /* glBindBuffer */
+    epoxy_glBindBufferARB_dispatch_table_rewrite_ptr, /* glBindBufferARB */
+    epoxy_glBindBufferBase_dispatch_table_rewrite_ptr, /* glBindBufferBase */
+    epoxy_glBindBufferBaseEXT_dispatch_table_rewrite_ptr, /* glBindBufferBaseEXT */
+    epoxy_glBindBufferBaseNV_dispatch_table_rewrite_ptr, /* glBindBufferBaseNV */
+    epoxy_glBindBufferOffsetEXT_dispatch_table_rewrite_ptr, /* glBindBufferOffsetEXT */
+    epoxy_glBindBufferOffsetNV_dispatch_table_rewrite_ptr, /* glBindBufferOffsetNV */
+    epoxy_glBindBufferRange_dispatch_table_rewrite_ptr, /* glBindBufferRange */
+    epoxy_glBindBufferRangeEXT_dispatch_table_rewrite_ptr, /* glBindBufferRangeEXT */
+    epoxy_glBindBufferRangeNV_dispatch_table_rewrite_ptr, /* glBindBufferRangeNV */
+    epoxy_glBindBuffersBase_dispatch_table_rewrite_ptr, /* glBindBuffersBase */
+    epoxy_glBindBuffersRange_dispatch_table_rewrite_ptr, /* glBindBuffersRange */
+    epoxy_glBindFragDataLocation_dispatch_table_rewrite_ptr, /* glBindFragDataLocation */
+    epoxy_glBindFragDataLocationEXT_dispatch_table_rewrite_ptr, /* glBindFragDataLocationEXT */
+    epoxy_glBindFragDataLocationIndexed_dispatch_table_rewrite_ptr, /* glBindFragDataLocationIndexed */
+    epoxy_glBindFragmentShaderATI_dispatch_table_rewrite_ptr, /* glBindFragmentShaderATI */
+    epoxy_glBindFramebuffer_dispatch_table_rewrite_ptr, /* glBindFramebuffer */
+    epoxy_glBindFramebufferEXT_dispatch_table_rewrite_ptr, /* glBindFramebufferEXT */
+    epoxy_glBindFramebufferOES_dispatch_table_rewrite_ptr, /* glBindFramebufferOES */
+    epoxy_glBindImageTexture_dispatch_table_rewrite_ptr, /* glBindImageTexture */
+    epoxy_glBindImageTextureEXT_dispatch_table_rewrite_ptr, /* glBindImageTextureEXT */
+    epoxy_glBindImageTextures_dispatch_table_rewrite_ptr, /* glBindImageTextures */
+    epoxy_glBindLightParameterEXT_dispatch_table_rewrite_ptr, /* glBindLightParameterEXT */
+    epoxy_glBindMaterialParameterEXT_dispatch_table_rewrite_ptr, /* glBindMaterialParameterEXT */
+    epoxy_glBindMultiTextureEXT_dispatch_table_rewrite_ptr, /* glBindMultiTextureEXT */
+    epoxy_glBindParameterEXT_dispatch_table_rewrite_ptr, /* glBindParameterEXT */
+    epoxy_glBindProgramARB_dispatch_table_rewrite_ptr, /* glBindProgramARB */
+    epoxy_glBindProgramNV_dispatch_table_rewrite_ptr, /* glBindProgramNV */
+    epoxy_glBindProgramPipeline_dispatch_table_rewrite_ptr, /* glBindProgramPipeline */
+    epoxy_glBindProgramPipelineEXT_dispatch_table_rewrite_ptr, /* glBindProgramPipelineEXT */
+    epoxy_glBindRenderbuffer_dispatch_table_rewrite_ptr, /* glBindRenderbuffer */
+    epoxy_glBindRenderbufferEXT_dispatch_table_rewrite_ptr, /* glBindRenderbufferEXT */
+    epoxy_glBindRenderbufferOES_dispatch_table_rewrite_ptr, /* glBindRenderbufferOES */
+    epoxy_glBindSampler_dispatch_table_rewrite_ptr, /* glBindSampler */
+    epoxy_glBindSamplers_dispatch_table_rewrite_ptr, /* glBindSamplers */
+    epoxy_glBindTexGenParameterEXT_dispatch_table_rewrite_ptr, /* glBindTexGenParameterEXT */
+    epoxy_glBindTexture_dispatch_table_rewrite_ptr, /* glBindTexture */
+    epoxy_glBindTextureEXT_dispatch_table_rewrite_ptr, /* glBindTextureEXT */
+    epoxy_glBindTextureUnit_dispatch_table_rewrite_ptr, /* glBindTextureUnit */
+    epoxy_glBindTextureUnitParameterEXT_dispatch_table_rewrite_ptr, /* glBindTextureUnitParameterEXT */
+    epoxy_glBindTextures_dispatch_table_rewrite_ptr, /* glBindTextures */
+    epoxy_glBindTransformFeedback_dispatch_table_rewrite_ptr, /* glBindTransformFeedback */
+    epoxy_glBindTransformFeedbackNV_dispatch_table_rewrite_ptr, /* glBindTransformFeedbackNV */
+    epoxy_glBindVertexArray_dispatch_table_rewrite_ptr, /* glBindVertexArray */
+    epoxy_glBindVertexArrayAPPLE_dispatch_table_rewrite_ptr, /* glBindVertexArrayAPPLE */
+    epoxy_glBindVertexArrayOES_dispatch_table_rewrite_ptr, /* glBindVertexArrayOES */
+    epoxy_glBindVertexBuffer_dispatch_table_rewrite_ptr, /* glBindVertexBuffer */
+    epoxy_glBindVertexBuffers_dispatch_table_rewrite_ptr, /* glBindVertexBuffers */
+    epoxy_glBindVertexShaderEXT_dispatch_table_rewrite_ptr, /* glBindVertexShaderEXT */
+    epoxy_glBindVideoCaptureStreamBufferNV_dispatch_table_rewrite_ptr, /* glBindVideoCaptureStreamBufferNV */
+    epoxy_glBindVideoCaptureStreamTextureNV_dispatch_table_rewrite_ptr, /* glBindVideoCaptureStreamTextureNV */
+    epoxy_glBinormal3bEXT_dispatch_table_rewrite_ptr, /* glBinormal3bEXT */
+    epoxy_glBinormal3bvEXT_dispatch_table_rewrite_ptr, /* glBinormal3bvEXT */
+    epoxy_glBinormal3dEXT_dispatch_table_rewrite_ptr, /* glBinormal3dEXT */
+    epoxy_glBinormal3dvEXT_dispatch_table_rewrite_ptr, /* glBinormal3dvEXT */
+    epoxy_glBinormal3fEXT_dispatch_table_rewrite_ptr, /* glBinormal3fEXT */
+    epoxy_glBinormal3fvEXT_dispatch_table_rewrite_ptr, /* glBinormal3fvEXT */
+    epoxy_glBinormal3iEXT_dispatch_table_rewrite_ptr, /* glBinormal3iEXT */
+    epoxy_glBinormal3ivEXT_dispatch_table_rewrite_ptr, /* glBinormal3ivEXT */
+    epoxy_glBinormal3sEXT_dispatch_table_rewrite_ptr, /* glBinormal3sEXT */
+    epoxy_glBinormal3svEXT_dispatch_table_rewrite_ptr, /* glBinormal3svEXT */
+    epoxy_glBinormalPointerEXT_dispatch_table_rewrite_ptr, /* glBinormalPointerEXT */
+    epoxy_glBitmap_dispatch_table_rewrite_ptr, /* glBitmap */
+    epoxy_glBitmapxOES_dispatch_table_rewrite_ptr, /* glBitmapxOES */
+    epoxy_glBlendBarrierKHR_dispatch_table_rewrite_ptr, /* glBlendBarrierKHR */
+    epoxy_glBlendBarrierNV_dispatch_table_rewrite_ptr, /* glBlendBarrierNV */
+    epoxy_glBlendColor_dispatch_table_rewrite_ptr, /* glBlendColor */
+    epoxy_glBlendColorEXT_dispatch_table_rewrite_ptr, /* glBlendColorEXT */
+    epoxy_glBlendColorxOES_dispatch_table_rewrite_ptr, /* glBlendColorxOES */
+    epoxy_glBlendEquation_dispatch_table_rewrite_ptr, /* glBlendEquation */
+    epoxy_glBlendEquationEXT_dispatch_table_rewrite_ptr, /* glBlendEquationEXT */
+    epoxy_glBlendEquationIndexedAMD_dispatch_table_rewrite_ptr, /* glBlendEquationIndexedAMD */
+    epoxy_glBlendEquationOES_dispatch_table_rewrite_ptr, /* glBlendEquationOES */
+    epoxy_glBlendEquationSeparate_dispatch_table_rewrite_ptr, /* glBlendEquationSeparate */
+    epoxy_glBlendEquationSeparateEXT_dispatch_table_rewrite_ptr, /* glBlendEquationSeparateEXT */
+    epoxy_glBlendEquationSeparateIndexedAMD_dispatch_table_rewrite_ptr, /* glBlendEquationSeparateIndexedAMD */
+    epoxy_glBlendEquationSeparateOES_dispatch_table_rewrite_ptr, /* glBlendEquationSeparateOES */
+    epoxy_glBlendEquationSeparatei_dispatch_table_rewrite_ptr, /* glBlendEquationSeparatei */
+    epoxy_glBlendEquationSeparateiARB_dispatch_table_rewrite_ptr, /* glBlendEquationSeparateiARB */
+    epoxy_glBlendEquationSeparateiEXT_dispatch_table_rewrite_ptr, /* glBlendEquationSeparateiEXT */
+    epoxy_glBlendEquationSeparateiOES_dispatch_table_rewrite_ptr, /* glBlendEquationSeparateiOES */
+    epoxy_glBlendEquationi_dispatch_table_rewrite_ptr, /* glBlendEquationi */
+    epoxy_glBlendEquationiARB_dispatch_table_rewrite_ptr, /* glBlendEquationiARB */
+    epoxy_glBlendEquationiEXT_dispatch_table_rewrite_ptr, /* glBlendEquationiEXT */
+    epoxy_glBlendEquationiOES_dispatch_table_rewrite_ptr, /* glBlendEquationiOES */
+    epoxy_glBlendFunc_dispatch_table_rewrite_ptr, /* glBlendFunc */
+    epoxy_glBlendFuncIndexedAMD_dispatch_table_rewrite_ptr, /* glBlendFuncIndexedAMD */
+    epoxy_glBlendFuncSeparate_dispatch_table_rewrite_ptr, /* glBlendFuncSeparate */
+    epoxy_glBlendFuncSeparateEXT_dispatch_table_rewrite_ptr, /* glBlendFuncSeparateEXT */
+    epoxy_glBlendFuncSeparateINGR_dispatch_table_rewrite_ptr, /* glBlendFuncSeparateINGR */
+    epoxy_glBlendFuncSeparateIndexedAMD_dispatch_table_rewrite_ptr, /* glBlendFuncSeparateIndexedAMD */
+    epoxy_glBlendFuncSeparateOES_dispatch_table_rewrite_ptr, /* glBlendFuncSeparateOES */
+    epoxy_glBlendFuncSeparatei_dispatch_table_rewrite_ptr, /* glBlendFuncSeparatei */
+    epoxy_glBlendFuncSeparateiARB_dispatch_table_rewrite_ptr, /* glBlendFuncSeparateiARB */
+    epoxy_glBlendFuncSeparateiEXT_dispatch_table_rewrite_ptr, /* glBlendFuncSeparateiEXT */
+    epoxy_glBlendFuncSeparateiOES_dispatch_table_rewrite_ptr, /* glBlendFuncSeparateiOES */
+    epoxy_glBlendFunci_dispatch_table_rewrite_ptr, /* glBlendFunci */
+    epoxy_glBlendFunciARB_dispatch_table_rewrite_ptr, /* glBlendFunciARB */
+    epoxy_glBlendFunciEXT_dispatch_table_rewrite_ptr, /* glBlendFunciEXT */
+    epoxy_glBlendFunciOES_dispatch_table_rewrite_ptr, /* glBlendFunciOES */
+    epoxy_glBlendParameteriNV_dispatch_table_rewrite_ptr, /* glBlendParameteriNV */
+    epoxy_glBlitFramebuffer_dispatch_table_rewrite_ptr, /* glBlitFramebuffer */
+    epoxy_glBlitFramebufferANGLE_dispatch_table_rewrite_ptr, /* glBlitFramebufferANGLE */
+    epoxy_glBlitFramebufferEXT_dispatch_table_rewrite_ptr, /* glBlitFramebufferEXT */
+    epoxy_glBlitFramebufferNV_dispatch_table_rewrite_ptr, /* glBlitFramebufferNV */
+    epoxy_glBlitNamedFramebuffer_dispatch_table_rewrite_ptr, /* glBlitNamedFramebuffer */
+    epoxy_glBufferAddressRangeNV_dispatch_table_rewrite_ptr, /* glBufferAddressRangeNV */
+    epoxy_glBufferData_dispatch_table_rewrite_ptr, /* glBufferData */
+    epoxy_glBufferDataARB_dispatch_table_rewrite_ptr, /* glBufferDataARB */
+    epoxy_glBufferPageCommitmentARB_dispatch_table_rewrite_ptr, /* glBufferPageCommitmentARB */
+    epoxy_glBufferParameteriAPPLE_dispatch_table_rewrite_ptr, /* glBufferParameteriAPPLE */
+    epoxy_glBufferStorage_dispatch_table_rewrite_ptr, /* glBufferStorage */
+    epoxy_glBufferStorageEXT_dispatch_table_rewrite_ptr, /* glBufferStorageEXT */
+    epoxy_glBufferSubData_dispatch_table_rewrite_ptr, /* glBufferSubData */
+    epoxy_glBufferSubDataARB_dispatch_table_rewrite_ptr, /* glBufferSubDataARB */
+    epoxy_glCallCommandListNV_dispatch_table_rewrite_ptr, /* glCallCommandListNV */
+    epoxy_glCallList_dispatch_table_rewrite_ptr, /* glCallList */
+    epoxy_glCallLists_dispatch_table_rewrite_ptr, /* glCallLists */
+    epoxy_glCheckFramebufferStatus_dispatch_table_rewrite_ptr, /* glCheckFramebufferStatus */
+    epoxy_glCheckFramebufferStatusEXT_dispatch_table_rewrite_ptr, /* glCheckFramebufferStatusEXT */
+    epoxy_glCheckFramebufferStatusOES_dispatch_table_rewrite_ptr, /* glCheckFramebufferStatusOES */
+    epoxy_glCheckNamedFramebufferStatus_dispatch_table_rewrite_ptr, /* glCheckNamedFramebufferStatus */
+    epoxy_glCheckNamedFramebufferStatusEXT_dispatch_table_rewrite_ptr, /* glCheckNamedFramebufferStatusEXT */
+    epoxy_glClampColor_dispatch_table_rewrite_ptr, /* glClampColor */
+    epoxy_glClampColorARB_dispatch_table_rewrite_ptr, /* glClampColorARB */
+    epoxy_glClear_dispatch_table_rewrite_ptr, /* glClear */
+    epoxy_glClearAccum_dispatch_table_rewrite_ptr, /* glClearAccum */
+    epoxy_glClearAccumxOES_dispatch_table_rewrite_ptr, /* glClearAccumxOES */
+    epoxy_glClearBufferData_dispatch_table_rewrite_ptr, /* glClearBufferData */
+    epoxy_glClearBufferSubData_dispatch_table_rewrite_ptr, /* glClearBufferSubData */
+    epoxy_glClearBufferfi_dispatch_table_rewrite_ptr, /* glClearBufferfi */
+    epoxy_glClearBufferfv_dispatch_table_rewrite_ptr, /* glClearBufferfv */
+    epoxy_glClearBufferiv_dispatch_table_rewrite_ptr, /* glClearBufferiv */
+    epoxy_glClearBufferuiv_dispatch_table_rewrite_ptr, /* glClearBufferuiv */
+    epoxy_glClearColor_dispatch_table_rewrite_ptr, /* glClearColor */
+    epoxy_glClearColorIiEXT_dispatch_table_rewrite_ptr, /* glClearColorIiEXT */
+    epoxy_glClearColorIuiEXT_dispatch_table_rewrite_ptr, /* glClearColorIuiEXT */
+    epoxy_glClearColorx_dispatch_table_rewrite_ptr, /* glClearColorx */
+    epoxy_glClearColorxOES_dispatch_table_rewrite_ptr, /* glClearColorxOES */
+    epoxy_glClearDepth_dispatch_table_rewrite_ptr, /* glClearDepth */
+    epoxy_glClearDepthdNV_dispatch_table_rewrite_ptr, /* glClearDepthdNV */
+    epoxy_glClearDepthf_dispatch_table_rewrite_ptr, /* glClearDepthf */
+    epoxy_glClearDepthfOES_dispatch_table_rewrite_ptr, /* glClearDepthfOES */
+    epoxy_glClearDepthx_dispatch_table_rewrite_ptr, /* glClearDepthx */
+    epoxy_glClearDepthxOES_dispatch_table_rewrite_ptr, /* glClearDepthxOES */
+    epoxy_glClearIndex_dispatch_table_rewrite_ptr, /* glClearIndex */
+    epoxy_glClearNamedBufferData_dispatch_table_rewrite_ptr, /* glClearNamedBufferData */
+    epoxy_glClearNamedBufferDataEXT_dispatch_table_rewrite_ptr, /* glClearNamedBufferDataEXT */
+    epoxy_glClearNamedBufferSubData_dispatch_table_rewrite_ptr, /* glClearNamedBufferSubData */
+    epoxy_glClearNamedBufferSubDataEXT_dispatch_table_rewrite_ptr, /* glClearNamedBufferSubDataEXT */
+    epoxy_glClearNamedFramebufferfi_dispatch_table_rewrite_ptr, /* glClearNamedFramebufferfi */
+    epoxy_glClearNamedFramebufferfv_dispatch_table_rewrite_ptr, /* glClearNamedFramebufferfv */
+    epoxy_glClearNamedFramebufferiv_dispatch_table_rewrite_ptr, /* glClearNamedFramebufferiv */
+    epoxy_glClearNamedFramebufferuiv_dispatch_table_rewrite_ptr, /* glClearNamedFramebufferuiv */
+    epoxy_glClearStencil_dispatch_table_rewrite_ptr, /* glClearStencil */
+    epoxy_glClearTexImage_dispatch_table_rewrite_ptr, /* glClearTexImage */
+    epoxy_glClearTexSubImage_dispatch_table_rewrite_ptr, /* glClearTexSubImage */
+    epoxy_glClientActiveTexture_dispatch_table_rewrite_ptr, /* glClientActiveTexture */
+    epoxy_glClientActiveTextureARB_dispatch_table_rewrite_ptr, /* glClientActiveTextureARB */
+    epoxy_glClientActiveVertexStreamATI_dispatch_table_rewrite_ptr, /* glClientActiveVertexStreamATI */
+    epoxy_glClientAttribDefaultEXT_dispatch_table_rewrite_ptr, /* glClientAttribDefaultEXT */
+    epoxy_glClientWaitSync_dispatch_table_rewrite_ptr, /* glClientWaitSync */
+    epoxy_glClientWaitSyncAPPLE_dispatch_table_rewrite_ptr, /* glClientWaitSyncAPPLE */
+    epoxy_glClipControl_dispatch_table_rewrite_ptr, /* glClipControl */
+    epoxy_glClipPlane_dispatch_table_rewrite_ptr, /* glClipPlane */
+    epoxy_glClipPlanef_dispatch_table_rewrite_ptr, /* glClipPlanef */
+    epoxy_glClipPlanefIMG_dispatch_table_rewrite_ptr, /* glClipPlanefIMG */
+    epoxy_glClipPlanefOES_dispatch_table_rewrite_ptr, /* glClipPlanefOES */
+    epoxy_glClipPlanex_dispatch_table_rewrite_ptr, /* glClipPlanex */
+    epoxy_glClipPlanexIMG_dispatch_table_rewrite_ptr, /* glClipPlanexIMG */
+    epoxy_glClipPlanexOES_dispatch_table_rewrite_ptr, /* glClipPlanexOES */
+    epoxy_glColor3b_dispatch_table_rewrite_ptr, /* glColor3b */
+    epoxy_glColor3bv_dispatch_table_rewrite_ptr, /* glColor3bv */
+    epoxy_glColor3d_dispatch_table_rewrite_ptr, /* glColor3d */
+    epoxy_glColor3dv_dispatch_table_rewrite_ptr, /* glColor3dv */
+    epoxy_glColor3f_dispatch_table_rewrite_ptr, /* glColor3f */
+    epoxy_glColor3fVertex3fSUN_dispatch_table_rewrite_ptr, /* glColor3fVertex3fSUN */
+    epoxy_glColor3fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glColor3fVertex3fvSUN */
+    epoxy_glColor3fv_dispatch_table_rewrite_ptr, /* glColor3fv */
+    epoxy_glColor3hNV_dispatch_table_rewrite_ptr, /* glColor3hNV */
+    epoxy_glColor3hvNV_dispatch_table_rewrite_ptr, /* glColor3hvNV */
+    epoxy_glColor3i_dispatch_table_rewrite_ptr, /* glColor3i */
+    epoxy_glColor3iv_dispatch_table_rewrite_ptr, /* glColor3iv */
+    epoxy_glColor3s_dispatch_table_rewrite_ptr, /* glColor3s */
+    epoxy_glColor3sv_dispatch_table_rewrite_ptr, /* glColor3sv */
+    epoxy_glColor3ub_dispatch_table_rewrite_ptr, /* glColor3ub */
+    epoxy_glColor3ubv_dispatch_table_rewrite_ptr, /* glColor3ubv */
+    epoxy_glColor3ui_dispatch_table_rewrite_ptr, /* glColor3ui */
+    epoxy_glColor3uiv_dispatch_table_rewrite_ptr, /* glColor3uiv */
+    epoxy_glColor3us_dispatch_table_rewrite_ptr, /* glColor3us */
+    epoxy_glColor3usv_dispatch_table_rewrite_ptr, /* glColor3usv */
+    epoxy_glColor3xOES_dispatch_table_rewrite_ptr, /* glColor3xOES */
+    epoxy_glColor3xvOES_dispatch_table_rewrite_ptr, /* glColor3xvOES */
+    epoxy_glColor4b_dispatch_table_rewrite_ptr, /* glColor4b */
+    epoxy_glColor4bv_dispatch_table_rewrite_ptr, /* glColor4bv */
+    epoxy_glColor4d_dispatch_table_rewrite_ptr, /* glColor4d */
+    epoxy_glColor4dv_dispatch_table_rewrite_ptr, /* glColor4dv */
+    epoxy_glColor4f_dispatch_table_rewrite_ptr, /* glColor4f */
+    epoxy_glColor4fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr, /* glColor4fNormal3fVertex3fSUN */
+    epoxy_glColor4fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glColor4fNormal3fVertex3fvSUN */
+    epoxy_glColor4fv_dispatch_table_rewrite_ptr, /* glColor4fv */
+    epoxy_glColor4hNV_dispatch_table_rewrite_ptr, /* glColor4hNV */
+    epoxy_glColor4hvNV_dispatch_table_rewrite_ptr, /* glColor4hvNV */
+    epoxy_glColor4i_dispatch_table_rewrite_ptr, /* glColor4i */
+    epoxy_glColor4iv_dispatch_table_rewrite_ptr, /* glColor4iv */
+    epoxy_glColor4s_dispatch_table_rewrite_ptr, /* glColor4s */
+    epoxy_glColor4sv_dispatch_table_rewrite_ptr, /* glColor4sv */
+    epoxy_glColor4ub_dispatch_table_rewrite_ptr, /* glColor4ub */
+    epoxy_glColor4ubVertex2fSUN_dispatch_table_rewrite_ptr, /* glColor4ubVertex2fSUN */
+    epoxy_glColor4ubVertex2fvSUN_dispatch_table_rewrite_ptr, /* glColor4ubVertex2fvSUN */
+    epoxy_glColor4ubVertex3fSUN_dispatch_table_rewrite_ptr, /* glColor4ubVertex3fSUN */
+    epoxy_glColor4ubVertex3fvSUN_dispatch_table_rewrite_ptr, /* glColor4ubVertex3fvSUN */
+    epoxy_glColor4ubv_dispatch_table_rewrite_ptr, /* glColor4ubv */
+    epoxy_glColor4ui_dispatch_table_rewrite_ptr, /* glColor4ui */
+    epoxy_glColor4uiv_dispatch_table_rewrite_ptr, /* glColor4uiv */
+    epoxy_glColor4us_dispatch_table_rewrite_ptr, /* glColor4us */
+    epoxy_glColor4usv_dispatch_table_rewrite_ptr, /* glColor4usv */
+    epoxy_glColor4x_dispatch_table_rewrite_ptr, /* glColor4x */
+    epoxy_glColor4xOES_dispatch_table_rewrite_ptr, /* glColor4xOES */
+    epoxy_glColor4xvOES_dispatch_table_rewrite_ptr, /* glColor4xvOES */
+    epoxy_glColorFormatNV_dispatch_table_rewrite_ptr, /* glColorFormatNV */
+    epoxy_glColorFragmentOp1ATI_dispatch_table_rewrite_ptr, /* glColorFragmentOp1ATI */
+    epoxy_glColorFragmentOp2ATI_dispatch_table_rewrite_ptr, /* glColorFragmentOp2ATI */
+    epoxy_glColorFragmentOp3ATI_dispatch_table_rewrite_ptr, /* glColorFragmentOp3ATI */
+    epoxy_glColorMask_dispatch_table_rewrite_ptr, /* glColorMask */
+    epoxy_glColorMaskIndexedEXT_dispatch_table_rewrite_ptr, /* glColorMaskIndexedEXT */
+    epoxy_glColorMaski_dispatch_table_rewrite_ptr, /* glColorMaski */
+    epoxy_glColorMaskiEXT_dispatch_table_rewrite_ptr, /* glColorMaskiEXT */
+    epoxy_glColorMaskiOES_dispatch_table_rewrite_ptr, /* glColorMaskiOES */
+    epoxy_glColorMaterial_dispatch_table_rewrite_ptr, /* glColorMaterial */
+    epoxy_glColorP3ui_dispatch_table_rewrite_ptr, /* glColorP3ui */
+    epoxy_glColorP3uiv_dispatch_table_rewrite_ptr, /* glColorP3uiv */
+    epoxy_glColorP4ui_dispatch_table_rewrite_ptr, /* glColorP4ui */
+    epoxy_glColorP4uiv_dispatch_table_rewrite_ptr, /* glColorP4uiv */
+    epoxy_glColorPointer_dispatch_table_rewrite_ptr, /* glColorPointer */
+    epoxy_glColorPointerEXT_dispatch_table_rewrite_ptr, /* glColorPointerEXT */
+    epoxy_glColorPointerListIBM_dispatch_table_rewrite_ptr, /* glColorPointerListIBM */
+    epoxy_glColorPointervINTEL_dispatch_table_rewrite_ptr, /* glColorPointervINTEL */
+    epoxy_glColorSubTable_dispatch_table_rewrite_ptr, /* glColorSubTable */
+    epoxy_glColorSubTableEXT_dispatch_table_rewrite_ptr, /* glColorSubTableEXT */
+    epoxy_glColorTable_dispatch_table_rewrite_ptr, /* glColorTable */
+    epoxy_glColorTableEXT_dispatch_table_rewrite_ptr, /* glColorTableEXT */
+    epoxy_glColorTableParameterfv_dispatch_table_rewrite_ptr, /* glColorTableParameterfv */
+    epoxy_glColorTableParameterfvSGI_dispatch_table_rewrite_ptr, /* glColorTableParameterfvSGI */
+    epoxy_glColorTableParameteriv_dispatch_table_rewrite_ptr, /* glColorTableParameteriv */
+    epoxy_glColorTableParameterivSGI_dispatch_table_rewrite_ptr, /* glColorTableParameterivSGI */
+    epoxy_glColorTableSGI_dispatch_table_rewrite_ptr, /* glColorTableSGI */
+    epoxy_glCombinerInputNV_dispatch_table_rewrite_ptr, /* glCombinerInputNV */
+    epoxy_glCombinerOutputNV_dispatch_table_rewrite_ptr, /* glCombinerOutputNV */
+    epoxy_glCombinerParameterfNV_dispatch_table_rewrite_ptr, /* glCombinerParameterfNV */
+    epoxy_glCombinerParameterfvNV_dispatch_table_rewrite_ptr, /* glCombinerParameterfvNV */
+    epoxy_glCombinerParameteriNV_dispatch_table_rewrite_ptr, /* glCombinerParameteriNV */
+    epoxy_glCombinerParameterivNV_dispatch_table_rewrite_ptr, /* glCombinerParameterivNV */
+    epoxy_glCombinerStageParameterfvNV_dispatch_table_rewrite_ptr, /* glCombinerStageParameterfvNV */
+    epoxy_glCommandListSegmentsNV_dispatch_table_rewrite_ptr, /* glCommandListSegmentsNV */
+    epoxy_glCompileCommandListNV_dispatch_table_rewrite_ptr, /* glCompileCommandListNV */
+    epoxy_glCompileShader_dispatch_table_rewrite_ptr, /* glCompileShader */
+    epoxy_glCompileShaderARB_dispatch_table_rewrite_ptr, /* glCompileShaderARB */
+    epoxy_glCompileShaderIncludeARB_dispatch_table_rewrite_ptr, /* glCompileShaderIncludeARB */
+    epoxy_glCompressedMultiTexImage1DEXT_dispatch_table_rewrite_ptr, /* glCompressedMultiTexImage1DEXT */
+    epoxy_glCompressedMultiTexImage2DEXT_dispatch_table_rewrite_ptr, /* glCompressedMultiTexImage2DEXT */
+    epoxy_glCompressedMultiTexImage3DEXT_dispatch_table_rewrite_ptr, /* glCompressedMultiTexImage3DEXT */
+    epoxy_glCompressedMultiTexSubImage1DEXT_dispatch_table_rewrite_ptr, /* glCompressedMultiTexSubImage1DEXT */
+    epoxy_glCompressedMultiTexSubImage2DEXT_dispatch_table_rewrite_ptr, /* glCompressedMultiTexSubImage2DEXT */
+    epoxy_glCompressedMultiTexSubImage3DEXT_dispatch_table_rewrite_ptr, /* glCompressedMultiTexSubImage3DEXT */
+    epoxy_glCompressedTexImage1D_dispatch_table_rewrite_ptr, /* glCompressedTexImage1D */
+    epoxy_glCompressedTexImage1DARB_dispatch_table_rewrite_ptr, /* glCompressedTexImage1DARB */
+    epoxy_glCompressedTexImage2D_dispatch_table_rewrite_ptr, /* glCompressedTexImage2D */
+    epoxy_glCompressedTexImage2DARB_dispatch_table_rewrite_ptr, /* glCompressedTexImage2DARB */
+    epoxy_glCompressedTexImage3D_dispatch_table_rewrite_ptr, /* glCompressedTexImage3D */
+    epoxy_glCompressedTexImage3DARB_dispatch_table_rewrite_ptr, /* glCompressedTexImage3DARB */
+    epoxy_glCompressedTexImage3DOES_dispatch_table_rewrite_ptr, /* glCompressedTexImage3DOES */
+    epoxy_glCompressedTexSubImage1D_dispatch_table_rewrite_ptr, /* glCompressedTexSubImage1D */
+    epoxy_glCompressedTexSubImage1DARB_dispatch_table_rewrite_ptr, /* glCompressedTexSubImage1DARB */
+    epoxy_glCompressedTexSubImage2D_dispatch_table_rewrite_ptr, /* glCompressedTexSubImage2D */
+    epoxy_glCompressedTexSubImage2DARB_dispatch_table_rewrite_ptr, /* glCompressedTexSubImage2DARB */
+    epoxy_glCompressedTexSubImage3D_dispatch_table_rewrite_ptr, /* glCompressedTexSubImage3D */
+    epoxy_glCompressedTexSubImage3DARB_dispatch_table_rewrite_ptr, /* glCompressedTexSubImage3DARB */
+    epoxy_glCompressedTexSubImage3DOES_dispatch_table_rewrite_ptr, /* glCompressedTexSubImage3DOES */
+    epoxy_glCompressedTextureImage1DEXT_dispatch_table_rewrite_ptr, /* glCompressedTextureImage1DEXT */
+    epoxy_glCompressedTextureImage2DEXT_dispatch_table_rewrite_ptr, /* glCompressedTextureImage2DEXT */
+    epoxy_glCompressedTextureImage3DEXT_dispatch_table_rewrite_ptr, /* glCompressedTextureImage3DEXT */
+    epoxy_glCompressedTextureSubImage1D_dispatch_table_rewrite_ptr, /* glCompressedTextureSubImage1D */
+    epoxy_glCompressedTextureSubImage1DEXT_dispatch_table_rewrite_ptr, /* glCompressedTextureSubImage1DEXT */
+    epoxy_glCompressedTextureSubImage2D_dispatch_table_rewrite_ptr, /* glCompressedTextureSubImage2D */
+    epoxy_glCompressedTextureSubImage2DEXT_dispatch_table_rewrite_ptr, /* glCompressedTextureSubImage2DEXT */
+    epoxy_glCompressedTextureSubImage3D_dispatch_table_rewrite_ptr, /* glCompressedTextureSubImage3D */
+    epoxy_glCompressedTextureSubImage3DEXT_dispatch_table_rewrite_ptr, /* glCompressedTextureSubImage3DEXT */
+    epoxy_glConvolutionFilter1D_dispatch_table_rewrite_ptr, /* glConvolutionFilter1D */
+    epoxy_glConvolutionFilter1DEXT_dispatch_table_rewrite_ptr, /* glConvolutionFilter1DEXT */
+    epoxy_glConvolutionFilter2D_dispatch_table_rewrite_ptr, /* glConvolutionFilter2D */
+    epoxy_glConvolutionFilter2DEXT_dispatch_table_rewrite_ptr, /* glConvolutionFilter2DEXT */
+    epoxy_glConvolutionParameterf_dispatch_table_rewrite_ptr, /* glConvolutionParameterf */
+    epoxy_glConvolutionParameterfEXT_dispatch_table_rewrite_ptr, /* glConvolutionParameterfEXT */
+    epoxy_glConvolutionParameterfv_dispatch_table_rewrite_ptr, /* glConvolutionParameterfv */
+    epoxy_glConvolutionParameterfvEXT_dispatch_table_rewrite_ptr, /* glConvolutionParameterfvEXT */
+    epoxy_glConvolutionParameteri_dispatch_table_rewrite_ptr, /* glConvolutionParameteri */
+    epoxy_glConvolutionParameteriEXT_dispatch_table_rewrite_ptr, /* glConvolutionParameteriEXT */
+    epoxy_glConvolutionParameteriv_dispatch_table_rewrite_ptr, /* glConvolutionParameteriv */
+    epoxy_glConvolutionParameterivEXT_dispatch_table_rewrite_ptr, /* glConvolutionParameterivEXT */
+    epoxy_glConvolutionParameterxOES_dispatch_table_rewrite_ptr, /* glConvolutionParameterxOES */
+    epoxy_glConvolutionParameterxvOES_dispatch_table_rewrite_ptr, /* glConvolutionParameterxvOES */
+    epoxy_glCopyBufferSubData_dispatch_table_rewrite_ptr, /* glCopyBufferSubData */
+    epoxy_glCopyBufferSubDataNV_dispatch_table_rewrite_ptr, /* glCopyBufferSubDataNV */
+    epoxy_glCopyColorSubTable_dispatch_table_rewrite_ptr, /* glCopyColorSubTable */
+    epoxy_glCopyColorSubTableEXT_dispatch_table_rewrite_ptr, /* glCopyColorSubTableEXT */
+    epoxy_glCopyColorTable_dispatch_table_rewrite_ptr, /* glCopyColorTable */
+    epoxy_glCopyColorTableSGI_dispatch_table_rewrite_ptr, /* glCopyColorTableSGI */
+    epoxy_glCopyConvolutionFilter1D_dispatch_table_rewrite_ptr, /* glCopyConvolutionFilter1D */
+    epoxy_glCopyConvolutionFilter1DEXT_dispatch_table_rewrite_ptr, /* glCopyConvolutionFilter1DEXT */
+    epoxy_glCopyConvolutionFilter2D_dispatch_table_rewrite_ptr, /* glCopyConvolutionFilter2D */
+    epoxy_glCopyConvolutionFilter2DEXT_dispatch_table_rewrite_ptr, /* glCopyConvolutionFilter2DEXT */
+    epoxy_glCopyImageSubData_dispatch_table_rewrite_ptr, /* glCopyImageSubData */
+    epoxy_glCopyImageSubDataEXT_dispatch_table_rewrite_ptr, /* glCopyImageSubDataEXT */
+    epoxy_glCopyImageSubDataNV_dispatch_table_rewrite_ptr, /* glCopyImageSubDataNV */
+    epoxy_glCopyImageSubDataOES_dispatch_table_rewrite_ptr, /* glCopyImageSubDataOES */
+    epoxy_glCopyMultiTexImage1DEXT_dispatch_table_rewrite_ptr, /* glCopyMultiTexImage1DEXT */
+    epoxy_glCopyMultiTexImage2DEXT_dispatch_table_rewrite_ptr, /* glCopyMultiTexImage2DEXT */
+    epoxy_glCopyMultiTexSubImage1DEXT_dispatch_table_rewrite_ptr, /* glCopyMultiTexSubImage1DEXT */
+    epoxy_glCopyMultiTexSubImage2DEXT_dispatch_table_rewrite_ptr, /* glCopyMultiTexSubImage2DEXT */
+    epoxy_glCopyMultiTexSubImage3DEXT_dispatch_table_rewrite_ptr, /* glCopyMultiTexSubImage3DEXT */
+    epoxy_glCopyNamedBufferSubData_dispatch_table_rewrite_ptr, /* glCopyNamedBufferSubData */
+    epoxy_glCopyPathNV_dispatch_table_rewrite_ptr, /* glCopyPathNV */
+    epoxy_glCopyPixels_dispatch_table_rewrite_ptr, /* glCopyPixels */
+    epoxy_glCopyTexImage1D_dispatch_table_rewrite_ptr, /* glCopyTexImage1D */
+    epoxy_glCopyTexImage1DEXT_dispatch_table_rewrite_ptr, /* glCopyTexImage1DEXT */
+    epoxy_glCopyTexImage2D_dispatch_table_rewrite_ptr, /* glCopyTexImage2D */
+    epoxy_glCopyTexImage2DEXT_dispatch_table_rewrite_ptr, /* glCopyTexImage2DEXT */
+    epoxy_glCopyTexSubImage1D_dispatch_table_rewrite_ptr, /* glCopyTexSubImage1D */
+    epoxy_glCopyTexSubImage1DEXT_dispatch_table_rewrite_ptr, /* glCopyTexSubImage1DEXT */
+    epoxy_glCopyTexSubImage2D_dispatch_table_rewrite_ptr, /* glCopyTexSubImage2D */
+    epoxy_glCopyTexSubImage2DEXT_dispatch_table_rewrite_ptr, /* glCopyTexSubImage2DEXT */
+    epoxy_glCopyTexSubImage3D_dispatch_table_rewrite_ptr, /* glCopyTexSubImage3D */
+    epoxy_glCopyTexSubImage3DEXT_dispatch_table_rewrite_ptr, /* glCopyTexSubImage3DEXT */
+    epoxy_glCopyTexSubImage3DOES_dispatch_table_rewrite_ptr, /* glCopyTexSubImage3DOES */
+    epoxy_glCopyTextureImage1DEXT_dispatch_table_rewrite_ptr, /* glCopyTextureImage1DEXT */
+    epoxy_glCopyTextureImage2DEXT_dispatch_table_rewrite_ptr, /* glCopyTextureImage2DEXT */
+    epoxy_glCopyTextureLevelsAPPLE_dispatch_table_rewrite_ptr, /* glCopyTextureLevelsAPPLE */
+    epoxy_glCopyTextureSubImage1D_dispatch_table_rewrite_ptr, /* glCopyTextureSubImage1D */
+    epoxy_glCopyTextureSubImage1DEXT_dispatch_table_rewrite_ptr, /* glCopyTextureSubImage1DEXT */
+    epoxy_glCopyTextureSubImage2D_dispatch_table_rewrite_ptr, /* glCopyTextureSubImage2D */
+    epoxy_glCopyTextureSubImage2DEXT_dispatch_table_rewrite_ptr, /* glCopyTextureSubImage2DEXT */
+    epoxy_glCopyTextureSubImage3D_dispatch_table_rewrite_ptr, /* glCopyTextureSubImage3D */
+    epoxy_glCopyTextureSubImage3DEXT_dispatch_table_rewrite_ptr, /* glCopyTextureSubImage3DEXT */
+    epoxy_glCoverFillPathInstancedNV_dispatch_table_rewrite_ptr, /* glCoverFillPathInstancedNV */
+    epoxy_glCoverFillPathNV_dispatch_table_rewrite_ptr, /* glCoverFillPathNV */
+    epoxy_glCoverStrokePathInstancedNV_dispatch_table_rewrite_ptr, /* glCoverStrokePathInstancedNV */
+    epoxy_glCoverStrokePathNV_dispatch_table_rewrite_ptr, /* glCoverStrokePathNV */
+    epoxy_glCoverageMaskNV_dispatch_table_rewrite_ptr, /* glCoverageMaskNV */
+    epoxy_glCoverageModulationNV_dispatch_table_rewrite_ptr, /* glCoverageModulationNV */
+    epoxy_glCoverageModulationTableNV_dispatch_table_rewrite_ptr, /* glCoverageModulationTableNV */
+    epoxy_glCoverageOperationNV_dispatch_table_rewrite_ptr, /* glCoverageOperationNV */
+    epoxy_glCreateBuffers_dispatch_table_rewrite_ptr, /* glCreateBuffers */
+    epoxy_glCreateCommandListsNV_dispatch_table_rewrite_ptr, /* glCreateCommandListsNV */
+    epoxy_glCreateFramebuffers_dispatch_table_rewrite_ptr, /* glCreateFramebuffers */
+    epoxy_glCreatePerfQueryINTEL_dispatch_table_rewrite_ptr, /* glCreatePerfQueryINTEL */
+    epoxy_glCreateProgram_dispatch_table_rewrite_ptr, /* glCreateProgram */
+    epoxy_glCreateProgramObjectARB_dispatch_table_rewrite_ptr, /* glCreateProgramObjectARB */
+    epoxy_glCreateProgramPipelines_dispatch_table_rewrite_ptr, /* glCreateProgramPipelines */
+    epoxy_glCreateQueries_dispatch_table_rewrite_ptr, /* glCreateQueries */
+    epoxy_glCreateRenderbuffers_dispatch_table_rewrite_ptr, /* glCreateRenderbuffers */
+    epoxy_glCreateSamplers_dispatch_table_rewrite_ptr, /* glCreateSamplers */
+    epoxy_glCreateShader_dispatch_table_rewrite_ptr, /* glCreateShader */
+    epoxy_glCreateShaderObjectARB_dispatch_table_rewrite_ptr, /* glCreateShaderObjectARB */
+    epoxy_glCreateShaderProgramEXT_dispatch_table_rewrite_ptr, /* glCreateShaderProgramEXT */
+    epoxy_glCreateShaderProgramv_dispatch_table_rewrite_ptr, /* glCreateShaderProgramv */
+    epoxy_glCreateShaderProgramvEXT_dispatch_table_rewrite_ptr, /* glCreateShaderProgramvEXT */
+    epoxy_glCreateStatesNV_dispatch_table_rewrite_ptr, /* glCreateStatesNV */
+    epoxy_glCreateSyncFromCLeventARB_dispatch_table_rewrite_ptr, /* glCreateSyncFromCLeventARB */
+    epoxy_glCreateTextures_dispatch_table_rewrite_ptr, /* glCreateTextures */
+    epoxy_glCreateTransformFeedbacks_dispatch_table_rewrite_ptr, /* glCreateTransformFeedbacks */
+    epoxy_glCreateVertexArrays_dispatch_table_rewrite_ptr, /* glCreateVertexArrays */
+    epoxy_glCullFace_dispatch_table_rewrite_ptr, /* glCullFace */
+    epoxy_glCullParameterdvEXT_dispatch_table_rewrite_ptr, /* glCullParameterdvEXT */
+    epoxy_glCullParameterfvEXT_dispatch_table_rewrite_ptr, /* glCullParameterfvEXT */
+    epoxy_glCurrentPaletteMatrixARB_dispatch_table_rewrite_ptr, /* glCurrentPaletteMatrixARB */
+    epoxy_glCurrentPaletteMatrixOES_dispatch_table_rewrite_ptr, /* glCurrentPaletteMatrixOES */
+    epoxy_glDebugMessageCallback_dispatch_table_rewrite_ptr, /* glDebugMessageCallback */
+    epoxy_glDebugMessageCallbackAMD_dispatch_table_rewrite_ptr, /* glDebugMessageCallbackAMD */
+    epoxy_glDebugMessageCallbackARB_dispatch_table_rewrite_ptr, /* glDebugMessageCallbackARB */
+    epoxy_glDebugMessageCallbackKHR_dispatch_table_rewrite_ptr, /* glDebugMessageCallbackKHR */
+    epoxy_glDebugMessageControl_dispatch_table_rewrite_ptr, /* glDebugMessageControl */
+    epoxy_glDebugMessageControlARB_dispatch_table_rewrite_ptr, /* glDebugMessageControlARB */
+    epoxy_glDebugMessageControlKHR_dispatch_table_rewrite_ptr, /* glDebugMessageControlKHR */
+    epoxy_glDebugMessageEnableAMD_dispatch_table_rewrite_ptr, /* glDebugMessageEnableAMD */
+    epoxy_glDebugMessageInsert_dispatch_table_rewrite_ptr, /* glDebugMessageInsert */
+    epoxy_glDebugMessageInsertAMD_dispatch_table_rewrite_ptr, /* glDebugMessageInsertAMD */
+    epoxy_glDebugMessageInsertARB_dispatch_table_rewrite_ptr, /* glDebugMessageInsertARB */
+    epoxy_glDebugMessageInsertKHR_dispatch_table_rewrite_ptr, /* glDebugMessageInsertKHR */
+    epoxy_glDeformSGIX_dispatch_table_rewrite_ptr, /* glDeformSGIX */
+    epoxy_glDeformationMap3dSGIX_dispatch_table_rewrite_ptr, /* glDeformationMap3dSGIX */
+    epoxy_glDeformationMap3fSGIX_dispatch_table_rewrite_ptr, /* glDeformationMap3fSGIX */
+    epoxy_glDeleteAsyncMarkersSGIX_dispatch_table_rewrite_ptr, /* glDeleteAsyncMarkersSGIX */
+    epoxy_glDeleteBuffers_dispatch_table_rewrite_ptr, /* glDeleteBuffers */
+    epoxy_glDeleteBuffersARB_dispatch_table_rewrite_ptr, /* glDeleteBuffersARB */
+    epoxy_glDeleteCommandListsNV_dispatch_table_rewrite_ptr, /* glDeleteCommandListsNV */
+    epoxy_glDeleteFencesAPPLE_dispatch_table_rewrite_ptr, /* glDeleteFencesAPPLE */
+    epoxy_glDeleteFencesNV_dispatch_table_rewrite_ptr, /* glDeleteFencesNV */
+    epoxy_glDeleteFragmentShaderATI_dispatch_table_rewrite_ptr, /* glDeleteFragmentShaderATI */
+    epoxy_glDeleteFramebuffers_dispatch_table_rewrite_ptr, /* glDeleteFramebuffers */
+    epoxy_glDeleteFramebuffersEXT_dispatch_table_rewrite_ptr, /* glDeleteFramebuffersEXT */
+    epoxy_glDeleteFramebuffersOES_dispatch_table_rewrite_ptr, /* glDeleteFramebuffersOES */
+    epoxy_glDeleteLists_dispatch_table_rewrite_ptr, /* glDeleteLists */
+    epoxy_glDeleteNamedStringARB_dispatch_table_rewrite_ptr, /* glDeleteNamedStringARB */
+    epoxy_glDeleteNamesAMD_dispatch_table_rewrite_ptr, /* glDeleteNamesAMD */
+    epoxy_glDeleteObjectARB_dispatch_table_rewrite_ptr, /* glDeleteObjectARB */
+    epoxy_glDeleteOcclusionQueriesNV_dispatch_table_rewrite_ptr, /* glDeleteOcclusionQueriesNV */
+    epoxy_glDeletePathsNV_dispatch_table_rewrite_ptr, /* glDeletePathsNV */
+    epoxy_glDeletePerfMonitorsAMD_dispatch_table_rewrite_ptr, /* glDeletePerfMonitorsAMD */
+    epoxy_glDeletePerfQueryINTEL_dispatch_table_rewrite_ptr, /* glDeletePerfQueryINTEL */
+    epoxy_glDeleteProgram_dispatch_table_rewrite_ptr, /* glDeleteProgram */
+    epoxy_glDeleteProgramPipelines_dispatch_table_rewrite_ptr, /* glDeleteProgramPipelines */
+    epoxy_glDeleteProgramPipelinesEXT_dispatch_table_rewrite_ptr, /* glDeleteProgramPipelinesEXT */
+    epoxy_glDeleteProgramsARB_dispatch_table_rewrite_ptr, /* glDeleteProgramsARB */
+    epoxy_glDeleteProgramsNV_dispatch_table_rewrite_ptr, /* glDeleteProgramsNV */
+    epoxy_glDeleteQueries_dispatch_table_rewrite_ptr, /* glDeleteQueries */
+    epoxy_glDeleteQueriesARB_dispatch_table_rewrite_ptr, /* glDeleteQueriesARB */
+    epoxy_glDeleteQueriesEXT_dispatch_table_rewrite_ptr, /* glDeleteQueriesEXT */
+    epoxy_glDeleteRenderbuffers_dispatch_table_rewrite_ptr, /* glDeleteRenderbuffers */
+    epoxy_glDeleteRenderbuffersEXT_dispatch_table_rewrite_ptr, /* glDeleteRenderbuffersEXT */
+    epoxy_glDeleteRenderbuffersOES_dispatch_table_rewrite_ptr, /* glDeleteRenderbuffersOES */
+    epoxy_glDeleteSamplers_dispatch_table_rewrite_ptr, /* glDeleteSamplers */
+    epoxy_glDeleteShader_dispatch_table_rewrite_ptr, /* glDeleteShader */
+    epoxy_glDeleteStatesNV_dispatch_table_rewrite_ptr, /* glDeleteStatesNV */
+    epoxy_glDeleteSync_dispatch_table_rewrite_ptr, /* glDeleteSync */
+    epoxy_glDeleteSyncAPPLE_dispatch_table_rewrite_ptr, /* glDeleteSyncAPPLE */
+    epoxy_glDeleteTextures_dispatch_table_rewrite_ptr, /* glDeleteTextures */
+    epoxy_glDeleteTexturesEXT_dispatch_table_rewrite_ptr, /* glDeleteTexturesEXT */
+    epoxy_glDeleteTransformFeedbacks_dispatch_table_rewrite_ptr, /* glDeleteTransformFeedbacks */
+    epoxy_glDeleteTransformFeedbacksNV_dispatch_table_rewrite_ptr, /* glDeleteTransformFeedbacksNV */
+    epoxy_glDeleteVertexArrays_dispatch_table_rewrite_ptr, /* glDeleteVertexArrays */
+    epoxy_glDeleteVertexArraysAPPLE_dispatch_table_rewrite_ptr, /* glDeleteVertexArraysAPPLE */
+    epoxy_glDeleteVertexArraysOES_dispatch_table_rewrite_ptr, /* glDeleteVertexArraysOES */
+    epoxy_glDeleteVertexShaderEXT_dispatch_table_rewrite_ptr, /* glDeleteVertexShaderEXT */
+    epoxy_glDepthBoundsEXT_dispatch_table_rewrite_ptr, /* glDepthBoundsEXT */
+    epoxy_glDepthBoundsdNV_dispatch_table_rewrite_ptr, /* glDepthBoundsdNV */
+    epoxy_glDepthFunc_dispatch_table_rewrite_ptr, /* glDepthFunc */
+    epoxy_glDepthMask_dispatch_table_rewrite_ptr, /* glDepthMask */
+    epoxy_glDepthRange_dispatch_table_rewrite_ptr, /* glDepthRange */
+    epoxy_glDepthRangeArrayfvNV_dispatch_table_rewrite_ptr, /* glDepthRangeArrayfvNV */
+    epoxy_glDepthRangeArrayv_dispatch_table_rewrite_ptr, /* glDepthRangeArrayv */
+    epoxy_glDepthRangeIndexed_dispatch_table_rewrite_ptr, /* glDepthRangeIndexed */
+    epoxy_glDepthRangeIndexedfNV_dispatch_table_rewrite_ptr, /* glDepthRangeIndexedfNV */
+    epoxy_glDepthRangedNV_dispatch_table_rewrite_ptr, /* glDepthRangedNV */
+    epoxy_glDepthRangef_dispatch_table_rewrite_ptr, /* glDepthRangef */
+    epoxy_glDepthRangefOES_dispatch_table_rewrite_ptr, /* glDepthRangefOES */
+    epoxy_glDepthRangex_dispatch_table_rewrite_ptr, /* glDepthRangex */
+    epoxy_glDepthRangexOES_dispatch_table_rewrite_ptr, /* glDepthRangexOES */
+    epoxy_glDetachObjectARB_dispatch_table_rewrite_ptr, /* glDetachObjectARB */
+    epoxy_glDetachShader_dispatch_table_rewrite_ptr, /* glDetachShader */
+    epoxy_glDetailTexFuncSGIS_dispatch_table_rewrite_ptr, /* glDetailTexFuncSGIS */
+    epoxy_glDisable_dispatch_table_rewrite_ptr, /* glDisable */
+    epoxy_glDisableClientState_dispatch_table_rewrite_ptr, /* glDisableClientState */
+    epoxy_glDisableClientStateIndexedEXT_dispatch_table_rewrite_ptr, /* glDisableClientStateIndexedEXT */
+    epoxy_glDisableClientStateiEXT_dispatch_table_rewrite_ptr, /* glDisableClientStateiEXT */
+    epoxy_glDisableDriverControlQCOM_dispatch_table_rewrite_ptr, /* glDisableDriverControlQCOM */
+    epoxy_glDisableIndexedEXT_dispatch_table_rewrite_ptr, /* glDisableIndexedEXT */
+    epoxy_glDisableVariantClientStateEXT_dispatch_table_rewrite_ptr, /* glDisableVariantClientStateEXT */
+    epoxy_glDisableVertexArrayAttrib_dispatch_table_rewrite_ptr, /* glDisableVertexArrayAttrib */
+    epoxy_glDisableVertexArrayAttribEXT_dispatch_table_rewrite_ptr, /* glDisableVertexArrayAttribEXT */
+    epoxy_glDisableVertexArrayEXT_dispatch_table_rewrite_ptr, /* glDisableVertexArrayEXT */
+    epoxy_glDisableVertexAttribAPPLE_dispatch_table_rewrite_ptr, /* glDisableVertexAttribAPPLE */
+    epoxy_glDisableVertexAttribArray_dispatch_table_rewrite_ptr, /* glDisableVertexAttribArray */
+    epoxy_glDisableVertexAttribArrayARB_dispatch_table_rewrite_ptr, /* glDisableVertexAttribArrayARB */
+    epoxy_glDisablei_dispatch_table_rewrite_ptr, /* glDisablei */
+    epoxy_glDisableiEXT_dispatch_table_rewrite_ptr, /* glDisableiEXT */
+    epoxy_glDisableiNV_dispatch_table_rewrite_ptr, /* glDisableiNV */
+    epoxy_glDisableiOES_dispatch_table_rewrite_ptr, /* glDisableiOES */
+    epoxy_glDiscardFramebufferEXT_dispatch_table_rewrite_ptr, /* glDiscardFramebufferEXT */
+    epoxy_glDispatchCompute_dispatch_table_rewrite_ptr, /* glDispatchCompute */
+    epoxy_glDispatchComputeGroupSizeARB_dispatch_table_rewrite_ptr, /* glDispatchComputeGroupSizeARB */
+    epoxy_glDispatchComputeIndirect_dispatch_table_rewrite_ptr, /* glDispatchComputeIndirect */
+    epoxy_glDrawArrays_dispatch_table_rewrite_ptr, /* glDrawArrays */
+    epoxy_glDrawArraysEXT_dispatch_table_rewrite_ptr, /* glDrawArraysEXT */
+    epoxy_glDrawArraysIndirect_dispatch_table_rewrite_ptr, /* glDrawArraysIndirect */
+    epoxy_glDrawArraysInstanced_dispatch_table_rewrite_ptr, /* glDrawArraysInstanced */
+    epoxy_glDrawArraysInstancedANGLE_dispatch_table_rewrite_ptr, /* glDrawArraysInstancedANGLE */
+    epoxy_glDrawArraysInstancedARB_dispatch_table_rewrite_ptr, /* glDrawArraysInstancedARB */
+    epoxy_glDrawArraysInstancedBaseInstance_dispatch_table_rewrite_ptr, /* glDrawArraysInstancedBaseInstance */
+    epoxy_glDrawArraysInstancedBaseInstanceEXT_dispatch_table_rewrite_ptr, /* glDrawArraysInstancedBaseInstanceEXT */
+    epoxy_glDrawArraysInstancedEXT_dispatch_table_rewrite_ptr, /* glDrawArraysInstancedEXT */
+    epoxy_glDrawArraysInstancedNV_dispatch_table_rewrite_ptr, /* glDrawArraysInstancedNV */
+    epoxy_glDrawBuffer_dispatch_table_rewrite_ptr, /* glDrawBuffer */
+    epoxy_glDrawBuffers_dispatch_table_rewrite_ptr, /* glDrawBuffers */
+    epoxy_glDrawBuffersARB_dispatch_table_rewrite_ptr, /* glDrawBuffersARB */
+    epoxy_glDrawBuffersATI_dispatch_table_rewrite_ptr, /* glDrawBuffersATI */
+    epoxy_glDrawBuffersEXT_dispatch_table_rewrite_ptr, /* glDrawBuffersEXT */
+    epoxy_glDrawBuffersIndexedEXT_dispatch_table_rewrite_ptr, /* glDrawBuffersIndexedEXT */
+    epoxy_glDrawBuffersNV_dispatch_table_rewrite_ptr, /* glDrawBuffersNV */
+    epoxy_glDrawCommandsAddressNV_dispatch_table_rewrite_ptr, /* glDrawCommandsAddressNV */
+    epoxy_glDrawCommandsNV_dispatch_table_rewrite_ptr, /* glDrawCommandsNV */
+    epoxy_glDrawCommandsStatesAddressNV_dispatch_table_rewrite_ptr, /* glDrawCommandsStatesAddressNV */
+    epoxy_glDrawCommandsStatesNV_dispatch_table_rewrite_ptr, /* glDrawCommandsStatesNV */
+    epoxy_glDrawElementArrayAPPLE_dispatch_table_rewrite_ptr, /* glDrawElementArrayAPPLE */
+    epoxy_glDrawElementArrayATI_dispatch_table_rewrite_ptr, /* glDrawElementArrayATI */
+    epoxy_glDrawElements_dispatch_table_rewrite_ptr, /* glDrawElements */
+    epoxy_glDrawElementsBaseVertex_dispatch_table_rewrite_ptr, /* glDrawElementsBaseVertex */
+    epoxy_glDrawElementsBaseVertexEXT_dispatch_table_rewrite_ptr, /* glDrawElementsBaseVertexEXT */
+    epoxy_glDrawElementsBaseVertexOES_dispatch_table_rewrite_ptr, /* glDrawElementsBaseVertexOES */
+    epoxy_glDrawElementsIndirect_dispatch_table_rewrite_ptr, /* glDrawElementsIndirect */
+    epoxy_glDrawElementsInstanced_dispatch_table_rewrite_ptr, /* glDrawElementsInstanced */
+    epoxy_glDrawElementsInstancedANGLE_dispatch_table_rewrite_ptr, /* glDrawElementsInstancedANGLE */
+    epoxy_glDrawElementsInstancedARB_dispatch_table_rewrite_ptr, /* glDrawElementsInstancedARB */
+    epoxy_glDrawElementsInstancedBaseInstance_dispatch_table_rewrite_ptr, /* glDrawElementsInstancedBaseInstance */
+    epoxy_glDrawElementsInstancedBaseInstanceEXT_dispatch_table_rewrite_ptr, /* glDrawElementsInstancedBaseInstanceEXT */
+    epoxy_glDrawElementsInstancedBaseVertex_dispatch_table_rewrite_ptr, /* glDrawElementsInstancedBaseVertex */
+    epoxy_glDrawElementsInstancedBaseVertexBaseInstance_dispatch_table_rewrite_ptr, /* glDrawElementsInstancedBaseVertexBaseInstance */
+    epoxy_glDrawElementsInstancedBaseVertexBaseInstanceEXT_dispatch_table_rewrite_ptr, /* glDrawElementsInstancedBaseVertexBaseInstanceEXT */
+    epoxy_glDrawElementsInstancedBaseVertexEXT_dispatch_table_rewrite_ptr, /* glDrawElementsInstancedBaseVertexEXT */
+    epoxy_glDrawElementsInstancedBaseVertexOES_dispatch_table_rewrite_ptr, /* glDrawElementsInstancedBaseVertexOES */
+    epoxy_glDrawElementsInstancedEXT_dispatch_table_rewrite_ptr, /* glDrawElementsInstancedEXT */
+    epoxy_glDrawElementsInstancedNV_dispatch_table_rewrite_ptr, /* glDrawElementsInstancedNV */
+    epoxy_glDrawMeshArraysSUN_dispatch_table_rewrite_ptr, /* glDrawMeshArraysSUN */
+    epoxy_glDrawPixels_dispatch_table_rewrite_ptr, /* glDrawPixels */
+    epoxy_glDrawRangeElementArrayAPPLE_dispatch_table_rewrite_ptr, /* glDrawRangeElementArrayAPPLE */
+    epoxy_glDrawRangeElementArrayATI_dispatch_table_rewrite_ptr, /* glDrawRangeElementArrayATI */
+    epoxy_glDrawRangeElements_dispatch_table_rewrite_ptr, /* glDrawRangeElements */
+    epoxy_glDrawRangeElementsBaseVertex_dispatch_table_rewrite_ptr, /* glDrawRangeElementsBaseVertex */
+    epoxy_glDrawRangeElementsBaseVertexEXT_dispatch_table_rewrite_ptr, /* glDrawRangeElementsBaseVertexEXT */
+    epoxy_glDrawRangeElementsBaseVertexOES_dispatch_table_rewrite_ptr, /* glDrawRangeElementsBaseVertexOES */
+    epoxy_glDrawRangeElementsEXT_dispatch_table_rewrite_ptr, /* glDrawRangeElementsEXT */
+    epoxy_glDrawTexfOES_dispatch_table_rewrite_ptr, /* glDrawTexfOES */
+    epoxy_glDrawTexfvOES_dispatch_table_rewrite_ptr, /* glDrawTexfvOES */
+    epoxy_glDrawTexiOES_dispatch_table_rewrite_ptr, /* glDrawTexiOES */
+    epoxy_glDrawTexivOES_dispatch_table_rewrite_ptr, /* glDrawTexivOES */
+    epoxy_glDrawTexsOES_dispatch_table_rewrite_ptr, /* glDrawTexsOES */
+    epoxy_glDrawTexsvOES_dispatch_table_rewrite_ptr, /* glDrawTexsvOES */
+    epoxy_glDrawTextureNV_dispatch_table_rewrite_ptr, /* glDrawTextureNV */
+    epoxy_glDrawTexxOES_dispatch_table_rewrite_ptr, /* glDrawTexxOES */
+    epoxy_glDrawTexxvOES_dispatch_table_rewrite_ptr, /* glDrawTexxvOES */
+    epoxy_glDrawTransformFeedback_dispatch_table_rewrite_ptr, /* glDrawTransformFeedback */
+    epoxy_glDrawTransformFeedbackInstanced_dispatch_table_rewrite_ptr, /* glDrawTransformFeedbackInstanced */
+    epoxy_glDrawTransformFeedbackNV_dispatch_table_rewrite_ptr, /* glDrawTransformFeedbackNV */
+    epoxy_glDrawTransformFeedbackStream_dispatch_table_rewrite_ptr, /* glDrawTransformFeedbackStream */
+    epoxy_glDrawTransformFeedbackStreamInstanced_dispatch_table_rewrite_ptr, /* glDrawTransformFeedbackStreamInstanced */
+    epoxy_glEGLImageTargetRenderbufferStorageOES_dispatch_table_rewrite_ptr, /* glEGLImageTargetRenderbufferStorageOES */
+    epoxy_glEGLImageTargetTexture2DOES_dispatch_table_rewrite_ptr, /* glEGLImageTargetTexture2DOES */
+    epoxy_glEdgeFlag_dispatch_table_rewrite_ptr, /* glEdgeFlag */
+    epoxy_glEdgeFlagFormatNV_dispatch_table_rewrite_ptr, /* glEdgeFlagFormatNV */
+    epoxy_glEdgeFlagPointer_dispatch_table_rewrite_ptr, /* glEdgeFlagPointer */
+    epoxy_glEdgeFlagPointerEXT_dispatch_table_rewrite_ptr, /* glEdgeFlagPointerEXT */
+    epoxy_glEdgeFlagPointerListIBM_dispatch_table_rewrite_ptr, /* glEdgeFlagPointerListIBM */
+    epoxy_glEdgeFlagv_dispatch_table_rewrite_ptr, /* glEdgeFlagv */
+    epoxy_glElementPointerAPPLE_dispatch_table_rewrite_ptr, /* glElementPointerAPPLE */
+    epoxy_glElementPointerATI_dispatch_table_rewrite_ptr, /* glElementPointerATI */
+    epoxy_glEnable_dispatch_table_rewrite_ptr, /* glEnable */
+    epoxy_glEnableClientState_dispatch_table_rewrite_ptr, /* glEnableClientState */
+    epoxy_glEnableClientStateIndexedEXT_dispatch_table_rewrite_ptr, /* glEnableClientStateIndexedEXT */
+    epoxy_glEnableClientStateiEXT_dispatch_table_rewrite_ptr, /* glEnableClientStateiEXT */
+    epoxy_glEnableDriverControlQCOM_dispatch_table_rewrite_ptr, /* glEnableDriverControlQCOM */
+    epoxy_glEnableIndexedEXT_dispatch_table_rewrite_ptr, /* glEnableIndexedEXT */
+    epoxy_glEnableVariantClientStateEXT_dispatch_table_rewrite_ptr, /* glEnableVariantClientStateEXT */
+    epoxy_glEnableVertexArrayAttrib_dispatch_table_rewrite_ptr, /* glEnableVertexArrayAttrib */
+    epoxy_glEnableVertexArrayAttribEXT_dispatch_table_rewrite_ptr, /* glEnableVertexArrayAttribEXT */
+    epoxy_glEnableVertexArrayEXT_dispatch_table_rewrite_ptr, /* glEnableVertexArrayEXT */
+    epoxy_glEnableVertexAttribAPPLE_dispatch_table_rewrite_ptr, /* glEnableVertexAttribAPPLE */
+    epoxy_glEnableVertexAttribArray_dispatch_table_rewrite_ptr, /* glEnableVertexAttribArray */
+    epoxy_glEnableVertexAttribArrayARB_dispatch_table_rewrite_ptr, /* glEnableVertexAttribArrayARB */
+    epoxy_glEnablei_dispatch_table_rewrite_ptr, /* glEnablei */
+    epoxy_glEnableiEXT_dispatch_table_rewrite_ptr, /* glEnableiEXT */
+    epoxy_glEnableiNV_dispatch_table_rewrite_ptr, /* glEnableiNV */
+    epoxy_glEnableiOES_dispatch_table_rewrite_ptr, /* glEnableiOES */
+    epoxy_glEnd_unwrapped_dispatch_table_rewrite_ptr, /* glEnd_unwrapped */
+    epoxy_glEndConditionalRender_dispatch_table_rewrite_ptr, /* glEndConditionalRender */
+    epoxy_glEndConditionalRenderNV_dispatch_table_rewrite_ptr, /* glEndConditionalRenderNV */
+    epoxy_glEndConditionalRenderNVX_dispatch_table_rewrite_ptr, /* glEndConditionalRenderNVX */
+    epoxy_glEndFragmentShaderATI_dispatch_table_rewrite_ptr, /* glEndFragmentShaderATI */
+    epoxy_glEndList_dispatch_table_rewrite_ptr, /* glEndList */
+    epoxy_glEndOcclusionQueryNV_dispatch_table_rewrite_ptr, /* glEndOcclusionQueryNV */
+    epoxy_glEndPerfMonitorAMD_dispatch_table_rewrite_ptr, /* glEndPerfMonitorAMD */
+    epoxy_glEndPerfQueryINTEL_dispatch_table_rewrite_ptr, /* glEndPerfQueryINTEL */
+    epoxy_glEndQuery_dispatch_table_rewrite_ptr, /* glEndQuery */
+    epoxy_glEndQueryARB_dispatch_table_rewrite_ptr, /* glEndQueryARB */
+    epoxy_glEndQueryEXT_dispatch_table_rewrite_ptr, /* glEndQueryEXT */
+    epoxy_glEndQueryIndexed_dispatch_table_rewrite_ptr, /* glEndQueryIndexed */
+    epoxy_glEndTilingQCOM_dispatch_table_rewrite_ptr, /* glEndTilingQCOM */
+    epoxy_glEndTransformFeedback_dispatch_table_rewrite_ptr, /* glEndTransformFeedback */
+    epoxy_glEndTransformFeedbackEXT_dispatch_table_rewrite_ptr, /* glEndTransformFeedbackEXT */
+    epoxy_glEndTransformFeedbackNV_dispatch_table_rewrite_ptr, /* glEndTransformFeedbackNV */
+    epoxy_glEndVertexShaderEXT_dispatch_table_rewrite_ptr, /* glEndVertexShaderEXT */
+    epoxy_glEndVideoCaptureNV_dispatch_table_rewrite_ptr, /* glEndVideoCaptureNV */
+    epoxy_glEvalCoord1d_dispatch_table_rewrite_ptr, /* glEvalCoord1d */
+    epoxy_glEvalCoord1dv_dispatch_table_rewrite_ptr, /* glEvalCoord1dv */
+    epoxy_glEvalCoord1f_dispatch_table_rewrite_ptr, /* glEvalCoord1f */
+    epoxy_glEvalCoord1fv_dispatch_table_rewrite_ptr, /* glEvalCoord1fv */
+    epoxy_glEvalCoord1xOES_dispatch_table_rewrite_ptr, /* glEvalCoord1xOES */
+    epoxy_glEvalCoord1xvOES_dispatch_table_rewrite_ptr, /* glEvalCoord1xvOES */
+    epoxy_glEvalCoord2d_dispatch_table_rewrite_ptr, /* glEvalCoord2d */
+    epoxy_glEvalCoord2dv_dispatch_table_rewrite_ptr, /* glEvalCoord2dv */
+    epoxy_glEvalCoord2f_dispatch_table_rewrite_ptr, /* glEvalCoord2f */
+    epoxy_glEvalCoord2fv_dispatch_table_rewrite_ptr, /* glEvalCoord2fv */
+    epoxy_glEvalCoord2xOES_dispatch_table_rewrite_ptr, /* glEvalCoord2xOES */
+    epoxy_glEvalCoord2xvOES_dispatch_table_rewrite_ptr, /* glEvalCoord2xvOES */
+    epoxy_glEvalMapsNV_dispatch_table_rewrite_ptr, /* glEvalMapsNV */
+    epoxy_glEvalMesh1_dispatch_table_rewrite_ptr, /* glEvalMesh1 */
+    epoxy_glEvalMesh2_dispatch_table_rewrite_ptr, /* glEvalMesh2 */
+    epoxy_glEvalPoint1_dispatch_table_rewrite_ptr, /* glEvalPoint1 */
+    epoxy_glEvalPoint2_dispatch_table_rewrite_ptr, /* glEvalPoint2 */
+    epoxy_glExecuteProgramNV_dispatch_table_rewrite_ptr, /* glExecuteProgramNV */
+    epoxy_glExtGetBufferPointervQCOM_dispatch_table_rewrite_ptr, /* glExtGetBufferPointervQCOM */
+    epoxy_glExtGetBuffersQCOM_dispatch_table_rewrite_ptr, /* glExtGetBuffersQCOM */
+    epoxy_glExtGetFramebuffersQCOM_dispatch_table_rewrite_ptr, /* glExtGetFramebuffersQCOM */
+    epoxy_glExtGetProgramBinarySourceQCOM_dispatch_table_rewrite_ptr, /* glExtGetProgramBinarySourceQCOM */
+    epoxy_glExtGetProgramsQCOM_dispatch_table_rewrite_ptr, /* glExtGetProgramsQCOM */
+    epoxy_glExtGetRenderbuffersQCOM_dispatch_table_rewrite_ptr, /* glExtGetRenderbuffersQCOM */
+    epoxy_glExtGetShadersQCOM_dispatch_table_rewrite_ptr, /* glExtGetShadersQCOM */
+    epoxy_glExtGetTexLevelParameterivQCOM_dispatch_table_rewrite_ptr, /* glExtGetTexLevelParameterivQCOM */
+    epoxy_glExtGetTexSubImageQCOM_dispatch_table_rewrite_ptr, /* glExtGetTexSubImageQCOM */
+    epoxy_glExtGetTexturesQCOM_dispatch_table_rewrite_ptr, /* glExtGetTexturesQCOM */
+    epoxy_glExtIsProgramBinaryQCOM_dispatch_table_rewrite_ptr, /* glExtIsProgramBinaryQCOM */
+    epoxy_glExtTexObjectStateOverrideiQCOM_dispatch_table_rewrite_ptr, /* glExtTexObjectStateOverrideiQCOM */
+    epoxy_glExtractComponentEXT_dispatch_table_rewrite_ptr, /* glExtractComponentEXT */
+    epoxy_glFeedbackBuffer_dispatch_table_rewrite_ptr, /* glFeedbackBuffer */
+    epoxy_glFeedbackBufferxOES_dispatch_table_rewrite_ptr, /* glFeedbackBufferxOES */
+    epoxy_glFenceSync_dispatch_table_rewrite_ptr, /* glFenceSync */
+    epoxy_glFenceSyncAPPLE_dispatch_table_rewrite_ptr, /* glFenceSyncAPPLE */
+    epoxy_glFinalCombinerInputNV_dispatch_table_rewrite_ptr, /* glFinalCombinerInputNV */
+    epoxy_glFinish_dispatch_table_rewrite_ptr, /* glFinish */
+    epoxy_glFinishAsyncSGIX_dispatch_table_rewrite_ptr, /* glFinishAsyncSGIX */
+    epoxy_glFinishFenceAPPLE_dispatch_table_rewrite_ptr, /* glFinishFenceAPPLE */
+    epoxy_glFinishFenceNV_dispatch_table_rewrite_ptr, /* glFinishFenceNV */
+    epoxy_glFinishObjectAPPLE_dispatch_table_rewrite_ptr, /* glFinishObjectAPPLE */
+    epoxy_glFinishTextureSUNX_dispatch_table_rewrite_ptr, /* glFinishTextureSUNX */
+    epoxy_glFlush_dispatch_table_rewrite_ptr, /* glFlush */
+    epoxy_glFlushMappedBufferRange_dispatch_table_rewrite_ptr, /* glFlushMappedBufferRange */
+    epoxy_glFlushMappedBufferRangeAPPLE_dispatch_table_rewrite_ptr, /* glFlushMappedBufferRangeAPPLE */
+    epoxy_glFlushMappedBufferRangeEXT_dispatch_table_rewrite_ptr, /* glFlushMappedBufferRangeEXT */
+    epoxy_glFlushMappedNamedBufferRange_dispatch_table_rewrite_ptr, /* glFlushMappedNamedBufferRange */
+    epoxy_glFlushMappedNamedBufferRangeEXT_dispatch_table_rewrite_ptr, /* glFlushMappedNamedBufferRangeEXT */
+    epoxy_glFlushPixelDataRangeNV_dispatch_table_rewrite_ptr, /* glFlushPixelDataRangeNV */
+    epoxy_glFlushRasterSGIX_dispatch_table_rewrite_ptr, /* glFlushRasterSGIX */
+    epoxy_glFlushStaticDataIBM_dispatch_table_rewrite_ptr, /* glFlushStaticDataIBM */
+    epoxy_glFlushVertexArrayRangeAPPLE_dispatch_table_rewrite_ptr, /* glFlushVertexArrayRangeAPPLE */
+    epoxy_glFlushVertexArrayRangeNV_dispatch_table_rewrite_ptr, /* glFlushVertexArrayRangeNV */
+    epoxy_glFogCoordFormatNV_dispatch_table_rewrite_ptr, /* glFogCoordFormatNV */
+    epoxy_glFogCoordPointer_dispatch_table_rewrite_ptr, /* glFogCoordPointer */
+    epoxy_glFogCoordPointerEXT_dispatch_table_rewrite_ptr, /* glFogCoordPointerEXT */
+    epoxy_glFogCoordPointerListIBM_dispatch_table_rewrite_ptr, /* glFogCoordPointerListIBM */
+    epoxy_glFogCoordd_dispatch_table_rewrite_ptr, /* glFogCoordd */
+    epoxy_glFogCoorddEXT_dispatch_table_rewrite_ptr, /* glFogCoorddEXT */
+    epoxy_glFogCoorddv_dispatch_table_rewrite_ptr, /* glFogCoorddv */
+    epoxy_glFogCoorddvEXT_dispatch_table_rewrite_ptr, /* glFogCoorddvEXT */
+    epoxy_glFogCoordf_dispatch_table_rewrite_ptr, /* glFogCoordf */
+    epoxy_glFogCoordfEXT_dispatch_table_rewrite_ptr, /* glFogCoordfEXT */
+    epoxy_glFogCoordfv_dispatch_table_rewrite_ptr, /* glFogCoordfv */
+    epoxy_glFogCoordfvEXT_dispatch_table_rewrite_ptr, /* glFogCoordfvEXT */
+    epoxy_glFogCoordhNV_dispatch_table_rewrite_ptr, /* glFogCoordhNV */
+    epoxy_glFogCoordhvNV_dispatch_table_rewrite_ptr, /* glFogCoordhvNV */
+    epoxy_glFogFuncSGIS_dispatch_table_rewrite_ptr, /* glFogFuncSGIS */
+    epoxy_glFogf_dispatch_table_rewrite_ptr, /* glFogf */
+    epoxy_glFogfv_dispatch_table_rewrite_ptr, /* glFogfv */
+    epoxy_glFogi_dispatch_table_rewrite_ptr, /* glFogi */
+    epoxy_glFogiv_dispatch_table_rewrite_ptr, /* glFogiv */
+    epoxy_glFogx_dispatch_table_rewrite_ptr, /* glFogx */
+    epoxy_glFogxOES_dispatch_table_rewrite_ptr, /* glFogxOES */
+    epoxy_glFogxv_dispatch_table_rewrite_ptr, /* glFogxv */
+    epoxy_glFogxvOES_dispatch_table_rewrite_ptr, /* glFogxvOES */
+    epoxy_glFragmentColorMaterialSGIX_dispatch_table_rewrite_ptr, /* glFragmentColorMaterialSGIX */
+    epoxy_glFragmentCoverageColorNV_dispatch_table_rewrite_ptr, /* glFragmentCoverageColorNV */
+    epoxy_glFragmentLightModelfSGIX_dispatch_table_rewrite_ptr, /* glFragmentLightModelfSGIX */
+    epoxy_glFragmentLightModelfvSGIX_dispatch_table_rewrite_ptr, /* glFragmentLightModelfvSGIX */
+    epoxy_glFragmentLightModeliSGIX_dispatch_table_rewrite_ptr, /* glFragmentLightModeliSGIX */
+    epoxy_glFragmentLightModelivSGIX_dispatch_table_rewrite_ptr, /* glFragmentLightModelivSGIX */
+    epoxy_glFragmentLightfSGIX_dispatch_table_rewrite_ptr, /* glFragmentLightfSGIX */
+    epoxy_glFragmentLightfvSGIX_dispatch_table_rewrite_ptr, /* glFragmentLightfvSGIX */
+    epoxy_glFragmentLightiSGIX_dispatch_table_rewrite_ptr, /* glFragmentLightiSGIX */
+    epoxy_glFragmentLightivSGIX_dispatch_table_rewrite_ptr, /* glFragmentLightivSGIX */
+    epoxy_glFragmentMaterialfSGIX_dispatch_table_rewrite_ptr, /* glFragmentMaterialfSGIX */
+    epoxy_glFragmentMaterialfvSGIX_dispatch_table_rewrite_ptr, /* glFragmentMaterialfvSGIX */
+    epoxy_glFragmentMaterialiSGIX_dispatch_table_rewrite_ptr, /* glFragmentMaterialiSGIX */
+    epoxy_glFragmentMaterialivSGIX_dispatch_table_rewrite_ptr, /* glFragmentMaterialivSGIX */
+    epoxy_glFrameTerminatorGREMEDY_dispatch_table_rewrite_ptr, /* glFrameTerminatorGREMEDY */
+    epoxy_glFrameZoomSGIX_dispatch_table_rewrite_ptr, /* glFrameZoomSGIX */
+    epoxy_glFramebufferDrawBufferEXT_dispatch_table_rewrite_ptr, /* glFramebufferDrawBufferEXT */
+    epoxy_glFramebufferDrawBuffersEXT_dispatch_table_rewrite_ptr, /* glFramebufferDrawBuffersEXT */
+    epoxy_glFramebufferParameteri_dispatch_table_rewrite_ptr, /* glFramebufferParameteri */
+    epoxy_glFramebufferReadBufferEXT_dispatch_table_rewrite_ptr, /* glFramebufferReadBufferEXT */
+    epoxy_glFramebufferRenderbuffer_dispatch_table_rewrite_ptr, /* glFramebufferRenderbuffer */
+    epoxy_glFramebufferRenderbufferEXT_dispatch_table_rewrite_ptr, /* glFramebufferRenderbufferEXT */
+    epoxy_glFramebufferRenderbufferOES_dispatch_table_rewrite_ptr, /* glFramebufferRenderbufferOES */
+    epoxy_glFramebufferSampleLocationsfvNV_dispatch_table_rewrite_ptr, /* glFramebufferSampleLocationsfvNV */
+    epoxy_glFramebufferTexture_dispatch_table_rewrite_ptr, /* glFramebufferTexture */
+    epoxy_glFramebufferTexture1D_dispatch_table_rewrite_ptr, /* glFramebufferTexture1D */
+    epoxy_glFramebufferTexture1DEXT_dispatch_table_rewrite_ptr, /* glFramebufferTexture1DEXT */
+    epoxy_glFramebufferTexture2D_dispatch_table_rewrite_ptr, /* glFramebufferTexture2D */
+    epoxy_glFramebufferTexture2DEXT_dispatch_table_rewrite_ptr, /* glFramebufferTexture2DEXT */
+    epoxy_glFramebufferTexture2DMultisampleEXT_dispatch_table_rewrite_ptr, /* glFramebufferTexture2DMultisampleEXT */
+    epoxy_glFramebufferTexture2DMultisampleIMG_dispatch_table_rewrite_ptr, /* glFramebufferTexture2DMultisampleIMG */
+    epoxy_glFramebufferTexture2DOES_dispatch_table_rewrite_ptr, /* glFramebufferTexture2DOES */
+    epoxy_glFramebufferTexture3D_dispatch_table_rewrite_ptr, /* glFramebufferTexture3D */
+    epoxy_glFramebufferTexture3DEXT_dispatch_table_rewrite_ptr, /* glFramebufferTexture3DEXT */
+    epoxy_glFramebufferTexture3DOES_dispatch_table_rewrite_ptr, /* glFramebufferTexture3DOES */
+    epoxy_glFramebufferTextureARB_dispatch_table_rewrite_ptr, /* glFramebufferTextureARB */
+    epoxy_glFramebufferTextureEXT_dispatch_table_rewrite_ptr, /* glFramebufferTextureEXT */
+    epoxy_glFramebufferTextureFaceARB_dispatch_table_rewrite_ptr, /* glFramebufferTextureFaceARB */
+    epoxy_glFramebufferTextureFaceEXT_dispatch_table_rewrite_ptr, /* glFramebufferTextureFaceEXT */
+    epoxy_glFramebufferTextureLayer_dispatch_table_rewrite_ptr, /* glFramebufferTextureLayer */
+    epoxy_glFramebufferTextureLayerARB_dispatch_table_rewrite_ptr, /* glFramebufferTextureLayerARB */
+    epoxy_glFramebufferTextureLayerEXT_dispatch_table_rewrite_ptr, /* glFramebufferTextureLayerEXT */
+    epoxy_glFramebufferTextureMultiviewOVR_dispatch_table_rewrite_ptr, /* glFramebufferTextureMultiviewOVR */
+    epoxy_glFramebufferTextureOES_dispatch_table_rewrite_ptr, /* glFramebufferTextureOES */
+    epoxy_glFreeObjectBufferATI_dispatch_table_rewrite_ptr, /* glFreeObjectBufferATI */
+    epoxy_glFrontFace_dispatch_table_rewrite_ptr, /* glFrontFace */
+    epoxy_glFrustum_dispatch_table_rewrite_ptr, /* glFrustum */
+    epoxy_glFrustumf_dispatch_table_rewrite_ptr, /* glFrustumf */
+    epoxy_glFrustumfOES_dispatch_table_rewrite_ptr, /* glFrustumfOES */
+    epoxy_glFrustumx_dispatch_table_rewrite_ptr, /* glFrustumx */
+    epoxy_glFrustumxOES_dispatch_table_rewrite_ptr, /* glFrustumxOES */
+    epoxy_glGenAsyncMarkersSGIX_dispatch_table_rewrite_ptr, /* glGenAsyncMarkersSGIX */
+    epoxy_glGenBuffers_dispatch_table_rewrite_ptr, /* glGenBuffers */
+    epoxy_glGenBuffersARB_dispatch_table_rewrite_ptr, /* glGenBuffersARB */
+    epoxy_glGenFencesAPPLE_dispatch_table_rewrite_ptr, /* glGenFencesAPPLE */
+    epoxy_glGenFencesNV_dispatch_table_rewrite_ptr, /* glGenFencesNV */
+    epoxy_glGenFragmentShadersATI_dispatch_table_rewrite_ptr, /* glGenFragmentShadersATI */
+    epoxy_glGenFramebuffers_dispatch_table_rewrite_ptr, /* glGenFramebuffers */
+    epoxy_glGenFramebuffersEXT_dispatch_table_rewrite_ptr, /* glGenFramebuffersEXT */
+    epoxy_glGenFramebuffersOES_dispatch_table_rewrite_ptr, /* glGenFramebuffersOES */
+    epoxy_glGenLists_dispatch_table_rewrite_ptr, /* glGenLists */
+    epoxy_glGenNamesAMD_dispatch_table_rewrite_ptr, /* glGenNamesAMD */
+    epoxy_glGenOcclusionQueriesNV_dispatch_table_rewrite_ptr, /* glGenOcclusionQueriesNV */
+    epoxy_glGenPathsNV_dispatch_table_rewrite_ptr, /* glGenPathsNV */
+    epoxy_glGenPerfMonitorsAMD_dispatch_table_rewrite_ptr, /* glGenPerfMonitorsAMD */
+    epoxy_glGenProgramPipelines_dispatch_table_rewrite_ptr, /* glGenProgramPipelines */
+    epoxy_glGenProgramPipelinesEXT_dispatch_table_rewrite_ptr, /* glGenProgramPipelinesEXT */
+    epoxy_glGenProgramsARB_dispatch_table_rewrite_ptr, /* glGenProgramsARB */
+    epoxy_glGenProgramsNV_dispatch_table_rewrite_ptr, /* glGenProgramsNV */
+    epoxy_glGenQueries_dispatch_table_rewrite_ptr, /* glGenQueries */
+    epoxy_glGenQueriesARB_dispatch_table_rewrite_ptr, /* glGenQueriesARB */
+    epoxy_glGenQueriesEXT_dispatch_table_rewrite_ptr, /* glGenQueriesEXT */
+    epoxy_glGenRenderbuffers_dispatch_table_rewrite_ptr, /* glGenRenderbuffers */
+    epoxy_glGenRenderbuffersEXT_dispatch_table_rewrite_ptr, /* glGenRenderbuffersEXT */
+    epoxy_glGenRenderbuffersOES_dispatch_table_rewrite_ptr, /* glGenRenderbuffersOES */
+    epoxy_glGenSamplers_dispatch_table_rewrite_ptr, /* glGenSamplers */
+    epoxy_glGenSymbolsEXT_dispatch_table_rewrite_ptr, /* glGenSymbolsEXT */
+    epoxy_glGenTextures_dispatch_table_rewrite_ptr, /* glGenTextures */
+    epoxy_glGenTexturesEXT_dispatch_table_rewrite_ptr, /* glGenTexturesEXT */
+    epoxy_glGenTransformFeedbacks_dispatch_table_rewrite_ptr, /* glGenTransformFeedbacks */
+    epoxy_glGenTransformFeedbacksNV_dispatch_table_rewrite_ptr, /* glGenTransformFeedbacksNV */
+    epoxy_glGenVertexArrays_dispatch_table_rewrite_ptr, /* glGenVertexArrays */
+    epoxy_glGenVertexArraysAPPLE_dispatch_table_rewrite_ptr, /* glGenVertexArraysAPPLE */
+    epoxy_glGenVertexArraysOES_dispatch_table_rewrite_ptr, /* glGenVertexArraysOES */
+    epoxy_glGenVertexShadersEXT_dispatch_table_rewrite_ptr, /* glGenVertexShadersEXT */
+    epoxy_glGenerateMipmap_dispatch_table_rewrite_ptr, /* glGenerateMipmap */
+    epoxy_glGenerateMipmapEXT_dispatch_table_rewrite_ptr, /* glGenerateMipmapEXT */
+    epoxy_glGenerateMipmapOES_dispatch_table_rewrite_ptr, /* glGenerateMipmapOES */
+    epoxy_glGenerateMultiTexMipmapEXT_dispatch_table_rewrite_ptr, /* glGenerateMultiTexMipmapEXT */
+    epoxy_glGenerateTextureMipmap_dispatch_table_rewrite_ptr, /* glGenerateTextureMipmap */
+    epoxy_glGenerateTextureMipmapEXT_dispatch_table_rewrite_ptr, /* glGenerateTextureMipmapEXT */
+    epoxy_glGetActiveAtomicCounterBufferiv_dispatch_table_rewrite_ptr, /* glGetActiveAtomicCounterBufferiv */
+    epoxy_glGetActiveAttrib_dispatch_table_rewrite_ptr, /* glGetActiveAttrib */
+    epoxy_glGetActiveAttribARB_dispatch_table_rewrite_ptr, /* glGetActiveAttribARB */
+    epoxy_glGetActiveSubroutineName_dispatch_table_rewrite_ptr, /* glGetActiveSubroutineName */
+    epoxy_glGetActiveSubroutineUniformName_dispatch_table_rewrite_ptr, /* glGetActiveSubroutineUniformName */
+    epoxy_glGetActiveSubroutineUniformiv_dispatch_table_rewrite_ptr, /* glGetActiveSubroutineUniformiv */
+    epoxy_glGetActiveUniform_dispatch_table_rewrite_ptr, /* glGetActiveUniform */
+    epoxy_glGetActiveUniformARB_dispatch_table_rewrite_ptr, /* glGetActiveUniformARB */
+    epoxy_glGetActiveUniformBlockName_dispatch_table_rewrite_ptr, /* glGetActiveUniformBlockName */
+    epoxy_glGetActiveUniformBlockiv_dispatch_table_rewrite_ptr, /* glGetActiveUniformBlockiv */
+    epoxy_glGetActiveUniformName_dispatch_table_rewrite_ptr, /* glGetActiveUniformName */
+    epoxy_glGetActiveUniformsiv_dispatch_table_rewrite_ptr, /* glGetActiveUniformsiv */
+    epoxy_glGetActiveVaryingNV_dispatch_table_rewrite_ptr, /* glGetActiveVaryingNV */
+    epoxy_glGetArrayObjectfvATI_dispatch_table_rewrite_ptr, /* glGetArrayObjectfvATI */
+    epoxy_glGetArrayObjectivATI_dispatch_table_rewrite_ptr, /* glGetArrayObjectivATI */
+    epoxy_glGetAttachedObjectsARB_dispatch_table_rewrite_ptr, /* glGetAttachedObjectsARB */
+    epoxy_glGetAttachedShaders_dispatch_table_rewrite_ptr, /* glGetAttachedShaders */
+    epoxy_glGetAttribLocation_dispatch_table_rewrite_ptr, /* glGetAttribLocation */
+    epoxy_glGetAttribLocationARB_dispatch_table_rewrite_ptr, /* glGetAttribLocationARB */
+    epoxy_glGetBooleanIndexedvEXT_dispatch_table_rewrite_ptr, /* glGetBooleanIndexedvEXT */
+    epoxy_glGetBooleani_v_dispatch_table_rewrite_ptr, /* glGetBooleani_v */
+    epoxy_glGetBooleanv_dispatch_table_rewrite_ptr, /* glGetBooleanv */
+    epoxy_glGetBufferParameteri64v_dispatch_table_rewrite_ptr, /* glGetBufferParameteri64v */
+    epoxy_glGetBufferParameteriv_dispatch_table_rewrite_ptr, /* glGetBufferParameteriv */
+    epoxy_glGetBufferParameterivARB_dispatch_table_rewrite_ptr, /* glGetBufferParameterivARB */
+    epoxy_glGetBufferParameterui64vNV_dispatch_table_rewrite_ptr, /* glGetBufferParameterui64vNV */
+    epoxy_glGetBufferPointerv_dispatch_table_rewrite_ptr, /* glGetBufferPointerv */
+    epoxy_glGetBufferPointervARB_dispatch_table_rewrite_ptr, /* glGetBufferPointervARB */
+    epoxy_glGetBufferPointervOES_dispatch_table_rewrite_ptr, /* glGetBufferPointervOES */
+    epoxy_glGetBufferSubData_dispatch_table_rewrite_ptr, /* glGetBufferSubData */
+    epoxy_glGetBufferSubDataARB_dispatch_table_rewrite_ptr, /* glGetBufferSubDataARB */
+    epoxy_glGetClipPlane_dispatch_table_rewrite_ptr, /* glGetClipPlane */
+    epoxy_glGetClipPlanef_dispatch_table_rewrite_ptr, /* glGetClipPlanef */
+    epoxy_glGetClipPlanefOES_dispatch_table_rewrite_ptr, /* glGetClipPlanefOES */
+    epoxy_glGetClipPlanex_dispatch_table_rewrite_ptr, /* glGetClipPlanex */
+    epoxy_glGetClipPlanexOES_dispatch_table_rewrite_ptr, /* glGetClipPlanexOES */
+    epoxy_glGetColorTable_dispatch_table_rewrite_ptr, /* glGetColorTable */
+    epoxy_glGetColorTableEXT_dispatch_table_rewrite_ptr, /* glGetColorTableEXT */
+    epoxy_glGetColorTableParameterfv_dispatch_table_rewrite_ptr, /* glGetColorTableParameterfv */
+    epoxy_glGetColorTableParameterfvEXT_dispatch_table_rewrite_ptr, /* glGetColorTableParameterfvEXT */
+    epoxy_glGetColorTableParameterfvSGI_dispatch_table_rewrite_ptr, /* glGetColorTableParameterfvSGI */
+    epoxy_glGetColorTableParameteriv_dispatch_table_rewrite_ptr, /* glGetColorTableParameteriv */
+    epoxy_glGetColorTableParameterivEXT_dispatch_table_rewrite_ptr, /* glGetColorTableParameterivEXT */
+    epoxy_glGetColorTableParameterivSGI_dispatch_table_rewrite_ptr, /* glGetColorTableParameterivSGI */
+    epoxy_glGetColorTableSGI_dispatch_table_rewrite_ptr, /* glGetColorTableSGI */
+    epoxy_glGetCombinerInputParameterfvNV_dispatch_table_rewrite_ptr, /* glGetCombinerInputParameterfvNV */
+    epoxy_glGetCombinerInputParameterivNV_dispatch_table_rewrite_ptr, /* glGetCombinerInputParameterivNV */
+    epoxy_glGetCombinerOutputParameterfvNV_dispatch_table_rewrite_ptr, /* glGetCombinerOutputParameterfvNV */
+    epoxy_glGetCombinerOutputParameterivNV_dispatch_table_rewrite_ptr, /* glGetCombinerOutputParameterivNV */
+    epoxy_glGetCombinerStageParameterfvNV_dispatch_table_rewrite_ptr, /* glGetCombinerStageParameterfvNV */
+    epoxy_glGetCommandHeaderNV_dispatch_table_rewrite_ptr, /* glGetCommandHeaderNV */
+    epoxy_glGetCompressedMultiTexImageEXT_dispatch_table_rewrite_ptr, /* glGetCompressedMultiTexImageEXT */
+    epoxy_glGetCompressedTexImage_dispatch_table_rewrite_ptr, /* glGetCompressedTexImage */
+    epoxy_glGetCompressedTexImageARB_dispatch_table_rewrite_ptr, /* glGetCompressedTexImageARB */
+    epoxy_glGetCompressedTextureImage_dispatch_table_rewrite_ptr, /* glGetCompressedTextureImage */
+    epoxy_glGetCompressedTextureImageEXT_dispatch_table_rewrite_ptr, /* glGetCompressedTextureImageEXT */
+    epoxy_glGetCompressedTextureSubImage_dispatch_table_rewrite_ptr, /* glGetCompressedTextureSubImage */
+    epoxy_glGetConvolutionFilter_dispatch_table_rewrite_ptr, /* glGetConvolutionFilter */
+    epoxy_glGetConvolutionFilterEXT_dispatch_table_rewrite_ptr, /* glGetConvolutionFilterEXT */
+    epoxy_glGetConvolutionParameterfv_dispatch_table_rewrite_ptr, /* glGetConvolutionParameterfv */
+    epoxy_glGetConvolutionParameterfvEXT_dispatch_table_rewrite_ptr, /* glGetConvolutionParameterfvEXT */
+    epoxy_glGetConvolutionParameteriv_dispatch_table_rewrite_ptr, /* glGetConvolutionParameteriv */
+    epoxy_glGetConvolutionParameterivEXT_dispatch_table_rewrite_ptr, /* glGetConvolutionParameterivEXT */
+    epoxy_glGetConvolutionParameterxvOES_dispatch_table_rewrite_ptr, /* glGetConvolutionParameterxvOES */
+    epoxy_glGetCoverageModulationTableNV_dispatch_table_rewrite_ptr, /* glGetCoverageModulationTableNV */
+    epoxy_glGetDebugMessageLog_dispatch_table_rewrite_ptr, /* glGetDebugMessageLog */
+    epoxy_glGetDebugMessageLogAMD_dispatch_table_rewrite_ptr, /* glGetDebugMessageLogAMD */
+    epoxy_glGetDebugMessageLogARB_dispatch_table_rewrite_ptr, /* glGetDebugMessageLogARB */
+    epoxy_glGetDebugMessageLogKHR_dispatch_table_rewrite_ptr, /* glGetDebugMessageLogKHR */
+    epoxy_glGetDetailTexFuncSGIS_dispatch_table_rewrite_ptr, /* glGetDetailTexFuncSGIS */
+    epoxy_glGetDoubleIndexedvEXT_dispatch_table_rewrite_ptr, /* glGetDoubleIndexedvEXT */
+    epoxy_glGetDoublei_v_dispatch_table_rewrite_ptr, /* glGetDoublei_v */
+    epoxy_glGetDoublei_vEXT_dispatch_table_rewrite_ptr, /* glGetDoublei_vEXT */
+    epoxy_glGetDoublev_dispatch_table_rewrite_ptr, /* glGetDoublev */
+    epoxy_glGetDriverControlStringQCOM_dispatch_table_rewrite_ptr, /* glGetDriverControlStringQCOM */
+    epoxy_glGetDriverControlsQCOM_dispatch_table_rewrite_ptr, /* glGetDriverControlsQCOM */
+    epoxy_glGetError_dispatch_table_rewrite_ptr, /* glGetError */
+    epoxy_glGetFenceivNV_dispatch_table_rewrite_ptr, /* glGetFenceivNV */
+    epoxy_glGetFinalCombinerInputParameterfvNV_dispatch_table_rewrite_ptr, /* glGetFinalCombinerInputParameterfvNV */
+    epoxy_glGetFinalCombinerInputParameterivNV_dispatch_table_rewrite_ptr, /* glGetFinalCombinerInputParameterivNV */
+    epoxy_glGetFirstPerfQueryIdINTEL_dispatch_table_rewrite_ptr, /* glGetFirstPerfQueryIdINTEL */
+    epoxy_glGetFixedv_dispatch_table_rewrite_ptr, /* glGetFixedv */
+    epoxy_glGetFixedvOES_dispatch_table_rewrite_ptr, /* glGetFixedvOES */
+    epoxy_glGetFloatIndexedvEXT_dispatch_table_rewrite_ptr, /* glGetFloatIndexedvEXT */
+    epoxy_glGetFloati_v_dispatch_table_rewrite_ptr, /* glGetFloati_v */
+    epoxy_glGetFloati_vEXT_dispatch_table_rewrite_ptr, /* glGetFloati_vEXT */
+    epoxy_glGetFloati_vNV_dispatch_table_rewrite_ptr, /* glGetFloati_vNV */
+    epoxy_glGetFloatv_dispatch_table_rewrite_ptr, /* glGetFloatv */
+    epoxy_glGetFogFuncSGIS_dispatch_table_rewrite_ptr, /* glGetFogFuncSGIS */
+    epoxy_glGetFragDataIndex_dispatch_table_rewrite_ptr, /* glGetFragDataIndex */
+    epoxy_glGetFragDataLocation_dispatch_table_rewrite_ptr, /* glGetFragDataLocation */
+    epoxy_glGetFragDataLocationEXT_dispatch_table_rewrite_ptr, /* glGetFragDataLocationEXT */
+    epoxy_glGetFragmentLightfvSGIX_dispatch_table_rewrite_ptr, /* glGetFragmentLightfvSGIX */
+    epoxy_glGetFragmentLightivSGIX_dispatch_table_rewrite_ptr, /* glGetFragmentLightivSGIX */
+    epoxy_glGetFragmentMaterialfvSGIX_dispatch_table_rewrite_ptr, /* glGetFragmentMaterialfvSGIX */
+    epoxy_glGetFragmentMaterialivSGIX_dispatch_table_rewrite_ptr, /* glGetFragmentMaterialivSGIX */
+    epoxy_glGetFramebufferAttachmentParameteriv_dispatch_table_rewrite_ptr, /* glGetFramebufferAttachmentParameteriv */
+    epoxy_glGetFramebufferAttachmentParameterivEXT_dispatch_table_rewrite_ptr, /* glGetFramebufferAttachmentParameterivEXT */
+    epoxy_glGetFramebufferAttachmentParameterivOES_dispatch_table_rewrite_ptr, /* glGetFramebufferAttachmentParameterivOES */
+    epoxy_glGetFramebufferParameteriv_dispatch_table_rewrite_ptr, /* glGetFramebufferParameteriv */
+    epoxy_glGetFramebufferParameterivEXT_dispatch_table_rewrite_ptr, /* glGetFramebufferParameterivEXT */
+    epoxy_glGetGraphicsResetStatus_dispatch_table_rewrite_ptr, /* glGetGraphicsResetStatus */
+    epoxy_glGetGraphicsResetStatusARB_dispatch_table_rewrite_ptr, /* glGetGraphicsResetStatusARB */
+    epoxy_glGetGraphicsResetStatusEXT_dispatch_table_rewrite_ptr, /* glGetGraphicsResetStatusEXT */
+    epoxy_glGetGraphicsResetStatusKHR_dispatch_table_rewrite_ptr, /* glGetGraphicsResetStatusKHR */
+    epoxy_glGetHandleARB_dispatch_table_rewrite_ptr, /* glGetHandleARB */
+    epoxy_glGetHistogram_dispatch_table_rewrite_ptr, /* glGetHistogram */
+    epoxy_glGetHistogramEXT_dispatch_table_rewrite_ptr, /* glGetHistogramEXT */
+    epoxy_glGetHistogramParameterfv_dispatch_table_rewrite_ptr, /* glGetHistogramParameterfv */
+    epoxy_glGetHistogramParameterfvEXT_dispatch_table_rewrite_ptr, /* glGetHistogramParameterfvEXT */
+    epoxy_glGetHistogramParameteriv_dispatch_table_rewrite_ptr, /* glGetHistogramParameteriv */
+    epoxy_glGetHistogramParameterivEXT_dispatch_table_rewrite_ptr, /* glGetHistogramParameterivEXT */
+    epoxy_glGetHistogramParameterxvOES_dispatch_table_rewrite_ptr, /* glGetHistogramParameterxvOES */
+    epoxy_glGetImageHandleARB_dispatch_table_rewrite_ptr, /* glGetImageHandleARB */
+    epoxy_glGetImageHandleNV_dispatch_table_rewrite_ptr, /* glGetImageHandleNV */
+    epoxy_glGetImageTransformParameterfvHP_dispatch_table_rewrite_ptr, /* glGetImageTransformParameterfvHP */
+    epoxy_glGetImageTransformParameterivHP_dispatch_table_rewrite_ptr, /* glGetImageTransformParameterivHP */
+    epoxy_glGetInfoLogARB_dispatch_table_rewrite_ptr, /* glGetInfoLogARB */
+    epoxy_glGetInstrumentsSGIX_dispatch_table_rewrite_ptr, /* glGetInstrumentsSGIX */
+    epoxy_glGetInteger64i_v_dispatch_table_rewrite_ptr, /* glGetInteger64i_v */
+    epoxy_glGetInteger64v_dispatch_table_rewrite_ptr, /* glGetInteger64v */
+    epoxy_glGetInteger64vAPPLE_dispatch_table_rewrite_ptr, /* glGetInteger64vAPPLE */
+    epoxy_glGetIntegerIndexedvEXT_dispatch_table_rewrite_ptr, /* glGetIntegerIndexedvEXT */
+    epoxy_glGetIntegeri_v_dispatch_table_rewrite_ptr, /* glGetIntegeri_v */
+    epoxy_glGetIntegeri_vEXT_dispatch_table_rewrite_ptr, /* glGetIntegeri_vEXT */
+    epoxy_glGetIntegerui64i_vNV_dispatch_table_rewrite_ptr, /* glGetIntegerui64i_vNV */
+    epoxy_glGetIntegerui64vNV_dispatch_table_rewrite_ptr, /* glGetIntegerui64vNV */
+    epoxy_glGetIntegerv_dispatch_table_rewrite_ptr, /* glGetIntegerv */
+    epoxy_glGetInternalformatSampleivNV_dispatch_table_rewrite_ptr, /* glGetInternalformatSampleivNV */
+    epoxy_glGetInternalformati64v_dispatch_table_rewrite_ptr, /* glGetInternalformati64v */
+    epoxy_glGetInternalformativ_dispatch_table_rewrite_ptr, /* glGetInternalformativ */
+    epoxy_glGetInvariantBooleanvEXT_dispatch_table_rewrite_ptr, /* glGetInvariantBooleanvEXT */
+    epoxy_glGetInvariantFloatvEXT_dispatch_table_rewrite_ptr, /* glGetInvariantFloatvEXT */
+    epoxy_glGetInvariantIntegervEXT_dispatch_table_rewrite_ptr, /* glGetInvariantIntegervEXT */
+    epoxy_glGetLightfv_dispatch_table_rewrite_ptr, /* glGetLightfv */
+    epoxy_glGetLightiv_dispatch_table_rewrite_ptr, /* glGetLightiv */
+    epoxy_glGetLightxOES_dispatch_table_rewrite_ptr, /* glGetLightxOES */
+    epoxy_glGetLightxv_dispatch_table_rewrite_ptr, /* glGetLightxv */
+    epoxy_glGetLightxvOES_dispatch_table_rewrite_ptr, /* glGetLightxvOES */
+    epoxy_glGetListParameterfvSGIX_dispatch_table_rewrite_ptr, /* glGetListParameterfvSGIX */
+    epoxy_glGetListParameterivSGIX_dispatch_table_rewrite_ptr, /* glGetListParameterivSGIX */
+    epoxy_glGetLocalConstantBooleanvEXT_dispatch_table_rewrite_ptr, /* glGetLocalConstantBooleanvEXT */
+    epoxy_glGetLocalConstantFloatvEXT_dispatch_table_rewrite_ptr, /* glGetLocalConstantFloatvEXT */
+    epoxy_glGetLocalConstantIntegervEXT_dispatch_table_rewrite_ptr, /* glGetLocalConstantIntegervEXT */
+    epoxy_glGetMapAttribParameterfvNV_dispatch_table_rewrite_ptr, /* glGetMapAttribParameterfvNV */
+    epoxy_glGetMapAttribParameterivNV_dispatch_table_rewrite_ptr, /* glGetMapAttribParameterivNV */
+    epoxy_glGetMapControlPointsNV_dispatch_table_rewrite_ptr, /* glGetMapControlPointsNV */
+    epoxy_glGetMapParameterfvNV_dispatch_table_rewrite_ptr, /* glGetMapParameterfvNV */
+    epoxy_glGetMapParameterivNV_dispatch_table_rewrite_ptr, /* glGetMapParameterivNV */
+    epoxy_glGetMapdv_dispatch_table_rewrite_ptr, /* glGetMapdv */
+    epoxy_glGetMapfv_dispatch_table_rewrite_ptr, /* glGetMapfv */
+    epoxy_glGetMapiv_dispatch_table_rewrite_ptr, /* glGetMapiv */
+    epoxy_glGetMapxvOES_dispatch_table_rewrite_ptr, /* glGetMapxvOES */
+    epoxy_glGetMaterialfv_dispatch_table_rewrite_ptr, /* glGetMaterialfv */
+    epoxy_glGetMaterialiv_dispatch_table_rewrite_ptr, /* glGetMaterialiv */
+    epoxy_glGetMaterialxOES_dispatch_table_rewrite_ptr, /* glGetMaterialxOES */
+    epoxy_glGetMaterialxv_dispatch_table_rewrite_ptr, /* glGetMaterialxv */
+    epoxy_glGetMaterialxvOES_dispatch_table_rewrite_ptr, /* glGetMaterialxvOES */
+    epoxy_glGetMinmax_dispatch_table_rewrite_ptr, /* glGetMinmax */
+    epoxy_glGetMinmaxEXT_dispatch_table_rewrite_ptr, /* glGetMinmaxEXT */
+    epoxy_glGetMinmaxParameterfv_dispatch_table_rewrite_ptr, /* glGetMinmaxParameterfv */
+    epoxy_glGetMinmaxParameterfvEXT_dispatch_table_rewrite_ptr, /* glGetMinmaxParameterfvEXT */
+    epoxy_glGetMinmaxParameteriv_dispatch_table_rewrite_ptr, /* glGetMinmaxParameteriv */
+    epoxy_glGetMinmaxParameterivEXT_dispatch_table_rewrite_ptr, /* glGetMinmaxParameterivEXT */
+    epoxy_glGetMultiTexEnvfvEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexEnvfvEXT */
+    epoxy_glGetMultiTexEnvivEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexEnvivEXT */
+    epoxy_glGetMultiTexGendvEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexGendvEXT */
+    epoxy_glGetMultiTexGenfvEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexGenfvEXT */
+    epoxy_glGetMultiTexGenivEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexGenivEXT */
+    epoxy_glGetMultiTexImageEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexImageEXT */
+    epoxy_glGetMultiTexLevelParameterfvEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexLevelParameterfvEXT */
+    epoxy_glGetMultiTexLevelParameterivEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexLevelParameterivEXT */
+    epoxy_glGetMultiTexParameterIivEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexParameterIivEXT */
+    epoxy_glGetMultiTexParameterIuivEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexParameterIuivEXT */
+    epoxy_glGetMultiTexParameterfvEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexParameterfvEXT */
+    epoxy_glGetMultiTexParameterivEXT_dispatch_table_rewrite_ptr, /* glGetMultiTexParameterivEXT */
+    epoxy_glGetMultisamplefv_dispatch_table_rewrite_ptr, /* glGetMultisamplefv */
+    epoxy_glGetMultisamplefvNV_dispatch_table_rewrite_ptr, /* glGetMultisamplefvNV */
+    epoxy_glGetNamedBufferParameteri64v_dispatch_table_rewrite_ptr, /* glGetNamedBufferParameteri64v */
+    epoxy_glGetNamedBufferParameteriv_dispatch_table_rewrite_ptr, /* glGetNamedBufferParameteriv */
+    epoxy_glGetNamedBufferParameterivEXT_dispatch_table_rewrite_ptr, /* glGetNamedBufferParameterivEXT */
+    epoxy_glGetNamedBufferParameterui64vNV_dispatch_table_rewrite_ptr, /* glGetNamedBufferParameterui64vNV */
+    epoxy_glGetNamedBufferPointerv_dispatch_table_rewrite_ptr, /* glGetNamedBufferPointerv */
+    epoxy_glGetNamedBufferPointervEXT_dispatch_table_rewrite_ptr, /* glGetNamedBufferPointervEXT */
+    epoxy_glGetNamedBufferSubData_dispatch_table_rewrite_ptr, /* glGetNamedBufferSubData */
+    epoxy_glGetNamedBufferSubDataEXT_dispatch_table_rewrite_ptr, /* glGetNamedBufferSubDataEXT */
+    epoxy_glGetNamedFramebufferAttachmentParameteriv_dispatch_table_rewrite_ptr, /* glGetNamedFramebufferAttachmentParameteriv */
+    epoxy_glGetNamedFramebufferAttachmentParameterivEXT_dispatch_table_rewrite_ptr, /* glGetNamedFramebufferAttachmentParameterivEXT */
+    epoxy_glGetNamedFramebufferParameteriv_dispatch_table_rewrite_ptr, /* glGetNamedFramebufferParameteriv */
+    epoxy_glGetNamedFramebufferParameterivEXT_dispatch_table_rewrite_ptr, /* glGetNamedFramebufferParameterivEXT */
+    epoxy_glGetNamedProgramLocalParameterIivEXT_dispatch_table_rewrite_ptr, /* glGetNamedProgramLocalParameterIivEXT */
+    epoxy_glGetNamedProgramLocalParameterIuivEXT_dispatch_table_rewrite_ptr, /* glGetNamedProgramLocalParameterIuivEXT */
+    epoxy_glGetNamedProgramLocalParameterdvEXT_dispatch_table_rewrite_ptr, /* glGetNamedProgramLocalParameterdvEXT */
+    epoxy_glGetNamedProgramLocalParameterfvEXT_dispatch_table_rewrite_ptr, /* glGetNamedProgramLocalParameterfvEXT */
+    epoxy_glGetNamedProgramStringEXT_dispatch_table_rewrite_ptr, /* glGetNamedProgramStringEXT */
+    epoxy_glGetNamedProgramivEXT_dispatch_table_rewrite_ptr, /* glGetNamedProgramivEXT */
+    epoxy_glGetNamedRenderbufferParameteriv_dispatch_table_rewrite_ptr, /* glGetNamedRenderbufferParameteriv */
+    epoxy_glGetNamedRenderbufferParameterivEXT_dispatch_table_rewrite_ptr, /* glGetNamedRenderbufferParameterivEXT */
+    epoxy_glGetNamedStringARB_dispatch_table_rewrite_ptr, /* glGetNamedStringARB */
+    epoxy_glGetNamedStringivARB_dispatch_table_rewrite_ptr, /* glGetNamedStringivARB */
+    epoxy_glGetNextPerfQueryIdINTEL_dispatch_table_rewrite_ptr, /* glGetNextPerfQueryIdINTEL */
+    epoxy_glGetObjectBufferfvATI_dispatch_table_rewrite_ptr, /* glGetObjectBufferfvATI */
+    epoxy_glGetObjectBufferivATI_dispatch_table_rewrite_ptr, /* glGetObjectBufferivATI */
+    epoxy_glGetObjectLabel_dispatch_table_rewrite_ptr, /* glGetObjectLabel */
+    epoxy_glGetObjectLabelEXT_dispatch_table_rewrite_ptr, /* glGetObjectLabelEXT */
+    epoxy_glGetObjectLabelKHR_dispatch_table_rewrite_ptr, /* glGetObjectLabelKHR */
+    epoxy_glGetObjectParameterfvARB_dispatch_table_rewrite_ptr, /* glGetObjectParameterfvARB */
+    epoxy_glGetObjectParameterivAPPLE_dispatch_table_rewrite_ptr, /* glGetObjectParameterivAPPLE */
+    epoxy_glGetObjectParameterivARB_dispatch_table_rewrite_ptr, /* glGetObjectParameterivARB */
+    epoxy_glGetObjectPtrLabel_dispatch_table_rewrite_ptr, /* glGetObjectPtrLabel */
+    epoxy_glGetObjectPtrLabelKHR_dispatch_table_rewrite_ptr, /* glGetObjectPtrLabelKHR */
+    epoxy_glGetOcclusionQueryivNV_dispatch_table_rewrite_ptr, /* glGetOcclusionQueryivNV */
+    epoxy_glGetOcclusionQueryuivNV_dispatch_table_rewrite_ptr, /* glGetOcclusionQueryuivNV */
+    epoxy_glGetPathColorGenfvNV_dispatch_table_rewrite_ptr, /* glGetPathColorGenfvNV */
+    epoxy_glGetPathColorGenivNV_dispatch_table_rewrite_ptr, /* glGetPathColorGenivNV */
+    epoxy_glGetPathCommandsNV_dispatch_table_rewrite_ptr, /* glGetPathCommandsNV */
+    epoxy_glGetPathCoordsNV_dispatch_table_rewrite_ptr, /* glGetPathCoordsNV */
+    epoxy_glGetPathDashArrayNV_dispatch_table_rewrite_ptr, /* glGetPathDashArrayNV */
+    epoxy_glGetPathLengthNV_dispatch_table_rewrite_ptr, /* glGetPathLengthNV */
+    epoxy_glGetPathMetricRangeNV_dispatch_table_rewrite_ptr, /* glGetPathMetricRangeNV */
+    epoxy_glGetPathMetricsNV_dispatch_table_rewrite_ptr, /* glGetPathMetricsNV */
+    epoxy_glGetPathParameterfvNV_dispatch_table_rewrite_ptr, /* glGetPathParameterfvNV */
+    epoxy_glGetPathParameterivNV_dispatch_table_rewrite_ptr, /* glGetPathParameterivNV */
+    epoxy_glGetPathSpacingNV_dispatch_table_rewrite_ptr, /* glGetPathSpacingNV */
+    epoxy_glGetPathTexGenfvNV_dispatch_table_rewrite_ptr, /* glGetPathTexGenfvNV */
+    epoxy_glGetPathTexGenivNV_dispatch_table_rewrite_ptr, /* glGetPathTexGenivNV */
+    epoxy_glGetPerfCounterInfoINTEL_dispatch_table_rewrite_ptr, /* glGetPerfCounterInfoINTEL */
+    epoxy_glGetPerfMonitorCounterDataAMD_dispatch_table_rewrite_ptr, /* glGetPerfMonitorCounterDataAMD */
+    epoxy_glGetPerfMonitorCounterInfoAMD_dispatch_table_rewrite_ptr, /* glGetPerfMonitorCounterInfoAMD */
+    epoxy_glGetPerfMonitorCounterStringAMD_dispatch_table_rewrite_ptr, /* glGetPerfMonitorCounterStringAMD */
+    epoxy_glGetPerfMonitorCountersAMD_dispatch_table_rewrite_ptr, /* glGetPerfMonitorCountersAMD */
+    epoxy_glGetPerfMonitorGroupStringAMD_dispatch_table_rewrite_ptr, /* glGetPerfMonitorGroupStringAMD */
+    epoxy_glGetPerfMonitorGroupsAMD_dispatch_table_rewrite_ptr, /* glGetPerfMonitorGroupsAMD */
+    epoxy_glGetPerfQueryDataINTEL_dispatch_table_rewrite_ptr, /* glGetPerfQueryDataINTEL */
+    epoxy_glGetPerfQueryIdByNameINTEL_dispatch_table_rewrite_ptr, /* glGetPerfQueryIdByNameINTEL */
+    epoxy_glGetPerfQueryInfoINTEL_dispatch_table_rewrite_ptr, /* glGetPerfQueryInfoINTEL */
+    epoxy_glGetPixelMapfv_dispatch_table_rewrite_ptr, /* glGetPixelMapfv */
+    epoxy_glGetPixelMapuiv_dispatch_table_rewrite_ptr, /* glGetPixelMapuiv */
+    epoxy_glGetPixelMapusv_dispatch_table_rewrite_ptr, /* glGetPixelMapusv */
+    epoxy_glGetPixelMapxv_dispatch_table_rewrite_ptr, /* glGetPixelMapxv */
+    epoxy_glGetPixelTexGenParameterfvSGIS_dispatch_table_rewrite_ptr, /* glGetPixelTexGenParameterfvSGIS */
+    epoxy_glGetPixelTexGenParameterivSGIS_dispatch_table_rewrite_ptr, /* glGetPixelTexGenParameterivSGIS */
+    epoxy_glGetPixelTransformParameterfvEXT_dispatch_table_rewrite_ptr, /* glGetPixelTransformParameterfvEXT */
+    epoxy_glGetPixelTransformParameterivEXT_dispatch_table_rewrite_ptr, /* glGetPixelTransformParameterivEXT */
+    epoxy_glGetPointerIndexedvEXT_dispatch_table_rewrite_ptr, /* glGetPointerIndexedvEXT */
+    epoxy_glGetPointeri_vEXT_dispatch_table_rewrite_ptr, /* glGetPointeri_vEXT */
+    epoxy_glGetPointerv_dispatch_table_rewrite_ptr, /* glGetPointerv */
+    epoxy_glGetPointervEXT_dispatch_table_rewrite_ptr, /* glGetPointervEXT */
+    epoxy_glGetPointervKHR_dispatch_table_rewrite_ptr, /* glGetPointervKHR */
+    epoxy_glGetPolygonStipple_dispatch_table_rewrite_ptr, /* glGetPolygonStipple */
+    epoxy_glGetProgramBinary_dispatch_table_rewrite_ptr, /* glGetProgramBinary */
+    epoxy_glGetProgramBinaryOES_dispatch_table_rewrite_ptr, /* glGetProgramBinaryOES */
+    epoxy_glGetProgramEnvParameterIivNV_dispatch_table_rewrite_ptr, /* glGetProgramEnvParameterIivNV */
+    epoxy_glGetProgramEnvParameterIuivNV_dispatch_table_rewrite_ptr, /* glGetProgramEnvParameterIuivNV */
+    epoxy_glGetProgramEnvParameterdvARB_dispatch_table_rewrite_ptr, /* glGetProgramEnvParameterdvARB */
+    epoxy_glGetProgramEnvParameterfvARB_dispatch_table_rewrite_ptr, /* glGetProgramEnvParameterfvARB */
+    epoxy_glGetProgramInfoLog_dispatch_table_rewrite_ptr, /* glGetProgramInfoLog */
+    epoxy_glGetProgramInterfaceiv_dispatch_table_rewrite_ptr, /* glGetProgramInterfaceiv */
+    epoxy_glGetProgramLocalParameterIivNV_dispatch_table_rewrite_ptr, /* glGetProgramLocalParameterIivNV */
+    epoxy_glGetProgramLocalParameterIuivNV_dispatch_table_rewrite_ptr, /* glGetProgramLocalParameterIuivNV */
+    epoxy_glGetProgramLocalParameterdvARB_dispatch_table_rewrite_ptr, /* glGetProgramLocalParameterdvARB */
+    epoxy_glGetProgramLocalParameterfvARB_dispatch_table_rewrite_ptr, /* glGetProgramLocalParameterfvARB */
+    epoxy_glGetProgramNamedParameterdvNV_dispatch_table_rewrite_ptr, /* glGetProgramNamedParameterdvNV */
+    epoxy_glGetProgramNamedParameterfvNV_dispatch_table_rewrite_ptr, /* glGetProgramNamedParameterfvNV */
+    epoxy_glGetProgramParameterdvNV_dispatch_table_rewrite_ptr, /* glGetProgramParameterdvNV */
+    epoxy_glGetProgramParameterfvNV_dispatch_table_rewrite_ptr, /* glGetProgramParameterfvNV */
+    epoxy_glGetProgramPipelineInfoLog_dispatch_table_rewrite_ptr, /* glGetProgramPipelineInfoLog */
+    epoxy_glGetProgramPipelineInfoLogEXT_dispatch_table_rewrite_ptr, /* glGetProgramPipelineInfoLogEXT */
+    epoxy_glGetProgramPipelineiv_dispatch_table_rewrite_ptr, /* glGetProgramPipelineiv */
+    epoxy_glGetProgramPipelineivEXT_dispatch_table_rewrite_ptr, /* glGetProgramPipelineivEXT */
+    epoxy_glGetProgramResourceIndex_dispatch_table_rewrite_ptr, /* glGetProgramResourceIndex */
+    epoxy_glGetProgramResourceLocation_dispatch_table_rewrite_ptr, /* glGetProgramResourceLocation */
+    epoxy_glGetProgramResourceLocationIndex_dispatch_table_rewrite_ptr, /* glGetProgramResourceLocationIndex */
+    epoxy_glGetProgramResourceName_dispatch_table_rewrite_ptr, /* glGetProgramResourceName */
+    epoxy_glGetProgramResourcefvNV_dispatch_table_rewrite_ptr, /* glGetProgramResourcefvNV */
+    epoxy_glGetProgramResourceiv_dispatch_table_rewrite_ptr, /* glGetProgramResourceiv */
+    epoxy_glGetProgramStageiv_dispatch_table_rewrite_ptr, /* glGetProgramStageiv */
+    epoxy_glGetProgramStringARB_dispatch_table_rewrite_ptr, /* glGetProgramStringARB */
+    epoxy_glGetProgramStringNV_dispatch_table_rewrite_ptr, /* glGetProgramStringNV */
+    epoxy_glGetProgramSubroutineParameteruivNV_dispatch_table_rewrite_ptr, /* glGetProgramSubroutineParameteruivNV */
+    epoxy_glGetProgramiv_dispatch_table_rewrite_ptr, /* glGetProgramiv */
+    epoxy_glGetProgramivARB_dispatch_table_rewrite_ptr, /* glGetProgramivARB */
+    epoxy_glGetProgramivNV_dispatch_table_rewrite_ptr, /* glGetProgramivNV */
+    epoxy_glGetQueryBufferObjecti64v_dispatch_table_rewrite_ptr, /* glGetQueryBufferObjecti64v */
+    epoxy_glGetQueryBufferObjectiv_dispatch_table_rewrite_ptr, /* glGetQueryBufferObjectiv */
+    epoxy_glGetQueryBufferObjectui64v_dispatch_table_rewrite_ptr, /* glGetQueryBufferObjectui64v */
+    epoxy_glGetQueryBufferObjectuiv_dispatch_table_rewrite_ptr, /* glGetQueryBufferObjectuiv */
+    epoxy_glGetQueryIndexediv_dispatch_table_rewrite_ptr, /* glGetQueryIndexediv */
+    epoxy_glGetQueryObjecti64v_dispatch_table_rewrite_ptr, /* glGetQueryObjecti64v */
+    epoxy_glGetQueryObjecti64vEXT_dispatch_table_rewrite_ptr, /* glGetQueryObjecti64vEXT */
+    epoxy_glGetQueryObjectiv_dispatch_table_rewrite_ptr, /* glGetQueryObjectiv */
+    epoxy_glGetQueryObjectivARB_dispatch_table_rewrite_ptr, /* glGetQueryObjectivARB */
+    epoxy_glGetQueryObjectivEXT_dispatch_table_rewrite_ptr, /* glGetQueryObjectivEXT */
+    epoxy_glGetQueryObjectui64v_dispatch_table_rewrite_ptr, /* glGetQueryObjectui64v */
+    epoxy_glGetQueryObjectui64vEXT_dispatch_table_rewrite_ptr, /* glGetQueryObjectui64vEXT */
+    epoxy_glGetQueryObjectuiv_dispatch_table_rewrite_ptr, /* glGetQueryObjectuiv */
+    epoxy_glGetQueryObjectuivARB_dispatch_table_rewrite_ptr, /* glGetQueryObjectuivARB */
+    epoxy_glGetQueryObjectuivEXT_dispatch_table_rewrite_ptr, /* glGetQueryObjectuivEXT */
+    epoxy_glGetQueryiv_dispatch_table_rewrite_ptr, /* glGetQueryiv */
+    epoxy_glGetQueryivARB_dispatch_table_rewrite_ptr, /* glGetQueryivARB */
+    epoxy_glGetQueryivEXT_dispatch_table_rewrite_ptr, /* glGetQueryivEXT */
+    epoxy_glGetRenderbufferParameteriv_dispatch_table_rewrite_ptr, /* glGetRenderbufferParameteriv */
+    epoxy_glGetRenderbufferParameterivEXT_dispatch_table_rewrite_ptr, /* glGetRenderbufferParameterivEXT */
+    epoxy_glGetRenderbufferParameterivOES_dispatch_table_rewrite_ptr, /* glGetRenderbufferParameterivOES */
+    epoxy_glGetSamplerParameterIiv_dispatch_table_rewrite_ptr, /* glGetSamplerParameterIiv */
+    epoxy_glGetSamplerParameterIivEXT_dispatch_table_rewrite_ptr, /* glGetSamplerParameterIivEXT */
+    epoxy_glGetSamplerParameterIivOES_dispatch_table_rewrite_ptr, /* glGetSamplerParameterIivOES */
+    epoxy_glGetSamplerParameterIuiv_dispatch_table_rewrite_ptr, /* glGetSamplerParameterIuiv */
+    epoxy_glGetSamplerParameterIuivEXT_dispatch_table_rewrite_ptr, /* glGetSamplerParameterIuivEXT */
+    epoxy_glGetSamplerParameterIuivOES_dispatch_table_rewrite_ptr, /* glGetSamplerParameterIuivOES */
+    epoxy_glGetSamplerParameterfv_dispatch_table_rewrite_ptr, /* glGetSamplerParameterfv */
+    epoxy_glGetSamplerParameteriv_dispatch_table_rewrite_ptr, /* glGetSamplerParameteriv */
+    epoxy_glGetSeparableFilter_dispatch_table_rewrite_ptr, /* glGetSeparableFilter */
+    epoxy_glGetSeparableFilterEXT_dispatch_table_rewrite_ptr, /* glGetSeparableFilterEXT */
+    epoxy_glGetShaderInfoLog_dispatch_table_rewrite_ptr, /* glGetShaderInfoLog */
+    epoxy_glGetShaderPrecisionFormat_dispatch_table_rewrite_ptr, /* glGetShaderPrecisionFormat */
+    epoxy_glGetShaderSource_dispatch_table_rewrite_ptr, /* glGetShaderSource */
+    epoxy_glGetShaderSourceARB_dispatch_table_rewrite_ptr, /* glGetShaderSourceARB */
+    epoxy_glGetShaderiv_dispatch_table_rewrite_ptr, /* glGetShaderiv */
+    epoxy_glGetSharpenTexFuncSGIS_dispatch_table_rewrite_ptr, /* glGetSharpenTexFuncSGIS */
+    epoxy_glGetStageIndexNV_dispatch_table_rewrite_ptr, /* glGetStageIndexNV */
+    epoxy_glGetString_dispatch_table_rewrite_ptr, /* glGetString */
+    epoxy_glGetStringi_dispatch_table_rewrite_ptr, /* glGetStringi */
+    epoxy_glGetSubroutineIndex_dispatch_table_rewrite_ptr, /* glGetSubroutineIndex */
+    epoxy_glGetSubroutineUniformLocation_dispatch_table_rewrite_ptr, /* glGetSubroutineUniformLocation */
+    epoxy_glGetSynciv_dispatch_table_rewrite_ptr, /* glGetSynciv */
+    epoxy_glGetSyncivAPPLE_dispatch_table_rewrite_ptr, /* glGetSyncivAPPLE */
+    epoxy_glGetTexBumpParameterfvATI_dispatch_table_rewrite_ptr, /* glGetTexBumpParameterfvATI */
+    epoxy_glGetTexBumpParameterivATI_dispatch_table_rewrite_ptr, /* glGetTexBumpParameterivATI */
+    epoxy_glGetTexEnvfv_dispatch_table_rewrite_ptr, /* glGetTexEnvfv */
+    epoxy_glGetTexEnviv_dispatch_table_rewrite_ptr, /* glGetTexEnviv */
+    epoxy_glGetTexEnvxv_dispatch_table_rewrite_ptr, /* glGetTexEnvxv */
+    epoxy_glGetTexEnvxvOES_dispatch_table_rewrite_ptr, /* glGetTexEnvxvOES */
+    epoxy_glGetTexFilterFuncSGIS_dispatch_table_rewrite_ptr, /* glGetTexFilterFuncSGIS */
+    epoxy_glGetTexGendv_dispatch_table_rewrite_ptr, /* glGetTexGendv */
+    epoxy_glGetTexGenfv_dispatch_table_rewrite_ptr, /* glGetTexGenfv */
+    epoxy_glGetTexGenfvOES_dispatch_table_rewrite_ptr, /* glGetTexGenfvOES */
+    epoxy_glGetTexGeniv_dispatch_table_rewrite_ptr, /* glGetTexGeniv */
+    epoxy_glGetTexGenivOES_dispatch_table_rewrite_ptr, /* glGetTexGenivOES */
+    epoxy_glGetTexGenxvOES_dispatch_table_rewrite_ptr, /* glGetTexGenxvOES */
+    epoxy_glGetTexImage_dispatch_table_rewrite_ptr, /* glGetTexImage */
+    epoxy_glGetTexLevelParameterfv_dispatch_table_rewrite_ptr, /* glGetTexLevelParameterfv */
+    epoxy_glGetTexLevelParameteriv_dispatch_table_rewrite_ptr, /* glGetTexLevelParameteriv */
+    epoxy_glGetTexLevelParameterxvOES_dispatch_table_rewrite_ptr, /* glGetTexLevelParameterxvOES */
+    epoxy_glGetTexParameterIiv_dispatch_table_rewrite_ptr, /* glGetTexParameterIiv */
+    epoxy_glGetTexParameterIivEXT_dispatch_table_rewrite_ptr, /* glGetTexParameterIivEXT */
+    epoxy_glGetTexParameterIivOES_dispatch_table_rewrite_ptr, /* glGetTexParameterIivOES */
+    epoxy_glGetTexParameterIuiv_dispatch_table_rewrite_ptr, /* glGetTexParameterIuiv */
+    epoxy_glGetTexParameterIuivEXT_dispatch_table_rewrite_ptr, /* glGetTexParameterIuivEXT */
+    epoxy_glGetTexParameterIuivOES_dispatch_table_rewrite_ptr, /* glGetTexParameterIuivOES */
+    epoxy_glGetTexParameterPointervAPPLE_dispatch_table_rewrite_ptr, /* glGetTexParameterPointervAPPLE */
+    epoxy_glGetTexParameterfv_dispatch_table_rewrite_ptr, /* glGetTexParameterfv */
+    epoxy_glGetTexParameteriv_dispatch_table_rewrite_ptr, /* glGetTexParameteriv */
+    epoxy_glGetTexParameterxv_dispatch_table_rewrite_ptr, /* glGetTexParameterxv */
+    epoxy_glGetTexParameterxvOES_dispatch_table_rewrite_ptr, /* glGetTexParameterxvOES */
+    epoxy_glGetTextureHandleARB_dispatch_table_rewrite_ptr, /* glGetTextureHandleARB */
+    epoxy_glGetTextureHandleNV_dispatch_table_rewrite_ptr, /* glGetTextureHandleNV */
+    epoxy_glGetTextureImage_dispatch_table_rewrite_ptr, /* glGetTextureImage */
+    epoxy_glGetTextureImageEXT_dispatch_table_rewrite_ptr, /* glGetTextureImageEXT */
+    epoxy_glGetTextureLevelParameterfv_dispatch_table_rewrite_ptr, /* glGetTextureLevelParameterfv */
+    epoxy_glGetTextureLevelParameterfvEXT_dispatch_table_rewrite_ptr, /* glGetTextureLevelParameterfvEXT */
+    epoxy_glGetTextureLevelParameteriv_dispatch_table_rewrite_ptr, /* glGetTextureLevelParameteriv */
+    epoxy_glGetTextureLevelParameterivEXT_dispatch_table_rewrite_ptr, /* glGetTextureLevelParameterivEXT */
+    epoxy_glGetTextureParameterIiv_dispatch_table_rewrite_ptr, /* glGetTextureParameterIiv */
+    epoxy_glGetTextureParameterIivEXT_dispatch_table_rewrite_ptr, /* glGetTextureParameterIivEXT */
+    epoxy_glGetTextureParameterIuiv_dispatch_table_rewrite_ptr, /* glGetTextureParameterIuiv */
+    epoxy_glGetTextureParameterIuivEXT_dispatch_table_rewrite_ptr, /* glGetTextureParameterIuivEXT */
+    epoxy_glGetTextureParameterfv_dispatch_table_rewrite_ptr, /* glGetTextureParameterfv */
+    epoxy_glGetTextureParameterfvEXT_dispatch_table_rewrite_ptr, /* glGetTextureParameterfvEXT */
+    epoxy_glGetTextureParameteriv_dispatch_table_rewrite_ptr, /* glGetTextureParameteriv */
+    epoxy_glGetTextureParameterivEXT_dispatch_table_rewrite_ptr, /* glGetTextureParameterivEXT */
+    epoxy_glGetTextureSamplerHandleARB_dispatch_table_rewrite_ptr, /* glGetTextureSamplerHandleARB */
+    epoxy_glGetTextureSamplerHandleNV_dispatch_table_rewrite_ptr, /* glGetTextureSamplerHandleNV */
+    epoxy_glGetTextureSubImage_dispatch_table_rewrite_ptr, /* glGetTextureSubImage */
+    epoxy_glGetTrackMatrixivNV_dispatch_table_rewrite_ptr, /* glGetTrackMatrixivNV */
+    epoxy_glGetTransformFeedbackVarying_dispatch_table_rewrite_ptr, /* glGetTransformFeedbackVarying */
+    epoxy_glGetTransformFeedbackVaryingEXT_dispatch_table_rewrite_ptr, /* glGetTransformFeedbackVaryingEXT */
+    epoxy_glGetTransformFeedbackVaryingNV_dispatch_table_rewrite_ptr, /* glGetTransformFeedbackVaryingNV */
+    epoxy_glGetTransformFeedbacki64_v_dispatch_table_rewrite_ptr, /* glGetTransformFeedbacki64_v */
+    epoxy_glGetTransformFeedbacki_v_dispatch_table_rewrite_ptr, /* glGetTransformFeedbacki_v */
+    epoxy_glGetTransformFeedbackiv_dispatch_table_rewrite_ptr, /* glGetTransformFeedbackiv */
+    epoxy_glGetTranslatedShaderSourceANGLE_dispatch_table_rewrite_ptr, /* glGetTranslatedShaderSourceANGLE */
+    epoxy_glGetUniformBlockIndex_dispatch_table_rewrite_ptr, /* glGetUniformBlockIndex */
+    epoxy_glGetUniformBufferSizeEXT_dispatch_table_rewrite_ptr, /* glGetUniformBufferSizeEXT */
+    epoxy_glGetUniformIndices_dispatch_table_rewrite_ptr, /* glGetUniformIndices */
+    epoxy_glGetUniformLocation_dispatch_table_rewrite_ptr, /* glGetUniformLocation */
+    epoxy_glGetUniformLocationARB_dispatch_table_rewrite_ptr, /* glGetUniformLocationARB */
+    epoxy_glGetUniformOffsetEXT_dispatch_table_rewrite_ptr, /* glGetUniformOffsetEXT */
+    epoxy_glGetUniformSubroutineuiv_dispatch_table_rewrite_ptr, /* glGetUniformSubroutineuiv */
+    epoxy_glGetUniformdv_dispatch_table_rewrite_ptr, /* glGetUniformdv */
+    epoxy_glGetUniformfv_dispatch_table_rewrite_ptr, /* glGetUniformfv */
+    epoxy_glGetUniformfvARB_dispatch_table_rewrite_ptr, /* glGetUniformfvARB */
+    epoxy_glGetUniformi64vNV_dispatch_table_rewrite_ptr, /* glGetUniformi64vNV */
+    epoxy_glGetUniformiv_dispatch_table_rewrite_ptr, /* glGetUniformiv */
+    epoxy_glGetUniformivARB_dispatch_table_rewrite_ptr, /* glGetUniformivARB */
+    epoxy_glGetUniformui64vNV_dispatch_table_rewrite_ptr, /* glGetUniformui64vNV */
+    epoxy_glGetUniformuiv_dispatch_table_rewrite_ptr, /* glGetUniformuiv */
+    epoxy_glGetUniformuivEXT_dispatch_table_rewrite_ptr, /* glGetUniformuivEXT */
+    epoxy_glGetVariantArrayObjectfvATI_dispatch_table_rewrite_ptr, /* glGetVariantArrayObjectfvATI */
+    epoxy_glGetVariantArrayObjectivATI_dispatch_table_rewrite_ptr, /* glGetVariantArrayObjectivATI */
+    epoxy_glGetVariantBooleanvEXT_dispatch_table_rewrite_ptr, /* glGetVariantBooleanvEXT */
+    epoxy_glGetVariantFloatvEXT_dispatch_table_rewrite_ptr, /* glGetVariantFloatvEXT */
+    epoxy_glGetVariantIntegervEXT_dispatch_table_rewrite_ptr, /* glGetVariantIntegervEXT */
+    epoxy_glGetVariantPointervEXT_dispatch_table_rewrite_ptr, /* glGetVariantPointervEXT */
+    epoxy_glGetVaryingLocationNV_dispatch_table_rewrite_ptr, /* glGetVaryingLocationNV */
+    epoxy_glGetVertexArrayIndexed64iv_dispatch_table_rewrite_ptr, /* glGetVertexArrayIndexed64iv */
+    epoxy_glGetVertexArrayIndexediv_dispatch_table_rewrite_ptr, /* glGetVertexArrayIndexediv */
+    epoxy_glGetVertexArrayIntegeri_vEXT_dispatch_table_rewrite_ptr, /* glGetVertexArrayIntegeri_vEXT */
+    epoxy_glGetVertexArrayIntegervEXT_dispatch_table_rewrite_ptr, /* glGetVertexArrayIntegervEXT */
+    epoxy_glGetVertexArrayPointeri_vEXT_dispatch_table_rewrite_ptr, /* glGetVertexArrayPointeri_vEXT */
+    epoxy_glGetVertexArrayPointervEXT_dispatch_table_rewrite_ptr, /* glGetVertexArrayPointervEXT */
+    epoxy_glGetVertexArrayiv_dispatch_table_rewrite_ptr, /* glGetVertexArrayiv */
+    epoxy_glGetVertexAttribArrayObjectfvATI_dispatch_table_rewrite_ptr, /* glGetVertexAttribArrayObjectfvATI */
+    epoxy_glGetVertexAttribArrayObjectivATI_dispatch_table_rewrite_ptr, /* glGetVertexAttribArrayObjectivATI */
+    epoxy_glGetVertexAttribIiv_dispatch_table_rewrite_ptr, /* glGetVertexAttribIiv */
+    epoxy_glGetVertexAttribIivEXT_dispatch_table_rewrite_ptr, /* glGetVertexAttribIivEXT */
+    epoxy_glGetVertexAttribIuiv_dispatch_table_rewrite_ptr, /* glGetVertexAttribIuiv */
+    epoxy_glGetVertexAttribIuivEXT_dispatch_table_rewrite_ptr, /* glGetVertexAttribIuivEXT */
+    epoxy_glGetVertexAttribLdv_dispatch_table_rewrite_ptr, /* glGetVertexAttribLdv */
+    epoxy_glGetVertexAttribLdvEXT_dispatch_table_rewrite_ptr, /* glGetVertexAttribLdvEXT */
+    epoxy_glGetVertexAttribLi64vNV_dispatch_table_rewrite_ptr, /* glGetVertexAttribLi64vNV */
+    epoxy_glGetVertexAttribLui64vARB_dispatch_table_rewrite_ptr, /* glGetVertexAttribLui64vARB */
+    epoxy_glGetVertexAttribLui64vNV_dispatch_table_rewrite_ptr, /* glGetVertexAttribLui64vNV */
+    epoxy_glGetVertexAttribPointerv_dispatch_table_rewrite_ptr, /* glGetVertexAttribPointerv */
+    epoxy_glGetVertexAttribPointervARB_dispatch_table_rewrite_ptr, /* glGetVertexAttribPointervARB */
+    epoxy_glGetVertexAttribPointervNV_dispatch_table_rewrite_ptr, /* glGetVertexAttribPointervNV */
+    epoxy_glGetVertexAttribdv_dispatch_table_rewrite_ptr, /* glGetVertexAttribdv */
+    epoxy_glGetVertexAttribdvARB_dispatch_table_rewrite_ptr, /* glGetVertexAttribdvARB */
+    epoxy_glGetVertexAttribdvNV_dispatch_table_rewrite_ptr, /* glGetVertexAttribdvNV */
+    epoxy_glGetVertexAttribfv_dispatch_table_rewrite_ptr, /* glGetVertexAttribfv */
+    epoxy_glGetVertexAttribfvARB_dispatch_table_rewrite_ptr, /* glGetVertexAttribfvARB */
+    epoxy_glGetVertexAttribfvNV_dispatch_table_rewrite_ptr, /* glGetVertexAttribfvNV */
+    epoxy_glGetVertexAttribiv_dispatch_table_rewrite_ptr, /* glGetVertexAttribiv */
+    epoxy_glGetVertexAttribivARB_dispatch_table_rewrite_ptr, /* glGetVertexAttribivARB */
+    epoxy_glGetVertexAttribivNV_dispatch_table_rewrite_ptr, /* glGetVertexAttribivNV */
+    epoxy_glGetVideoCaptureStreamdvNV_dispatch_table_rewrite_ptr, /* glGetVideoCaptureStreamdvNV */
+    epoxy_glGetVideoCaptureStreamfvNV_dispatch_table_rewrite_ptr, /* glGetVideoCaptureStreamfvNV */
+    epoxy_glGetVideoCaptureStreamivNV_dispatch_table_rewrite_ptr, /* glGetVideoCaptureStreamivNV */
+    epoxy_glGetVideoCaptureivNV_dispatch_table_rewrite_ptr, /* glGetVideoCaptureivNV */
+    epoxy_glGetVideoi64vNV_dispatch_table_rewrite_ptr, /* glGetVideoi64vNV */
+    epoxy_glGetVideoivNV_dispatch_table_rewrite_ptr, /* glGetVideoivNV */
+    epoxy_glGetVideoui64vNV_dispatch_table_rewrite_ptr, /* glGetVideoui64vNV */
+    epoxy_glGetVideouivNV_dispatch_table_rewrite_ptr, /* glGetVideouivNV */
+    epoxy_glGetnColorTable_dispatch_table_rewrite_ptr, /* glGetnColorTable */
+    epoxy_glGetnColorTableARB_dispatch_table_rewrite_ptr, /* glGetnColorTableARB */
+    epoxy_glGetnCompressedTexImage_dispatch_table_rewrite_ptr, /* glGetnCompressedTexImage */
+    epoxy_glGetnCompressedTexImageARB_dispatch_table_rewrite_ptr, /* glGetnCompressedTexImageARB */
+    epoxy_glGetnConvolutionFilter_dispatch_table_rewrite_ptr, /* glGetnConvolutionFilter */
+    epoxy_glGetnConvolutionFilterARB_dispatch_table_rewrite_ptr, /* glGetnConvolutionFilterARB */
+    epoxy_glGetnHistogram_dispatch_table_rewrite_ptr, /* glGetnHistogram */
+    epoxy_glGetnHistogramARB_dispatch_table_rewrite_ptr, /* glGetnHistogramARB */
+    epoxy_glGetnMapdv_dispatch_table_rewrite_ptr, /* glGetnMapdv */
+    epoxy_glGetnMapdvARB_dispatch_table_rewrite_ptr, /* glGetnMapdvARB */
+    epoxy_glGetnMapfv_dispatch_table_rewrite_ptr, /* glGetnMapfv */
+    epoxy_glGetnMapfvARB_dispatch_table_rewrite_ptr, /* glGetnMapfvARB */
+    epoxy_glGetnMapiv_dispatch_table_rewrite_ptr, /* glGetnMapiv */
+    epoxy_glGetnMapivARB_dispatch_table_rewrite_ptr, /* glGetnMapivARB */
+    epoxy_glGetnMinmax_dispatch_table_rewrite_ptr, /* glGetnMinmax */
+    epoxy_glGetnMinmaxARB_dispatch_table_rewrite_ptr, /* glGetnMinmaxARB */
+    epoxy_glGetnPixelMapfv_dispatch_table_rewrite_ptr, /* glGetnPixelMapfv */
+    epoxy_glGetnPixelMapfvARB_dispatch_table_rewrite_ptr, /* glGetnPixelMapfvARB */
+    epoxy_glGetnPixelMapuiv_dispatch_table_rewrite_ptr, /* glGetnPixelMapuiv */
+    epoxy_glGetnPixelMapuivARB_dispatch_table_rewrite_ptr, /* glGetnPixelMapuivARB */
+    epoxy_glGetnPixelMapusv_dispatch_table_rewrite_ptr, /* glGetnPixelMapusv */
+    epoxy_glGetnPixelMapusvARB_dispatch_table_rewrite_ptr, /* glGetnPixelMapusvARB */
+    epoxy_glGetnPolygonStipple_dispatch_table_rewrite_ptr, /* glGetnPolygonStipple */
+    epoxy_glGetnPolygonStippleARB_dispatch_table_rewrite_ptr, /* glGetnPolygonStippleARB */
+    epoxy_glGetnSeparableFilter_dispatch_table_rewrite_ptr, /* glGetnSeparableFilter */
+    epoxy_glGetnSeparableFilterARB_dispatch_table_rewrite_ptr, /* glGetnSeparableFilterARB */
+    epoxy_glGetnTexImage_dispatch_table_rewrite_ptr, /* glGetnTexImage */
+    epoxy_glGetnTexImageARB_dispatch_table_rewrite_ptr, /* glGetnTexImageARB */
+    epoxy_glGetnUniformdv_dispatch_table_rewrite_ptr, /* glGetnUniformdv */
+    epoxy_glGetnUniformdvARB_dispatch_table_rewrite_ptr, /* glGetnUniformdvARB */
+    epoxy_glGetnUniformfv_dispatch_table_rewrite_ptr, /* glGetnUniformfv */
+    epoxy_glGetnUniformfvARB_dispatch_table_rewrite_ptr, /* glGetnUniformfvARB */
+    epoxy_glGetnUniformfvEXT_dispatch_table_rewrite_ptr, /* glGetnUniformfvEXT */
+    epoxy_glGetnUniformfvKHR_dispatch_table_rewrite_ptr, /* glGetnUniformfvKHR */
+    epoxy_glGetnUniformiv_dispatch_table_rewrite_ptr, /* glGetnUniformiv */
+    epoxy_glGetnUniformivARB_dispatch_table_rewrite_ptr, /* glGetnUniformivARB */
+    epoxy_glGetnUniformivEXT_dispatch_table_rewrite_ptr, /* glGetnUniformivEXT */
+    epoxy_glGetnUniformivKHR_dispatch_table_rewrite_ptr, /* glGetnUniformivKHR */
+    epoxy_glGetnUniformuiv_dispatch_table_rewrite_ptr, /* glGetnUniformuiv */
+    epoxy_glGetnUniformuivARB_dispatch_table_rewrite_ptr, /* glGetnUniformuivARB */
+    epoxy_glGetnUniformuivKHR_dispatch_table_rewrite_ptr, /* glGetnUniformuivKHR */
+    epoxy_glGlobalAlphaFactorbSUN_dispatch_table_rewrite_ptr, /* glGlobalAlphaFactorbSUN */
+    epoxy_glGlobalAlphaFactordSUN_dispatch_table_rewrite_ptr, /* glGlobalAlphaFactordSUN */
+    epoxy_glGlobalAlphaFactorfSUN_dispatch_table_rewrite_ptr, /* glGlobalAlphaFactorfSUN */
+    epoxy_glGlobalAlphaFactoriSUN_dispatch_table_rewrite_ptr, /* glGlobalAlphaFactoriSUN */
+    epoxy_glGlobalAlphaFactorsSUN_dispatch_table_rewrite_ptr, /* glGlobalAlphaFactorsSUN */
+    epoxy_glGlobalAlphaFactorubSUN_dispatch_table_rewrite_ptr, /* glGlobalAlphaFactorubSUN */
+    epoxy_glGlobalAlphaFactoruiSUN_dispatch_table_rewrite_ptr, /* glGlobalAlphaFactoruiSUN */
+    epoxy_glGlobalAlphaFactorusSUN_dispatch_table_rewrite_ptr, /* glGlobalAlphaFactorusSUN */
+    epoxy_glHint_dispatch_table_rewrite_ptr, /* glHint */
+    epoxy_glHintPGI_dispatch_table_rewrite_ptr, /* glHintPGI */
+    epoxy_glHistogram_dispatch_table_rewrite_ptr, /* glHistogram */
+    epoxy_glHistogramEXT_dispatch_table_rewrite_ptr, /* glHistogramEXT */
+    epoxy_glIglooInterfaceSGIX_dispatch_table_rewrite_ptr, /* glIglooInterfaceSGIX */
+    epoxy_glImageTransformParameterfHP_dispatch_table_rewrite_ptr, /* glImageTransformParameterfHP */
+    epoxy_glImageTransformParameterfvHP_dispatch_table_rewrite_ptr, /* glImageTransformParameterfvHP */
+    epoxy_glImageTransformParameteriHP_dispatch_table_rewrite_ptr, /* glImageTransformParameteriHP */
+    epoxy_glImageTransformParameterivHP_dispatch_table_rewrite_ptr, /* glImageTransformParameterivHP */
+    epoxy_glImportSyncEXT_dispatch_table_rewrite_ptr, /* glImportSyncEXT */
+    epoxy_glIndexFormatNV_dispatch_table_rewrite_ptr, /* glIndexFormatNV */
+    epoxy_glIndexFuncEXT_dispatch_table_rewrite_ptr, /* glIndexFuncEXT */
+    epoxy_glIndexMask_dispatch_table_rewrite_ptr, /* glIndexMask */
+    epoxy_glIndexMaterialEXT_dispatch_table_rewrite_ptr, /* glIndexMaterialEXT */
+    epoxy_glIndexPointer_dispatch_table_rewrite_ptr, /* glIndexPointer */
+    epoxy_glIndexPointerEXT_dispatch_table_rewrite_ptr, /* glIndexPointerEXT */
+    epoxy_glIndexPointerListIBM_dispatch_table_rewrite_ptr, /* glIndexPointerListIBM */
+    epoxy_glIndexd_dispatch_table_rewrite_ptr, /* glIndexd */
+    epoxy_glIndexdv_dispatch_table_rewrite_ptr, /* glIndexdv */
+    epoxy_glIndexf_dispatch_table_rewrite_ptr, /* glIndexf */
+    epoxy_glIndexfv_dispatch_table_rewrite_ptr, /* glIndexfv */
+    epoxy_glIndexi_dispatch_table_rewrite_ptr, /* glIndexi */
+    epoxy_glIndexiv_dispatch_table_rewrite_ptr, /* glIndexiv */
+    epoxy_glIndexs_dispatch_table_rewrite_ptr, /* glIndexs */
+    epoxy_glIndexsv_dispatch_table_rewrite_ptr, /* glIndexsv */
+    epoxy_glIndexub_dispatch_table_rewrite_ptr, /* glIndexub */
+    epoxy_glIndexubv_dispatch_table_rewrite_ptr, /* glIndexubv */
+    epoxy_glIndexxOES_dispatch_table_rewrite_ptr, /* glIndexxOES */
+    epoxy_glIndexxvOES_dispatch_table_rewrite_ptr, /* glIndexxvOES */
+    epoxy_glInitNames_dispatch_table_rewrite_ptr, /* glInitNames */
+    epoxy_glInsertComponentEXT_dispatch_table_rewrite_ptr, /* glInsertComponentEXT */
+    epoxy_glInsertEventMarkerEXT_dispatch_table_rewrite_ptr, /* glInsertEventMarkerEXT */
+    epoxy_glInstrumentsBufferSGIX_dispatch_table_rewrite_ptr, /* glInstrumentsBufferSGIX */
+    epoxy_glInterleavedArrays_dispatch_table_rewrite_ptr, /* glInterleavedArrays */
+    epoxy_glInterpolatePathsNV_dispatch_table_rewrite_ptr, /* glInterpolatePathsNV */
+    epoxy_glInvalidateBufferData_dispatch_table_rewrite_ptr, /* glInvalidateBufferData */
+    epoxy_glInvalidateBufferSubData_dispatch_table_rewrite_ptr, /* glInvalidateBufferSubData */
+    epoxy_glInvalidateFramebuffer_dispatch_table_rewrite_ptr, /* glInvalidateFramebuffer */
+    epoxy_glInvalidateNamedFramebufferData_dispatch_table_rewrite_ptr, /* glInvalidateNamedFramebufferData */
+    epoxy_glInvalidateNamedFramebufferSubData_dispatch_table_rewrite_ptr, /* glInvalidateNamedFramebufferSubData */
+    epoxy_glInvalidateSubFramebuffer_dispatch_table_rewrite_ptr, /* glInvalidateSubFramebuffer */
+    epoxy_glInvalidateTexImage_dispatch_table_rewrite_ptr, /* glInvalidateTexImage */
+    epoxy_glInvalidateTexSubImage_dispatch_table_rewrite_ptr, /* glInvalidateTexSubImage */
+    epoxy_glIsAsyncMarkerSGIX_dispatch_table_rewrite_ptr, /* glIsAsyncMarkerSGIX */
+    epoxy_glIsBuffer_dispatch_table_rewrite_ptr, /* glIsBuffer */
+    epoxy_glIsBufferARB_dispatch_table_rewrite_ptr, /* glIsBufferARB */
+    epoxy_glIsBufferResidentNV_dispatch_table_rewrite_ptr, /* glIsBufferResidentNV */
+    epoxy_glIsCommandListNV_dispatch_table_rewrite_ptr, /* glIsCommandListNV */
+    epoxy_glIsEnabled_dispatch_table_rewrite_ptr, /* glIsEnabled */
+    epoxy_glIsEnabledIndexedEXT_dispatch_table_rewrite_ptr, /* glIsEnabledIndexedEXT */
+    epoxy_glIsEnabledi_dispatch_table_rewrite_ptr, /* glIsEnabledi */
+    epoxy_glIsEnablediEXT_dispatch_table_rewrite_ptr, /* glIsEnablediEXT */
+    epoxy_glIsEnablediNV_dispatch_table_rewrite_ptr, /* glIsEnablediNV */
+    epoxy_glIsEnablediOES_dispatch_table_rewrite_ptr, /* glIsEnablediOES */
+    epoxy_glIsFenceAPPLE_dispatch_table_rewrite_ptr, /* glIsFenceAPPLE */
+    epoxy_glIsFenceNV_dispatch_table_rewrite_ptr, /* glIsFenceNV */
+    epoxy_glIsFramebuffer_dispatch_table_rewrite_ptr, /* glIsFramebuffer */
+    epoxy_glIsFramebufferEXT_dispatch_table_rewrite_ptr, /* glIsFramebufferEXT */
+    epoxy_glIsFramebufferOES_dispatch_table_rewrite_ptr, /* glIsFramebufferOES */
+    epoxy_glIsImageHandleResidentARB_dispatch_table_rewrite_ptr, /* glIsImageHandleResidentARB */
+    epoxy_glIsImageHandleResidentNV_dispatch_table_rewrite_ptr, /* glIsImageHandleResidentNV */
+    epoxy_glIsList_dispatch_table_rewrite_ptr, /* glIsList */
+    epoxy_glIsNameAMD_dispatch_table_rewrite_ptr, /* glIsNameAMD */
+    epoxy_glIsNamedBufferResidentNV_dispatch_table_rewrite_ptr, /* glIsNamedBufferResidentNV */
+    epoxy_glIsNamedStringARB_dispatch_table_rewrite_ptr, /* glIsNamedStringARB */
+    epoxy_glIsObjectBufferATI_dispatch_table_rewrite_ptr, /* glIsObjectBufferATI */
+    epoxy_glIsOcclusionQueryNV_dispatch_table_rewrite_ptr, /* glIsOcclusionQueryNV */
+    epoxy_glIsPathNV_dispatch_table_rewrite_ptr, /* glIsPathNV */
+    epoxy_glIsPointInFillPathNV_dispatch_table_rewrite_ptr, /* glIsPointInFillPathNV */
+    epoxy_glIsPointInStrokePathNV_dispatch_table_rewrite_ptr, /* glIsPointInStrokePathNV */
+    epoxy_glIsProgram_dispatch_table_rewrite_ptr, /* glIsProgram */
+    epoxy_glIsProgramARB_dispatch_table_rewrite_ptr, /* glIsProgramARB */
+    epoxy_glIsProgramNV_dispatch_table_rewrite_ptr, /* glIsProgramNV */
+    epoxy_glIsProgramPipeline_dispatch_table_rewrite_ptr, /* glIsProgramPipeline */
+    epoxy_glIsProgramPipelineEXT_dispatch_table_rewrite_ptr, /* glIsProgramPipelineEXT */
+    epoxy_glIsQuery_dispatch_table_rewrite_ptr, /* glIsQuery */
+    epoxy_glIsQueryARB_dispatch_table_rewrite_ptr, /* glIsQueryARB */
+    epoxy_glIsQueryEXT_dispatch_table_rewrite_ptr, /* glIsQueryEXT */
+    epoxy_glIsRenderbuffer_dispatch_table_rewrite_ptr, /* glIsRenderbuffer */
+    epoxy_glIsRenderbufferEXT_dispatch_table_rewrite_ptr, /* glIsRenderbufferEXT */
+    epoxy_glIsRenderbufferOES_dispatch_table_rewrite_ptr, /* glIsRenderbufferOES */
+    epoxy_glIsSampler_dispatch_table_rewrite_ptr, /* glIsSampler */
+    epoxy_glIsShader_dispatch_table_rewrite_ptr, /* glIsShader */
+    epoxy_glIsStateNV_dispatch_table_rewrite_ptr, /* glIsStateNV */
+    epoxy_glIsSync_dispatch_table_rewrite_ptr, /* glIsSync */
+    epoxy_glIsSyncAPPLE_dispatch_table_rewrite_ptr, /* glIsSyncAPPLE */
+    epoxy_glIsTexture_dispatch_table_rewrite_ptr, /* glIsTexture */
+    epoxy_glIsTextureEXT_dispatch_table_rewrite_ptr, /* glIsTextureEXT */
+    epoxy_glIsTextureHandleResidentARB_dispatch_table_rewrite_ptr, /* glIsTextureHandleResidentARB */
+    epoxy_glIsTextureHandleResidentNV_dispatch_table_rewrite_ptr, /* glIsTextureHandleResidentNV */
+    epoxy_glIsTransformFeedback_dispatch_table_rewrite_ptr, /* glIsTransformFeedback */
+    epoxy_glIsTransformFeedbackNV_dispatch_table_rewrite_ptr, /* glIsTransformFeedbackNV */
+    epoxy_glIsVariantEnabledEXT_dispatch_table_rewrite_ptr, /* glIsVariantEnabledEXT */
+    epoxy_glIsVertexArray_dispatch_table_rewrite_ptr, /* glIsVertexArray */
+    epoxy_glIsVertexArrayAPPLE_dispatch_table_rewrite_ptr, /* glIsVertexArrayAPPLE */
+    epoxy_glIsVertexArrayOES_dispatch_table_rewrite_ptr, /* glIsVertexArrayOES */
+    epoxy_glIsVertexAttribEnabledAPPLE_dispatch_table_rewrite_ptr, /* glIsVertexAttribEnabledAPPLE */
+    epoxy_glLabelObjectEXT_dispatch_table_rewrite_ptr, /* glLabelObjectEXT */
+    epoxy_glLightEnviSGIX_dispatch_table_rewrite_ptr, /* glLightEnviSGIX */
+    epoxy_glLightModelf_dispatch_table_rewrite_ptr, /* glLightModelf */
+    epoxy_glLightModelfv_dispatch_table_rewrite_ptr, /* glLightModelfv */
+    epoxy_glLightModeli_dispatch_table_rewrite_ptr, /* glLightModeli */
+    epoxy_glLightModeliv_dispatch_table_rewrite_ptr, /* glLightModeliv */
+    epoxy_glLightModelx_dispatch_table_rewrite_ptr, /* glLightModelx */
+    epoxy_glLightModelxOES_dispatch_table_rewrite_ptr, /* glLightModelxOES */
+    epoxy_glLightModelxv_dispatch_table_rewrite_ptr, /* glLightModelxv */
+    epoxy_glLightModelxvOES_dispatch_table_rewrite_ptr, /* glLightModelxvOES */
+    epoxy_glLightf_dispatch_table_rewrite_ptr, /* glLightf */
+    epoxy_glLightfv_dispatch_table_rewrite_ptr, /* glLightfv */
+    epoxy_glLighti_dispatch_table_rewrite_ptr, /* glLighti */
+    epoxy_glLightiv_dispatch_table_rewrite_ptr, /* glLightiv */
+    epoxy_glLightx_dispatch_table_rewrite_ptr, /* glLightx */
+    epoxy_glLightxOES_dispatch_table_rewrite_ptr, /* glLightxOES */
+    epoxy_glLightxv_dispatch_table_rewrite_ptr, /* glLightxv */
+    epoxy_glLightxvOES_dispatch_table_rewrite_ptr, /* glLightxvOES */
+    epoxy_glLineStipple_dispatch_table_rewrite_ptr, /* glLineStipple */
+    epoxy_glLineWidth_dispatch_table_rewrite_ptr, /* glLineWidth */
+    epoxy_glLineWidthx_dispatch_table_rewrite_ptr, /* glLineWidthx */
+    epoxy_glLineWidthxOES_dispatch_table_rewrite_ptr, /* glLineWidthxOES */
+    epoxy_glLinkProgram_dispatch_table_rewrite_ptr, /* glLinkProgram */
+    epoxy_glLinkProgramARB_dispatch_table_rewrite_ptr, /* glLinkProgramARB */
+    epoxy_glListBase_dispatch_table_rewrite_ptr, /* glListBase */
+    epoxy_glListDrawCommandsStatesClientNV_dispatch_table_rewrite_ptr, /* glListDrawCommandsStatesClientNV */
+    epoxy_glListParameterfSGIX_dispatch_table_rewrite_ptr, /* glListParameterfSGIX */
+    epoxy_glListParameterfvSGIX_dispatch_table_rewrite_ptr, /* glListParameterfvSGIX */
+    epoxy_glListParameteriSGIX_dispatch_table_rewrite_ptr, /* glListParameteriSGIX */
+    epoxy_glListParameterivSGIX_dispatch_table_rewrite_ptr, /* glListParameterivSGIX */
+    epoxy_glLoadIdentity_dispatch_table_rewrite_ptr, /* glLoadIdentity */
+    epoxy_glLoadIdentityDeformationMapSGIX_dispatch_table_rewrite_ptr, /* glLoadIdentityDeformationMapSGIX */
+    epoxy_glLoadMatrixd_dispatch_table_rewrite_ptr, /* glLoadMatrixd */
+    epoxy_glLoadMatrixf_dispatch_table_rewrite_ptr, /* glLoadMatrixf */
+    epoxy_glLoadMatrixx_dispatch_table_rewrite_ptr, /* glLoadMatrixx */
+    epoxy_glLoadMatrixxOES_dispatch_table_rewrite_ptr, /* glLoadMatrixxOES */
+    epoxy_glLoadName_dispatch_table_rewrite_ptr, /* glLoadName */
+    epoxy_glLoadPaletteFromModelViewMatrixOES_dispatch_table_rewrite_ptr, /* glLoadPaletteFromModelViewMatrixOES */
+    epoxy_glLoadProgramNV_dispatch_table_rewrite_ptr, /* glLoadProgramNV */
+    epoxy_glLoadTransposeMatrixd_dispatch_table_rewrite_ptr, /* glLoadTransposeMatrixd */
+    epoxy_glLoadTransposeMatrixdARB_dispatch_table_rewrite_ptr, /* glLoadTransposeMatrixdARB */
+    epoxy_glLoadTransposeMatrixf_dispatch_table_rewrite_ptr, /* glLoadTransposeMatrixf */
+    epoxy_glLoadTransposeMatrixfARB_dispatch_table_rewrite_ptr, /* glLoadTransposeMatrixfARB */
+    epoxy_glLoadTransposeMatrixxOES_dispatch_table_rewrite_ptr, /* glLoadTransposeMatrixxOES */
+    epoxy_glLockArraysEXT_dispatch_table_rewrite_ptr, /* glLockArraysEXT */
+    epoxy_glLogicOp_dispatch_table_rewrite_ptr, /* glLogicOp */
+    epoxy_glMakeBufferNonResidentNV_dispatch_table_rewrite_ptr, /* glMakeBufferNonResidentNV */
+    epoxy_glMakeBufferResidentNV_dispatch_table_rewrite_ptr, /* glMakeBufferResidentNV */
+    epoxy_glMakeImageHandleNonResidentARB_dispatch_table_rewrite_ptr, /* glMakeImageHandleNonResidentARB */
+    epoxy_glMakeImageHandleNonResidentNV_dispatch_table_rewrite_ptr, /* glMakeImageHandleNonResidentNV */
+    epoxy_glMakeImageHandleResidentARB_dispatch_table_rewrite_ptr, /* glMakeImageHandleResidentARB */
+    epoxy_glMakeImageHandleResidentNV_dispatch_table_rewrite_ptr, /* glMakeImageHandleResidentNV */
+    epoxy_glMakeNamedBufferNonResidentNV_dispatch_table_rewrite_ptr, /* glMakeNamedBufferNonResidentNV */
+    epoxy_glMakeNamedBufferResidentNV_dispatch_table_rewrite_ptr, /* glMakeNamedBufferResidentNV */
+    epoxy_glMakeTextureHandleNonResidentARB_dispatch_table_rewrite_ptr, /* glMakeTextureHandleNonResidentARB */
+    epoxy_glMakeTextureHandleNonResidentNV_dispatch_table_rewrite_ptr, /* glMakeTextureHandleNonResidentNV */
+    epoxy_glMakeTextureHandleResidentARB_dispatch_table_rewrite_ptr, /* glMakeTextureHandleResidentARB */
+    epoxy_glMakeTextureHandleResidentNV_dispatch_table_rewrite_ptr, /* glMakeTextureHandleResidentNV */
+    epoxy_glMap1d_dispatch_table_rewrite_ptr, /* glMap1d */
+    epoxy_glMap1f_dispatch_table_rewrite_ptr, /* glMap1f */
+    epoxy_glMap1xOES_dispatch_table_rewrite_ptr, /* glMap1xOES */
+    epoxy_glMap2d_dispatch_table_rewrite_ptr, /* glMap2d */
+    epoxy_glMap2f_dispatch_table_rewrite_ptr, /* glMap2f */
+    epoxy_glMap2xOES_dispatch_table_rewrite_ptr, /* glMap2xOES */
+    epoxy_glMapBuffer_dispatch_table_rewrite_ptr, /* glMapBuffer */
+    epoxy_glMapBufferARB_dispatch_table_rewrite_ptr, /* glMapBufferARB */
+    epoxy_glMapBufferOES_dispatch_table_rewrite_ptr, /* glMapBufferOES */
+    epoxy_glMapBufferRange_dispatch_table_rewrite_ptr, /* glMapBufferRange */
+    epoxy_glMapBufferRangeEXT_dispatch_table_rewrite_ptr, /* glMapBufferRangeEXT */
+    epoxy_glMapControlPointsNV_dispatch_table_rewrite_ptr, /* glMapControlPointsNV */
+    epoxy_glMapGrid1d_dispatch_table_rewrite_ptr, /* glMapGrid1d */
+    epoxy_glMapGrid1f_dispatch_table_rewrite_ptr, /* glMapGrid1f */
+    epoxy_glMapGrid1xOES_dispatch_table_rewrite_ptr, /* glMapGrid1xOES */
+    epoxy_glMapGrid2d_dispatch_table_rewrite_ptr, /* glMapGrid2d */
+    epoxy_glMapGrid2f_dispatch_table_rewrite_ptr, /* glMapGrid2f */
+    epoxy_glMapGrid2xOES_dispatch_table_rewrite_ptr, /* glMapGrid2xOES */
+    epoxy_glMapNamedBuffer_dispatch_table_rewrite_ptr, /* glMapNamedBuffer */
+    epoxy_glMapNamedBufferEXT_dispatch_table_rewrite_ptr, /* glMapNamedBufferEXT */
+    epoxy_glMapNamedBufferRange_dispatch_table_rewrite_ptr, /* glMapNamedBufferRange */
+    epoxy_glMapNamedBufferRangeEXT_dispatch_table_rewrite_ptr, /* glMapNamedBufferRangeEXT */
+    epoxy_glMapObjectBufferATI_dispatch_table_rewrite_ptr, /* glMapObjectBufferATI */
+    epoxy_glMapParameterfvNV_dispatch_table_rewrite_ptr, /* glMapParameterfvNV */
+    epoxy_glMapParameterivNV_dispatch_table_rewrite_ptr, /* glMapParameterivNV */
+    epoxy_glMapTexture2DINTEL_dispatch_table_rewrite_ptr, /* glMapTexture2DINTEL */
+    epoxy_glMapVertexAttrib1dAPPLE_dispatch_table_rewrite_ptr, /* glMapVertexAttrib1dAPPLE */
+    epoxy_glMapVertexAttrib1fAPPLE_dispatch_table_rewrite_ptr, /* glMapVertexAttrib1fAPPLE */
+    epoxy_glMapVertexAttrib2dAPPLE_dispatch_table_rewrite_ptr, /* glMapVertexAttrib2dAPPLE */
+    epoxy_glMapVertexAttrib2fAPPLE_dispatch_table_rewrite_ptr, /* glMapVertexAttrib2fAPPLE */
+    epoxy_glMaterialf_dispatch_table_rewrite_ptr, /* glMaterialf */
+    epoxy_glMaterialfv_dispatch_table_rewrite_ptr, /* glMaterialfv */
+    epoxy_glMateriali_dispatch_table_rewrite_ptr, /* glMateriali */
+    epoxy_glMaterialiv_dispatch_table_rewrite_ptr, /* glMaterialiv */
+    epoxy_glMaterialx_dispatch_table_rewrite_ptr, /* glMaterialx */
+    epoxy_glMaterialxOES_dispatch_table_rewrite_ptr, /* glMaterialxOES */
+    epoxy_glMaterialxv_dispatch_table_rewrite_ptr, /* glMaterialxv */
+    epoxy_glMaterialxvOES_dispatch_table_rewrite_ptr, /* glMaterialxvOES */
+    epoxy_glMatrixFrustumEXT_dispatch_table_rewrite_ptr, /* glMatrixFrustumEXT */
+    epoxy_glMatrixIndexPointerARB_dispatch_table_rewrite_ptr, /* glMatrixIndexPointerARB */
+    epoxy_glMatrixIndexPointerOES_dispatch_table_rewrite_ptr, /* glMatrixIndexPointerOES */
+    epoxy_glMatrixIndexubvARB_dispatch_table_rewrite_ptr, /* glMatrixIndexubvARB */
+    epoxy_glMatrixIndexuivARB_dispatch_table_rewrite_ptr, /* glMatrixIndexuivARB */
+    epoxy_glMatrixIndexusvARB_dispatch_table_rewrite_ptr, /* glMatrixIndexusvARB */
+    epoxy_glMatrixLoad3x2fNV_dispatch_table_rewrite_ptr, /* glMatrixLoad3x2fNV */
+    epoxy_glMatrixLoad3x3fNV_dispatch_table_rewrite_ptr, /* glMatrixLoad3x3fNV */
+    epoxy_glMatrixLoadIdentityEXT_dispatch_table_rewrite_ptr, /* glMatrixLoadIdentityEXT */
+    epoxy_glMatrixLoadTranspose3x3fNV_dispatch_table_rewrite_ptr, /* glMatrixLoadTranspose3x3fNV */
+    epoxy_glMatrixLoadTransposedEXT_dispatch_table_rewrite_ptr, /* glMatrixLoadTransposedEXT */
+    epoxy_glMatrixLoadTransposefEXT_dispatch_table_rewrite_ptr, /* glMatrixLoadTransposefEXT */
+    epoxy_glMatrixLoaddEXT_dispatch_table_rewrite_ptr, /* glMatrixLoaddEXT */
+    epoxy_glMatrixLoadfEXT_dispatch_table_rewrite_ptr, /* glMatrixLoadfEXT */
+    epoxy_glMatrixMode_dispatch_table_rewrite_ptr, /* glMatrixMode */
+    epoxy_glMatrixMult3x2fNV_dispatch_table_rewrite_ptr, /* glMatrixMult3x2fNV */
+    epoxy_glMatrixMult3x3fNV_dispatch_table_rewrite_ptr, /* glMatrixMult3x3fNV */
+    epoxy_glMatrixMultTranspose3x3fNV_dispatch_table_rewrite_ptr, /* glMatrixMultTranspose3x3fNV */
+    epoxy_glMatrixMultTransposedEXT_dispatch_table_rewrite_ptr, /* glMatrixMultTransposedEXT */
+    epoxy_glMatrixMultTransposefEXT_dispatch_table_rewrite_ptr, /* glMatrixMultTransposefEXT */
+    epoxy_glMatrixMultdEXT_dispatch_table_rewrite_ptr, /* glMatrixMultdEXT */
+    epoxy_glMatrixMultfEXT_dispatch_table_rewrite_ptr, /* glMatrixMultfEXT */
+    epoxy_glMatrixOrthoEXT_dispatch_table_rewrite_ptr, /* glMatrixOrthoEXT */
+    epoxy_glMatrixPopEXT_dispatch_table_rewrite_ptr, /* glMatrixPopEXT */
+    epoxy_glMatrixPushEXT_dispatch_table_rewrite_ptr, /* glMatrixPushEXT */
+    epoxy_glMatrixRotatedEXT_dispatch_table_rewrite_ptr, /* glMatrixRotatedEXT */
+    epoxy_glMatrixRotatefEXT_dispatch_table_rewrite_ptr, /* glMatrixRotatefEXT */
+    epoxy_glMatrixScaledEXT_dispatch_table_rewrite_ptr, /* glMatrixScaledEXT */
+    epoxy_glMatrixScalefEXT_dispatch_table_rewrite_ptr, /* glMatrixScalefEXT */
+    epoxy_glMatrixTranslatedEXT_dispatch_table_rewrite_ptr, /* glMatrixTranslatedEXT */
+    epoxy_glMatrixTranslatefEXT_dispatch_table_rewrite_ptr, /* glMatrixTranslatefEXT */
+    epoxy_glMemoryBarrier_dispatch_table_rewrite_ptr, /* glMemoryBarrier */
+    epoxy_glMemoryBarrierByRegion_dispatch_table_rewrite_ptr, /* glMemoryBarrierByRegion */
+    epoxy_glMemoryBarrierEXT_dispatch_table_rewrite_ptr, /* glMemoryBarrierEXT */
+    epoxy_glMinSampleShading_dispatch_table_rewrite_ptr, /* glMinSampleShading */
+    epoxy_glMinSampleShadingARB_dispatch_table_rewrite_ptr, /* glMinSampleShadingARB */
+    epoxy_glMinSampleShadingOES_dispatch_table_rewrite_ptr, /* glMinSampleShadingOES */
+    epoxy_glMinmax_dispatch_table_rewrite_ptr, /* glMinmax */
+    epoxy_glMinmaxEXT_dispatch_table_rewrite_ptr, /* glMinmaxEXT */
+    epoxy_glMultMatrixd_dispatch_table_rewrite_ptr, /* glMultMatrixd */
+    epoxy_glMultMatrixf_dispatch_table_rewrite_ptr, /* glMultMatrixf */
+    epoxy_glMultMatrixx_dispatch_table_rewrite_ptr, /* glMultMatrixx */
+    epoxy_glMultMatrixxOES_dispatch_table_rewrite_ptr, /* glMultMatrixxOES */
+    epoxy_glMultTransposeMatrixd_dispatch_table_rewrite_ptr, /* glMultTransposeMatrixd */
+    epoxy_glMultTransposeMatrixdARB_dispatch_table_rewrite_ptr, /* glMultTransposeMatrixdARB */
+    epoxy_glMultTransposeMatrixf_dispatch_table_rewrite_ptr, /* glMultTransposeMatrixf */
+    epoxy_glMultTransposeMatrixfARB_dispatch_table_rewrite_ptr, /* glMultTransposeMatrixfARB */
+    epoxy_glMultTransposeMatrixxOES_dispatch_table_rewrite_ptr, /* glMultTransposeMatrixxOES */
+    epoxy_glMultiDrawArrays_dispatch_table_rewrite_ptr, /* glMultiDrawArrays */
+    epoxy_glMultiDrawArraysEXT_dispatch_table_rewrite_ptr, /* glMultiDrawArraysEXT */
+    epoxy_glMultiDrawArraysIndirect_dispatch_table_rewrite_ptr, /* glMultiDrawArraysIndirect */
+    epoxy_glMultiDrawArraysIndirectAMD_dispatch_table_rewrite_ptr, /* glMultiDrawArraysIndirectAMD */
+    epoxy_glMultiDrawArraysIndirectBindlessCountNV_dispatch_table_rewrite_ptr, /* glMultiDrawArraysIndirectBindlessCountNV */
+    epoxy_glMultiDrawArraysIndirectBindlessNV_dispatch_table_rewrite_ptr, /* glMultiDrawArraysIndirectBindlessNV */
+    epoxy_glMultiDrawArraysIndirectCountARB_dispatch_table_rewrite_ptr, /* glMultiDrawArraysIndirectCountARB */
+    epoxy_glMultiDrawArraysIndirectEXT_dispatch_table_rewrite_ptr, /* glMultiDrawArraysIndirectEXT */
+    epoxy_glMultiDrawElementArrayAPPLE_dispatch_table_rewrite_ptr, /* glMultiDrawElementArrayAPPLE */
+    epoxy_glMultiDrawElements_dispatch_table_rewrite_ptr, /* glMultiDrawElements */
+    epoxy_glMultiDrawElementsBaseVertex_dispatch_table_rewrite_ptr, /* glMultiDrawElementsBaseVertex */
+    epoxy_glMultiDrawElementsBaseVertexEXT_dispatch_table_rewrite_ptr, /* glMultiDrawElementsBaseVertexEXT */
+    epoxy_glMultiDrawElementsBaseVertexOES_dispatch_table_rewrite_ptr, /* glMultiDrawElementsBaseVertexOES */
+    epoxy_glMultiDrawElementsEXT_dispatch_table_rewrite_ptr, /* glMultiDrawElementsEXT */
+    epoxy_glMultiDrawElementsIndirect_dispatch_table_rewrite_ptr, /* glMultiDrawElementsIndirect */
+    epoxy_glMultiDrawElementsIndirectAMD_dispatch_table_rewrite_ptr, /* glMultiDrawElementsIndirectAMD */
+    epoxy_glMultiDrawElementsIndirectBindlessCountNV_dispatch_table_rewrite_ptr, /* glMultiDrawElementsIndirectBindlessCountNV */
+    epoxy_glMultiDrawElementsIndirectBindlessNV_dispatch_table_rewrite_ptr, /* glMultiDrawElementsIndirectBindlessNV */
+    epoxy_glMultiDrawElementsIndirectCountARB_dispatch_table_rewrite_ptr, /* glMultiDrawElementsIndirectCountARB */
+    epoxy_glMultiDrawElementsIndirectEXT_dispatch_table_rewrite_ptr, /* glMultiDrawElementsIndirectEXT */
+    epoxy_glMultiDrawRangeElementArrayAPPLE_dispatch_table_rewrite_ptr, /* glMultiDrawRangeElementArrayAPPLE */
+    epoxy_glMultiModeDrawArraysIBM_dispatch_table_rewrite_ptr, /* glMultiModeDrawArraysIBM */
+    epoxy_glMultiModeDrawElementsIBM_dispatch_table_rewrite_ptr, /* glMultiModeDrawElementsIBM */
+    epoxy_glMultiTexBufferEXT_dispatch_table_rewrite_ptr, /* glMultiTexBufferEXT */
+    epoxy_glMultiTexCoord1bOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord1bOES */
+    epoxy_glMultiTexCoord1bvOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord1bvOES */
+    epoxy_glMultiTexCoord1d_dispatch_table_rewrite_ptr, /* glMultiTexCoord1d */
+    epoxy_glMultiTexCoord1dARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord1dARB */
+    epoxy_glMultiTexCoord1dv_dispatch_table_rewrite_ptr, /* glMultiTexCoord1dv */
+    epoxy_glMultiTexCoord1dvARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord1dvARB */
+    epoxy_glMultiTexCoord1f_dispatch_table_rewrite_ptr, /* glMultiTexCoord1f */
+    epoxy_glMultiTexCoord1fARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord1fARB */
+    epoxy_glMultiTexCoord1fv_dispatch_table_rewrite_ptr, /* glMultiTexCoord1fv */
+    epoxy_glMultiTexCoord1fvARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord1fvARB */
+    epoxy_glMultiTexCoord1hNV_dispatch_table_rewrite_ptr, /* glMultiTexCoord1hNV */
+    epoxy_glMultiTexCoord1hvNV_dispatch_table_rewrite_ptr, /* glMultiTexCoord1hvNV */
+    epoxy_glMultiTexCoord1i_dispatch_table_rewrite_ptr, /* glMultiTexCoord1i */
+    epoxy_glMultiTexCoord1iARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord1iARB */
+    epoxy_glMultiTexCoord1iv_dispatch_table_rewrite_ptr, /* glMultiTexCoord1iv */
+    epoxy_glMultiTexCoord1ivARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord1ivARB */
+    epoxy_glMultiTexCoord1s_dispatch_table_rewrite_ptr, /* glMultiTexCoord1s */
+    epoxy_glMultiTexCoord1sARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord1sARB */
+    epoxy_glMultiTexCoord1sv_dispatch_table_rewrite_ptr, /* glMultiTexCoord1sv */
+    epoxy_glMultiTexCoord1svARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord1svARB */
+    epoxy_glMultiTexCoord1xOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord1xOES */
+    epoxy_glMultiTexCoord1xvOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord1xvOES */
+    epoxy_glMultiTexCoord2bOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord2bOES */
+    epoxy_glMultiTexCoord2bvOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord2bvOES */
+    epoxy_glMultiTexCoord2d_dispatch_table_rewrite_ptr, /* glMultiTexCoord2d */
+    epoxy_glMultiTexCoord2dARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord2dARB */
+    epoxy_glMultiTexCoord2dv_dispatch_table_rewrite_ptr, /* glMultiTexCoord2dv */
+    epoxy_glMultiTexCoord2dvARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord2dvARB */
+    epoxy_glMultiTexCoord2f_dispatch_table_rewrite_ptr, /* glMultiTexCoord2f */
+    epoxy_glMultiTexCoord2fARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord2fARB */
+    epoxy_glMultiTexCoord2fv_dispatch_table_rewrite_ptr, /* glMultiTexCoord2fv */
+    epoxy_glMultiTexCoord2fvARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord2fvARB */
+    epoxy_glMultiTexCoord2hNV_dispatch_table_rewrite_ptr, /* glMultiTexCoord2hNV */
+    epoxy_glMultiTexCoord2hvNV_dispatch_table_rewrite_ptr, /* glMultiTexCoord2hvNV */
+    epoxy_glMultiTexCoord2i_dispatch_table_rewrite_ptr, /* glMultiTexCoord2i */
+    epoxy_glMultiTexCoord2iARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord2iARB */
+    epoxy_glMultiTexCoord2iv_dispatch_table_rewrite_ptr, /* glMultiTexCoord2iv */
+    epoxy_glMultiTexCoord2ivARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord2ivARB */
+    epoxy_glMultiTexCoord2s_dispatch_table_rewrite_ptr, /* glMultiTexCoord2s */
+    epoxy_glMultiTexCoord2sARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord2sARB */
+    epoxy_glMultiTexCoord2sv_dispatch_table_rewrite_ptr, /* glMultiTexCoord2sv */
+    epoxy_glMultiTexCoord2svARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord2svARB */
+    epoxy_glMultiTexCoord2xOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord2xOES */
+    epoxy_glMultiTexCoord2xvOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord2xvOES */
+    epoxy_glMultiTexCoord3bOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord3bOES */
+    epoxy_glMultiTexCoord3bvOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord3bvOES */
+    epoxy_glMultiTexCoord3d_dispatch_table_rewrite_ptr, /* glMultiTexCoord3d */
+    epoxy_glMultiTexCoord3dARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord3dARB */
+    epoxy_glMultiTexCoord3dv_dispatch_table_rewrite_ptr, /* glMultiTexCoord3dv */
+    epoxy_glMultiTexCoord3dvARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord3dvARB */
+    epoxy_glMultiTexCoord3f_dispatch_table_rewrite_ptr, /* glMultiTexCoord3f */
+    epoxy_glMultiTexCoord3fARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord3fARB */
+    epoxy_glMultiTexCoord3fv_dispatch_table_rewrite_ptr, /* glMultiTexCoord3fv */
+    epoxy_glMultiTexCoord3fvARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord3fvARB */
+    epoxy_glMultiTexCoord3hNV_dispatch_table_rewrite_ptr, /* glMultiTexCoord3hNV */
+    epoxy_glMultiTexCoord3hvNV_dispatch_table_rewrite_ptr, /* glMultiTexCoord3hvNV */
+    epoxy_glMultiTexCoord3i_dispatch_table_rewrite_ptr, /* glMultiTexCoord3i */
+    epoxy_glMultiTexCoord3iARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord3iARB */
+    epoxy_glMultiTexCoord3iv_dispatch_table_rewrite_ptr, /* glMultiTexCoord3iv */
+    epoxy_glMultiTexCoord3ivARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord3ivARB */
+    epoxy_glMultiTexCoord3s_dispatch_table_rewrite_ptr, /* glMultiTexCoord3s */
+    epoxy_glMultiTexCoord3sARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord3sARB */
+    epoxy_glMultiTexCoord3sv_dispatch_table_rewrite_ptr, /* glMultiTexCoord3sv */
+    epoxy_glMultiTexCoord3svARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord3svARB */
+    epoxy_glMultiTexCoord3xOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord3xOES */
+    epoxy_glMultiTexCoord3xvOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord3xvOES */
+    epoxy_glMultiTexCoord4bOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord4bOES */
+    epoxy_glMultiTexCoord4bvOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord4bvOES */
+    epoxy_glMultiTexCoord4d_dispatch_table_rewrite_ptr, /* glMultiTexCoord4d */
+    epoxy_glMultiTexCoord4dARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord4dARB */
+    epoxy_glMultiTexCoord4dv_dispatch_table_rewrite_ptr, /* glMultiTexCoord4dv */
+    epoxy_glMultiTexCoord4dvARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord4dvARB */
+    epoxy_glMultiTexCoord4f_dispatch_table_rewrite_ptr, /* glMultiTexCoord4f */
+    epoxy_glMultiTexCoord4fARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord4fARB */
+    epoxy_glMultiTexCoord4fv_dispatch_table_rewrite_ptr, /* glMultiTexCoord4fv */
+    epoxy_glMultiTexCoord4fvARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord4fvARB */
+    epoxy_glMultiTexCoord4hNV_dispatch_table_rewrite_ptr, /* glMultiTexCoord4hNV */
+    epoxy_glMultiTexCoord4hvNV_dispatch_table_rewrite_ptr, /* glMultiTexCoord4hvNV */
+    epoxy_glMultiTexCoord4i_dispatch_table_rewrite_ptr, /* glMultiTexCoord4i */
+    epoxy_glMultiTexCoord4iARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord4iARB */
+    epoxy_glMultiTexCoord4iv_dispatch_table_rewrite_ptr, /* glMultiTexCoord4iv */
+    epoxy_glMultiTexCoord4ivARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord4ivARB */
+    epoxy_glMultiTexCoord4s_dispatch_table_rewrite_ptr, /* glMultiTexCoord4s */
+    epoxy_glMultiTexCoord4sARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord4sARB */
+    epoxy_glMultiTexCoord4sv_dispatch_table_rewrite_ptr, /* glMultiTexCoord4sv */
+    epoxy_glMultiTexCoord4svARB_dispatch_table_rewrite_ptr, /* glMultiTexCoord4svARB */
+    epoxy_glMultiTexCoord4x_dispatch_table_rewrite_ptr, /* glMultiTexCoord4x */
+    epoxy_glMultiTexCoord4xOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord4xOES */
+    epoxy_glMultiTexCoord4xvOES_dispatch_table_rewrite_ptr, /* glMultiTexCoord4xvOES */
+    epoxy_glMultiTexCoordP1ui_dispatch_table_rewrite_ptr, /* glMultiTexCoordP1ui */
+    epoxy_glMultiTexCoordP1uiv_dispatch_table_rewrite_ptr, /* glMultiTexCoordP1uiv */
+    epoxy_glMultiTexCoordP2ui_dispatch_table_rewrite_ptr, /* glMultiTexCoordP2ui */
+    epoxy_glMultiTexCoordP2uiv_dispatch_table_rewrite_ptr, /* glMultiTexCoordP2uiv */
+    epoxy_glMultiTexCoordP3ui_dispatch_table_rewrite_ptr, /* glMultiTexCoordP3ui */
+    epoxy_glMultiTexCoordP3uiv_dispatch_table_rewrite_ptr, /* glMultiTexCoordP3uiv */
+    epoxy_glMultiTexCoordP4ui_dispatch_table_rewrite_ptr, /* glMultiTexCoordP4ui */
+    epoxy_glMultiTexCoordP4uiv_dispatch_table_rewrite_ptr, /* glMultiTexCoordP4uiv */
+    epoxy_glMultiTexCoordPointerEXT_dispatch_table_rewrite_ptr, /* glMultiTexCoordPointerEXT */
+    epoxy_glMultiTexEnvfEXT_dispatch_table_rewrite_ptr, /* glMultiTexEnvfEXT */
+    epoxy_glMultiTexEnvfvEXT_dispatch_table_rewrite_ptr, /* glMultiTexEnvfvEXT */
+    epoxy_glMultiTexEnviEXT_dispatch_table_rewrite_ptr, /* glMultiTexEnviEXT */
+    epoxy_glMultiTexEnvivEXT_dispatch_table_rewrite_ptr, /* glMultiTexEnvivEXT */
+    epoxy_glMultiTexGendEXT_dispatch_table_rewrite_ptr, /* glMultiTexGendEXT */
+    epoxy_glMultiTexGendvEXT_dispatch_table_rewrite_ptr, /* glMultiTexGendvEXT */
+    epoxy_glMultiTexGenfEXT_dispatch_table_rewrite_ptr, /* glMultiTexGenfEXT */
+    epoxy_glMultiTexGenfvEXT_dispatch_table_rewrite_ptr, /* glMultiTexGenfvEXT */
+    epoxy_glMultiTexGeniEXT_dispatch_table_rewrite_ptr, /* glMultiTexGeniEXT */
+    epoxy_glMultiTexGenivEXT_dispatch_table_rewrite_ptr, /* glMultiTexGenivEXT */
+    epoxy_glMultiTexImage1DEXT_dispatch_table_rewrite_ptr, /* glMultiTexImage1DEXT */
+    epoxy_glMultiTexImage2DEXT_dispatch_table_rewrite_ptr, /* glMultiTexImage2DEXT */
+    epoxy_glMultiTexImage3DEXT_dispatch_table_rewrite_ptr, /* glMultiTexImage3DEXT */
+    epoxy_glMultiTexParameterIivEXT_dispatch_table_rewrite_ptr, /* glMultiTexParameterIivEXT */
+    epoxy_glMultiTexParameterIuivEXT_dispatch_table_rewrite_ptr, /* glMultiTexParameterIuivEXT */
+    epoxy_glMultiTexParameterfEXT_dispatch_table_rewrite_ptr, /* glMultiTexParameterfEXT */
+    epoxy_glMultiTexParameterfvEXT_dispatch_table_rewrite_ptr, /* glMultiTexParameterfvEXT */
+    epoxy_glMultiTexParameteriEXT_dispatch_table_rewrite_ptr, /* glMultiTexParameteriEXT */
+    epoxy_glMultiTexParameterivEXT_dispatch_table_rewrite_ptr, /* glMultiTexParameterivEXT */
+    epoxy_glMultiTexRenderbufferEXT_dispatch_table_rewrite_ptr, /* glMultiTexRenderbufferEXT */
+    epoxy_glMultiTexSubImage1DEXT_dispatch_table_rewrite_ptr, /* glMultiTexSubImage1DEXT */
+    epoxy_glMultiTexSubImage2DEXT_dispatch_table_rewrite_ptr, /* glMultiTexSubImage2DEXT */
+    epoxy_glMultiTexSubImage3DEXT_dispatch_table_rewrite_ptr, /* glMultiTexSubImage3DEXT */
+    epoxy_glNamedBufferData_dispatch_table_rewrite_ptr, /* glNamedBufferData */
+    epoxy_glNamedBufferDataEXT_dispatch_table_rewrite_ptr, /* glNamedBufferDataEXT */
+    epoxy_glNamedBufferPageCommitmentARB_dispatch_table_rewrite_ptr, /* glNamedBufferPageCommitmentARB */
+    epoxy_glNamedBufferPageCommitmentEXT_dispatch_table_rewrite_ptr, /* glNamedBufferPageCommitmentEXT */
+    epoxy_glNamedBufferStorage_dispatch_table_rewrite_ptr, /* glNamedBufferStorage */
+    epoxy_glNamedBufferStorageEXT_dispatch_table_rewrite_ptr, /* glNamedBufferStorageEXT */
+    epoxy_glNamedBufferSubData_dispatch_table_rewrite_ptr, /* glNamedBufferSubData */
+    epoxy_glNamedBufferSubDataEXT_dispatch_table_rewrite_ptr, /* glNamedBufferSubDataEXT */
+    epoxy_glNamedCopyBufferSubDataEXT_dispatch_table_rewrite_ptr, /* glNamedCopyBufferSubDataEXT */
+    epoxy_glNamedFramebufferDrawBuffer_dispatch_table_rewrite_ptr, /* glNamedFramebufferDrawBuffer */
+    epoxy_glNamedFramebufferDrawBuffers_dispatch_table_rewrite_ptr, /* glNamedFramebufferDrawBuffers */
+    epoxy_glNamedFramebufferParameteri_dispatch_table_rewrite_ptr, /* glNamedFramebufferParameteri */
+    epoxy_glNamedFramebufferParameteriEXT_dispatch_table_rewrite_ptr, /* glNamedFramebufferParameteriEXT */
+    epoxy_glNamedFramebufferReadBuffer_dispatch_table_rewrite_ptr, /* glNamedFramebufferReadBuffer */
+    epoxy_glNamedFramebufferRenderbuffer_dispatch_table_rewrite_ptr, /* glNamedFramebufferRenderbuffer */
+    epoxy_glNamedFramebufferRenderbufferEXT_dispatch_table_rewrite_ptr, /* glNamedFramebufferRenderbufferEXT */
+    epoxy_glNamedFramebufferSampleLocationsfvNV_dispatch_table_rewrite_ptr, /* glNamedFramebufferSampleLocationsfvNV */
+    epoxy_glNamedFramebufferTexture_dispatch_table_rewrite_ptr, /* glNamedFramebufferTexture */
+    epoxy_glNamedFramebufferTexture1DEXT_dispatch_table_rewrite_ptr, /* glNamedFramebufferTexture1DEXT */
+    epoxy_glNamedFramebufferTexture2DEXT_dispatch_table_rewrite_ptr, /* glNamedFramebufferTexture2DEXT */
+    epoxy_glNamedFramebufferTexture3DEXT_dispatch_table_rewrite_ptr, /* glNamedFramebufferTexture3DEXT */
+    epoxy_glNamedFramebufferTextureEXT_dispatch_table_rewrite_ptr, /* glNamedFramebufferTextureEXT */
+    epoxy_glNamedFramebufferTextureFaceEXT_dispatch_table_rewrite_ptr, /* glNamedFramebufferTextureFaceEXT */
+    epoxy_glNamedFramebufferTextureLayer_dispatch_table_rewrite_ptr, /* glNamedFramebufferTextureLayer */
+    epoxy_glNamedFramebufferTextureLayerEXT_dispatch_table_rewrite_ptr, /* glNamedFramebufferTextureLayerEXT */
+    epoxy_glNamedProgramLocalParameter4dEXT_dispatch_table_rewrite_ptr, /* glNamedProgramLocalParameter4dEXT */
+    epoxy_glNamedProgramLocalParameter4dvEXT_dispatch_table_rewrite_ptr, /* glNamedProgramLocalParameter4dvEXT */
+    epoxy_glNamedProgramLocalParameter4fEXT_dispatch_table_rewrite_ptr, /* glNamedProgramLocalParameter4fEXT */
+    epoxy_glNamedProgramLocalParameter4fvEXT_dispatch_table_rewrite_ptr, /* glNamedProgramLocalParameter4fvEXT */
+    epoxy_glNamedProgramLocalParameterI4iEXT_dispatch_table_rewrite_ptr, /* glNamedProgramLocalParameterI4iEXT */
+    epoxy_glNamedProgramLocalParameterI4ivEXT_dispatch_table_rewrite_ptr, /* glNamedProgramLocalParameterI4ivEXT */
+    epoxy_glNamedProgramLocalParameterI4uiEXT_dispatch_table_rewrite_ptr, /* glNamedProgramLocalParameterI4uiEXT */
+    epoxy_glNamedProgramLocalParameterI4uivEXT_dispatch_table_rewrite_ptr, /* glNamedProgramLocalParameterI4uivEXT */
+    epoxy_glNamedProgramLocalParameters4fvEXT_dispatch_table_rewrite_ptr, /* glNamedProgramLocalParameters4fvEXT */
+    epoxy_glNamedProgramLocalParametersI4ivEXT_dispatch_table_rewrite_ptr, /* glNamedProgramLocalParametersI4ivEXT */
+    epoxy_glNamedProgramLocalParametersI4uivEXT_dispatch_table_rewrite_ptr, /* glNamedProgramLocalParametersI4uivEXT */
+    epoxy_glNamedProgramStringEXT_dispatch_table_rewrite_ptr, /* glNamedProgramStringEXT */
+    epoxy_glNamedRenderbufferStorage_dispatch_table_rewrite_ptr, /* glNamedRenderbufferStorage */
+    epoxy_glNamedRenderbufferStorageEXT_dispatch_table_rewrite_ptr, /* glNamedRenderbufferStorageEXT */
+    epoxy_glNamedRenderbufferStorageMultisample_dispatch_table_rewrite_ptr, /* glNamedRenderbufferStorageMultisample */
+    epoxy_glNamedRenderbufferStorageMultisampleCoverageEXT_dispatch_table_rewrite_ptr, /* glNamedRenderbufferStorageMultisampleCoverageEXT */
+    epoxy_glNamedRenderbufferStorageMultisampleEXT_dispatch_table_rewrite_ptr, /* glNamedRenderbufferStorageMultisampleEXT */
+    epoxy_glNamedStringARB_dispatch_table_rewrite_ptr, /* glNamedStringARB */
+    epoxy_glNewList_dispatch_table_rewrite_ptr, /* glNewList */
+    epoxy_glNewObjectBufferATI_dispatch_table_rewrite_ptr, /* glNewObjectBufferATI */
+    epoxy_glNormal3b_dispatch_table_rewrite_ptr, /* glNormal3b */
+    epoxy_glNormal3bv_dispatch_table_rewrite_ptr, /* glNormal3bv */
+    epoxy_glNormal3d_dispatch_table_rewrite_ptr, /* glNormal3d */
+    epoxy_glNormal3dv_dispatch_table_rewrite_ptr, /* glNormal3dv */
+    epoxy_glNormal3f_dispatch_table_rewrite_ptr, /* glNormal3f */
+    epoxy_glNormal3fVertex3fSUN_dispatch_table_rewrite_ptr, /* glNormal3fVertex3fSUN */
+    epoxy_glNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glNormal3fVertex3fvSUN */
+    epoxy_glNormal3fv_dispatch_table_rewrite_ptr, /* glNormal3fv */
+    epoxy_glNormal3hNV_dispatch_table_rewrite_ptr, /* glNormal3hNV */
+    epoxy_glNormal3hvNV_dispatch_table_rewrite_ptr, /* glNormal3hvNV */
+    epoxy_glNormal3i_dispatch_table_rewrite_ptr, /* glNormal3i */
+    epoxy_glNormal3iv_dispatch_table_rewrite_ptr, /* glNormal3iv */
+    epoxy_glNormal3s_dispatch_table_rewrite_ptr, /* glNormal3s */
+    epoxy_glNormal3sv_dispatch_table_rewrite_ptr, /* glNormal3sv */
+    epoxy_glNormal3x_dispatch_table_rewrite_ptr, /* glNormal3x */
+    epoxy_glNormal3xOES_dispatch_table_rewrite_ptr, /* glNormal3xOES */
+    epoxy_glNormal3xvOES_dispatch_table_rewrite_ptr, /* glNormal3xvOES */
+    epoxy_glNormalFormatNV_dispatch_table_rewrite_ptr, /* glNormalFormatNV */
+    epoxy_glNormalP3ui_dispatch_table_rewrite_ptr, /* glNormalP3ui */
+    epoxy_glNormalP3uiv_dispatch_table_rewrite_ptr, /* glNormalP3uiv */
+    epoxy_glNormalPointer_dispatch_table_rewrite_ptr, /* glNormalPointer */
+    epoxy_glNormalPointerEXT_dispatch_table_rewrite_ptr, /* glNormalPointerEXT */
+    epoxy_glNormalPointerListIBM_dispatch_table_rewrite_ptr, /* glNormalPointerListIBM */
+    epoxy_glNormalPointervINTEL_dispatch_table_rewrite_ptr, /* glNormalPointervINTEL */
+    epoxy_glNormalStream3bATI_dispatch_table_rewrite_ptr, /* glNormalStream3bATI */
+    epoxy_glNormalStream3bvATI_dispatch_table_rewrite_ptr, /* glNormalStream3bvATI */
+    epoxy_glNormalStream3dATI_dispatch_table_rewrite_ptr, /* glNormalStream3dATI */
+    epoxy_glNormalStream3dvATI_dispatch_table_rewrite_ptr, /* glNormalStream3dvATI */
+    epoxy_glNormalStream3fATI_dispatch_table_rewrite_ptr, /* glNormalStream3fATI */
+    epoxy_glNormalStream3fvATI_dispatch_table_rewrite_ptr, /* glNormalStream3fvATI */
+    epoxy_glNormalStream3iATI_dispatch_table_rewrite_ptr, /* glNormalStream3iATI */
+    epoxy_glNormalStream3ivATI_dispatch_table_rewrite_ptr, /* glNormalStream3ivATI */
+    epoxy_glNormalStream3sATI_dispatch_table_rewrite_ptr, /* glNormalStream3sATI */
+    epoxy_glNormalStream3svATI_dispatch_table_rewrite_ptr, /* glNormalStream3svATI */
+    epoxy_glObjectLabel_dispatch_table_rewrite_ptr, /* glObjectLabel */
+    epoxy_glObjectLabelKHR_dispatch_table_rewrite_ptr, /* glObjectLabelKHR */
+    epoxy_glObjectPtrLabel_dispatch_table_rewrite_ptr, /* glObjectPtrLabel */
+    epoxy_glObjectPtrLabelKHR_dispatch_table_rewrite_ptr, /* glObjectPtrLabelKHR */
+    epoxy_glObjectPurgeableAPPLE_dispatch_table_rewrite_ptr, /* glObjectPurgeableAPPLE */
+    epoxy_glObjectUnpurgeableAPPLE_dispatch_table_rewrite_ptr, /* glObjectUnpurgeableAPPLE */
+    epoxy_glOrtho_dispatch_table_rewrite_ptr, /* glOrtho */
+    epoxy_glOrthof_dispatch_table_rewrite_ptr, /* glOrthof */
+    epoxy_glOrthofOES_dispatch_table_rewrite_ptr, /* glOrthofOES */
+    epoxy_glOrthox_dispatch_table_rewrite_ptr, /* glOrthox */
+    epoxy_glOrthoxOES_dispatch_table_rewrite_ptr, /* glOrthoxOES */
+    epoxy_glPNTrianglesfATI_dispatch_table_rewrite_ptr, /* glPNTrianglesfATI */
+    epoxy_glPNTrianglesiATI_dispatch_table_rewrite_ptr, /* glPNTrianglesiATI */
+    epoxy_glPassTexCoordATI_dispatch_table_rewrite_ptr, /* glPassTexCoordATI */
+    epoxy_glPassThrough_dispatch_table_rewrite_ptr, /* glPassThrough */
+    epoxy_glPassThroughxOES_dispatch_table_rewrite_ptr, /* glPassThroughxOES */
+    epoxy_glPatchParameterfv_dispatch_table_rewrite_ptr, /* glPatchParameterfv */
+    epoxy_glPatchParameteri_dispatch_table_rewrite_ptr, /* glPatchParameteri */
+    epoxy_glPatchParameteriEXT_dispatch_table_rewrite_ptr, /* glPatchParameteriEXT */
+    epoxy_glPatchParameteriOES_dispatch_table_rewrite_ptr, /* glPatchParameteriOES */
+    epoxy_glPathColorGenNV_dispatch_table_rewrite_ptr, /* glPathColorGenNV */
+    epoxy_glPathCommandsNV_dispatch_table_rewrite_ptr, /* glPathCommandsNV */
+    epoxy_glPathCoordsNV_dispatch_table_rewrite_ptr, /* glPathCoordsNV */
+    epoxy_glPathCoverDepthFuncNV_dispatch_table_rewrite_ptr, /* glPathCoverDepthFuncNV */
+    epoxy_glPathDashArrayNV_dispatch_table_rewrite_ptr, /* glPathDashArrayNV */
+    epoxy_glPathFogGenNV_dispatch_table_rewrite_ptr, /* glPathFogGenNV */
+    epoxy_glPathGlyphIndexArrayNV_dispatch_table_rewrite_ptr, /* glPathGlyphIndexArrayNV */
+    epoxy_glPathGlyphIndexRangeNV_dispatch_table_rewrite_ptr, /* glPathGlyphIndexRangeNV */
+    epoxy_glPathGlyphRangeNV_dispatch_table_rewrite_ptr, /* glPathGlyphRangeNV */
+    epoxy_glPathGlyphsNV_dispatch_table_rewrite_ptr, /* glPathGlyphsNV */
+    epoxy_glPathMemoryGlyphIndexArrayNV_dispatch_table_rewrite_ptr, /* glPathMemoryGlyphIndexArrayNV */
+    epoxy_glPathParameterfNV_dispatch_table_rewrite_ptr, /* glPathParameterfNV */
+    epoxy_glPathParameterfvNV_dispatch_table_rewrite_ptr, /* glPathParameterfvNV */
+    epoxy_glPathParameteriNV_dispatch_table_rewrite_ptr, /* glPathParameteriNV */
+    epoxy_glPathParameterivNV_dispatch_table_rewrite_ptr, /* glPathParameterivNV */
+    epoxy_glPathStencilDepthOffsetNV_dispatch_table_rewrite_ptr, /* glPathStencilDepthOffsetNV */
+    epoxy_glPathStencilFuncNV_dispatch_table_rewrite_ptr, /* glPathStencilFuncNV */
+    epoxy_glPathStringNV_dispatch_table_rewrite_ptr, /* glPathStringNV */
+    epoxy_glPathSubCommandsNV_dispatch_table_rewrite_ptr, /* glPathSubCommandsNV */
+    epoxy_glPathSubCoordsNV_dispatch_table_rewrite_ptr, /* glPathSubCoordsNV */
+    epoxy_glPathTexGenNV_dispatch_table_rewrite_ptr, /* glPathTexGenNV */
+    epoxy_glPauseTransformFeedback_dispatch_table_rewrite_ptr, /* glPauseTransformFeedback */
+    epoxy_glPauseTransformFeedbackNV_dispatch_table_rewrite_ptr, /* glPauseTransformFeedbackNV */
+    epoxy_glPixelDataRangeNV_dispatch_table_rewrite_ptr, /* glPixelDataRangeNV */
+    epoxy_glPixelMapfv_dispatch_table_rewrite_ptr, /* glPixelMapfv */
+    epoxy_glPixelMapuiv_dispatch_table_rewrite_ptr, /* glPixelMapuiv */
+    epoxy_glPixelMapusv_dispatch_table_rewrite_ptr, /* glPixelMapusv */
+    epoxy_glPixelMapx_dispatch_table_rewrite_ptr, /* glPixelMapx */
+    epoxy_glPixelStoref_dispatch_table_rewrite_ptr, /* glPixelStoref */
+    epoxy_glPixelStorei_dispatch_table_rewrite_ptr, /* glPixelStorei */
+    epoxy_glPixelStorex_dispatch_table_rewrite_ptr, /* glPixelStorex */
+    epoxy_glPixelTexGenParameterfSGIS_dispatch_table_rewrite_ptr, /* glPixelTexGenParameterfSGIS */
+    epoxy_glPixelTexGenParameterfvSGIS_dispatch_table_rewrite_ptr, /* glPixelTexGenParameterfvSGIS */
+    epoxy_glPixelTexGenParameteriSGIS_dispatch_table_rewrite_ptr, /* glPixelTexGenParameteriSGIS */
+    epoxy_glPixelTexGenParameterivSGIS_dispatch_table_rewrite_ptr, /* glPixelTexGenParameterivSGIS */
+    epoxy_glPixelTexGenSGIX_dispatch_table_rewrite_ptr, /* glPixelTexGenSGIX */
+    epoxy_glPixelTransferf_dispatch_table_rewrite_ptr, /* glPixelTransferf */
+    epoxy_glPixelTransferi_dispatch_table_rewrite_ptr, /* glPixelTransferi */
+    epoxy_glPixelTransferxOES_dispatch_table_rewrite_ptr, /* glPixelTransferxOES */
+    epoxy_glPixelTransformParameterfEXT_dispatch_table_rewrite_ptr, /* glPixelTransformParameterfEXT */
+    epoxy_glPixelTransformParameterfvEXT_dispatch_table_rewrite_ptr, /* glPixelTransformParameterfvEXT */
+    epoxy_glPixelTransformParameteriEXT_dispatch_table_rewrite_ptr, /* glPixelTransformParameteriEXT */
+    epoxy_glPixelTransformParameterivEXT_dispatch_table_rewrite_ptr, /* glPixelTransformParameterivEXT */
+    epoxy_glPixelZoom_dispatch_table_rewrite_ptr, /* glPixelZoom */
+    epoxy_glPixelZoomxOES_dispatch_table_rewrite_ptr, /* glPixelZoomxOES */
+    epoxy_glPointAlongPathNV_dispatch_table_rewrite_ptr, /* glPointAlongPathNV */
+    epoxy_glPointParameterf_dispatch_table_rewrite_ptr, /* glPointParameterf */
+    epoxy_glPointParameterfARB_dispatch_table_rewrite_ptr, /* glPointParameterfARB */
+    epoxy_glPointParameterfEXT_dispatch_table_rewrite_ptr, /* glPointParameterfEXT */
+    epoxy_glPointParameterfSGIS_dispatch_table_rewrite_ptr, /* glPointParameterfSGIS */
+    epoxy_glPointParameterfv_dispatch_table_rewrite_ptr, /* glPointParameterfv */
+    epoxy_glPointParameterfvARB_dispatch_table_rewrite_ptr, /* glPointParameterfvARB */
+    epoxy_glPointParameterfvEXT_dispatch_table_rewrite_ptr, /* glPointParameterfvEXT */
+    epoxy_glPointParameterfvSGIS_dispatch_table_rewrite_ptr, /* glPointParameterfvSGIS */
+    epoxy_glPointParameteri_dispatch_table_rewrite_ptr, /* glPointParameteri */
+    epoxy_glPointParameteriNV_dispatch_table_rewrite_ptr, /* glPointParameteriNV */
+    epoxy_glPointParameteriv_dispatch_table_rewrite_ptr, /* glPointParameteriv */
+    epoxy_glPointParameterivNV_dispatch_table_rewrite_ptr, /* glPointParameterivNV */
+    epoxy_glPointParameterx_dispatch_table_rewrite_ptr, /* glPointParameterx */
+    epoxy_glPointParameterxOES_dispatch_table_rewrite_ptr, /* glPointParameterxOES */
+    epoxy_glPointParameterxv_dispatch_table_rewrite_ptr, /* glPointParameterxv */
+    epoxy_glPointParameterxvOES_dispatch_table_rewrite_ptr, /* glPointParameterxvOES */
+    epoxy_glPointSize_dispatch_table_rewrite_ptr, /* glPointSize */
+    epoxy_glPointSizePointerOES_dispatch_table_rewrite_ptr, /* glPointSizePointerOES */
+    epoxy_glPointSizex_dispatch_table_rewrite_ptr, /* glPointSizex */
+    epoxy_glPointSizexOES_dispatch_table_rewrite_ptr, /* glPointSizexOES */
+    epoxy_glPollAsyncSGIX_dispatch_table_rewrite_ptr, /* glPollAsyncSGIX */
+    epoxy_glPollInstrumentsSGIX_dispatch_table_rewrite_ptr, /* glPollInstrumentsSGIX */
+    epoxy_glPolygonMode_dispatch_table_rewrite_ptr, /* glPolygonMode */
+    epoxy_glPolygonModeNV_dispatch_table_rewrite_ptr, /* glPolygonModeNV */
+    epoxy_glPolygonOffset_dispatch_table_rewrite_ptr, /* glPolygonOffset */
+    epoxy_glPolygonOffsetClampEXT_dispatch_table_rewrite_ptr, /* glPolygonOffsetClampEXT */
+    epoxy_glPolygonOffsetEXT_dispatch_table_rewrite_ptr, /* glPolygonOffsetEXT */
+    epoxy_glPolygonOffsetx_dispatch_table_rewrite_ptr, /* glPolygonOffsetx */
+    epoxy_glPolygonOffsetxOES_dispatch_table_rewrite_ptr, /* glPolygonOffsetxOES */
+    epoxy_glPolygonStipple_dispatch_table_rewrite_ptr, /* glPolygonStipple */
+    epoxy_glPopAttrib_dispatch_table_rewrite_ptr, /* glPopAttrib */
+    epoxy_glPopClientAttrib_dispatch_table_rewrite_ptr, /* glPopClientAttrib */
+    epoxy_glPopDebugGroup_dispatch_table_rewrite_ptr, /* glPopDebugGroup */
+    epoxy_glPopDebugGroupKHR_dispatch_table_rewrite_ptr, /* glPopDebugGroupKHR */
+    epoxy_glPopGroupMarkerEXT_dispatch_table_rewrite_ptr, /* glPopGroupMarkerEXT */
+    epoxy_glPopMatrix_dispatch_table_rewrite_ptr, /* glPopMatrix */
+    epoxy_glPopName_dispatch_table_rewrite_ptr, /* glPopName */
+    epoxy_glPresentFrameDualFillNV_dispatch_table_rewrite_ptr, /* glPresentFrameDualFillNV */
+    epoxy_glPresentFrameKeyedNV_dispatch_table_rewrite_ptr, /* glPresentFrameKeyedNV */
+    epoxy_glPrimitiveBoundingBoxEXT_dispatch_table_rewrite_ptr, /* glPrimitiveBoundingBoxEXT */
+    epoxy_glPrimitiveBoundingBoxOES_dispatch_table_rewrite_ptr, /* glPrimitiveBoundingBoxOES */
+    epoxy_glPrimitiveRestartIndex_dispatch_table_rewrite_ptr, /* glPrimitiveRestartIndex */
+    epoxy_glPrimitiveRestartIndexNV_dispatch_table_rewrite_ptr, /* glPrimitiveRestartIndexNV */
+    epoxy_glPrimitiveRestartNV_dispatch_table_rewrite_ptr, /* glPrimitiveRestartNV */
+    epoxy_glPrioritizeTextures_dispatch_table_rewrite_ptr, /* glPrioritizeTextures */
+    epoxy_glPrioritizeTexturesEXT_dispatch_table_rewrite_ptr, /* glPrioritizeTexturesEXT */
+    epoxy_glPrioritizeTexturesxOES_dispatch_table_rewrite_ptr, /* glPrioritizeTexturesxOES */
+    epoxy_glProgramBinary_dispatch_table_rewrite_ptr, /* glProgramBinary */
+    epoxy_glProgramBinaryOES_dispatch_table_rewrite_ptr, /* glProgramBinaryOES */
+    epoxy_glProgramBufferParametersIivNV_dispatch_table_rewrite_ptr, /* glProgramBufferParametersIivNV */
+    epoxy_glProgramBufferParametersIuivNV_dispatch_table_rewrite_ptr, /* glProgramBufferParametersIuivNV */
+    epoxy_glProgramBufferParametersfvNV_dispatch_table_rewrite_ptr, /* glProgramBufferParametersfvNV */
+    epoxy_glProgramEnvParameter4dARB_dispatch_table_rewrite_ptr, /* glProgramEnvParameter4dARB */
+    epoxy_glProgramEnvParameter4dvARB_dispatch_table_rewrite_ptr, /* glProgramEnvParameter4dvARB */
+    epoxy_glProgramEnvParameter4fARB_dispatch_table_rewrite_ptr, /* glProgramEnvParameter4fARB */
+    epoxy_glProgramEnvParameter4fvARB_dispatch_table_rewrite_ptr, /* glProgramEnvParameter4fvARB */
+    epoxy_glProgramEnvParameterI4iNV_dispatch_table_rewrite_ptr, /* glProgramEnvParameterI4iNV */
+    epoxy_glProgramEnvParameterI4ivNV_dispatch_table_rewrite_ptr, /* glProgramEnvParameterI4ivNV */
+    epoxy_glProgramEnvParameterI4uiNV_dispatch_table_rewrite_ptr, /* glProgramEnvParameterI4uiNV */
+    epoxy_glProgramEnvParameterI4uivNV_dispatch_table_rewrite_ptr, /* glProgramEnvParameterI4uivNV */
+    epoxy_glProgramEnvParameters4fvEXT_dispatch_table_rewrite_ptr, /* glProgramEnvParameters4fvEXT */
+    epoxy_glProgramEnvParametersI4ivNV_dispatch_table_rewrite_ptr, /* glProgramEnvParametersI4ivNV */
+    epoxy_glProgramEnvParametersI4uivNV_dispatch_table_rewrite_ptr, /* glProgramEnvParametersI4uivNV */
+    epoxy_glProgramLocalParameter4dARB_dispatch_table_rewrite_ptr, /* glProgramLocalParameter4dARB */
+    epoxy_glProgramLocalParameter4dvARB_dispatch_table_rewrite_ptr, /* glProgramLocalParameter4dvARB */
+    epoxy_glProgramLocalParameter4fARB_dispatch_table_rewrite_ptr, /* glProgramLocalParameter4fARB */
+    epoxy_glProgramLocalParameter4fvARB_dispatch_table_rewrite_ptr, /* glProgramLocalParameter4fvARB */
+    epoxy_glProgramLocalParameterI4iNV_dispatch_table_rewrite_ptr, /* glProgramLocalParameterI4iNV */
+    epoxy_glProgramLocalParameterI4ivNV_dispatch_table_rewrite_ptr, /* glProgramLocalParameterI4ivNV */
+    epoxy_glProgramLocalParameterI4uiNV_dispatch_table_rewrite_ptr, /* glProgramLocalParameterI4uiNV */
+    epoxy_glProgramLocalParameterI4uivNV_dispatch_table_rewrite_ptr, /* glProgramLocalParameterI4uivNV */
+    epoxy_glProgramLocalParameters4fvEXT_dispatch_table_rewrite_ptr, /* glProgramLocalParameters4fvEXT */
+    epoxy_glProgramLocalParametersI4ivNV_dispatch_table_rewrite_ptr, /* glProgramLocalParametersI4ivNV */
+    epoxy_glProgramLocalParametersI4uivNV_dispatch_table_rewrite_ptr, /* glProgramLocalParametersI4uivNV */
+    epoxy_glProgramNamedParameter4dNV_dispatch_table_rewrite_ptr, /* glProgramNamedParameter4dNV */
+    epoxy_glProgramNamedParameter4dvNV_dispatch_table_rewrite_ptr, /* glProgramNamedParameter4dvNV */
+    epoxy_glProgramNamedParameter4fNV_dispatch_table_rewrite_ptr, /* glProgramNamedParameter4fNV */
+    epoxy_glProgramNamedParameter4fvNV_dispatch_table_rewrite_ptr, /* glProgramNamedParameter4fvNV */
+    epoxy_glProgramParameter4dNV_dispatch_table_rewrite_ptr, /* glProgramParameter4dNV */
+    epoxy_glProgramParameter4dvNV_dispatch_table_rewrite_ptr, /* glProgramParameter4dvNV */
+    epoxy_glProgramParameter4fNV_dispatch_table_rewrite_ptr, /* glProgramParameter4fNV */
+    epoxy_glProgramParameter4fvNV_dispatch_table_rewrite_ptr, /* glProgramParameter4fvNV */
+    epoxy_glProgramParameteri_dispatch_table_rewrite_ptr, /* glProgramParameteri */
+    epoxy_glProgramParameteriARB_dispatch_table_rewrite_ptr, /* glProgramParameteriARB */
+    epoxy_glProgramParameteriEXT_dispatch_table_rewrite_ptr, /* glProgramParameteriEXT */
+    epoxy_glProgramParameters4dvNV_dispatch_table_rewrite_ptr, /* glProgramParameters4dvNV */
+    epoxy_glProgramParameters4fvNV_dispatch_table_rewrite_ptr, /* glProgramParameters4fvNV */
+    epoxy_glProgramPathFragmentInputGenNV_dispatch_table_rewrite_ptr, /* glProgramPathFragmentInputGenNV */
+    epoxy_glProgramStringARB_dispatch_table_rewrite_ptr, /* glProgramStringARB */
+    epoxy_glProgramSubroutineParametersuivNV_dispatch_table_rewrite_ptr, /* glProgramSubroutineParametersuivNV */
+    epoxy_glProgramUniform1d_dispatch_table_rewrite_ptr, /* glProgramUniform1d */
+    epoxy_glProgramUniform1dEXT_dispatch_table_rewrite_ptr, /* glProgramUniform1dEXT */
+    epoxy_glProgramUniform1dv_dispatch_table_rewrite_ptr, /* glProgramUniform1dv */
+    epoxy_glProgramUniform1dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniform1dvEXT */
+    epoxy_glProgramUniform1f_dispatch_table_rewrite_ptr, /* glProgramUniform1f */
+    epoxy_glProgramUniform1fEXT_dispatch_table_rewrite_ptr, /* glProgramUniform1fEXT */
+    epoxy_glProgramUniform1fv_dispatch_table_rewrite_ptr, /* glProgramUniform1fv */
+    epoxy_glProgramUniform1fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniform1fvEXT */
+    epoxy_glProgramUniform1i_dispatch_table_rewrite_ptr, /* glProgramUniform1i */
+    epoxy_glProgramUniform1i64NV_dispatch_table_rewrite_ptr, /* glProgramUniform1i64NV */
+    epoxy_glProgramUniform1i64vNV_dispatch_table_rewrite_ptr, /* glProgramUniform1i64vNV */
+    epoxy_glProgramUniform1iEXT_dispatch_table_rewrite_ptr, /* glProgramUniform1iEXT */
+    epoxy_glProgramUniform1iv_dispatch_table_rewrite_ptr, /* glProgramUniform1iv */
+    epoxy_glProgramUniform1ivEXT_dispatch_table_rewrite_ptr, /* glProgramUniform1ivEXT */
+    epoxy_glProgramUniform1ui_dispatch_table_rewrite_ptr, /* glProgramUniform1ui */
+    epoxy_glProgramUniform1ui64NV_dispatch_table_rewrite_ptr, /* glProgramUniform1ui64NV */
+    epoxy_glProgramUniform1ui64vNV_dispatch_table_rewrite_ptr, /* glProgramUniform1ui64vNV */
+    epoxy_glProgramUniform1uiEXT_dispatch_table_rewrite_ptr, /* glProgramUniform1uiEXT */
+    epoxy_glProgramUniform1uiv_dispatch_table_rewrite_ptr, /* glProgramUniform1uiv */
+    epoxy_glProgramUniform1uivEXT_dispatch_table_rewrite_ptr, /* glProgramUniform1uivEXT */
+    epoxy_glProgramUniform2d_dispatch_table_rewrite_ptr, /* glProgramUniform2d */
+    epoxy_glProgramUniform2dEXT_dispatch_table_rewrite_ptr, /* glProgramUniform2dEXT */
+    epoxy_glProgramUniform2dv_dispatch_table_rewrite_ptr, /* glProgramUniform2dv */
+    epoxy_glProgramUniform2dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniform2dvEXT */
+    epoxy_glProgramUniform2f_dispatch_table_rewrite_ptr, /* glProgramUniform2f */
+    epoxy_glProgramUniform2fEXT_dispatch_table_rewrite_ptr, /* glProgramUniform2fEXT */
+    epoxy_glProgramUniform2fv_dispatch_table_rewrite_ptr, /* glProgramUniform2fv */
+    epoxy_glProgramUniform2fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniform2fvEXT */
+    epoxy_glProgramUniform2i_dispatch_table_rewrite_ptr, /* glProgramUniform2i */
+    epoxy_glProgramUniform2i64NV_dispatch_table_rewrite_ptr, /* glProgramUniform2i64NV */
+    epoxy_glProgramUniform2i64vNV_dispatch_table_rewrite_ptr, /* glProgramUniform2i64vNV */
+    epoxy_glProgramUniform2iEXT_dispatch_table_rewrite_ptr, /* glProgramUniform2iEXT */
+    epoxy_glProgramUniform2iv_dispatch_table_rewrite_ptr, /* glProgramUniform2iv */
+    epoxy_glProgramUniform2ivEXT_dispatch_table_rewrite_ptr, /* glProgramUniform2ivEXT */
+    epoxy_glProgramUniform2ui_dispatch_table_rewrite_ptr, /* glProgramUniform2ui */
+    epoxy_glProgramUniform2ui64NV_dispatch_table_rewrite_ptr, /* glProgramUniform2ui64NV */
+    epoxy_glProgramUniform2ui64vNV_dispatch_table_rewrite_ptr, /* glProgramUniform2ui64vNV */
+    epoxy_glProgramUniform2uiEXT_dispatch_table_rewrite_ptr, /* glProgramUniform2uiEXT */
+    epoxy_glProgramUniform2uiv_dispatch_table_rewrite_ptr, /* glProgramUniform2uiv */
+    epoxy_glProgramUniform2uivEXT_dispatch_table_rewrite_ptr, /* glProgramUniform2uivEXT */
+    epoxy_glProgramUniform3d_dispatch_table_rewrite_ptr, /* glProgramUniform3d */
+    epoxy_glProgramUniform3dEXT_dispatch_table_rewrite_ptr, /* glProgramUniform3dEXT */
+    epoxy_glProgramUniform3dv_dispatch_table_rewrite_ptr, /* glProgramUniform3dv */
+    epoxy_glProgramUniform3dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniform3dvEXT */
+    epoxy_glProgramUniform3f_dispatch_table_rewrite_ptr, /* glProgramUniform3f */
+    epoxy_glProgramUniform3fEXT_dispatch_table_rewrite_ptr, /* glProgramUniform3fEXT */
+    epoxy_glProgramUniform3fv_dispatch_table_rewrite_ptr, /* glProgramUniform3fv */
+    epoxy_glProgramUniform3fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniform3fvEXT */
+    epoxy_glProgramUniform3i_dispatch_table_rewrite_ptr, /* glProgramUniform3i */
+    epoxy_glProgramUniform3i64NV_dispatch_table_rewrite_ptr, /* glProgramUniform3i64NV */
+    epoxy_glProgramUniform3i64vNV_dispatch_table_rewrite_ptr, /* glProgramUniform3i64vNV */
+    epoxy_glProgramUniform3iEXT_dispatch_table_rewrite_ptr, /* glProgramUniform3iEXT */
+    epoxy_glProgramUniform3iv_dispatch_table_rewrite_ptr, /* glProgramUniform3iv */
+    epoxy_glProgramUniform3ivEXT_dispatch_table_rewrite_ptr, /* glProgramUniform3ivEXT */
+    epoxy_glProgramUniform3ui_dispatch_table_rewrite_ptr, /* glProgramUniform3ui */
+    epoxy_glProgramUniform3ui64NV_dispatch_table_rewrite_ptr, /* glProgramUniform3ui64NV */
+    epoxy_glProgramUniform3ui64vNV_dispatch_table_rewrite_ptr, /* glProgramUniform3ui64vNV */
+    epoxy_glProgramUniform3uiEXT_dispatch_table_rewrite_ptr, /* glProgramUniform3uiEXT */
+    epoxy_glProgramUniform3uiv_dispatch_table_rewrite_ptr, /* glProgramUniform3uiv */
+    epoxy_glProgramUniform3uivEXT_dispatch_table_rewrite_ptr, /* glProgramUniform3uivEXT */
+    epoxy_glProgramUniform4d_dispatch_table_rewrite_ptr, /* glProgramUniform4d */
+    epoxy_glProgramUniform4dEXT_dispatch_table_rewrite_ptr, /* glProgramUniform4dEXT */
+    epoxy_glProgramUniform4dv_dispatch_table_rewrite_ptr, /* glProgramUniform4dv */
+    epoxy_glProgramUniform4dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniform4dvEXT */
+    epoxy_glProgramUniform4f_dispatch_table_rewrite_ptr, /* glProgramUniform4f */
+    epoxy_glProgramUniform4fEXT_dispatch_table_rewrite_ptr, /* glProgramUniform4fEXT */
+    epoxy_glProgramUniform4fv_dispatch_table_rewrite_ptr, /* glProgramUniform4fv */
+    epoxy_glProgramUniform4fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniform4fvEXT */
+    epoxy_glProgramUniform4i_dispatch_table_rewrite_ptr, /* glProgramUniform4i */
+    epoxy_glProgramUniform4i64NV_dispatch_table_rewrite_ptr, /* glProgramUniform4i64NV */
+    epoxy_glProgramUniform4i64vNV_dispatch_table_rewrite_ptr, /* glProgramUniform4i64vNV */
+    epoxy_glProgramUniform4iEXT_dispatch_table_rewrite_ptr, /* glProgramUniform4iEXT */
+    epoxy_glProgramUniform4iv_dispatch_table_rewrite_ptr, /* glProgramUniform4iv */
+    epoxy_glProgramUniform4ivEXT_dispatch_table_rewrite_ptr, /* glProgramUniform4ivEXT */
+    epoxy_glProgramUniform4ui_dispatch_table_rewrite_ptr, /* glProgramUniform4ui */
+    epoxy_glProgramUniform4ui64NV_dispatch_table_rewrite_ptr, /* glProgramUniform4ui64NV */
+    epoxy_glProgramUniform4ui64vNV_dispatch_table_rewrite_ptr, /* glProgramUniform4ui64vNV */
+    epoxy_glProgramUniform4uiEXT_dispatch_table_rewrite_ptr, /* glProgramUniform4uiEXT */
+    epoxy_glProgramUniform4uiv_dispatch_table_rewrite_ptr, /* glProgramUniform4uiv */
+    epoxy_glProgramUniform4uivEXT_dispatch_table_rewrite_ptr, /* glProgramUniform4uivEXT */
+    epoxy_glProgramUniformHandleui64ARB_dispatch_table_rewrite_ptr, /* glProgramUniformHandleui64ARB */
+    epoxy_glProgramUniformHandleui64NV_dispatch_table_rewrite_ptr, /* glProgramUniformHandleui64NV */
+    epoxy_glProgramUniformHandleui64vARB_dispatch_table_rewrite_ptr, /* glProgramUniformHandleui64vARB */
+    epoxy_glProgramUniformHandleui64vNV_dispatch_table_rewrite_ptr, /* glProgramUniformHandleui64vNV */
+    epoxy_glProgramUniformMatrix2dv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2dv */
+    epoxy_glProgramUniformMatrix2dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2dvEXT */
+    epoxy_glProgramUniformMatrix2fv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2fv */
+    epoxy_glProgramUniformMatrix2fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2fvEXT */
+    epoxy_glProgramUniformMatrix2x3dv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2x3dv */
+    epoxy_glProgramUniformMatrix2x3dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2x3dvEXT */
+    epoxy_glProgramUniformMatrix2x3fv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2x3fv */
+    epoxy_glProgramUniformMatrix2x3fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2x3fvEXT */
+    epoxy_glProgramUniformMatrix2x4dv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2x4dv */
+    epoxy_glProgramUniformMatrix2x4dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2x4dvEXT */
+    epoxy_glProgramUniformMatrix2x4fv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2x4fv */
+    epoxy_glProgramUniformMatrix2x4fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix2x4fvEXT */
+    epoxy_glProgramUniformMatrix3dv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3dv */
+    epoxy_glProgramUniformMatrix3dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3dvEXT */
+    epoxy_glProgramUniformMatrix3fv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3fv */
+    epoxy_glProgramUniformMatrix3fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3fvEXT */
+    epoxy_glProgramUniformMatrix3x2dv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3x2dv */
+    epoxy_glProgramUniformMatrix3x2dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3x2dvEXT */
+    epoxy_glProgramUniformMatrix3x2fv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3x2fv */
+    epoxy_glProgramUniformMatrix3x2fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3x2fvEXT */
+    epoxy_glProgramUniformMatrix3x4dv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3x4dv */
+    epoxy_glProgramUniformMatrix3x4dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3x4dvEXT */
+    epoxy_glProgramUniformMatrix3x4fv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3x4fv */
+    epoxy_glProgramUniformMatrix3x4fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix3x4fvEXT */
+    epoxy_glProgramUniformMatrix4dv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4dv */
+    epoxy_glProgramUniformMatrix4dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4dvEXT */
+    epoxy_glProgramUniformMatrix4fv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4fv */
+    epoxy_glProgramUniformMatrix4fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4fvEXT */
+    epoxy_glProgramUniformMatrix4x2dv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4x2dv */
+    epoxy_glProgramUniformMatrix4x2dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4x2dvEXT */
+    epoxy_glProgramUniformMatrix4x2fv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4x2fv */
+    epoxy_glProgramUniformMatrix4x2fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4x2fvEXT */
+    epoxy_glProgramUniformMatrix4x3dv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4x3dv */
+    epoxy_glProgramUniformMatrix4x3dvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4x3dvEXT */
+    epoxy_glProgramUniformMatrix4x3fv_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4x3fv */
+    epoxy_glProgramUniformMatrix4x3fvEXT_dispatch_table_rewrite_ptr, /* glProgramUniformMatrix4x3fvEXT */
+    epoxy_glProgramUniformui64NV_dispatch_table_rewrite_ptr, /* glProgramUniformui64NV */
+    epoxy_glProgramUniformui64vNV_dispatch_table_rewrite_ptr, /* glProgramUniformui64vNV */
+    epoxy_glProgramVertexLimitNV_dispatch_table_rewrite_ptr, /* glProgramVertexLimitNV */
+    epoxy_glProvokingVertex_dispatch_table_rewrite_ptr, /* glProvokingVertex */
+    epoxy_glProvokingVertexEXT_dispatch_table_rewrite_ptr, /* glProvokingVertexEXT */
+    epoxy_glPushAttrib_dispatch_table_rewrite_ptr, /* glPushAttrib */
+    epoxy_glPushClientAttrib_dispatch_table_rewrite_ptr, /* glPushClientAttrib */
+    epoxy_glPushClientAttribDefaultEXT_dispatch_table_rewrite_ptr, /* glPushClientAttribDefaultEXT */
+    epoxy_glPushDebugGroup_dispatch_table_rewrite_ptr, /* glPushDebugGroup */
+    epoxy_glPushDebugGroupKHR_dispatch_table_rewrite_ptr, /* glPushDebugGroupKHR */
+    epoxy_glPushGroupMarkerEXT_dispatch_table_rewrite_ptr, /* glPushGroupMarkerEXT */
+    epoxy_glPushMatrix_dispatch_table_rewrite_ptr, /* glPushMatrix */
+    epoxy_glPushName_dispatch_table_rewrite_ptr, /* glPushName */
+    epoxy_glQueryCounter_dispatch_table_rewrite_ptr, /* glQueryCounter */
+    epoxy_glQueryCounterEXT_dispatch_table_rewrite_ptr, /* glQueryCounterEXT */
+    epoxy_glQueryMatrixxOES_dispatch_table_rewrite_ptr, /* glQueryMatrixxOES */
+    epoxy_glQueryObjectParameteruiAMD_dispatch_table_rewrite_ptr, /* glQueryObjectParameteruiAMD */
+    epoxy_glRasterPos2d_dispatch_table_rewrite_ptr, /* glRasterPos2d */
+    epoxy_glRasterPos2dv_dispatch_table_rewrite_ptr, /* glRasterPos2dv */
+    epoxy_glRasterPos2f_dispatch_table_rewrite_ptr, /* glRasterPos2f */
+    epoxy_glRasterPos2fv_dispatch_table_rewrite_ptr, /* glRasterPos2fv */
+    epoxy_glRasterPos2i_dispatch_table_rewrite_ptr, /* glRasterPos2i */
+    epoxy_glRasterPos2iv_dispatch_table_rewrite_ptr, /* glRasterPos2iv */
+    epoxy_glRasterPos2s_dispatch_table_rewrite_ptr, /* glRasterPos2s */
+    epoxy_glRasterPos2sv_dispatch_table_rewrite_ptr, /* glRasterPos2sv */
+    epoxy_glRasterPos2xOES_dispatch_table_rewrite_ptr, /* glRasterPos2xOES */
+    epoxy_glRasterPos2xvOES_dispatch_table_rewrite_ptr, /* glRasterPos2xvOES */
+    epoxy_glRasterPos3d_dispatch_table_rewrite_ptr, /* glRasterPos3d */
+    epoxy_glRasterPos3dv_dispatch_table_rewrite_ptr, /* glRasterPos3dv */
+    epoxy_glRasterPos3f_dispatch_table_rewrite_ptr, /* glRasterPos3f */
+    epoxy_glRasterPos3fv_dispatch_table_rewrite_ptr, /* glRasterPos3fv */
+    epoxy_glRasterPos3i_dispatch_table_rewrite_ptr, /* glRasterPos3i */
+    epoxy_glRasterPos3iv_dispatch_table_rewrite_ptr, /* glRasterPos3iv */
+    epoxy_glRasterPos3s_dispatch_table_rewrite_ptr, /* glRasterPos3s */
+    epoxy_glRasterPos3sv_dispatch_table_rewrite_ptr, /* glRasterPos3sv */
+    epoxy_glRasterPos3xOES_dispatch_table_rewrite_ptr, /* glRasterPos3xOES */
+    epoxy_glRasterPos3xvOES_dispatch_table_rewrite_ptr, /* glRasterPos3xvOES */
+    epoxy_glRasterPos4d_dispatch_table_rewrite_ptr, /* glRasterPos4d */
+    epoxy_glRasterPos4dv_dispatch_table_rewrite_ptr, /* glRasterPos4dv */
+    epoxy_glRasterPos4f_dispatch_table_rewrite_ptr, /* glRasterPos4f */
+    epoxy_glRasterPos4fv_dispatch_table_rewrite_ptr, /* glRasterPos4fv */
+    epoxy_glRasterPos4i_dispatch_table_rewrite_ptr, /* glRasterPos4i */
+    epoxy_glRasterPos4iv_dispatch_table_rewrite_ptr, /* glRasterPos4iv */
+    epoxy_glRasterPos4s_dispatch_table_rewrite_ptr, /* glRasterPos4s */
+    epoxy_glRasterPos4sv_dispatch_table_rewrite_ptr, /* glRasterPos4sv */
+    epoxy_glRasterPos4xOES_dispatch_table_rewrite_ptr, /* glRasterPos4xOES */
+    epoxy_glRasterPos4xvOES_dispatch_table_rewrite_ptr, /* glRasterPos4xvOES */
+    epoxy_glRasterSamplesEXT_dispatch_table_rewrite_ptr, /* glRasterSamplesEXT */
+    epoxy_glReadBuffer_dispatch_table_rewrite_ptr, /* glReadBuffer */
+    epoxy_glReadBufferIndexedEXT_dispatch_table_rewrite_ptr, /* glReadBufferIndexedEXT */
+    epoxy_glReadBufferNV_dispatch_table_rewrite_ptr, /* glReadBufferNV */
+    epoxy_glReadInstrumentsSGIX_dispatch_table_rewrite_ptr, /* glReadInstrumentsSGIX */
+    epoxy_glReadPixels_dispatch_table_rewrite_ptr, /* glReadPixels */
+    epoxy_glReadnPixels_dispatch_table_rewrite_ptr, /* glReadnPixels */
+    epoxy_glReadnPixelsARB_dispatch_table_rewrite_ptr, /* glReadnPixelsARB */
+    epoxy_glReadnPixelsEXT_dispatch_table_rewrite_ptr, /* glReadnPixelsEXT */
+    epoxy_glReadnPixelsKHR_dispatch_table_rewrite_ptr, /* glReadnPixelsKHR */
+    epoxy_glRectd_dispatch_table_rewrite_ptr, /* glRectd */
+    epoxy_glRectdv_dispatch_table_rewrite_ptr, /* glRectdv */
+    epoxy_glRectf_dispatch_table_rewrite_ptr, /* glRectf */
+    epoxy_glRectfv_dispatch_table_rewrite_ptr, /* glRectfv */
+    epoxy_glRecti_dispatch_table_rewrite_ptr, /* glRecti */
+    epoxy_glRectiv_dispatch_table_rewrite_ptr, /* glRectiv */
+    epoxy_glRects_dispatch_table_rewrite_ptr, /* glRects */
+    epoxy_glRectsv_dispatch_table_rewrite_ptr, /* glRectsv */
+    epoxy_glRectxOES_dispatch_table_rewrite_ptr, /* glRectxOES */
+    epoxy_glRectxvOES_dispatch_table_rewrite_ptr, /* glRectxvOES */
+    epoxy_glReferencePlaneSGIX_dispatch_table_rewrite_ptr, /* glReferencePlaneSGIX */
+    epoxy_glReleaseShaderCompiler_dispatch_table_rewrite_ptr, /* glReleaseShaderCompiler */
+    epoxy_glRenderMode_dispatch_table_rewrite_ptr, /* glRenderMode */
+    epoxy_glRenderbufferStorage_dispatch_table_rewrite_ptr, /* glRenderbufferStorage */
+    epoxy_glRenderbufferStorageEXT_dispatch_table_rewrite_ptr, /* glRenderbufferStorageEXT */
+    epoxy_glRenderbufferStorageMultisample_dispatch_table_rewrite_ptr, /* glRenderbufferStorageMultisample */
+    epoxy_glRenderbufferStorageMultisampleANGLE_dispatch_table_rewrite_ptr, /* glRenderbufferStorageMultisampleANGLE */
+    epoxy_glRenderbufferStorageMultisampleAPPLE_dispatch_table_rewrite_ptr, /* glRenderbufferStorageMultisampleAPPLE */
+    epoxy_glRenderbufferStorageMultisampleCoverageNV_dispatch_table_rewrite_ptr, /* glRenderbufferStorageMultisampleCoverageNV */
+    epoxy_glRenderbufferStorageMultisampleEXT_dispatch_table_rewrite_ptr, /* glRenderbufferStorageMultisampleEXT */
+    epoxy_glRenderbufferStorageMultisampleIMG_dispatch_table_rewrite_ptr, /* glRenderbufferStorageMultisampleIMG */
+    epoxy_glRenderbufferStorageMultisampleNV_dispatch_table_rewrite_ptr, /* glRenderbufferStorageMultisampleNV */
+    epoxy_glRenderbufferStorageOES_dispatch_table_rewrite_ptr, /* glRenderbufferStorageOES */
+    epoxy_glReplacementCodePointerSUN_dispatch_table_rewrite_ptr, /* glReplacementCodePointerSUN */
+    epoxy_glReplacementCodeubSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeubSUN */
+    epoxy_glReplacementCodeubvSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeubvSUN */
+    epoxy_glReplacementCodeuiColor3fVertex3fSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiColor3fVertex3fSUN */
+    epoxy_glReplacementCodeuiColor3fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiColor3fVertex3fvSUN */
+    epoxy_glReplacementCodeuiColor4fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiColor4fNormal3fVertex3fSUN */
+    epoxy_glReplacementCodeuiColor4fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiColor4fNormal3fVertex3fvSUN */
+    epoxy_glReplacementCodeuiColor4ubVertex3fSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiColor4ubVertex3fSUN */
+    epoxy_glReplacementCodeuiColor4ubVertex3fvSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiColor4ubVertex3fvSUN */
+    epoxy_glReplacementCodeuiNormal3fVertex3fSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiNormal3fVertex3fSUN */
+    epoxy_glReplacementCodeuiNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiNormal3fVertex3fvSUN */
+    epoxy_glReplacementCodeuiSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiSUN */
+    epoxy_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN */
+    epoxy_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN */
+    epoxy_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN */
+    epoxy_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN */
+    epoxy_glReplacementCodeuiTexCoord2fVertex3fSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiTexCoord2fVertex3fSUN */
+    epoxy_glReplacementCodeuiTexCoord2fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiTexCoord2fVertex3fvSUN */
+    epoxy_glReplacementCodeuiVertex3fSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiVertex3fSUN */
+    epoxy_glReplacementCodeuiVertex3fvSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuiVertex3fvSUN */
+    epoxy_glReplacementCodeuivSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeuivSUN */
+    epoxy_glReplacementCodeusSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeusSUN */
+    epoxy_glReplacementCodeusvSUN_dispatch_table_rewrite_ptr, /* glReplacementCodeusvSUN */
+    epoxy_glRequestResidentProgramsNV_dispatch_table_rewrite_ptr, /* glRequestResidentProgramsNV */
+    epoxy_glResetHistogram_dispatch_table_rewrite_ptr, /* glResetHistogram */
+    epoxy_glResetHistogramEXT_dispatch_table_rewrite_ptr, /* glResetHistogramEXT */
+    epoxy_glResetMinmax_dispatch_table_rewrite_ptr, /* glResetMinmax */
+    epoxy_glResetMinmaxEXT_dispatch_table_rewrite_ptr, /* glResetMinmaxEXT */
+    epoxy_glResizeBuffersMESA_dispatch_table_rewrite_ptr, /* glResizeBuffersMESA */
+    epoxy_glResolveDepthValuesNV_dispatch_table_rewrite_ptr, /* glResolveDepthValuesNV */
+    epoxy_glResolveMultisampleFramebufferAPPLE_dispatch_table_rewrite_ptr, /* glResolveMultisampleFramebufferAPPLE */
+    epoxy_glResumeTransformFeedback_dispatch_table_rewrite_ptr, /* glResumeTransformFeedback */
+    epoxy_glResumeTransformFeedbackNV_dispatch_table_rewrite_ptr, /* glResumeTransformFeedbackNV */
+    epoxy_glRotated_dispatch_table_rewrite_ptr, /* glRotated */
+    epoxy_glRotatef_dispatch_table_rewrite_ptr, /* glRotatef */
+    epoxy_glRotatex_dispatch_table_rewrite_ptr, /* glRotatex */
+    epoxy_glRotatexOES_dispatch_table_rewrite_ptr, /* glRotatexOES */
+    epoxy_glSampleCoverage_dispatch_table_rewrite_ptr, /* glSampleCoverage */
+    epoxy_glSampleCoverageARB_dispatch_table_rewrite_ptr, /* glSampleCoverageARB */
+    epoxy_glSampleCoveragex_dispatch_table_rewrite_ptr, /* glSampleCoveragex */
+    epoxy_glSampleCoveragexOES_dispatch_table_rewrite_ptr, /* glSampleCoveragexOES */
+    epoxy_glSampleMapATI_dispatch_table_rewrite_ptr, /* glSampleMapATI */
+    epoxy_glSampleMaskEXT_dispatch_table_rewrite_ptr, /* glSampleMaskEXT */
+    epoxy_glSampleMaskIndexedNV_dispatch_table_rewrite_ptr, /* glSampleMaskIndexedNV */
+    epoxy_glSampleMaskSGIS_dispatch_table_rewrite_ptr, /* glSampleMaskSGIS */
+    epoxy_glSampleMaski_dispatch_table_rewrite_ptr, /* glSampleMaski */
+    epoxy_glSamplePatternEXT_dispatch_table_rewrite_ptr, /* glSamplePatternEXT */
+    epoxy_glSamplePatternSGIS_dispatch_table_rewrite_ptr, /* glSamplePatternSGIS */
+    epoxy_glSamplerParameterIiv_dispatch_table_rewrite_ptr, /* glSamplerParameterIiv */
+    epoxy_glSamplerParameterIivEXT_dispatch_table_rewrite_ptr, /* glSamplerParameterIivEXT */
+    epoxy_glSamplerParameterIivOES_dispatch_table_rewrite_ptr, /* glSamplerParameterIivOES */
+    epoxy_glSamplerParameterIuiv_dispatch_table_rewrite_ptr, /* glSamplerParameterIuiv */
+    epoxy_glSamplerParameterIuivEXT_dispatch_table_rewrite_ptr, /* glSamplerParameterIuivEXT */
+    epoxy_glSamplerParameterIuivOES_dispatch_table_rewrite_ptr, /* glSamplerParameterIuivOES */
+    epoxy_glSamplerParameterf_dispatch_table_rewrite_ptr, /* glSamplerParameterf */
+    epoxy_glSamplerParameterfv_dispatch_table_rewrite_ptr, /* glSamplerParameterfv */
+    epoxy_glSamplerParameteri_dispatch_table_rewrite_ptr, /* glSamplerParameteri */
+    epoxy_glSamplerParameteriv_dispatch_table_rewrite_ptr, /* glSamplerParameteriv */
+    epoxy_glScaled_dispatch_table_rewrite_ptr, /* glScaled */
+    epoxy_glScalef_dispatch_table_rewrite_ptr, /* glScalef */
+    epoxy_glScalex_dispatch_table_rewrite_ptr, /* glScalex */
+    epoxy_glScalexOES_dispatch_table_rewrite_ptr, /* glScalexOES */
+    epoxy_glScissor_dispatch_table_rewrite_ptr, /* glScissor */
+    epoxy_glScissorArrayv_dispatch_table_rewrite_ptr, /* glScissorArrayv */
+    epoxy_glScissorArrayvNV_dispatch_table_rewrite_ptr, /* glScissorArrayvNV */
+    epoxy_glScissorIndexed_dispatch_table_rewrite_ptr, /* glScissorIndexed */
+    epoxy_glScissorIndexedNV_dispatch_table_rewrite_ptr, /* glScissorIndexedNV */
+    epoxy_glScissorIndexedv_dispatch_table_rewrite_ptr, /* glScissorIndexedv */
+    epoxy_glScissorIndexedvNV_dispatch_table_rewrite_ptr, /* glScissorIndexedvNV */
+    epoxy_glSecondaryColor3b_dispatch_table_rewrite_ptr, /* glSecondaryColor3b */
+    epoxy_glSecondaryColor3bEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3bEXT */
+    epoxy_glSecondaryColor3bv_dispatch_table_rewrite_ptr, /* glSecondaryColor3bv */
+    epoxy_glSecondaryColor3bvEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3bvEXT */
+    epoxy_glSecondaryColor3d_dispatch_table_rewrite_ptr, /* glSecondaryColor3d */
+    epoxy_glSecondaryColor3dEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3dEXT */
+    epoxy_glSecondaryColor3dv_dispatch_table_rewrite_ptr, /* glSecondaryColor3dv */
+    epoxy_glSecondaryColor3dvEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3dvEXT */
+    epoxy_glSecondaryColor3f_dispatch_table_rewrite_ptr, /* glSecondaryColor3f */
+    epoxy_glSecondaryColor3fEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3fEXT */
+    epoxy_glSecondaryColor3fv_dispatch_table_rewrite_ptr, /* glSecondaryColor3fv */
+    epoxy_glSecondaryColor3fvEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3fvEXT */
+    epoxy_glSecondaryColor3hNV_dispatch_table_rewrite_ptr, /* glSecondaryColor3hNV */
+    epoxy_glSecondaryColor3hvNV_dispatch_table_rewrite_ptr, /* glSecondaryColor3hvNV */
+    epoxy_glSecondaryColor3i_dispatch_table_rewrite_ptr, /* glSecondaryColor3i */
+    epoxy_glSecondaryColor3iEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3iEXT */
+    epoxy_glSecondaryColor3iv_dispatch_table_rewrite_ptr, /* glSecondaryColor3iv */
+    epoxy_glSecondaryColor3ivEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3ivEXT */
+    epoxy_glSecondaryColor3s_dispatch_table_rewrite_ptr, /* glSecondaryColor3s */
+    epoxy_glSecondaryColor3sEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3sEXT */
+    epoxy_glSecondaryColor3sv_dispatch_table_rewrite_ptr, /* glSecondaryColor3sv */
+    epoxy_glSecondaryColor3svEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3svEXT */
+    epoxy_glSecondaryColor3ub_dispatch_table_rewrite_ptr, /* glSecondaryColor3ub */
+    epoxy_glSecondaryColor3ubEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3ubEXT */
+    epoxy_glSecondaryColor3ubv_dispatch_table_rewrite_ptr, /* glSecondaryColor3ubv */
+    epoxy_glSecondaryColor3ubvEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3ubvEXT */
+    epoxy_glSecondaryColor3ui_dispatch_table_rewrite_ptr, /* glSecondaryColor3ui */
+    epoxy_glSecondaryColor3uiEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3uiEXT */
+    epoxy_glSecondaryColor3uiv_dispatch_table_rewrite_ptr, /* glSecondaryColor3uiv */
+    epoxy_glSecondaryColor3uivEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3uivEXT */
+    epoxy_glSecondaryColor3us_dispatch_table_rewrite_ptr, /* glSecondaryColor3us */
+    epoxy_glSecondaryColor3usEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3usEXT */
+    epoxy_glSecondaryColor3usv_dispatch_table_rewrite_ptr, /* glSecondaryColor3usv */
+    epoxy_glSecondaryColor3usvEXT_dispatch_table_rewrite_ptr, /* glSecondaryColor3usvEXT */
+    epoxy_glSecondaryColorFormatNV_dispatch_table_rewrite_ptr, /* glSecondaryColorFormatNV */
+    epoxy_glSecondaryColorP3ui_dispatch_table_rewrite_ptr, /* glSecondaryColorP3ui */
+    epoxy_glSecondaryColorP3uiv_dispatch_table_rewrite_ptr, /* glSecondaryColorP3uiv */
+    epoxy_glSecondaryColorPointer_dispatch_table_rewrite_ptr, /* glSecondaryColorPointer */
+    epoxy_glSecondaryColorPointerEXT_dispatch_table_rewrite_ptr, /* glSecondaryColorPointerEXT */
+    epoxy_glSecondaryColorPointerListIBM_dispatch_table_rewrite_ptr, /* glSecondaryColorPointerListIBM */
+    epoxy_glSelectBuffer_dispatch_table_rewrite_ptr, /* glSelectBuffer */
+    epoxy_glSelectPerfMonitorCountersAMD_dispatch_table_rewrite_ptr, /* glSelectPerfMonitorCountersAMD */
+    epoxy_glSeparableFilter2D_dispatch_table_rewrite_ptr, /* glSeparableFilter2D */
+    epoxy_glSeparableFilter2DEXT_dispatch_table_rewrite_ptr, /* glSeparableFilter2DEXT */
+    epoxy_glSetFenceAPPLE_dispatch_table_rewrite_ptr, /* glSetFenceAPPLE */
+    epoxy_glSetFenceNV_dispatch_table_rewrite_ptr, /* glSetFenceNV */
+    epoxy_glSetFragmentShaderConstantATI_dispatch_table_rewrite_ptr, /* glSetFragmentShaderConstantATI */
+    epoxy_glSetInvariantEXT_dispatch_table_rewrite_ptr, /* glSetInvariantEXT */
+    epoxy_glSetLocalConstantEXT_dispatch_table_rewrite_ptr, /* glSetLocalConstantEXT */
+    epoxy_glSetMultisamplefvAMD_dispatch_table_rewrite_ptr, /* glSetMultisamplefvAMD */
+    epoxy_glShadeModel_dispatch_table_rewrite_ptr, /* glShadeModel */
+    epoxy_glShaderBinary_dispatch_table_rewrite_ptr, /* glShaderBinary */
+    epoxy_glShaderOp1EXT_dispatch_table_rewrite_ptr, /* glShaderOp1EXT */
+    epoxy_glShaderOp2EXT_dispatch_table_rewrite_ptr, /* glShaderOp2EXT */
+    epoxy_glShaderOp3EXT_dispatch_table_rewrite_ptr, /* glShaderOp3EXT */
+    epoxy_glShaderSource_dispatch_table_rewrite_ptr, /* glShaderSource */
+    epoxy_glShaderSourceARB_dispatch_table_rewrite_ptr, /* glShaderSourceARB */
+    epoxy_glShaderStorageBlockBinding_dispatch_table_rewrite_ptr, /* glShaderStorageBlockBinding */
+    epoxy_glSharpenTexFuncSGIS_dispatch_table_rewrite_ptr, /* glSharpenTexFuncSGIS */
+    epoxy_glSpriteParameterfSGIX_dispatch_table_rewrite_ptr, /* glSpriteParameterfSGIX */
+    epoxy_glSpriteParameterfvSGIX_dispatch_table_rewrite_ptr, /* glSpriteParameterfvSGIX */
+    epoxy_glSpriteParameteriSGIX_dispatch_table_rewrite_ptr, /* glSpriteParameteriSGIX */
+    epoxy_glSpriteParameterivSGIX_dispatch_table_rewrite_ptr, /* glSpriteParameterivSGIX */
+    epoxy_glStartInstrumentsSGIX_dispatch_table_rewrite_ptr, /* glStartInstrumentsSGIX */
+    epoxy_glStartTilingQCOM_dispatch_table_rewrite_ptr, /* glStartTilingQCOM */
+    epoxy_glStateCaptureNV_dispatch_table_rewrite_ptr, /* glStateCaptureNV */
+    epoxy_glStencilClearTagEXT_dispatch_table_rewrite_ptr, /* glStencilClearTagEXT */
+    epoxy_glStencilFillPathInstancedNV_dispatch_table_rewrite_ptr, /* glStencilFillPathInstancedNV */
+    epoxy_glStencilFillPathNV_dispatch_table_rewrite_ptr, /* glStencilFillPathNV */
+    epoxy_glStencilFunc_dispatch_table_rewrite_ptr, /* glStencilFunc */
+    epoxy_glStencilFuncSeparate_dispatch_table_rewrite_ptr, /* glStencilFuncSeparate */
+    epoxy_glStencilFuncSeparateATI_dispatch_table_rewrite_ptr, /* glStencilFuncSeparateATI */
+    epoxy_glStencilMask_dispatch_table_rewrite_ptr, /* glStencilMask */
+    epoxy_glStencilMaskSeparate_dispatch_table_rewrite_ptr, /* glStencilMaskSeparate */
+    epoxy_glStencilOp_dispatch_table_rewrite_ptr, /* glStencilOp */
+    epoxy_glStencilOpSeparate_dispatch_table_rewrite_ptr, /* glStencilOpSeparate */
+    epoxy_glStencilOpSeparateATI_dispatch_table_rewrite_ptr, /* glStencilOpSeparateATI */
+    epoxy_glStencilOpValueAMD_dispatch_table_rewrite_ptr, /* glStencilOpValueAMD */
+    epoxy_glStencilStrokePathInstancedNV_dispatch_table_rewrite_ptr, /* glStencilStrokePathInstancedNV */
+    epoxy_glStencilStrokePathNV_dispatch_table_rewrite_ptr, /* glStencilStrokePathNV */
+    epoxy_glStencilThenCoverFillPathInstancedNV_dispatch_table_rewrite_ptr, /* glStencilThenCoverFillPathInstancedNV */
+    epoxy_glStencilThenCoverFillPathNV_dispatch_table_rewrite_ptr, /* glStencilThenCoverFillPathNV */
+    epoxy_glStencilThenCoverStrokePathInstancedNV_dispatch_table_rewrite_ptr, /* glStencilThenCoverStrokePathInstancedNV */
+    epoxy_glStencilThenCoverStrokePathNV_dispatch_table_rewrite_ptr, /* glStencilThenCoverStrokePathNV */
+    epoxy_glStopInstrumentsSGIX_dispatch_table_rewrite_ptr, /* glStopInstrumentsSGIX */
+    epoxy_glStringMarkerGREMEDY_dispatch_table_rewrite_ptr, /* glStringMarkerGREMEDY */
+    epoxy_glSubpixelPrecisionBiasNV_dispatch_table_rewrite_ptr, /* glSubpixelPrecisionBiasNV */
+    epoxy_glSwizzleEXT_dispatch_table_rewrite_ptr, /* glSwizzleEXT */
+    epoxy_glSyncTextureINTEL_dispatch_table_rewrite_ptr, /* glSyncTextureINTEL */
+    epoxy_glTagSampleBufferSGIX_dispatch_table_rewrite_ptr, /* glTagSampleBufferSGIX */
+    epoxy_glTangent3bEXT_dispatch_table_rewrite_ptr, /* glTangent3bEXT */
+    epoxy_glTangent3bvEXT_dispatch_table_rewrite_ptr, /* glTangent3bvEXT */
+    epoxy_glTangent3dEXT_dispatch_table_rewrite_ptr, /* glTangent3dEXT */
+    epoxy_glTangent3dvEXT_dispatch_table_rewrite_ptr, /* glTangent3dvEXT */
+    epoxy_glTangent3fEXT_dispatch_table_rewrite_ptr, /* glTangent3fEXT */
+    epoxy_glTangent3fvEXT_dispatch_table_rewrite_ptr, /* glTangent3fvEXT */
+    epoxy_glTangent3iEXT_dispatch_table_rewrite_ptr, /* glTangent3iEXT */
+    epoxy_glTangent3ivEXT_dispatch_table_rewrite_ptr, /* glTangent3ivEXT */
+    epoxy_glTangent3sEXT_dispatch_table_rewrite_ptr, /* glTangent3sEXT */
+    epoxy_glTangent3svEXT_dispatch_table_rewrite_ptr, /* glTangent3svEXT */
+    epoxy_glTangentPointerEXT_dispatch_table_rewrite_ptr, /* glTangentPointerEXT */
+    epoxy_glTbufferMask3DFX_dispatch_table_rewrite_ptr, /* glTbufferMask3DFX */
+    epoxy_glTessellationFactorAMD_dispatch_table_rewrite_ptr, /* glTessellationFactorAMD */
+    epoxy_glTessellationModeAMD_dispatch_table_rewrite_ptr, /* glTessellationModeAMD */
+    epoxy_glTestFenceAPPLE_dispatch_table_rewrite_ptr, /* glTestFenceAPPLE */
+    epoxy_glTestFenceNV_dispatch_table_rewrite_ptr, /* glTestFenceNV */
+    epoxy_glTestObjectAPPLE_dispatch_table_rewrite_ptr, /* glTestObjectAPPLE */
+    epoxy_glTexBuffer_dispatch_table_rewrite_ptr, /* glTexBuffer */
+    epoxy_glTexBufferARB_dispatch_table_rewrite_ptr, /* glTexBufferARB */
+    epoxy_glTexBufferEXT_dispatch_table_rewrite_ptr, /* glTexBufferEXT */
+    epoxy_glTexBufferOES_dispatch_table_rewrite_ptr, /* glTexBufferOES */
+    epoxy_glTexBufferRange_dispatch_table_rewrite_ptr, /* glTexBufferRange */
+    epoxy_glTexBufferRangeEXT_dispatch_table_rewrite_ptr, /* glTexBufferRangeEXT */
+    epoxy_glTexBufferRangeOES_dispatch_table_rewrite_ptr, /* glTexBufferRangeOES */
+    epoxy_glTexBumpParameterfvATI_dispatch_table_rewrite_ptr, /* glTexBumpParameterfvATI */
+    epoxy_glTexBumpParameterivATI_dispatch_table_rewrite_ptr, /* glTexBumpParameterivATI */
+    epoxy_glTexCoord1bOES_dispatch_table_rewrite_ptr, /* glTexCoord1bOES */
+    epoxy_glTexCoord1bvOES_dispatch_table_rewrite_ptr, /* glTexCoord1bvOES */
+    epoxy_glTexCoord1d_dispatch_table_rewrite_ptr, /* glTexCoord1d */
+    epoxy_glTexCoord1dv_dispatch_table_rewrite_ptr, /* glTexCoord1dv */
+    epoxy_glTexCoord1f_dispatch_table_rewrite_ptr, /* glTexCoord1f */
+    epoxy_glTexCoord1fv_dispatch_table_rewrite_ptr, /* glTexCoord1fv */
+    epoxy_glTexCoord1hNV_dispatch_table_rewrite_ptr, /* glTexCoord1hNV */
+    epoxy_glTexCoord1hvNV_dispatch_table_rewrite_ptr, /* glTexCoord1hvNV */
+    epoxy_glTexCoord1i_dispatch_table_rewrite_ptr, /* glTexCoord1i */
+    epoxy_glTexCoord1iv_dispatch_table_rewrite_ptr, /* glTexCoord1iv */
+    epoxy_glTexCoord1s_dispatch_table_rewrite_ptr, /* glTexCoord1s */
+    epoxy_glTexCoord1sv_dispatch_table_rewrite_ptr, /* glTexCoord1sv */
+    epoxy_glTexCoord1xOES_dispatch_table_rewrite_ptr, /* glTexCoord1xOES */
+    epoxy_glTexCoord1xvOES_dispatch_table_rewrite_ptr, /* glTexCoord1xvOES */
+    epoxy_glTexCoord2bOES_dispatch_table_rewrite_ptr, /* glTexCoord2bOES */
+    epoxy_glTexCoord2bvOES_dispatch_table_rewrite_ptr, /* glTexCoord2bvOES */
+    epoxy_glTexCoord2d_dispatch_table_rewrite_ptr, /* glTexCoord2d */
+    epoxy_glTexCoord2dv_dispatch_table_rewrite_ptr, /* glTexCoord2dv */
+    epoxy_glTexCoord2f_dispatch_table_rewrite_ptr, /* glTexCoord2f */
+    epoxy_glTexCoord2fColor3fVertex3fSUN_dispatch_table_rewrite_ptr, /* glTexCoord2fColor3fVertex3fSUN */
+    epoxy_glTexCoord2fColor3fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glTexCoord2fColor3fVertex3fvSUN */
+    epoxy_glTexCoord2fColor4fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr, /* glTexCoord2fColor4fNormal3fVertex3fSUN */
+    epoxy_glTexCoord2fColor4fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glTexCoord2fColor4fNormal3fVertex3fvSUN */
+    epoxy_glTexCoord2fColor4ubVertex3fSUN_dispatch_table_rewrite_ptr, /* glTexCoord2fColor4ubVertex3fSUN */
+    epoxy_glTexCoord2fColor4ubVertex3fvSUN_dispatch_table_rewrite_ptr, /* glTexCoord2fColor4ubVertex3fvSUN */
+    epoxy_glTexCoord2fNormal3fVertex3fSUN_dispatch_table_rewrite_ptr, /* glTexCoord2fNormal3fVertex3fSUN */
+    epoxy_glTexCoord2fNormal3fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glTexCoord2fNormal3fVertex3fvSUN */
+    epoxy_glTexCoord2fVertex3fSUN_dispatch_table_rewrite_ptr, /* glTexCoord2fVertex3fSUN */
+    epoxy_glTexCoord2fVertex3fvSUN_dispatch_table_rewrite_ptr, /* glTexCoord2fVertex3fvSUN */
+    epoxy_glTexCoord2fv_dispatch_table_rewrite_ptr, /* glTexCoord2fv */
+    epoxy_glTexCoord2hNV_dispatch_table_rewrite_ptr, /* glTexCoord2hNV */
+    epoxy_glTexCoord2hvNV_dispatch_table_rewrite_ptr, /* glTexCoord2hvNV */
+    epoxy_glTexCoord2i_dispatch_table_rewrite_ptr, /* glTexCoord2i */
+    epoxy_glTexCoord2iv_dispatch_table_rewrite_ptr, /* glTexCoord2iv */
+    epoxy_glTexCoord2s_dispatch_table_rewrite_ptr, /* glTexCoord2s */
+    epoxy_glTexCoord2sv_dispatch_table_rewrite_ptr, /* glTexCoord2sv */
+    epoxy_glTexCoord2xOES_dispatch_table_rewrite_ptr, /* glTexCoord2xOES */
+    epoxy_glTexCoord2xvOES_dispatch_table_rewrite_ptr, /* glTexCoord2xvOES */
+    epoxy_glTexCoord3bOES_dispatch_table_rewrite_ptr, /* glTexCoord3bOES */
+    epoxy_glTexCoord3bvOES_dispatch_table_rewrite_ptr, /* glTexCoord3bvOES */
+    epoxy_glTexCoord3d_dispatch_table_rewrite_ptr, /* glTexCoord3d */
+    epoxy_glTexCoord3dv_dispatch_table_rewrite_ptr, /* glTexCoord3dv */
+    epoxy_glTexCoord3f_dispatch_table_rewrite_ptr, /* glTexCoord3f */
+    epoxy_glTexCoord3fv_dispatch_table_rewrite_ptr, /* glTexCoord3fv */
+    epoxy_glTexCoord3hNV_dispatch_table_rewrite_ptr, /* glTexCoord3hNV */
+    epoxy_glTexCoord3hvNV_dispatch_table_rewrite_ptr, /* glTexCoord3hvNV */
+    epoxy_glTexCoord3i_dispatch_table_rewrite_ptr, /* glTexCoord3i */
+    epoxy_glTexCoord3iv_dispatch_table_rewrite_ptr, /* glTexCoord3iv */
+    epoxy_glTexCoord3s_dispatch_table_rewrite_ptr, /* glTexCoord3s */
+    epoxy_glTexCoord3sv_dispatch_table_rewrite_ptr, /* glTexCoord3sv */
+    epoxy_glTexCoord3xOES_dispatch_table_rewrite_ptr, /* glTexCoord3xOES */
+    epoxy_glTexCoord3xvOES_dispatch_table_rewrite_ptr, /* glTexCoord3xvOES */
+    epoxy_glTexCoord4bOES_dispatch_table_rewrite_ptr, /* glTexCoord4bOES */
+    epoxy_glTexCoord4bvOES_dispatch_table_rewrite_ptr, /* glTexCoord4bvOES */
+    epoxy_glTexCoord4d_dispatch_table_rewrite_ptr, /* glTexCoord4d */
+    epoxy_glTexCoord4dv_dispatch_table_rewrite_ptr, /* glTexCoord4dv */
+    epoxy_glTexCoord4f_dispatch_table_rewrite_ptr, /* glTexCoord4f */
+    epoxy_glTexCoord4fColor4fNormal3fVertex4fSUN_dispatch_table_rewrite_ptr, /* glTexCoord4fColor4fNormal3fVertex4fSUN */
+    epoxy_glTexCoord4fColor4fNormal3fVertex4fvSUN_dispatch_table_rewrite_ptr, /* glTexCoord4fColor4fNormal3fVertex4fvSUN */
+    epoxy_glTexCoord4fVertex4fSUN_dispatch_table_rewrite_ptr, /* glTexCoord4fVertex4fSUN */
+    epoxy_glTexCoord4fVertex4fvSUN_dispatch_table_rewrite_ptr, /* glTexCoord4fVertex4fvSUN */
+    epoxy_glTexCoord4fv_dispatch_table_rewrite_ptr, /* glTexCoord4fv */
+    epoxy_glTexCoord4hNV_dispatch_table_rewrite_ptr, /* glTexCoord4hNV */
+    epoxy_glTexCoord4hvNV_dispatch_table_rewrite_ptr, /* glTexCoord4hvNV */
+    epoxy_glTexCoord4i_dispatch_table_rewrite_ptr, /* glTexCoord4i */
+    epoxy_glTexCoord4iv_dispatch_table_rewrite_ptr, /* glTexCoord4iv */
+    epoxy_glTexCoord4s_dispatch_table_rewrite_ptr, /* glTexCoord4s */
+    epoxy_glTexCoord4sv_dispatch_table_rewrite_ptr, /* glTexCoord4sv */
+    epoxy_glTexCoord4xOES_dispatch_table_rewrite_ptr, /* glTexCoord4xOES */
+    epoxy_glTexCoord4xvOES_dispatch_table_rewrite_ptr, /* glTexCoord4xvOES */
+    epoxy_glTexCoordFormatNV_dispatch_table_rewrite_ptr, /* glTexCoordFormatNV */
+    epoxy_glTexCoordP1ui_dispatch_table_rewrite_ptr, /* glTexCoordP1ui */
+    epoxy_glTexCoordP1uiv_dispatch_table_rewrite_ptr, /* glTexCoordP1uiv */
+    epoxy_glTexCoordP2ui_dispatch_table_rewrite_ptr, /* glTexCoordP2ui */
+    epoxy_glTexCoordP2uiv_dispatch_table_rewrite_ptr, /* glTexCoordP2uiv */
+    epoxy_glTexCoordP3ui_dispatch_table_rewrite_ptr, /* glTexCoordP3ui */
+    epoxy_glTexCoordP3uiv_dispatch_table_rewrite_ptr, /* glTexCoordP3uiv */
+    epoxy_glTexCoordP4ui_dispatch_table_rewrite_ptr, /* glTexCoordP4ui */
+    epoxy_glTexCoordP4uiv_dispatch_table_rewrite_ptr, /* glTexCoordP4uiv */
+    epoxy_glTexCoordPointer_dispatch_table_rewrite_ptr, /* glTexCoordPointer */
+    epoxy_glTexCoordPointerEXT_dispatch_table_rewrite_ptr, /* glTexCoordPointerEXT */
+    epoxy_glTexCoordPointerListIBM_dispatch_table_rewrite_ptr, /* glTexCoordPointerListIBM */
+    epoxy_glTexCoordPointervINTEL_dispatch_table_rewrite_ptr, /* glTexCoordPointervINTEL */
+    epoxy_glTexEnvf_dispatch_table_rewrite_ptr, /* glTexEnvf */
+    epoxy_glTexEnvfv_dispatch_table_rewrite_ptr, /* glTexEnvfv */
+    epoxy_glTexEnvi_dispatch_table_rewrite_ptr, /* glTexEnvi */
+    epoxy_glTexEnviv_dispatch_table_rewrite_ptr, /* glTexEnviv */
+    epoxy_glTexEnvx_dispatch_table_rewrite_ptr, /* glTexEnvx */
+    epoxy_glTexEnvxOES_dispatch_table_rewrite_ptr, /* glTexEnvxOES */
+    epoxy_glTexEnvxv_dispatch_table_rewrite_ptr, /* glTexEnvxv */
+    epoxy_glTexEnvxvOES_dispatch_table_rewrite_ptr, /* glTexEnvxvOES */
+    epoxy_glTexFilterFuncSGIS_dispatch_table_rewrite_ptr, /* glTexFilterFuncSGIS */
+    epoxy_glTexGend_dispatch_table_rewrite_ptr, /* glTexGend */
+    epoxy_glTexGendv_dispatch_table_rewrite_ptr, /* glTexGendv */
+    epoxy_glTexGenf_dispatch_table_rewrite_ptr, /* glTexGenf */
+    epoxy_glTexGenfOES_dispatch_table_rewrite_ptr, /* glTexGenfOES */
+    epoxy_glTexGenfv_dispatch_table_rewrite_ptr, /* glTexGenfv */
+    epoxy_glTexGenfvOES_dispatch_table_rewrite_ptr, /* glTexGenfvOES */
+    epoxy_glTexGeni_dispatch_table_rewrite_ptr, /* glTexGeni */
+    epoxy_glTexGeniOES_dispatch_table_rewrite_ptr, /* glTexGeniOES */
+    epoxy_glTexGeniv_dispatch_table_rewrite_ptr, /* glTexGeniv */
+    epoxy_glTexGenivOES_dispatch_table_rewrite_ptr, /* glTexGenivOES */
+    epoxy_glTexGenxOES_dispatch_table_rewrite_ptr, /* glTexGenxOES */
+    epoxy_glTexGenxvOES_dispatch_table_rewrite_ptr, /* glTexGenxvOES */
+    epoxy_glTexImage1D_dispatch_table_rewrite_ptr, /* glTexImage1D */
+    epoxy_glTexImage2D_dispatch_table_rewrite_ptr, /* glTexImage2D */
+    epoxy_glTexImage2DMultisample_dispatch_table_rewrite_ptr, /* glTexImage2DMultisample */
+    epoxy_glTexImage2DMultisampleCoverageNV_dispatch_table_rewrite_ptr, /* glTexImage2DMultisampleCoverageNV */
+    epoxy_glTexImage3D_dispatch_table_rewrite_ptr, /* glTexImage3D */
+    epoxy_glTexImage3DEXT_dispatch_table_rewrite_ptr, /* glTexImage3DEXT */
+    epoxy_glTexImage3DMultisample_dispatch_table_rewrite_ptr, /* glTexImage3DMultisample */
+    epoxy_glTexImage3DMultisampleCoverageNV_dispatch_table_rewrite_ptr, /* glTexImage3DMultisampleCoverageNV */
+    epoxy_glTexImage3DOES_dispatch_table_rewrite_ptr, /* glTexImage3DOES */
+    epoxy_glTexImage4DSGIS_dispatch_table_rewrite_ptr, /* glTexImage4DSGIS */
+    epoxy_glTexPageCommitmentARB_dispatch_table_rewrite_ptr, /* glTexPageCommitmentARB */
+    epoxy_glTexPageCommitmentEXT_dispatch_table_rewrite_ptr, /* glTexPageCommitmentEXT */
+    epoxy_glTexParameterIiv_dispatch_table_rewrite_ptr, /* glTexParameterIiv */
+    epoxy_glTexParameterIivEXT_dispatch_table_rewrite_ptr, /* glTexParameterIivEXT */
+    epoxy_glTexParameterIivOES_dispatch_table_rewrite_ptr, /* glTexParameterIivOES */
+    epoxy_glTexParameterIuiv_dispatch_table_rewrite_ptr, /* glTexParameterIuiv */
+    epoxy_glTexParameterIuivEXT_dispatch_table_rewrite_ptr, /* glTexParameterIuivEXT */
+    epoxy_glTexParameterIuivOES_dispatch_table_rewrite_ptr, /* glTexParameterIuivOES */
+    epoxy_glTexParameterf_dispatch_table_rewrite_ptr, /* glTexParameterf */
+    epoxy_glTexParameterfv_dispatch_table_rewrite_ptr, /* glTexParameterfv */
+    epoxy_glTexParameteri_dispatch_table_rewrite_ptr, /* glTexParameteri */
+    epoxy_glTexParameteriv_dispatch_table_rewrite_ptr, /* glTexParameteriv */
+    epoxy_glTexParameterx_dispatch_table_rewrite_ptr, /* glTexParameterx */
+    epoxy_glTexParameterxOES_dispatch_table_rewrite_ptr, /* glTexParameterxOES */
+    epoxy_glTexParameterxv_dispatch_table_rewrite_ptr, /* glTexParameterxv */
+    epoxy_glTexParameterxvOES_dispatch_table_rewrite_ptr, /* glTexParameterxvOES */
+    epoxy_glTexRenderbufferNV_dispatch_table_rewrite_ptr, /* glTexRenderbufferNV */
+    epoxy_glTexStorage1D_dispatch_table_rewrite_ptr, /* glTexStorage1D */
+    epoxy_glTexStorage1DEXT_dispatch_table_rewrite_ptr, /* glTexStorage1DEXT */
+    epoxy_glTexStorage2D_dispatch_table_rewrite_ptr, /* glTexStorage2D */
+    epoxy_glTexStorage2DEXT_dispatch_table_rewrite_ptr, /* glTexStorage2DEXT */
+    epoxy_glTexStorage2DMultisample_dispatch_table_rewrite_ptr, /* glTexStorage2DMultisample */
+    epoxy_glTexStorage3D_dispatch_table_rewrite_ptr, /* glTexStorage3D */
+    epoxy_glTexStorage3DEXT_dispatch_table_rewrite_ptr, /* glTexStorage3DEXT */
+    epoxy_glTexStorage3DMultisample_dispatch_table_rewrite_ptr, /* glTexStorage3DMultisample */
+    epoxy_glTexStorage3DMultisampleOES_dispatch_table_rewrite_ptr, /* glTexStorage3DMultisampleOES */
+    epoxy_glTexStorageSparseAMD_dispatch_table_rewrite_ptr, /* glTexStorageSparseAMD */
+    epoxy_glTexSubImage1D_dispatch_table_rewrite_ptr, /* glTexSubImage1D */
+    epoxy_glTexSubImage1DEXT_dispatch_table_rewrite_ptr, /* glTexSubImage1DEXT */
+    epoxy_glTexSubImage2D_dispatch_table_rewrite_ptr, /* glTexSubImage2D */
+    epoxy_glTexSubImage2DEXT_dispatch_table_rewrite_ptr, /* glTexSubImage2DEXT */
+    epoxy_glTexSubImage3D_dispatch_table_rewrite_ptr, /* glTexSubImage3D */
+    epoxy_glTexSubImage3DEXT_dispatch_table_rewrite_ptr, /* glTexSubImage3DEXT */
+    epoxy_glTexSubImage3DOES_dispatch_table_rewrite_ptr, /* glTexSubImage3DOES */
+    epoxy_glTexSubImage4DSGIS_dispatch_table_rewrite_ptr, /* glTexSubImage4DSGIS */
+    epoxy_glTextureBarrier_dispatch_table_rewrite_ptr, /* glTextureBarrier */
+    epoxy_glTextureBarrierNV_dispatch_table_rewrite_ptr, /* glTextureBarrierNV */
+    epoxy_glTextureBuffer_dispatch_table_rewrite_ptr, /* glTextureBuffer */
+    epoxy_glTextureBufferEXT_dispatch_table_rewrite_ptr, /* glTextureBufferEXT */
+    epoxy_glTextureBufferRange_dispatch_table_rewrite_ptr, /* glTextureBufferRange */
+    epoxy_glTextureBufferRangeEXT_dispatch_table_rewrite_ptr, /* glTextureBufferRangeEXT */
+    epoxy_glTextureColorMaskSGIS_dispatch_table_rewrite_ptr, /* glTextureColorMaskSGIS */
+    epoxy_glTextureImage1DEXT_dispatch_table_rewrite_ptr, /* glTextureImage1DEXT */
+    epoxy_glTextureImage2DEXT_dispatch_table_rewrite_ptr, /* glTextureImage2DEXT */
+    epoxy_glTextureImage2DMultisampleCoverageNV_dispatch_table_rewrite_ptr, /* glTextureImage2DMultisampleCoverageNV */
+    epoxy_glTextureImage2DMultisampleNV_dispatch_table_rewrite_ptr, /* glTextureImage2DMultisampleNV */
+    epoxy_glTextureImage3DEXT_dispatch_table_rewrite_ptr, /* glTextureImage3DEXT */
+    epoxy_glTextureImage3DMultisampleCoverageNV_dispatch_table_rewrite_ptr, /* glTextureImage3DMultisampleCoverageNV */
+    epoxy_glTextureImage3DMultisampleNV_dispatch_table_rewrite_ptr, /* glTextureImage3DMultisampleNV */
+    epoxy_glTextureLightEXT_dispatch_table_rewrite_ptr, /* glTextureLightEXT */
+    epoxy_glTextureMaterialEXT_dispatch_table_rewrite_ptr, /* glTextureMaterialEXT */
+    epoxy_glTextureNormalEXT_dispatch_table_rewrite_ptr, /* glTextureNormalEXT */
+    epoxy_glTexturePageCommitmentEXT_dispatch_table_rewrite_ptr, /* glTexturePageCommitmentEXT */
+    epoxy_glTextureParameterIiv_dispatch_table_rewrite_ptr, /* glTextureParameterIiv */
+    epoxy_glTextureParameterIivEXT_dispatch_table_rewrite_ptr, /* glTextureParameterIivEXT */
+    epoxy_glTextureParameterIuiv_dispatch_table_rewrite_ptr, /* glTextureParameterIuiv */
+    epoxy_glTextureParameterIuivEXT_dispatch_table_rewrite_ptr, /* glTextureParameterIuivEXT */
+    epoxy_glTextureParameterf_dispatch_table_rewrite_ptr, /* glTextureParameterf */
+    epoxy_glTextureParameterfEXT_dispatch_table_rewrite_ptr, /* glTextureParameterfEXT */
+    epoxy_glTextureParameterfv_dispatch_table_rewrite_ptr, /* glTextureParameterfv */
+    epoxy_glTextureParameterfvEXT_dispatch_table_rewrite_ptr, /* glTextureParameterfvEXT */
+    epoxy_glTextureParameteri_dispatch_table_rewrite_ptr, /* glTextureParameteri */
+    epoxy_glTextureParameteriEXT_dispatch_table_rewrite_ptr, /* glTextureParameteriEXT */
+    epoxy_glTextureParameteriv_dispatch_table_rewrite_ptr, /* glTextureParameteriv */
+    epoxy_glTextureParameterivEXT_dispatch_table_rewrite_ptr, /* glTextureParameterivEXT */
+    epoxy_glTextureRangeAPPLE_dispatch_table_rewrite_ptr, /* glTextureRangeAPPLE */
+    epoxy_glTextureRenderbufferEXT_dispatch_table_rewrite_ptr, /* glTextureRenderbufferEXT */
+    epoxy_glTextureStorage1D_dispatch_table_rewrite_ptr, /* glTextureStorage1D */
+    epoxy_glTextureStorage1DEXT_dispatch_table_rewrite_ptr, /* glTextureStorage1DEXT */
+    epoxy_glTextureStorage2D_dispatch_table_rewrite_ptr, /* glTextureStorage2D */
+    epoxy_glTextureStorage2DEXT_dispatch_table_rewrite_ptr, /* glTextureStorage2DEXT */
+    epoxy_glTextureStorage2DMultisample_dispatch_table_rewrite_ptr, /* glTextureStorage2DMultisample */
+    epoxy_glTextureStorage2DMultisampleEXT_dispatch_table_rewrite_ptr, /* glTextureStorage2DMultisampleEXT */
+    epoxy_glTextureStorage3D_dispatch_table_rewrite_ptr, /* glTextureStorage3D */
+    epoxy_glTextureStorage3DEXT_dispatch_table_rewrite_ptr, /* glTextureStorage3DEXT */
+    epoxy_glTextureStorage3DMultisample_dispatch_table_rewrite_ptr, /* glTextureStorage3DMultisample */
+    epoxy_glTextureStorage3DMultisampleEXT_dispatch_table_rewrite_ptr, /* glTextureStorage3DMultisampleEXT */
+    epoxy_glTextureStorageSparseAMD_dispatch_table_rewrite_ptr, /* glTextureStorageSparseAMD */
+    epoxy_glTextureSubImage1D_dispatch_table_rewrite_ptr, /* glTextureSubImage1D */
+    epoxy_glTextureSubImage1DEXT_dispatch_table_rewrite_ptr, /* glTextureSubImage1DEXT */
+    epoxy_glTextureSubImage2D_dispatch_table_rewrite_ptr, /* glTextureSubImage2D */
+    epoxy_glTextureSubImage2DEXT_dispatch_table_rewrite_ptr, /* glTextureSubImage2DEXT */
+    epoxy_glTextureSubImage3D_dispatch_table_rewrite_ptr, /* glTextureSubImage3D */
+    epoxy_glTextureSubImage3DEXT_dispatch_table_rewrite_ptr, /* glTextureSubImage3DEXT */
+    epoxy_glTextureView_dispatch_table_rewrite_ptr, /* glTextureView */
+    epoxy_glTextureViewEXT_dispatch_table_rewrite_ptr, /* glTextureViewEXT */
+    epoxy_glTextureViewOES_dispatch_table_rewrite_ptr, /* glTextureViewOES */
+    epoxy_glTrackMatrixNV_dispatch_table_rewrite_ptr, /* glTrackMatrixNV */
+    epoxy_glTransformFeedbackAttribsNV_dispatch_table_rewrite_ptr, /* glTransformFeedbackAttribsNV */
+    epoxy_glTransformFeedbackBufferBase_dispatch_table_rewrite_ptr, /* glTransformFeedbackBufferBase */
+    epoxy_glTransformFeedbackBufferRange_dispatch_table_rewrite_ptr, /* glTransformFeedbackBufferRange */
+    epoxy_glTransformFeedbackStreamAttribsNV_dispatch_table_rewrite_ptr, /* glTransformFeedbackStreamAttribsNV */
+    epoxy_glTransformFeedbackVaryings_dispatch_table_rewrite_ptr, /* glTransformFeedbackVaryings */
+    epoxy_glTransformFeedbackVaryingsEXT_dispatch_table_rewrite_ptr, /* glTransformFeedbackVaryingsEXT */
+    epoxy_glTransformFeedbackVaryingsNV_dispatch_table_rewrite_ptr, /* glTransformFeedbackVaryingsNV */
+    epoxy_glTransformPathNV_dispatch_table_rewrite_ptr, /* glTransformPathNV */
+    epoxy_glTranslated_dispatch_table_rewrite_ptr, /* glTranslated */
+    epoxy_glTranslatef_dispatch_table_rewrite_ptr, /* glTranslatef */
+    epoxy_glTranslatex_dispatch_table_rewrite_ptr, /* glTranslatex */
+    epoxy_glTranslatexOES_dispatch_table_rewrite_ptr, /* glTranslatexOES */
+    epoxy_glUniform1d_dispatch_table_rewrite_ptr, /* glUniform1d */
+    epoxy_glUniform1dv_dispatch_table_rewrite_ptr, /* glUniform1dv */
+    epoxy_glUniform1f_dispatch_table_rewrite_ptr, /* glUniform1f */
+    epoxy_glUniform1fARB_dispatch_table_rewrite_ptr, /* glUniform1fARB */
+    epoxy_glUniform1fv_dispatch_table_rewrite_ptr, /* glUniform1fv */
+    epoxy_glUniform1fvARB_dispatch_table_rewrite_ptr, /* glUniform1fvARB */
+    epoxy_glUniform1i_dispatch_table_rewrite_ptr, /* glUniform1i */
+    epoxy_glUniform1i64NV_dispatch_table_rewrite_ptr, /* glUniform1i64NV */
+    epoxy_glUniform1i64vNV_dispatch_table_rewrite_ptr, /* glUniform1i64vNV */
+    epoxy_glUniform1iARB_dispatch_table_rewrite_ptr, /* glUniform1iARB */
+    epoxy_glUniform1iv_dispatch_table_rewrite_ptr, /* glUniform1iv */
+    epoxy_glUniform1ivARB_dispatch_table_rewrite_ptr, /* glUniform1ivARB */
+    epoxy_glUniform1ui_dispatch_table_rewrite_ptr, /* glUniform1ui */
+    epoxy_glUniform1ui64NV_dispatch_table_rewrite_ptr, /* glUniform1ui64NV */
+    epoxy_glUniform1ui64vNV_dispatch_table_rewrite_ptr, /* glUniform1ui64vNV */
+    epoxy_glUniform1uiEXT_dispatch_table_rewrite_ptr, /* glUniform1uiEXT */
+    epoxy_glUniform1uiv_dispatch_table_rewrite_ptr, /* glUniform1uiv */
+    epoxy_glUniform1uivEXT_dispatch_table_rewrite_ptr, /* glUniform1uivEXT */
+    epoxy_glUniform2d_dispatch_table_rewrite_ptr, /* glUniform2d */
+    epoxy_glUniform2dv_dispatch_table_rewrite_ptr, /* glUniform2dv */
+    epoxy_glUniform2f_dispatch_table_rewrite_ptr, /* glUniform2f */
+    epoxy_glUniform2fARB_dispatch_table_rewrite_ptr, /* glUniform2fARB */
+    epoxy_glUniform2fv_dispatch_table_rewrite_ptr, /* glUniform2fv */
+    epoxy_glUniform2fvARB_dispatch_table_rewrite_ptr, /* glUniform2fvARB */
+    epoxy_glUniform2i_dispatch_table_rewrite_ptr, /* glUniform2i */
+    epoxy_glUniform2i64NV_dispatch_table_rewrite_ptr, /* glUniform2i64NV */
+    epoxy_glUniform2i64vNV_dispatch_table_rewrite_ptr, /* glUniform2i64vNV */
+    epoxy_glUniform2iARB_dispatch_table_rewrite_ptr, /* glUniform2iARB */
+    epoxy_glUniform2iv_dispatch_table_rewrite_ptr, /* glUniform2iv */
+    epoxy_glUniform2ivARB_dispatch_table_rewrite_ptr, /* glUniform2ivARB */
+    epoxy_glUniform2ui_dispatch_table_rewrite_ptr, /* glUniform2ui */
+    epoxy_glUniform2ui64NV_dispatch_table_rewrite_ptr, /* glUniform2ui64NV */
+    epoxy_glUniform2ui64vNV_dispatch_table_rewrite_ptr, /* glUniform2ui64vNV */
+    epoxy_glUniform2uiEXT_dispatch_table_rewrite_ptr, /* glUniform2uiEXT */
+    epoxy_glUniform2uiv_dispatch_table_rewrite_ptr, /* glUniform2uiv */
+    epoxy_glUniform2uivEXT_dispatch_table_rewrite_ptr, /* glUniform2uivEXT */
+    epoxy_glUniform3d_dispatch_table_rewrite_ptr, /* glUniform3d */
+    epoxy_glUniform3dv_dispatch_table_rewrite_ptr, /* glUniform3dv */
+    epoxy_glUniform3f_dispatch_table_rewrite_ptr, /* glUniform3f */
+    epoxy_glUniform3fARB_dispatch_table_rewrite_ptr, /* glUniform3fARB */
+    epoxy_glUniform3fv_dispatch_table_rewrite_ptr, /* glUniform3fv */
+    epoxy_glUniform3fvARB_dispatch_table_rewrite_ptr, /* glUniform3fvARB */
+    epoxy_glUniform3i_dispatch_table_rewrite_ptr, /* glUniform3i */
+    epoxy_glUniform3i64NV_dispatch_table_rewrite_ptr, /* glUniform3i64NV */
+    epoxy_glUniform3i64vNV_dispatch_table_rewrite_ptr, /* glUniform3i64vNV */
+    epoxy_glUniform3iARB_dispatch_table_rewrite_ptr, /* glUniform3iARB */
+    epoxy_glUniform3iv_dispatch_table_rewrite_ptr, /* glUniform3iv */
+    epoxy_glUniform3ivARB_dispatch_table_rewrite_ptr, /* glUniform3ivARB */
+    epoxy_glUniform3ui_dispatch_table_rewrite_ptr, /* glUniform3ui */
+    epoxy_glUniform3ui64NV_dispatch_table_rewrite_ptr, /* glUniform3ui64NV */
+    epoxy_glUniform3ui64vNV_dispatch_table_rewrite_ptr, /* glUniform3ui64vNV */
+    epoxy_glUniform3uiEXT_dispatch_table_rewrite_ptr, /* glUniform3uiEXT */
+    epoxy_glUniform3uiv_dispatch_table_rewrite_ptr, /* glUniform3uiv */
+    epoxy_glUniform3uivEXT_dispatch_table_rewrite_ptr, /* glUniform3uivEXT */
+    epoxy_glUniform4d_dispatch_table_rewrite_ptr, /* glUniform4d */
+    epoxy_glUniform4dv_dispatch_table_rewrite_ptr, /* glUniform4dv */
+    epoxy_glUniform4f_dispatch_table_rewrite_ptr, /* glUniform4f */
+    epoxy_glUniform4fARB_dispatch_table_rewrite_ptr, /* glUniform4fARB */
+    epoxy_glUniform4fv_dispatch_table_rewrite_ptr, /* glUniform4fv */
+    epoxy_glUniform4fvARB_dispatch_table_rewrite_ptr, /* glUniform4fvARB */
+    epoxy_glUniform4i_dispatch_table_rewrite_ptr, /* glUniform4i */
+    epoxy_glUniform4i64NV_dispatch_table_rewrite_ptr, /* glUniform4i64NV */
+    epoxy_glUniform4i64vNV_dispatch_table_rewrite_ptr, /* glUniform4i64vNV */
+    epoxy_glUniform4iARB_dispatch_table_rewrite_ptr, /* glUniform4iARB */
+    epoxy_glUniform4iv_dispatch_table_rewrite_ptr, /* glUniform4iv */
+    epoxy_glUniform4ivARB_dispatch_table_rewrite_ptr, /* glUniform4ivARB */
+    epoxy_glUniform4ui_dispatch_table_rewrite_ptr, /* glUniform4ui */
+    epoxy_glUniform4ui64NV_dispatch_table_rewrite_ptr, /* glUniform4ui64NV */
+    epoxy_glUniform4ui64vNV_dispatch_table_rewrite_ptr, /* glUniform4ui64vNV */
+    epoxy_glUniform4uiEXT_dispatch_table_rewrite_ptr, /* glUniform4uiEXT */
+    epoxy_glUniform4uiv_dispatch_table_rewrite_ptr, /* glUniform4uiv */
+    epoxy_glUniform4uivEXT_dispatch_table_rewrite_ptr, /* glUniform4uivEXT */
+    epoxy_glUniformBlockBinding_dispatch_table_rewrite_ptr, /* glUniformBlockBinding */
+    epoxy_glUniformBufferEXT_dispatch_table_rewrite_ptr, /* glUniformBufferEXT */
+    epoxy_glUniformHandleui64ARB_dispatch_table_rewrite_ptr, /* glUniformHandleui64ARB */
+    epoxy_glUniformHandleui64NV_dispatch_table_rewrite_ptr, /* glUniformHandleui64NV */
+    epoxy_glUniformHandleui64vARB_dispatch_table_rewrite_ptr, /* glUniformHandleui64vARB */
+    epoxy_glUniformHandleui64vNV_dispatch_table_rewrite_ptr, /* glUniformHandleui64vNV */
+    epoxy_glUniformMatrix2dv_dispatch_table_rewrite_ptr, /* glUniformMatrix2dv */
+    epoxy_glUniformMatrix2fv_dispatch_table_rewrite_ptr, /* glUniformMatrix2fv */
+    epoxy_glUniformMatrix2fvARB_dispatch_table_rewrite_ptr, /* glUniformMatrix2fvARB */
+    epoxy_glUniformMatrix2x3dv_dispatch_table_rewrite_ptr, /* glUniformMatrix2x3dv */
+    epoxy_glUniformMatrix2x3fv_dispatch_table_rewrite_ptr, /* glUniformMatrix2x3fv */
+    epoxy_glUniformMatrix2x3fvNV_dispatch_table_rewrite_ptr, /* glUniformMatrix2x3fvNV */
+    epoxy_glUniformMatrix2x4dv_dispatch_table_rewrite_ptr, /* glUniformMatrix2x4dv */
+    epoxy_glUniformMatrix2x4fv_dispatch_table_rewrite_ptr, /* glUniformMatrix2x4fv */
+    epoxy_glUniformMatrix2x4fvNV_dispatch_table_rewrite_ptr, /* glUniformMatrix2x4fvNV */
+    epoxy_glUniformMatrix3dv_dispatch_table_rewrite_ptr, /* glUniformMatrix3dv */
+    epoxy_glUniformMatrix3fv_dispatch_table_rewrite_ptr, /* glUniformMatrix3fv */
+    epoxy_glUniformMatrix3fvARB_dispatch_table_rewrite_ptr, /* glUniformMatrix3fvARB */
+    epoxy_glUniformMatrix3x2dv_dispatch_table_rewrite_ptr, /* glUniformMatrix3x2dv */
+    epoxy_glUniformMatrix3x2fv_dispatch_table_rewrite_ptr, /* glUniformMatrix3x2fv */
+    epoxy_glUniformMatrix3x2fvNV_dispatch_table_rewrite_ptr, /* glUniformMatrix3x2fvNV */
+    epoxy_glUniformMatrix3x4dv_dispatch_table_rewrite_ptr, /* glUniformMatrix3x4dv */
+    epoxy_glUniformMatrix3x4fv_dispatch_table_rewrite_ptr, /* glUniformMatrix3x4fv */
+    epoxy_glUniformMatrix3x4fvNV_dispatch_table_rewrite_ptr, /* glUniformMatrix3x4fvNV */
+    epoxy_glUniformMatrix4dv_dispatch_table_rewrite_ptr, /* glUniformMatrix4dv */
+    epoxy_glUniformMatrix4fv_dispatch_table_rewrite_ptr, /* glUniformMatrix4fv */
+    epoxy_glUniformMatrix4fvARB_dispatch_table_rewrite_ptr, /* glUniformMatrix4fvARB */
+    epoxy_glUniformMatrix4x2dv_dispatch_table_rewrite_ptr, /* glUniformMatrix4x2dv */
+    epoxy_glUniformMatrix4x2fv_dispatch_table_rewrite_ptr, /* glUniformMatrix4x2fv */
+    epoxy_glUniformMatrix4x2fvNV_dispatch_table_rewrite_ptr, /* glUniformMatrix4x2fvNV */
+    epoxy_glUniformMatrix4x3dv_dispatch_table_rewrite_ptr, /* glUniformMatrix4x3dv */
+    epoxy_glUniformMatrix4x3fv_dispatch_table_rewrite_ptr, /* glUniformMatrix4x3fv */
+    epoxy_glUniformMatrix4x3fvNV_dispatch_table_rewrite_ptr, /* glUniformMatrix4x3fvNV */
+    epoxy_glUniformSubroutinesuiv_dispatch_table_rewrite_ptr, /* glUniformSubroutinesuiv */
+    epoxy_glUniformui64NV_dispatch_table_rewrite_ptr, /* glUniformui64NV */
+    epoxy_glUniformui64vNV_dispatch_table_rewrite_ptr, /* glUniformui64vNV */
+    epoxy_glUnlockArraysEXT_dispatch_table_rewrite_ptr, /* glUnlockArraysEXT */
+    epoxy_glUnmapBuffer_dispatch_table_rewrite_ptr, /* glUnmapBuffer */
+    epoxy_glUnmapBufferARB_dispatch_table_rewrite_ptr, /* glUnmapBufferARB */
+    epoxy_glUnmapBufferOES_dispatch_table_rewrite_ptr, /* glUnmapBufferOES */
+    epoxy_glUnmapNamedBuffer_dispatch_table_rewrite_ptr, /* glUnmapNamedBuffer */
+    epoxy_glUnmapNamedBufferEXT_dispatch_table_rewrite_ptr, /* glUnmapNamedBufferEXT */
+    epoxy_glUnmapObjectBufferATI_dispatch_table_rewrite_ptr, /* glUnmapObjectBufferATI */
+    epoxy_glUnmapTexture2DINTEL_dispatch_table_rewrite_ptr, /* glUnmapTexture2DINTEL */
+    epoxy_glUpdateObjectBufferATI_dispatch_table_rewrite_ptr, /* glUpdateObjectBufferATI */
+    epoxy_glUseProgram_dispatch_table_rewrite_ptr, /* glUseProgram */
+    epoxy_glUseProgramObjectARB_dispatch_table_rewrite_ptr, /* glUseProgramObjectARB */
+    epoxy_glUseProgramStages_dispatch_table_rewrite_ptr, /* glUseProgramStages */
+    epoxy_glUseProgramStagesEXT_dispatch_table_rewrite_ptr, /* glUseProgramStagesEXT */
+    epoxy_glUseShaderProgramEXT_dispatch_table_rewrite_ptr, /* glUseShaderProgramEXT */
+    epoxy_glVDPAUFiniNV_dispatch_table_rewrite_ptr, /* glVDPAUFiniNV */
+    epoxy_glVDPAUGetSurfaceivNV_dispatch_table_rewrite_ptr, /* glVDPAUGetSurfaceivNV */
+    epoxy_glVDPAUInitNV_dispatch_table_rewrite_ptr, /* glVDPAUInitNV */
+    epoxy_glVDPAUIsSurfaceNV_dispatch_table_rewrite_ptr, /* glVDPAUIsSurfaceNV */
+    epoxy_glVDPAUMapSurfacesNV_dispatch_table_rewrite_ptr, /* glVDPAUMapSurfacesNV */
+    epoxy_glVDPAURegisterOutputSurfaceNV_dispatch_table_rewrite_ptr, /* glVDPAURegisterOutputSurfaceNV */
+    epoxy_glVDPAURegisterVideoSurfaceNV_dispatch_table_rewrite_ptr, /* glVDPAURegisterVideoSurfaceNV */
+    epoxy_glVDPAUSurfaceAccessNV_dispatch_table_rewrite_ptr, /* glVDPAUSurfaceAccessNV */
+    epoxy_glVDPAUUnmapSurfacesNV_dispatch_table_rewrite_ptr, /* glVDPAUUnmapSurfacesNV */
+    epoxy_glVDPAUUnregisterSurfaceNV_dispatch_table_rewrite_ptr, /* glVDPAUUnregisterSurfaceNV */
+    epoxy_glValidateProgram_dispatch_table_rewrite_ptr, /* glValidateProgram */
+    epoxy_glValidateProgramARB_dispatch_table_rewrite_ptr, /* glValidateProgramARB */
+    epoxy_glValidateProgramPipeline_dispatch_table_rewrite_ptr, /* glValidateProgramPipeline */
+    epoxy_glValidateProgramPipelineEXT_dispatch_table_rewrite_ptr, /* glValidateProgramPipelineEXT */
+    epoxy_glVariantArrayObjectATI_dispatch_table_rewrite_ptr, /* glVariantArrayObjectATI */
+    epoxy_glVariantPointerEXT_dispatch_table_rewrite_ptr, /* glVariantPointerEXT */
+    epoxy_glVariantbvEXT_dispatch_table_rewrite_ptr, /* glVariantbvEXT */
+    epoxy_glVariantdvEXT_dispatch_table_rewrite_ptr, /* glVariantdvEXT */
+    epoxy_glVariantfvEXT_dispatch_table_rewrite_ptr, /* glVariantfvEXT */
+    epoxy_glVariantivEXT_dispatch_table_rewrite_ptr, /* glVariantivEXT */
+    epoxy_glVariantsvEXT_dispatch_table_rewrite_ptr, /* glVariantsvEXT */
+    epoxy_glVariantubvEXT_dispatch_table_rewrite_ptr, /* glVariantubvEXT */
+    epoxy_glVariantuivEXT_dispatch_table_rewrite_ptr, /* glVariantuivEXT */
+    epoxy_glVariantusvEXT_dispatch_table_rewrite_ptr, /* glVariantusvEXT */
+    epoxy_glVertex2bOES_dispatch_table_rewrite_ptr, /* glVertex2bOES */
+    epoxy_glVertex2bvOES_dispatch_table_rewrite_ptr, /* glVertex2bvOES */
+    epoxy_glVertex2d_dispatch_table_rewrite_ptr, /* glVertex2d */
+    epoxy_glVertex2dv_dispatch_table_rewrite_ptr, /* glVertex2dv */
+    epoxy_glVertex2f_dispatch_table_rewrite_ptr, /* glVertex2f */
+    epoxy_glVertex2fv_dispatch_table_rewrite_ptr, /* glVertex2fv */
+    epoxy_glVertex2hNV_dispatch_table_rewrite_ptr, /* glVertex2hNV */
+    epoxy_glVertex2hvNV_dispatch_table_rewrite_ptr, /* glVertex2hvNV */
+    epoxy_glVertex2i_dispatch_table_rewrite_ptr, /* glVertex2i */
+    epoxy_glVertex2iv_dispatch_table_rewrite_ptr, /* glVertex2iv */
+    epoxy_glVertex2s_dispatch_table_rewrite_ptr, /* glVertex2s */
+    epoxy_glVertex2sv_dispatch_table_rewrite_ptr, /* glVertex2sv */
+    epoxy_glVertex2xOES_dispatch_table_rewrite_ptr, /* glVertex2xOES */
+    epoxy_glVertex2xvOES_dispatch_table_rewrite_ptr, /* glVertex2xvOES */
+    epoxy_glVertex3bOES_dispatch_table_rewrite_ptr, /* glVertex3bOES */
+    epoxy_glVertex3bvOES_dispatch_table_rewrite_ptr, /* glVertex3bvOES */
+    epoxy_glVertex3d_dispatch_table_rewrite_ptr, /* glVertex3d */
+    epoxy_glVertex3dv_dispatch_table_rewrite_ptr, /* glVertex3dv */
+    epoxy_glVertex3f_dispatch_table_rewrite_ptr, /* glVertex3f */
+    epoxy_glVertex3fv_dispatch_table_rewrite_ptr, /* glVertex3fv */
+    epoxy_glVertex3hNV_dispatch_table_rewrite_ptr, /* glVertex3hNV */
+    epoxy_glVertex3hvNV_dispatch_table_rewrite_ptr, /* glVertex3hvNV */
+    epoxy_glVertex3i_dispatch_table_rewrite_ptr, /* glVertex3i */
+    epoxy_glVertex3iv_dispatch_table_rewrite_ptr, /* glVertex3iv */
+    epoxy_glVertex3s_dispatch_table_rewrite_ptr, /* glVertex3s */
+    epoxy_glVertex3sv_dispatch_table_rewrite_ptr, /* glVertex3sv */
+    epoxy_glVertex3xOES_dispatch_table_rewrite_ptr, /* glVertex3xOES */
+    epoxy_glVertex3xvOES_dispatch_table_rewrite_ptr, /* glVertex3xvOES */
+    epoxy_glVertex4bOES_dispatch_table_rewrite_ptr, /* glVertex4bOES */
+    epoxy_glVertex4bvOES_dispatch_table_rewrite_ptr, /* glVertex4bvOES */
+    epoxy_glVertex4d_dispatch_table_rewrite_ptr, /* glVertex4d */
+    epoxy_glVertex4dv_dispatch_table_rewrite_ptr, /* glVertex4dv */
+    epoxy_glVertex4f_dispatch_table_rewrite_ptr, /* glVertex4f */
+    epoxy_glVertex4fv_dispatch_table_rewrite_ptr, /* glVertex4fv */
+    epoxy_glVertex4hNV_dispatch_table_rewrite_ptr, /* glVertex4hNV */
+    epoxy_glVertex4hvNV_dispatch_table_rewrite_ptr, /* glVertex4hvNV */
+    epoxy_glVertex4i_dispatch_table_rewrite_ptr, /* glVertex4i */
+    epoxy_glVertex4iv_dispatch_table_rewrite_ptr, /* glVertex4iv */
+    epoxy_glVertex4s_dispatch_table_rewrite_ptr, /* glVertex4s */
+    epoxy_glVertex4sv_dispatch_table_rewrite_ptr, /* glVertex4sv */
+    epoxy_glVertex4xOES_dispatch_table_rewrite_ptr, /* glVertex4xOES */
+    epoxy_glVertex4xvOES_dispatch_table_rewrite_ptr, /* glVertex4xvOES */
+    epoxy_glVertexArrayAttribBinding_dispatch_table_rewrite_ptr, /* glVertexArrayAttribBinding */
+    epoxy_glVertexArrayAttribFormat_dispatch_table_rewrite_ptr, /* glVertexArrayAttribFormat */
+    epoxy_glVertexArrayAttribIFormat_dispatch_table_rewrite_ptr, /* glVertexArrayAttribIFormat */
+    epoxy_glVertexArrayAttribLFormat_dispatch_table_rewrite_ptr, /* glVertexArrayAttribLFormat */
+    epoxy_glVertexArrayBindVertexBufferEXT_dispatch_table_rewrite_ptr, /* glVertexArrayBindVertexBufferEXT */
+    epoxy_glVertexArrayBindingDivisor_dispatch_table_rewrite_ptr, /* glVertexArrayBindingDivisor */
+    epoxy_glVertexArrayColorOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArrayColorOffsetEXT */
+    epoxy_glVertexArrayEdgeFlagOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArrayEdgeFlagOffsetEXT */
+    epoxy_glVertexArrayElementBuffer_dispatch_table_rewrite_ptr, /* glVertexArrayElementBuffer */
+    epoxy_glVertexArrayFogCoordOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArrayFogCoordOffsetEXT */
+    epoxy_glVertexArrayIndexOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArrayIndexOffsetEXT */
+    epoxy_glVertexArrayMultiTexCoordOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArrayMultiTexCoordOffsetEXT */
+    epoxy_glVertexArrayNormalOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArrayNormalOffsetEXT */
+    epoxy_glVertexArrayParameteriAPPLE_dispatch_table_rewrite_ptr, /* glVertexArrayParameteriAPPLE */
+    epoxy_glVertexArrayRangeAPPLE_dispatch_table_rewrite_ptr, /* glVertexArrayRangeAPPLE */
+    epoxy_glVertexArrayRangeNV_dispatch_table_rewrite_ptr, /* glVertexArrayRangeNV */
+    epoxy_glVertexArraySecondaryColorOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArraySecondaryColorOffsetEXT */
+    epoxy_glVertexArrayTexCoordOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArrayTexCoordOffsetEXT */
+    epoxy_glVertexArrayVertexAttribBindingEXT_dispatch_table_rewrite_ptr, /* glVertexArrayVertexAttribBindingEXT */
+    epoxy_glVertexArrayVertexAttribDivisorEXT_dispatch_table_rewrite_ptr, /* glVertexArrayVertexAttribDivisorEXT */
+    epoxy_glVertexArrayVertexAttribFormatEXT_dispatch_table_rewrite_ptr, /* glVertexArrayVertexAttribFormatEXT */
+    epoxy_glVertexArrayVertexAttribIFormatEXT_dispatch_table_rewrite_ptr, /* glVertexArrayVertexAttribIFormatEXT */
+    epoxy_glVertexArrayVertexAttribIOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArrayVertexAttribIOffsetEXT */
+    epoxy_glVertexArrayVertexAttribLFormatEXT_dispatch_table_rewrite_ptr, /* glVertexArrayVertexAttribLFormatEXT */
+    epoxy_glVertexArrayVertexAttribLOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArrayVertexAttribLOffsetEXT */
+    epoxy_glVertexArrayVertexAttribOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArrayVertexAttribOffsetEXT */
+    epoxy_glVertexArrayVertexBindingDivisorEXT_dispatch_table_rewrite_ptr, /* glVertexArrayVertexBindingDivisorEXT */
+    epoxy_glVertexArrayVertexBuffer_dispatch_table_rewrite_ptr, /* glVertexArrayVertexBuffer */
+    epoxy_glVertexArrayVertexBuffers_dispatch_table_rewrite_ptr, /* glVertexArrayVertexBuffers */
+    epoxy_glVertexArrayVertexOffsetEXT_dispatch_table_rewrite_ptr, /* glVertexArrayVertexOffsetEXT */
+    epoxy_glVertexAttrib1d_dispatch_table_rewrite_ptr, /* glVertexAttrib1d */
+    epoxy_glVertexAttrib1dARB_dispatch_table_rewrite_ptr, /* glVertexAttrib1dARB */
+    epoxy_glVertexAttrib1dNV_dispatch_table_rewrite_ptr, /* glVertexAttrib1dNV */
+    epoxy_glVertexAttrib1dv_dispatch_table_rewrite_ptr, /* glVertexAttrib1dv */
+    epoxy_glVertexAttrib1dvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib1dvARB */
+    epoxy_glVertexAttrib1dvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib1dvNV */
+    epoxy_glVertexAttrib1f_dispatch_table_rewrite_ptr, /* glVertexAttrib1f */
+    epoxy_glVertexAttrib1fARB_dispatch_table_rewrite_ptr, /* glVertexAttrib1fARB */
+    epoxy_glVertexAttrib1fNV_dispatch_table_rewrite_ptr, /* glVertexAttrib1fNV */
+    epoxy_glVertexAttrib1fv_dispatch_table_rewrite_ptr, /* glVertexAttrib1fv */
+    epoxy_glVertexAttrib1fvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib1fvARB */
+    epoxy_glVertexAttrib1fvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib1fvNV */
+    epoxy_glVertexAttrib1hNV_dispatch_table_rewrite_ptr, /* glVertexAttrib1hNV */
+    epoxy_glVertexAttrib1hvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib1hvNV */
+    epoxy_glVertexAttrib1s_dispatch_table_rewrite_ptr, /* glVertexAttrib1s */
+    epoxy_glVertexAttrib1sARB_dispatch_table_rewrite_ptr, /* glVertexAttrib1sARB */
+    epoxy_glVertexAttrib1sNV_dispatch_table_rewrite_ptr, /* glVertexAttrib1sNV */
+    epoxy_glVertexAttrib1sv_dispatch_table_rewrite_ptr, /* glVertexAttrib1sv */
+    epoxy_glVertexAttrib1svARB_dispatch_table_rewrite_ptr, /* glVertexAttrib1svARB */
+    epoxy_glVertexAttrib1svNV_dispatch_table_rewrite_ptr, /* glVertexAttrib1svNV */
+    epoxy_glVertexAttrib2d_dispatch_table_rewrite_ptr, /* glVertexAttrib2d */
+    epoxy_glVertexAttrib2dARB_dispatch_table_rewrite_ptr, /* glVertexAttrib2dARB */
+    epoxy_glVertexAttrib2dNV_dispatch_table_rewrite_ptr, /* glVertexAttrib2dNV */
+    epoxy_glVertexAttrib2dv_dispatch_table_rewrite_ptr, /* glVertexAttrib2dv */
+    epoxy_glVertexAttrib2dvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib2dvARB */
+    epoxy_glVertexAttrib2dvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib2dvNV */
+    epoxy_glVertexAttrib2f_dispatch_table_rewrite_ptr, /* glVertexAttrib2f */
+    epoxy_glVertexAttrib2fARB_dispatch_table_rewrite_ptr, /* glVertexAttrib2fARB */
+    epoxy_glVertexAttrib2fNV_dispatch_table_rewrite_ptr, /* glVertexAttrib2fNV */
+    epoxy_glVertexAttrib2fv_dispatch_table_rewrite_ptr, /* glVertexAttrib2fv */
+    epoxy_glVertexAttrib2fvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib2fvARB */
+    epoxy_glVertexAttrib2fvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib2fvNV */
+    epoxy_glVertexAttrib2hNV_dispatch_table_rewrite_ptr, /* glVertexAttrib2hNV */
+    epoxy_glVertexAttrib2hvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib2hvNV */
+    epoxy_glVertexAttrib2s_dispatch_table_rewrite_ptr, /* glVertexAttrib2s */
+    epoxy_glVertexAttrib2sARB_dispatch_table_rewrite_ptr, /* glVertexAttrib2sARB */
+    epoxy_glVertexAttrib2sNV_dispatch_table_rewrite_ptr, /* glVertexAttrib2sNV */
+    epoxy_glVertexAttrib2sv_dispatch_table_rewrite_ptr, /* glVertexAttrib2sv */
+    epoxy_glVertexAttrib2svARB_dispatch_table_rewrite_ptr, /* glVertexAttrib2svARB */
+    epoxy_glVertexAttrib2svNV_dispatch_table_rewrite_ptr, /* glVertexAttrib2svNV */
+    epoxy_glVertexAttrib3d_dispatch_table_rewrite_ptr, /* glVertexAttrib3d */
+    epoxy_glVertexAttrib3dARB_dispatch_table_rewrite_ptr, /* glVertexAttrib3dARB */
+    epoxy_glVertexAttrib3dNV_dispatch_table_rewrite_ptr, /* glVertexAttrib3dNV */
+    epoxy_glVertexAttrib3dv_dispatch_table_rewrite_ptr, /* glVertexAttrib3dv */
+    epoxy_glVertexAttrib3dvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib3dvARB */
+    epoxy_glVertexAttrib3dvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib3dvNV */
+    epoxy_glVertexAttrib3f_dispatch_table_rewrite_ptr, /* glVertexAttrib3f */
+    epoxy_glVertexAttrib3fARB_dispatch_table_rewrite_ptr, /* glVertexAttrib3fARB */
+    epoxy_glVertexAttrib3fNV_dispatch_table_rewrite_ptr, /* glVertexAttrib3fNV */
+    epoxy_glVertexAttrib3fv_dispatch_table_rewrite_ptr, /* glVertexAttrib3fv */
+    epoxy_glVertexAttrib3fvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib3fvARB */
+    epoxy_glVertexAttrib3fvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib3fvNV */
+    epoxy_glVertexAttrib3hNV_dispatch_table_rewrite_ptr, /* glVertexAttrib3hNV */
+    epoxy_glVertexAttrib3hvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib3hvNV */
+    epoxy_glVertexAttrib3s_dispatch_table_rewrite_ptr, /* glVertexAttrib3s */
+    epoxy_glVertexAttrib3sARB_dispatch_table_rewrite_ptr, /* glVertexAttrib3sARB */
+    epoxy_glVertexAttrib3sNV_dispatch_table_rewrite_ptr, /* glVertexAttrib3sNV */
+    epoxy_glVertexAttrib3sv_dispatch_table_rewrite_ptr, /* glVertexAttrib3sv */
+    epoxy_glVertexAttrib3svARB_dispatch_table_rewrite_ptr, /* glVertexAttrib3svARB */
+    epoxy_glVertexAttrib3svNV_dispatch_table_rewrite_ptr, /* glVertexAttrib3svNV */
+    epoxy_glVertexAttrib4Nbv_dispatch_table_rewrite_ptr, /* glVertexAttrib4Nbv */
+    epoxy_glVertexAttrib4NbvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4NbvARB */
+    epoxy_glVertexAttrib4Niv_dispatch_table_rewrite_ptr, /* glVertexAttrib4Niv */
+    epoxy_glVertexAttrib4NivARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4NivARB */
+    epoxy_glVertexAttrib4Nsv_dispatch_table_rewrite_ptr, /* glVertexAttrib4Nsv */
+    epoxy_glVertexAttrib4NsvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4NsvARB */
+    epoxy_glVertexAttrib4Nub_dispatch_table_rewrite_ptr, /* glVertexAttrib4Nub */
+    epoxy_glVertexAttrib4NubARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4NubARB */
+    epoxy_glVertexAttrib4Nubv_dispatch_table_rewrite_ptr, /* glVertexAttrib4Nubv */
+    epoxy_glVertexAttrib4NubvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4NubvARB */
+    epoxy_glVertexAttrib4Nuiv_dispatch_table_rewrite_ptr, /* glVertexAttrib4Nuiv */
+    epoxy_glVertexAttrib4NuivARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4NuivARB */
+    epoxy_glVertexAttrib4Nusv_dispatch_table_rewrite_ptr, /* glVertexAttrib4Nusv */
+    epoxy_glVertexAttrib4NusvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4NusvARB */
+    epoxy_glVertexAttrib4bv_dispatch_table_rewrite_ptr, /* glVertexAttrib4bv */
+    epoxy_glVertexAttrib4bvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4bvARB */
+    epoxy_glVertexAttrib4d_dispatch_table_rewrite_ptr, /* glVertexAttrib4d */
+    epoxy_glVertexAttrib4dARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4dARB */
+    epoxy_glVertexAttrib4dNV_dispatch_table_rewrite_ptr, /* glVertexAttrib4dNV */
+    epoxy_glVertexAttrib4dv_dispatch_table_rewrite_ptr, /* glVertexAttrib4dv */
+    epoxy_glVertexAttrib4dvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4dvARB */
+    epoxy_glVertexAttrib4dvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib4dvNV */
+    epoxy_glVertexAttrib4f_dispatch_table_rewrite_ptr, /* glVertexAttrib4f */
+    epoxy_glVertexAttrib4fARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4fARB */
+    epoxy_glVertexAttrib4fNV_dispatch_table_rewrite_ptr, /* glVertexAttrib4fNV */
+    epoxy_glVertexAttrib4fv_dispatch_table_rewrite_ptr, /* glVertexAttrib4fv */
+    epoxy_glVertexAttrib4fvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4fvARB */
+    epoxy_glVertexAttrib4fvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib4fvNV */
+    epoxy_glVertexAttrib4hNV_dispatch_table_rewrite_ptr, /* glVertexAttrib4hNV */
+    epoxy_glVertexAttrib4hvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib4hvNV */
+    epoxy_glVertexAttrib4iv_dispatch_table_rewrite_ptr, /* glVertexAttrib4iv */
+    epoxy_glVertexAttrib4ivARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4ivARB */
+    epoxy_glVertexAttrib4s_dispatch_table_rewrite_ptr, /* glVertexAttrib4s */
+    epoxy_glVertexAttrib4sARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4sARB */
+    epoxy_glVertexAttrib4sNV_dispatch_table_rewrite_ptr, /* glVertexAttrib4sNV */
+    epoxy_glVertexAttrib4sv_dispatch_table_rewrite_ptr, /* glVertexAttrib4sv */
+    epoxy_glVertexAttrib4svARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4svARB */
+    epoxy_glVertexAttrib4svNV_dispatch_table_rewrite_ptr, /* glVertexAttrib4svNV */
+    epoxy_glVertexAttrib4ubNV_dispatch_table_rewrite_ptr, /* glVertexAttrib4ubNV */
+    epoxy_glVertexAttrib4ubv_dispatch_table_rewrite_ptr, /* glVertexAttrib4ubv */
+    epoxy_glVertexAttrib4ubvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4ubvARB */
+    epoxy_glVertexAttrib4ubvNV_dispatch_table_rewrite_ptr, /* glVertexAttrib4ubvNV */
+    epoxy_glVertexAttrib4uiv_dispatch_table_rewrite_ptr, /* glVertexAttrib4uiv */
+    epoxy_glVertexAttrib4uivARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4uivARB */
+    epoxy_glVertexAttrib4usv_dispatch_table_rewrite_ptr, /* glVertexAttrib4usv */
+    epoxy_glVertexAttrib4usvARB_dispatch_table_rewrite_ptr, /* glVertexAttrib4usvARB */
+    epoxy_glVertexAttribArrayObjectATI_dispatch_table_rewrite_ptr, /* glVertexAttribArrayObjectATI */
+    epoxy_glVertexAttribBinding_dispatch_table_rewrite_ptr, /* glVertexAttribBinding */
+    epoxy_glVertexAttribDivisor_dispatch_table_rewrite_ptr, /* glVertexAttribDivisor */
+    epoxy_glVertexAttribDivisorANGLE_dispatch_table_rewrite_ptr, /* glVertexAttribDivisorANGLE */
+    epoxy_glVertexAttribDivisorARB_dispatch_table_rewrite_ptr, /* glVertexAttribDivisorARB */
+    epoxy_glVertexAttribDivisorEXT_dispatch_table_rewrite_ptr, /* glVertexAttribDivisorEXT */
+    epoxy_glVertexAttribDivisorNV_dispatch_table_rewrite_ptr, /* glVertexAttribDivisorNV */
+    epoxy_glVertexAttribFormat_dispatch_table_rewrite_ptr, /* glVertexAttribFormat */
+    epoxy_glVertexAttribFormatNV_dispatch_table_rewrite_ptr, /* glVertexAttribFormatNV */
+    epoxy_glVertexAttribI1i_dispatch_table_rewrite_ptr, /* glVertexAttribI1i */
+    epoxy_glVertexAttribI1iEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI1iEXT */
+    epoxy_glVertexAttribI1iv_dispatch_table_rewrite_ptr, /* glVertexAttribI1iv */
+    epoxy_glVertexAttribI1ivEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI1ivEXT */
+    epoxy_glVertexAttribI1ui_dispatch_table_rewrite_ptr, /* glVertexAttribI1ui */
+    epoxy_glVertexAttribI1uiEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI1uiEXT */
+    epoxy_glVertexAttribI1uiv_dispatch_table_rewrite_ptr, /* glVertexAttribI1uiv */
+    epoxy_glVertexAttribI1uivEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI1uivEXT */
+    epoxy_glVertexAttribI2i_dispatch_table_rewrite_ptr, /* glVertexAttribI2i */
+    epoxy_glVertexAttribI2iEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI2iEXT */
+    epoxy_glVertexAttribI2iv_dispatch_table_rewrite_ptr, /* glVertexAttribI2iv */
+    epoxy_glVertexAttribI2ivEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI2ivEXT */
+    epoxy_glVertexAttribI2ui_dispatch_table_rewrite_ptr, /* glVertexAttribI2ui */
+    epoxy_glVertexAttribI2uiEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI2uiEXT */
+    epoxy_glVertexAttribI2uiv_dispatch_table_rewrite_ptr, /* glVertexAttribI2uiv */
+    epoxy_glVertexAttribI2uivEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI2uivEXT */
+    epoxy_glVertexAttribI3i_dispatch_table_rewrite_ptr, /* glVertexAttribI3i */
+    epoxy_glVertexAttribI3iEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI3iEXT */
+    epoxy_glVertexAttribI3iv_dispatch_table_rewrite_ptr, /* glVertexAttribI3iv */
+    epoxy_glVertexAttribI3ivEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI3ivEXT */
+    epoxy_glVertexAttribI3ui_dispatch_table_rewrite_ptr, /* glVertexAttribI3ui */
+    epoxy_glVertexAttribI3uiEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI3uiEXT */
+    epoxy_glVertexAttribI3uiv_dispatch_table_rewrite_ptr, /* glVertexAttribI3uiv */
+    epoxy_glVertexAttribI3uivEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI3uivEXT */
+    epoxy_glVertexAttribI4bv_dispatch_table_rewrite_ptr, /* glVertexAttribI4bv */
+    epoxy_glVertexAttribI4bvEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI4bvEXT */
+    epoxy_glVertexAttribI4i_dispatch_table_rewrite_ptr, /* glVertexAttribI4i */
+    epoxy_glVertexAttribI4iEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI4iEXT */
+    epoxy_glVertexAttribI4iv_dispatch_table_rewrite_ptr, /* glVertexAttribI4iv */
+    epoxy_glVertexAttribI4ivEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI4ivEXT */
+    epoxy_glVertexAttribI4sv_dispatch_table_rewrite_ptr, /* glVertexAttribI4sv */
+    epoxy_glVertexAttribI4svEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI4svEXT */
+    epoxy_glVertexAttribI4ubv_dispatch_table_rewrite_ptr, /* glVertexAttribI4ubv */
+    epoxy_glVertexAttribI4ubvEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI4ubvEXT */
+    epoxy_glVertexAttribI4ui_dispatch_table_rewrite_ptr, /* glVertexAttribI4ui */
+    epoxy_glVertexAttribI4uiEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI4uiEXT */
+    epoxy_glVertexAttribI4uiv_dispatch_table_rewrite_ptr, /* glVertexAttribI4uiv */
+    epoxy_glVertexAttribI4uivEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI4uivEXT */
+    epoxy_glVertexAttribI4usv_dispatch_table_rewrite_ptr, /* glVertexAttribI4usv */
+    epoxy_glVertexAttribI4usvEXT_dispatch_table_rewrite_ptr, /* glVertexAttribI4usvEXT */
+    epoxy_glVertexAttribIFormat_dispatch_table_rewrite_ptr, /* glVertexAttribIFormat */
+    epoxy_glVertexAttribIFormatNV_dispatch_table_rewrite_ptr, /* glVertexAttribIFormatNV */
+    epoxy_glVertexAttribIPointer_dispatch_table_rewrite_ptr, /* glVertexAttribIPointer */
+    epoxy_glVertexAttribIPointerEXT_dispatch_table_rewrite_ptr, /* glVertexAttribIPointerEXT */
+    epoxy_glVertexAttribL1d_dispatch_table_rewrite_ptr, /* glVertexAttribL1d */
+    epoxy_glVertexAttribL1dEXT_dispatch_table_rewrite_ptr, /* glVertexAttribL1dEXT */
+    epoxy_glVertexAttribL1dv_dispatch_table_rewrite_ptr, /* glVertexAttribL1dv */
+    epoxy_glVertexAttribL1dvEXT_dispatch_table_rewrite_ptr, /* glVertexAttribL1dvEXT */
+    epoxy_glVertexAttribL1i64NV_dispatch_table_rewrite_ptr, /* glVertexAttribL1i64NV */
+    epoxy_glVertexAttribL1i64vNV_dispatch_table_rewrite_ptr, /* glVertexAttribL1i64vNV */
+    epoxy_glVertexAttribL1ui64ARB_dispatch_table_rewrite_ptr, /* glVertexAttribL1ui64ARB */
+    epoxy_glVertexAttribL1ui64NV_dispatch_table_rewrite_ptr, /* glVertexAttribL1ui64NV */
+    epoxy_glVertexAttribL1ui64vARB_dispatch_table_rewrite_ptr, /* glVertexAttribL1ui64vARB */
+    epoxy_glVertexAttribL1ui64vNV_dispatch_table_rewrite_ptr, /* glVertexAttribL1ui64vNV */
+    epoxy_glVertexAttribL2d_dispatch_table_rewrite_ptr, /* glVertexAttribL2d */
+    epoxy_glVertexAttribL2dEXT_dispatch_table_rewrite_ptr, /* glVertexAttribL2dEXT */
+    epoxy_glVertexAttribL2dv_dispatch_table_rewrite_ptr, /* glVertexAttribL2dv */
+    epoxy_glVertexAttribL2dvEXT_dispatch_table_rewrite_ptr, /* glVertexAttribL2dvEXT */
+    epoxy_glVertexAttribL2i64NV_dispatch_table_rewrite_ptr, /* glVertexAttribL2i64NV */
+    epoxy_glVertexAttribL2i64vNV_dispatch_table_rewrite_ptr, /* glVertexAttribL2i64vNV */
+    epoxy_glVertexAttribL2ui64NV_dispatch_table_rewrite_ptr, /* glVertexAttribL2ui64NV */
+    epoxy_glVertexAttribL2ui64vNV_dispatch_table_rewrite_ptr, /* glVertexAttribL2ui64vNV */
+    epoxy_glVertexAttribL3d_dispatch_table_rewrite_ptr, /* glVertexAttribL3d */
+    epoxy_glVertexAttribL3dEXT_dispatch_table_rewrite_ptr, /* glVertexAttribL3dEXT */
+    epoxy_glVertexAttribL3dv_dispatch_table_rewrite_ptr, /* glVertexAttribL3dv */
+    epoxy_glVertexAttribL3dvEXT_dispatch_table_rewrite_ptr, /* glVertexAttribL3dvEXT */
+    epoxy_glVertexAttribL3i64NV_dispatch_table_rewrite_ptr, /* glVertexAttribL3i64NV */
+    epoxy_glVertexAttribL3i64vNV_dispatch_table_rewrite_ptr, /* glVertexAttribL3i64vNV */
+    epoxy_glVertexAttribL3ui64NV_dispatch_table_rewrite_ptr, /* glVertexAttribL3ui64NV */
+    epoxy_glVertexAttribL3ui64vNV_dispatch_table_rewrite_ptr, /* glVertexAttribL3ui64vNV */
+    epoxy_glVertexAttribL4d_dispatch_table_rewrite_ptr, /* glVertexAttribL4d */
+    epoxy_glVertexAttribL4dEXT_dispatch_table_rewrite_ptr, /* glVertexAttribL4dEXT */
+    epoxy_glVertexAttribL4dv_dispatch_table_rewrite_ptr, /* glVertexAttribL4dv */
+    epoxy_glVertexAttribL4dvEXT_dispatch_table_rewrite_ptr, /* glVertexAttribL4dvEXT */
+    epoxy_glVertexAttribL4i64NV_dispatch_table_rewrite_ptr, /* glVertexAttribL4i64NV */
+    epoxy_glVertexAttribL4i64vNV_dispatch_table_rewrite_ptr, /* glVertexAttribL4i64vNV */
+    epoxy_glVertexAttribL4ui64NV_dispatch_table_rewrite_ptr, /* glVertexAttribL4ui64NV */
+    epoxy_glVertexAttribL4ui64vNV_dispatch_table_rewrite_ptr, /* glVertexAttribL4ui64vNV */
+    epoxy_glVertexAttribLFormat_dispatch_table_rewrite_ptr, /* glVertexAttribLFormat */
+    epoxy_glVertexAttribLFormatNV_dispatch_table_rewrite_ptr, /* glVertexAttribLFormatNV */
+    epoxy_glVertexAttribLPointer_dispatch_table_rewrite_ptr, /* glVertexAttribLPointer */
+    epoxy_glVertexAttribLPointerEXT_dispatch_table_rewrite_ptr, /* glVertexAttribLPointerEXT */
+    epoxy_glVertexAttribP1ui_dispatch_table_rewrite_ptr, /* glVertexAttribP1ui */
+    epoxy_glVertexAttribP1uiv_dispatch_table_rewrite_ptr, /* glVertexAttribP1uiv */
+    epoxy_glVertexAttribP2ui_dispatch_table_rewrite_ptr, /* glVertexAttribP2ui */
+    epoxy_glVertexAttribP2uiv_dispatch_table_rewrite_ptr, /* glVertexAttribP2uiv */
+    epoxy_glVertexAttribP3ui_dispatch_table_rewrite_ptr, /* glVertexAttribP3ui */
+    epoxy_glVertexAttribP3uiv_dispatch_table_rewrite_ptr, /* glVertexAttribP3uiv */
+    epoxy_glVertexAttribP4ui_dispatch_table_rewrite_ptr, /* glVertexAttribP4ui */
+    epoxy_glVertexAttribP4uiv_dispatch_table_rewrite_ptr, /* glVertexAttribP4uiv */
+    epoxy_glVertexAttribParameteriAMD_dispatch_table_rewrite_ptr, /* glVertexAttribParameteriAMD */
+    epoxy_glVertexAttribPointer_dispatch_table_rewrite_ptr, /* glVertexAttribPointer */
+    epoxy_glVertexAttribPointerARB_dispatch_table_rewrite_ptr, /* glVertexAttribPointerARB */
+    epoxy_glVertexAttribPointerNV_dispatch_table_rewrite_ptr, /* glVertexAttribPointerNV */
+    epoxy_glVertexAttribs1dvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs1dvNV */
+    epoxy_glVertexAttribs1fvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs1fvNV */
+    epoxy_glVertexAttribs1hvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs1hvNV */
+    epoxy_glVertexAttribs1svNV_dispatch_table_rewrite_ptr, /* glVertexAttribs1svNV */
+    epoxy_glVertexAttribs2dvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs2dvNV */
+    epoxy_glVertexAttribs2fvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs2fvNV */
+    epoxy_glVertexAttribs2hvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs2hvNV */
+    epoxy_glVertexAttribs2svNV_dispatch_table_rewrite_ptr, /* glVertexAttribs2svNV */
+    epoxy_glVertexAttribs3dvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs3dvNV */
+    epoxy_glVertexAttribs3fvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs3fvNV */
+    epoxy_glVertexAttribs3hvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs3hvNV */
+    epoxy_glVertexAttribs3svNV_dispatch_table_rewrite_ptr, /* glVertexAttribs3svNV */
+    epoxy_glVertexAttribs4dvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs4dvNV */
+    epoxy_glVertexAttribs4fvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs4fvNV */
+    epoxy_glVertexAttribs4hvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs4hvNV */
+    epoxy_glVertexAttribs4svNV_dispatch_table_rewrite_ptr, /* glVertexAttribs4svNV */
+    epoxy_glVertexAttribs4ubvNV_dispatch_table_rewrite_ptr, /* glVertexAttribs4ubvNV */
+    epoxy_glVertexBindingDivisor_dispatch_table_rewrite_ptr, /* glVertexBindingDivisor */
+    epoxy_glVertexBlendARB_dispatch_table_rewrite_ptr, /* glVertexBlendARB */
+    epoxy_glVertexBlendEnvfATI_dispatch_table_rewrite_ptr, /* glVertexBlendEnvfATI */
+    epoxy_glVertexBlendEnviATI_dispatch_table_rewrite_ptr, /* glVertexBlendEnviATI */
+    epoxy_glVertexFormatNV_dispatch_table_rewrite_ptr, /* glVertexFormatNV */
+    epoxy_glVertexP2ui_dispatch_table_rewrite_ptr, /* glVertexP2ui */
+    epoxy_glVertexP2uiv_dispatch_table_rewrite_ptr, /* glVertexP2uiv */
+    epoxy_glVertexP3ui_dispatch_table_rewrite_ptr, /* glVertexP3ui */
+    epoxy_glVertexP3uiv_dispatch_table_rewrite_ptr, /* glVertexP3uiv */
+    epoxy_glVertexP4ui_dispatch_table_rewrite_ptr, /* glVertexP4ui */
+    epoxy_glVertexP4uiv_dispatch_table_rewrite_ptr, /* glVertexP4uiv */
+    epoxy_glVertexPointer_dispatch_table_rewrite_ptr, /* glVertexPointer */
+    epoxy_glVertexPointerEXT_dispatch_table_rewrite_ptr, /* glVertexPointerEXT */
+    epoxy_glVertexPointerListIBM_dispatch_table_rewrite_ptr, /* glVertexPointerListIBM */
+    epoxy_glVertexPointervINTEL_dispatch_table_rewrite_ptr, /* glVertexPointervINTEL */
+    epoxy_glVertexStream1dATI_dispatch_table_rewrite_ptr, /* glVertexStream1dATI */
+    epoxy_glVertexStream1dvATI_dispatch_table_rewrite_ptr, /* glVertexStream1dvATI */
+    epoxy_glVertexStream1fATI_dispatch_table_rewrite_ptr, /* glVertexStream1fATI */
+    epoxy_glVertexStream1fvATI_dispatch_table_rewrite_ptr, /* glVertexStream1fvATI */
+    epoxy_glVertexStream1iATI_dispatch_table_rewrite_ptr, /* glVertexStream1iATI */
+    epoxy_glVertexStream1ivATI_dispatch_table_rewrite_ptr, /* glVertexStream1ivATI */
+    epoxy_glVertexStream1sATI_dispatch_table_rewrite_ptr, /* glVertexStream1sATI */
+    epoxy_glVertexStream1svATI_dispatch_table_rewrite_ptr, /* glVertexStream1svATI */
+    epoxy_glVertexStream2dATI_dispatch_table_rewrite_ptr, /* glVertexStream2dATI */
+    epoxy_glVertexStream2dvATI_dispatch_table_rewrite_ptr, /* glVertexStream2dvATI */
+    epoxy_glVertexStream2fATI_dispatch_table_rewrite_ptr, /* glVertexStream2fATI */
+    epoxy_glVertexStream2fvATI_dispatch_table_rewrite_ptr, /* glVertexStream2fvATI */
+    epoxy_glVertexStream2iATI_dispatch_table_rewrite_ptr, /* glVertexStream2iATI */
+    epoxy_glVertexStream2ivATI_dispatch_table_rewrite_ptr, /* glVertexStream2ivATI */
+    epoxy_glVertexStream2sATI_dispatch_table_rewrite_ptr, /* glVertexStream2sATI */
+    epoxy_glVertexStream2svATI_dispatch_table_rewrite_ptr, /* glVertexStream2svATI */
+    epoxy_glVertexStream3dATI_dispatch_table_rewrite_ptr, /* glVertexStream3dATI */
+    epoxy_glVertexStream3dvATI_dispatch_table_rewrite_ptr, /* glVertexStream3dvATI */
+    epoxy_glVertexStream3fATI_dispatch_table_rewrite_ptr, /* glVertexStream3fATI */
+    epoxy_glVertexStream3fvATI_dispatch_table_rewrite_ptr, /* glVertexStream3fvATI */
+    epoxy_glVertexStream3iATI_dispatch_table_rewrite_ptr, /* glVertexStream3iATI */
+    epoxy_glVertexStream3ivATI_dispatch_table_rewrite_ptr, /* glVertexStream3ivATI */
+    epoxy_glVertexStream3sATI_dispatch_table_rewrite_ptr, /* glVertexStream3sATI */
+    epoxy_glVertexStream3svATI_dispatch_table_rewrite_ptr, /* glVertexStream3svATI */
+    epoxy_glVertexStream4dATI_dispatch_table_rewrite_ptr, /* glVertexStream4dATI */
+    epoxy_glVertexStream4dvATI_dispatch_table_rewrite_ptr, /* glVertexStream4dvATI */
+    epoxy_glVertexStream4fATI_dispatch_table_rewrite_ptr, /* glVertexStream4fATI */
+    epoxy_glVertexStream4fvATI_dispatch_table_rewrite_ptr, /* glVertexStream4fvATI */
+    epoxy_glVertexStream4iATI_dispatch_table_rewrite_ptr, /* glVertexStream4iATI */
+    epoxy_glVertexStream4ivATI_dispatch_table_rewrite_ptr, /* glVertexStream4ivATI */
+    epoxy_glVertexStream4sATI_dispatch_table_rewrite_ptr, /* glVertexStream4sATI */
+    epoxy_glVertexStream4svATI_dispatch_table_rewrite_ptr, /* glVertexStream4svATI */
+    epoxy_glVertexWeightPointerEXT_dispatch_table_rewrite_ptr, /* glVertexWeightPointerEXT */
+    epoxy_glVertexWeightfEXT_dispatch_table_rewrite_ptr, /* glVertexWeightfEXT */
+    epoxy_glVertexWeightfvEXT_dispatch_table_rewrite_ptr, /* glVertexWeightfvEXT */
+    epoxy_glVertexWeighthNV_dispatch_table_rewrite_ptr, /* glVertexWeighthNV */
+    epoxy_glVertexWeighthvNV_dispatch_table_rewrite_ptr, /* glVertexWeighthvNV */
+    epoxy_glVideoCaptureNV_dispatch_table_rewrite_ptr, /* glVideoCaptureNV */
+    epoxy_glVideoCaptureStreamParameterdvNV_dispatch_table_rewrite_ptr, /* glVideoCaptureStreamParameterdvNV */
+    epoxy_glVideoCaptureStreamParameterfvNV_dispatch_table_rewrite_ptr, /* glVideoCaptureStreamParameterfvNV */
+    epoxy_glVideoCaptureStreamParameterivNV_dispatch_table_rewrite_ptr, /* glVideoCaptureStreamParameterivNV */
+    epoxy_glViewport_dispatch_table_rewrite_ptr, /* glViewport */
+    epoxy_glViewportArrayv_dispatch_table_rewrite_ptr, /* glViewportArrayv */
+    epoxy_glViewportArrayvNV_dispatch_table_rewrite_ptr, /* glViewportArrayvNV */
+    epoxy_glViewportIndexedf_dispatch_table_rewrite_ptr, /* glViewportIndexedf */
+    epoxy_glViewportIndexedfNV_dispatch_table_rewrite_ptr, /* glViewportIndexedfNV */
+    epoxy_glViewportIndexedfv_dispatch_table_rewrite_ptr, /* glViewportIndexedfv */
+    epoxy_glViewportIndexedfvNV_dispatch_table_rewrite_ptr, /* glViewportIndexedfvNV */
+    epoxy_glWaitSync_dispatch_table_rewrite_ptr, /* glWaitSync */
+    epoxy_glWaitSyncAPPLE_dispatch_table_rewrite_ptr, /* glWaitSyncAPPLE */
+    epoxy_glWeightPathsNV_dispatch_table_rewrite_ptr, /* glWeightPathsNV */
+    epoxy_glWeightPointerARB_dispatch_table_rewrite_ptr, /* glWeightPointerARB */
+    epoxy_glWeightPointerOES_dispatch_table_rewrite_ptr, /* glWeightPointerOES */
+    epoxy_glWeightbvARB_dispatch_table_rewrite_ptr, /* glWeightbvARB */
+    epoxy_glWeightdvARB_dispatch_table_rewrite_ptr, /* glWeightdvARB */
+    epoxy_glWeightfvARB_dispatch_table_rewrite_ptr, /* glWeightfvARB */
+    epoxy_glWeightivARB_dispatch_table_rewrite_ptr, /* glWeightivARB */
+    epoxy_glWeightsvARB_dispatch_table_rewrite_ptr, /* glWeightsvARB */
+    epoxy_glWeightubvARB_dispatch_table_rewrite_ptr, /* glWeightubvARB */
+    epoxy_glWeightuivARB_dispatch_table_rewrite_ptr, /* glWeightuivARB */
+    epoxy_glWeightusvARB_dispatch_table_rewrite_ptr, /* glWeightusvARB */
+    epoxy_glWindowPos2d_dispatch_table_rewrite_ptr, /* glWindowPos2d */
+    epoxy_glWindowPos2dARB_dispatch_table_rewrite_ptr, /* glWindowPos2dARB */
+    epoxy_glWindowPos2dMESA_dispatch_table_rewrite_ptr, /* glWindowPos2dMESA */
+    epoxy_glWindowPos2dv_dispatch_table_rewrite_ptr, /* glWindowPos2dv */
+    epoxy_glWindowPos2dvARB_dispatch_table_rewrite_ptr, /* glWindowPos2dvARB */
+    epoxy_glWindowPos2dvMESA_dispatch_table_rewrite_ptr, /* glWindowPos2dvMESA */
+    epoxy_glWindowPos2f_dispatch_table_rewrite_ptr, /* glWindowPos2f */
+    epoxy_glWindowPos2fARB_dispatch_table_rewrite_ptr, /* glWindowPos2fARB */
+    epoxy_glWindowPos2fMESA_dispatch_table_rewrite_ptr, /* glWindowPos2fMESA */
+    epoxy_glWindowPos2fv_dispatch_table_rewrite_ptr, /* glWindowPos2fv */
+    epoxy_glWindowPos2fvARB_dispatch_table_rewrite_ptr, /* glWindowPos2fvARB */
+    epoxy_glWindowPos2fvMESA_dispatch_table_rewrite_ptr, /* glWindowPos2fvMESA */
+    epoxy_glWindowPos2i_dispatch_table_rewrite_ptr, /* glWindowPos2i */
+    epoxy_glWindowPos2iARB_dispatch_table_rewrite_ptr, /* glWindowPos2iARB */
+    epoxy_glWindowPos2iMESA_dispatch_table_rewrite_ptr, /* glWindowPos2iMESA */
+    epoxy_glWindowPos2iv_dispatch_table_rewrite_ptr, /* glWindowPos2iv */
+    epoxy_glWindowPos2ivARB_dispatch_table_rewrite_ptr, /* glWindowPos2ivARB */
+    epoxy_glWindowPos2ivMESA_dispatch_table_rewrite_ptr, /* glWindowPos2ivMESA */
+    epoxy_glWindowPos2s_dispatch_table_rewrite_ptr, /* glWindowPos2s */
+    epoxy_glWindowPos2sARB_dispatch_table_rewrite_ptr, /* glWindowPos2sARB */
+    epoxy_glWindowPos2sMESA_dispatch_table_rewrite_ptr, /* glWindowPos2sMESA */
+    epoxy_glWindowPos2sv_dispatch_table_rewrite_ptr, /* glWindowPos2sv */
+    epoxy_glWindowPos2svARB_dispatch_table_rewrite_ptr, /* glWindowPos2svARB */
+    epoxy_glWindowPos2svMESA_dispatch_table_rewrite_ptr, /* glWindowPos2svMESA */
+    epoxy_glWindowPos3d_dispatch_table_rewrite_ptr, /* glWindowPos3d */
+    epoxy_glWindowPos3dARB_dispatch_table_rewrite_ptr, /* glWindowPos3dARB */
+    epoxy_glWindowPos3dMESA_dispatch_table_rewrite_ptr, /* glWindowPos3dMESA */
+    epoxy_glWindowPos3dv_dispatch_table_rewrite_ptr, /* glWindowPos3dv */
+    epoxy_glWindowPos3dvARB_dispatch_table_rewrite_ptr, /* glWindowPos3dvARB */
+    epoxy_glWindowPos3dvMESA_dispatch_table_rewrite_ptr, /* glWindowPos3dvMESA */
+    epoxy_glWindowPos3f_dispatch_table_rewrite_ptr, /* glWindowPos3f */
+    epoxy_glWindowPos3fARB_dispatch_table_rewrite_ptr, /* glWindowPos3fARB */
+    epoxy_glWindowPos3fMESA_dispatch_table_rewrite_ptr, /* glWindowPos3fMESA */
+    epoxy_glWindowPos3fv_dispatch_table_rewrite_ptr, /* glWindowPos3fv */
+    epoxy_glWindowPos3fvARB_dispatch_table_rewrite_ptr, /* glWindowPos3fvARB */
+    epoxy_glWindowPos3fvMESA_dispatch_table_rewrite_ptr, /* glWindowPos3fvMESA */
+    epoxy_glWindowPos3i_dispatch_table_rewrite_ptr, /* glWindowPos3i */
+    epoxy_glWindowPos3iARB_dispatch_table_rewrite_ptr, /* glWindowPos3iARB */
+    epoxy_glWindowPos3iMESA_dispatch_table_rewrite_ptr, /* glWindowPos3iMESA */
+    epoxy_glWindowPos3iv_dispatch_table_rewrite_ptr, /* glWindowPos3iv */
+    epoxy_glWindowPos3ivARB_dispatch_table_rewrite_ptr, /* glWindowPos3ivARB */
+    epoxy_glWindowPos3ivMESA_dispatch_table_rewrite_ptr, /* glWindowPos3ivMESA */
+    epoxy_glWindowPos3s_dispatch_table_rewrite_ptr, /* glWindowPos3s */
+    epoxy_glWindowPos3sARB_dispatch_table_rewrite_ptr, /* glWindowPos3sARB */
+    epoxy_glWindowPos3sMESA_dispatch_table_rewrite_ptr, /* glWindowPos3sMESA */
+    epoxy_glWindowPos3sv_dispatch_table_rewrite_ptr, /* glWindowPos3sv */
+    epoxy_glWindowPos3svARB_dispatch_table_rewrite_ptr, /* glWindowPos3svARB */
+    epoxy_glWindowPos3svMESA_dispatch_table_rewrite_ptr, /* glWindowPos3svMESA */
+    epoxy_glWindowPos4dMESA_dispatch_table_rewrite_ptr, /* glWindowPos4dMESA */
+    epoxy_glWindowPos4dvMESA_dispatch_table_rewrite_ptr, /* glWindowPos4dvMESA */
+    epoxy_glWindowPos4fMESA_dispatch_table_rewrite_ptr, /* glWindowPos4fMESA */
+    epoxy_glWindowPos4fvMESA_dispatch_table_rewrite_ptr, /* glWindowPos4fvMESA */
+    epoxy_glWindowPos4iMESA_dispatch_table_rewrite_ptr, /* glWindowPos4iMESA */
+    epoxy_glWindowPos4ivMESA_dispatch_table_rewrite_ptr, /* glWindowPos4ivMESA */
+    epoxy_glWindowPos4sMESA_dispatch_table_rewrite_ptr, /* glWindowPos4sMESA */
+    epoxy_glWindowPos4svMESA_dispatch_table_rewrite_ptr, /* glWindowPos4svMESA */
+    epoxy_glWriteMaskEXT_dispatch_table_rewrite_ptr, /* glWriteMaskEXT */
 };
 
 uint32_t gl_tls_index;

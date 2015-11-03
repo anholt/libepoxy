@@ -220,46 +220,47 @@ static const char *enum_string =
      ;
 
 static const uint16_t enum_string_offsets[] = {
-    [EGL_10] = 0,
-    [EGL_11] = 7,
-    [EGL_12] = 14,
-    [EGL_14] = 21,
-    [EGL_15] = 28,
-    [EGL_extension_EGL_ANDROID_blob_cache] = 35,
-    [EGL_extension_EGL_ANDROID_native_fence_sync] = 74,
-    [EGL_extension_EGL_ANGLE_query_surface_pointer] = 120,
-    [EGL_extension_EGL_EXT_device_base] = 168,
-    [EGL_extension_EGL_EXT_device_enumeration] = 204,
-    [EGL_extension_EGL_EXT_device_query] = 247,
-    [EGL_extension_EGL_EXT_output_base] = 284,
-    [EGL_extension_EGL_EXT_platform_base] = 320,
-    [EGL_extension_EGL_EXT_stream_consumer_egloutput] = 358,
-    [EGL_extension_EGL_EXT_swap_buffers_with_damage] = 408,
-    [EGL_extension_EGL_HI_clientpixmap] = 457,
-    [EGL_extension_EGL_KHR_cl_event2] = 493,
-    [EGL_extension_EGL_KHR_fence_sync] = 527,
-    [EGL_extension_EGL_KHR_image] = 562,
-    [EGL_extension_EGL_KHR_image_base] = 592,
-    [EGL_extension_EGL_KHR_lock_surface3] = 627,
-    [EGL_extension_EGL_KHR_lock_surface] = 665,
-    [EGL_extension_EGL_KHR_partial_update] = 702,
-    [EGL_extension_EGL_KHR_reusable_sync] = 741,
-    [EGL_extension_EGL_KHR_stream] = 779,
-    [EGL_extension_EGL_KHR_stream_consumer_gltexture] = 810,
-    [EGL_extension_EGL_KHR_stream_cross_process_fd] = 860,
-    [EGL_extension_EGL_KHR_stream_fifo] = 908,
-    [EGL_extension_EGL_KHR_stream_producer_eglsurface] = 944,
-    [EGL_extension_EGL_KHR_swap_buffers_with_damage] = 995,
-    [EGL_extension_EGL_KHR_wait_sync] = 1044,
-    [EGL_extension_EGL_MESA_drm_image] = 1078,
-    [EGL_extension_EGL_MESA_image_dma_buf_export] = 1113,
-    [EGL_extension_EGL_NOK_swap_region2] = 1159,
-    [EGL_extension_EGL_NOK_swap_region] = 1196,
-    [EGL_extension_EGL_NV_native_query] = 1232,
-    [EGL_extension_EGL_NV_post_sub_buffer] = 1268,
-    [EGL_extension_EGL_NV_stream_sync] = 1307,
-    [EGL_extension_EGL_NV_sync] = 1342,
-    [EGL_extension_EGL_NV_system_time] = 1370,
+    -1, /* egl_provider_terminator, unused */
+    0, /* EGL_10 */
+    7, /* EGL_11 */
+    14, /* EGL_12 */
+    21, /* EGL_14 */
+    28, /* EGL_15 */
+    35, /* EGL_extension_EGL_ANDROID_blob_cache */
+    74, /* EGL_extension_EGL_ANDROID_native_fence_sync */
+    120, /* EGL_extension_EGL_ANGLE_query_surface_pointer */
+    168, /* EGL_extension_EGL_EXT_device_base */
+    204, /* EGL_extension_EGL_EXT_device_enumeration */
+    247, /* EGL_extension_EGL_EXT_device_query */
+    284, /* EGL_extension_EGL_EXT_output_base */
+    320, /* EGL_extension_EGL_EXT_platform_base */
+    358, /* EGL_extension_EGL_EXT_stream_consumer_egloutput */
+    408, /* EGL_extension_EGL_EXT_swap_buffers_with_damage */
+    457, /* EGL_extension_EGL_HI_clientpixmap */
+    493, /* EGL_extension_EGL_KHR_cl_event2 */
+    527, /* EGL_extension_EGL_KHR_fence_sync */
+    562, /* EGL_extension_EGL_KHR_image */
+    592, /* EGL_extension_EGL_KHR_image_base */
+    627, /* EGL_extension_EGL_KHR_lock_surface3 */
+    665, /* EGL_extension_EGL_KHR_lock_surface */
+    702, /* EGL_extension_EGL_KHR_partial_update */
+    741, /* EGL_extension_EGL_KHR_reusable_sync */
+    779, /* EGL_extension_EGL_KHR_stream */
+    810, /* EGL_extension_EGL_KHR_stream_consumer_gltexture */
+    860, /* EGL_extension_EGL_KHR_stream_cross_process_fd */
+    908, /* EGL_extension_EGL_KHR_stream_fifo */
+    944, /* EGL_extension_EGL_KHR_stream_producer_eglsurface */
+    995, /* EGL_extension_EGL_KHR_swap_buffers_with_damage */
+    1044, /* EGL_extension_EGL_KHR_wait_sync */
+    1078, /* EGL_extension_EGL_MESA_drm_image */
+    1113, /* EGL_extension_EGL_MESA_image_dma_buf_export */
+    1159, /* EGL_extension_EGL_NOK_swap_region2 */
+    1196, /* EGL_extension_EGL_NOK_swap_region */
+    1232, /* EGL_extension_EGL_NV_native_query */
+    1268, /* EGL_extension_EGL_NV_post_sub_buffer */
+    1307, /* EGL_extension_EGL_NV_stream_sync */
+    1342, /* EGL_extension_EGL_NV_sync */
+    1370, /* EGL_extension_EGL_NV_system_time */
 };
 
 static const char entrypoint_strings[] = {
@@ -3734,116 +3735,116 @@ GEN_THUNKS_RET(EGLint, eglWaitSyncKHR, (EGLDisplay dpy, EGLSyncKHR sync, EGLint 
 
 #if USING_DISPATCH_TABLE
 static struct dispatch_table resolver_table = {
-    .eglBindAPI = epoxy_eglBindAPI_dispatch_table_rewrite_ptr,
-    .eglBindTexImage = epoxy_eglBindTexImage_dispatch_table_rewrite_ptr,
-    .eglChooseConfig = epoxy_eglChooseConfig_dispatch_table_rewrite_ptr,
-    .eglClientWaitSync = epoxy_eglClientWaitSync_dispatch_table_rewrite_ptr,
-    .eglClientWaitSyncKHR = epoxy_eglClientWaitSyncKHR_dispatch_table_rewrite_ptr,
-    .eglClientWaitSyncNV = epoxy_eglClientWaitSyncNV_dispatch_table_rewrite_ptr,
-    .eglCopyBuffers = epoxy_eglCopyBuffers_dispatch_table_rewrite_ptr,
-    .eglCreateContext = epoxy_eglCreateContext_dispatch_table_rewrite_ptr,
-    .eglCreateDRMImageMESA = epoxy_eglCreateDRMImageMESA_dispatch_table_rewrite_ptr,
-    .eglCreateFenceSyncNV = epoxy_eglCreateFenceSyncNV_dispatch_table_rewrite_ptr,
-    .eglCreateImage = epoxy_eglCreateImage_dispatch_table_rewrite_ptr,
-    .eglCreateImageKHR = epoxy_eglCreateImageKHR_dispatch_table_rewrite_ptr,
-    .eglCreatePbufferFromClientBuffer = epoxy_eglCreatePbufferFromClientBuffer_dispatch_table_rewrite_ptr,
-    .eglCreatePbufferSurface = epoxy_eglCreatePbufferSurface_dispatch_table_rewrite_ptr,
-    .eglCreatePixmapSurface = epoxy_eglCreatePixmapSurface_dispatch_table_rewrite_ptr,
-    .eglCreatePixmapSurfaceHI = epoxy_eglCreatePixmapSurfaceHI_dispatch_table_rewrite_ptr,
-    .eglCreatePlatformPixmapSurface = epoxy_eglCreatePlatformPixmapSurface_dispatch_table_rewrite_ptr,
-    .eglCreatePlatformPixmapSurfaceEXT = epoxy_eglCreatePlatformPixmapSurfaceEXT_dispatch_table_rewrite_ptr,
-    .eglCreatePlatformWindowSurface = epoxy_eglCreatePlatformWindowSurface_dispatch_table_rewrite_ptr,
-    .eglCreatePlatformWindowSurfaceEXT = epoxy_eglCreatePlatformWindowSurfaceEXT_dispatch_table_rewrite_ptr,
-    .eglCreateStreamFromFileDescriptorKHR = epoxy_eglCreateStreamFromFileDescriptorKHR_dispatch_table_rewrite_ptr,
-    .eglCreateStreamKHR = epoxy_eglCreateStreamKHR_dispatch_table_rewrite_ptr,
-    .eglCreateStreamProducerSurfaceKHR = epoxy_eglCreateStreamProducerSurfaceKHR_dispatch_table_rewrite_ptr,
-    .eglCreateStreamSyncNV = epoxy_eglCreateStreamSyncNV_dispatch_table_rewrite_ptr,
-    .eglCreateSync = epoxy_eglCreateSync_dispatch_table_rewrite_ptr,
-    .eglCreateSync64KHR = epoxy_eglCreateSync64KHR_dispatch_table_rewrite_ptr,
-    .eglCreateSyncKHR = epoxy_eglCreateSyncKHR_dispatch_table_rewrite_ptr,
-    .eglCreateWindowSurface = epoxy_eglCreateWindowSurface_dispatch_table_rewrite_ptr,
-    .eglDestroyContext = epoxy_eglDestroyContext_dispatch_table_rewrite_ptr,
-    .eglDestroyImage = epoxy_eglDestroyImage_dispatch_table_rewrite_ptr,
-    .eglDestroyImageKHR = epoxy_eglDestroyImageKHR_dispatch_table_rewrite_ptr,
-    .eglDestroyStreamKHR = epoxy_eglDestroyStreamKHR_dispatch_table_rewrite_ptr,
-    .eglDestroySurface = epoxy_eglDestroySurface_dispatch_table_rewrite_ptr,
-    .eglDestroySync = epoxy_eglDestroySync_dispatch_table_rewrite_ptr,
-    .eglDestroySyncKHR = epoxy_eglDestroySyncKHR_dispatch_table_rewrite_ptr,
-    .eglDestroySyncNV = epoxy_eglDestroySyncNV_dispatch_table_rewrite_ptr,
-    .eglDupNativeFenceFDANDROID = epoxy_eglDupNativeFenceFDANDROID_dispatch_table_rewrite_ptr,
-    .eglExportDMABUFImageMESA = epoxy_eglExportDMABUFImageMESA_dispatch_table_rewrite_ptr,
-    .eglExportDMABUFImageQueryMESA = epoxy_eglExportDMABUFImageQueryMESA_dispatch_table_rewrite_ptr,
-    .eglExportDRMImageMESA = epoxy_eglExportDRMImageMESA_dispatch_table_rewrite_ptr,
-    .eglFenceNV = epoxy_eglFenceNV_dispatch_table_rewrite_ptr,
-    .eglGetConfigAttrib = epoxy_eglGetConfigAttrib_dispatch_table_rewrite_ptr,
-    .eglGetConfigs = epoxy_eglGetConfigs_dispatch_table_rewrite_ptr,
-    .eglGetCurrentContext = epoxy_eglGetCurrentContext_dispatch_table_rewrite_ptr,
-    .eglGetCurrentDisplay = epoxy_eglGetCurrentDisplay_dispatch_table_rewrite_ptr,
-    .eglGetCurrentSurface = epoxy_eglGetCurrentSurface_dispatch_table_rewrite_ptr,
-    .eglGetDisplay = epoxy_eglGetDisplay_dispatch_table_rewrite_ptr,
-    .eglGetError = epoxy_eglGetError_dispatch_table_rewrite_ptr,
-    .eglGetOutputLayersEXT = epoxy_eglGetOutputLayersEXT_dispatch_table_rewrite_ptr,
-    .eglGetOutputPortsEXT = epoxy_eglGetOutputPortsEXT_dispatch_table_rewrite_ptr,
-    .eglGetPlatformDisplay = epoxy_eglGetPlatformDisplay_dispatch_table_rewrite_ptr,
-    .eglGetPlatformDisplayEXT = epoxy_eglGetPlatformDisplayEXT_dispatch_table_rewrite_ptr,
-    .eglGetProcAddress = epoxy_eglGetProcAddress_dispatch_table_rewrite_ptr,
-    .eglGetStreamFileDescriptorKHR = epoxy_eglGetStreamFileDescriptorKHR_dispatch_table_rewrite_ptr,
-    .eglGetSyncAttrib = epoxy_eglGetSyncAttrib_dispatch_table_rewrite_ptr,
-    .eglGetSyncAttribKHR = epoxy_eglGetSyncAttribKHR_dispatch_table_rewrite_ptr,
-    .eglGetSyncAttribNV = epoxy_eglGetSyncAttribNV_dispatch_table_rewrite_ptr,
-    .eglGetSystemTimeFrequencyNV = epoxy_eglGetSystemTimeFrequencyNV_dispatch_table_rewrite_ptr,
-    .eglGetSystemTimeNV = epoxy_eglGetSystemTimeNV_dispatch_table_rewrite_ptr,
-    .eglInitialize = epoxy_eglInitialize_dispatch_table_rewrite_ptr,
-    .eglLockSurfaceKHR = epoxy_eglLockSurfaceKHR_dispatch_table_rewrite_ptr,
-    .eglMakeCurrent = epoxy_eglMakeCurrent_dispatch_table_rewrite_ptr,
-    .eglOutputLayerAttribEXT = epoxy_eglOutputLayerAttribEXT_dispatch_table_rewrite_ptr,
-    .eglOutputPortAttribEXT = epoxy_eglOutputPortAttribEXT_dispatch_table_rewrite_ptr,
-    .eglPostSubBufferNV = epoxy_eglPostSubBufferNV_dispatch_table_rewrite_ptr,
-    .eglQueryAPI = epoxy_eglQueryAPI_dispatch_table_rewrite_ptr,
-    .eglQueryContext = epoxy_eglQueryContext_dispatch_table_rewrite_ptr,
-    .eglQueryDeviceAttribEXT = epoxy_eglQueryDeviceAttribEXT_dispatch_table_rewrite_ptr,
-    .eglQueryDeviceStringEXT = epoxy_eglQueryDeviceStringEXT_dispatch_table_rewrite_ptr,
-    .eglQueryDevicesEXT = epoxy_eglQueryDevicesEXT_dispatch_table_rewrite_ptr,
-    .eglQueryDisplayAttribEXT = epoxy_eglQueryDisplayAttribEXT_dispatch_table_rewrite_ptr,
-    .eglQueryNativeDisplayNV = epoxy_eglQueryNativeDisplayNV_dispatch_table_rewrite_ptr,
-    .eglQueryNativePixmapNV = epoxy_eglQueryNativePixmapNV_dispatch_table_rewrite_ptr,
-    .eglQueryNativeWindowNV = epoxy_eglQueryNativeWindowNV_dispatch_table_rewrite_ptr,
-    .eglQueryOutputLayerAttribEXT = epoxy_eglQueryOutputLayerAttribEXT_dispatch_table_rewrite_ptr,
-    .eglQueryOutputLayerStringEXT = epoxy_eglQueryOutputLayerStringEXT_dispatch_table_rewrite_ptr,
-    .eglQueryOutputPortAttribEXT = epoxy_eglQueryOutputPortAttribEXT_dispatch_table_rewrite_ptr,
-    .eglQueryOutputPortStringEXT = epoxy_eglQueryOutputPortStringEXT_dispatch_table_rewrite_ptr,
-    .eglQueryStreamKHR = epoxy_eglQueryStreamKHR_dispatch_table_rewrite_ptr,
-    .eglQueryStreamTimeKHR = epoxy_eglQueryStreamTimeKHR_dispatch_table_rewrite_ptr,
-    .eglQueryStreamu64KHR = epoxy_eglQueryStreamu64KHR_dispatch_table_rewrite_ptr,
-    .eglQueryString = epoxy_eglQueryString_dispatch_table_rewrite_ptr,
-    .eglQuerySurface = epoxy_eglQuerySurface_dispatch_table_rewrite_ptr,
-    .eglQuerySurface64KHR = epoxy_eglQuerySurface64KHR_dispatch_table_rewrite_ptr,
-    .eglQuerySurfacePointerANGLE = epoxy_eglQuerySurfacePointerANGLE_dispatch_table_rewrite_ptr,
-    .eglReleaseTexImage = epoxy_eglReleaseTexImage_dispatch_table_rewrite_ptr,
-    .eglReleaseThread = epoxy_eglReleaseThread_dispatch_table_rewrite_ptr,
-    .eglSetBlobCacheFuncsANDROID = epoxy_eglSetBlobCacheFuncsANDROID_dispatch_table_rewrite_ptr,
-    .eglSetDamageRegionKHR = epoxy_eglSetDamageRegionKHR_dispatch_table_rewrite_ptr,
-    .eglSignalSyncKHR = epoxy_eglSignalSyncKHR_dispatch_table_rewrite_ptr,
-    .eglSignalSyncNV = epoxy_eglSignalSyncNV_dispatch_table_rewrite_ptr,
-    .eglStreamAttribKHR = epoxy_eglStreamAttribKHR_dispatch_table_rewrite_ptr,
-    .eglStreamConsumerAcquireKHR = epoxy_eglStreamConsumerAcquireKHR_dispatch_table_rewrite_ptr,
-    .eglStreamConsumerGLTextureExternalKHR = epoxy_eglStreamConsumerGLTextureExternalKHR_dispatch_table_rewrite_ptr,
-    .eglStreamConsumerOutputEXT = epoxy_eglStreamConsumerOutputEXT_dispatch_table_rewrite_ptr,
-    .eglStreamConsumerReleaseKHR = epoxy_eglStreamConsumerReleaseKHR_dispatch_table_rewrite_ptr,
-    .eglSurfaceAttrib = epoxy_eglSurfaceAttrib_dispatch_table_rewrite_ptr,
-    .eglSwapBuffers = epoxy_eglSwapBuffers_dispatch_table_rewrite_ptr,
-    .eglSwapBuffersRegion2NOK = epoxy_eglSwapBuffersRegion2NOK_dispatch_table_rewrite_ptr,
-    .eglSwapBuffersRegionNOK = epoxy_eglSwapBuffersRegionNOK_dispatch_table_rewrite_ptr,
-    .eglSwapBuffersWithDamageEXT = epoxy_eglSwapBuffersWithDamageEXT_dispatch_table_rewrite_ptr,
-    .eglSwapBuffersWithDamageKHR = epoxy_eglSwapBuffersWithDamageKHR_dispatch_table_rewrite_ptr,
-    .eglSwapInterval = epoxy_eglSwapInterval_dispatch_table_rewrite_ptr,
-    .eglTerminate = epoxy_eglTerminate_dispatch_table_rewrite_ptr,
-    .eglUnlockSurfaceKHR = epoxy_eglUnlockSurfaceKHR_dispatch_table_rewrite_ptr,
-    .eglWaitClient = epoxy_eglWaitClient_dispatch_table_rewrite_ptr,
-    .eglWaitGL = epoxy_eglWaitGL_dispatch_table_rewrite_ptr,
-    .eglWaitNative = epoxy_eglWaitNative_dispatch_table_rewrite_ptr,
-    .eglWaitSync = epoxy_eglWaitSync_dispatch_table_rewrite_ptr,
-    .eglWaitSyncKHR = epoxy_eglWaitSyncKHR_dispatch_table_rewrite_ptr,
+    epoxy_eglBindAPI_dispatch_table_rewrite_ptr, /* eglBindAPI */
+    epoxy_eglBindTexImage_dispatch_table_rewrite_ptr, /* eglBindTexImage */
+    epoxy_eglChooseConfig_dispatch_table_rewrite_ptr, /* eglChooseConfig */
+    epoxy_eglClientWaitSync_dispatch_table_rewrite_ptr, /* eglClientWaitSync */
+    epoxy_eglClientWaitSyncKHR_dispatch_table_rewrite_ptr, /* eglClientWaitSyncKHR */
+    epoxy_eglClientWaitSyncNV_dispatch_table_rewrite_ptr, /* eglClientWaitSyncNV */
+    epoxy_eglCopyBuffers_dispatch_table_rewrite_ptr, /* eglCopyBuffers */
+    epoxy_eglCreateContext_dispatch_table_rewrite_ptr, /* eglCreateContext */
+    epoxy_eglCreateDRMImageMESA_dispatch_table_rewrite_ptr, /* eglCreateDRMImageMESA */
+    epoxy_eglCreateFenceSyncNV_dispatch_table_rewrite_ptr, /* eglCreateFenceSyncNV */
+    epoxy_eglCreateImage_dispatch_table_rewrite_ptr, /* eglCreateImage */
+    epoxy_eglCreateImageKHR_dispatch_table_rewrite_ptr, /* eglCreateImageKHR */
+    epoxy_eglCreatePbufferFromClientBuffer_dispatch_table_rewrite_ptr, /* eglCreatePbufferFromClientBuffer */
+    epoxy_eglCreatePbufferSurface_dispatch_table_rewrite_ptr, /* eglCreatePbufferSurface */
+    epoxy_eglCreatePixmapSurface_dispatch_table_rewrite_ptr, /* eglCreatePixmapSurface */
+    epoxy_eglCreatePixmapSurfaceHI_dispatch_table_rewrite_ptr, /* eglCreatePixmapSurfaceHI */
+    epoxy_eglCreatePlatformPixmapSurface_dispatch_table_rewrite_ptr, /* eglCreatePlatformPixmapSurface */
+    epoxy_eglCreatePlatformPixmapSurfaceEXT_dispatch_table_rewrite_ptr, /* eglCreatePlatformPixmapSurfaceEXT */
+    epoxy_eglCreatePlatformWindowSurface_dispatch_table_rewrite_ptr, /* eglCreatePlatformWindowSurface */
+    epoxy_eglCreatePlatformWindowSurfaceEXT_dispatch_table_rewrite_ptr, /* eglCreatePlatformWindowSurfaceEXT */
+    epoxy_eglCreateStreamFromFileDescriptorKHR_dispatch_table_rewrite_ptr, /* eglCreateStreamFromFileDescriptorKHR */
+    epoxy_eglCreateStreamKHR_dispatch_table_rewrite_ptr, /* eglCreateStreamKHR */
+    epoxy_eglCreateStreamProducerSurfaceKHR_dispatch_table_rewrite_ptr, /* eglCreateStreamProducerSurfaceKHR */
+    epoxy_eglCreateStreamSyncNV_dispatch_table_rewrite_ptr, /* eglCreateStreamSyncNV */
+    epoxy_eglCreateSync_dispatch_table_rewrite_ptr, /* eglCreateSync */
+    epoxy_eglCreateSync64KHR_dispatch_table_rewrite_ptr, /* eglCreateSync64KHR */
+    epoxy_eglCreateSyncKHR_dispatch_table_rewrite_ptr, /* eglCreateSyncKHR */
+    epoxy_eglCreateWindowSurface_dispatch_table_rewrite_ptr, /* eglCreateWindowSurface */
+    epoxy_eglDestroyContext_dispatch_table_rewrite_ptr, /* eglDestroyContext */
+    epoxy_eglDestroyImage_dispatch_table_rewrite_ptr, /* eglDestroyImage */
+    epoxy_eglDestroyImageKHR_dispatch_table_rewrite_ptr, /* eglDestroyImageKHR */
+    epoxy_eglDestroyStreamKHR_dispatch_table_rewrite_ptr, /* eglDestroyStreamKHR */
+    epoxy_eglDestroySurface_dispatch_table_rewrite_ptr, /* eglDestroySurface */
+    epoxy_eglDestroySync_dispatch_table_rewrite_ptr, /* eglDestroySync */
+    epoxy_eglDestroySyncKHR_dispatch_table_rewrite_ptr, /* eglDestroySyncKHR */
+    epoxy_eglDestroySyncNV_dispatch_table_rewrite_ptr, /* eglDestroySyncNV */
+    epoxy_eglDupNativeFenceFDANDROID_dispatch_table_rewrite_ptr, /* eglDupNativeFenceFDANDROID */
+    epoxy_eglExportDMABUFImageMESA_dispatch_table_rewrite_ptr, /* eglExportDMABUFImageMESA */
+    epoxy_eglExportDMABUFImageQueryMESA_dispatch_table_rewrite_ptr, /* eglExportDMABUFImageQueryMESA */
+    epoxy_eglExportDRMImageMESA_dispatch_table_rewrite_ptr, /* eglExportDRMImageMESA */
+    epoxy_eglFenceNV_dispatch_table_rewrite_ptr, /* eglFenceNV */
+    epoxy_eglGetConfigAttrib_dispatch_table_rewrite_ptr, /* eglGetConfigAttrib */
+    epoxy_eglGetConfigs_dispatch_table_rewrite_ptr, /* eglGetConfigs */
+    epoxy_eglGetCurrentContext_dispatch_table_rewrite_ptr, /* eglGetCurrentContext */
+    epoxy_eglGetCurrentDisplay_dispatch_table_rewrite_ptr, /* eglGetCurrentDisplay */
+    epoxy_eglGetCurrentSurface_dispatch_table_rewrite_ptr, /* eglGetCurrentSurface */
+    epoxy_eglGetDisplay_dispatch_table_rewrite_ptr, /* eglGetDisplay */
+    epoxy_eglGetError_dispatch_table_rewrite_ptr, /* eglGetError */
+    epoxy_eglGetOutputLayersEXT_dispatch_table_rewrite_ptr, /* eglGetOutputLayersEXT */
+    epoxy_eglGetOutputPortsEXT_dispatch_table_rewrite_ptr, /* eglGetOutputPortsEXT */
+    epoxy_eglGetPlatformDisplay_dispatch_table_rewrite_ptr, /* eglGetPlatformDisplay */
+    epoxy_eglGetPlatformDisplayEXT_dispatch_table_rewrite_ptr, /* eglGetPlatformDisplayEXT */
+    epoxy_eglGetProcAddress_dispatch_table_rewrite_ptr, /* eglGetProcAddress */
+    epoxy_eglGetStreamFileDescriptorKHR_dispatch_table_rewrite_ptr, /* eglGetStreamFileDescriptorKHR */
+    epoxy_eglGetSyncAttrib_dispatch_table_rewrite_ptr, /* eglGetSyncAttrib */
+    epoxy_eglGetSyncAttribKHR_dispatch_table_rewrite_ptr, /* eglGetSyncAttribKHR */
+    epoxy_eglGetSyncAttribNV_dispatch_table_rewrite_ptr, /* eglGetSyncAttribNV */
+    epoxy_eglGetSystemTimeFrequencyNV_dispatch_table_rewrite_ptr, /* eglGetSystemTimeFrequencyNV */
+    epoxy_eglGetSystemTimeNV_dispatch_table_rewrite_ptr, /* eglGetSystemTimeNV */
+    epoxy_eglInitialize_dispatch_table_rewrite_ptr, /* eglInitialize */
+    epoxy_eglLockSurfaceKHR_dispatch_table_rewrite_ptr, /* eglLockSurfaceKHR */
+    epoxy_eglMakeCurrent_dispatch_table_rewrite_ptr, /* eglMakeCurrent */
+    epoxy_eglOutputLayerAttribEXT_dispatch_table_rewrite_ptr, /* eglOutputLayerAttribEXT */
+    epoxy_eglOutputPortAttribEXT_dispatch_table_rewrite_ptr, /* eglOutputPortAttribEXT */
+    epoxy_eglPostSubBufferNV_dispatch_table_rewrite_ptr, /* eglPostSubBufferNV */
+    epoxy_eglQueryAPI_dispatch_table_rewrite_ptr, /* eglQueryAPI */
+    epoxy_eglQueryContext_dispatch_table_rewrite_ptr, /* eglQueryContext */
+    epoxy_eglQueryDeviceAttribEXT_dispatch_table_rewrite_ptr, /* eglQueryDeviceAttribEXT */
+    epoxy_eglQueryDeviceStringEXT_dispatch_table_rewrite_ptr, /* eglQueryDeviceStringEXT */
+    epoxy_eglQueryDevicesEXT_dispatch_table_rewrite_ptr, /* eglQueryDevicesEXT */
+    epoxy_eglQueryDisplayAttribEXT_dispatch_table_rewrite_ptr, /* eglQueryDisplayAttribEXT */
+    epoxy_eglQueryNativeDisplayNV_dispatch_table_rewrite_ptr, /* eglQueryNativeDisplayNV */
+    epoxy_eglQueryNativePixmapNV_dispatch_table_rewrite_ptr, /* eglQueryNativePixmapNV */
+    epoxy_eglQueryNativeWindowNV_dispatch_table_rewrite_ptr, /* eglQueryNativeWindowNV */
+    epoxy_eglQueryOutputLayerAttribEXT_dispatch_table_rewrite_ptr, /* eglQueryOutputLayerAttribEXT */
+    epoxy_eglQueryOutputLayerStringEXT_dispatch_table_rewrite_ptr, /* eglQueryOutputLayerStringEXT */
+    epoxy_eglQueryOutputPortAttribEXT_dispatch_table_rewrite_ptr, /* eglQueryOutputPortAttribEXT */
+    epoxy_eglQueryOutputPortStringEXT_dispatch_table_rewrite_ptr, /* eglQueryOutputPortStringEXT */
+    epoxy_eglQueryStreamKHR_dispatch_table_rewrite_ptr, /* eglQueryStreamKHR */
+    epoxy_eglQueryStreamTimeKHR_dispatch_table_rewrite_ptr, /* eglQueryStreamTimeKHR */
+    epoxy_eglQueryStreamu64KHR_dispatch_table_rewrite_ptr, /* eglQueryStreamu64KHR */
+    epoxy_eglQueryString_dispatch_table_rewrite_ptr, /* eglQueryString */
+    epoxy_eglQuerySurface_dispatch_table_rewrite_ptr, /* eglQuerySurface */
+    epoxy_eglQuerySurface64KHR_dispatch_table_rewrite_ptr, /* eglQuerySurface64KHR */
+    epoxy_eglQuerySurfacePointerANGLE_dispatch_table_rewrite_ptr, /* eglQuerySurfacePointerANGLE */
+    epoxy_eglReleaseTexImage_dispatch_table_rewrite_ptr, /* eglReleaseTexImage */
+    epoxy_eglReleaseThread_dispatch_table_rewrite_ptr, /* eglReleaseThread */
+    epoxy_eglSetBlobCacheFuncsANDROID_dispatch_table_rewrite_ptr, /* eglSetBlobCacheFuncsANDROID */
+    epoxy_eglSetDamageRegionKHR_dispatch_table_rewrite_ptr, /* eglSetDamageRegionKHR */
+    epoxy_eglSignalSyncKHR_dispatch_table_rewrite_ptr, /* eglSignalSyncKHR */
+    epoxy_eglSignalSyncNV_dispatch_table_rewrite_ptr, /* eglSignalSyncNV */
+    epoxy_eglStreamAttribKHR_dispatch_table_rewrite_ptr, /* eglStreamAttribKHR */
+    epoxy_eglStreamConsumerAcquireKHR_dispatch_table_rewrite_ptr, /* eglStreamConsumerAcquireKHR */
+    epoxy_eglStreamConsumerGLTextureExternalKHR_dispatch_table_rewrite_ptr, /* eglStreamConsumerGLTextureExternalKHR */
+    epoxy_eglStreamConsumerOutputEXT_dispatch_table_rewrite_ptr, /* eglStreamConsumerOutputEXT */
+    epoxy_eglStreamConsumerReleaseKHR_dispatch_table_rewrite_ptr, /* eglStreamConsumerReleaseKHR */
+    epoxy_eglSurfaceAttrib_dispatch_table_rewrite_ptr, /* eglSurfaceAttrib */
+    epoxy_eglSwapBuffers_dispatch_table_rewrite_ptr, /* eglSwapBuffers */
+    epoxy_eglSwapBuffersRegion2NOK_dispatch_table_rewrite_ptr, /* eglSwapBuffersRegion2NOK */
+    epoxy_eglSwapBuffersRegionNOK_dispatch_table_rewrite_ptr, /* eglSwapBuffersRegionNOK */
+    epoxy_eglSwapBuffersWithDamageEXT_dispatch_table_rewrite_ptr, /* eglSwapBuffersWithDamageEXT */
+    epoxy_eglSwapBuffersWithDamageKHR_dispatch_table_rewrite_ptr, /* eglSwapBuffersWithDamageKHR */
+    epoxy_eglSwapInterval_dispatch_table_rewrite_ptr, /* eglSwapInterval */
+    epoxy_eglTerminate_dispatch_table_rewrite_ptr, /* eglTerminate */
+    epoxy_eglUnlockSurfaceKHR_dispatch_table_rewrite_ptr, /* eglUnlockSurfaceKHR */
+    epoxy_eglWaitClient_dispatch_table_rewrite_ptr, /* eglWaitClient */
+    epoxy_eglWaitGL_dispatch_table_rewrite_ptr, /* eglWaitGL */
+    epoxy_eglWaitNative_dispatch_table_rewrite_ptr, /* eglWaitNative */
+    epoxy_eglWaitSync_dispatch_table_rewrite_ptr, /* eglWaitSync */
+    epoxy_eglWaitSyncKHR_dispatch_table_rewrite_ptr, /* eglWaitSyncKHR */
 };
 
 uint32_t egl_tls_index;
