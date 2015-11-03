@@ -524,6 +524,8 @@ class Generator(object):
             'glBindVertexArrayAPPLE' : 'glBindVertexArray',
             'glBindFramebuffer' : 'glBindFramebufferEXT',
             'glBindFramebufferEXT' : 'glBindFramebuffer',
+            'glBindRenderbuffer' : 'glBindRenderbufferEXT',
+            'glBindRenderbufferEXT' : 'glBindRenderbuffer',
         }
         if func.name in half_aliases:
             alias_func = self.functions[half_aliases[func.name]]
@@ -622,9 +624,10 @@ class Generator(object):
         assert(offset < 65536)
 
         self.outln('static const uint16_t enum_string_offsets[] = {')
+        self.outln('    -1, /* {0}_provider_terminator, unused */'.format(self.target))
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
-            self.outln('    [{0}] = {1},'.format(enum, self.enum_string_offset[human_name]))
+            self.outln('    {1}, /* {0} */'.format(enum, self.enum_string_offset[human_name]))
         self.outln('};')
         self.outln('')
 
@@ -754,7 +757,7 @@ class Generator(object):
 
         self.outln('static struct dispatch_table resolver_table = {')
         for func in self.sorted_functions:
-            self.outln('    .{0} = epoxy_{0}_dispatch_table_rewrite_ptr,'.format(func.wrapped_name))
+            self.outln('    epoxy_{0}_dispatch_table_rewrite_ptr, /* {0} */'.format(func.wrapped_name))
         self.outln('};')
         self.outln('')
 
