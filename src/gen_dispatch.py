@@ -561,6 +561,8 @@ class Generator(object):
             'glBindVertexArrayAPPLE' : 'glBindVertexArray',
             'glBindFramebuffer' : 'glBindFramebufferEXT',
             'glBindFramebufferEXT' : 'glBindFramebuffer',
+            'glBindRenderbuffer' : 'glBindRenderbufferEXT',
+            'glBindRenderbufferEXT' : 'glBindRenderbuffer',
         }
         if func.name in half_aliases:
             alias_func = self.functions[half_aliases[func.name]]
