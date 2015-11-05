@@ -232,7 +232,9 @@ dlwrap_real_dlsym(void *handle, const char *name)
          * In the meantime, I'll just keep augmenting this
          * hard-coded version list as people report bugs. */
         const char *version[] = {
+            "GLIBC_2.3",
             "GLIBC_2.2.5",
+            "GLIBC_2.2",
             "GLIBC_2.0"
         };
         int num_versions = sizeof(version) / sizeof(version[0]);
