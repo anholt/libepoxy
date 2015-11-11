@@ -102,6 +102,11 @@ if test x$build_egl = xyes; then
     AC_DEFINE([BUILD_EGL], [1], [build EGL tests])
 fi
 
+PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
+if test x$gl = xno; then
+    build_glx=no
+fi
+
 AM_CONDITIONAL(BUILD_GLX, test x$build_glx = xyes)
 if test x$build_glx = xyes; then
     AC_DEFINE([BUILD_GLX], [1], [build GLX tests])
@@ -150,8 +155,6 @@ if test x$x11 = xno -a x$build_glx = xyes; then
 fi
 
 AM_CONDITIONAL(HAVE_X11, test x$x11 = xyes)
-
-PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
 
 AC_CONFIG_FILES([
                 epoxy.pc

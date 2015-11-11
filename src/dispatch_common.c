@@ -657,7 +657,11 @@ epoxy_get_proc_address(const char *name)
     return epoxy_gl_dlsym(name);
 #else
     if (epoxy_current_context_is_glx()) {
+#if PLATFORM_HAS_GLX
         return glXGetProcAddressARB((const GLubyte *)name);
+#else
+	return false;
+#endif
     } else {
 #if PLATFORM_HAS_EGL
         GLenum egl_api = epoxy_egl_get_current_gl_context_api();
