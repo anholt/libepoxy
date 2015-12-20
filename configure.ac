@@ -60,7 +60,7 @@ XORG_TESTSET_CFLAG(CWARNFLAGS, [-Wno-int-conversion])
 
 has_znow=yes
 
-case $host_os in
+case $target_os in
     mingw*)
         build_egl=no
         build_glx=no
@@ -102,6 +102,13 @@ if test x$build_egl = xyes; then
     AC_DEFINE([BUILD_EGL], [1], [build EGL tests])
 fi
 
+AC_SUBST(EGL_CFLAGS)
+
+PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
+if test x$gl = xno; then
+    build_glx=no
+fi
+
 AM_CONDITIONAL(BUILD_GLX, test x$build_glx = xyes)
 if test x$build_glx = xyes; then
     AC_DEFINE([BUILD_GLX], [1], [build GLX tests])
@@ -122,7 +129,7 @@ AM_CONDITIONAL(HAS_ZNOW, test x$has_znow = xyes)
 AC_CHECK_LIB([dl], [dlopen], [DLOPEN_LIBS="-ldl"])
 AC_SUBST([DLOPEN_LIBS])
 
-case $host_os in
+case $target_os in
     mingw*)
         # visibility flags aren't supported for windows DLLs, and the
         # compiler whines to tell you so, so don't set them up.
@@ -150,8 +157,6 @@ if test x$x11 = xno -a x$build_glx = xyes; then
 fi
 
 AM_CONDITIONAL(HAVE_X11, test x$x11 = xyes)
-
-PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
 
 AC_CONFIG_FILES([
                 epoxy.pc
