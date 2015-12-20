@@ -102,6 +102,8 @@ if test x$build_egl = xyes; then
     AC_DEFINE([BUILD_EGL], [1], [build EGL tests])
 fi
 
+AC_SUBST(EGL_CFLAGS)
+
 PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
 if test x$gl = xno; then
     build_glx=no
