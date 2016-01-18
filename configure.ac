@@ -61,7 +61,7 @@ XORG_TESTSET_CFLAG(CWARNFLAGS, [-Wno-int-conversion])
 AC_ARG_ENABLE([glx],
                 [AS_HELP_STRING([--disable-glx],
 				[disable if you don't want x11/glx support])],
-                [],
+                [enable_glx=$enableval],
                 [enable_glx=yes]
              )
 
@@ -74,7 +74,7 @@ has_znow=yes
 case $host_os in
     mingw*)
         build_egl=no
-        build_glx=no
+        build_glx=$x11
         build_wgl=yes
         # On windows, the DLL has to have all of its functions
         # resolved at link time, so we have to link directly aginst
@@ -89,7 +89,7 @@ case $host_os in
         ;;
     darwin*)
         build_egl=no
-        build_glx=no
+        build_glx=$x11
         build_wgl=no
         build_apple=yes
         has_znow=no
