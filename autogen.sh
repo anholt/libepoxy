@@ -7,7 +7,7 @@ ORIGDIR=`pwd`
 cd $srcdir
 
 autoreconf -v --install || exit 1
-cd $ORIGDIR || exit $?
+cd "$ORIGDIR" || exit $?
 
 if test -z "$NOCONFIGURE"; then
     $srcdir/configure "$@"
