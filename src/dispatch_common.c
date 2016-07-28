@@ -348,7 +348,12 @@ bool
 epoxy_extension_in_string(const char *extension_list, const char *ext)
 {
     const char *ptr = extension_list;
-    int len = strlen(ext);
+    int len;
+    
+    if (!extension_list)
+        return false;
+        
+    len = strlen(ext);
 
     /* Make sure that don't just find an extension with our name as a prefix. */
     while (true) {
