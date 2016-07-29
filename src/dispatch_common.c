@@ -359,6 +359,8 @@ epoxy_conservative_gl_version(void)
 bool
 epoxy_extension_in_string(const char *extension_list, const char *ext)
 {
+    if (!extension_list)
+        return false;
     const char *ptr = extension_list;
     size_t len = strlen(ext);
 
