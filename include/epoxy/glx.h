@@ -39,10 +39,11 @@ extern "C" {
 #include <X11/Xutil.h>
 #include <stdbool.h>
 
-#if defined(GLX_H) || defined(__glxext_h_)
+#if defined(GLX_H) || defined(__glx_h__) || defined(__glxext_h_)
 #error epoxy/glx.h must be included before (or in place of) GL/glx.h
 #else
 #define GLX_H
+#define __glx_h__
 #define __glxext_h_
 #endif
 
