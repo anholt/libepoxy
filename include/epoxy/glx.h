@@ -43,6 +43,7 @@ extern "C" {
 #error epoxy/glx.h must be included before (or in place of) GL/glx.h
 #else
 #define GLX_H
+#define __glx_h__
 #define __glxext_h_
 #endif
 
