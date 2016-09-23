@@ -54,16 +54,11 @@ epoxy_egl_version(EGLDisplay dpy)
 bool
 epoxy_conservative_has_egl_extension(const char *ext)
 {
-    EGLDisplay dpy = eglGetCurrentDisplay();
-
-    if (!dpy)
-        return true;
-
-    return epoxy_has_egl_extension(dpy, ext);
+    return epoxy_has_egl_extension(eglGetCurrentDisplay(), ext);
 }
 
 PUBLIC bool
 epoxy_has_egl_extension(EGLDisplay dpy, const char *ext)
 {
-    return epoxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext);
+    return epoxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext) || epoxy_extension_in_string(eglQueryString(NULL, EGL_EXTENSIONS), ext);
 }
