@@ -91,21 +91,21 @@ With MSVC you can also build directly with NMAKE. This type of build only
 supports building shared libraries. However it also supports building
 tests.
 
-1) Check src\Makefile.vc to ensure that PYTHONDIR is pointing to your Python
+1. Check src\Makefile.vc to ensure that PYTHONDIR is pointing to your Python
    installation, either a 32-bit or a 64-bit (x64) installation of Python 2 or 3
    will do.
-2) Copy "include\epoxy\config.h.guess" to "include\epoxy\config.h".
-3) Open an MSVC Command prompt and run "nmake Makefile.vc CFG=release" or
+2. Copy "include\epoxy\config.h.guess" to "include\epoxy\config.h".
+3. Open an MSVC Command prompt and run "nmake Makefile.vc CFG=release" or
    "nmake Makefile.vc CFG=debug" in src\ for a release or debug build.
-4) Optionally, add src\ into your PATH and run the previous step in test\. Run
+4. Optionally, add src\ into your PATH and run the previous step in test\. Run
    the tests by running the built ".exe"-s.
-5) Assuming you want to install in %INSTALL_DIR%, copy common.h, config.h,
+5. Assuming you want to install in %INSTALL_DIR%, copy common.h, config.h,
    khrplatform.h, eglplatform.h, gl.h, gl_generated.h, wgl.h, wgl_generated.h,
    egl.h and egl_generated.h from include\epoxy\ to
    %INSTALL_DIR%\include\epoxy\, copy src\epoxy.lib to %INSTALL_DIR%\lib\ and
    copy epoxy-vs12.dll and epoxy-vs12.pdb (if you've built a debug build) from
    src\ to %INSTALL_DIR%\bin\. Create directories as needed.
-6) To clean the project, repeat steps 2 and 3, adding " clean" to the commands.
+6. To clean the project, repeat steps 2 and 3, adding " clean" to the commands.
 
 Switching your Code to Use Epoxy
 ---------------------------------
