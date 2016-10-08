@@ -1,11 +1,11 @@
 Epoxy is a library for handling OpenGL function pointer management for
 you.
 
-It hides the complexity of ```dlopen()```, ```dlsym()```,
-```glXGetProcAddress()```, ```eglGetProcAddress()```, etc. from the
+It hides the complexity of `dlopen()`, `dlsym()`,
+`glXGetProcAddress()`, `eglGetProcAddress()`, etc. from the
 app developer, with very little knowledge needed on their part.  They
 get to read GL specs and write code using undecorated function names
-like ```glCompileShader()```.
+like `glCompileShader()`.
 
 Don't forget to check for your extensions or versions being present
 before you use them, just like before!  We'll tell you what you forgot
@@ -17,8 +17,8 @@ Features
 * Automatically initializes as new OpenGL functions are used.
 * Desktop OpenGL 4.4 core and compatibility context support.
 * OpenGL ES 1/2/3 context support.
-* Knows about function aliases so (e.g.) ```glBufferData()``` can be
-  used with ```GL_ARB_vertex_buffer_object``` implementations, along
+* Knows about function aliases so (e.g.) `glBufferData()` can be
+  used with `GL_ARB_vertex_buffer_object` implementations, along
   with desktop OpenGL 1.5+ implementations.
 * GLX, and WGL support.
 * EGL support. EGL headers are included, so they're not necessary to build Epoxy
@@ -37,27 +37,27 @@ Building with CMake should be as simple as running:
     cd <my-build_dir>
     cmake -G <my-generator> <my-source-dir>
 
-(run "cmake -h" see a list of possible generators). Then, to build the project,
-depending on the type of generator you use, e.g. for Unix type "make", and for
+(run `cmake -h` see a list of possible generators). Then, to build the project,
+depending on the type of generator you use, e.g. for Unix type `make`, and for
 MSVC open the solution in Visual studio and build the solution.
 
-* NOTE: To build for 64 bit with MSVC add " Win64" to the generator name, e.g.
-  "Visual studio 14 2015 Win64".
+* NOTE: To build for 64 bit with MSVC add ` Win64` to the generator name, e.g.
+  `Visual studio 14 2015 Win64`.
 
 * To rebuild the generated headers from the specs, add
-"-DEPOXY_REBUILD_FROM_SPECS=ON" to the "cmake" invocation.
+`-DEPOXY_REBUILD_FROM_SPECS=ON` to the `cmake` invocation.
 
 * To build also static libraries, add
-"-DEPOXY_BUILD_STATIC=ON" to the "cmake" invocation.
+`-DEPOXY_BUILD_STATIC=ON` to the `cmake` invocation.
 
 * To disable building shared libraries, add
-"-DEPOXY_BUILD_SHARED=OFF" to the "cmake" invocation.
+`-DEPOXY_BUILD_SHARED=OFF` to the `cmake` invocation.
 
 * To disable building tests, add
-"-DEPOXY_BUILD_TESTS=OFF" to the "cmake" invocation.
+`-DEPOXY_BUILD_TESTS=OFF` to the `cmake` invocation.
 
 * To link to the static Runtime Library with MSVC (rather than to the DLL), add
-"-DEPOXY_MSVC_USE_RUNTIME_LIBRARY_DLL=OFF" to the "cmake" invocation.
+`-DEPOXY_MSVC_USE_RUNTIME_LIBRARY_DLL=OFF` to the `cmake` invocation.
 
 Building (Autotools)
 ---------------------
@@ -91,21 +91,21 @@ With MSVC you can also build directly with NMAKE. This type of build only
 supports building shared libraries. However it also supports building
 tests.
 
-1. Check src\Makefile.vc to ensure that PYTHONDIR is pointing to your Python
+1. Check `src\Makefile.vc` to ensure that `PYTHONDIR` is pointing to your Python
    installation, either a 32-bit or a 64-bit (x64) installation of Python 2 or 3
    will do.
-2. Copy "include\epoxy\config.h.guess" to "include\epoxy\config.h".
-3. Open an MSVC Command prompt and run "nmake Makefile.vc CFG=release" or
-   "nmake Makefile.vc CFG=debug" in src\ for a release or debug build.
+2. Copy `include\epoxy\config.h.guess` to `include\epoxy\config.h`.
+3. Open an MSVC Command prompt and run `nmake Makefile.vc CFG=release` or
+   `nmake Makefile.vc CFG=debug` in src\ for a release or debug build.
 4. Optionally, add src\ into your PATH and run the previous step in test\. Run
-   the tests by running the built ".exe"-s.
-5. Assuming you want to install in %INSTALL_DIR%, copy common.h, config.h,
-   khrplatform.h, eglplatform.h, gl.h, gl_generated.h, wgl.h, wgl_generated.h,
-   egl.h and egl_generated.h from include\epoxy\ to
-   %INSTALL_DIR%\include\epoxy\, copy src\epoxy.lib to %INSTALL_DIR%\lib\ and
-   copy epoxy-vs12.dll and epoxy-vs12.pdb (if you've built a debug build) from
-   src\ to %INSTALL_DIR%\bin\. Create directories as needed.
-6. To clean the project, repeat steps 2 and 3, adding " clean" to the commands.
+   the tests by running the built `.exe`s.
+5. Assuming you want to install in `%INSTALL_DIR%`, copy `common.h`, `config.h`,
+   `khrplatform.h`, `eglplatform.h`, `gl.h`, `gl_generated.h`, `wgl.h`, `wgl_generated.h`,
+   `egl.h` and `egl_generated.h` from `include\epoxy\` to
+   `%INSTALL_DIR%\include\epoxy\`, copy `src\epoxy.lib` to `%INSTALL_DIR%\lib\` and
+   copy `epoxy-vs12.dll` and `epoxy-vs12.pdb` (if you've built a debug build) from
+   `src\` to `%INSTALL_DIR%\bin\`. Create directories as needed.
+6. To clean the project, repeat steps 2 and 3, adding ` clean` to the commands.
 
 Switching your Code to Use Epoxy
 ---------------------------------
@@ -133,14 +133,14 @@ As long as epoxy's headers appear first, you should be ready to go.
 Additionally, some new helpers become available, so you don't have to
 write them:
 
-```int epoxy_gl_version()``` returns the GL version:
+`int epoxy_gl_version()` returns the GL version:
 
 * 12 for GL 1.2
 * 20 for GL 2.0
 * 44 for GL 4.4
 
-```bool epoxy_has_gl_extension()``` returns whether a GL extension is
-available (```GL_ARB_texture_buffer_object```, for example).
+`bool epoxy_has_gl_extension()` returns whether a GL extension is
+available (`GL_ARB_texture_buffer_object`, for example).
 
 Note that this is not terribly fast, so keep it out of your hot paths,
 ok?
@@ -154,18 +154,18 @@ some platforms necessary) to use an OpenGL ES / EGL emulator. I recommend using
 [PowerVR SDK](http://community.imgtec.com/developers/powervr/graphics-sdk/),
 which is available for Linux, OS X and Windows. Download it and run the
 installer. In the installer, you don't have to check everything: Enough to check
-"PowerVR Tools -> PVRVFrame" and "PowerVR SDK -> Native SDK". There's no need to
+`PowerVR Tools -> PVRVFrame` and `PowerVR SDK -> Native SDK`. There's no need to
 add anything from PowerVR SDK to the include directories to build or use Epoxy,
 as it already includes all the necessary headers for using OpenGL ES / EGL.
 There's also no need to link with anything from PowerVR SDK to build or use
 Epoxy, as it loads the necessary libraries at run-time. However, when running
 your app, if want to use EGL / OpenGL ES, you'll have to add the directory that
-contains the right shared libraries ("GLES_CM", "GLESv2" and "EGL") to you
-"PATH" environment variable. For instance, if you're on Windows, and used the
+contains the right shared libraries (`GLES_CM`, `GLESv2` and `EGL`) to your
+`PATH` environment variable. For instance, if you're on Windows, and used the
 default locations when installing PowerVR SDK, then add
-"C:\Imagination\PowerVR_Graphics\PowerVR_Tools\PVRVFrame\Library\Windows_x86_64"
-to your "PATH" (for Windows 64 bit) or
-"C:\Imagination\PowerVR_Graphics\PowerVR_Tools\PVRVFrame\Library\Windows_x86_32"
+`C:\Imagination\PowerVR_Graphics\PowerVR_Tools\PVRVFrame\Library\Windows_x86_64`
+to your `PATH` (for Windows 64 bit) or
+`C:\Imagination\PowerVR_Graphics\PowerVR_Tools\PVRVFrame\Library\Windows_x86_32`
 (for Windows 32 bit). For other platforms it would be something similar. Of
 course, feel free to copy the shared libraries somewhere else.
 
@@ -182,7 +182,7 @@ GLEW has several issues:
 * Doesn't support EGL.
 * Has a hard-to-maintain parser of extension specification text
   instead of using the old .spec file or the new .xml.
-* Has significant startup time overhead when ```glewInit()```
+* Has significant startup time overhead when `glewInit()`
   autodetects the world.
 
 The motivation for this project came out of previous use of libGLEW in
@@ -200,13 +200,13 @@ Windows issues
 ---------------
 
 The automatic per-context symbol resolution for win32 requires that
-epoxy knows when ```wglMakeCurrent()``` is called, because
+epoxy knows when `wglMakeCurrent()` is called, because
 wglGetProcAddress() return values depend on the context's device and
-pixel format.  If ```wglMakeCurrent()``` is called from outside of
+pixel format.  If `wglMakeCurrent()` is called from outside of
 epoxy (in a way that might change the device or pixel format), then
 epoxy needs to be notified of the change using the
-```epoxy_handle_external_wglMakeCurrent()``` function.
+`epoxy_handle_external_wglMakeCurrent()` function.
 
-The win32 wglMakeCurrent() variants are slower than they should be,
+The win32 `wglMakeCurrent()` variants are slower than they should be,
 because they should be caching the resolved dispatch tables instead of
 resetting an entire thread-local dispatch table every time.
