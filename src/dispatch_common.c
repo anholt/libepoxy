@@ -572,31 +572,15 @@ epoxy_get_core_proc_address(const char *name, int core_version)
 static EGLenum
 epoxy_egl_get_current_gl_context_api(void)
 {
-    EGLenum save_api = eglQueryAPI();
-    EGLContext ctx;
+    EGLint curapi;
 
-    if (eglBindAPI(EGL_OPENGL_API)) {
-        ctx = eglGetCurrentContext();
-        if (ctx) {
-            eglBindAPI(save_api);
-            return EGL_OPENGL_API;
-        }
-    } else {
-        (void)eglGetError();
+    if (eglQueryContext(eglGetCurrentDisplay(), eglGetCurrentContext(),
+			EGL_CONTEXT_CLIENT_TYPE, &curapi) == EGL_FALSE) {
+	(void)eglGetError();
+	return EGL_NONE;
     }
 
-    if (eglBindAPI(EGL_OPENGL_ES_API)) {
-        ctx = eglGetCurrentContext();
-        eglBindAPI(save_api);
-        if (ctx) {
-            eglBindAPI(save_api);
-            return EGL_OPENGL_ES_API;
-        }
-    } else {
-        (void)eglGetError();
-    }
-
-    return EGL_NONE;
+    return (EGLenum) curapi;
 }
 #endif /* PLATFORM_HAS_EGL */
 
