@@ -347,10 +347,11 @@ epoxy_conservative_gl_version(void)
 bool
 epoxy_extension_in_string(const char *extension_list, const char *ext)
 {
-    if (!extension_list)
-        return false;
     const char *ptr = extension_list;
     int len = strlen(ext);
+
+    if (extension_list == NULL || *extension_list == '\0')
+        return false;
 
     /* Make sure that don't just find an extension with our name as a prefix. */
     while (true) {
