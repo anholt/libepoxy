@@ -72,8 +72,6 @@ get_glx_window(Display *dpy, XVisualInfo *visinfo, bool map)
 	Window root_win = RootWindow(dpy, screen);
 	Window win;
 
-        EPOXY_UNUSED(map);
-
 	window_attr.background_pixel = 0;
 	window_attr.border_pixel = 0;
 	window_attr.colormap = XCreateColormap(dpy, root_win,
@@ -121,7 +119,7 @@ get_fbconfig_for_visinfo(Display *dpy, XVisualInfo *visinfo)
 		if (glXGetFBConfigAttrib(dpy, configs[i], GLX_VISUAL_ID, &v))
 			continue;
 
-		if (v == (int)visinfo->visualid) {
+		if (v == visinfo->visualid) {
 			ret = configs[i];
 			break;
 		}

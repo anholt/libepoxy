@@ -35,6 +35,7 @@
  * regardless.
  */
 
+#include <config.h>
 #include <stdio.h>
 #include <assert.h>
 
@@ -56,7 +57,6 @@ OVERRIDE_API (PROC) override_wglGetProcAddress(LPCSTR name);
 OVERRIDE_API (GLuint)
 override_glCreateShader_ctx1(GLenum target)
 {
-    EPOXY_UNUSED(target);
     if (current_context != ctx1) {
         fprintf(stderr, "ctx1 called while other context current\n");
         pass = false;
@@ -67,7 +67,6 @@ override_glCreateShader_ctx1(GLenum target)
 OVERRIDE_API (GLuint)
 override_glCreateShader_ctx2(GLenum target)
 {
-    EPOXY_UNUSED(target);
     if (current_context != ctx2) {
         fprintf(stderr, "ctx2 called while other context current\n");
         pass = false;
@@ -157,7 +156,8 @@ test_function(HDC hdc)
     return !pass;
 }
 
-int main()
+int
+main(int argc, char **argv)
 {
     make_window_and_test(test_function);
 

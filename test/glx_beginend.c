@@ -89,7 +89,8 @@ test_without_epoxy(void)
     return true;
 }
 
-int main(void)
+int
+main(int argc, char **argv)
 {
     bool pass = true;
 

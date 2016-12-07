@@ -30,26 +30,26 @@
 #ifndef EPOXY_GLX_H
 #define EPOXY_GLX_H
 
-#if defined(GLX_H) || defined(__glx_h__) || defined(__glxext_h_)
-#error "epoxy/glx.h" must be included before (or in place of) "GL/glx.h".
-#endif
-
-#define GLX_H
-#define __glx_h__
-#define __glxext_h_
-
-#include "epoxy/gl.h"
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#include <epoxy/gl.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <stdbool.h>
+
+#if defined(GLX_H) || defined(__glxext_h_)
+#error epoxy/glx.h must be included before (or in place of) GL/glx.h
+#else
+#define GLX_H
+#define __glxext_h_
+#endif
+
 #include "epoxy/glx_generated.h"
 
-EPOXY_IMPORTEXPORT bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
-EPOXY_IMPORTEXPORT int epoxy_glx_version(Display *dpy, int screen);
+bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
+int epoxy_glx_version(Display *dpy, int screen);
 
 #ifdef __cplusplus
 } /* extern "C" */

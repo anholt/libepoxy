@@ -21,6 +21,7 @@
  * IN THE SOFTWARE.
  */
 
+#include <config.h>
 #include <stdio.h>
 
 #include "wgl_common.h"
@@ -47,7 +48,7 @@ test_function(HDC hdc)
     /* First, use the #ifdeffed variant of the function */
     wglUseFontBitmaps(hdc, 0, 255, dlist[1]);
     glListBase(dlist[1]);
-    glCallLists((GLsizei)strlen(string), GL_UNSIGNED_BYTE, string);
+    glCallLists(strlen(string), GL_UNSIGNED_BYTE, string);
 
     /* Now, use the specific version, manually. */
 #ifdef UNICODE
@@ -56,7 +57,7 @@ test_function(HDC hdc)
     wglUseFontBitmapsA(hdc, 0, 255, dlist[2]);
 #endif
     glListBase(dlist[2]);
-    glCallLists((GLsizei)strlen(string), GL_UNSIGNED_BYTE, string);
+    glCallLists(strlen(string), GL_UNSIGNED_BYTE, string);
 
     wglMakeCurrent(NULL, NULL);
     wglDeleteContext(ctx);
@@ -64,7 +65,8 @@ test_function(HDC hdc)
     return !pass;
 }
 
-int main()
+int
+main(int argc, char **argv)
 {
     make_window_and_test(test_function);
 

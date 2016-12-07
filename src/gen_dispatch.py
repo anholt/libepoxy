@@ -77,7 +77,7 @@ class GLFunction(object):
             self.public = ''
         else:
             self.wrapped_name = name
-            self.public = 'EPOXY_IMPORTEXPORT '
+            self.public = 'PUBLIC '
 
         # This is the string of C code for passing through the
         # arguments to the function.
@@ -483,6 +483,43 @@ class Generator(object):
     def write_header(self, file):
         self.write_header_header(file)
 
+        if self.target != "gl":
+            self.outln('#include "epoxy/gl.h"')
+            if self.target == "egl":
+                self.outln('#include "EGL/eglplatform.h"')
+        else:
+            # Add some ridiculous inttypes.h redefinitions that are
+            # from khrplatform.h and not included in the XML.  We
+            # don't directly include khrplatform.h because it's not
+            # present on many systems, and coming up with #ifdefs to
+            # decide when it's not present would be hard.
+            self.outln('#define __khrplatform_h_ 1')
+            self.outln('typedef int8_t khronos_int8_t;')
+            self.outln('typedef int16_t khronos_int16_t;')
+            self.outln('typedef int32_t khronos_int32_t;')
+            self.outln('typedef int64_t khronos_int64_t;')
+            self.outln('typedef uint8_t khronos_uint8_t;')
+            self.outln('typedef uint16_t khronos_uint16_t;')
+            self.outln('typedef uint32_t khronos_uint32_t;')
+            self.outln('typedef uint64_t khronos_uint64_t;')
+            self.outln('typedef float khronos_float_t;')
+            self.outln('typedef long khronos_intptr_t;')
+            self.outln('typedef long khronos_ssize_t;')
+            self.outln('typedef unsigned long khronos_usize_t;')
+            self.outln('typedef uint64_t khronos_utime_nanoseconds_t;')
+            self.outln('typedef int64_t khronos_stime_nanoseconds_t;')
+            self.outln('#define KHRONOS_MAX_ENUM 0x7FFFFFFF')
+            self.outln('typedef enum {')
+            self.outln('    KHRONOS_FALSE = 0,')
+            self.outln('    KHRONOS_TRUE  = 1,')
+            self.outln('    KHRONOS_BOOLEAN_ENUM_FORCE_SIZE = KHRONOS_MAX_ENUM')
+            self.outln('} khronos_boolean_enum_t;')
+            self.outln('typedef uintptr_t khronos_uintptr_t;')
+
+        if self.target == "glx":
+            self.outln('#include <X11/Xlib.h>')
+            self.outln('#include <X11/Xutil.h>')
+
         self.out(self.typedefs)
         self.outln('')
         self.write_enums()
@@ -524,8 +561,6 @@ class Generator(object):
             'glBindVertexArrayAPPLE' : 'glBindVertexArray',
             'glBindFramebuffer' : 'glBindFramebufferEXT',
             'glBindFramebufferEXT' : 'glBindFramebuffer',
-            'glBindRenderbuffer' : 'glBindRenderbufferEXT',
-            'glBindRenderbufferEXT' : 'glBindRenderbuffer',
         }
         if func.name in half_aliases:
             alias_func = self.functions[half_aliases[func.name]]
@@ -543,7 +578,7 @@ class Generator(object):
             self.outln('        {0}_provider_terminator'.format(self.target))
             self.outln('    };')
 
-            self.outln('    static const uint32_t entrypoints[] = {')
+            self.outln('    static const uint16_t entrypoints[] = {')
             if len(providers) > 1:
                 for provider in providers:
                     self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
@@ -571,7 +606,7 @@ class Generator(object):
         #
         # It also writes out the actual initialized global function
         # pointer.
-        if func.ret_type == 'void' or func.ret_type=='VOID':
+        if func.ret_type == 'void':
             self.outln('GEN_THUNKS({0}, ({1}), ({2}))'.format(func.wrapped_name,
                                                               func.args_decl,
                                                               func.args_list))
@@ -624,34 +659,31 @@ class Generator(object):
         assert(offset < 65536)
 
         self.outln('static const uint16_t enum_string_offsets[] = {')
-        self.outln('    -1, /* {0}_provider_terminator, unused */'.format(self.target))
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
-            self.outln('    {1}, /* {0} */'.format(enum, self.enum_string_offset[human_name]))
+            self.outln('    [{0}] = {1},'.format(enum, self.enum_string_offset[human_name]))
         self.outln('};')
         self.outln('')
 
     def write_entrypoint_strings(self):
         self.entrypoint_string_offset = {}
 
-        self.outln('static const char entrypoint_strings[] = {')
+        self.outln('static const char entrypoint_strings[] = ')
         offset = 0
         for func in self.sorted_functions:
             if func.name not in self.entrypoint_string_offset:
                 self.entrypoint_string_offset[func.name] = offset
                 offset += len(func.name) + 1
-                for c in func.name:
-                    self.outln("   '{0}',".format(c))
-                self.outln('   0, // {0}'.format(func.name))
-        self.outln('    0 };')
+                self.outln('   "{0}\\0"'.format(func.name))
+        self.outln('    ;')
         # We're using uint16_t for the offsets.
-        #assert(offset < 65536)
+        assert(offset < 65536)
         self.outln('')
 
     def write_provider_resolver(self):
         self.outln('static void *{0}_provider_resolver(const char *name,'.format(self.target))
         self.outln('                                   const enum {0}_provider *providers,'.format(self.target))
-        self.outln('                                   const uint32_t *entrypoints)')
+        self.outln('                                   const uint16_t *entrypoints)')
         self.outln('{')
         self.outln('    int i;')
 
@@ -688,7 +720,7 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-        single_resolver_proto = '{0}_single_resolver(enum {0}_provider provider, uint32_t entrypoint_offset)'.format(self.target)
+        single_resolver_proto = '{0}_single_resolver(enum {0}_provider provider, uint16_t entrypoint_offset)'.format(self.target)
         self.outln('EPOXY_NOINLINE static void *')
         self.outln('{0};'.format(single_resolver_proto))
         self.outln('')
@@ -757,7 +789,7 @@ class Generator(object):
 
         self.outln('static struct dispatch_table resolver_table = {')
         for func in self.sorted_functions:
-            self.outln('    epoxy_{0}_dispatch_table_rewrite_ptr, /* {0} */'.format(func.wrapped_name))
+            self.outln('    .{0} = epoxy_{0}_dispatch_table_rewrite_ptr,'.format(func.wrapped_name))
         self.outln('};')
         self.outln('')
 
