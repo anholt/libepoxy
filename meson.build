@@ -52,7 +52,6 @@ endif
 
 # Compiler flags, taken from the Xorg macros
 test_cflags = [
-  '-Wall',
   '-Wpointer-arith',
   '-Wmissing-declarations',
   '-Wformat=2',
