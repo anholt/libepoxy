@@ -836,11 +836,23 @@ class Generator(object):
 
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
 argparser.add_argument('files', metavar='file.xml', nargs='+', help='GL API XML files to be parsed')
-argparser.add_argument('--dir', metavar='dir', required=True, help='Destination directory')
+argparser.add_argument('--srcdir', metavar='srcdir', required=False, help='Destination directory for source files')
+argparser.add_argument('--includedir', metavar='incdir', required=False, help='Destination director for header files')
+argparser.add_argument('--dir', metavar='dir', required=False, help='Destination directory')
 args = argparser.parse_args()
 
-srcdir = args.dir + '/src/'
-incdir = args.dir + '/include/epoxy/'
+if args.dir:
+    srcdir = args.dir
+    incdir = args.dir
+else:
+    srcdir = args.srcdir
+    incdir = args.includedir
+
+if not srcdir:
+    srcdir = os.getcwd()
+
+if not incdir:
+    incdir = os.getcwd()
 
 for file in args.files:
     name = os.path.basename(file).split('.xml')[0]
@@ -869,5 +881,5 @@ for file in args.files:
 
     generator.prepare_provider_enum()
 
-    generator.write_header(incdir + name + '_generated.h')
-    generator.write_source(srcdir + name + '_generated_dispatch.c')
+    generator.write_header(os.path.join(incdir, name + '_generated.h'))
+    generator.write_source(os.path.join(srcdir, name + '_generated_dispatch.c'))
