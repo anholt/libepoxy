@@ -114,21 +114,21 @@ Switching your Code to Use Epoxy
   "EPOXY_STATIC_LIB" defined!
 
 It should be as easy as replacing:
-
-    #include <GL/gl.h>
-    #include <GL/glx.h>
-    #include <GL/glext.h>
-    #include <EGL/egl.h>
-    #include <EGL/eglext.h>
-    #include <Windows.h> // for WGL
-
+```c
+#include <GL/gl.h>
+#include <GL/glx.h>
+#include <GL/glext.h>
+#include <EGL/egl.h>
+#include <EGL/eglext.h>
+#include <Windows.h> // for WGL
+```
 with:
-
-    #include <epoxy/gl.h>
-    #include <epoxy/glx.h>
-    #include <epoxy/egl.h>
-    #include <epoxy/wgl.h>
-
+```c
+#include <epoxy/gl.h>
+#include <epoxy/glx.h>
+#include <epoxy/egl.h>
+#include <epoxy/wgl.h>
+```
 As long as epoxy's headers appear first, you should be ready to go.
 Additionally, some new helpers become available, so you don't have to
 write them:
