@@ -11,10 +11,12 @@ test_cflags = common_cflags + [
 test('header_guards',
      executable('header guards', 'headerguards.c',
                 c_args: common_cflags,
+                dependencies: libepoxy_dep,
                 include_directories: libepoxy_inc))
 test('misc_defines',
      executable('misc defines', 'miscdefines.c',
                 c_args: common_cflags,
+                dependencies: libepoxy_dep,
                 include_directories: libepoxy_inc))
 test('khronos_typedefs',
      executable('khronos typedefs', [
@@ -23,6 +25,7 @@ test('khronos_typedefs',
                   'khronos_typedefs_nonepoxy.c',
                 ],
                 c_args: common_cflags,
+                dependencies: libepoxy_dep,
                 include_directories: libepoxy_inc))
 
 if build_egl and build_x11_tests

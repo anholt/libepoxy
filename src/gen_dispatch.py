@@ -836,23 +836,36 @@ class Generator(object):
 
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
 argparser.add_argument('files', metavar='file.xml', nargs='+', help='GL API XML files to be parsed')
-argparser.add_argument('--srcdir', metavar='srcdir', required=False, help='Destination directory for source files')
-argparser.add_argument('--includedir', metavar='incdir', required=False, help='Destination director for header files')
-argparser.add_argument('--dir', metavar='dir', required=False, help='Destination directory')
+argparser.add_argument('--outputdir', metavar='dir', required=False, help='Destination directory for files (default to current dir)')
+argparser.add_argument('--includedir', metavar='dir', required=False, help='Destination directory for headers')
+argparser.add_argument('--srcdir', metavar='dir', required=False, help='Destination directory for source')
+argparser.add_argument('--source', dest='source', action='store_true', required=False, help='Generate the source file')
+argparser.add_argument('--no-source', dest='source', action='store_false', required=False, help='Do not generate the source file')
+argparser.add_argument('--header', dest='header', action='store_true', required=False, help='Generate the header file')
+argparser.add_argument('--no-header', dest='header', action='store_false', required=False, help='Do not generate the header file')
 args = argparser.parse_args()
 
-if args.dir:
-    srcdir = args.dir
-    incdir = args.dir
+if args.outputdir:
+    outputdir = args.outputdir
 else:
+    outputdir = os.getcwd()
+
+if args.includedir:
+    includedir = args.includedir
+else:
+    includedir = outputdir
+
+if args.srcdir:
     srcdir = args.srcdir
-    incdir = args.includedir
+else:
+    srcdir = outputdir
 
-if not srcdir:
-    srcdir = os.getcwd()
+build_source = args.source
+build_header = args.header
 
-if not incdir:
-    incdir = os.getcwd()
+if not build_source and not build_header:
+    build_source = True
+    build_header = True
 
 for file in args.files:
     name = os.path.basename(file).split('.xml')[0]
@@ -881,5 +894,7 @@ for file in args.files:
 
     generator.prepare_provider_enum()
 
-    generator.write_header(os.path.join(incdir, name + '_generated.h'))
-    generator.write_source(os.path.join(srcdir, name + '_generated_dispatch.c'))
+    if build_header:
+        generator.write_header(os.path.join(includedir, name + '_generated.h'))
+    if build_source:
+        generator.write_source(os.path.join(srcdir, name + '_generated_dispatch.c'))

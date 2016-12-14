@@ -1,6 +1,6 @@
-project('libepoxy', 'c', version: '1.3.1',
+project('libepoxy', 'c', version: '1.3.2',
         default_options: [
-          'buildtype=debug',
+          'buildtype=debugoptimized',
           'c_std=gnu99',
           'warning_level=1',
         ],
@@ -102,8 +102,6 @@ x11_dep = dependency('x11', required: false)
 gles1_dep = cc.find_library('libGLESv1_CM', required: false)
 gles2_dep = cc.find_library('libGLESv2', required: false)
 
-epoxy_include = include_directories('include')
-
 # PkgConfig file
 pkgconf = configuration_data()
 pkgconf.set('prefix', epoxy_prefix)
@@ -121,5 +119,24 @@ configure_file(input: 'epoxy.pc.in',
                install: true,
                install_dir: join_paths(epoxy_libdir, 'pkgconfig'))
 
+# Find Python for gen_dispatch
+# XXX: With Meson 0.37 we should use
+#   python = import('python3').find_python()
+python = find_program('python3')
+
+# Generates the dispatch tables
+gen_dispatch_py = find_program('src/gen_dispatch.py')
+
+gl_registry = join_paths(meson.source_root(), 'registry/gl.xml')
+egl_registry = join_paths(meson.source_root(), 'registry/egl.xml')
+glx_registry = join_paths(meson.source_root(), 'registry/glx.xml')
+wgl_registry = join_paths(meson.source_root(), 'registry/wgl.xml')
+
+libepoxy_inc = [
+  include_directories('include'),
+  include_directories('src'),
+]
+
+subdir('include/epoxy')
 subdir('src')
 subdir('test')
