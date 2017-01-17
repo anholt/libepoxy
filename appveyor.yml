@@ -7,25 +7,28 @@ configuration: Release
 environment:
   matrix:
   - platform: x86
-    outdir: Win32
   - platform: x64
-    outdir: x64
 
 shallow_clone: true
 
 before_build:
 - mkdir build
-- mkdir install
+- mkdir libepoxy-shared-%PLATFORM%
 
 build_script:
 - cd build
-- cmake .. -G "Visual Studio 12 2013 Win64" -DCMAKE_INSTALL_PREFIX=../install -DEPOXY_SUPPORT_EGL=OFF
+- cmake .. -G "Visual Studio 12 2013 Win64" -DCMAKE_INSTALL_PREFIX=../libepoxy-shared-%PLATFORM% -DEPOXY_SUPPORT_EGL=OFF
 - msbuild /t:Rebuild /p:Configuration=Release ALL_BUILD.vcxproj
 - msbuild /t:Rebuild /p:Configuration=Release INSTALL.vcxproj
 - cd ..
 
 after_build:
-- cd install
+- cd libepoxy-shared-%PLATFORM%
+- dir include
+- dir lib
+- dir bin
+- cd ..
+- 7z a -tzip libepoxy-shared-%PLATFORM%.zip libepoxy-shared-%PLATFORM%
 - dir
 #- mkdir freetype-2.7.1-shared-%PLATFORM%
 #- cd freetype-2.7.1-shared-%PLATFORM%
@@ -42,9 +45,9 @@ after_build:
 #- del freetype-2.7.1-shared-%PLATFORM%.tar
 #- dir
 
-#artifacts:
-#  - path: freetype-2.7.1-shared-$(PLATFORM).tar.gz
-#    name: freetype-2.7.1-shared-$(PLATFORM)
+artifacts:
+  - path: libepoxy-shared-%PLATFORM%.zip
+    name: libepoxy-shared-%PLATFORM%
 
 test: off
 
