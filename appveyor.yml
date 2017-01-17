@@ -23,6 +23,7 @@ build_script:
 - cd ..
 
 after_build:
+- copy COPYING libepoxy-shared-%PLATFORM%
 - 7z a -tzip libepoxy-shared-%PLATFORM%.zip libepoxy-shared-%PLATFORM%
 - dir
 
