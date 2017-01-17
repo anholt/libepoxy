@@ -20,8 +20,8 @@ before_build:
 build_script:
 - cd build
 - cmake .. -G "Visual Studio 12 2013 Win64" -DCMAKE_INSTALL_PREFIX=../install -DEPOXY_SUPPORT_EGL=OFF
-- dir
-- msbuild /t:ALL_BUILD:Rebuild;INSTALL:Rebuild /p:Configuration=Release Epoxy.vcxproj
+- msbuild /t:Rebuild /p:Configuration=Release ALL_BUILD.vcxproj
+- msbuild /t:Rebuild /p:Configuration=Release INSTALL.vcxproj
 - cd ..
 
 after_build:
