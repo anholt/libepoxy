@@ -23,27 +23,8 @@ build_script:
 - cd ..
 
 after_build:
-- cd libepoxy-shared-%PLATFORM%
-- dir include
-- dir lib
-- dir bin
-- cd ..
 - 7z a -tzip libepoxy-shared-%PLATFORM%.zip libepoxy-shared-%PLATFORM%
 - dir
-#- mkdir freetype-2.7.1-shared-%PLATFORM%
-#- cd freetype-2.7.1-shared-%PLATFORM%
-#- mkdir include
-#- mkdir lib
-#- mkdir bin
-#- xcopy /e ..\freetype-2.7.1\include include
-#- copy ..\freetype-2.7.1\objs\vc2010\%outdir%\freetype271.lib lib
-#- copy ..\freetype-2.7.1\objs\vc2010\%outdir%\freetype271.exp lib
-#- copy ..\freetype-2.7.1\objs\vc2010\%outdir%\freetype271.dll bin
-#- cd ..
-#- 7z a -ttar freetype-2.7.1-shared-%PLATFORM%.tar freetype-2.7.1-shared-%PLATFORM%
-#- 7z a -tgzip freetype-2.7.1-shared-%PLATFORM%.tar.gz freetype-2.7.1-shared-%PLATFORM%.tar
-#- del freetype-2.7.1-shared-%PLATFORM%.tar
-#- dir
 
 artifacts:
   - path: libepoxy-shared-%PLATFORM%.zip
@@ -51,14 +32,14 @@ artifacts:
 
 test: off
 
-#deploy:
-#  release: freetype-2.7.1-shared-$(PLATFORM)
-#  description: "FreeType 2.7.1 ($(PLATFORM))"
-#  provider: GitHub
-#  auth_token:
-#    secure: PF/wHCfSMFPCYyFh3GgjEJDHoPyPOnrmmbVMMwe8cNQBw2NL0vaYxjL1QcjMfpvL
-#  artifact: freetype-2.7.1-shared-$(PLATFORM)
-#  draft: false
-#  prerelease: false
-#  on:
-#    appveyor_repo_tag: true # deploy on tag push only
+deploy:
+  release: libepoxy-shared-$(PLATFORM)
+  description: "Epoxy (Windows $(PLATFORM))"
+  provider: GitHub
+  auth_token:
+    secure: PF/wHCfSMFPCYyFh3GgjEJDHoPyPOnrmmbVMMwe8cNQBw2NL0vaYxjL1QcjMfpvL
+  artifact: libepoxy-shared-$(PLATFORM)
+  draft: false
+  prerelease: false
+  on:
+    appveyor_repo_tag: true # deploy on tag push only
