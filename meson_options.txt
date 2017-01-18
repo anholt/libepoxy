@@ -1,3 +1,8 @@
 option('enable-docs',
        type: 'boolean', value: false,
        description: 'Enable generating the Epoxy API reference (depends on Doxygen)')
+option('enable-glx',
+       type: 'combo',
+       choices: [ 'auto', 'yes', 'no' ],
+       value: 'auto',
+       description: 'Enable GLX support')

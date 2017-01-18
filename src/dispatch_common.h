@@ -23,15 +23,13 @@
 
 #include "config.h"
 
-#include <stdbool.h>
-
 #ifdef _WIN32
 #define PLATFORM_HAS_EGL 0
-#define PLATFORM_HAS_GLX 0
+#define PLATFORM_HAS_GLX ENABLE_GLX
 #define PLATFORM_HAS_WGL 1
 #elif defined(__APPLE__)
 #define PLATFORM_HAS_EGL 0
-#define PLATFORM_HAS_GLX 0
+#define PLATFORM_HAS_GLX ENABLE_GLX
 #define PLATFORM_HAS_WGL 0
 #elif defined(ANDROID)
 #define PLATFORM_HAS_EGL 1
@@ -39,7 +37,7 @@
 #define PLATFORM_HAS_WGL 0
 #else
 #define PLATFORM_HAS_EGL 1
-#define PLATFORM_HAS_GLX 1
+#define PLATFORM_HAS_GLX ENABLE_GLX
 #define PLATFORM_HAS_WGL 0
 #endif
 
