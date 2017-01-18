@@ -152,16 +152,19 @@ $(GENERATED_EGL_INCLUDES): $(GENERATED_EGL_SOURCE)
 $(GENERATED_WGL_INCLUDES): $(GENERATED_WGL_SOURCE)
 
 $(GENERATED_GL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/gl.xml
-	$(MKDIR_P) $(top_builddir)/include/epoxy
+	@$(MKDIR_P) $(top_builddir)/include/epoxy
 	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/gl.xml
 
 $(GENERATED_GLX_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/glx.xml
+	@$(MKDIR_P) $(top_builddir)/include/epoxy
 	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/glx.xml
 
 $(GENERATED_EGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/egl.xml
+	@$(MKDIR_P) $(top_builddir)/include/epoxy
 	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/egl.xml
 
 $(GENERATED_WGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/wgl.xml
+	@$(MKDIR_P) $(top_builddir)/include/epoxy
 	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/wgl.xml
 
 EXTRA_DIST = \
