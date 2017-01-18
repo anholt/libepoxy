@@ -375,6 +375,8 @@ class Generator(object):
                 human_name = 'WGL {0}'.format(version)
                 condition = 'true'
                 loader = 'epoxy_gl_dlsym({0})'
+            elif api == 'glsc2':
+                continue
             else:
                 sys.exit('unknown API: "{0}"'.format(api))
 
