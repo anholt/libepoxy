@@ -642,28 +642,32 @@ epoxy_get_bootstrap_proc_address(const char *name)
 void *
 epoxy_get_proc_address(const char *name)
 {
-#ifdef _WIN32
+#if PLATFORM_HAS_EGL
+    GLenum egl_api = EGL_NONE;
+
+    if (!epoxy_current_context_is_glx())
+      egl_api = epoxy_egl_get_current_gl_context_api();
+
+    switch (egl_api) {
+    case EGL_OPENGL_API:
+    case EGL_OPENGL_ES_API:
+        return eglGetProcAddress(name);
+    case EGL_NONE:
+        break;
+    }
+#endif
+
+#if defined(_WIN32)
     return wglGetProcAddress(name);
 #elif defined(__APPLE__)
     return epoxy_gl_dlsym(name);
-#else
-    if (epoxy_current_context_is_glx()) {
+#elif PLATFORM_HAS_GLX
+    if (epoxy_current_context_is_glx())
         return glXGetProcAddressARB((const GLubyte *)name);
-    } else {
-#if PLATFORM_HAS_EGL
-        GLenum egl_api = epoxy_egl_get_current_gl_context_api();
-
-        switch (egl_api) {
-        case EGL_OPENGL_API:
-        case EGL_OPENGL_ES_API:
-            return eglGetProcAddress(name);
-        case EGL_NONE:
-            break;
-        }
 #endif
-    }
     errx(1, "Couldn't find current GLX or EGL context.\n");
-#endif
+
+    return NULL;
 }
 
 WRAPPER_VISIBILITY (void)
