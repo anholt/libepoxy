@@ -16,7 +16,6 @@ shallow_clone: true
 before_build:
 - mkdir build
 - mkdir libepoxy-shared-%PLATFORM%
-- echo %generator%
 
 build_script:
 - cd build
