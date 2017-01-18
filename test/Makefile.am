@@ -74,9 +74,12 @@ if BUILD_EGL
 EGL_TESTS = \
 	egl_has_extension_nocontext \
 	egl_gl \
-	egl_gles1_without_glx \
 	egl_gles2_without_glx \
 	$()
+
+if HAS_GLES1
+EGL_TESTS += egl_gles1_without_glx
+endif
 
 EGL_UTIL_LIB = libegl_common.la
 endif

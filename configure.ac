@@ -119,6 +119,9 @@ fi
 
 AM_CONDITIONAL(HAS_ZNOW, test x$has_znow = xyes)
 
+AC_CHECK_LIB([GLESv1_CM], [glFlush], [has_gles1=yes], [has_gles1=no])
+AM_CONDITIONAL(HAS_GLES1, test x$has_gles1 = xyes)
+
 AC_CHECK_LIB([dl], [dlopen], [DLOPEN_LIBS="-ldl"])
 AC_SUBST([DLOPEN_LIBS])
 
