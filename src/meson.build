@@ -91,8 +91,7 @@ endif
 
 epoxy_deps = [ dl_dep, ]
 if host_system == 'windows'
-  ogl_dep = cc.find_library('opengl32', required: true)
-  epoxy_deps += [ ogl_dep, ]
+  epoxy_deps += [ opengl32_dep, gdi32_dep ]
 endif
 
 # Allow building a static version of epoxy

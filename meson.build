@@ -102,6 +102,20 @@ x11_dep = dependency('x11', required: false)
 gles1_dep = cc.find_library('libGLESv1_CM', required: false)
 gles2_dep = cc.find_library('libGLESv2', required: false)
 
+# On windows, the DLL has to have all of its functions
+# resolved at link time, so we have to link directly aginst
+# opengl32.  But that's the only GL provider, anyway.
+if host_system == 'windows'
+  opengl32_dep = cc.find_library('opengl32', required: true)
+
+  # When building against static libraries, we need to control
+  # the order of the dependencies, and gdi32 provides symbols
+  # needed when using opengl32, like SetPixelFormat and
+  # ChoosePixelFormat. This is mostly a workaround for older
+  # versions of Meson.
+  gdi32_dep = cc.find_library('gdi32', required: true)
+endif
+
 # PkgConfig file
 pkgconf = configuration_data()
 pkgconf.set('prefix', epoxy_prefix)
