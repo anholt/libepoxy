@@ -664,8 +664,8 @@ epoxy_get_proc_address(const char *name)
 #elif PLATFORM_HAS_GLX
     if (epoxy_current_context_is_glx())
         return glXGetProcAddressARB((const GLubyte *)name);
-#endif
     errx(1, "Couldn't find current GLX or EGL context.\n");
+#endif
 
     return NULL;
 }
