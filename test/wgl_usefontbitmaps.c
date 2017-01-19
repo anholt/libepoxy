@@ -46,17 +46,17 @@ test_function(HDC hdc)
     }
 
     /* First, use the #ifdeffed variant of the function */
-    wglUseFontBitmaps(hdc, 0, 255, dlist[1]);
+    wglUseFontBitmaps(hdc, 0, 255, dlist[0]);
     glListBase(dlist[1]);
     glCallLists(strlen(string), GL_UNSIGNED_BYTE, string);
 
     /* Now, use the specific version, manually. */
 #ifdef UNICODE
-    wglUseFontBitmapsW(hdc, 0, 255, dlist[2]);
+    wglUseFontBitmapsW(hdc, 0, 255, dlist[0]);
 #else
-    wglUseFontBitmapsA(hdc, 0, 255, dlist[2]);
+    wglUseFontBitmapsA(hdc, 0, 255, dlist[0]);
 #endif
-    glListBase(dlist[2]);
+    glListBase(dlist[1]);
     glCallLists(strlen(string), GL_UNSIGNED_BYTE, string);
 
     wglMakeCurrent(NULL, NULL);
