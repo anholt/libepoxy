@@ -1,6 +1,6 @@
 Source: libepoxy
 Priority: optional
-Maintainer: Eric Anholt <eric@anholt.net>
+Maintainer: Jérémy Lal <kapouer@melix.org>
 Build-Depends: debhelper (>= 9),
                dh-autoreconf,
                autotools-dev,
