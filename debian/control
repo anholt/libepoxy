@@ -42,6 +42,7 @@ Description: OpenGL function pointer management library
 
 Package: libepoxy0-udeb
 Package-Type: udeb
+Section: debian-installer
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: OpenGL function pointer management library - minimal runtime
