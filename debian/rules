@@ -6,3 +6,7 @@
 # Running make check is unsuitable because the tests require a working
 # X environment currently, so we disable dh_auto_test.
 override_dh_auto_test:
+
+# No symbols for udebs, specify the highest version from symbols file:
+override_dh_makeshlibs:
+	dh_makeshlibs --add-udeb='libepoxy0-udeb (>= 1.3)'
