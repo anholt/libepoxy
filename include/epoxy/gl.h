@@ -30,11 +30,9 @@
 #ifndef EPOXY_GL_H
 #define EPOXY_GL_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <stdbool.h>
+
+#include "epoxy/common.h"
 
 #if defined(__gl_h_) || defined(__glext_h_)
 #error epoxy/gl.h must be included before (or in place of) GL/gl.h
@@ -93,12 +91,12 @@ extern "C" {
 
 #include "epoxy/gl_generated.h"
 
+EPOXY_BEGIN_DECLS
+
 EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *extension);
 EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void);
 EPOXY_IMPORTEXPORT int epoxy_gl_version(void);
 
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
+EPOXY_END_DECLS
 
 #endif /* EPOXY_GL_H */
