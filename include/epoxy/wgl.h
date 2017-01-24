@@ -54,8 +54,8 @@
 
 EPOXY_BEGIN_DECLS
 
-EPOXY_IMPORTEXPORT bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
-EPOXY_IMPORTEXPORT void epoxy_handle_external_wglMakeCurrent(void);
+EPOXY_PUBLIC bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
+EPOXY_PUBLIC void epoxy_handle_external_wglMakeCurrent(void);
 
 EPOXY_END_DECLS
 

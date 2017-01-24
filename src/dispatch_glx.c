@@ -47,7 +47,7 @@ epoxy_conservative_glx_version(void)
     return epoxy_glx_version(dpy, screen);
 }
 
-PUBLIC int
+int
 epoxy_glx_version(Display *dpy, int screen)
 {
     int server_major, server_minor;
@@ -98,7 +98,7 @@ epoxy_conservative_has_glx_extension(const char *ext)
     return epoxy_has_glx_extension(dpy, screen, ext);
 }
 
-PUBLIC bool
+bool
 epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
  {
     /* No, you can't just use glXGetClientString or

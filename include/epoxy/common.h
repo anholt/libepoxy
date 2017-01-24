@@ -37,4 +37,8 @@
 # define EPOXY_END_DECLS
 #endif
 
+#ifndef EPOXY_PUBLIC
+# define EPOXY_PUBLIC extern
+#endif
+
 #endif /* EPOXY_COMMON_H */

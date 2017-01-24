@@ -77,7 +77,7 @@ class GLFunction(object):
             self.public = ''
         else:
             self.wrapped_name = name
-            self.public = 'PUBLIC '
+            self.public = 'EPOXY_PUBLIC '
 
         # This is the string of C code for passing through the
         # arguments to the function.
@@ -483,6 +483,8 @@ class Generator(object):
     def write_header(self, file):
         self.write_header_header(file)
 
+        self.outln('#include "epoxy/common.h"')
+
         if self.target != "gl":
             self.outln('#include "epoxy/gl.h"')
             if self.target == "egl":
@@ -527,9 +529,9 @@ class Generator(object):
         self.write_function_ptr_typedefs()
 
         for func in self.sorted_functions:
-            self.outln('extern EPOXY_IMPORTEXPORT {0} (EPOXY_CALLSPEC *epoxy_{1})({2});'.format(func.ret_type,
-                                                                                     func.name,
-                                                                                     func.args_decl))
+            self.outln('EPOXY_PUBLIC {0} (EPOXY_CALLSPEC *epoxy_{1})({2});'.format(func.ret_type,
+                                                                                   func.name,
+                                                                                   func.args_decl))
             self.outln('')
 
         for func in self.sorted_functions:
@@ -619,9 +621,7 @@ class Generator(object):
                                                                        func.args_list))
 
     def write_function_pointer(self, func):
-        self.outln('{0}{1} epoxy_{2} = epoxy_{2}_global_rewrite_ptr;'.format(func.public,
-                                                                             func.ptr_type,
-                                                                             func.wrapped_name))
+        self.outln('{0} epoxy_{1} = epoxy_{1}_global_rewrite_ptr;'.format(func.ptr_type, func.wrapped_name))
         self.outln('')
 
     def write_provider_enums(self):
@@ -750,6 +750,8 @@ class Generator(object):
         self.outln(' * This is code-generated from the GL API XML files from Khronos.')
         self.write_copyright_comment_body()
         self.outln(' */')
+        self.outln('')
+        self.outln('#include "config.h"')
         self.outln('')
         self.outln('#include <stdlib.h>')
         self.outln('#include <string.h>')

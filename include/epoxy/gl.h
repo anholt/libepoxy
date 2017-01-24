@@ -49,7 +49,6 @@
 /* APIENTRY and GLAPIENTRY are not used on Linux or Mac. */
 #define APIENTRY
 #define GLAPIENTRY
-#define EPOXY_IMPORTEXPORT
 #define EPOXY_CALLSPEC
 #define GLAPI
 #define KHRONOS_APIENTRY
@@ -66,10 +65,6 @@
 
 #ifndef EPOXY_CALLSPEC
 #define EPOXY_CALLSPEC __stdcall
-#endif
-
-#ifndef EPOXY_IMPORTEXPORT
-#define EPOXY_IMPORTEXPORT __declspec(dllimport)
 #endif
 
 #ifndef GLAPI
@@ -93,9 +88,9 @@
 
 EPOXY_BEGIN_DECLS
 
-EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *extension);
-EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void);
-EPOXY_IMPORTEXPORT int epoxy_gl_version(void);
+EPOXY_PUBLIC bool epoxy_has_gl_extension(const char *extension);
+EPOXY_PUBLIC bool epoxy_is_desktop_gl(void);
+EPOXY_PUBLIC int epoxy_gl_version(void);
 
 EPOXY_END_DECLS
 
