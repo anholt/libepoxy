@@ -107,7 +107,8 @@ test_glx_extension_supported(void)
     return true;
 }
 
-int main(void)
+int
+main(int argc, char **argv)
 {
     bool pass = true;
 

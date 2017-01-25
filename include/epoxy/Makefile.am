@@ -22,9 +22,6 @@
 epoxyincludedir = $(includedir)/epoxy
 
 epoxyinclude_HEADERS = \
-	common.h \
-	khrplatform.h \
-	eglplatform.h \
 	gl.h \
         $(EGL_INCLUDES) \
         $(GLX_INCLUDES) \

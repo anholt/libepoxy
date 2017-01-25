@@ -42,7 +42,8 @@
 
 #include "glx_common.h"
 
-int main(void)
+int
+main(int argc, char **argv)
 {
     bool pass = true;
     int val;

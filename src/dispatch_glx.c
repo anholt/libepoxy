@@ -47,30 +47,35 @@ epoxy_conservative_glx_version(void)
     return epoxy_glx_version(dpy, screen);
 }
 
-EPOXY_IMPORTEXPORT int
+PUBLIC int
 epoxy_glx_version(Display *dpy, int screen)
 {
     int server_major, server_minor;
     int client_major, client_minor;
     int server, client;
     const char *version_string;
-    int ret=0, sscanf_ret;
+    int ret;
 
-    if ((version_string = glXQueryServerString(dpy, screen, GLX_VERSION)))
-    {
-        sscanf_ret = sscanf(version_string, "%d.%d", &server_major, &server_minor);
-        assert(sscanf_ret == 2);
-        server = server_major * 10 + server_minor;
-        if ((version_string = glXGetClientString(dpy, GLX_VERSION)))
-        {
-            sscanf_ret = sscanf(version_string, "%d.%d", &client_major, &client_minor);
-            assert(sscanf_ret == 2);
-            client = client_major * 10 + client_minor;
-            ret = client <= server  ?  client  :  server;
-        }
-    }
+    version_string = glXQueryServerString(dpy, screen, GLX_VERSION);
+    if (!version_string)
+        return 0;
 
-    return ret;
+    ret = sscanf(version_string, "%d.%d", &server_major, &server_minor);
+    assert(ret == 2);
+    server = server_major * 10 + server_minor;
+
+    version_string = glXGetClientString(dpy, GLX_VERSION);
+    if (!version_string)
+        return 0;
+
+    ret = sscanf(version_string, "%d.%d", &client_major, &client_minor);
+    assert(ret == 2);
+    client = client_major * 10 + client_minor;
+
+    if (client < server)
+        return client;
+    else
+        return server;
 }
 
 /**
@@ -93,7 +98,7 @@ epoxy_conservative_has_glx_extension(const char *ext)
     return epoxy_has_glx_extension(dpy, screen, ext);
 }
 
-EPOXY_IMPORTEXPORT bool
+PUBLIC bool
 epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
  {
     /* No, you can't just use glXGetClientString or

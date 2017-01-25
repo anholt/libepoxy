@@ -30,24 +30,23 @@
 #ifndef EPOXY_EGL_H
 #define EPOXY_EGL_H
 
-#if defined(__egl_h_) || defined(__eglext_h_)
-#error "epoxy/egl.h" must be included before (or in place of) "EGL/egl.h"
-#endif
-
-#define __egl_h_
-#define __eglext_h_
-
-#include "epoxy/gl.h"
-#include "epoxy/eglplatform.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#include <stdbool.h>
+
+#if defined(__egl_h_) || defined(__eglext_h_)
+#error epoxy/egl.h must be included before (or in place of) GL/egl.h
+#else
+#define __egl_h_
+#define __eglext_h_
+#endif
+
 #include "epoxy/egl_generated.h"
 
-EPOXY_IMPORTEXPORT bool epoxy_has_egl_extension(EGLDisplay dpy, const char *extension);
-EPOXY_IMPORTEXPORT int epoxy_egl_version(EGLDisplay dpy);
+bool epoxy_has_egl_extension(EGLDisplay dpy, const char *extension);
+int epoxy_egl_version(EGLDisplay dpy);
 
 #ifdef __cplusplus
 } /* extern "C" */

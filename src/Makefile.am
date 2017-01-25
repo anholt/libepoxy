@@ -29,14 +29,12 @@ AM_CFLAGS = \
 	$(VISIBILITY_CFLAGS) \
 	$(X11_CFLAGS) \
 	$(EGL_CFLAGS) \
-        -DEPOXY_EXPORTS \
 	$()
 
 epoxyincludedir = $(includedir)/epoxy
 lib_LTLIBRARIES = libepoxy.la
 
 epoxyinclude_DATA = \
-	$(GENERATED_CONFIG) \
 	$(GENERATED_GL_INCLUDES) \
 	$(INSTALL_GLX_INCLUDES) \
 	$(INSTALL_EGL_INCLUDES) \
@@ -54,10 +52,6 @@ endif
 if BUILD_WGL
 INSTALL_WGL_INCLUDES = $(GENERATED_WGL_INCLUDES)
 endif
-
-GENERATED_CONFIG = \
-	$(builddir)/../include/epoxy/config.h \
-	$()
 
 GENERATED_GL_INCLUDES = \
 	$(builddir)/../include/epoxy/gl_generated.h \
@@ -104,7 +98,6 @@ GENERATED_WGL = \
 	$()
 
 BUILT_SOURCES = \
-	$(GENERATED_CONFIG) \
 	$(GENERATED_GL) \
 	$(GENERATED_GLX) \
 	$(GENERATED_EGL) \
@@ -115,7 +108,6 @@ CLEANFILES = $(BUILT_SOURCES)
 libepoxy_la_SOURCES = \
 	dispatch_common.c \
 	dispatch_common.h \
-	$(GENERATED_CONFIG) \
 	$(GENERATED_GL) \
 	$(BUILD_EGL_CODE) \
 	$(BUILD_GLX_CODE) \
@@ -153,9 +145,6 @@ BUILD_WGL_CODE = \
 	$()
 endif
 
-$(GENERATED_CONFIG): $(srcdir)/../include/epoxy/config.h.guess
-	cp $(srcdir)/../include/epoxy/config.h.guess $(builddir)/../include/epoxy/config.h
-
 # These are generated alongside the .c file.
 $(GENERATED_GL_INCLUDES): $(GENERATED_GL_SOURCE)
 $(GENERATED_GLX_INCLUDES): $(GENERATED_GLX_SOURCE)
@@ -163,17 +152,32 @@ $(GENERATED_EGL_INCLUDES): $(GENERATED_EGL_SOURCE)
 $(GENERATED_WGL_INCLUDES): $(GENERATED_WGL_SOURCE)
 
 $(GENERATED_GL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/gl.xml
-	$(MKDIR_P) $(top_builddir)/include/epoxy
-	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/gl.xml
+	@$(MKDIR_P) $(top_builddir)/include/epoxy
+	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py \
+		--srcdir $(top_builddir)/src \
+		--includedir $(top_builddir)/include/epoxy \
+		$(top_srcdir)/registry/gl.xml
 
 $(GENERATED_GLX_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/glx.xml
-	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/glx.xml
+	@$(MKDIR_P) $(top_builddir)/include/epoxy
+	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py \
+		--srcdir $(top_builddir)/src \
+		--includedir $(top_builddir)/include/epoxy \
+		$(top_srcdir)/registry/glx.xml
 
 $(GENERATED_EGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/egl.xml
-	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/egl.xml
+	@$(MKDIR_P) $(top_builddir)/include/epoxy
+	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py \
+		--srcdir $(top_builddir)/src \
+		--includedir $(top_builddir)/include/epoxy \
+		$(top_srcdir)/registry/egl.xml
 
 $(GENERATED_WGL_SOURCE): $(srcdir)/gen_dispatch.py $(top_srcdir)/registry/wgl.xml
-	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py --dir $(top_builddir) $(top_srcdir)/registry/wgl.xml
+	@$(MKDIR_P) $(top_builddir)/include/epoxy
+	$(AM_V_GEN)$(PYTHON) $(srcdir)/gen_dispatch.py \
+		--srcdir $(top_builddir)/src \
+		--includedir $(top_builddir)/include/epoxy \
+		$(top_srcdir)/registry/wgl.xml
 
 EXTRA_DIST = \
 	gen_dispatch.py \

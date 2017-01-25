@@ -38,11 +38,12 @@
 
 #include "egl_common.h"
 
-int main(void)
+int
+main(int argc, char **argv)
 {
     bool pass = true;
 
-    EGLDisplay dpy = get_egl_display_or_skip();
+    EGLDisplay *dpy = get_egl_display_or_skip();
     const char *extensions = eglQueryString(dpy, EGL_EXTENSIONS);
     char *first_space;
     char *an_extension;

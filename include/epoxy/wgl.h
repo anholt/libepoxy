@@ -30,20 +30,21 @@
 #ifndef EPOXY_WGL_H
 #define EPOXY_WGL_H
 
-#if defined(__wglxext_h_)
-#error "epoxy/wgl.h" must be included before (or in place of) "wglext.h"
-#endif
-
-#define __wglxext_h_
-
-#include "epoxy/gl.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#include <stdbool.h>
+#include <windows.h>
+
 #undef wglUseFontBitmaps
 #undef wglUseFontOutlines
+
+#if defined(__wglxext_h_)
+#error epoxy/wgl.h must be included before (or in place of) wgl.h
+#else
+#define __wglxext_h_
+#endif
 
 #ifdef UNICODE
 #define wglUseFontBitmaps wglUseFontBitmapsW
