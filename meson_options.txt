@@ -1,0 +1,3 @@
+option('enable-docs',
+       type: 'boolean', value: false,
+       description: 'Enable generating the Epoxy API reference (depends on Doxygen)')

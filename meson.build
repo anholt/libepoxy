@@ -170,3 +170,12 @@ libepoxy_inc = [
 subdir('include/epoxy')
 subdir('src')
 subdir('test')
+
+if get_option('enable-docs')
+  doxygen = find_program('doxygen', required: false)
+  if doxygen.found()
+    subdir('doc')
+  else
+    message('Documentation disabled without doxygen')
+  endif
+endif
