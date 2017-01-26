@@ -45,6 +45,7 @@ extern "C" {
 
 #include "epoxy/egl_generated.h"
 
+bool epoxy_has_egl(void);
 bool epoxy_has_egl_extension(EGLDisplay dpy, const char *extension);
 int epoxy_egl_version(EGLDisplay dpy);
 
