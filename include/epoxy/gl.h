@@ -25,6 +25,8 @@
  *
  * Provides an implementation of a GL dispatch layer using either
  * global function pointers or a hidden vtable.
+ *
+ * You should include `<epoxy/gl.h>` instead of `<GL/gl.h>` and `<GL/glext.h>`.
  */
 
 #ifndef EPOXY_GL_H

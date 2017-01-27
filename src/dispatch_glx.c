@@ -47,6 +47,27 @@ epoxy_conservative_glx_version(void)
     return epoxy_glx_version(dpy, screen);
 }
 
+
+/**
+ * @brief Returns the version of GLX we are using
+ *
+ * The version is encoded as:
+ *
+ * ```
+ *
+ *   version = major * 10 + minor
+ *
+ * ```
+ *
+ * So it can be easily used for version comparisons.
+ *
+ * @param dpy The X11 display
+ * @param screen The X11 screen
+ *
+ * @return The encoded version of GLX we are using
+ *
+ * @see epoxy_gl_version()
+ */
 int
 epoxy_glx_version(Display *dpy, int screen)
 {
@@ -98,6 +119,18 @@ epoxy_conservative_has_glx_extension(const char *ext)
     return epoxy_has_glx_extension(dpy, screen, ext);
 }
 
+/**
+ * @brief Returns true if the given GLX extension is supported in the current context.
+ *
+ * @param dpy The X11 display
+ * @param screen The X11 screen
+ * @param extension The name of the GLX extension
+ *
+ * @return `true` if the extension is available
+ *
+ * @see epoxy_has_gl_extension()
+ * @see epoxy_has_egl_extension()
+ */
 bool
 epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
  {

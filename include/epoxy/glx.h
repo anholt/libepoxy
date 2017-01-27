@@ -25,6 +25,8 @@
  *
  * Provides an implementation of a GLX dispatch layer using global
  * function pointers.
+ *
+ * You should include `<epoxy/glx.h>` instead of `<GL/glx.h>`.
  */
 
 #ifndef EPOXY_GLX_H

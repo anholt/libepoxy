@@ -25,6 +25,8 @@
  *
  * Provides an implementation of an EGL dispatch layer using global
  * function pointers
+ *
+ * You should include `<epoxy/egl.h>` instead of `<EGL/egl.h>`.
  */
 
 #ifndef EPOXY_EGL_H

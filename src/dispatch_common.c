@@ -22,9 +22,80 @@
  */
 
 /**
+ * \mainpage Epoxy
+ *
+ * \section intro_sec Introduction
+ *
+ * Epoxy is a library for handling OpenGL function pointer management for
+ * you.
+ *
+ * It hides the complexity of `dlopen()`, `dlsym()`, `glXGetProcAddress()`,
+ * `eglGetProcAddress()`, etc. from the app developer, with very little
+ * knowledge needed on their part.  They get to read GL specs and write
+ * code using undecorated function names like `glCompileShader()`.
+ *
+ * Don't forget to check for your extensions or versions being present
+ * before you use them, just like before!  We'll tell you what you forgot
+ * to check for instead of just segfaulting, though.
+ *
+ * \section features_sec Features
+ *
+ *   - Automatically initializes as new GL functions are used.
+ *   - GL 4.4 core and compatibility context support.
+ *   - GLES 1/2/3 context support.
+ *   - Knows about function aliases so (e.g.) `glBufferData()` can be
+ *     used with `GL_ARB_vertex_buffer_object` implementations, along
+ *     with GL 1.5+ implementations.
+ *   - EGL, GLX, and WGL support.
+ *   - Can be mixed with non-epoxy GL usage.
+ *
+ * \section using_sec Using Epoxy
+ *
+ * Using Epoxy should be as easy as replacing:
+ *
+ * ```cpp
+ * #include <GL/gl.h>
+ * #include <GL/glx.h>
+ * #include <GL/glext.h>
+ * ```
+ *
+ * with:
+ *
+ * ```cpp
+ * #include <epoxy/gl.h>
+ * #include <epoxy/glx.h>
+ * ```
+ *
+ * \subsection using_include_sec Headers
+ *
+ * Epoxy comes with the following public headers:
+ *
+ *  - `epoxy/gl.h`  - For GL API
+ *  - `epoxy/egl.h` - For EGL API
+ *  - `epoxy/glx.h` - For GLX API
+ *  - `epoxy/wgl.h` - For WGL API
+ *
+ * \section links_sec Additional links
+ *
+ * The latest version of the Epoxy code is available on [GitHub](https://github.com/anholt/libepoxy).
+ *
+ * For bug reports and enhancements, please use the [Issues](https://github.com/anholt/libepoxy/issues)
+ * link.
+ *
+ * The scope of this API reference does not include the documentation for
+ * OpenGL and OpenGL ES. For more information on those programming interfaces
+ * please visit:
+ *
+ *  - [Khronos](https://www.khronos.org/)
+ *  - [OpenGL page on Khronos.org](https://www.khronos.org/opengl/)
+ *  - [OpenGL ES page on Khronos.org](https://www.khronos.org/opengles/)
+ *  - [docs.GL](http://docs.gl/)
+ */
+
+/**
  * @file dispatch_common.c
  *
- * Implements common code shared by the generated GL/EGL/GLX dispatch code.
+ * @brief Implements common code shared by the generated GL/EGL/GLX dispatch code.
  *
  * A collection of some important specs on getting GL function pointers.
  *
@@ -146,32 +217,32 @@
 
 struct api {
 #ifndef _WIN32
-    /**
+    /*
      * Locking for making sure we don't double-dlopen().
      */
     pthread_mutex_t mutex;
 #endif
 
-    /** dlopen() return value for libGL.so.1. */
+    /* dlopen() return value for libGL.so.1. */
     void *glx_handle;
 
-    /**
+    /*
      * dlopen() return value for OS X's GL library.
      *
      * On linux, glx_handle is used instead.
      */
     void *gl_handle;
 
-    /** dlopen() return value for libEGL.so.1 */
+    /* dlopen() return value for libEGL.so.1 */
     void *egl_handle;
 
-    /** dlopen() return value for libGLESv1_CM.so.1 */
+    /* dlopen() return value for libGLESv1_CM.so.1 */
     void *gles1_handle;
 
-    /** dlopen() return value for libGLESv2.so.2 */
+    /* dlopen() return value for libGLESv2.so.2 */
     void *gles2_handle;
 
-    /**
+    /*
      * This value gets incremented when any thread is in
      * glBegin()/glEnd() called through epoxy.
      *
@@ -269,6 +340,11 @@ do_dlsym(void **handle, const char *lib_name, const char *name,
     return result;
 }
 
+/**
+ * @brief Checks whether we're using OpenGL or OpenGL ES
+ *
+ * @return `true` if we're using OpenGL
+ */
 bool
 epoxy_is_desktop_gl(void)
 {
@@ -333,6 +409,21 @@ epoxy_internal_gl_version(int error_version)
     return 10 * major + minor;
 }
 
+/**
+ * @brief Returns the version of OpenGL we are using
+ *
+ * The version is encoded as:
+ *
+ * ```
+ *
+ *   version = major * 10 + minor
+ *
+ * ```
+ *
+ * So it can be easily used for version comparisons.
+ *
+ * @return The encoded version of OpenGL we are using
+ */
 int
 epoxy_gl_version(void)
 {
@@ -452,12 +543,15 @@ epoxy_current_context_is_glx(void)
 }
 
 /**
- * Returns true if the given GL extension is supported in the current context.
+ * @brief Returns true if the given GL extension is supported in the current context.
  *
- * Note that this function can't be called from within glBegin()/glEnd().
+ * @param ext The name of the GL extension
+ * @return `true` if the extension is available
  *
- * \sa epoxy_has_egl_extension()
- * \sa epoxy_has_glx_extension()
+ * @note that this function can't be called from within `glBegin()` and `glEnd()`.
+ *
+ * @see epoxy_has_egl_extension()
+ * @see epoxy_has_glx_extension()
  */
 bool
 epoxy_has_gl_extension(const char *ext)
