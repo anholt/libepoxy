@@ -16,7 +16,7 @@ gl_generated = custom_target('gl_generated_dispatch.c',
                                gen_dispatch_py,
                                '--source',
                                '--no-header',
-                               '--outputdir=' + meson.current_build_dir(),
+                               '--outputdir=@OUTDIR@',
                                '@INPUT@',
                              ])
 
@@ -34,7 +34,7 @@ if build_egl
                                   gen_dispatch_py,
                                   '--source',
                                   '--no-header',
-                                  '--outputdir=' + meson.current_build_dir(),
+                                  '--outputdir=@OUTDIR@',
                                   '@INPUT@',
                                 ])
   gen_sources += [ egl_generated ]                              
@@ -52,7 +52,7 @@ if build_glx
                                   gen_dispatch_py,
                                   '--source',
                                   '--no-header',
-                                  '--outputdir=' + meson.current_build_dir(),
+                                  '--outputdir=@OUTDIR@',
                                   '@INPUT@',
                                 ])
   gen_sources += [ glx_generated ]
@@ -70,7 +70,7 @@ if build_wgl
                                   gen_dispatch_py,
                                   '--source',
                                   '--no-header',
-                                  '--outputdir=' + meson.current_build_dir(),
+                                  '--outputdir=@OUTDIR@',
                                   '@INPUT@',
                                 ])
   gen_sources += [ wgl_generated ]

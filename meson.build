@@ -140,10 +140,10 @@ python = find_program('python3')
 # Generates the dispatch tables
 gen_dispatch_py = find_program('src/gen_dispatch.py')
 
-gl_registry = join_paths(meson.source_root(), 'registry/gl.xml')
-egl_registry = join_paths(meson.source_root(), 'registry/egl.xml')
-glx_registry = join_paths(meson.source_root(), 'registry/glx.xml')
-wgl_registry = join_paths(meson.source_root(), 'registry/wgl.xml')
+gl_registry = files('registry/gl.xml')
+egl_registry = files('registry/egl.xml')
+glx_registry = files('registry/glx.xml')
+wgl_registry = files('registry/wgl.xml')
 
 libepoxy_inc = [
   include_directories('include'),
