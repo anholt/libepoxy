@@ -8,7 +8,7 @@ gl_generated = custom_target('gl_generated.h',
                                gen_dispatch_py,
                                '--header',
                                '--no-source',
-                               '--outputdir=' + meson.current_build_dir(),
+                               '--outputdir=@OUTDIR@',
                                '@INPUT@'
                              ],
                              install: true,
@@ -28,7 +28,7 @@ if build_egl
                                   gen_dispatch_py,
                                   '--header',
                                   '--no-source',
-                                  '--outputdir=' + meson.current_build_dir(),
+                                  '--outputdir=@OUTDIR@',
                                   '@INPUT@'
                                 ],
                                 install: true,
@@ -48,7 +48,7 @@ if build_glx
                                   gen_dispatch_py,
                                   '--header',
                                   '--no-source',
-                                  '--outputdir=' + meson.current_build_dir(),
+                                  '--outputdir=@OUTDIR@',
                                   '@INPUT@'
                                 ],
                                 install: true,
@@ -68,7 +68,7 @@ if build_wgl
                                   gen_dispatch_py,
                                   '--header',
                                   '--no-source',
-                                  '--outputdir=' + meson.current_build_dir(),
+                                  '--outputdir=@OUTDIR@',
                                   '@INPUT@'
                                 ],
                                 install: true,
