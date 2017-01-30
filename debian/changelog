@@ -1,3 +1,15 @@
+libepoxy (1.4.0-1) UNRELEASED; urgency=medium
+
+  * New upstream version 1.4.0.
+  * Standards-Version 3.9.8
+  * B-D python:native for cross-build. Closes: #842711.
+  * Build libepoxy0-udeb so libgtk-3-0-udeb can depend on it. Closes: #788711
+  * Executable bit on rules
+  * Section: debian-installer for udeb
+  * Copyright: factor Expat license
+
+ -- Jérémy Lal <kapouer@melix.org>  Mon, 30 Jan 2017 15:00:33 +0100
+
 libepoxy (1.3.1-1) unstable; urgency=low
 
   * Upgrade to upstream v1.3.1 release and make the -dev package multi-arch.
