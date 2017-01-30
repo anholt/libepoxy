@@ -8,7 +8,7 @@ exe_wrapper = 'wine'
 
 [properties]
 root = '/usr/x86_64-w64-mingw32/sys-root/mingw'
-c_args = [ '-pipe', '-Wp,-D_FORTIFY_SOURCE=2', '-fexceptions', '--param=ssp-buffer-size=4' ]
+c_args = [ '-pipe', '-Wp,-D_FORTIFY_SOURCE=2', '-fexceptions', '--param=ssp-buffer-size=4', '-I/usr/x86_64-w64-mingw32/sys-root/mingw/include' ]
 c_link_args = [ '-L/usr/x86_64-w64-mingw32/sys-root/mingw/lib' ]
 
 [host_machine]
