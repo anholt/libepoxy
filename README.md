@@ -14,7 +14,7 @@ Features
 --------
 
   * Automatically initializes as new GL functions are used.
-  * GL 4.4 core and compatibility context support.
+  * GL 4.5 core and compatibility context support.
   * GLES 1/2/3 context support.
   * Knows about function aliases so (e.g.) `glBufferData()` can be
     used with `GL_ARB_vertex_buffer_object` implementations, along
