@@ -1,5 +1,5 @@
 /*
- * Copyright © 2013 Intel Corporation
+ * Copyright 2017  Emmanuele Bassi 
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -21,33 +21,24 @@
  * IN THE SOFTWARE.
  */
 
-/** @file egl.h
+/** @file common.h
  *
- * Provides an implementation of an EGL dispatch layer using global
- * function pointers
+ * A common header file, used to define macros and shared symbols.
  */
 
-#ifndef EPOXY_EGL_H
-#define EPOXY_EGL_H
+#ifndef EPOXY_COMMON_H
+#define EPOXY_COMMON_H
 
-#include <stdbool.h>
-
-#include "epoxy/common.h"
-
-#if defined(__egl_h_) || defined(__eglext_h_)
-#error epoxy/egl.h must be included before (or in place of) GL/egl.h
+#ifdef __cplusplus
+# define EPOXY_BEGIN_DECLS      extern "C" {
+# define EPOXY_END_DECLS        }
 #else
-#define __egl_h_
-#define __eglext_h_
+# define EPOXY_BEGIN_DECLS
+# define EPOXY_END_DECLS
 #endif
 
-#include "epoxy/egl_generated.h"
+#ifndef EPOXY_PUBLIC
+# define EPOXY_PUBLIC extern
+#endif
 
-EPOXY_BEGIN_DECLS
-
-EPOXY_PUBLIC bool epoxy_has_egl_extension(EGLDisplay dpy, const char *extension);
-EPOXY_PUBLIC int epoxy_egl_version(EGLDisplay dpy);
-
-EPOXY_END_DECLS
-
-#endif /* EPOXY_EGL_H */
+#endif /* EPOXY_COMMON_H */

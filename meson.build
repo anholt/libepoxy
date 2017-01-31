@@ -91,6 +91,23 @@ foreach cflag: test_cflags
   endif
 endforeach
 
+# Visibility compiler flags
+visibility_cflags = []
+if get_option('default_library') != 'static'
+  if host_system == 'windows'
+    conf.set('DLL_EXPORT', true)
+    if cc.get_id() == 'msvc'
+      conf.set('EPOXY_PUBLIC', '__declspec(dllexport) extern')
+    else
+      conf.set('EPOXY_PUBLIC', '__attribute__((visibility("default"))) __declspec(dllexport) extern')
+      visibility_cflags += [ '-fvisibility=hidden' ]
+    endif
+  else
+    conf.set('EPOXY_PUBLIC', '__attribute__((visibility("default")))')
+    visibility_cflags += [ '-fvisibility=hidden' ]
+  endif
+endif
+
 # Dependencies
 dl_dep = cc.find_library('dl', required: false)
 gl_dep = dependency('gl', required: false)

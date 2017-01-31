@@ -30,10 +30,6 @@
 #ifndef EPOXY_GLX_H
 #define EPOXY_GLX_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <epoxy/gl.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -49,11 +45,11 @@ extern "C" {
 
 #include "epoxy/glx_generated.h"
 
-bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
-int epoxy_glx_version(Display *dpy, int screen);
+EPOXY_BEGIN_DECLS
 
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
+EPOXY_PUBLIC bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
+EPOXY_PUBLIC int epoxy_glx_version(Display *dpy, int screen);
+
+EPOXY_END_DECLS
 
 #endif /* EPOXY_GLX_H */

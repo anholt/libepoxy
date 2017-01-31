@@ -1,3 +1,5 @@
+headers = [ 'common.h' ]
+
 gl_generated = custom_target('gl_generated.h',
                              input: gl_registry,
                              output: [
@@ -15,7 +17,7 @@ gl_generated = custom_target('gl_generated.h',
                              install_dir: join_paths(epoxy_includedir, 'epoxy'))
 
 gen_headers = [ gl_generated ]
-headers = [ 'gl.h', ]
+headers += [ 'gl.h', ]
 
 if build_egl
   egl_generated = custom_target('egl_generated.h',

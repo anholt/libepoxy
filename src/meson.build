@@ -103,7 +103,7 @@ if libtype != 'shared'
                                    install: true,
                                    dependencies: epoxy_deps,
                                    include_directories: libepoxy_inc,
-                                   c_args: common_cflags,
+                                   c_args: common_cflags + visibility_cflags,
                                    link_args: common_ldflags)
   libepoxy = libepoxy_static
 endif
