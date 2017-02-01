@@ -3,11 +3,26 @@ compiler:
   - gcc
   - clang
 
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - xutils-dev
+      - libgl1-mesa-dev
+      - libegl1-mesa-dev
+      - libgles1-mesa-dev
+      - libgles2-mesa-dev
+      - libgl1-mesa-dri
+
+env:
+  global:
+    - DISPLAY=:99.0
+
 before_install:
-  - "export DISPLAY=:99.0"
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x24"
-install:
-  - sudo apt-get update
-  - sudo apt-get install xutils-dev libgl1-mesa-dev libegl1-mesa-dev libgl1-mesa-dri libgles1-mesa-dev libgles2-mesa-dev
+
 script:
-  - ./autogen.sh && make && make check
+  - NOCONFIGURE=1 ./autogen.sh
+  - mkdir _build && cd _build
+  - ../configure && make V=1 && make V=1 check
