@@ -41,4 +41,12 @@
 # define EPOXY_PUBLIC extern
 #endif
 
+#if defined(_MSC_VER) && !defined(__bool_true_false_are_defined) && (_MSC_VER < 1800)
+typedef unsigned char bool;
+# define false 0
+# define true 1
+#else
+# include <stdbool.h>
+#endif
+
 #endif /* EPOXY_COMMON_H */

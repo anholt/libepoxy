@@ -30,8 +30,6 @@
 #ifndef EPOXY_GL_H
 #define EPOXY_GL_H
 
-#include <stdbool.h>
-
 #include "epoxy/common.h"
 
 #if defined(__gl_h_) || defined(__glext_h_)

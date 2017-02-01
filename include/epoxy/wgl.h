@@ -30,7 +30,6 @@
 #ifndef EPOXY_WGL_H
 #define EPOXY_WGL_H
 
-#include <stdbool.h>
 #include <windows.h>
 
 #include "epoxy/common.h"

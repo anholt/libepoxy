@@ -30,8 +30,6 @@
 #ifndef EPOXY_EGL_H
 #define EPOXY_EGL_H
 
-#include <stdbool.h>
-
 #include "epoxy/common.h"
 
 #if defined(__egl_h_) || defined(__eglext_h_)
