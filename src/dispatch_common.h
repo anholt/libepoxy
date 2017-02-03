@@ -23,8 +23,6 @@
 
 #include "config.h"
 
-#include <stdbool.h>
-
 #ifdef _WIN32
 #define PLATFORM_HAS_EGL 0
 #define PLATFORM_HAS_GLX 0
