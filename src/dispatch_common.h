@@ -162,6 +162,8 @@ bool epoxy_conservative_has_glx_extension(const char *name);
 int epoxy_conservative_egl_version(void);
 bool epoxy_conservative_has_egl_extension(const char *name);
 bool epoxy_conservative_has_wgl_extension(const char *name);
+void *epoxy_conservative_egl_dlsym(const char *name, bool exit_if_fails);
+void *epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails);
 
 bool epoxy_extension_in_string(const char *extension_list, const char *ext);
 
