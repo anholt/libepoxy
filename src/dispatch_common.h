@@ -21,7 +21,21 @@
  * IN THE SOFTWARE.
  */
 
-#include <stdbool.h>
+#if _MSC_VER < 1900
+	#ifndef __cplusplus
+		#ifndef bool
+			typedef enum { dc_false, dc_true } bool;
+		#endif
+		#ifndef true
+			#define true dc_true
+		#endif
+		#ifndef false
+			#define false dc_false
+		#endif
+	#endif
+#else
+	#include <stdbool.h>
+#endif
 
 #ifdef _WIN32
 #define PLATFORM_HAS_EGL 0

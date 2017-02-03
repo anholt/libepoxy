@@ -34,7 +34,22 @@
 extern "C" {
 #endif
 
-#include <stdbool.h>
+#if _MSC_VER < 1900
+	#ifndef __cplusplus
+		#ifndef bool
+			typedef enum { egl_false, egl_true } bool;
+		#endif
+		#ifndef true
+			#define true egl_true
+		#endif
+		#ifndef false
+			#define false egl_false
+		#endif
+	#endif
+#else
+	#include <stdbool.h>
+#endif
+
 #include <windows.h>
 
 #undef wglUseFontBitmaps

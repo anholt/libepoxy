@@ -34,7 +34,21 @@
 extern "C" {
 #endif
 
-#include <stdbool.h>
+#if _MSC_VER < 1900
+	#ifndef __cplusplus
+		#ifndef bool
+			typedef enum { ewgl_false, ewgl_true } bool;
+		#endif
+		#ifndef true
+			#define true ewgl_true
+		#endif
+		#ifndef false
+			#define false ewgl_false
+		#endif
+	#endif
+#else
+	#include <stdbool.h>
+#endif
 
 #if defined(__gl_h_) || defined(__glext_h_)
 #error epoxy/gl.h must be included before (or in place of) GL/gl.h
