@@ -24,6 +24,8 @@
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>
+#include <dlfcn.h>
+#include <err.h>
 
 #include "dispatch_common.h"
 
@@ -100,7 +102,7 @@ epoxy_conservative_has_glx_extension(const char *ext)
 
 PUBLIC bool
 epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
- {
+{
     /* No, you can't just use glXGetClientString or
      * glXGetServerString() here.  Those each tell you about one half
      * of what's needed for an extension to be supported, and
@@ -108,4 +110,28 @@ epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
      * of the two.
      */
     return epoxy_extension_in_string(glXQueryExtensionsString(dpy, screen), ext);
+}
+
+PUBLIC bool
+epoxy_has_glx(Display *dpy)
+{
+#if !PLATFORM_HAS_GLX
+    return false;
+#else
+    /* If the application hasn't explicitly called some of our GLX
+     * code but already figured out how to load GL symbols, then we
+     * simply inspect the address space.
+     *
+     * We explicitly don't use the epoxy wrappers, here, to avoid
+     * unintended side effects within our own layer of indirection.
+     */
+    Bool (* pf_glXQueryExtension) (Display *, int *, int *);
+    int error_base, event_base;
+
+    pf_glXQueryExtension = epoxy_glx_dlsym("glXQueryExtensions");
+    if (pf_glXQueryExtension && pf_glXQueryExtension(dpy, &error_base, &event_base))
+        return true;
+
+    return false;
+#endif /* PLATFORM_HAS_GLX */
 }

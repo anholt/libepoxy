@@ -62,3 +62,19 @@ epoxy_has_egl_extension(EGLDisplay dpy, const char *ext)
 {
     return epoxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext) || epoxy_extension_in_string(eglQueryString(NULL, EGL_EXTENSIONS), ext);
 }
+
+PUBLIC bool
+epoxy_has_egl(void)
+{
+#if !PLATFORM_HAS_EGL
+    return false;
+#else
+    EGLDisplay* (* pf_eglGetCurrentDisplay) (void);
+
+    pf_eglGetCurrentDisplay = epoxy_egl_dlsym("eglGetCurrentDisplay");
+    if (pf_eglGetCurrentDisplay)
+        return true;
+
+    return false;
+#endif /* PLATFORM_HAS_EGL */
+}
