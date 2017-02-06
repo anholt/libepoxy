@@ -17,6 +17,7 @@ before_build:
 - mkdir build
 - mkdir libepoxy-shared-%PLATFORM%
 - python -V
+- python3 -V
 - ninja
 - meson
 
