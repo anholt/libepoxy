@@ -32,6 +32,7 @@ before_build:
 
 build_script:
 - cd build
+- "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %PLATFORM%
 - meson-0.38.0\meson.py .. . --backend=vs2015
 - msbuild /t:Rebuild /p:Configuration=Release libepoxy.sln
 - cd ..
