@@ -27,7 +27,7 @@
 
 #include "dispatch_common.h"
 
-bool epoxy_first_context_current = false;
+static bool first_context_current = false;
 static bool already_switched_to_dispatch_table = false;
 
 /**
@@ -46,7 +46,7 @@ epoxy_conservative_has_wgl_extension(const char *ext)
     return epoxy_has_wgl_extension(hdc, ext);
 }
 
-EPOXY_IMPORTEXPORT bool
+bool
 epoxy_has_wgl_extension(HDC hdc, const char *ext)
  {
      PFNWGLGETEXTENSIONSSTRINGARBPROC getext;
@@ -72,11 +72,11 @@ epoxy_has_wgl_extension(HDC hdc, const char *ext)
  * table per context and reuse it when the context is made current
  * again.
  */
-EPOXY_IMPORTEXPORT void
+void
 epoxy_handle_external_wglMakeCurrent(void)
 {
-    if (!epoxy_first_context_current) {
-        epoxy_first_context_current = true;
+    if (!first_context_current) {
+        first_context_current = true;
     } else {
         if (!already_switched_to_dispatch_table) {
             already_switched_to_dispatch_table = true;
@@ -101,8 +101,6 @@ DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
 {
     void *data;
 
-    (void)dll; // Prevent "unused parameter" warning.
-    (void)reserved; // Prevent "unused parameter" warning.
     switch (reason) {
     case DLL_PROCESS_ATTACH:
         gl_tls_index = TlsAlloc();
@@ -112,7 +110,7 @@ DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
         if (wgl_tls_index == TLS_OUT_OF_INDEXES)
             return FALSE;
 
-        epoxy_first_context_current = false;
+        first_context_current = false;
 
         /* FALLTHROUGH */
 
@@ -142,27 +140,6 @@ DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
 
     return TRUE;
 }
-
-#ifdef EPOXY_STATIC_LIB
-#ifdef __GNUC__
-	PIMAGE_TLS_CALLBACK dllmain_callback __attribute__((section(".CRT$XLB"))) = (PIMAGE_TLS_CALLBACK)DllMain;
-#else
-#	ifdef _WIN64
-#		pragma comment(linker, "/INCLUDE:_tls_used")
-#		pragma comment(linker, "/INCLUDE:dllmain_callback")
-#		pragma const_seg(".CRT$XLB")
-		extern const PIMAGE_TLS_CALLBACK dllmain_callback;
-		const PIMAGE_TLS_CALLBACK dllmain_callback = DllMain;
-#		pragma const_seg()
-#	else
-#		pragma comment(linker, "/INCLUDE:__tls_used")
-#		pragma comment(linker, "/INCLUDE:_dllmain_callback")
-#		pragma data_seg(".CRT$XLB")
-		PIMAGE_TLS_CALLBACK dllmain_callback = DllMain;
-#		pragma data_seg()
-#	endif
-#endif
-#endif
 
 WRAPPER_VISIBILITY (BOOL)
 WRAPPER(epoxy_wglMakeCurrent)(HDC hdc, HGLRC hglrc)
@@ -213,7 +190,7 @@ WRAPPER(epoxy_wglMakeAssociatedContextCurrentAMD)(HGLRC hglrc)
     return ret;
 }
 
-EPOXY_IMPORTEXPORT PFNWGLMAKECURRENTPROC epoxy_wglMakeCurrent = epoxy_wglMakeCurrent_wrapped;
-EPOXY_IMPORTEXPORT PFNWGLMAKECONTEXTCURRENTEXTPROC epoxy_wglMakeContextCurrentEXT = epoxy_wglMakeContextCurrentEXT_wrapped;
-EPOXY_IMPORTEXPORT PFNWGLMAKECONTEXTCURRENTARBPROC epoxy_wglMakeContextCurrentARB = epoxy_wglMakeContextCurrentARB_wrapped;
-EPOXY_IMPORTEXPORT PFNWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC epoxy_wglMakeAssociatedContextCurrentEXT = epoxy_wglMakeAssociatedContextCurrentAMD_wrapped;
+PFNWGLMAKECURRENTPROC epoxy_wglMakeCurrent = epoxy_wglMakeCurrent_wrapped;
+PFNWGLMAKECONTEXTCURRENTEXTPROC epoxy_wglMakeContextCurrentEXT = epoxy_wglMakeContextCurrentEXT_wrapped;
+PFNWGLMAKECONTEXTCURRENTARBPROC epoxy_wglMakeContextCurrentARB = epoxy_wglMakeContextCurrentARB_wrapped;
+PFNWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC epoxy_wglMakeAssociatedContextCurrentEXT = epoxy_wglMakeAssociatedContextCurrentAMD_wrapped;

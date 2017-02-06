@@ -30,20 +30,18 @@
 #ifndef EPOXY_WGL_H
 #define EPOXY_WGL_H
 
-#if defined(__wglxext_h_)
-#error "epoxy/wgl.h" must be included before (or in place of) "wglext.h"
-#endif
+#include <windows.h>
 
-#define __wglxext_h_
-
-#include "epoxy/gl.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "epoxy/common.h"
 
 #undef wglUseFontBitmaps
 #undef wglUseFontOutlines
+
+#if defined(__wglxext_h_)
+#error epoxy/wgl.h must be included before (or in place of) wgl.h
+#else
+#define __wglxext_h_
+#endif
 
 #ifdef UNICODE
 #define wglUseFontBitmaps wglUseFontBitmapsW
@@ -53,11 +51,11 @@ extern "C" {
 
 #include "epoxy/wgl_generated.h"
 
-EPOXY_IMPORTEXPORT bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
-EPOXY_IMPORTEXPORT void epoxy_handle_external_wglMakeCurrent(void);
+EPOXY_BEGIN_DECLS
 
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
+EPOXY_PUBLIC bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
+EPOXY_PUBLIC void epoxy_handle_external_wglMakeCurrent(void);
+
+EPOXY_END_DECLS
 
 #endif /* EPOXY_WGL_H */

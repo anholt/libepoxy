@@ -25,45 +25,56 @@
  *
  * Provides an implementation of a GL dispatch layer using either
  * global function pointers or a hidden vtable.
+ *
+ * You should include `<epoxy/gl.h>` instead of `<GL/gl.h>` and `<GL/glext.h>`.
  */
 
 #ifndef EPOXY_GL_H
 #define EPOXY_GL_H
 
-#if    defined(__glplatform_h_)  || defined(__gl_h_)  || defined(__glext_h_)  \
-    || defined(__gl2platform_h_) || defined(__gl2_h_) || defined(__gl2ext_h_) \
-    || defined(__gl3platform_h_) || defined(__gl3_h_) || defined(__gl31_h_)
+#include "epoxy/common.h"
 
-#error "epoxy/gl.h" must be included before (or in place of) the desktop OpenGL / OpenGL ES headers.
-#endif
-
-#define __glplatform_h_
+#if defined(__gl_h_) || defined(__glext_h_)
+#error epoxy/gl.h must be included before (or in place of) GL/gl.h
+#else
 #define __gl_h_
 #define __glext_h_
-#define __gl2platform_h
-#define __gl2_h_ 1
-#define __gl2ext_h_ 1
-#define __gl3platform_h_
-#define __gl3_h_ 1
-#define __gl31_h_ 1
-
-#include "epoxy/common.h"
-#include "epoxy/khrplatform.h"
-#ifdef _WIN32
-#   include <Windows.h>
 #endif
 
-#ifdef __cplusplus
-extern "C" {
+#define KHRONOS_SUPPORT_INT64   1
+#define KHRONOS_SUPPORT_FLOAT   1
+#define KHRONOS_APIATTRIBUTES
+
+#ifndef _WIN32
+/* APIENTRY and GLAPIENTRY are not used on Linux or Mac. */
+#define APIENTRY
+#define GLAPIENTRY
+#define EPOXY_CALLSPEC
+#define GLAPI
+#define KHRONOS_APIENTRY
+#define KHRONOS_APICALL
+
+#else
+#ifndef APIENTRY
+#define APIENTRY __stdcall
 #endif
 
 #ifndef GLAPIENTRY
-#define GLAPIENTRY KHRONOS_APIENTRY
+#define GLAPIENTRY APIENTRY
 #endif
 
-#ifndef APIENTRY
-#define APIENTRY GLAPIENTRY
+#ifndef EPOXY_CALLSPEC
+#define EPOXY_CALLSPEC __stdcall
 #endif
+
+#ifndef GLAPI
+#define GLAPI extern
+#endif
+
+#define KHRONOS_APIENTRY __stdcall
+#define KHRONOS_APICALL __declspec(dllimport) __stdcall
+
+#endif /* _WIN32 */
 
 #ifndef APIENTRYP
 #define APIENTRYP APIENTRY *
@@ -73,23 +84,14 @@ extern "C" {
 #define GLAPIENTRYP GLAPIENTRY *
 #endif
 
-#define EPOXY_CALLSPEC KHRONOS_APIENTRY
-
-#if (defined(__GNUC__) && __GNUC__ >= 4) || (defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590))
-#   define GLAPI __attribute__((visibility("default")))
-#else
-#   define GLAPI extern
-#endif
-
 #include "epoxy/gl_generated.h"
 
-EPOXY_IMPORTEXPORT bool epoxy_has_gl_extension(const char *extension);
-EPOXY_IMPORTEXPORT bool epoxy_is_desktop_gl(void);
-EPOXY_IMPORTEXPORT int epoxy_gl_version(void);
-EPOXY_IMPORTEXPORT bool epoxy_current_context_is_egl(void);
+EPOXY_BEGIN_DECLS
 
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
+EPOXY_PUBLIC bool epoxy_has_gl_extension(const char *extension);
+EPOXY_PUBLIC bool epoxy_is_desktop_gl(void);
+EPOXY_PUBLIC int epoxy_gl_version(void);
+
+EPOXY_END_DECLS
 
 #endif /* EPOXY_GL_H */

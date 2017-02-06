@@ -25,34 +25,33 @@
  *
  * Provides an implementation of a GLX dispatch layer using global
  * function pointers.
+ *
+ * You should include `<epoxy/glx.h>` instead of `<GL/glx.h>`.
  */
 
 #ifndef EPOXY_GLX_H
 #define EPOXY_GLX_H
 
-#if defined(GLX_H) || defined(__glx_h__) || defined(__glxext_h_)
-#error "epoxy/glx.h" must be included before (or in place of) "GL/glx.h".
-#endif
-
-#define GLX_H
-#define __glx_h__
-#define __glxext_h_
-
-#include "epoxy/gl.h"
+#include <epoxy/gl.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
-#ifdef __cplusplus
-extern "C" {
+#if defined(GLX_H) || defined(__glxext_h_)
+#error epoxy/glx.h must be included before (or in place of) GL/glx.h
+#else
+#define GLX_H
+#define __glx_h__
+#define __glxext_h_
 #endif
 
 #include "epoxy/glx_generated.h"
 
-EPOXY_IMPORTEXPORT bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
-EPOXY_IMPORTEXPORT int epoxy_glx_version(Display *dpy, int screen);
+EPOXY_BEGIN_DECLS
 
-#ifdef __cplusplus
-} /* extern "C" */
-#endif
+EPOXY_PUBLIC bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
+EPOXY_PUBLIC int epoxy_glx_version(Display *dpy, int screen);
+EPOXY_PUBLIC bool epoxy_has_glx(Display *dpy);
+
+EPOXY_END_DECLS
 
 #endif /* EPOXY_GLX_H */

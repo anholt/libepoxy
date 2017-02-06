@@ -47,30 +47,56 @@ epoxy_conservative_glx_version(void)
     return epoxy_glx_version(dpy, screen);
 }
 
-EPOXY_IMPORTEXPORT int
+
+/**
+ * @brief Returns the version of GLX we are using
+ *
+ * The version is encoded as:
+ *
+ * ```
+ *
+ *   version = major * 10 + minor
+ *
+ * ```
+ *
+ * So it can be easily used for version comparisons.
+ *
+ * @param dpy The X11 display
+ * @param screen The X11 screen
+ *
+ * @return The encoded version of GLX we are using
+ *
+ * @see epoxy_gl_version()
+ */
+int
 epoxy_glx_version(Display *dpy, int screen)
 {
     int server_major, server_minor;
     int client_major, client_minor;
     int server, client;
     const char *version_string;
-    int ret=0, sscanf_ret;
+    int ret;
 
-    if ((version_string = glXQueryServerString(dpy, screen, GLX_VERSION)))
-    {
-        sscanf_ret = sscanf(version_string, "%d.%d", &server_major, &server_minor);
-        assert(sscanf_ret == 2);
-        server = server_major * 10 + server_minor;
-        if ((version_string = glXGetClientString(dpy, GLX_VERSION)))
-        {
-            sscanf_ret = sscanf(version_string, "%d.%d", &client_major, &client_minor);
-            assert(sscanf_ret == 2);
-            client = client_major * 10 + client_minor;
-            ret = client <= server  ?  client  :  server;
-        }
-    }
+    version_string = glXQueryServerString(dpy, screen, GLX_VERSION);
+    if (!version_string)
+        return 0;
 
-    return ret;
+    ret = sscanf(version_string, "%d.%d", &server_major, &server_minor);
+    assert(ret == 2);
+    server = server_major * 10 + server_minor;
+
+    version_string = glXGetClientString(dpy, GLX_VERSION);
+    if (!version_string)
+        return 0;
+
+    ret = sscanf(version_string, "%d.%d", &client_major, &client_minor);
+    assert(ret == 2);
+    client = client_major * 10 + client_minor;
+
+    if (client < server)
+        return client;
+    else
+        return server;
 }
 
 /**
@@ -93,9 +119,21 @@ epoxy_conservative_has_glx_extension(const char *ext)
     return epoxy_has_glx_extension(dpy, screen, ext);
 }
 
-EPOXY_IMPORTEXPORT bool
+/**
+ * @brief Returns true if the given GLX extension is supported in the current context.
+ *
+ * @param dpy The X11 display
+ * @param screen The X11 screen
+ * @param extension The name of the GLX extension
+ *
+ * @return `true` if the extension is available
+ *
+ * @see epoxy_has_gl_extension()
+ * @see epoxy_has_egl_extension()
+ */
+bool
 epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
- {
+{
     /* No, you can't just use glXGetClientString or
      * glXGetServerString() here.  Those each tell you about one half
      * of what's needed for an extension to be supported, and
@@ -103,4 +141,28 @@ epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
      * of the two.
      */
     return epoxy_extension_in_string(glXQueryExtensionsString(dpy, screen), ext);
+}
+
+/**
+ * @brief Checks whether GLX is available.
+ *
+ * @param dpy The X11 display
+ *
+ * @return `true` if GLX is available
+ */
+bool
+epoxy_has_glx(Display *dpy)
+{
+#if !PLATFORM_HAS_GLX
+    return false;
+#else
+    Bool (* pf_glXQueryExtension) (Display *, int *, int *);
+    int error_base, event_base;
+
+    pf_glXQueryExtension = epoxy_conservative_glx_dlsym("glXQueryExtension", false);
+    if (pf_glXQueryExtension && pf_glXQueryExtension(dpy, &error_base, &event_base))
+        return true;
+
+    return false;
+#endif /* !PLATFORM_HAS_GLX */
 }

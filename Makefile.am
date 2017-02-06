@@ -37,3 +37,14 @@ EXTRA_DIST = \
 	registry/glx.xml \
 	registry/wgl.xml \
 	$()
+
+dist-hook:
+	@if test -d "$(top_srcdir)/.git"; then \
+	  echo Generating ChangeLog... ; \
+	  ( $(top_srcdir)/missing --run git log --stat ) > "$(top_srcdir)/ChangeLog.tmp" \
+	  && mv -f "$(top_srcdir)/ChangeLog.tmp" "$(top_distdir)/ChangeLog" \
+	  || ( rm -f "$(top_srcdir)/ChangeLog.tmp"; \
+	       echo Failed to generate ChangeLog >&2 ); \
+	else \
+	  echo A git checkout is required to generate a ChangeLog >&2; \
+	fi

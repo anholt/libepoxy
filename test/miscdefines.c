@@ -23,11 +23,11 @@
 
 #include <epoxy/gl.h>
 
-#if EPOXY_SUPPORT_EGL
+#ifdef BUILD_EGL
 #include <epoxy/egl.h>
 #endif
 
-#if EPOXY_SUPPORT_GLX
+#ifdef BUILD_GLX
 #include <epoxy/glx.h>
 #endif
 
@@ -61,7 +61,7 @@
 
 /* Do we want to export GL_GLEXT_VERSION? */
 
-int main(void)
+int main(int argc, char **argv)
 {
     return 0;
 }

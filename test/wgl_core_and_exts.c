@@ -21,6 +21,7 @@
  * IN THE SOFTWARE.
  */
 
+#include <config.h>
 #include <stdio.h>
 
 #include "wgl_common.h"
@@ -70,7 +71,8 @@ test_function(HDC hdc)
     return !pass;
 }
 
-int main()
+int
+main(int argc, char **argv)
 {
     make_window_and_test(test_function);
 

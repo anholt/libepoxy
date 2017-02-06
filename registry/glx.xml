@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
     <!--
-    Copyright (c) 2013-2014 The Khronos Group Inc.
+    Copyright (c) 2013-2016 The Khronos Group Inc.
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and/or associated documentation files (the
@@ -453,7 +453,9 @@ typedef unsigned __int64 uint64_t;
         <enum value="0x20F3"        name="GLX_LATE_SWAPS_TEAR_EXT"/>
         <enum value="0x20F4"        name="GLX_BACK_BUFFER_AGE_EXT"/>
         <enum value="0x20F5"        name="GLX_STEREO_TREE_EXT"/>
-            <unused start="0x20F6" end="0x219F"/>
+        <enum value="0x20F6"        name="GLX_VENDOR_NAMES_EXT"/>
+        <enum value="0x20F7"        name="GLX_GENERATE_RESET_ON_VIDEO_MEMORY_PURGE_NV"/>
+            <unused start="0x20F8" end="0x219F"/>
     </enums>
 
     <enums namespace="GLX" start="0x21A0" end="0x21AF" vendor="AMD" comment="Shared with WGL; synchronize create_context enums">
@@ -1758,6 +1760,11 @@ typedef unsigned __int64 uint64_t;
                 <command name="glXFreeContextEXT"/>
             </require>
         </extension>
+        <extension name="GLX_EXT_libglvnd" supported="glx">
+            <require>
+                <enum name="GLX_VENDOR_NAMES_EXT"/>
+            </require>
+        </extension>
         <extension name="GLX_EXT_stereo_tree" supported="glx">
             <require>
                 <type name="GLXStereoNotifyEventEXT"/>
@@ -1932,6 +1939,11 @@ typedef unsigned __int64 uint64_t;
                 <enum name="GLX_NUM_VIDEO_SLOTS_NV"/>
                 <command name="glXEnumerateVideoDevicesNV"/>
                 <command name="glXBindVideoDeviceNV"/>
+            </require>
+        </extension>
+        <extension name="GLX_NV_robustness_video_memory_purge" supported="glx">
+            <require>
+                <enum name="GLX_GENERATE_RESET_ON_VIDEO_MEMORY_PURGE_NV"/>
             </require>
         </extension>
         <extension name="GLX_NV_swap_group" supported="glx">

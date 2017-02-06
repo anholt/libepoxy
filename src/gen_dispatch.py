@@ -77,7 +77,7 @@ class GLFunction(object):
             self.public = ''
         else:
             self.wrapped_name = name
-            self.public = 'EPOXY_IMPORTEXPORT '
+            self.public = 'EPOXY_PUBLIC '
 
         # This is the string of C code for passing through the
         # arguments to the function.
@@ -375,6 +375,8 @@ class Generator(object):
                 human_name = 'WGL {0}'.format(version)
                 condition = 'true'
                 loader = 'epoxy_gl_dlsym({0})'
+            elif api == 'glsc2':
+                continue
             else:
                 sys.exit('unknown API: "{0}"'.format(api))
 
@@ -483,6 +485,45 @@ class Generator(object):
     def write_header(self, file):
         self.write_header_header(file)
 
+        self.outln('#include "epoxy/common.h"')
+
+        if self.target != "gl":
+            self.outln('#include "epoxy/gl.h"')
+            if self.target == "egl":
+                self.outln('#include "EGL/eglplatform.h"')
+        else:
+            # Add some ridiculous inttypes.h redefinitions that are
+            # from khrplatform.h and not included in the XML.  We
+            # don't directly include khrplatform.h because it's not
+            # present on many systems, and coming up with #ifdefs to
+            # decide when it's not present would be hard.
+            self.outln('#define __khrplatform_h_ 1')
+            self.outln('typedef int8_t khronos_int8_t;')
+            self.outln('typedef int16_t khronos_int16_t;')
+            self.outln('typedef int32_t khronos_int32_t;')
+            self.outln('typedef int64_t khronos_int64_t;')
+            self.outln('typedef uint8_t khronos_uint8_t;')
+            self.outln('typedef uint16_t khronos_uint16_t;')
+            self.outln('typedef uint32_t khronos_uint32_t;')
+            self.outln('typedef uint64_t khronos_uint64_t;')
+            self.outln('typedef float khronos_float_t;')
+            self.outln('typedef long khronos_intptr_t;')
+            self.outln('typedef long khronos_ssize_t;')
+            self.outln('typedef unsigned long khronos_usize_t;')
+            self.outln('typedef uint64_t khronos_utime_nanoseconds_t;')
+            self.outln('typedef int64_t khronos_stime_nanoseconds_t;')
+            self.outln('#define KHRONOS_MAX_ENUM 0x7FFFFFFF')
+            self.outln('typedef enum {')
+            self.outln('    KHRONOS_FALSE = 0,')
+            self.outln('    KHRONOS_TRUE  = 1,')
+            self.outln('    KHRONOS_BOOLEAN_ENUM_FORCE_SIZE = KHRONOS_MAX_ENUM')
+            self.outln('} khronos_boolean_enum_t;')
+            self.outln('typedef uintptr_t khronos_uintptr_t;')
+
+        if self.target == "glx":
+            self.outln('#include <X11/Xlib.h>')
+            self.outln('#include <X11/Xutil.h>')
+
         self.out(self.typedefs)
         self.outln('')
         self.write_enums()
@@ -490,9 +531,9 @@ class Generator(object):
         self.write_function_ptr_typedefs()
 
         for func in self.sorted_functions:
-            self.outln('extern EPOXY_IMPORTEXPORT {0} (EPOXY_CALLSPEC *epoxy_{1})({2});'.format(func.ret_type,
-                                                                                     func.name,
-                                                                                     func.args_decl))
+            self.outln('EPOXY_PUBLIC {0} (EPOXY_CALLSPEC *epoxy_{1})({2});'.format(func.ret_type,
+                                                                                   func.name,
+                                                                                   func.args_decl))
             self.outln('')
 
         for func in self.sorted_functions:
@@ -571,7 +612,7 @@ class Generator(object):
         #
         # It also writes out the actual initialized global function
         # pointer.
-        if func.ret_type == 'void' or func.ret_type=='VOID':
+        if func.ret_type == 'void':
             self.outln('GEN_THUNKS({0}, ({1}), ({2}))'.format(func.wrapped_name,
                                                               func.args_decl,
                                                               func.args_list))
@@ -582,15 +623,14 @@ class Generator(object):
                                                                        func.args_list))
 
     def write_function_pointer(self, func):
-        self.outln('{0}{1} epoxy_{2} = epoxy_{2}_global_rewrite_ptr;'.format(func.public,
-                                                                             func.ptr_type,
-                                                                             func.wrapped_name))
+        self.outln('{0} epoxy_{1} = epoxy_{1}_global_rewrite_ptr;'.format(func.ptr_type, func.wrapped_name))
         self.outln('')
 
     def write_provider_enums(self):
         # Writes the enum declaration for the list of providers
         # supported by gl_provider_resolver()
 
+        self.outln('')
         self.outln('enum {0}_provider {{'.format(self.target))
 
         sorted_providers = sorted(self.provider_enum.keys())
@@ -603,6 +643,7 @@ class Generator(object):
             enum = self.provider_enum[human_name]
             self.outln('    {0},'.format(enum))
         self.outln('} PACKED;')
+        self.outln('ENDPACKED')
         self.outln('')
 
     def write_provider_enum_strings(self):
@@ -712,6 +753,8 @@ class Generator(object):
         self.write_copyright_comment_body()
         self.outln(' */')
         self.outln('')
+        self.outln('#include "config.h"')
+        self.outln('')
         self.outln('#include <stdlib.h>')
         self.outln('#include <string.h>')
         self.outln('#include <stdio.h>')
@@ -797,11 +840,36 @@ class Generator(object):
 
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
 argparser.add_argument('files', metavar='file.xml', nargs='+', help='GL API XML files to be parsed')
-argparser.add_argument('--dir', metavar='dir', required=True, help='Destination directory')
+argparser.add_argument('--outputdir', metavar='dir', required=False, help='Destination directory for files (default to current dir)')
+argparser.add_argument('--includedir', metavar='dir', required=False, help='Destination directory for headers')
+argparser.add_argument('--srcdir', metavar='dir', required=False, help='Destination directory for source')
+argparser.add_argument('--source', dest='source', action='store_true', required=False, help='Generate the source file')
+argparser.add_argument('--no-source', dest='source', action='store_false', required=False, help='Do not generate the source file')
+argparser.add_argument('--header', dest='header', action='store_true', required=False, help='Generate the header file')
+argparser.add_argument('--no-header', dest='header', action='store_false', required=False, help='Do not generate the header file')
 args = argparser.parse_args()
 
-srcdir = args.dir + '/src/'
-incdir = args.dir + '/include/epoxy/'
+if args.outputdir:
+    outputdir = args.outputdir
+else:
+    outputdir = os.getcwd()
+
+if args.includedir:
+    includedir = args.includedir
+else:
+    includedir = outputdir
+
+if args.srcdir:
+    srcdir = args.srcdir
+else:
+    srcdir = outputdir
+
+build_source = args.source
+build_header = args.header
+
+if not build_source and not build_header:
+    build_source = True
+    build_header = True
 
 for file in args.files:
     name = os.path.basename(file).split('.xml')[0]
@@ -830,5 +898,7 @@ for file in args.files:
 
     generator.prepare_provider_enum()
 
-    generator.write_header(incdir + name + '_generated.h')
-    generator.write_source(srcdir + name + '_generated_dispatch.c')
+    if build_header:
+        generator.write_header(os.path.join(includedir, name + '_generated.h'))
+    if build_source:
+        generator.write_source(os.path.join(srcdir, name + '_generated_dispatch.c'))

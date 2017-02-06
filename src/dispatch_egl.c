@@ -38,12 +38,26 @@ epoxy_conservative_egl_version(void)
     return epoxy_egl_version(dpy);
 }
 
-#if defined _MSC_VER
-#pragma warning(push)
-#pragma warning(disable: 4996)
-#endif
-
-EPOXY_IMPORTEXPORT int
+/**
+ * @brief Returns the version of OpenGL we are using
+ *
+ * The version is encoded as:
+ *
+ * ```
+ *
+ *   version = major * 10 + minor
+ *
+ * ```
+ *
+ * So it can be easily used for version comparisons.
+ *
+ * @param The EGL display
+ *
+ * @return The encoded version of EGL we are using
+ *
+ * @see epoxy_gl_version()
+ */
+int
 epoxy_egl_version(EGLDisplay dpy)
 {
     int major, minor;
@@ -52,28 +66,50 @@ epoxy_egl_version(EGLDisplay dpy)
 
     version_string = eglQueryString(dpy, EGL_VERSION);
     ret = sscanf(version_string, "%d.%d", &major, &minor);
-    EPOXY_UNUSED(ret);
     assert(ret == 2);
     return major * 10 + minor;
 }
 
-#if defined _MSC_VER
-#pragma warning(pop)
-#endif
-
 bool
 epoxy_conservative_has_egl_extension(const char *ext)
 {
-    EGLDisplay dpy = eglGetCurrentDisplay();
-
-    if (!dpy)
-        return true;
-
-    return epoxy_has_egl_extension(dpy, ext);
+    return epoxy_has_egl_extension(eglGetCurrentDisplay(), ext);
 }
 
-EPOXY_IMPORTEXPORT bool
+/**
+ * @brief Returns true if the given EGL extension is supported in the current context.
+ *
+ * @param dpy The EGL display
+ * @param extension The name of the EGL extension
+ *
+ * @return `true` if the extension is available
+ *
+ * @see epoxy_has_gl_extension()
+ * @see epoxy_has_glx_extension()
+ */
+bool
 epoxy_has_egl_extension(EGLDisplay dpy, const char *ext)
 {
-    return epoxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext);
+    return epoxy_extension_in_string(eglQueryString(dpy, EGL_EXTENSIONS), ext) || epoxy_extension_in_string(eglQueryString(NULL, EGL_EXTENSIONS), ext);
+}
+
+/**
+ * @brief Checks whether EGL is available.
+ *
+ * @return `true` if EGL is available
+ */
+bool
+epoxy_has_egl(void)
+{
+#if !PLATFORM_HAS_EGL
+    return false;
+#else
+    EGLDisplay* (* pf_eglGetCurrentDisplay) (void);
+
+    pf_eglGetCurrentDisplay = epoxy_conservative_egl_dlsym("eglGetCurrentDisplay", false);
+    if (pf_eglGetCurrentDisplay)
+        return true;
+
+    return false;
+#endif /* PLATFORM_HAS_EGL */
 }

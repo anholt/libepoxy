@@ -1,5 +1,5 @@
 /*
- * Copyright © 2013 Intel Corporation
+ * Copyright 2017  Emmanuele Bassi 
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -23,52 +23,30 @@
 
 /** @file common.h
  *
- * Provides basic definitions for Epoxy. Included by all other Epoxy files.
+ * A common header file, used to define macros and shared symbols.
  */
 
 #ifndef EPOXY_COMMON_H
 #define EPOXY_COMMON_H
 
-#include "epoxy/config.h"
-
-#include <stdbool.h>
-
 #ifdef __cplusplus
-extern "C" {
-#endif
-
-#if defined _WIN32 || defined __CYGWIN__
-    #if defined EPOXY_STATIC_LIB
-        #define EPOXY_IMPORTEXPORT
-    #else
-        #if defined EPOXY_BUILDING_LIB
-            #ifdef __GNUC__
-                #define EPOXY_IMPORTEXPORT __attribute__((dllexport))
-            #else
-                #define EPOXY_IMPORTEXPORT __declspec(dllexport)
-            #endif
-        #else
-            #ifdef __GNUC__
-                #define EPOXY_IMPORTEXPORT __attribute__((dllimport))
-            #else
-                #define EPOXY_IMPORTEXPORT __declspec(dllimport)
-            #endif
-        #endif
-    #endif
-#elif defined __ANDROID__
-    #include <sys/cdefs.h>
-    #define EPOXY_IMPORTEXPORT __attribute__((visibility("default"))) __NDK_FPABI__
-#elif (defined __GNUC__ && __GNUC__ >= 4)  ||  (defined __SUNPRO_C && __SUNPRO_C >= 0x590)
-    #define EPOXY_IMPORTEXPORT __attribute__((visibility("default")))
+# define EPOXY_BEGIN_DECLS      extern "C" {
+# define EPOXY_END_DECLS        }
 #else
-    #define EPOXY_IMPORTEXPORT
+# define EPOXY_BEGIN_DECLS
+# define EPOXY_END_DECLS
 #endif
 
-// Prevent "unused variable/parameter" warnings.
-#define EPOXY_UNUSED(var) ((void)var)
+#ifndef EPOXY_PUBLIC
+# define EPOXY_PUBLIC extern
+#endif
 
-#ifdef __cplusplus
-}
+#if defined(_MSC_VER) && !defined(__bool_true_false_are_defined) && (_MSC_VER < 1800)
+typedef unsigned char bool;
+# define false 0
+# define true 1
+#else
+# include <stdbool.h>
 #endif
 
 #endif /* EPOXY_COMMON_H */

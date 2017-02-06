@@ -21,26 +21,46 @@
  * IN THE SOFTWARE.
  */
 
-#include <stdbool.h>
+#include "config.h"
+
+#ifdef _WIN32
+#define PLATFORM_HAS_EGL 0
+#define PLATFORM_HAS_GLX ENABLE_GLX
+#define PLATFORM_HAS_WGL 1
+#elif defined(__APPLE__)
+#define PLATFORM_HAS_EGL 0
+#define PLATFORM_HAS_GLX ENABLE_GLX
+#define PLATFORM_HAS_WGL 0
+#elif defined(ANDROID)
+#define PLATFORM_HAS_EGL 1
+#define PLATFORM_HAS_GLX 0
+#define PLATFORM_HAS_WGL 0
+#else
+#define PLATFORM_HAS_EGL 1
+#define PLATFORM_HAS_GLX ENABLE_GLX
+#define PLATFORM_HAS_WGL 0
+#endif
 
 #include "epoxy/gl.h"
-
-#if EPOXY_SUPPORT_WGL
-#include "epoxy/wgl.h"
-#endif
-
-#if EPOXY_SUPPORT_GLX
+#if PLATFORM_HAS_GLX
 #include "epoxy/glx.h"
 #endif
-
-#if EPOXY_SUPPORT_EGL
+#if PLATFORM_HAS_EGL
 #include "epoxy/egl.h"
+#endif
+#if PLATFORM_HAS_WGL
+#include "epoxy/wgl.h"
 #endif
 
 #if defined(__GNUC__)
 #define PACKED __attribute__((__packed__))
+#define ENDPACKED
+#elif defined (_MSC_VER)
+#define PACKED __pragma(pack(push,1))
+#define ENDPACKED __pragma(pack(pop))
 #else
 #define PACKED
+#define ENDPACKED
 #endif
 
 /* On win32, we're going to need to keep a per-thread dispatch table,
@@ -142,6 +162,8 @@ bool epoxy_conservative_has_glx_extension(const char *name);
 int epoxy_conservative_egl_version(void);
 bool epoxy_conservative_has_egl_extension(const char *name);
 bool epoxy_conservative_has_wgl_extension(const char *name);
+void *epoxy_conservative_egl_dlsym(const char *name, bool exit_if_fails);
+void *epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails);
 
 bool epoxy_extension_in_string(const char *extension_list, const char *ext);
 
@@ -166,8 +188,4 @@ extern BOOL UNWRAPPED_PROTO(wglMakeCurrent_unwrapped)(HDC hdc, HGLRC hglrc);
 extern BOOL UNWRAPPED_PROTO(wglMakeContextCurrentARB_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
 extern BOOL UNWRAPPED_PROTO(wglMakeContextCurrentEXT_unwrapped)(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
 extern BOOL UNWRAPPED_PROTO(wglMakeAssociatedContextCurrentAMD_unwrapped)(HGLRC hglrc);
-#endif /* _WIN32 */
-
-#if EPOXY_SUPPORT_WGL
-extern bool epoxy_first_context_current;
-#endif
+#endif /* _WIN32_ */
