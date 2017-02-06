@@ -7,9 +7,7 @@ configuration: Release
 environment:
   matrix:
   - platform: x86
-    generator: "Visual Studio 12 2013"
   - platform: x64
-    generator: "Visual Studio 12 2013 Win64"
 
 shallow_clone: true
 
@@ -34,7 +32,7 @@ before_build:
 
 build_script:
 - cd build
-- meson-0.38.0\meson.py .. . --backend vs2015
+- meson-0.38.0\meson.py .. . --backend=vs2015
 - msbuild /t:Rebuild /p:Configuration=Release libepoxy.sln
 - cd ..
 
