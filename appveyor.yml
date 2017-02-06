@@ -5,6 +5,7 @@ image: Visual Studio 2015
 configuration: Release
 
 environment:
+  PYTHON: "C:\\Python35"
   matrix:
   - platform: x86
     generator: "Visual Studio 12 2013"
