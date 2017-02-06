@@ -29,7 +29,7 @@ AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
 
 # Initialize Automake
-AM_INIT_AUTOMAKE([foreign dist-bzip2 subdir-objects])
+AM_INIT_AUTOMAKE([foreign -Wno-portability dist-xz no-dist-gzip tar-ustar subdir-objects])
 
 # Require X.Org macros 1.8 or later for MAN_SUBSTS set by XORG_MANPAGE_SECTIONS
 m4_ifndef([XORG_MACROS_VERSION],
