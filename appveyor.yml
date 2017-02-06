@@ -26,7 +26,10 @@ before_build:
 - del ninja-win.zip
 - curl -LsSO https://github.com/mesonbuild/meson/releases/download/0.38.0/meson-0.38.0.tar.gz
 - 7z x meson-0.38.0.tar.gz
-- del meson-0.38.0.tar.gz
+- move dist\meson-0.38.0.tar .
+- 7z x meson-0.38.0.tar
+- rmdir dist
+- del meson-0.38.0.tar meson-0.38.0.tar.gz
 - dir
 - cd ..
 
