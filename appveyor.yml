@@ -18,6 +18,8 @@ before_build:
 - mkdir libepoxy-shared-%PLATFORM%
 - echo %path%
 - set path=%path:C:\Python27;=%
+- set path=%path:C:\Python27\Scripts;=%
+- set path=%path%;C:\Python36;C:\Python36\Scripts
 - echo %path%
 - dir C:\Python36
 - python -V
