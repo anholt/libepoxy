@@ -50,6 +50,7 @@ EPOXY_BEGIN_DECLS
 
 EPOXY_PUBLIC bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
 EPOXY_PUBLIC int epoxy_glx_version(Display *dpy, int screen);
+EPOXY_PUBLIC bool epoxy_has_glx(Display *dpy);
 
 EPOXY_END_DECLS
 

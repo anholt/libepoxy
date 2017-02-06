@@ -133,7 +133,7 @@ epoxy_conservative_has_glx_extension(const char *ext)
  */
 bool
 epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
- {
+{
     /* No, you can't just use glXGetClientString or
      * glXGetServerString() here.  Those each tell you about one half
      * of what's needed for an extension to be supported, and
@@ -141,4 +141,28 @@ epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
      * of the two.
      */
     return epoxy_extension_in_string(glXQueryExtensionsString(dpy, screen), ext);
+}
+
+/**
+ * @brief Checks whether GLX is available.
+ *
+ * @param dpy The X11 display
+ *
+ * @return `true` if GLX is available
+ */
+bool
+epoxy_has_glx(Display *dpy)
+{
+#if !PLATFORM_HAS_GLX
+    return false;
+#else
+    Bool (* pf_glXQueryExtension) (Display *, int *, int *);
+    int error_base, event_base;
+
+    pf_glXQueryExtension = epoxy_conservative_glx_dlsym("glXQueryExtension", false);
+    if (pf_glXQueryExtension && pf_glXQueryExtension(dpy, &error_base, &event_base))
+        return true;
+
+    return false;
+#endif /* !PLATFORM_HAS_GLX */
 }

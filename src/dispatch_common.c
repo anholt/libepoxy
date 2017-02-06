@@ -569,15 +569,27 @@ epoxy_conservative_has_gl_extension(const char *ext)
 }
 
 void *
+epoxy_conservative_egl_dlsym(const char *name, bool exit_if_fails)
+{
+    return do_dlsym(&api.egl_handle, EGL_LIB, name, exit_if_fails);
+}
+
+void *
 epoxy_egl_dlsym(const char *name)
 {
-    return do_dlsym(&api.egl_handle, EGL_LIB, name, true);
+    return epoxy_conservative_egl_dlsym(name, true);
+}
+
+void *
+epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails)
+{
+    return do_dlsym(&api.glx_handle, GLX_LIB, name, exit_if_fails);
 }
 
 void *
 epoxy_glx_dlsym(const char *name)
 {
-    return do_dlsym(&api.glx_handle, GLX_LIB, name, true);
+    return epoxy_conservative_glx_dlsym(name, true);
 }
 
 void *
