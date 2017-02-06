@@ -30,25 +30,47 @@ conf.set_quoted('PACKAGE_LOCALEDIR', join_paths(get_option('prefix'), get_option
 conf.set_quoted('PACKAGE_LIBEXECDIR', join_paths(get_option('prefix'), get_option('libexecdir')))
 conf.set('HAVE_KHRPLATFORM_H', cc.has_header('KHR/khrplatform.h', required: false))
 
-if host_system == 'windows'
+# GLX can be used on different platforms, so we expose a
+# configure time switch to enable or disable it; in case
+# the "auto" default value is set, we only enable GLX
+# support on Linux and Unix
+enable_glx = get_option('enable-glx')
+if enable_glx == 'auto'
+  if host_system == 'windows'
+    build_glx = false
+  elif host_system == 'darwin'
+    build_glx = false
+  elif host_system == 'android'
+    build_glx = false
+  else
+    build_glx = true
+  endif
+elif enable_glx == 'yes'
+  build_glx = true
+elif enable_glx == 'no'
   build_glx = false
+endif
+
+# The remaining platform specific API for GL/GLES are enabled
+# depending on the platform we're building for
+if host_system == 'windows'
   build_egl = false
   build_apple = false
   build_wgl = true
   has_znow = true
 elif host_system == 'darwin'
-  build_glx = false
   build_egl = false
   build_apple = true
   build_wgl = false
   has_znow = false
 else
-  build_glx = true
   build_egl = true
   build_apple = false
   build_wgl = false
   has_znow = true
 endif
+
+conf.set10('ENABLE_GLX', build_glx)
 
 # Compiler flags, taken from the Xorg macros
 test_cflags = [
@@ -138,6 +160,9 @@ pkgconf.set('prefix', epoxy_prefix)
 pkgconf.set('exec_prefix', epoxy_prefix)
 pkgconf.set('libdir', epoxy_libdir)
 pkgconf.set('includedir', epoxy_includedir)
+pkgconf.set10('epoxy_has_glx', build_glx)
+pkgconf.set10('epoxy_has_egl', build_egl)
+pkgconf.set10('epoxy_has_wgl', build_wgl)
 pkgconf.set('PACKAGE_VERSION', meson.project_version())
 if dl_dep.found()
   pkgconf.set('DLOPEN_LIBS', '-ldl')

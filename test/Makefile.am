@@ -72,8 +72,11 @@ check_PROGRAMS = $(TESTS)
 
 if BUILD_EGL
 EGL_TESTS = \
+	$()
+
+if HAVE_X11
+EGL_TESTS += \
 	egl_has_extension_nocontext \
-	egl_gl \
 	egl_gles2_without_glx \
 	$()
 
@@ -82,6 +85,7 @@ EGL_TESTS += egl_gles1_without_glx
 endif
 
 EGL_UTIL_LIB = libegl_common.la
+endif
 endif
 
 if BUILD_GLX
@@ -93,6 +97,7 @@ if BUILD_EGL
 if BUILD_GLX
 if !BUILD_APPLE
 EGL_AND_GLX_TESTS = \
+	egl_gl \
 	egl_and_glx_different_pointers_egl_glx \
 	egl_and_glx_different_pointers_egl \
 	egl_and_glx_different_pointers_glx \
