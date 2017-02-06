@@ -1,6 +1,6 @@
 Source: libepoxy
 Priority: optional
-Maintainer: Eric Anholt <eric@anholt.net>
+Maintainer: Jérémy Lal <kapouer@melix.org>
 Build-Depends: debhelper (>= 9),
                dh-autoreconf,
                autotools-dev,
@@ -8,8 +8,8 @@ Build-Depends: debhelper (>= 9),
                pkg-config,
                libx11-dev,
                libegl1-mesa-dev,
-               python
-Standards-Version: 3.9.6
+               python:native
+Standards-Version: 3.9.8
 Section: libs
 Homepage: https://github.com/anholt/libepoxy
 Vcs-Git: https://github.com/anholt/libepoxy.git
@@ -39,3 +39,11 @@ Description: OpenGL function pointer management library
  eglGetProcAddress(), etc. from the app developer, with very little
  knowledge needed on their part.  They get to read GL specs and write
  code using undecorated function names like glCompileShader().
+
+Package: libepoxy0-udeb
+Package-Type: udeb
+Section: debian-installer
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: OpenGL function pointer management library - minimal runtime
+ This is a udeb, or a microdeb, for the debian-installer.
