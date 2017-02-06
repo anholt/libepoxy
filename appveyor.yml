@@ -5,7 +5,6 @@ image: Visual Studio 2015
 configuration: Release
 
 environment:
-  PYTHON: "C:\\Python35"
   matrix:
   - platform: x86
     generator: "Visual Studio 12 2013"
@@ -17,6 +16,10 @@ shallow_clone: true
 before_build:
 - mkdir build
 - mkdir libepoxy-shared-%PLATFORM%
+- echo %path%
+- set path=%path:C:\Python27;=%
+- echo %path%
+- dir C:\Python36
 - python -V
 - python3 -V
 - ninja
