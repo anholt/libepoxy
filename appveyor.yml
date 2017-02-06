@@ -30,14 +30,12 @@ before_build:
 - 7z x meson-0.38.0.tar
 - rmdir dist
 - del meson-0.38.0.tar meson-0.38.0.tar.gz
-- dir
 - cd ..
 
 build_script:
 - cd build
-- cmake .. -G "%generator%" -DCMAKE_INSTALL_PREFIX=../libepoxy-shared-%PLATFORM% -DEPOXY_SUPPORT_EGL=OFF
-- msbuild /t:Rebuild /p:Configuration=Release ALL_BUILD.vcxproj
-- msbuild /t:Rebuild /p:Configuration=Release INSTALL.vcxproj
+- meson-0.38.0\meson.py .. . --backend vs2015
+- msbuild /t:Rebuild /p:Configuration=Release libepoxy.sln
 - cd ..
 
 after_build:
