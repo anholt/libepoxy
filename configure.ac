@@ -205,6 +205,15 @@ AM_CONDITIONAL(HAVE_X11, test x$x11 = xyes)
 
 PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
 
+# Variables for the pkg-config file; AC_SUBST does not do `test` substitutions,
+# so we need to specify the boolean values here
+AS_IF([test x$build_glx = xyes], [epoxy_has_glx=1], [epoxy_has_glx=0])
+AS_IF([test x$build_egl = xyes], [epoxy_has_egl=1], [epoxy_has_egl=0])
+AS_IF([test x$build_wgl = xyes], [epoxy_has_wgl=1], [epoxy_has_wgl=0])
+AC_SUBST(epoxy_has_glx)
+AC_SUBST(epoxy_has_egl)
+AC_SUBST(epoxy_has_wgl)
+
 AC_CONFIG_FILES([
                 epoxy.pc
                 Makefile
