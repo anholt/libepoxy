@@ -16,14 +16,13 @@ shallow_clone: true
 before_build:
 - mkdir build
 - mkdir libepoxy-shared-%PLATFORM%
-- echo %path%
 - set path=%path:C:\Python27;=%
 - set path=%path:C:\Python27\Scripts;=%
 - set path=%path%;C:\Python36;C:\Python36\Scripts
-- echo %path%
-- dir C:\Python36
-- python -V
-- python3 -V
+- mklink C:\Python36\python3.exe C:\Python36\python.exe
+- curl -LsSO https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-win.zip
+- 7z x ninja-win.zip
+- del ninja-win.zip
 - ninja
 - meson
 
