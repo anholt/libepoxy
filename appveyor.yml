@@ -39,7 +39,7 @@ after_build:
 - copy COPYING libepoxy-shared-%PLATFORM%
 - xcopy build\include libepoxy-shared-%PLATFORM%\include /e /y
 - copy build\src\epoxy-0.dll libepoxy-shared-%PLATFORM%\bin
-- copy build\src\epoxy-0.lib libepoxy-shared-%PLATFORM%\lib
+- copy build\src\epoxy.lib libepoxy-shared-%PLATFORM%\lib
 - dir libepoxy-shared-%PLATFORM% /s /b
 - 7z a -tzip libepoxy-shared-%PLATFORM%.zip libepoxy-shared-%PLATFORM%
 
