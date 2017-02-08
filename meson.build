@@ -73,39 +73,44 @@ endif
 conf.set10('ENABLE_GLX', build_glx)
 
 # Compiler flags, taken from the Xorg macros
-test_cflags = [
-  '-Wpointer-arith',
-  '-Wmissing-declarations',
-  '-Wformat=2',
-  '-Wstrict-prototypes',
-  '-Wmissing-prototypes',
-  '-Wnested-externs',
-  '-Wbad-function-cast',
-  '-Wold-style-definition',
-  '-Wdeclaration-after-statement',
-  '-Wunused',
-  '-Wuninitialized',
-  '-Wshadow',
-  '-Wmissing-noreturn',
-  '-Wmissing-format-attribute',
-  '-Wredundant-decls',
-  '-Wlogical-op',
-  '-Werror=implicit',
-  '-Werror=nonnull',
-  '-Werror=init-self',
-  '-Werror=main',
-  '-Werror=missing-braces',
-  '-Werror=sequence-point',
-  '-Werror=return-type',
-  '-Werror=trigraphs',
-  '-Werror=array-bounds',
-  '-Werror=write-strings',
-  '-Werror=address',
-  '-Werror=int-to-pointer-cast',
-  '-Werror=pointer-to-int-cast',
-  '-fno-strict-aliasing',
-  '-Wno-int-conversion',
-]
+if cc.get_id() != 'msvc'
+  test_cflags = [
+    '-Wpointer-arith',
+    '-Wmissing-declarations',
+    '-Wformat=2',
+    '-Wstrict-prototypes',
+    '-Wmissing-prototypes',
+    '-Wnested-externs',
+    '-Wbad-function-cast',
+    '-Wold-style-definition',
+    '-Wdeclaration-after-statement',
+    '-Wunused',
+    '-Wuninitialized',
+    '-Wshadow',
+    '-Wmissing-noreturn',
+    '-Wmissing-format-attribute',
+    '-Wredundant-decls',
+    '-Wlogical-op',
+    '-Werror=implicit',
+    '-Werror=nonnull',
+    '-Werror=init-self',
+    '-Werror=main',
+    '-Werror=missing-braces',
+    '-Werror=sequence-point',
+    '-Werror=return-type',
+    '-Werror=trigraphs',
+    '-Werror=array-bounds',
+    '-Werror=write-strings',
+    '-Werror=address',
+    '-Werror=int-to-pointer-cast',
+    '-Werror=pointer-to-int-cast',
+    '-fno-strict-aliasing',
+    '-Wno-int-conversion',
+  ]
+else
+  test_cflags = []
+endif
+
 common_cflags = []
 foreach cflag: test_cflags
   if cc.has_argument(cflag)

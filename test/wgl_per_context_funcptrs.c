@@ -35,7 +35,6 @@
  * regardless.
  */
 
-#include <config.h>
 #include <stdio.h>
 #include <assert.h>
 
