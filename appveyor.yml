@@ -18,6 +18,7 @@ before_build:
 - mkdir libepoxy-shared-%PLATFORM%
 - mkdir libepoxy-shared-%PLATFORM%\bin
 - mkdir libepoxy-shared-%PLATFORM%\include
+- mkdir libepoxy-shared-%PLATFORM%\include\epoxy
 - mkdir libepoxy-shared-%PLATFORM%\lib
 - cd build
 - curl -LsSO https://github.com/mesonbuild/meson/releases/download/0.38.0/meson-0.38.0.tar.gz
@@ -37,7 +38,7 @@ build_script:
 
 after_build:
 - copy COPYING libepoxy-shared-%PLATFORM%
-- xcopy build\include libepoxy-shared-%PLATFORM%\include /e /y
+- xcopy include\epoxy\*.h libepoxy-shared-%PLATFORM%\include\epoxy /y
 - copy build\src\epoxy-0.dll libepoxy-shared-%PLATFORM%\bin
 - copy build\src\epoxy.lib libepoxy-shared-%PLATFORM%\lib
 - dir libepoxy-shared-%PLATFORM% /s /b
