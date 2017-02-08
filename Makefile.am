@@ -27,15 +27,31 @@ SUBDIRS += test
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = epoxy.pc
 
+registry_files = \
+	registry/egl.xml \
+	registry/gl.xml \
+	registry/glx.xml \
+	registry/wgl.xml \
+	$()
+
+meson_build_files = \
+	meson_options.txt \
+	meson.build \
+	include/epoxy/meson.build \
+	src/meson.build \
+	test/meson.build \
+	doc/meson.build \
+	doc/Doxyfile.in \
+	cross/fedora-mingw64.txt \
+	$()
+
 EXTRA_DIST = \
 	.dir-locals.el \
 	README.md \
 	autogen.sh \
 	epoxy.pc.in \
-	registry/egl.xml \
-	registry/gl.xml \
-	registry/glx.xml \
-	registry/wgl.xml \
+	$(registry_files) \
+	$(meson_build_files) \
 	$()
 
 dist-hook:

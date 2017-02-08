@@ -40,7 +40,7 @@ m4_ifndef([XORG_MACROS_VERSION],
 XORG_MACROS_VERSION(1.8)
 XORG_DEFAULT_OPTIONS
 
-AC_CHECK_PROGS([PYTHON], [python3 python2 python])
+AC_CHECK_PROGS([PYTHON], [python2 python])
 
 # Initialize libtool
 AC_DISABLE_STATIC

@@ -38,7 +38,11 @@
 #endif
 
 #ifndef EPOXY_PUBLIC
-# define EPOXY_PUBLIC extern
+# if defined(_MSC_VER)
+#  define EPOXY_PUBLIC __declspec(dllimport) extern
+# else
+#  define EPOXY_PUBLIC extern
+# endif
 #endif
 
 #if defined(_MSC_VER) && !defined(__bool_true_false_are_defined) && (_MSC_VER < 1800)
