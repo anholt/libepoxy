@@ -42,6 +42,7 @@ after_build:
 - copy COPYING libepoxy-shared-%pout%
 - xcopy include\epoxy\*.h libepoxy-shared-%pout%\include\epoxy /y
 - xcopy build\include\epoxy\*.h libepoxy-shared-%pout%\include\epoxy /y
+- copy build\src\config.h libepoxy-shared-%pout%\include\epoxy
 - copy build\src\epoxy-0.dll libepoxy-shared-%pout%\bin
 - copy build\src\epoxy.lib libepoxy-shared-%pout%\lib
 - dir libepoxy-shared-%pout% /s /b
