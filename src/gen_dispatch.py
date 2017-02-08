@@ -103,13 +103,13 @@ class GLFunction(object):
         # for all of them.
         self.alias_exts = []
 
-    def add_arg(self, type, name):
+    def add_arg(self, arg_type, arg_name):
         # Reword glDepthRange() arguments to avoid clashing with the
         # "near" and "far" keywords on win32.
-        if name == "near":
-            name = "hither"
-        elif name == "far":
-            name = "yon"
+        if arg_name == "near":
+            arg_name = "hither"
+        elif arg_name == "far":
+            arg_name = "yon"
 
         # Mac screwed up GLhandleARB and made it a void * instead of
         # uint32_t, despite it being specced as only necessarily 32
@@ -124,19 +124,19 @@ class GLFunction(object):
         # args are stored in 64-bit registers, so the calls end up
         # being the same despite the different types.  We just need to
         # add a cast to uintptr_t to shut up the compiler.
-        if type == 'GLhandleARB':
-            assert(len(self.args) < 6)
-            arg_list_name = '(uintptr_t)' + name
+        if arg_type == 'GLhandleARB':
+            assert len(self.args) < 6
+            arg_list_name = '(uintptr_t)' + arg_name
         else:
-            arg_list_name = name
+            arg_list_name = arg_name
 
-        self.args.append((type, name))
+        self.args.append((arg_type, arg_name))
         if self.args_decl == 'void':
             self.args_list = arg_list_name
-            self.args_decl = type + ' ' + name
+            self.args_decl = arg_type + ' ' + arg_name
         else:
             self.args_list += ', ' + arg_list_name
-            self.args_decl += ', ' + type + ' ' + name
+            self.args_decl += ', ' + arg_type + ' ' + arg_name
 
     def add_provider(self, condition, loader, condition_name):
         self.providers[condition_name] = GLProvider(condition, condition_name,
@@ -153,8 +153,10 @@ class Generator(object):
         self.target = target
         self.enums = {}
         self.functions = {}
-        self.sorted_function = None
+        self.sorted_functions = []
+        self.enum_string_offset = {}
         self.max_enum_name_len = 1
+        self.entrypoint_string_offset = {}
         self.copyright_comment = None
         self.typedefs = ''
         self.out_file = None
@@ -232,9 +234,7 @@ class Generator(object):
 
             # wgl.xml's 0xwhatever definitions end up colliding with
             # wingdi.h's decimal definitions of these.
-            if ('WGL_SWAP_OVERLAY' in name or
-                'WGL_SWAP_UNDERLAY' in name or
-                'WGL_SWAP_MAIN_PLANE' in name):
+            if name in ['WGL_SWAP_OVERLAY', 'WGL_SWAP_UNDERLAY', 'WGL_SWAP_MAIN_PLANE']:
                 continue
 
             self.max_enum_name_len = max(self.max_enum_name_len, len(name))
@@ -298,16 +298,16 @@ class Generator(object):
         for func in self.functions.values():
             for provider in func.providers.values():
                 if provider.condition_name in self.provider_enum:
-                    assert(self.provider_condition[provider.condition_name] == provider.condition)
-                    assert(self.provider_loader[provider.condition_name] == provider.loader)
+                    assert self.provider_condition[provider.condition_name] == provider.condition
+                    assert self.provider_loader[provider.condition_name] == provider.loader
                     continue
 
-                self.provider_enum[provider.condition_name] = provider.enum;
-                self.provider_condition[provider.condition_name] = provider.condition;
-                self.provider_loader[provider.condition_name] = provider.loader;
+                self.provider_enum[provider.condition_name] = provider.enum
+                self.provider_condition[provider.condition_name] = provider.condition
+                self.provider_loader[provider.condition_name] = provider.loader
 
     def sort_functions(self):
-        self.sorted_functions = sorted(self.functions.values(), key=lambda func:func.name)
+        self.sorted_functions = sorted(self.functions.values(), key=lambda func: func.name)
 
     def process_require_statements(self, feature, condition, loader, human_name):
         for command in feature.findall('require/command'):
@@ -319,7 +319,7 @@ class Generator(object):
             # don't wrap those functions.
             if self.target == 'wgl' and 'wgl' not in name:
                 del self.functions[name]
-                continue;
+                continue
 
             func = self.functions[name]
             func.add_provider(condition, loader, human_name)
@@ -327,7 +327,7 @@ class Generator(object):
     def parse_function_providers(self, reg):
         for feature in reg.findall('feature'):
             api = feature.get('api') # string gl, gles1, gles2, glx
-            m = re.match('([0-9])\.([0-9])', feature.get('number'))
+            m = re.match(r'([0-9])\.([0-9])', feature.get('number'))
             version = int(m.group(1)) * 10 + int(m.group(2))
 
             self.supported_versions.add(feature.get('name'))
@@ -424,10 +424,11 @@ class Generator(object):
         func.providers = {}
         func.add_provider('true', loader, 'always present')
 
-    def parse(self, file):
-        reg = ET.parse(file)
-        if reg.find('comment') != None:
-            self.copyright_comment = reg.find('comment').text
+    def parse(self, xml_file):
+        reg = ET.parse(xml_file)
+        comment = reg.find('comment')
+        if comment is not None:
+            self.copyright_comment = comment.text
         else:
             self.copyright_comment = ''
         self.parse_typedefs(reg)
@@ -467,8 +468,8 @@ class Generator(object):
                                                                     func.ptr_type,
                                                                     func.args_decl))
 
-    def write_header_header(self, file):
-        self.out_file = open(file, 'w')
+    def write_header_header(self, out_file):
+        self.out_file = open(out_file, 'w')
 
         self.outln('/* GL dispatch header.')
         self.outln(' * This is code-generated from the GL API XML files from Khronos.')
@@ -482,8 +483,8 @@ class Generator(object):
         self.outln('#include <stddef.h>')
         self.outln('')
 
-    def write_header(self, file):
-        self.write_header_header(file)
+    def write_header(self, out_file):
+        self.write_header_header(out_file)
 
         self.outln('#include "epoxy/common.h"')
 
@@ -546,7 +547,7 @@ class Generator(object):
 
         providers = []
         # Make a local list of all the providers for this alias group
-        alias_root = func;
+        alias_root = func
         if func.alias_func:
             alias_root = func.alias_func
         for provider in alias_root.providers.values():
@@ -575,7 +576,7 @@ class Generator(object):
 
         def provider_sort(provider):
             return (provider.name != func.name, provider.name, provider.enum)
-        providers.sort(key=provider_sort);
+        providers.sort(key=provider_sort)
 
         if len(providers) != 1:
             self.outln('    static const enum {0}_provider providers[] = {{'.format(self.target))
@@ -589,7 +590,7 @@ class Generator(object):
                 for provider in providers:
                     self.outln('        {0} /* "{1}" */,'.format(self.entrypoint_string_offset[provider.name], provider.name))
             else:
-                    self.outln('        0 /* None */,')
+                self.outln('        0 /* None */,')
             self.outln('    };')
 
             self.outln('    return {0}_provider_resolver(entrypoint_strings + {1} /* "{2}" */,'.format(self.target,
@@ -597,7 +598,7 @@ class Generator(object):
                                                                                                        func.name))
             self.outln('                                providers, entrypoints);')
         else:
-            assert(providers[0].name == func.name)
+            assert providers[0].name == func.name
             self.outln('    return {0}_single_resolver({1}, {2} /* {3} */);'.format(self.target,
                                                                                     providers[0].enum,
                                                                                     self.entrypoint_string_offset[func.name],
@@ -652,17 +653,16 @@ class Generator(object):
 
         sorted_providers = sorted(self.provider_enum.keys())
 
-        self.enum_string_offset = {}
         offset = 0
         self.outln('static const char *enum_string =')
         for human_name in sorted_providers:
-            self.outln('    "{0}\\0"'.format(human_name));
+            self.outln('    "{0}\\0"'.format(human_name))
             self.enum_string_offset[human_name] = offset
             offset += len(human_name.replace('\\', '')) + 1
         self.outln('     ;')
         self.outln('')
         # We're using uint16_t for the offsets.
-        assert(offset < 65536)
+        assert offset < 65536
 
         self.outln('static const uint16_t enum_string_offsets[] = {')
         self.outln('    -1, /* {0}_provider_terminator, unused */'.format(self.target))
@@ -673,8 +673,6 @@ class Generator(object):
         self.outln('')
 
     def write_entrypoint_strings(self):
-        self.entrypoint_string_offset = {}
-
         self.outln('static const char entrypoint_strings[] = {')
         offset = 0
         for func in self.sorted_functions:
@@ -745,8 +743,8 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-    def write_source(self, file):
-        self.out_file = open(file, 'w')
+    def write_source(self, f):
+        self.out_file = open(f, 'w')
 
         self.outln('/* GL dispatch code.')
         self.outln(' * This is code-generated from the GL API XML files from Khronos.')
@@ -871,10 +869,10 @@ if not build_source and not build_header:
     build_source = True
     build_header = True
 
-for file in args.files:
-    name = os.path.basename(file).split('.xml')[0]
+for f in args.files:
+    name = os.path.basename(f).split('.xml')[0]
     generator = Generator(name)
-    generator.parse(file)
+    generator.parse(f)
 
     generator.drop_weird_glx_functions()
 
