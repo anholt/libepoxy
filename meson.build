@@ -174,11 +174,6 @@ configure_file(input: 'epoxy.pc.in',
                install: true,
                install_dir: join_paths(epoxy_libdir, 'pkgconfig'))
 
-# Find Python for gen_dispatch
-# XXX: With Meson 0.37 we should use
-#   python = import('python3').find_python()
-python = find_program('python3')
-
 # Generates the dispatch tables
 gen_dispatch_py = find_program('src/gen_dispatch.py')
 
