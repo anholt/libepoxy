@@ -21,7 +21,6 @@
  * IN THE SOFTWARE.
  */
 
-#include <config.h>
 #include <stdio.h>
 
 #include "wgl_common.h"
