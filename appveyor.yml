@@ -16,10 +16,6 @@ shallow_clone: true
 before_build:
 - mkdir build
 - mkdir libepoxy-shared-%PLATFORM%
-#- set path=%path:C:\Python27;=%
-#- set path=%path:C:\Python27\Scripts;=%
-#- set path=%path%;C:\Python36;C:\Python36\Scripts
-#- mklink C:\Python36\python3.exe C:\Python36\python.exe
 - cd build
 - curl -LsSO https://github.com/mesonbuild/meson/releases/download/0.38.0/meson-0.38.0.tar.gz
 - 7z x meson-0.38.0.tar.gz
@@ -34,12 +30,12 @@ build_script:
 - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %PLATFORM%
 - C:\Python36\python.exe meson-0.38.0\meson.py .. . --backend=vs2015
 - msbuild /t:Build /p:Configuration=debugoptimized /p:Platform=%config% libepoxy.sln
+- dir /s /b
 - cd ..
 
 after_build:
 - copy COPYING libepoxy-shared-%PLATFORM%
 - 7z a -tzip libepoxy-shared-%PLATFORM%.zip libepoxy-shared-%PLATFORM%
-- dir
 
 artifacts:
   - path: libepoxy-shared-%PLATFORM%.zip
