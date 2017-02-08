@@ -55,8 +55,8 @@ artifacts:
 test: off
 
 deploy:
-  release: libepoxy-shared-$(pout)
-  description: "Epoxy (Windows $(pout))"
+  release: $(APPVEYOR_REPO_TAG_NAME)
+  description: "Epoxy $(APPVEYOR_REPO_TAG_NAME)"
   provider: GitHub
   auth_token:
     secure: PF/wHCfSMFPCYyFh3GgjEJDHoPyPOnrmmbVMMwe8cNQBw2NL0vaYxjL1QcjMfpvL
