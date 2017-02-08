@@ -8,18 +8,20 @@ environment:
   matrix:
   - platform: x86
     config: Win32
+    pout: x86
   - platform: x64
     config: x64
+    pout: x64
 
 shallow_clone: true
 
 before_build:
 - mkdir build
-- mkdir libepoxy-shared-%PLATFORM%
-- mkdir libepoxy-shared-%PLATFORM%\bin
-- mkdir libepoxy-shared-%PLATFORM%\include
-- mkdir libepoxy-shared-%PLATFORM%\include\epoxy
-- mkdir libepoxy-shared-%PLATFORM%\lib
+- mkdir libepoxy-shared-%pout%
+- mkdir libepoxy-shared-%pout%\bin
+- mkdir libepoxy-shared-%pout%\include
+- mkdir libepoxy-shared-%pout%\include\epoxy
+- mkdir libepoxy-shared-%pout%\lib
 - cd build
 - curl -LsSO https://github.com/mesonbuild/meson/releases/download/0.38.0/meson-0.38.0.tar.gz
 - 7z x meson-0.38.0.tar.gz
@@ -37,27 +39,27 @@ build_script:
 - cd ..
 
 after_build:
-- copy COPYING libepoxy-shared-%PLATFORM%
-- xcopy include\epoxy\*.h libepoxy-shared-%PLATFORM%\include\epoxy /y
-- xcopy build\include\epoxy\*.h libepoxy-shared-%PLATFORM%\include\epoxy /y
-- copy build\src\epoxy-0.dll libepoxy-shared-%PLATFORM%\bin
-- copy build\src\epoxy.lib libepoxy-shared-%PLATFORM%\lib
-- dir libepoxy-shared-%PLATFORM% /s /b
-- 7z a -tzip libepoxy-shared-%PLATFORM%.zip libepoxy-shared-%PLATFORM%
+- copy COPYING libepoxy-shared-%pout%
+- xcopy include\epoxy\*.h libepoxy-shared-%pout%\include\epoxy /y
+- xcopy build\include\epoxy\*.h libepoxy-shared-%pout%\include\epoxy /y
+- copy build\src\epoxy-0.dll libepoxy-shared-%pout%\bin
+- copy build\src\epoxy.lib libepoxy-shared-%pout%\lib
+- dir libepoxy-shared-%pout% /s /b
+- 7z a -tzip libepoxy-shared-%pout%.zip libepoxy-shared-%pout%
 
 artifacts:
-  - path: libepoxy-shared-%PLATFORM%.zip
-    name: libepoxy-shared-%PLATFORM%
+  - path: libepoxy-shared-%pout%.zip
+    name: libepoxy-shared-%pout%
 
 test: off
 
 deploy:
-  release: libepoxy-shared-$(PLATFORM)
-  description: "Epoxy (Windows $(PLATFORM))"
+  release: libepoxy-shared-$(pout)
+  description: "Epoxy (Windows $(pout))"
   provider: GitHub
   auth_token:
     secure: PF/wHCfSMFPCYyFh3GgjEJDHoPyPOnrmmbVMMwe8cNQBw2NL0vaYxjL1QcjMfpvL
-  artifact: libepoxy-shared-$(PLATFORM)
+  artifact: libepoxy-shared-$(pout)
   draft: false
   prerelease: false
   on:
