@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/anholt/libepoxy.svg?branch=master)](https://travis-ci.org/anholt/libepoxy)
+
 Epoxy is a library for handling OpenGL function pointer management for
 you.
 
