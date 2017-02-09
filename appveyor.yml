@@ -4,6 +4,7 @@ image: Visual Studio 2015
 
 configuration: Release
 
+# Configure both 32-bit and 64-bit builds
 environment:
   matrix:
   - platform: x86
@@ -15,6 +16,7 @@ environment:
 
 shallow_clone: true
 
+# Download Meson and Ninja, create install directory
 before_build:
 - mkdir build
 - mkdir libepoxy-shared-%pout%
@@ -30,6 +32,7 @@ before_build:
 - del ninja-win.zip
 - cd ..
 
+# Build and install
 build_script:
 - cd build
 - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %PLATFORM%
@@ -38,6 +41,7 @@ build_script:
 - ninja install
 - cd ..
 
+# Copy license into install directory and create .zip file
 after_build:
 - copy COPYING libepoxy-shared-%pout%
 - dir libepoxy-shared-%pout% /s /b
@@ -49,6 +53,7 @@ artifacts:
 
 test: off
 
+# Upload .zip file to GitHub release
 deploy:
   release: $(APPVEYOR_REPO_TAG_NAME)
   description: "Epoxy $(APPVEYOR_REPO_TAG_NAME)"
