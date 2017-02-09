@@ -18,10 +18,10 @@ shallow_clone: true
 before_build:
 - mkdir build
 - mkdir libepoxy-shared-%pout%
-- mkdir libepoxy-shared-%pout%\bin
-- mkdir libepoxy-shared-%pout%\include
-- mkdir libepoxy-shared-%pout%\include\epoxy
-- mkdir libepoxy-shared-%pout%\lib
+#- mkdir libepoxy-shared-%pout%\bin
+#- mkdir libepoxy-shared-%pout%\include
+#- mkdir libepoxy-shared-%pout%\include\epoxy
+#- mkdir libepoxy-shared-%pout%\lib
 - cd build
 - curl -LsSO https://github.com/mesonbuild/meson/releases/download/0.38.0/meson-0.38.0.tar.gz
 - 7z x meson-0.38.0.tar.gz
@@ -29,22 +29,26 @@ before_build:
 - 7z x meson-0.38.0.tar
 - rmdir dist
 - del meson-0.38.0.tar meson-0.38.0.tar.gz
+- curl -LsSO https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-win.zip
+- 7z x ninja-win.zip
+- del ninja-win.zip
 - cd ..
 
 build_script:
 - cd build
 - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %PLATFORM%
-- C:\Python36\python.exe meson-0.38.0\meson.py .. . --backend=vs2015
-- msbuild /t:Build /p:Configuration=debugoptimized /p:Platform=%config% libepoxy.sln
+- C:\Python36\python.exe meson-0.38.0\meson.py .. . --backend=ninja --prefix=%APPVEYOR_BUILD_FOLDER%\libepoxy-shared-%pout%
+#- msbuild /t:Build /p:Configuration=debugoptimized /p:Platform=%config% libepoxy.sln
+- 
 - cd ..
 
 after_build:
 - copy COPYING libepoxy-shared-%pout%
-- xcopy include\epoxy\*.h libepoxy-shared-%pout%\include\epoxy /y
-- xcopy build\include\epoxy\*.h libepoxy-shared-%pout%\include\epoxy /y
-- copy build\src\config.h libepoxy-shared-%pout%\include\epoxy
-- copy build\src\epoxy-0.dll libepoxy-shared-%pout%\bin
-- copy build\src\epoxy.lib libepoxy-shared-%pout%\lib
+#- xcopy include\epoxy\*.h libepoxy-shared-%pout%\include\epoxy /y
+#- xcopy build\include\epoxy\*.h libepoxy-shared-%pout%\include\epoxy /y
+#- copy build\src\config.h libepoxy-shared-%pout%\include\epoxy
+#- copy build\src\epoxy-0.dll libepoxy-shared-%pout%\bin
+#- copy build\src\epoxy.lib libepoxy-shared-%pout%\lib
 - dir libepoxy-shared-%pout% /s /b
 - 7z a -tzip libepoxy-shared-%pout%.zip libepoxy-shared-%pout%
 
