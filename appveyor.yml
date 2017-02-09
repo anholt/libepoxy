@@ -39,7 +39,8 @@ build_script:
 - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %PLATFORM%
 - C:\Python36\python.exe meson-0.38.0\meson.py .. . --backend=ninja --prefix=%APPVEYOR_BUILD_FOLDER%\libepoxy-shared-%pout%
 #- msbuild /t:Build /p:Configuration=debugoptimized /p:Platform=%config% libepoxy.sln
-- 
+- ninja
+- ninja install
 - cd ..
 
 after_build:
