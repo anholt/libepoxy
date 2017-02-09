@@ -73,7 +73,30 @@ endif
 conf.set10('ENABLE_GLX', build_glx)
 
 # Compiler flags, taken from the Xorg macros
-if cc.get_id() != 'msvc'
+if cc.get_id() == 'msvc'
+  # Compiler options taken from msvc_recommended_pragmas.h
+  # in GLib, based on _Win32_Programming_ by Rector and Newcomer
+  test_cflags = [
+    '-W3',
+    '-we4002', # too many actual parameters for macro
+    '-we4003', # not enough actual parameters for macro
+    '-w14010', # single-line comment contains line-continuation character
+    '-we4013', # 'function' undefined; assuming extern returning int
+    '-w14016', # no function return type; using int as default
+    '-we4020', # too many actual parameters
+    '-we4021', # too few actual parameters
+    '-we4027', # function declared without formal parameter list
+    '-we4029', # declared formal parameter list different from definition
+    '-we4033', # 'function' must return a value
+    '-we4035', # 'function' : no return value
+    '-we4045', # array bounds overflow
+    '-we4047', # different levels of indirection
+    '-we4049', # terminating line number emission
+    '-we4053', # an expression of type void was used as an operand
+    '-we4071', # no function prototype given
+    '-we4819', # the file contains a character that cannot be represented in the current code page
+  ]
+elif cc.get_id() == 'gcc' or cc.get_id() == 'clang'
   test_cflags = [
     '-Wpointer-arith',
     '-Wmissing-declarations',
