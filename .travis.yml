@@ -1,28 +1,22 @@
-language: c
-compiler:
-  - gcc
-  - clang
-
 sudo: false
 
-addons:
-  apt:
-    packages:
-      - xutils-dev
-      - libgl1-mesa-dev
-      - libegl1-mesa-dev
-      - libgles1-mesa-dev
-      - libgles2-mesa-dev
-      - libgl1-mesa-dri
+os:
+  - linux
 
-env:
-  global:
-    - DISPLAY=:99.0
+compiler:
+  - gcc
+
+language:
+  - c
+
+services:
+  - docker
 
 before_install:
-  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x24"
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker pull ebassi/epoxyci ; fi
 
 script:
-  - NOCONFIGURE=1 ./autogen.sh
-  - mkdir _build && cd _build
-  - ../configure && make V=1 && make V=1 check
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo FROM ebassi/epoxyci > Dockerfile ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo ADD . /root >> Dockerfile ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker build -t withgit . ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run withgit /bin/sh -c "cd /root && TRAVIS=true CC=$CC CXX=$CXX ./epoxy-run-tests.sh" ; fi
