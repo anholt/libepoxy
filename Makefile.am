@@ -24,6 +24,8 @@ SUBDIRS = include/epoxy src
 
 SUBDIRS += test
 
+ACLOCAL_AMFLAGS = -I .
+
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = epoxy.pc
 
