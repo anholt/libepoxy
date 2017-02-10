@@ -90,8 +90,7 @@ GLEW has several issues:
   * Doesn't know about aliases of functions (There are 5 providers of
     `glPointParameterfv()`, for example, and you don't want to have to
     choose which one to call when they're all the same).
-  * Doesn't support GL 3.2+ core contexts
-  * Doesn't support GLES.
+  * Doesn't support OpenGL ES.
   * Doesn't support EGL.
   * Has a hard-to-maintain parser of extension specification text
     instead of using the old .spec file or the new .xml.
