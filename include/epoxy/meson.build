@@ -6,6 +6,7 @@ gl_generated = custom_target('gl_generated.h',
                                'gl_generated.h',
                              ],
                              command: [
+                               python,
                                gen_dispatch_py,
                                '--header',
                                '--no-source',
@@ -25,6 +26,7 @@ if build_egl
                                   'egl_generated.h',
                                 ],
                                 command: [
+                                  python,
                                   gen_dispatch_py,
                                   '--header',
                                   '--no-source',
@@ -44,6 +46,7 @@ if build_glx
                                   'glx_generated.h',
                                 ],
                                 command: [
+                                  python,
                                   gen_dispatch_py,
                                   '--header',
                                   '--no-source',
@@ -63,6 +66,7 @@ if build_wgl
                                   'wgl_generated.h',
                                 ],
                                 command: [
+                                  python,
                                   gen_dispatch_py,
                                   '--header',
                                   '--no-source',

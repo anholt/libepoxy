@@ -202,8 +202,11 @@ configure_file(input: 'epoxy.pc.in',
                install: true,
                install_dir: join_paths(epoxy_libdir, 'pkgconfig'))
 
+# Python
+python = find_program('python', required: true)
+
 # Generates the dispatch tables
-gen_dispatch_py = find_program('src/gen_dispatch.py')
+gen_dispatch_py = join_paths(meson.source_root(), 'src/gen_dispatch.py')
 
 gl_registry = files('registry/gl.xml')
 egl_registry = files('registry/egl.xml')
