@@ -203,7 +203,10 @@ configure_file(input: 'epoxy.pc.in',
                install_dir: join_paths(epoxy_libdir, 'pkgconfig'))
 
 # Python
-python = find_program('python', required: true)
+python = find_program('python3', required: false)
+if not python.found()
+  python = find_program('python', required: true)
+endif
 
 # Generates the dispatch tables
 gen_dispatch_py = join_paths(meson.source_root(), 'src/gen_dispatch.py')
