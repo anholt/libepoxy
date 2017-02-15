@@ -149,6 +149,8 @@ epoxy_has_glx_extension(Display *dpy, int screen, const char *ext)
  * @param dpy The X11 display
  *
  * @return `true` if GLX is available
+ *
+ * @newin{1,4}
  */
 bool
 epoxy_has_glx(Display *dpy)

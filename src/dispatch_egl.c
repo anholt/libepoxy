@@ -97,6 +97,8 @@ epoxy_has_egl_extension(EGLDisplay dpy, const char *ext)
  * @brief Checks whether EGL is available.
  *
  * @return `true` if EGL is available
+ *
+ * @newin{1,4}
  */
 bool
 epoxy_has_egl(void)
