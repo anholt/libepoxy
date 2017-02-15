@@ -4,6 +4,12 @@ doxyfile_conf.set('PACKAGE_VERSION', meson.project_version())
 doxyfile_conf.set('top_srcdir', meson.source_root())
 doxyfile_conf.set('top_builddir', meson.build_root())
 
+if find_program('dot', required: false).found()
+  doxyfile_conf.set('HAVE_DOT', 'YES')
+else
+  doxyfile_conf.set('HAVE_DOT', 'NO')
+endif
+
 doxyfile = configure_file(input: 'Doxyfile.in',
                           output: 'Doxyfile',
                           configuration: doxyfile_conf,
