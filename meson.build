@@ -203,12 +203,16 @@ configure_file(input: 'epoxy.pc.in',
                install_dir: join_paths(epoxy_libdir, 'pkgconfig'))
 
 # Python
+# XXX: Depend on 0.37.1 for:
+# python = import('python3').find_python()
 python = find_program('python3', required: false)
 if not python.found()
   python = find_program('python', required: true)
 endif
 
 # Generates the dispatch tables
+# XXX: Depend on 0.38.1 for:
+# gen_dispatch_py = files('src/gen_dispatch.py')
 gen_dispatch_py = join_paths(meson.source_root(), 'src/gen_dispatch.py')
 
 gl_registry = files('registry/gl.xml')
