@@ -77,7 +77,6 @@ if cc.get_id() == 'msvc'
   # Compiler options taken from msvc_recommended_pragmas.h
   # in GLib, based on _Win32_Programming_ by Rector and Newcomer
   test_cflags = [
-    '-W3',
     '-we4002', # too many actual parameters for macro
     '-we4003', # not enough actual parameters for macro
     '-w14010', # single-line comment contains line-continuation character
