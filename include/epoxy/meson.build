@@ -1,82 +1,42 @@
 headers = [ 'common.h' ]
 
-gl_generated = custom_target('gl_generated.h',
-                             input: gl_registry,
-                             output: [
-                               'gl_generated.h',
-                             ],
-                             command: [
-                               python,
-                               gen_dispatch_py,
-                               '--header',
-                               '--no-source',
-                               '--outputdir=@OUTDIR@',
-                               '@INPUT@'
-                             ],
-                             install: true,
-                             install_dir: join_paths(epoxy_includedir, 'epoxy'))
-
-gen_headers = [ gl_generated ]
-headers += [ 'gl.h', ]
+# GL is always generated
+generated_headers = [ [ 'gl.h', 'gl_generated.h', gl_registry ] ]
 
 if build_egl
-  egl_generated = custom_target('egl_generated.h',
-                                input: egl_registry,
-                                output: [
-                                  'egl_generated.h',
-                                ],
-                                command: [
-                                  python,
-                                  gen_dispatch_py,
-                                  '--header',
-                                  '--no-source',
-                                  '--outputdir=@OUTDIR@',
-                                  '@INPUT@'
-                                ],
-                                install: true,
-                                install_dir: join_paths(epoxy_includedir, 'epoxy'))
-  gen_headers += [ egl_generated ]
-  headers += [ 'egl.h' ]
+  generated_headers += [ [ 'egl.h', 'egl_generated.h', egl_registry ] ]
 endif
 
 if build_glx
-  glx_generated = custom_target('glx_generated.h',
-                                input: glx_registry,
-                                output: [
-                                  'glx_generated.h',
-                                ],
-                                command: [
-                                  python,
-                                  gen_dispatch_py,
-                                  '--header',
-                                  '--no-source',
-                                  '--outputdir=@OUTDIR@',
-                                  '@INPUT@'
-                                ],
-                                install: true,
-                                install_dir: join_paths(epoxy_includedir, 'epoxy'))
-  gen_headers += [ glx_generated ]
-  headers += [ 'glx.h' ]
+  generated_headers += [ [ 'glx.h', 'glx_generated.h', glx_registry ] ]
 endif
 
 if build_wgl
-  wgl_generated = custom_target('wgl_generated.h',
-                                input: wgl_registry,
-                                output: [
-                                  'wgl_generated.h',
-                                ],
-                                command: [
-                                  python,
-                                  gen_dispatch_py,
-                                  '--header',
-                                  '--no-source',
-                                  '--outputdir=@OUTDIR@',
-                                  '@INPUT@'
-                                ],
-                                install: true,
-                                install_dir: join_paths(epoxy_includedir, 'epoxy'))
-  gen_headers += [ wgl_generated ]
-  headers += [ 'wgl.h' ]
+  generated_headers += [ [ 'wgl.h', 'wgl_generated.h', wgl_registry ] ]
 endif
+
+gen_headers = []
+
+foreach g: generated_headers
+  header = g[0]
+  gen_header = g[1]
+  registry = g[2]
+  generated = custom_target(gen_header,
+                            input: registry,
+                            output: [ gen_header ],
+                            command: [
+                              python,
+                              gen_dispatch_py,
+                              '--header',
+                              '--no-source',
+                              '--outputdir=@OUTDIR@',
+                              '@INPUT@',
+                            ],
+                            install: true,
+                            install_dir: join_paths(epoxy_includedir, 'epoxy'))
+
+  gen_headers += [ generated ]
+  headers += [ header ]
+endforeach
 
 install_headers(headers, subdir: 'epoxy')

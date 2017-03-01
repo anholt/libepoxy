@@ -1,83 +1,51 @@
-common_sources = [
-  'dispatch_common.c',
-  'dispatch_common.h',
-]
-
 # Configuration file
 configure_file(output: 'config.h', configuration: conf)
 
-gl_generated = custom_target('gl_generated_dispatch.c',
-                             input: gl_registry,
-                             output: [
-                               'gl_generated_dispatch.c',
-                             ],
-                             command: [
-                               python,
-                               gen_dispatch_py,
-                               '--source',
-                               '--no-header',
-                               '--outputdir=@OUTDIR@',
-                               '@INPUT@',
-                             ])
-
-gen_sources = [ gl_generated ]
-sources = common_sources 
+# List of generated sources:
+#   - name of the generated file
+#   - registry source file
+#   - additional sources
+generated_sources = [
+  [ 'gl_generated_dispatch.c', gl_registry, [ 'dispatch_common.c', 'dispatch_common.h' ] ]
+]
 
 if build_egl
-  egl_generated = custom_target('egl_generated_dispatch.c',
-                                input: egl_registry,
-                                output: [
-                                  'egl_generated_dispatch.c',
-                                ],
-                                command: [
-                                  python,
-                                  gen_dispatch_py,
-                                  '--source',
-                                  '--no-header',
-                                  '--outputdir=@OUTDIR@',
-                                  '@INPUT@',
-                                ])
-  gen_sources += [ egl_generated ]                              
-  sources += [ 'dispatch_egl.c' ]
+  generated_sources += [ [ 'egl_generated_dispatch.c', egl_registry, 'dispatch_egl.c' ] ]
 endif
 
 if build_glx
-  glx_generated = custom_target('glx_generated_dispatch.c',
-                                input: glx_registry,
-                                output: [
-                                  'glx_generated_dispatch.c',
-                                ],
-                                command: [
-                                  python,
-                                  gen_dispatch_py,
-                                  '--source',
-                                  '--no-header',
-                                  '--outputdir=@OUTDIR@',
-                                  '@INPUT@',
-                                ])
-  gen_sources += [ glx_generated ]
-  sources += [ 'dispatch_glx.c' ]
+  generated_sources += [ [ 'glx_generated_dispatch.c', glx_registry, 'dispatch_glx.c' ] ]
 endif
 
 if build_wgl
-  wgl_generated = custom_target('wgl_generated_dispatch.c',
-                                input: wgl_registry,
-                                output: [
-                                  'wgl_generated_dispatch.c',
-                                ],
-                                command: [
-                                  python,
-                                  gen_dispatch_py,
-                                  '--source',
-                                  '--no-header',
-                                  '--outputdir=@OUTDIR@',
-                                  '@INPUT@',
-                                ])
-  gen_sources += [ wgl_generated ]
-  sources += [ 'dispatch_wgl.c' ]
+  generated_sources += [ [ 'wgl_generated_dispatch.c', wgl_registry, 'dispatch_wgl.c' ] ]
 endif
 
-epoxy_sources = common_sources + sources + gen_sources
+gen_sources = [ ]
+sources = [ ]
+
+foreach g: generated_sources
+  gen_source = g[0]
+  registry = g[1]
+  source = g[2]
+
+  generated = custom_target(gen_source,
+                            input: registry,
+                            output: [ gen_source ],
+                            command: [
+                              python,
+                              gen_dispatch_py,
+                              '--source',
+                              '--no-header',
+                              '--outputdir=@OUTDIR@',
+                              '@INPUT@',
+                            ])
+
+  gen_sources += [ generated ]
+  sources += [ source ]
+endforeach
+
+epoxy_sources = sources + gen_sources
 epoxy_headers = gen_headers
 foreach h: headers
   epoxy_headers += join_paths(meson.source_root(), 'include/epoxy/@0@'.format(h))
