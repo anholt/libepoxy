@@ -22,7 +22,7 @@
 # Initialize Autoconf
 AC_PREREQ([2.60])
 AC_INIT([libepoxy],
-        [1.4.0],
+        [1.4.1],
         [https://github.com/anholt/libepoxy],
         [libepoxy])
 AC_CONFIG_SRCDIR([Makefile.am])
