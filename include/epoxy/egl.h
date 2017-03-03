@@ -41,9 +41,9 @@
 #define __eglext_h_
 #endif
 
-#include "epoxy/egl_generated.h"
-
 EPOXY_BEGIN_DECLS
+
+#include "epoxy/egl_generated.h"
 
 EPOXY_PUBLIC bool epoxy_has_egl_extension(EGLDisplay dpy, const char *extension);
 EPOXY_PUBLIC int epoxy_egl_version(EGLDisplay dpy);

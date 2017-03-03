@@ -49,9 +49,9 @@
 #define wglUseFontBitmaps wglUseFontBitmapsA
 #endif
 
-#include "epoxy/wgl_generated.h"
-
 EPOXY_BEGIN_DECLS
+
+#include "epoxy/wgl_generated.h"
 
 EPOXY_PUBLIC bool epoxy_has_wgl_extension(HDC hdc, const char *extension);
 EPOXY_PUBLIC void epoxy_handle_external_wglMakeCurrent(void);
