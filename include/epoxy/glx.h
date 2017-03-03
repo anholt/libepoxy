@@ -44,9 +44,9 @@
 #define __glxext_h_
 #endif
 
-#include "epoxy/glx_generated.h"
-
 EPOXY_BEGIN_DECLS
+
+#include "epoxy/glx_generated.h"
 
 EPOXY_PUBLIC bool epoxy_has_glx_extension(Display *dpy, int screen, const char *extension);
 EPOXY_PUBLIC int epoxy_glx_version(Display *dpy, int screen);
