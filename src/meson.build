@@ -52,7 +52,7 @@ foreach h: headers
 endforeach
 
 if cc.get_id() == 'gcc'
-  common_ldflags = [ '-Wl,-Bsymbolic', ]
+  common_ldflags = [ '-Wl,-Bsymbolic', '-Wl,-z,relro', '-Wl,-z,now', ]
 else
   common_ldflags = []
 endif
