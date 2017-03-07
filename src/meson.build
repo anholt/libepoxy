@@ -52,7 +52,8 @@ foreach h: headers
 endforeach
 
 common_ldflags = []
-if cc.get_id() == 'gcc'
+
+if host_system == 'linux'
   common_ldflags = [ '-Wl,-Bsymbolic', '-Wl,-z,relro', '-Wl,-z,now', ]
 endif
 
