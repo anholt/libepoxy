@@ -51,10 +51,15 @@ foreach h: headers
   epoxy_headers += join_paths(meson.source_root(), 'include/epoxy/@0@'.format(h))
 endforeach
 
-if cc.get_id() == 'gcc'
+common_ldflags = []
+
+if host_system == 'linux'
   common_ldflags = [ '-Wl,-Bsymbolic', '-Wl,-z,relro', '-Wl,-z,now', ]
-else
-  common_ldflags = []
+endif
+
+# Maintain compatibility with autotools; see: https://github.com/anholt/libepoxy/issues/108
+if host_system == 'darwin'
+  common_ldflags += [ '-compatibility_version=1', '-current_version=1.0', ]
 endif
 
 epoxy_deps = [ dl_dep, ]
