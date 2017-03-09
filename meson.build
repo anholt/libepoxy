@@ -166,8 +166,19 @@ egl_dep = dependency('egl', required: false)
 
 # Optional dependencies for tests
 x11_dep = dependency('x11', required: false)
-gles1_dep = cc.find_library('libGLESv1_CM', required: false)
-gles2_dep = cc.find_library('libGLESv2', required: false)
+
+# GLES v2 and v1 may have pkg-config files, courtesy of downstream
+# packagers; let's check those first, and fall back to find_library()
+# if we fail
+gles2_dep = dependency('glesv2', required: false)
+if not gles2_dep.found()
+  gles2_dep = cc.find_library('libGLESv2', required: false)
+endif
+
+gles1_dep = dependency('glesv1_cm', required: false)
+if not gles1_dep.found()
+  gles1_dep = cc.find_library('libGLESv1_CM', required: false)
+endif
 
 # On windows, the DLL has to have all of its functions
 # resolved at link time, so we have to link directly aginst
