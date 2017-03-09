@@ -140,9 +140,11 @@ foreach cflag: test_cflags
   endif
 endforeach
 
-# Visibility compiler flags
-visibility_cflags = []
-if get_option('default_library') != 'static'
+libtype = get_option('default_library')
+
+# Visibility compiler flags; we only use this for shared libraries
+if libtype == 'shared'
+  visibility_cflags = []
   if host_system == 'windows'
     conf.set('DLL_EXPORT', true)
     if cc.get_id() == 'msvc'
@@ -152,7 +154,7 @@ if get_option('default_library') != 'static'
       visibility_cflags += [ '-fvisibility=hidden' ]
     endif
   else
-    conf.set('EPOXY_PUBLIC', '__attribute__((visibility("default")))')
+    conf.set('EPOXY_PUBLIC', '__attribute__((visibility("default"))) extern')
     visibility_cflags += [ '-fvisibility=hidden' ]
   endif
 endif

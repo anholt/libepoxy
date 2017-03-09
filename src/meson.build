@@ -68,8 +68,6 @@ if host_system == 'windows'
 endif
 
 # Allow building a static version of epoxy
-libtype = get_option('default_library')
-
 if libtype != 'shared'
   libepoxy_static = static_library('epoxy',
                                    sources: epoxy_sources + epoxy_headers,
@@ -88,7 +86,7 @@ if libtype != 'static'
                                    install: true,
                                    dependencies: epoxy_deps,
                                    include_directories: libepoxy_inc,
-                                   c_args: common_cflags,
+                                   c_args: common_cflags + visibility_cflags,
                                    link_args: common_ldflags)
   libepoxy = libepoxy_shared
 endif
