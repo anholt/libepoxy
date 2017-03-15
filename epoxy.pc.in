@@ -10,6 +10,6 @@ epoxy_has_wgl=@epoxy_has_wgl@
 Name: epoxy
 Description: epoxy GL dispatch Library
 Version: @PACKAGE_VERSION@
-Cflags: -I${includedir}
+Cflags: -I${includedir} @EGL_CFLAGS@
 Libs: -L${libdir} -lepoxy
 Libs.private: @DLOPEN_LIBS@
