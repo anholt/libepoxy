@@ -159,6 +159,14 @@ if libtype == 'shared'
   endif
 endif
 
+# The inline keyword is available only for C++ in MSVC.
+# So we need to use Microsoft specific __inline.
+if host_system == 'windows'
+  if cc.get_id() == 'msvc'
+    conf.set('inline', '__inline')
+  endif
+endif
+
 # Dependencies
 dl_dep = cc.find_library('dl', required: false)
 gl_dep = dependency('gl', required: false)
