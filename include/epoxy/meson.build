@@ -39,4 +39,6 @@ foreach g: generated_headers
   headers += [ header ]
 endforeach
 
+epoxy_headers = files(headers) + gen_headers
+
 install_headers(headers, subdir: 'epoxy')
