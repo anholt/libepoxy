@@ -46,10 +46,6 @@ foreach g: generated_sources
 endforeach
 
 epoxy_sources = sources + gen_sources
-epoxy_headers = gen_headers
-foreach h: headers
-  epoxy_headers += join_paths(meson.source_root(), 'include/epoxy/@0@'.format(h))
-endforeach
 
 common_ldflags = []
 
