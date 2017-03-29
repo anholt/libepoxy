@@ -10,6 +10,7 @@ os:
 
 compiler:
   - gcc
+  - clang
 
 language:
   - c
@@ -24,4 +25,4 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo FROM ebassi/epoxyci > Dockerfile ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo ADD . /root >> Dockerfile ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker build -t withgit . ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run withgit /bin/sh -c "cd /root && TRAVIS=true CC=$CC CXX=$CXX ./epoxy-run-tests.sh" ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run withgit /bin/sh -c "cd /root && CC=$CC ./epoxy-run-tests.sh" ; fi
