@@ -28,3 +28,4 @@ before_script:
 
 script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run withgit /bin/sh -c "cd /root && CC=$CC ./epoxy-run-tests.sh" ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run withgit /bin/sh -c "cd /root && CC=$CC ./epoxy-run-tests.sh -Denable-glx=no" ; fi
