@@ -443,7 +443,12 @@ bool
 epoxy_extension_in_string(const char *extension_list, const char *ext)
 {
     const char *ptr = extension_list;
-    int len = strlen(ext);
+    int len;
+
+    if (!ext)
+        return false;
+
+    len = strlen(ext);
 
     if (extension_list == NULL || *extension_list == '\0')
         return false;
@@ -478,6 +483,8 @@ epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode)
 
         for (i = 0; i < num_extensions; i++) {
             const char *gl_ext = (const char *)glGetStringi(GL_EXTENSIONS, i);
+            if (!gl_ext)
+                return false;
             if (strcmp(ext, gl_ext) == 0)
                 return true;
         }
