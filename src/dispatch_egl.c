@@ -65,6 +65,9 @@ epoxy_egl_version(EGLDisplay dpy)
     int ret;
 
     version_string = eglQueryString(dpy, EGL_VERSION);
+    if (!version_string)
+        return 0;
+
     ret = sscanf(version_string, "%d.%d", &major, &minor);
     assert(ret == 2);
     return major * 10 + minor;
