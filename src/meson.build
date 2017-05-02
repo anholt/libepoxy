@@ -50,7 +50,11 @@ epoxy_sources = sources + gen_sources
 common_ldflags = []
 
 if host_system == 'linux'
-  common_ldflags = [ '-Wl,-Bsymbolic', '-Wl,-z,relro', '-Wl,-z,now', ]
+  foreach f: [ '-Wl,-Bsymbolic', '-Wl,-z,relro', '-Wl,-z,now', ]
+    if cc.has_argument(f)
+      common_ldflags += f
+    endif
+  endforeach
 endif
 
 # Maintain compatibility with autotools; see: https://github.com/anholt/libepoxy/issues/108
