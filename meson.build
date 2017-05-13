@@ -5,7 +5,7 @@ project('libepoxy', 'c', version: '1.4.2',
           'warning_level=1',
         ],
         license: 'MIT',
-        meson_version: '>= 0.38.1')
+        meson_version: '>= 0.39.1')
 
 epoxy_version = meson.project_version().split('.')
 epoxy_major_version = epoxy_version[0].to_int()
