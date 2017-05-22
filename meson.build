@@ -42,6 +42,8 @@ if enable_glx == 'auto'
     build_glx = false
   elif host_system == 'android'
     build_glx = false
+  elif host_system == 'haiku'
+    build_glx = false
   else
     build_glx = true
   endif
