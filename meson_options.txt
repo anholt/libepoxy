@@ -6,3 +6,8 @@ option('enable-glx',
        choices: [ 'auto', 'yes', 'no' ],
        value: 'auto',
        description: 'Enable GLX support')
+option('enable-egl',
+       type: 'combo',
+       choices: [ 'auto', 'yes', 'no' ],
+       value: 'auto',
+       description: 'Enable EGL support')
