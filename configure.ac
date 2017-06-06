@@ -88,11 +88,34 @@ AS_CASE([$enable_glx],
   [AC_MSG_ERROR([Invalid value "$enable_glx" for option "--enable-glx"])]
 ])
 
-# The remaining platform specific API for GL/GLES are enabled
-# depending on the platform we're building for
+AC_ARG_ENABLE([egl],
+              [AC_HELP_STRING([--enable-egl=@<:@auto,yes,no@:>@], [Enable EGL support @<:@default=auto@:>@])],
+              [enable_egl=$enableval],
+              [enable_egl=auto])
+
+AS_CASE([$enable_egl],
+  [auto], [
+    AS_CASE([$host_os],
+            [mingw*], [build_egl=no],
+            [darwin*], [build_egl=no],
+            [build_egl=yes])
+  ],
+
+  [yes], [
+    build_egl=yes
+  ],
+
+  [no], [
+    build_egl=no
+  ],
+
+  [AC_MSG_ERROR([Invalid value "$enable_egl" for option "--enable-egl"])]
+])
+
+# The remaining platform specific API are enabled depending on the
+# platform we're building for
 AS_CASE([$host_os],
   [mingw*], [
-    build_egl=no
     build_wgl=yes
     has_znow=yes
     # On windows, the DLL has to have all of its functions
@@ -108,7 +131,6 @@ AS_CASE([$host_os],
   ],
 
   [darwin*], [
-    build_egl=no
     build_wgl=no
     build_apple=yes
     has_znow=no
@@ -116,7 +138,6 @@ AS_CASE([$host_os],
   ],
 
   [
-    build_egl=yes
     build_wgl=no
     has_znow=yes
     # On platforms with dlopen, we load everything dynamically and
@@ -131,6 +152,7 @@ AM_CONDITIONAL(BUILD_EGL, test x$build_egl = xyes)
 if test x$build_egl = xyes; then
     PKG_CHECK_MODULES(EGL, [egl])
     AC_DEFINE([BUILD_EGL], [1], [build EGL tests])
+    AC_DEFINE(ENABLE_EGL, [1], [Whether EGL support is enabled])
 fi
 
 AM_CONDITIONAL(BUILD_GLX, test x$build_glx = xyes)
