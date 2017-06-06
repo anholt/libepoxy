@@ -53,26 +53,41 @@ elif enable_glx == 'no'
   build_glx = false
 endif
 
+enable_egl = get_option('enable-egl')
+if enable_egl == 'auto'
+  if host_system == 'windows'
+    build_egl = false
+  elif host_system == 'darwin'
+    build_egl = false
+  elif host_system == 'android'
+    build_egl = false
+  else
+    build_egl = true
+  endif
+elif enable_egl == 'yes'
+  build_egl = true
+elif enable_egl == 'no'
+  build_egl = false
+endif
+
 # The remaining platform specific API for GL/GLES are enabled
 # depending on the platform we're building for
 if host_system == 'windows'
-  build_egl = false
   build_apple = false
   build_wgl = true
   has_znow = true
 elif host_system == 'darwin'
-  build_egl = false
   build_apple = true
   build_wgl = false
   has_znow = false
 else
-  build_egl = true
   build_apple = false
   build_wgl = false
   has_znow = true
 endif
 
 conf.set10('ENABLE_GLX', build_glx)
+conf.set10('ENABLE_EGL', build_egl)
 
 # Compiler flags, taken from the Xorg macros
 if cc.get_id() == 'msvc'
