@@ -60,7 +60,7 @@ if enable_egl == 'auto'
   elif host_system == 'darwin'
     build_egl = false
   elif host_system == 'android'
-    build_egl = false
+    build_egl = true
   else
     build_egl = true
   endif

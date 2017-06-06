@@ -98,7 +98,6 @@ AS_CASE([$enable_egl],
     AS_CASE([$host_os],
             [mingw*], [build_egl=no],
             [darwin*], [build_egl=no],
-            [android*], [build_egl=no],
             [build_egl=yes])
   ],
 
