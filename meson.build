@@ -153,7 +153,7 @@ endif
 common_cflags = []
 foreach cflag: test_cflags
   if cc.has_argument(cflag)
-    common_cflags += [ cflag ]
+    common_cflags += cflag
   endif
 endforeach
 
@@ -164,10 +164,8 @@ if libtype == 'shared'
   visibility_cflags = []
   if host_system == 'windows'
     conf.set('DLL_EXPORT', true)
-    if cc.get_id() == 'msvc'
-      conf.set('EPOXY_PUBLIC', '__declspec(dllexport) extern')
-    else
-      conf.set('EPOXY_PUBLIC', '__attribute__((visibility("default"))) __declspec(dllexport) extern')
+    conf.set('EPOXY_PUBLIC', '__declspec(dllexport) extern')
+    if cc.get_id() != 'msvc'
       visibility_cflags += [ '-fvisibility=hidden' ]
     endif
   else
