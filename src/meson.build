@@ -59,7 +59,7 @@ endif
 
 # Maintain compatibility with autotools; see: https://github.com/anholt/libepoxy/issues/108
 if host_system == 'darwin'
-  common_ldflags += [ '-compatibility_version=1', '-current_version=1.0', ]
+  common_ldflags += [ '-compatibility_version 1', '-current_version 1.0', ]
 endif
 
 epoxy_deps = [ dl_dep, ]
