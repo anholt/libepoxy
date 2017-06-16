@@ -178,6 +178,7 @@
 #elif defined(ANDROID)
 #define GLX_LIB "libGLESv2.so"
 #else
+#define GLVND_GLX_LIB "libGLX.so.1"
 #define GLX_LIB "libGL.so.1"
 #endif
 
@@ -193,6 +194,7 @@
 #define EGL_LIB "libEGL.so.1"
 #define GLES1_LIB "libGLESv1_CM.so.1"
 #define GLES2_LIB "libGLESv2.so.2"
+#define OPENGL_LIB "libOpenGL.so.1"
 #endif
 
 #ifdef __GNUC__
@@ -223,13 +225,18 @@ struct api {
     pthread_mutex_t mutex;
 #endif
 
-    /* dlopen() return value for libGL.so.1. */
+    /*
+     * dlopen() return value for the GLX API. This is libGLX.so.1 if the
+     * runtime is glvnd-enabled, else libGL.so.1
+     */
     void *glx_handle;
 
     /*
-     * dlopen() return value for OS X's GL library.
+     * dlopen() return value for the desktop GL library.
      *
-     * On linux, glx_handle is used instead.
+     * On Windows this is OPENGL32. On OSX this is classic libGL. On Linux
+     * this is either libOpenGL (if the runtime is glvnd-enabled) or
+     * classic libGL.so.1
      */
     void *gl_handle;
 
@@ -590,6 +597,10 @@ epoxy_egl_dlsym(const char *name)
 void *
 epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails)
 {
+    /* prefer the glvnd library if it exists */
+    if (!api.glx_handle)
+	get_dlopen_handle(&api.glx_handle, GLVND_GLX_LIB, false);
+
     return do_dlsym(&api.glx_handle, GLX_LIB, name, exit_if_fails);
 }
 
@@ -609,8 +620,18 @@ epoxy_gl_dlsym(const char *name)
                     "/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL",
                     name, true);
 #else
-    /* There's no library for desktop GL support independent of GLX. */
-    return epoxy_glx_dlsym(name);
+    void *sym;
+
+    if (!api.gl_handle)
+	get_dlopen_handle(&api.gl_handle, OPENGL_LIB, false);
+
+    if (api.gl_handle)
+	return do_dlsym(&api.gl_handle, NULL, name, true);
+
+    sym = do_dlsym(&api.glx_handle, GLX_LIB, name, true);
+    api.gl_handle = api.glx_handle; /* skip the dlopen next time */
+
+    return sym;
 #endif
 }
 
