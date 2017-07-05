@@ -845,3 +845,21 @@ WRAPPER(epoxy_glEnd)(void)
 
 PFNGLBEGINPROC epoxy_glBegin = epoxy_glBegin_wrapped;
 PFNGLENDPROC epoxy_glEnd = epoxy_glEnd_wrapped;
+
+epoxy_resolver_failure_handler_t epoxy_resolver_failure_handler;
+
+epoxy_resolver_failure_handler_t
+epoxy_set_resolver_failure_handler(epoxy_resolver_failure_handler_t handler)
+{
+#ifdef _WIN32
+    return InterlockedExchangePointer(&epoxy_resolver_failure_handler,
+				      handler);
+#else
+    epoxy_resolver_failure_handler_t old;
+    pthread_mutex_lock(&api.mutex);
+    old = epoxy_resolver_failure_handler;
+    epoxy_resolver_failure_handler = handler;
+    pthread_mutex_unlock(&api.mutex);
+    return old;
+#endif
+}

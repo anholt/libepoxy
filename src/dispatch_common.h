@@ -172,6 +172,8 @@ bool epoxy_extension_in_string(const char *extension_list, const char *ext);
 extern void UNWRAPPED_PROTO(glBegin_unwrapped)(GLenum primtype);
 extern void UNWRAPPED_PROTO(glEnd_unwrapped)(void);
 
+extern epoxy_resolver_failure_handler_t epoxy_resolver_failure_handler;
+
 #if USING_DISPATCH_TABLE
 void gl_init_dispatch_table(void);
 void gl_switch_to_dispatch_table(void);
