@@ -597,9 +597,11 @@ epoxy_egl_dlsym(const char *name)
 void *
 epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails)
 {
+#ifdef GLVND_GLX_LIB
     /* prefer the glvnd library if it exists */
     if (!api.glx_handle)
 	get_dlopen_handle(&api.glx_handle, GLVND_GLX_LIB, false);
+#endif
 
     return do_dlsym(&api.glx_handle, GLX_LIB, name, exit_if_fails);
 }
