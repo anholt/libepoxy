@@ -522,6 +522,16 @@ epoxy_current_context_is_glx(void)
 #if !PLATFORM_HAS_GLX
     return false;
 #else
+    void *sym;
+
+    /* If we've been called already, don't load more */
+    if (!api.egl_handle != !api.glx_handle) {
+	if (api.glx_handle)
+	    return true;
+	else if (api.egl_handle)
+	    return false;
+    }
+
     /* If the application hasn't explicitly called some of our GLX
      * or EGL code but has presumably set up a context on its own,
      * then we need to figure out how to getprocaddress anyway.
@@ -529,7 +539,6 @@ epoxy_current_context_is_glx(void)
      * If there's a public GetProcAddress loaded in the
      * application's namespace, then use that.
      */
-    void *sym;
 
     sym = dlsym(NULL, "glXGetCurrentContext");
     if (sym) {
