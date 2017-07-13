@@ -500,6 +500,18 @@ epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode)
     }
 }
 
+void *
+epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails)
+{
+#ifdef GLVND_GLX_LIB
+    /* prefer the glvnd library if it exists */
+    if (!api.glx_handle)
+	get_dlopen_handle(&api.glx_handle, GLVND_GLX_LIB, false);
+#endif
+
+    return do_dlsym(&api.glx_handle, GLX_LIB, name, exit_if_fails);
+}
+
 /**
  * Tests whether the currently bound context is EGL or GLX, trying to
  * avoid loading libraries unless necessary.
@@ -510,6 +522,16 @@ epoxy_current_context_is_glx(void)
 #if !PLATFORM_HAS_GLX
     return false;
 #else
+    void *sym;
+
+    /* If we've been called already, don't load more */
+    if (!api.egl_handle != !api.glx_handle) {
+	if (api.glx_handle)
+	    return true;
+	else if (api.egl_handle)
+	    return false;
+    }
+
     /* If the application hasn't explicitly called some of our GLX
      * or EGL code but has presumably set up a context on its own,
      * then we need to figure out how to getprocaddress anyway.
@@ -517,7 +539,6 @@ epoxy_current_context_is_glx(void)
      * If there's a public GetProcAddress loaded in the
      * application's namespace, then use that.
      */
-    void *sym;
 
     sym = dlsym(NULL, "glXGetCurrentContext");
     if (sym) {
@@ -541,7 +562,7 @@ epoxy_current_context_is_glx(void)
      * Presumably they dlopened with RTLD_LOCAL, which hides it
      * from us.  Just go dlopen()ing likely libraries and try them.
      */
-    sym = do_dlsym(&api.glx_handle, GLX_LIB, "glXGetCurrentContext", false);
+    sym = epoxy_conservative_glx_dlsym("glXGetCurrentContext", false);
     if (sym && glXGetCurrentContext())
         return true;
 
@@ -592,16 +613,6 @@ void *
 epoxy_egl_dlsym(const char *name)
 {
     return epoxy_conservative_egl_dlsym(name, true);
-}
-
-void *
-epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails)
-{
-    /* prefer the glvnd library if it exists */
-    if (!api.glx_handle)
-	get_dlopen_handle(&api.glx_handle, GLVND_GLX_LIB, false);
-
-    return do_dlsym(&api.glx_handle, GLX_LIB, name, exit_if_fails);
 }
 
 void *
