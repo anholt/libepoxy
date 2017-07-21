@@ -491,6 +491,15 @@ class Generator(object):
             self.outln('#include "epoxy/gl.h"')
             if self.target == "egl":
                 self.outln('#include "EGL/eglplatform.h"')
+                # Account for older eglplatform.h, which doesn't define
+                # the EGL_CAST macro.
+                self.outln('#ifndef EGL_CAST')
+                self.outln('#if defined(__cplusplus)')
+                self.outln('#define EGL_CAST(type, value) (static_cast<type>(value))')
+                self.outln('#else')
+                self.outln('#define EGL_CAST(type, value) ((type) (value))')
+                self.outln('#endif')
+                self.outln('#endif')
         else:
             # Add some ridiculous inttypes.h redefinitions that are
             # from khrplatform.h and not included in the XML.  We
