@@ -446,6 +446,24 @@ epoxy_conservative_gl_version(void)
     return epoxy_internal_gl_version(100);
 }
 
+/**
+ * @brief Checks for the presence of an extension in an OpenGL extension string
+ *
+ * @param extension_list The string containing the list of extensions to check
+ * @param ext The name of the GL extension
+ * @return `true` if the extension is available'
+ *
+ * @note If you are looking to check whether a normal GL, EGL or GLX extension
+ * is supported by the client, this probably isn't the function you want.
+ *
+ * Some parts of the spec for OpenGL and friends will return an OpenGL formatted
+ * extension string that is seperate from the usual extension strings for the
+ * spec. This function provides easy parsing of those strings.
+ *
+ * @see epoxy_has_gl_extension()
+ * @see epoxy_has_egl_extension()
+ * @see epoxy_has_glx_extension()
+ */
 bool
 epoxy_extension_in_string(const char *extension_list, const char *ext)
 {
