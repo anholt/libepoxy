@@ -194,7 +194,7 @@
 #define EGL_LIB "libEGL.so.1"
 #define GLES1_LIB "libGLESv1_CM.so.1"
 #define GLES2_LIB "libGLESv2.so.2"
-#define OPENGL_LIB "libOpenGL.so.1"
+#define OPENGL_LIB "libOpenGL.so.0"
 #endif
 
 #ifdef __GNUC__
