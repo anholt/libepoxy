@@ -718,6 +718,10 @@ class Generator(object):
         self.outln('    }')
         self.outln('')
 
+        self.outln('    if (epoxy_resolver_failure_handler)')
+        self.outln('        return epoxy_resolver_failure_handler(name);')
+        self.outln('')
+
         # If the function isn't provided by any known extension, print
         # something useful for the poor application developer before
         # aborting.  (In non-epoxy GL usage, the app developer would
