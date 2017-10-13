@@ -852,7 +852,7 @@ epoxy_resolver_failure_handler_t
 epoxy_set_resolver_failure_handler(epoxy_resolver_failure_handler_t handler)
 {
 #ifdef _WIN32
-    return InterlockedExchangePointer(&epoxy_resolver_failure_handler,
+    return InterlockedExchangePointer((void**)&epoxy_resolver_failure_handler,
 				      handler);
 #else
     epoxy_resolver_failure_handler_t old;
