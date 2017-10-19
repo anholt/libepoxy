@@ -162,7 +162,11 @@ wrapped_dlsym(const char *prefix, const char *name)
     char *wrap_name;
     void *symbol;
 
-    asprintf(&wrap_name, "override_%s_%s", prefix, name);
+    if (asprintf(&wrap_name, "override_%s_%s", prefix, name) < 0) {
+        fputs("Error: Failed to allocate memory.\n", stderr);
+        abort();
+    }
+
     symbol = dlwrap_real_dlsym(RTLD_DEFAULT, wrap_name);
     free(wrap_name);
     return symbol;
