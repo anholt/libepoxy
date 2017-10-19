@@ -53,7 +53,7 @@ make_egl_current_and_test(EGLDisplay *dpy, EGLContext ctx)
     eglMakeCurrent(dpy, NULL, NULL, ctx);
 
     if (!epoxy_is_desktop_gl()) {
-        fprintf(stderr, "Claimed to be desktop\n");
+        fputs("Claimed to be desktop\n", stderr);
         pass = false;
     }
 

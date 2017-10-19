@@ -36,11 +36,11 @@ test_function(HDC hdc)
 
     ctx = wglCreateContext(hdc);
     if (!ctx) {
-        fprintf(stderr, "Failed to create wgl context\n");
+        fputs("Failed to create wgl context\n", stderr);
         return 1;
     }
     if (!wglMakeCurrent(hdc, ctx)) {
-        fprintf(stderr, "Failed to make context current\n");
+        fputs("Failed to make context current\n", stderr);
         return 1;
     }
 

@@ -32,7 +32,7 @@ get_display_or_skip(void)
 	Display *dpy = XOpenDisplay(NULL);
 
 	if (!dpy) {
-		fprintf(stderr, "couldn't open display\n");
+		fputs("couldn't open display\n", stderr);
 		exit(77);
 	}
 
@@ -55,8 +55,7 @@ get_glx_visual(Display *dpy)
 
 	visinfo = glXChooseVisual(dpy, screen, attrib);
 	if (visinfo == NULL) {
-		fprintf(stderr,
-			"Couldn't get an RGBA, double-buffered visual\n");
+		fputs("Couldn't get an RGBA, double-buffered visual\n", stderr);
 		exit(1);
 	}
 
@@ -96,7 +95,7 @@ make_glx_context_current_or_skip(Display *dpy)
 
 	ctx = glXCreateContext(dpy, visinfo, False, True);
 	if (ctx == None) {
-		fprintf(stderr, "glXCreateContext failed\n");
+		fputs("glXCreateContext failed\n", stderr);
 		exit(1);
 	}
 

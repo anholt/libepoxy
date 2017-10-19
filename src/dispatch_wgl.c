@@ -53,9 +53,9 @@ epoxy_has_wgl_extension(HDC hdc, const char *ext)
 
      getext = (void *)wglGetProcAddress("wglGetExtensionsStringARB");
      if (!getext) {
-         fprintf(stderr,
-                 "Implementation unexpectedly missing "
-                 "WGL_ARB_extensions_string.  Probably a libepoxy bug.\n");
+         fputs("Implementation unexpectedly missing "
+               "WGL_ARB_extensions_string.  Probably a libepoxy bug.\n",
+               stderr);
          return false;
      }
 

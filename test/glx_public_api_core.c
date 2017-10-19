@@ -51,8 +51,9 @@ test_has_extensions(void)
     }
 
     if (epoxy_has_gl_extension("GL_ARB_ham_sandwich")) {
-        fprintf(stderr, "epoxy implementation reported support for "
-                "GL_ARB_ham_sandwich, but it shouldn't\n");
+        fputs("epoxy implementation reported support for "
+              "GL_ARB_ham_sandwich, but it shouldn't\n",
+              stderr);
         return false;
     }
 
