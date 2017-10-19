@@ -53,4 +53,11 @@ typedef unsigned char bool;
 # include <stdbool.h>
 #endif
 
+EPOXY_BEGIN_DECLS
+
+EPOXY_PUBLIC bool epoxy_extension_in_string(const char *extension_list,
+                                            const char *ext);
+
+EPOXY_END_DECLS
+
 #endif /* EPOXY_COMMON_H */
