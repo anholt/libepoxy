@@ -204,6 +204,12 @@
 #define GLES2_LIB  xstr(GLES2_LIB_NAME)
 #endif
 
+#ifndef OPENGL_LIB_NAME
+#define OPENGL_LIB "libOpenGL.so.0"
+#else
+#define OPENGL_LIB  xstr(GLES2_LIB_NAME)
+#endif
+
 #ifdef __GNUC__
 #define CONSTRUCT(_func) static void _func (void) __attribute__((constructor));
 #define DESTRUCT(_func) static void _func (void) __attribute__((destructor));
