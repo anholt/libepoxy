@@ -177,7 +177,7 @@
 #define str(a) #a
 
 #ifndef GLX_LIB_NAME
-#error "GLX_LIB_NAME not defined"
+#define GLX_LIB "libGL.so.1"
 #else
 #define GLX_LIB    xstr(GLX_LIB_NAME)
 #endif
@@ -187,19 +187,19 @@
 #endif
 
 #ifndef EGL_LIB_NAME
-#error "EGL_LIB_NAME not defined"
+#define EGL_LIB "libEGL.so.1"
 #else
 #define EGL_LIB    xstr(EGL_LIB_NAME)
 #endif
 
 #ifndef GLES1_LIB_NAME
-#error "GLES1_LIB_NAME not defined"
+#define GLES1_LIB "libGLESv1_CM.so.1"
 #else
 #define GLES1_LIB  xstr(GLES1_LIB_NAME)
 #endif
 
 #ifndef GLES2_LIB_NAME
-#error "GLES2_LIB_NAME not defined"
+#define GLES2_LIB "libGLESv2.so.2"
 #else
 #define GLES2_LIB  xstr(GLES2_LIB_NAME)
 #endif
