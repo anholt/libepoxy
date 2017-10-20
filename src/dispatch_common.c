@@ -173,28 +173,35 @@
 
 #include "dispatch_common.h"
 
-#ifdef __APPLE__
-#define GLX_LIB "/opt/X11/lib/libGL.1.dylib"
-#elif defined(ANDROID)
-#define GLX_LIB "libGLESv2.so"
+#define xstr(a) str(a)
+#define str(a) #a
+
+#ifndef GLX_LIB_NAME
+#error "GLX_LIB_NAME not defined"
 #else
-#define GLVND_GLX_LIB "libGLX.so.1"
-#define GLX_LIB "libGL.so.1"
+#define GLX_LIB    xstr(GLX_LIB_NAME)
 #endif
 
-#ifdef ANDROID
-#define EGL_LIB "libEGL.so"
-#define GLES1_LIB "libGLESv1_CM.so"
-#define GLES2_LIB "libGLESv2.so"
-#elif defined _WIN32
-#define EGL_LIB "libEGL.dll"
-#define GLES1_LIB "libGLES_CM.dll"
-#define GLES2_LIB "libGLESv2.dll"
+#ifdef GLVND_GLX_LIB_NAME
+#define GLVND_GLX_LIB xstr(GLVND_GLX_LIB_NAME)
+#endif
+
+#ifndef EGL_LIB_NAME
+#error "EGL_LIB_NAME not defined"
 #else
-#define EGL_LIB "libEGL.so.1"
-#define GLES1_LIB "libGLESv1_CM.so.1"
-#define GLES2_LIB "libGLESv2.so.2"
-#define OPENGL_LIB "libOpenGL.so.0"
+#define EGL_LIB    xstr(EGL_LIB_NAME)
+#endif
+
+#ifndef GLES1_LIB_NAME
+#error "GLES1_LIB_NAME not defined"
+#else
+#define GLES1_LIB  xstr(GLES1_LIB_NAME)
+#endif
+
+#ifndef GLES2_LIB_NAME
+#error "GLES2_LIB_NAME not defined"
+#else
+#define GLES2_LIB  xstr(GLES2_LIB_NAME)
 #endif
 
 #ifdef __GNUC__
