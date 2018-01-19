@@ -175,14 +175,14 @@
 
 #ifdef __APPLE__
 #define GLX_LIB "/opt/X11/lib/libGL.1.dylib"
-#elif defined(ANDROID)
+#elif defined(__ANDROID__)
 #define GLX_LIB "libGLESv2.so"
 #else
 #define GLVND_GLX_LIB "libGLX.so.1"
 #define GLX_LIB "libGL.so.1"
 #endif
 
-#ifdef ANDROID
+#ifdef __ANDROID__
 #define EGL_LIB "libEGL.so"
 #define GLES1_LIB "libGLESv1_CM.so"
 #define GLES2_LIB "libGLESv2.so"
@@ -718,7 +718,7 @@ epoxy_get_core_proc_address(const char *name, int core_version)
 {
 #ifdef _WIN32
     int core_symbol_support = 11;
-#elif defined(ANDROID)
+#elif defined(__ANDROID__)
     /**
      * All symbols must be resolved through eglGetProcAddress
      * on Android
