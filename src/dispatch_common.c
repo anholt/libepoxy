@@ -648,7 +648,7 @@ epoxy_gl_dlsym(const char *name)
     return do_dlsym(&api.gl_handle,
                     "/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL",
                     name, true);
-#else
+#elif defined(OPENGL_LIB)
     void *sym;
 
     if (!api.gl_handle)
@@ -661,6 +661,8 @@ epoxy_gl_dlsym(const char *name)
     api.gl_handle = api.glx_handle; /* skip the dlopen next time */
 
     return sym;
+#else
+    return NULL;
 #endif
 }
 
