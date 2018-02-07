@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
-    <!--
-    Copyright (c) 2013-2016 The Khronos Group Inc.
+    <comment>
+Copyright (c) 2013-2017 The Khronos Group Inc.
 
-    Permission is hereby granted, free of charge, to any person obtaining a
-    copy of this software and/or associated documentation files (the
-    "Materials"), to deal in the Materials without restriction, including
-    without limitation the rights to use, copy, modify, merge, publish,
-    distribute, sublicense, and/or sell copies of the Materials, and to
-    permit persons to whom the Materials are furnished to do so, subject to
-    the following conditions:
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-    The above copyright notice and this permission notice shall be included
-    in all copies or substantial portions of the Materials.
+    http://www.apache.org/licenses/LICENSE-2.0
 
-    THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-    MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
-    -->
-    <!--
-    This file, wgl.xml, is the WGL API Registry. The older ".spec" file
-    format has been retired and will no longer be updated with new
-    extensions and API versions. The canonical version of the registry,
-    together with documentation, schema, and Python generator scripts used
-    to generate C header files for WGL, can always be found in the Khronos
-    Registry at
-        http://www.opengl.org/registry/
-    -->
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+------------------------------------------------------------------------
+
+This file, wgl.xml, is the WGL API Registry. The older ".spec" file
+format has been retired and will no longer be updated with new
+extensions and API versions. The canonical version of the registry,
+together with documentation, schema, and Python generator scripts used
+to generate C header files for WGL, can always be found in the Khronos
+Registry at
+        https://github.com/KhronosGroup/OpenGL-Registry
+    </comment>
 
     <!-- SECTION: WGL type definitions. Does not include base Windows types. -->
 
@@ -462,6 +456,10 @@
         <enum value="0x308A" name="WGL_COLORSPACE_LINEAR_EXT"/>
     </enums>
 
+    <enums namespace="WGL" start="0x31B3" end="0x31B3" vendor="ARB" comment="Shared with GLX.">
+        <enum value="0x31B3" name="WGL_CONTEXT_OPENGL_NO_ERROR_ARB"/>
+    </enums>
+    
     <enums namespace="GL" start="0x8250" end="0x826F" vendor="ARB" comment="Values shared with GL. Do not allocate additional values in this range.">
         <enum value="0x8252"        name="WGL_LOSE_CONTEXT_ON_RESET_ARB"/>
         <enum value="0x8256"        name="WGL_CONTEXT_RESET_NOTIFICATION_STRATEGY_ARB"/>
@@ -1449,6 +1447,11 @@
                 <enum name="WGL_CONTEXT_FLAGS_ARB"/>
                 <enum name="ERROR_INVALID_VERSION_ARB"/>
                 <command name="wglCreateContextAttribsARB"/>
+            </require>
+        </extension>
+        <extension name="WGL_ARB_create_context_no_error" supported="wgl">
+            <require>
+                <enum name="WGL_CONTEXT_OPENGL_NO_ERROR_ARB"/>
             </require>
         </extension>
         <extension name="WGL_ARB_create_context_profile" supported="wgl">

@@ -38,6 +38,7 @@
         <type name="khrplatform">#include &lt;KHR/khrplatform.h&gt;</type>
         <type name="eglplatform" requires="khrplatform">#include &lt;EGL/eglplatform.h&gt;</type>
         <type name="khronos_utime_nanoseconds_t" requires="khrplatform"/>
+        <type name="khronos_stime_nanoseconds_t" requires="khrplatform"/>
         <type name="khronos_uint64_t" requires="khrplatform"/>
         <type name="khronos_ssize_t" requires="khrplatform"/>
         <type name="EGLNativeDisplayType" requires="eglplatform"/>
@@ -47,6 +48,7 @@
         <type name="NativeDisplayType" requires="eglplatform"/>
         <type name="NativePixmapType" requires="eglplatform"/>
         <type name="NativeWindowType" requires="eglplatform"/>
+        <type>struct <name>AHardwareBuffer</name>;</type>
         <!-- Dummy placeholders for non-EGL types -->
         <type name="Bool"/>
             <!-- These are actual EGL types.  -->
@@ -147,6 +149,7 @@
     <enums namespace="EGLDRMBufferUseMESAMask" type="bitmask" comment="EGL_DRM_BUFFER_USE_MESA bits">
         <enum value="0x00000001" name="EGL_DRM_BUFFER_USE_SCANOUT_MESA"/>
         <enum value="0x00000002" name="EGL_DRM_BUFFER_USE_SHARE_MESA"/>
+        <enum value="0x00000004" name="EGL_DRM_BUFFER_USE_CURSOR_MESA"/>
     </enums>
 
     <!-- Should be shared with GL, but aren't aren't since the
@@ -788,9 +791,11 @@
         <enum value="0x334E" name="EGL_STREAM_CROSS_DISPLAY_NV"/>
         <enum value="0x334F" name="EGL_STREAM_CROSS_SYSTEM_NV"/>
         <enum value="0x3350" name="EGL_GL_COLORSPACE_SCRGB_LINEAR_EXT"/>
-            <unused start="0x3351"/>
+        <enum value="0x3351" name="EGL_GL_COLORSPACE_SCRGB_EXT"/>
         <enum value="0x3352" name="EGL_TRACK_REFERENCES_KHR"/>
-            <unused start="0x3353" end="0x335F"/>
+            <unused start="0x3353" end="0x3356"/>
+        <enum value="0x3357" name="EGL_CONTEXT_PRIORITY_REALTIME_NV"/>
+            <unused start="0x3358" end="0x335F"/>
         <enum value="0x3360" name="EGL_CTA861_3_MAX_CONTENT_LIGHT_LEVEL_EXT"/>
         <enum value="0x3361" name="EGL_CTA861_3_MAX_FRAME_AVERAGE_LEVEL_EXT"/>
         <enum value="0x3362" name="EGL_GL_COLORSPACE_DISPLAY_P3_LINEAR_EXT"/>
@@ -830,7 +835,22 @@
     </enums>
 
     <enums namespace="EGL" start="0x3430" end="0x343F" vendor="ANDROID" comment="Reserved for Pablo Ceballos (Bug 15874)">
-            <unused start="0x3430" end="0x343F"/>
+        <enum value="EGL_CAST(EGLnsecsANDROID,-2)" name="EGL_TIMESTAMP_PENDING_ANDROID"/>
+        <enum value="EGL_CAST(EGLnsecsANDROID,-1)" name="EGL_TIMESTAMP_INVALID_ANDROID"/>
+        <enum value="0x3430" name="EGL_TIMESTAMPS_ANDROID"/>
+        <enum value="0x3431" name="EGL_COMPOSITE_DEADLINE_ANDROID"/>
+        <enum value="0x3432" name="EGL_COMPOSITE_INTERVAL_ANDROID"/>
+        <enum value="0x3433" name="EGL_COMPOSITE_TO_PRESENT_LATENCY_ANDROID"/>
+        <enum value="0x3434" name="EGL_REQUESTED_PRESENT_TIME_ANDROID"/>
+        <enum value="0x3435" name="EGL_RENDERING_COMPLETE_TIME_ANDROID"/>
+        <enum value="0x3436" name="EGL_COMPOSITION_LATCH_TIME_ANDROID"/>
+        <enum value="0x3437" name="EGL_FIRST_COMPOSITION_START_TIME_ANDROID"/>
+        <enum value="0x3438" name="EGL_LAST_COMPOSITION_START_TIME_ANDROID"/>
+        <enum value="0x3439" name="EGL_FIRST_COMPOSITION_GPU_FINISHED_TIME_ANDROID"/>
+        <enum value="0x343A" name="EGL_DISPLAY_PRESENT_TIME_ANDROID"/>
+        <enum value="0x343B" name="EGL_DEQUEUE_READY_TIME_ANDROID"/>
+        <enum value="0x343C" name="EGL_READS_DONE_TIME_ANDROID"/>
+            <unused start="0x343D" end="0x343F"/>
     </enums>
 
     <enums namespace="EGL" start="0x3440" end="0x344F" vendor="ANDROID" comment="Reserved for Kristian Kristensen (Bug 16033)">
@@ -857,7 +877,14 @@
         <enum value="0x3461" name="EGL_EXTERNAL_REF_ID_EXT"/>
         <enum value="0x3462" name="EGL_COMPOSITOR_DROP_NEWEST_FRAME_EXT"/>
         <enum value="0x3463" name="EGL_COMPOSITOR_KEEP_NEWEST_FRAME_EXT"/>
-        <unused start="0x3464" end="0x346F"/>
+        <enum value="0x3464" name="EGL_FRONT_BUFFER_EXT"/>
+        <unused start="0x3465" end="0x346F"/>
+    </enums>
+
+    <enums namespace="EGL" start="0x3470" end="0x347F" vendor="EXT" comment="Reserved for Daniel Stone (PR 14)">
+        <enum value="0x3470" name="EGL_IMPORT_SYNC_TYPE_EXT"/>
+        <enum value="0x3471" name="EGL_IMPORT_IMPLICIT_SYNC_EXT"/>
+        <enum value="0x3472" name="EGL_IMPORT_EXPLICIT_SYNC_EXT"/>
     </enums>
 
 <!-- Please remember that new enumerant allocations must be obtained by
@@ -869,8 +896,8 @@
 
 <!-- Reservable for future use. To generate a new range, allocate multiples
      of 16 starting at the lowest available point in this block. -->
-    <enums namespace="EGL" start="0x3470" end="0x3FFF" vendor="KHR" comment="Reserved for future use">
-            <unused start="0x3470" end="0x3FFF"/>
+    <enums namespace="EGL" start="0x3480" end="0x3FFF" vendor="KHR" comment="Reserved for future use">
+            <unused start="0x3480" end="0x3FFF"/>
     </enums>
 
     <enums namespace="EGL" start="0x8F70" end="0x8F7F" vendor="HI" comment="For Mark Callow, Khronos bug 4055. Shared with GL.">
@@ -1187,6 +1214,10 @@
             <proto><ptype>EGLint</ptype> <name>eglGetError</name></proto>
         </command>
         <command>
+            <proto><ptype>EGLClientBuffer</ptype> <name>eglGetNativeClientBufferANDROID</name></proto>
+            <param>const struct <ptype>AHardwareBuffer</ptype> *<name>buffer</name></param>
+        </command>
+        <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglGetOutputLayersEXT</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param>const <ptype>EGLAttrib</ptype> *<name>attrib_list</name></param>
@@ -1303,6 +1334,41 @@
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLSurface</ptype> <name>surface</name></param>
             <param><ptype>EGLnsecsANDROID</ptype> <name>time</name></param>
+        </command>
+        <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglGetCompositorTimingSupportedANDROID</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLSurface</ptype> <name>surface</name></param>
+            <param><ptype>EGLint</ptype> <name>name</name></param>
+        </command>
+        <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglGetCompositorTimingANDROID</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLSurface</ptype> <name>surface</name></param>
+            <param><ptype>EGLint</ptype> <name>numTimestamps</name></param>
+            <param> const <ptype>EGLint</ptype> *<name>names</name></param>
+            <param><ptype>EGLnsecsANDROID</ptype> *<name>values</name></param>
+        </command>
+        <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglGetNextFrameIdANDROID</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLSurface</ptype> <name>surface</name></param>
+            <param><ptype>EGLuint64KHR</ptype> *<name>frameId</name></param>
+        </command>
+        <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglGetFrameTimestampSupportedANDROID</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLSurface</ptype> <name>surface</name></param>
+            <param><ptype>EGLint</ptype> <name>timestamp</name></param>
+        </command>
+        <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglGetFrameTimestampsANDROID</name></proto>
+            <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
+            <param><ptype>EGLSurface</ptype> <name>surface</name></param>
+            <param><ptype>EGLuint64KHR</ptype> <name>frameId</name></param>
+            <param><ptype>EGLint</ptype> <name>numTimestamps</name></param>
+            <param> const <ptype>EGLint</ptype> *<name>timestamps</name></param>
+            <param><ptype>EGLnsecsANDROID</ptype> *<name>values</name></param>
         </command>
         <command>
             <proto><ptype>EGLenum</ptype> <name>eglQueryAPI</name></proto>
@@ -1560,7 +1626,7 @@
             <proto><ptype>EGLBoolean</ptype> <name>eglStreamConsumerGLTextureExternalAttribsNV</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLStreamKHR</ptype> <name>stream</name></param>
-            <param><ptype>EGLAttrib</ptype> *<name>attrib_list</name></param>
+            <param>const <ptype>EGLAttrib</ptype> *<name>attrib_list</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglStreamConsumerOutputEXT</name></proto>
@@ -1979,6 +2045,11 @@
                 <enum name="EGL_FRAMEBUFFER_TARGET_ANDROID"/>
             </require>
         </extension>
+        <extension name="EGL_ANDROID_get_native_client_buffer" supported="egl">
+            <require>
+                <command name="eglGetNativeClientBufferANDROID"/>
+            </require>
+        </extension>
         <extension name="EGL_ANDROID_front_buffer_auto_refresh" supported="egl">
             <require>
                 <enum name="EGL_FRONT_BUFFER_AUTO_REFRESH_ANDROID"/>
@@ -2001,6 +2072,30 @@
         <extension name="EGL_ANDROID_presentation_time" supported="egl">
             <require>
                 <command name="eglPresentationTimeANDROID"/>
+            </require>
+        </extension>
+        <extension name="EGL_ANDROID_get_frame_timestamps" supported="egl">
+            <require>
+                <enum name="EGL_TIMESTAMP_PENDING_ANDROID"/>
+                <enum name="EGL_TIMESTAMP_INVALID_ANDROID"/>
+                <enum name="EGL_TIMESTAMPS_ANDROID"/>
+                <enum name="EGL_COMPOSITE_DEADLINE_ANDROID"/>
+                <enum name="EGL_COMPOSITE_INTERVAL_ANDROID"/>
+                <enum name="EGL_COMPOSITE_TO_PRESENT_LATENCY_ANDROID"/>
+                <enum name="EGL_REQUESTED_PRESENT_TIME_ANDROID"/>
+                <enum name="EGL_RENDERING_COMPLETE_TIME_ANDROID"/>
+                <enum name="EGL_COMPOSITION_LATCH_TIME_ANDROID"/>
+                <enum name="EGL_FIRST_COMPOSITION_START_TIME_ANDROID"/>
+                <enum name="EGL_LAST_COMPOSITION_START_TIME_ANDROID"/>
+                <enum name="EGL_FIRST_COMPOSITION_GPU_FINISHED_TIME_ANDROID"/>
+                <enum name="EGL_DISPLAY_PRESENT_TIME_ANDROID"/>
+                <enum name="EGL_DEQUEUE_READY_TIME_ANDROID"/>
+                <enum name="EGL_READS_DONE_TIME_ANDROID"/>
+                <command name="eglGetCompositorTimingSupportedANDROID"/>
+                <command name="eglGetCompositorTimingANDROID"/>
+                <command name="eglGetNextFrameIdANDROID"/>
+                <command name="eglGetFrameTimestampSupportedANDROID"/>
+                <command name="eglGetFrameTimestampsANDROID"/>
             </require>
         </extension>
         <extension name="EGL_ANDROID_recordable" supported="egl">
@@ -2102,6 +2197,11 @@
         <extension name="EGL_EXT_gl_colorspace_bt2020_pq" supported="egl">
             <require>
                 <enum name="EGL_GL_COLORSPACE_BT2020_PQ_EXT"/>
+            </require>
+        </extension>
+        <extension name="EGL_EXT_gl_colorspace_scrgb" supported="egl">
+            <require>
+                <enum name="EGL_GL_COLORSPACE_SCRGB_EXT"/>
             </require>
         </extension>
         <extension name="EGL_EXT_gl_colorspace_scrgb_linear" supported="egl">
@@ -2678,6 +2778,7 @@
                 <enum name="EGL_DRM_BUFFER_STRIDE_MESA"/>
                 <enum name="EGL_DRM_BUFFER_USE_SCANOUT_MESA"/>
                 <enum name="EGL_DRM_BUFFER_USE_SHARE_MESA"/>
+                <enum name="EGL_DRM_BUFFER_USE_CURSOR_MESA"/>
                 <command name="eglCreateDRMImageMESA"/>
                 <command name="eglExportDRMImageMESA"/>
             </require>
@@ -2723,6 +2824,11 @@
             <require>
                 <enum name="EGL_COVERAGE_BUFFERS_NV"/>
                 <enum name="EGL_COVERAGE_SAMPLES_NV"/>
+            </require>
+        </extension>
+        <extension name="EGL_NV_context_priority_realtime" supported="egl">
+            <require>
+                <enum name="EGL_CONTEXT_PRIORITY_REALTIME_NV"/>
             </require>
         </extension>
         <extension name="EGL_NV_coverage_sample_resolve" supported="egl">
@@ -2950,6 +3056,18 @@
             <require>
                 <enum name="EGL_CTA861_3_MAX_CONTENT_LIGHT_LEVEL_EXT"/>
                 <enum name="EGL_CTA861_3_MAX_FRAME_AVERAGE_LEVEL_EXT"/>
+            </require>
+        </extension>
+        <extension name="EGL_EXT_image_implicit_sync_control" supported="egl">
+            <require>
+                <enum name="EGL_IMPORT_SYNC_TYPE_EXT"/>
+                <enum name="EGL_IMPORT_IMPLICIT_SYNC_EXT"/>
+                <enum name="EGL_IMPORT_EXPLICIT_SYNC_EXT"/>
+            </require>
+        </extension>
+        <extension name="EGL_EXT_bind_to_front" supported="egl">
+            <require>
+                <enum name="EGL_FRONT_BUFFER_EXT"/>
             </require>
         </extension>
     </extensions>
