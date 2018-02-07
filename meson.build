@@ -231,12 +231,6 @@ if dl_dep.found()
   pkgconf.set('DLOPEN_LIBS', '-ldl')
 endif
 
-configure_file(input: 'epoxy.pc.in',
-               output: 'epoxy.pc',
-               configuration: pkgconf,
-               install: true,
-               install_dir: join_paths(epoxy_libdir, 'pkgconfig'))
-
 # Python
 python = import('python3').find_python()
 if not python.found()

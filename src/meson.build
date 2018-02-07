@@ -67,31 +67,38 @@ if host_system == 'windows'
   epoxy_deps += [ opengl32_dep, gdi32_dep ]
 endif
 
-# Allow building a static version of epoxy
-if libtype != 'shared'
-  libepoxy_static = static_library('epoxy',
-                                   sources: epoxy_sources + epoxy_headers,
-                                   install: true,
-                                   dependencies: epoxy_deps,
-                                   include_directories: libepoxy_inc,
-                                   c_args: common_cflags + visibility_cflags,
-                                   link_args: common_ldflags)
-  libepoxy = libepoxy_static
-endif
+libepoxy = library(
+  'epoxy',
+  sources: epoxy_sources + epoxy_headers,
+  version: '0.0.0',
+  install: true,
+  dependencies: epoxy_deps,
+  include_directories: libepoxy_inc,
+  c_args: common_cflags + visibility_cflags,
+  link_args: common_ldflags,
+)
 
-if libtype != 'static'
-  libepoxy_shared = shared_library('epoxy',
-                                   sources: epoxy_sources + epoxy_headers,
-                                   version: '0.0.0',
-                                   install: true,
-                                   dependencies: epoxy_deps,
-                                   include_directories: libepoxy_inc,
-                                   c_args: common_cflags + visibility_cflags,
-                                   link_args: common_ldflags)
-  libepoxy = libepoxy_shared
-endif
+libepoxy_dep = declare_dependency(
+  link_with: libepoxy,
+  include_directories: libepoxy_inc,
+  dependencies: epoxy_deps,
+  sources: epoxy_headers,
+)
 
-libepoxy_dep = declare_dependency(link_with: libepoxy,
-                                  include_directories: libepoxy_inc,
-                                  dependencies: epoxy_deps,
-                                  sources: epoxy_headers)
+epoxy_has_glx = build_glx ? '1' : '0'
+epoxy_has_egl = build_egl ? '1' : '0'
+epoxy_has_wgl = build_wgl ? '1' : '0'
+
+pkg = import('pkgconfig')
+pkg.generate(
+  libraries: libepoxy,
+  name: 'epoxy',
+  description: 'GL dispatch library',
+  version: meson.project_version(),
+  variables: [
+    'epoxy_has_glx=@0@'.format(epoxy_has_glx),
+    'epoxy_has_egl=@0@'.format(epoxy_has_egl),
+    'epoxy_has_wgl=@0@'.format(epoxy_has_wgl),
+  ],
+  filebase: 'epoxy',
+)
