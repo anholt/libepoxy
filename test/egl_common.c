@@ -23,6 +23,7 @@
 
 #include <err.h>
 #include <epoxy/egl.h>
+#include <X11/Xlib.h>
 #include "egl_common.h"
 
 /**
