@@ -67,6 +67,7 @@ static struct libwrap {
     { "libGL.so", "GL", NULL },
     { "libEGL.so", "EGL", NULL },
     { "libGLESv2.so", "GLES2", NULL },
+    { "libOpenGL.so", "GL", NULL},
 };
 
 /* Match 'filename' against an internal list of libraries for which
