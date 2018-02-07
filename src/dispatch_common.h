@@ -46,6 +46,14 @@
 #include "epoxy/glx.h"
 #endif
 #if PLATFORM_HAS_EGL
+#if !PLATFORM_HAS_GLX
+/* GL implementations e.g. mesa and mali use this define to exclude X11
+ * headers, here its known that GLX is not enabled therefore define it
+ * so subsequent including eglplatform.h can avoid needing X11 headers
+ * when building for non X11 system.
+ */
+#define MESA_EGL_NO_X11_HEADERS 1
+#endif
 #include "epoxy/egl.h"
 #endif
 #if PLATFORM_HAS_WGL
