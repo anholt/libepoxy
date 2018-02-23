@@ -167,13 +167,13 @@ egl_and_glx_different_pointers_egl_glx_CPPFLAGS = $(AM_CPPFLAGS) -DUSE_EGL -DUSE
 
 glx_alias_prefer_same_name_SOURCES = glx_alias_prefer_same_name.c dlwrap.c dlwrap.h
 glx_alias_prefer_same_name_LDFLAGS = -rdynamic
-glx_alias_prefer_same_name_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS) -ldl
+glx_alias_prefer_same_name_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS) $(DLOPEN_LIBS)
 
 glx_beginend_LDADD = $(EPOXY) libglx_common.la $(GL_LIBS) $(X11_LIBS)
 
 glx_gles2_SOURCES = glx_gles2.c dlwrap.c dlwrap.h
 glx_gles2_LDFLAGS = -rdynamic
-glx_gles2_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS) -ldl
+glx_gles2_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS) $(DLOPEN_LIBS)
 
 glx_public_api_LDADD = $(EPOXY) libglx_common.la $(X11_LIBS)
 
