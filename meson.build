@@ -217,20 +217,6 @@ if host_system == 'windows'
   gdi32_dep = cc.find_library('gdi32', required: true)
 endif
 
-# PkgConfig file
-pkgconf = configuration_data()
-pkgconf.set('prefix', epoxy_prefix)
-pkgconf.set('exec_prefix', epoxy_prefix)
-pkgconf.set('libdir', epoxy_libdir)
-pkgconf.set('includedir', epoxy_includedir)
-pkgconf.set10('epoxy_has_glx', build_glx)
-pkgconf.set10('epoxy_has_egl', build_egl)
-pkgconf.set10('epoxy_has_wgl', build_wgl)
-pkgconf.set('PACKAGE_VERSION', meson.project_version())
-if dl_dep.found()
-  pkgconf.set('DLOPEN_LIBS', '-ldl')
-endif
-
 # Python
 python = import('python3').find_python()
 if not python.found()
