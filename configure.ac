@@ -227,6 +227,12 @@ fi
 AM_CONDITIONAL(HAVE_X11, test x$x11 = xyes)
 
 PKG_CHECK_MODULES(GL, [gl], [gl=yes], [gl=no])
+PKG_CHECK_MODULES(EGL, [egl], [egl=yes], [egl=no])
+
+GL_REQS=""
+AS_IF([test x$gl = xyes], [GL_REQS="$GL_REQS gl"])
+AS_IF([test x$build_egl = xyes && test x$egl = xyes], [GL_REQS="$GL_REQS egl"])
+AC_SUBST(GL_REQS)
 
 # Variables for the pkg-config file; AC_SUBST does not do `test` substitutions,
 # so we need to specify the boolean values here

@@ -13,3 +13,4 @@ Version: @PACKAGE_VERSION@
 Cflags: -I${includedir}
 Libs: -L${libdir} -lepoxy
 Libs.private: @DLOPEN_LIBS@
+Requires.private: @GL_REQS@

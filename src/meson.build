@@ -89,6 +89,17 @@ epoxy_has_glx = build_glx ? '1' : '0'
 epoxy_has_egl = build_egl ? '1' : '0'
 epoxy_has_wgl = build_wgl ? '1' : '0'
 
+# We don't want to add these dependencies to the library, as they are
+# not needed when building Epoxy; we do want to add them to the generated
+# pkg-config file, for consumers of Epoxy
+gl_reqs = []
+if gl_dep.found()
+  gl_reqs += 'gl'
+endif
+if build_egl and egl_dep.found()
+  gl_reqs += 'egl'
+endif
+
 pkg = import('pkgconfig')
 pkg.generate(
   libraries: libepoxy,
@@ -101,4 +112,5 @@ pkg.generate(
     'epoxy_has_wgl=@0@'.format(epoxy_has_wgl),
   ],
   filebase: 'epoxy',
+  requires_private: ' '.join(gl_reqs),
 )
