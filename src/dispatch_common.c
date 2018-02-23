@@ -890,6 +890,13 @@ PFNGLENDPROC epoxy_glEnd = epoxy_glEnd_wrapped;
 
 epoxy_resolver_failure_handler_t epoxy_resolver_failure_handler;
 
+/**
+ * Sets the function that will be called every time Epoxy fails to
+ * resolve a symbol.
+ *
+ * @param handler The new handler function
+ * @return The previous handler function
+ */
 epoxy_resolver_failure_handler_t
 epoxy_set_resolver_failure_handler(epoxy_resolver_failure_handler_t handler)
 {
