@@ -392,9 +392,9 @@ epoxy_is_desktop_gl(void)
 }
 
 static int
-epoxy_internal_gl_version(int error_version)
+epoxy_internal_gl_version(const char *version_string, int error_version)
 {
-    const char *version = (const char *)glGetString(GL_VERSION);
+    const char *version = (const char *)glGetString(version_string);
     GLint major, minor;
     int scanf_count;
 
@@ -433,7 +433,7 @@ epoxy_internal_gl_version(int error_version)
 int
 epoxy_gl_version(void)
 {
-    return epoxy_internal_gl_version(0);
+    return epoxy_internal_gl_version(GL_VERSION, 0);
 }
 
 int
@@ -442,7 +442,32 @@ epoxy_conservative_gl_version(void)
     if (api.begin_count)
         return 100;
 
-    return epoxy_internal_gl_version(100);
+    return epoxy_internal_gl_version(GL_VERSION, 100);
+}
+
+/**
+ * @brief Returns the version of the GL Shading Language we are using
+ *
+ * The version is encoded as:
+ *
+ * ```
+ *
+ *   version = major * 10 + minor
+ *
+ * ```
+ *
+ * So it can be easily used for version comparisons.
+ *
+ * @return The encoded version of the GL Shading Language we are using
+ */
+int
+epoxy_glsl_version(void)
+{
+    if (epoxy_gl_version() >= 20 ||
+        epoxy_has_gl_extension ("GL_ARB_shading_language_100"))
+        return epoxy_internal_gl_version(GL_SHADING_LANGUAGE_VERSION, 0);
+
+    return 0;
 }
 
 /**

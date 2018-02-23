@@ -91,6 +91,7 @@ EPOXY_BEGIN_DECLS
 EPOXY_PUBLIC bool epoxy_has_gl_extension(const char *extension);
 EPOXY_PUBLIC bool epoxy_is_desktop_gl(void);
 EPOXY_PUBLIC int epoxy_gl_version(void);
+EPOXY_PUBLIC int epoxy_glsl_version(void);
 
 /*
  * the type of the stub function that the failure handler must return;
