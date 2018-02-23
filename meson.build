@@ -70,6 +70,14 @@ elif enable_egl == 'no'
   build_egl = false
 endif
 
+enable_x11 = get_option('x11')
+if not enable_x11
+  if enable_glx == 'yes'
+    error('GLX support is explicitly enabled, but X11 was disabled')
+  endif
+  build_glx = false
+endif
+
 # The remaining platform specific API for GL/GLES are enabled
 # depending on the platform we're building for
 if host_system == 'windows'
@@ -88,6 +96,7 @@ endif
 
 conf.set10('ENABLE_GLX', build_glx)
 conf.set10('ENABLE_EGL', build_egl)
+conf.set10('ENABLE_X11', enable_x11)
 
 # Compiler flags, taken from the Xorg macros
 if cc.get_id() == 'msvc'

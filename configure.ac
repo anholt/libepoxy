@@ -59,6 +59,11 @@ AC_CHECK_HEADER([KHR/khrplatform.h],
 # uintptr_t to a void *") by default.  Kill that.
 XORG_TESTSET_CFLAG(CWARNFLAGS, [-Wno-int-conversion])
 
+AC_ARG_ENABLE([x11],
+              [AC_HELP_STRING([--enable-x11=@<:@yes,no@:>@], [Enable X11 support @<:@default=yes@:>@])],
+              [enable_x11=$enableval],
+              [enable_x11=yes])
+
 AC_ARG_ENABLE([glx],
               [AC_HELP_STRING([--enable-glx=@<:@auto,yes,no@:>@], [Enable GLX support @<:@default=auto@:>@])],
               [enable_glx=$enableval],
@@ -148,6 +153,13 @@ AS_CASE([$host_os],
 
 AC_SUBST(EPOXY_LINK_LIBS)
 
+if test x$enable_x11 = xno; then
+    if test x$enable_glx = xyes; then
+        AC_MSG_ERROR([GLX support is explicitly enabled, but X11 was disabled])
+    fi
+    build_glx=no
+fi
+
 AM_CONDITIONAL(BUILD_EGL, test x$build_egl = xyes)
 if test x$build_egl = xyes; then
     PKG_CHECK_MODULES(EGL, [egl])
@@ -214,14 +226,17 @@ AS_CASE(["$host"],
 
 AC_SUBST([VISIBILITY_CFLAGS])
 
-if test x$build_glx = xyes; then
-  PKG_CHECK_MODULES(X11, [x11], [x11=yes], [x11=no])
-  if test x$x11 = xno -a x$build_glx = xyes; then
-      AC_MSG_ERROR([libX11 headers (libx11-dev) required to build with GLX support])
-  fi
-  AC_DEFINE(ENABLE_GLX, [1], [Whether GLX support is enabled])
+if test x$enable_x11 = xyes; then
+    PKG_CHECK_MODULES(X11, [x11], [x11=yes], [x11=no])
+    if test x$x11 = xno -a x$build_glx = xyes; then
+        AC_MSG_ERROR([libX11 headers (libx11-dev) are required to build with GLX support])
+    fi
 else
-  x11=no
+    x11=no
+fi
+
+if test x$build_glx = xyes; then
+  AC_DEFINE(ENABLE_GLX, [1], [Whether GLX support is enabled])
 fi
 
 AM_CONDITIONAL(HAVE_X11, test x$x11 = xyes)

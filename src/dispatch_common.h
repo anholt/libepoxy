@@ -46,6 +46,13 @@
 #include "epoxy/glx.h"
 #endif
 #if PLATFORM_HAS_EGL
+# if !ENABLE_X11
+/* Mesa uses this symbol to avoid including X11 headers when including
+ * EGL.h; since X11 was explicitly disabled at configuration time, we
+ * should do the same
+ */
+#  define MESA_EGL_NO_X11_HEADERS 1
+# endif
 #include "epoxy/egl.h"
 #endif
 #if PLATFORM_HAS_WGL

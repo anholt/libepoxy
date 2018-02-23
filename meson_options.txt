@@ -11,3 +11,7 @@ option('enable-egl',
        choices: [ 'auto', 'yes', 'no' ],
        value: 'auto',
        description: 'Enable EGL support')
+option('x11',
+       type: 'boolean',
+       value: true,
+       description: 'Enable X11 support (GLX or EGL-X11)')

@@ -1,6 +1,6 @@
 has_gles1 = gles1_dep.found()
 has_gles2 = gles2_dep.found()
-build_x11_tests = build_glx and x11_dep.found()
+build_x11_tests = enable_x11 and x11_dep.found()
 
 test_cflags = common_cflags + [
   '-D_XOPEN_SOURCE',
@@ -39,10 +39,15 @@ if build_egl and build_x11_tests
 
   egl_tests = [
     [ 'egl_has_extension_nocontext', [], [ 'egl_has_extension_nocontext.c' ], true, ],
-    [ 'egl_gl', [], [ 'egl_gl.c' ], true, ],
     [ 'egl_gles1_without_glx', [ '-DGLES_VERSION=1', ], [ 'egl_without_glx.c' ], has_gles1, ],
     [ 'egl_gles2_without_glx', [ '-DGLES_VERSION=2', ], [ 'egl_without_glx.c' ], has_gles2, ],
   ]
+
+  if build_glx
+    egl_tests += [
+      [ 'egl_gl', [], [ 'egl_gl.c' ], true, ],
+    ]
+  endif
 
   foreach test: egl_tests
     test_name = test[0]
