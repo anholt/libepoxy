@@ -675,8 +675,10 @@ epoxy_gl_dlsym(const char *name)
 #else
     void *sym;
 
+# if defined(OPENGL_LIB)
     if (!api.gl_handle)
 	get_dlopen_handle(&api.gl_handle, OPENGL_LIB, false);
+# endif
 
     if (api.gl_handle)
 	return do_dlsym(&api.gl_handle, NULL, name, true);
