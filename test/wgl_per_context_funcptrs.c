@@ -57,7 +57,7 @@ OVERRIDE_API (GLuint)
 override_glCreateShader_ctx1(GLenum target)
 {
     if (current_context != ctx1) {
-        fprintf(stderr, "ctx1 called while other context current\n");
+        fputs("ctx1 called while other context current\n", stderr);
         pass = false;
     }
     return CREATESHADER_CTX1_VAL;
@@ -67,7 +67,7 @@ OVERRIDE_API (GLuint)
 override_glCreateShader_ctx2(GLenum target)
 {
     if (current_context != ctx2) {
-        fprintf(stderr, "ctx2 called while other context current\n");
+        fputs("ctx2 called while other context current\n", stderr);
         pass = false;
     }
     return CREATESHADER_CTX2_VAL;
@@ -123,18 +123,18 @@ test_function(HDC hdc)
     ctx1 = wglCreateContext(hdc);
     ctx2 = wglCreateContext(hdc);
     if (!ctx1 || !ctx2) {
-        fprintf(stderr, "Failed to create wgl contexts\n");
+        fputs("Failed to create wgl contexts\n", stderr);
         return 1;
     }
 
     if (!wglMakeCurrent(hdc, ctx1)) {
-        fprintf(stderr, "Failed to make context current\n");
+        fputs("Failed to make context current\n", stderr);
         return 1;
     }
 
     if (epoxy_gl_version() < 20) {
         /* We could possibly do a 1.3 entrypoint or something instead. */
-        fprintf(stderr, "Test relies on overriding a GL 2.0 entrypoint\n");
+        fputs("Test relies on overriding a GL 2.0 entrypoint\n", stderr);
         return 77;
     }
 

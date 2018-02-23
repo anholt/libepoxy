@@ -296,8 +296,7 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
         return true;
 
     if (!library_initialized) {
-        fprintf(stderr,
-                "Attempting to dlopen() while in the dynamic linker.\n");
+        fputs("Attempting to dlopen() while in the dynamic linker.\n", stderr);
         abort();
     }
 

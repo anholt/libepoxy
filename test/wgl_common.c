@@ -54,12 +54,12 @@ setup_pixel_format(HDC hdc)
 
     pixel_format = ChoosePixelFormat(hdc, &pfd);
     if (!pixel_format) {
-        fprintf(stderr, "ChoosePixelFormat failed.\n");
+        fputs("ChoosePixelFormat failed.\n", stderr);
         exit(1);
     }
 
     if (SetPixelFormat(hdc, pixel_format, &pfd) != TRUE) {
-        fprintf(stderr, "SetPixelFormat() failed.\n");
+        fputs("SetPixelFormat() failed.\n", stderr);
         exit(1);
     }
 }
@@ -108,7 +108,7 @@ make_window_and_test(int (*callback)(HDC hdc))
     window_class.lpszMenuName = NULL;
     window_class.lpszClassName = class_name;
     if (!RegisterClass(&window_class)) {
-        fprintf(stderr, "Failed to register window class\n");
+        fputs("Failed to register window class\n", stderr);
         exit(1);
     }
 

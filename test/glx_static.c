@@ -50,7 +50,7 @@ main(int argc, char **argv)
 
 #if NEEDS_TO_BE_STATIC
     if (dlsym(NULL, "epoxy_glCompileShader")) {
-        fprintf(stderr, "glx_static requires epoxy built with --enable-static\n");
+        fputs("glx_static requires epoxy built with --enable-static\n", stderr);
         return 77;
     }
 #endif
@@ -62,7 +62,7 @@ main(int argc, char **argv)
     val = 0;
     glGetIntegerv(GL_LIGHTING, &val);
     if (!val) {
-        fprintf(stderr, "Enabling GL_LIGHTING didn't stick.\n");
+        fputs("Enabling GL_LIGHTING didn't stick.\n", stderr);
         pass = false;
     }
 

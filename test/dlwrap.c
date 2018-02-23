@@ -145,7 +145,7 @@ dlwrap_real_dlopen(const char *filename, int flag)
     if (!real_dlopen) {
         real_dlopen = (fips_dlopen_t) dlwrap_real_dlsym(RTLD_NEXT, "dlopen");
         if (!real_dlopen) {
-            fprintf(stderr, "Error: Failed to find symbol for dlopen.\n");
+            fputs("Error: Failed to find symbol for dlopen.\n", stderr);
             exit(1);
         }
     }
@@ -163,7 +163,11 @@ wrapped_dlsym(const char *prefix, const char *name)
     char *wrap_name;
     void *symbol;
 
-    asprintf(&wrap_name, "override_%s_%s", prefix, name);
+    if (asprintf(&wrap_name, "override_%s_%s", prefix, name) < 0) {
+        fputs("Error: Failed to allocate memory.\n", stderr);
+        abort();
+    }
+
     symbol = dlwrap_real_dlsym(RTLD_DEFAULT, wrap_name);
     free(wrap_name);
     return symbol;
@@ -248,22 +252,22 @@ dlwrap_real_dlsym(void *handle, const char *name)
                 break;
         }
         if (i == num_versions) {
-            fprintf(stderr, "Internal error: Failed to find real dlsym\n");
-            fprintf(stderr,
-                    "This may be a simple matter of fips not knowing about the version of GLIBC that\n"
-                    "your program is using. Current known versions are:\n\n\t");
+            fputs("Internal error: Failed to find real dlsym\n", stderr);
+            fputs("This may be a simple matter of fips not knowing about the version of GLIBC that\n"
+                  "your program is using. Current known versions are:\n\n\t",
+                  stderr);
             for (i = 0; i < num_versions; i++)
                 fprintf(stderr, "%s ", version[i]);
-            fprintf(stderr,
-                    "\n\nYou can inspect your version by first finding libdl.so.2:\n"
-                    "\n"
-                    "\tldd <your-program> | grep libdl.so\n"
-                    "\n"
-                    "And then inspecting the version attached to the dlsym symbol:\n"
-                    "\n"
-                    "\treadelf -s /path/to/libdl.so.2 | grep dlsym\n"
-                    "\n"
-                    "And finally, adding the version to dlwrap.c:dlwrap_real_dlsym.\n");
+            fputs("\n\nYou can inspect your version by first finding libdl.so.2:\n"
+                  "\n"
+                  "\tldd <your-program> | grep libdl.so\n"
+                  "\n"
+                  "And then inspecting the version attached to the dlsym symbol:\n"
+                  "\n"
+                  "\treadelf -s /path/to/libdl.so.2 | grep dlsym\n"
+                  "\n"
+                  "And finally, adding the version to dlwrap.c:dlwrap_real_dlsym.\n",
+                  stderr);
 
             exit(1);
         }

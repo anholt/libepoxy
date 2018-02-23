@@ -62,7 +62,7 @@ get_system_typedef_sizes(uint32_t *sizes)
 void
 get_system_typedef_sizes(uint32_t *sizes)
 {
-    fprintf(stderr, "./configure failed to find khrplatform.h\n");
+    fputs("./configure failed to find khrplatform.h\n", stderr);
     exit(77);
 }
 
