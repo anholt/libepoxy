@@ -28,5 +28,6 @@ before_script:
 
 script:
   - docker run withgit /bin/sh -c "CC=$CC ./epoxy-run-tests.sh"
-  - docker run withgit /bin/sh -c "CC=$CC ./epoxy-run-tests.sh -Denable-glx=no"
-  - docker run withgit /bin/sh -c "CC=$CC ./epoxy-run-tests.sh -Denable-egl=no"
+  - docker run withgit /bin/sh -c "CC=$CC ./epoxy-run-tests.sh -Dglx=no"
+  - docker run withgit /bin/sh -c "CC=$CC ./epoxy-run-tests.sh -Degl=no"
+  - docker run withgit /bin/sh -c "CC=$CC ./epoxy-run-tests.sh -Dx11=false"

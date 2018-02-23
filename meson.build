@@ -34,7 +34,7 @@ conf.set('HAVE_KHRPLATFORM_H', cc.has_header('KHR/khrplatform.h', required: fals
 # configure time switch to enable or disable it; in case
 # the "auto" default value is set, we only enable GLX
 # support on Linux and Unix
-enable_glx = get_option('enable-glx')
+enable_glx = get_option('glx')
 if enable_glx == 'auto'
   if host_system == 'windows'
     build_glx = false
@@ -53,7 +53,7 @@ elif enable_glx == 'no'
   build_glx = false
 endif
 
-enable_egl = get_option('enable-egl')
+enable_egl = get_option('egl')
 if enable_egl == 'auto'
   if host_system == 'windows'
     build_egl = false
@@ -249,7 +249,7 @@ subdir('include/epoxy')
 subdir('src')
 subdir('test')
 
-if get_option('enable-docs')
+if get_option('docs')
   doxygen = find_program('doxygen', required: false)
   if doxygen.found()
     subdir('doc')
