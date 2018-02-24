@@ -39,6 +39,7 @@ if build_egl and build_x11_tests
 
   egl_tests = [
     [ 'egl_has_extension_nocontext', [], [ 'egl_has_extension_nocontext.c' ], true, ],
+    [ 'egl_epoxy_api', [], [ 'egl_epoxy_api.c' ], true ],
     [ 'egl_gles1_without_glx', [ '-DGLES_VERSION=1', ], [ 'egl_without_glx.c' ], has_gles1, ],
     [ 'egl_gles2_without_glx', [ '-DGLES_VERSION=2', ], [ 'egl_without_glx.c' ], has_gles2, ],
   ]

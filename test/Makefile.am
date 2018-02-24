@@ -77,6 +77,7 @@ EGL_TESTS = \
 if HAVE_X11
 EGL_TESTS += \
 	egl_has_extension_nocontext \
+	egl_epoxy_api \
 	egl_gles2_without_glx \
 	$()
 
@@ -139,6 +140,8 @@ WGL_UTIL_LIB = libwgl_common.la
 endif
 
 egl_has_extension_nocontext_LDADD = $(EPOXY) libegl_common.la $(X11_LIBS)
+
+egl_epoxy_api_LDADD = $(EPOXY) libegl_common.la $(X11_LIBS)
 
 egl_gl_LDADD = $(EPOXY) $(DLOPEN_LIBS) libegl_common.la $(X11_LIBS)
 
