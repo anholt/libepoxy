@@ -392,7 +392,7 @@ epoxy_is_desktop_gl(void)
 }
 
 static int
-epoxy_internal_gl_version(const char *version_string, int error_version)
+epoxy_internal_gl_version(GLenum version_string, int error_version)
 {
     const char *version = (const char *)glGetString(version_string);
     GLint major, minor;
