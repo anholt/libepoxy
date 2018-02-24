@@ -395,7 +395,7 @@ static int
 epoxy_internal_gl_version(GLenum version_string, int error_version)
 {
     const char *version = (const char *)glGetString(version_string);
-    GLint major, minor;
+    GLint major, minor, factor;
     int scanf_count;
 
     if (!version)
@@ -412,7 +412,13 @@ epoxy_internal_gl_version(GLenum version_string, int error_version)
                 version);
         exit(1);
     }
-    return 10 * major + minor;
+
+    if (minor >= 10)
+        factor = 100;
+    else
+        factor = 10;
+
+    return factor * major + minor;
 }
 
 /**
@@ -452,7 +458,7 @@ epoxy_conservative_gl_version(void)
  *
  * ```
  *
- *   version = major * 10 + minor
+ *   version = major * 100 + minor
  *
  * ```
  *
