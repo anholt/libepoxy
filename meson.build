@@ -242,7 +242,10 @@ libepoxy_inc = [
 
 subdir('include/epoxy')
 subdir('src')
-subdir('test')
+
+if get_option('tests')
+  subdir('test')
+endif
 
 if get_option('docs')
   doxygen = find_program('doxygen', required: false)
