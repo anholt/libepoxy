@@ -81,15 +81,12 @@ endif
 # The remaining platform specific API for GL/GLES are enabled
 # depending on the platform we're building for
 if host_system == 'windows'
-  build_apple = false
   build_wgl = true
   has_znow = true
 elif host_system == 'darwin'
-  build_apple = true
   build_wgl = false
   has_znow = false
 else
-  build_apple = false
   build_wgl = false
   has_znow = true
 endif
