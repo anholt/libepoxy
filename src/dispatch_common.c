@@ -487,7 +487,7 @@ epoxy_glsl_version(void)
  * is supported by the client, this probably isn't the function you want.
  *
  * Some parts of the spec for OpenGL and friends will return an OpenGL formatted
- * extension string that is seperate from the usual extension strings for the
+ * extension string that is separate from the usual extension strings for the
  * spec. This function provides easy parsing of those strings.
  *
  * @see epoxy_has_gl_extension()

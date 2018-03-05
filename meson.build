@@ -208,7 +208,7 @@ if not gles1_dep.found()
 endif
 
 # On windows, the DLL has to have all of its functions
-# resolved at link time, so we have to link directly aginst
+# resolved at link time, so we have to link directly against
 # opengl32.  But that's the only GL provider, anyway.
 if host_system == 'windows'
   opengl32_dep = cc.find_library('opengl32', required: true)
