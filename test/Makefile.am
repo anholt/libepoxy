@@ -96,7 +96,7 @@ endif
 
 if BUILD_EGL
 if BUILD_GLX
-if !BUILD_APPLE
+if HAVE_DLVSYM
 EGL_AND_GLX_TESTS = \
 	egl_gl \
 	egl_and_glx_different_pointers_egl_glx \
@@ -107,8 +107,8 @@ endif
 endif
 endif
 
-if !BUILD_APPLE
-GLX_NON_APPLE_TESTS = \
+if HAVE_DLVSYM
+GLX_DLVSYM_TESTS = \
 	glx_alias_prefer_same_name \
 	glx_gles2 \
         $()
@@ -122,7 +122,7 @@ GLX_TESTS = \
 	glx_has_extension_nocontext \
 	glx_static \
         $(GLX_SHARED_ZNOW) \
-        $(GLX_NON_APPLE_TESTS) \
+        $(GLX_DLVSYM_TESTS) \
 	$()
 
 GLX_UTIL_LIB = libglx_common.la

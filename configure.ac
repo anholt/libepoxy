@@ -137,7 +137,6 @@ AS_CASE([$host_os],
 
   [darwin*], [
     build_wgl=no
-    build_apple=yes
     has_znow=no
     EPOXY_LINK_LIBS=""
   ],
@@ -177,11 +176,6 @@ if test x$build_wgl = xyes; then
     AC_DEFINE([BUILD_WGL], [1], [build WGL tests])
 fi
 
-AM_CONDITIONAL(BUILD_APPLE, test x$build_apple = xyes)
-if test x$build_apple = xyes; then
-    AC_DEFINE([BUILD_APPLE], [1], [build APPLE is apple (for testing)])
-fi
-
 AM_CONDITIONAL(HAS_ZNOW, test x$has_znow = xyes)
 
 AC_CHECK_LIB([GLESv1_CM], [glFlush], [has_gles1=yes], [has_gles1=no])
@@ -189,6 +183,12 @@ AM_CONDITIONAL(HAS_GLES1, test x$has_gles1 = xyes)
 
 AC_CHECK_LIB([dl], [dlopen], [DLOPEN_LIBS="-ldl"])
 AC_SUBST([DLOPEN_LIBS])
+
+savelibs=$LIBS
+LIBS=$DLOPEN_LIBS
+AC_CHECK_FUNCS([dlvsym], [have_dlvsym=1], [have_dlvsym=0])
+AM_CONDITIONAL(HAVE_DLVSYM, test $have_dlvsym = 1)
+LIBS=$savelibs
 
 VISIBILITY_CFLAGS=""
 AS_CASE(["$host"],
