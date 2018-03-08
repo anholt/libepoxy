@@ -54,15 +54,17 @@ dlopen(const char *filename, int flag)
 {
     void * (*dlopen_unwrapped)(const char *filename, int flag);
 
-    if (!strcmp(filename, "libGL.so.1"))
-        return NULL;
+    if (filename) {
+        if (!strcmp(filename, "libGL.so.1"))
+            return NULL;
 #if GLES_VERSION == 2
-    if (!strcmp(filename, "libGLESv1_CM.so.1"))
-        return NULL;
+        if (!strcmp(filename, "libGLESv1_CM.so.1"))
+            return NULL;
 #else
-    if (!strcmp(filename, "libGLESv2.so.2"))
-        return NULL;
+        if (!strcmp(filename, "libGLESv2.so.2"))
+            return NULL;
 #endif
+    }
 
     dlopen_unwrapped = dlsym(RTLD_NEXT, "dlopen");
     assert(dlopen_unwrapped);
