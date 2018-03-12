@@ -15,3 +15,7 @@ option('x11',
        type: 'boolean',
        value: true,
        description: 'Enable X11 support (GLX or EGL-X11)')
+option('tests',
+       type: 'boolean',
+       value: true,
+       description: 'Build the test suite')

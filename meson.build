@@ -81,15 +81,12 @@ endif
 # The remaining platform specific API for GL/GLES are enabled
 # depending on the platform we're building for
 if host_system == 'windows'
-  build_apple = false
   build_wgl = true
   has_znow = true
 elif host_system == 'darwin'
-  build_apple = true
   build_wgl = false
   has_znow = false
 else
-  build_apple = false
   build_wgl = false
   has_znow = true
 endif
@@ -242,7 +239,10 @@ libepoxy_inc = [
 
 subdir('include/epoxy')
 subdir('src')
-subdir('test')
+
+if get_option('tests')
+  subdir('test')
+endif
 
 if get_option('docs')
   doxygen = find_program('doxygen', required: false)

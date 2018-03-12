@@ -1,3 +1,6 @@
+dl_dep = cc.find_library('dl', required: false)
+has_dlvsym = cc.has_function('dlvsym', dependencies: dl_dep)
+
 has_gles1 = gles1_dep.found()
 has_gles2 = gles2_dep.found()
 build_x11_tests = enable_x11 and x11_dep.found()
@@ -92,8 +95,8 @@ if build_glx
     [ 'glx_has_extension_nocontext', [ 'glx_has_extension_nocontext.c' ], [], [], true ],
     [ 'glx_static', [ 'glx_static.c' ], [ '-DNEEDS_TO_BE_STATIC'], [ '-static' ], libtype == 'static' ],
     [ 'glx_shared_znow', [ 'glx_static.c', ], [], [ '-Wl,-z,now' ], has_znow ],
-    [ 'glx_alias_prefer_same_name', [ 'glx_alias_prefer_same_name.c', 'dlwrap.c', 'dlwrap.h' ], [], [ '-rdynamic' ], not build_apple ],
-    [ 'glx_gles2', [ 'glx_gles2.c', 'dlwrap.c', 'dlwrap.h' ], [], [ '-rdynamic' ], not build_apple ],
+    [ 'glx_alias_prefer_same_name', [ 'glx_alias_prefer_same_name.c', 'dlwrap.c', 'dlwrap.h' ], [], [ '-rdynamic' ], has_dlvsym ],
+    [ 'glx_gles2', [ 'glx_gles2.c', 'dlwrap.c', 'dlwrap.h' ], [], [ '-rdynamic' ], has_dlvsym ],
   ]
 
   foreach test: glx_tests
@@ -114,7 +117,7 @@ if build_glx
     endif
   endforeach
 
-  if not build_apple
+  if has_dlvsym
     # GLX/EGL tests
     if build_egl
       glx_egl_sources = [
