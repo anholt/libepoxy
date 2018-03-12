@@ -124,7 +124,7 @@ AS_CASE([$host_os],
     build_wgl=yes
     has_znow=yes
     # On windows, the DLL has to have all of its functions
-    # resolved at link time, so we have to link directly aginst
+    # resolved at link time, so we have to link directly against
     # opengl32.dll.  But that's the only GL provider, anyway.
     EPOXY_LINK_LIBS="-lopengl32"
 
