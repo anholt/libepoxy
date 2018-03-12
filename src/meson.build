@@ -93,10 +93,10 @@ epoxy_has_wgl = build_wgl ? '1' : '0'
 # not needed when building Epoxy; we do want to add them to the generated
 # pkg-config file, for consumers of Epoxy
 gl_reqs = []
-if gl_dep.found()
+if gl_dep.found() and gl_dep.type_name() == 'pkgconfig'
   gl_reqs += 'gl'
 endif
-if build_egl and egl_dep.found()
+if build_egl and egl_dep.found() and egl_dep.type_name() == 'pkgconfig'
   gl_reqs += 'egl'
 endif
 
