@@ -36,38 +36,16 @@ conf.set('HAVE_KHRPLATFORM_H', cc.has_header('KHR/khrplatform.h', required: fals
 # support on Linux and Unix
 enable_glx = get_option('glx')
 if enable_glx == 'auto'
-  if host_system == 'windows'
-    build_glx = false
-  elif host_system == 'darwin'
-    build_glx = false
-  elif host_system == 'android'
-    build_glx = false
-  elif host_system == 'haiku'
-    build_glx = false
-  else
-    build_glx = true
-  endif
-elif enable_glx == 'yes'
-  build_glx = true
-elif enable_glx == 'no'
-  build_glx = false
+  build_glx = not ['windows', 'darwin', 'android', 'haiku'].contains(host_system)
+else
+  build_glx = enable_glx == 'yes'
 endif
 
 enable_egl = get_option('egl')
 if enable_egl == 'auto'
-  if host_system == 'windows'
-    build_egl = false
-  elif host_system == 'darwin'
-    build_egl = false
-  elif host_system == 'android'
-    build_egl = true
-  else
-    build_egl = true
-  endif
-elif enable_egl == 'yes'
-  build_egl = true
-elif enable_egl == 'no'
-  build_egl = false
+  build_egl = not ['windows', 'darwin'].contains(host_system)
+else
+  build_egl = enable_egl == 'yes'
 endif
 
 enable_x11 = get_option('x11')
