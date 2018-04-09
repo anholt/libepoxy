@@ -305,7 +305,11 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
 #else
     pthread_mutex_lock(&api.mutex);
     if (!*handle) {
-        *handle = dlopen(lib_name, RTLD_LAZY | RTLD_LOCAL);
+        int flags = RTLD_LAZY | RTLD_LOCAL;
+        if (!exit_on_fail)
+            flags |= RTLD_NOLOAD;
+
+        *handle = dlopen(lib_name, flags);
         if (!*handle) {
             if (exit_on_fail) {
                 fprintf(stderr, "Couldn't open %s: %s\n", lib_name, dlerror());
@@ -572,23 +576,7 @@ epoxy_current_context_is_glx(void)
 #else
     void *sym;
 
-    /* If we've been called already, don't load more */
-    if (!api.egl_handle != !api.glx_handle) {
-	if (api.glx_handle)
-	    return true;
-	else if (api.egl_handle)
-	    return false;
-    }
-
-    /* If the application hasn't explicitly called some of our GLX
-     * or EGL code but has presumably set up a context on its own,
-     * then we need to figure out how to getprocaddress anyway.
-     *
-     * If there's a public GetProcAddress loaded in the
-     * application's namespace, then use that.
-     */
-
-    sym = dlsym(NULL, "glXGetCurrentContext");
+    sym = epoxy_conservative_glx_dlsym("glXGetCurrentContext", false);
     if (sym) {
         if (glXGetCurrentContext())
             return true;
@@ -597,28 +585,13 @@ epoxy_current_context_is_glx(void)
     }
 
 #if PLATFORM_HAS_EGL
-    sym = dlsym(NULL, "eglGetCurrentContext");
+    sym = epoxy_conservative_egl_dlsym("eglGetCurrentContext", false);
     if (sym) {
         if (epoxy_egl_get_current_gl_context_api() != EGL_NONE)
             return false;
     } else {
         (void)dlerror();
     }
-#endif /* PLATFORM_HAS_EGL */
-
-    /* OK, couldn't find anything in the app's address space.
-     * Presumably they dlopened with RTLD_LOCAL, which hides it
-     * from us.  Just go dlopen()ing likely libraries and try them.
-     */
-    sym = epoxy_conservative_glx_dlsym("glXGetCurrentContext", false);
-    if (sym && glXGetCurrentContext())
-        return true;
-
-#if PLATFORM_HAS_EGL
-    sym = do_dlsym(&api.egl_handle, EGL_LIB, "eglGetCurrentContext",
-                   false);
-    if (sym && epoxy_egl_get_current_gl_context_api() != EGL_NONE)
-        return false;
 #endif /* PLATFORM_HAS_EGL */
 
     return false;
