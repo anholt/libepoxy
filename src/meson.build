@@ -49,12 +49,12 @@ epoxy_sources = sources + gen_sources
 
 common_ldflags = []
 
-if host_system == 'linux'
-  foreach f: [ '-Wl,-Bsymbolic', '-Wl,-z,relro', '-Wl,-z,now', ]
-    if cc.has_argument(f)
-      common_ldflags += f
-    endif
-  endforeach
+if host_system == 'linux' and cc.get_id() == 'gcc'
+  if meson.version().version_compare('>= 0.46.0')
+    common_ldflags += cc.get_supported_link_arguments([ '-Wl,-Bsymbolic', '-Wl,z,relro' ])
+  else
+    common_ldflags += [ '-Wl,-Bsymbolic', '-Wl,-z,relro', ]
+  endif
 endif
 
 # Maintain compatibility with autotools; see: https://github.com/anholt/libepoxy/issues/108
