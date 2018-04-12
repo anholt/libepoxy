@@ -116,41 +116,6 @@ if build_glx
       test(test_name, test_bin)
     endif
   endforeach
-
-  if has_dlvsym
-    # GLX/EGL tests
-    if build_egl
-      glx_egl_sources = [
-        'egl_and_glx_different_pointers.c',
-        'dlwrap.c',
-        'dlwrap.h',
-      ]
-
-      glx_egl_deps = [ libepoxy_dep, x11_dep, dl_dep ]
-      glx_egl_link_flags = [ '-rdynamic' ]
-      glx_egl_link_with = [ glx_common_lib, egl_common_lib ]
-
-      glx_egl_tests = [
-        [ 'egl_and_glx_different_pointers_glx', [ '-DUSE_GLX' ], false ],
-        [ 'egl_and_glx_different_pointers_egl', [ '-DUSE_EGL' ], false ],
-        [ 'egl_and_glx_different_pointers_egl_glx', [ '-DUSE_EGL', '-DUSE_GLX' ], true ],
-      ]
-
-      foreach test: glx_egl_tests
-        test_name = test[0]
-        test_c_args = test[1]
-        test_should_fail = test[2]
-
-        test_bin = executable(test_name, glx_egl_sources,
-                              c_args: common_cflags + test_c_args,
-                              include_directories: libepoxy_inc,
-                              dependencies: glx_egl_deps,
-                              link_with: glx_egl_link_with,
-                              link_args: glx_egl_link_flags)
-        test(test_name, test_bin, should_fail: test_should_fail)
-      endforeach
-    endif
-  endif
 endif
 
 # WGL
