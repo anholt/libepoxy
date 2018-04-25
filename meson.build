@@ -28,7 +28,7 @@ conf.set_quoted('PACKAGE_DATADIR', join_paths(get_option('prefix'), get_option('
 conf.set_quoted('PACKAGE_LIBDIR', join_paths(get_option('prefix'), get_option('libdir')))
 conf.set_quoted('PACKAGE_LOCALEDIR', join_paths(get_option('prefix'), get_option('datadir'), 'locale'))
 conf.set_quoted('PACKAGE_LIBEXECDIR', join_paths(get_option('prefix'), get_option('libexecdir')))
-conf.set('HAVE_KHRPLATFORM_H', cc.has_header('KHR/khrplatform.h', required: false))
+conf.set('HAVE_KHRPLATFORM_H', cc.has_header('KHR/khrplatform.h'))
 
 # GLX can be used on different platforms, so we expose a
 # configure time switch to enable or disable it; in case
