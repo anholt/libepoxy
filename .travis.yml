@@ -26,8 +26,11 @@ before_script:
   - echo ADD . /root >> Dockerfile
   - docker build -t withgit .
 
+env:
+  - BUILD_OPTS=""
+  - BUILD_OPTS="-Dglx=no"
+  - BUILD_OPTS="-Degl=no"
+  - BUILD_OPTS="-Dx11=false"
+
 script:
-  - docker run withgit /bin/sh -c "CC=$CC ./epoxy-run-tests.sh"
-  - docker run withgit /bin/sh -c "CC=$CC ./epoxy-run-tests.sh -Dglx=no"
-  - docker run withgit /bin/sh -c "CC=$CC ./epoxy-run-tests.sh -Degl=no"
-  - docker run withgit /bin/sh -c "CC=$CC ./epoxy-run-tests.sh -Dx11=false"
+  - docker run withgit /bin/sh -c "CC=$CC ./epoxy-run-tests.sh $BUILD_OPTS"
