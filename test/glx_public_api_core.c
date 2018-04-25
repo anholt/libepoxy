@@ -131,6 +131,12 @@ test_glx_version(void)
     return true;
 }
 
+static int
+error_handler(Display *d, XErrorEvent *ev)
+{
+    return 0;
+}
+
 int
 main(int argc, char **argv)
 {
@@ -148,6 +154,7 @@ main(int argc, char **argv)
         None
     };
     GLXContext ctx;
+    int (*old_handler)(Display *, XErrorEvent *);
 
     dpy = get_display_or_skip();
 
@@ -157,9 +164,12 @@ main(int argc, char **argv)
     visinfo = get_glx_visual(dpy);
     win = get_glx_window(dpy, visinfo, false);
     config = get_fbconfig_for_visinfo(dpy, visinfo);
+
+    old_handler = XSetErrorHandler(error_handler);
     ctx = glXCreateContextAttribsARB(dpy, config, NULL, True, attribs);
     if (ctx == None)
         errx(77, "glXCreateContext failed");
+    XSetErrorHandler(old_handler);
 
     glXMakeCurrent(dpy, win, ctx);
 
