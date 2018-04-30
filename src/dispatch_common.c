@@ -812,20 +812,20 @@ epoxy_get_bootstrap_proc_address(const char *name)
 #if PLATFORM_HAS_EGL
     get_dlopen_handle(&api.egl_handle, EGL_LIB, false);
     if (api.egl_handle) {
+        int version = 0;
         switch (epoxy_egl_get_current_gl_context_api()) {
         case EGL_OPENGL_API:
             return epoxy_gl_dlsym(name);
         case EGL_OPENGL_ES_API:
-            /* We can't resolve the GL version, because
-             * epoxy_glGetString() is one of the two things calling
-             * us.  Try the GLES2 implementation first, and fall back
-             * to GLES1 otherwise.
-             */
-            get_dlopen_handle(&api.gles2_handle, GLES2_LIB, false);
-            if (api.gles2_handle)
-                return epoxy_gles2_dlsym(name);
-            else
-                return epoxy_gles1_dlsym(name);
+            if (eglQueryContext(eglGetCurrentDisplay(),
+                                eglGetCurrentContext(),
+                                EGL_CONTEXT_CLIENT_VERSION,
+                                &version)) {
+                if (version >= 2)
+                    return epoxy_gles2_dlsym(name);
+                else
+                    return epoxy_gles1_dlsym(name);
+            }
         }
     }
 #endif /* PLATFORM_HAS_EGL */
