@@ -158,12 +158,14 @@ epoxy_has_glx(Display *dpy)
 #if !PLATFORM_HAS_GLX
     return false;
 #else
-    Bool (* pf_glXQueryExtension) (Display *, int *, int *);
-    int error_base, event_base;
+    if (epoxy_load_glx(false, true)) {
+        Bool (* pf_glXQueryExtension) (Display *, int *, int *);
+        int error_base, event_base;
 
-    pf_glXQueryExtension = epoxy_conservative_glx_dlsym("glXQueryExtension", false);
-    if (pf_glXQueryExtension && pf_glXQueryExtension(dpy, &error_base, &event_base))
-        return true;
+        pf_glXQueryExtension = epoxy_conservative_glx_dlsym("glXQueryExtension", false);
+        if (pf_glXQueryExtension && pf_glXQueryExtension(dpy, &error_base, &event_base))
+            return true;
+    }
 
     return false;
 #endif /* !PLATFORM_HAS_GLX */

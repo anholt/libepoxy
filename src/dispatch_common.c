@@ -292,7 +292,7 @@ library_init(void)
 }
 
 static bool
-get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
+get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail, bool load)
 {
     if (*handle)
         return true;
@@ -308,7 +308,7 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
     pthread_mutex_lock(&api.mutex);
     if (!*handle) {
         int flags = RTLD_LAZY | RTLD_LOCAL;
-        if (!exit_on_fail)
+        if (!load)
             flags |= RTLD_NOLOAD;
 
         *handle = dlopen(lib_name, flags);
@@ -550,16 +550,16 @@ epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode)
     }
 }
 
-static bool
-epoxy_load_glx(bool exit_if_fails)
+bool
+epoxy_load_glx(bool exit_if_fails, bool load)
 {
 #ifdef GLVND_GLX_LIB
     /* prefer the glvnd library if it exists */
     if (!api.glx_handle)
-	get_dlopen_handle(&api.glx_handle, GLVND_GLX_LIB, false);
+	get_dlopen_handle(&api.glx_handle, GLVND_GLX_LIB, false, load);
 #endif
     if (!api.glx_handle)
-        get_dlopen_handle(&api.glx_handle, GLX_LIB, exit_if_fails);
+        get_dlopen_handle(&api.glx_handle, GLX_LIB, exit_if_fails, load);
 
     return api.glx_handle != NULL;
 }
@@ -567,7 +567,7 @@ epoxy_load_glx(bool exit_if_fails)
 void *
 epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails)
 {
-    if (epoxy_load_glx(exit_if_fails))
+    if (epoxy_load_glx(exit_if_fails, exit_if_fails))
         return do_dlsym(&api.glx_handle, name, exit_if_fails);
 
     return NULL;
@@ -633,16 +633,16 @@ epoxy_conservative_has_gl_extension(const char *ext)
     return epoxy_internal_has_gl_extension(ext, true);
 }
 
-static bool
-epoxy_load_egl(bool exit_if_fails)
+bool
+epoxy_load_egl(bool exit_if_fails, bool load)
 {
-    return get_dlopen_handle(&api.egl_handle, EGL_LIB, exit_if_fails);
+    return get_dlopen_handle(&api.egl_handle, EGL_LIB, exit_if_fails, load);
 }
 
 void *
 epoxy_conservative_egl_dlsym(const char *name, bool exit_if_fails)
 {
-    if (epoxy_load_egl(exit_if_fails))
+    if (epoxy_load_egl(exit_if_fails, exit_if_fails))
         return do_dlsym(&api.egl_handle, name, exit_if_fails);
 
     return NULL;
@@ -667,15 +667,15 @@ epoxy_load_gl(void)
 	return;
 
 #if defined(_WIN32) || defined(__APPLE__)
-    get_dlopen_handle(&api.gl_handle, OPENGL_LIB, true);
+    get_dlopen_handle(&api.gl_handle, OPENGL_LIB, true, true);
 #else
 
 #if defined(OPENGL_LIB)
     if (!api.gl_handle)
-	get_dlopen_handle(&api.gl_handle, OPENGL_LIB, false);
+	get_dlopen_handle(&api.gl_handle, OPENGL_LIB, false, true);
 #endif
 
-    get_dlopen_handle(&api.glx_handle, GLX_LIB, true);
+    get_dlopen_handle(&api.glx_handle, GLX_LIB, true, true);
     api.gl_handle = api.glx_handle;
 #endif
 }
@@ -694,7 +694,7 @@ epoxy_gles1_dlsym(const char *name)
     if (epoxy_current_context_is_glx()) {
         return epoxy_get_proc_address(name);
     } else {
-        get_dlopen_handle(&api.gles1_handle, GLES1_LIB, true);
+        get_dlopen_handle(&api.gles1_handle, GLES1_LIB, true, true);
         return do_dlsym(&api.gles1_handle, name, true);
     }
 }
@@ -705,7 +705,7 @@ epoxy_gles2_dlsym(const char *name)
     if (epoxy_current_context_is_glx()) {
         return epoxy_get_proc_address(name);
     } else {
-        get_dlopen_handle(&api.gles2_handle, GLES2_LIB, true);
+        get_dlopen_handle(&api.gles2_handle, GLES2_LIB, true, true);
         return do_dlsym(&api.gles2_handle, name, true);
     }
 }
@@ -726,7 +726,7 @@ epoxy_gles3_dlsym(const char *name)
     if (epoxy_current_context_is_glx()) {
         return epoxy_get_proc_address(name);
     } else {
-        if (get_dlopen_handle(&api.gles2_handle, GLES2_LIB, false)) {
+        if (get_dlopen_handle(&api.gles2_handle, GLES2_LIB, false, true)) {
             void *func = do_dlsym(&api.gles2_handle, GLES2_LIB, false);
 
             if (func)
@@ -806,7 +806,7 @@ epoxy_get_bootstrap_proc_address(const char *name)
      * non-X11 ES2 context from loading a bunch of X11 junk).
      */
 #if PLATFORM_HAS_EGL
-    get_dlopen_handle(&api.egl_handle, EGL_LIB, false);
+    get_dlopen_handle(&api.egl_handle, EGL_LIB, false, true);
     if (api.egl_handle) {
         int version = 0;
         switch (epoxy_egl_get_current_gl_context_api()) {

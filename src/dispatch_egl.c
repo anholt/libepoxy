@@ -109,11 +109,13 @@ epoxy_has_egl(void)
 #if !PLATFORM_HAS_EGL
     return false;
 #else
-    EGLDisplay* (* pf_eglGetCurrentDisplay) (void);
+    if (epoxy_load_egl(false, true)) {
+        EGLDisplay* (* pf_eglGetCurrentDisplay) (void);
 
-    pf_eglGetCurrentDisplay = epoxy_conservative_egl_dlsym("eglGetCurrentDisplay", false);
-    if (pf_eglGetCurrentDisplay)
-        return true;
+        pf_eglGetCurrentDisplay = epoxy_conservative_egl_dlsym("eglGetCurrentDisplay", false);
+        if (pf_eglGetCurrentDisplay)
+            return true;
+    }
 
     return false;
 #endif /* PLATFORM_HAS_EGL */
