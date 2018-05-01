@@ -175,6 +175,7 @@
 
 #ifdef __APPLE__
 #define GLX_LIB "/opt/X11/lib/libGL.1.dylib"
+#define OPENGL_LIB "/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL"
 #elif defined(__ANDROID__)
 #define GLX_LIB "libGLESv2.so"
 #else
@@ -190,6 +191,7 @@
 #define EGL_LIB "libEGL.dll"
 #define GLES1_LIB "libGLES_CM.dll"
 #define GLES2_LIB "libGLESv2.dll"
+#define OPENGL_LIB "OPENGL32"
 #else
 #define EGL_LIB "libEGL.so.1"
 #define GLES1_LIB "libGLESv1_CM.so.1"
@@ -326,14 +328,10 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail)
 }
 
 static void *
-do_dlsym(void **handle, const char *lib_name, const char *name,
-         bool exit_on_fail)
+do_dlsym(void **handle, const char *name, bool exit_on_fail)
 {
     void *result;
     const char *error = "";
-
-    if (!get_dlopen_handle(handle, lib_name, exit_on_fail))
-        return NULL;
 
 #ifdef _WIN32
     result = GetProcAddress(*handle, name);
@@ -343,7 +341,7 @@ do_dlsym(void **handle, const char *lib_name, const char *name,
         error = dlerror();
 #endif
     if (!result && exit_on_fail) {
-        fprintf(stderr,"%s() not found in %s: %s\n", name, lib_name, error);
+        fprintf(stderr, "%s() not found: %s\n", name, error);
         exit(1);
     }
 
@@ -552,16 +550,27 @@ epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode)
     }
 }
 
-void *
-epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails)
+static bool
+epoxy_load_glx(bool exit_if_fails)
 {
 #ifdef GLVND_GLX_LIB
     /* prefer the glvnd library if it exists */
     if (!api.glx_handle)
 	get_dlopen_handle(&api.glx_handle, GLVND_GLX_LIB, false);
 #endif
+    if (!api.glx_handle)
+        get_dlopen_handle(&api.glx_handle, GLX_LIB, exit_if_fails);
 
-    return do_dlsym(&api.glx_handle, GLX_LIB, name, exit_if_fails);
+    return api.glx_handle != NULL;
+}
+
+void *
+epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails)
+{
+    if (epoxy_load_glx(exit_if_fails))
+        return do_dlsym(&api.glx_handle, name, exit_if_fails);
+
+    return NULL;
 }
 
 /**
@@ -624,10 +633,19 @@ epoxy_conservative_has_gl_extension(const char *ext)
     return epoxy_internal_has_gl_extension(ext, true);
 }
 
+static bool
+epoxy_load_egl(bool exit_if_fails)
+{
+    return get_dlopen_handle(&api.egl_handle, EGL_LIB, exit_if_fails);
+}
+
 void *
 epoxy_conservative_egl_dlsym(const char *name, bool exit_if_fails)
 {
-    return do_dlsym(&api.egl_handle, EGL_LIB, name, exit_if_fails);
+    if (epoxy_load_egl(exit_if_fails))
+        return do_dlsym(&api.egl_handle, name, exit_if_fails);
+
+    return NULL;
 }
 
 void *
@@ -642,31 +660,32 @@ epoxy_glx_dlsym(const char *name)
     return epoxy_conservative_glx_dlsym(name, true);
 }
 
+static void
+epoxy_load_gl(void)
+{
+    if (api.gl_handle)
+	return;
+
+#if defined(_WIN32) || defined(__APPLE__)
+    get_dlopen_handle(&api.gl_handle, OPENGL_LIB, true);
+#else
+
+#if defined(OPENGL_LIB)
+    if (!api.gl_handle)
+	get_dlopen_handle(&api.gl_handle, OPENGL_LIB, false);
+#endif
+
+    get_dlopen_handle(&api.glx_handle, GLX_LIB, true);
+    api.gl_handle = api.glx_handle;
+#endif
+}
+
 void *
 epoxy_gl_dlsym(const char *name)
 {
-#ifdef _WIN32
-    return do_dlsym(&api.gl_handle, "OPENGL32", name, true);
-#elif defined(__APPLE__)
-    return do_dlsym(&api.gl_handle,
-                    "/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL",
-                    name, true);
-#else
-    void *sym;
+    epoxy_load_gl();
 
-# if defined(OPENGL_LIB)
-    if (!api.gl_handle)
-	get_dlopen_handle(&api.gl_handle, OPENGL_LIB, false);
-# endif
-
-    if (api.gl_handle)
-	return do_dlsym(&api.gl_handle, NULL, name, true);
-
-    sym = do_dlsym(&api.glx_handle, GLX_LIB, name, true);
-    api.gl_handle = api.glx_handle; /* skip the dlopen next time */
-
-    return sym;
-#endif
+    return do_dlsym(&api.gl_handle, name, true);
 }
 
 void *
@@ -675,7 +694,8 @@ epoxy_gles1_dlsym(const char *name)
     if (epoxy_current_context_is_glx()) {
         return epoxy_get_proc_address(name);
     } else {
-        return do_dlsym(&api.gles1_handle, GLES1_LIB, name, true);
+        get_dlopen_handle(&api.gles1_handle, GLES1_LIB, true);
+        return do_dlsym(&api.gles1_handle, name, true);
     }
 }
 
@@ -685,7 +705,8 @@ epoxy_gles2_dlsym(const char *name)
     if (epoxy_current_context_is_glx()) {
         return epoxy_get_proc_address(name);
     } else {
-        return do_dlsym(&api.gles2_handle, GLES2_LIB, name, true);
+        get_dlopen_handle(&api.gles2_handle, GLES2_LIB, true);
+        return do_dlsym(&api.gles2_handle, name, true);
     }
 }
 
@@ -705,10 +726,12 @@ epoxy_gles3_dlsym(const char *name)
     if (epoxy_current_context_is_glx()) {
         return epoxy_get_proc_address(name);
     } else {
-        void *func = do_dlsym(&api.gles2_handle, GLES2_LIB, name, false);
+        if (get_dlopen_handle(&api.gles2_handle, GLES2_LIB, false)) {
+            void *func = do_dlsym(&api.gles2_handle, GLES2_LIB, false);
 
-        if (func)
-            return func;
+            if (func)
+                return func;
+        }
 
         return epoxy_get_proc_address(name);
     }
