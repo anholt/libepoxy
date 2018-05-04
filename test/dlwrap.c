@@ -242,7 +242,8 @@ dlwrap_real_dlsym(void *handle, const char *name)
             "GLIBC_2.3",
             "GLIBC_2.2.5",
             "GLIBC_2.2",
-            "GLIBC_2.0"
+            "GLIBC_2.0",
+            "FBSD_1.0"
         };
         int num_versions = sizeof(version) / sizeof(version[0]);
         int i;
