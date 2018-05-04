@@ -5,10 +5,13 @@ has_gles1 = gles1_dep.found()
 has_gles2 = gles2_dep.found()
 build_x11_tests = enable_x11 and x11_dep.found()
 
-test_cflags = common_cflags + [
+test_cflags = common_cflags
+if not has_dlvsym
+test_cflags += [
   '-D_XOPEN_SOURCE',
   '-D_POSIX_C_SOURCE=200809L',
 ]
+endif
 
 # Unconditionally built tests
 test('header_guards',
