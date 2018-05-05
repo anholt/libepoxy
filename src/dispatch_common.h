@@ -172,6 +172,9 @@ bool epoxy_conservative_has_wgl_extension(const char *name);
 void *epoxy_conservative_egl_dlsym(const char *name, bool exit_if_fails);
 void *epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails);
 
+bool epoxy_load_glx(bool exit_if_fails, bool load);
+bool epoxy_load_egl(bool exit_if_fails, bool load);
+
 #define glBegin_unwrapped epoxy_glBegin_unwrapped
 #define glEnd_unwrapped epoxy_glEnd_unwrapped
 extern void UNWRAPPED_PROTO(glBegin_unwrapped)(GLenum primtype);
