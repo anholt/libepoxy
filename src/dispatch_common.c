@@ -315,7 +315,7 @@ get_dlopen_handle(void **handle, const char *lib_name, bool exit_on_fail, bool l
         if (!*handle) {
             if (exit_on_fail) {
                 fprintf(stderr, "Couldn't open %s: %s\n", lib_name, dlerror());
-                exit(1);
+                abort();
             } else {
                 (void)dlerror();
             }
@@ -342,7 +342,7 @@ do_dlsym(void **handle, const char *name, bool exit_on_fail)
 #endif
     if (!result && exit_on_fail) {
         fprintf(stderr, "%s() not found: %s\n", name, error);
-        exit(1);
+        abort();
     }
 
     return result;
@@ -412,7 +412,7 @@ epoxy_internal_gl_version(GLenum version_string, int error_version)
     if (scanf_count != 2) {
         fprintf(stderr, "Unable to interpret GL_VERSION string: %s\n",
                 version);
-        exit(1);
+        abort();
     }
 
     if (minor >= 10)
