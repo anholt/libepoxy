@@ -85,10 +85,11 @@
 #define WRAPPER(x) x ## _wrapped
 
 #define GEN_GLOBAL_REWRITE_PTR(name, args, passthrough)          \
-    static void EPOXY_CALLSPEC                                        \
+    static void EPOXY_CALLSPEC                                   \
     name##_global_rewrite_ptr args                               \
     {                                                            \
-        name = (void *)name##_resolver();                        \
+        if (name == (void *)name##_global_rewrite_ptr)           \
+            name = (void *)name##_resolver();                    \
         name passthrough;                                        \
     }
 
@@ -96,7 +97,8 @@
     static ret EPOXY_CALLSPEC                                    \
     name##_global_rewrite_ptr args                               \
     {                                                            \
-        name = (void *)name##_resolver();                        \
+        if (name == (void *)name##_global_rewrite_ptr)           \
+            name = (void *)name##_resolver();                    \
         return name passthrough;                                 \
     }
 
