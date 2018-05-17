@@ -51,9 +51,9 @@ common_ldflags = []
 
 if host_system == 'linux' and cc.get_id() == 'gcc'
   if meson.version().version_compare('>= 0.46.0')
-    common_ldflags += cc.get_supported_link_arguments([ '-Wl,-Bsymbolic', '-Wl,-z,relro' ])
+    common_ldflags += cc.get_supported_link_arguments([ '-Wl,-Bsymbolic-functions', '-Wl,-z,relro' ])
   else
-    common_ldflags += [ '-Wl,-Bsymbolic', '-Wl,-z,relro', ]
+    common_ldflags += [ '-Wl,-Bsymbolic-functions', '-Wl,-z,relro', ]
   endif
 endif
 
