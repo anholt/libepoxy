@@ -159,6 +159,7 @@ if host_machine.system().contains('darwin')
 
   cgl_tests = [
     [ 'cgl_core', [ 'cgl_core.c' ] ],
+    [ 'cgl_epoxy_api', [ 'cgl_epoxy_api.c' ] ],
   ]
 
   foreach t: cgl_tests
