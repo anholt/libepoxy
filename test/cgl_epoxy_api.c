@@ -47,6 +47,7 @@ main (void)
 
     CGLChoosePixelFormat(attribs, &pix, &npix);
     CGLCreateContext(pix, (void *) 0, &ctx);
+    CGLSetCurrentContext(ctx);
 
     if (!epoxy_is_desktop_gl()) {
         fputs("Claimed to be desktop\n", stderr);
@@ -74,6 +75,7 @@ main (void)
     shader = glCreateShader(GL_FRAGMENT_SHADER);
     pass = glIsShader(shader);
 
+    CGLSetCurrentContext(NULL);
     CGLReleaseContext(ctx);
     CGLReleasePixelFormat(pix);
 
