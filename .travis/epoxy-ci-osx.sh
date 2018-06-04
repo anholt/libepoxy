@@ -1,5 +1,13 @@
 #!/bin/sh
 
+dump_log_and_quit() {
+        local exitcode=$1
+
+        cat meson-logs/testlog.txt
+
+        exit $exitcode
+}
+
 export SDKROOT=$( xcodebuild -version -sdk macosx Path )
 export CPPFLAGS=-I/usr/local/include
 export LDFLAGS=-L/usr/local/lib
@@ -12,8 +20,8 @@ builddir=$( mktemp -d build_XXXXXX )
 meson ${BUILDOPTS} $builddir $srcdir || exit $?
 
 cd $builddir
-ninja || exit $?
-meson test || exit $?
-cd ..
 
-rm -rf $builddir
+ninja || exit $?
+meson test || dump_log_and_quit $?
+
+cd ..
