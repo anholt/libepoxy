@@ -152,3 +152,27 @@ if build_wgl
     test(test_name, test_bin)
   endforeach
 endif
+
+# Apple
+if host_machine.system().contains('darwin')
+  opengl_dep = dependency('appleframeworks', modules: ['OpenGL', 'Carbon'], required: true)
+
+  cgl_tests = [
+    [ 'cgl_core', [ 'cgl_core.c' ] ],
+    [ 'cgl_epoxy_api', [ 'cgl_epoxy_api.c' ] ],
+  ]
+
+  foreach t: cgl_tests
+    test_name = t[0]
+    test_sources = t[1]
+
+    test(test_name,
+      executable(
+        test_name, test_sources,
+        c_args: test_cflags,
+        include_directories: libepoxy_inc,
+        dependencies: [ libepoxy_dep, opengl_dep ],
+      ),
+    )
+  endforeach
+endif
