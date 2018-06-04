@@ -1,5 +1,13 @@
 #!/bin/bash
 
+dump_log_and_quit() {
+        local exitcode=$1
+
+        cat meson-logs/testlog.txt
+
+        exit $exitcode
+}
+
 # Start Xvfb
 XVFB_WHD=${XVFB_WHD:-1280x720x16}
 
@@ -8,13 +16,17 @@ xvfb=$!
 
 export DISPLAY=:99
 
-mkdir _build
+srcdir=$( pwd )
+builddir=$( mktemp -d build_XXXXXX )
 
-meson --prefix /usr "$@" _build . || exit $?
-ninja -C _build || exit $?
-meson test -C _build || exit $?
+meson --prefix /usr "$@" $builddir $srcdir || exit $?
 
-rm -rf _build
+cd $builddir
+
+ninja || exit $?
+meson test || dump_log_and_quit $?
+
+cd ..
 
 # Stop Xvfb
 kill -9 ${xvfb}
