@@ -732,7 +732,7 @@ epoxy_gles3_dlsym(const char *name)
         return epoxy_get_proc_address(name);
     } else {
         if (get_dlopen_handle(&api.gles2_handle, GLES2_LIB, false, true)) {
-            void *func = do_dlsym(&api.gles2_handle, GLES2_LIB, false);
+            void *func = do_dlsym(&api.gles2_handle, name, false);
 
             if (func)
                 return func;
