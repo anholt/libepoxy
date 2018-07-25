@@ -551,7 +551,7 @@ epoxy_internal_has_gl_extension(const char *ext, bool invalid_op_mode)
 bool
 epoxy_load_glx(bool exit_if_fails, bool load)
 {
-#ifdef PLATFORM_HAS_GLX
+#if PLATFORM_HAS_GLX
 # ifdef GLVND_GLX_LIB
     /* prefer the glvnd library if it exists */
     if (!api.glx_handle)
@@ -566,7 +566,7 @@ epoxy_load_glx(bool exit_if_fails, bool load)
 void *
 epoxy_conservative_glx_dlsym(const char *name, bool exit_if_fails)
 {
-#ifdef PLATFORM_HAS_GLX
+#if PLATFORM_HAS_GLX
     if (epoxy_load_glx(exit_if_fails, exit_if_fails))
         return do_dlsym(&api.glx_handle, name, exit_if_fails);
 #endif
