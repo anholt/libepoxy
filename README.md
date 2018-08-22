@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/anholt/libepoxy.svg?branch=master)](https://travis-ci.org/anholt/libepoxy)
 [![Build status](https://ci.appveyor.com/api/projects/status/xv6y5jurt5v5ngjx/branch/master?svg=true)](https://ci.appveyor.com/project/ebassi/libepoxy/branch/master)
+[![Code Quality: Python](https://img.shields.io/lgtm/grade/python/g/anholt/libepoxy.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/anholt/libepoxy/context:python)
+[![Total Alerts](https://img.shields.io/lgtm/alerts/g/anholt/libepoxy.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/anholt/libepoxy/alerts)
 
 Epoxy is a library for handling OpenGL function pointer management for
 you.
