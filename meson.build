@@ -1,4 +1,4 @@
-project('libepoxy', 'c', version: '1.5.3',
+project('libepoxy', 'c', version: '1.5.4',
         default_options: [
           'buildtype=debugoptimized',
           'c_std=gnu99',
