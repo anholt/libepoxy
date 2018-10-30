@@ -33,6 +33,12 @@ test('khronos_typedefs',
                 c_args: common_cflags,
                 dependencies: libepoxy_dep,
                 include_directories: libepoxy_inc))
+test('gl_version',
+     executable('gl_version',
+                'gl_version.c',
+                c_args: common_cflags,
+                dependencies: libepoxy_dep,
+                include_directories: libepoxy_inc))
 
 if build_egl and build_x11_tests
   egl_common_sources = [ 'egl_common.h', 'egl_common.c', ]
