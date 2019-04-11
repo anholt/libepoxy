@@ -57,6 +57,7 @@ TESTS = \
 	$(GLX_TESTS) \
 	$(EGL_AND_GLX_TESTS) \
 	$(WGL_TESTS) \
+	gl_version$(EXEEXT) \
 	headerguards$(EXEEXT) \
 	miscdefines$(EXEEXT) \
 	khronos_typedefs$(EXEEXT) \
