@@ -391,25 +391,21 @@ class Generator(object):
             # or glx, which are separated by '|'
             apis = extension.get('supported').split('|')
             if 'glx' in apis:
-                human_name = 'GLX extension \\"{0}\\"'.format(extname)
                 condition = 'epoxy_conservative_has_glx_extension("{0}")'.format(extname)
                 loader = 'glXGetProcAddress((const GLubyte *){0})'
-                self.process_require_statements(extension, condition, loader, human_name)
+                self.process_require_statements(extension, condition, loader, extname)
             if 'egl' in apis:
-                human_name = 'EGL extension \\"{0}\\"'.format(extname)
                 condition = 'epoxy_conservative_has_egl_extension("{0}")'.format(extname)
                 loader = 'eglGetProcAddress({0})'
-                self.process_require_statements(extension, condition, loader, human_name)
+                self.process_require_statements(extension, condition, loader, extname)
             if 'wgl' in apis:
-                human_name = 'WGL extension \\"{0}\\"'.format(extname)
                 condition = 'epoxy_conservative_has_wgl_extension("{0}")'.format(extname)
                 loader = 'wglGetProcAddress({0})'
-                self.process_require_statements(extension, condition, loader, human_name)
+                self.process_require_statements(extension, condition, loader, extname)
             if {'gl', 'gles1', 'gles2'}.intersection(apis):
-                human_name = 'GL extension \\"{0}\\"'.format(extname)
                 condition = 'epoxy_conservative_has_gl_extension("{0}")'.format(extname)
                 loader = 'epoxy_get_proc_address({0})'
-                self.process_require_statements(extension, condition, loader, human_name)
+                self.process_require_statements(extension, condition, loader, extname)
 
     def fixup_bootstrap_function(self, name, loader):
         # We handle glGetString(), glGetIntegerv(), and
