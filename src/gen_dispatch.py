@@ -384,6 +384,7 @@ class Generator(object):
 
         for extension in reg.findall('extensions/extension'):
             extname = extension.get('name')
+            cond_extname = "enum_string[enum_string_offsets[i]]"
 
             self.supported_extensions.add(extname)
 
@@ -391,19 +392,19 @@ class Generator(object):
             # or glx, which are separated by '|'
             apis = extension.get('supported').split('|')
             if 'glx' in apis:
-                condition = 'epoxy_conservative_has_glx_extension("{0}")'.format(extname)
+                condition = 'epoxy_conservative_has_glx_extension(provider_name)'
                 loader = 'glXGetProcAddress((const GLubyte *){0})'
                 self.process_require_statements(extension, condition, loader, extname)
             if 'egl' in apis:
-                condition = 'epoxy_conservative_has_egl_extension("{0}")'.format(extname)
+                condition = 'epoxy_conservative_has_egl_extension(provider_name)'
                 loader = 'eglGetProcAddress({0})'
                 self.process_require_statements(extension, condition, loader, extname)
             if 'wgl' in apis:
-                condition = 'epoxy_conservative_has_wgl_extension("{0}")'.format(extname)
+                condition = 'epoxy_conservative_has_wgl_extension(provider_name)'
                 loader = 'wglGetProcAddress({0})'
                 self.process_require_statements(extension, condition, loader, extname)
             if {'gl', 'gles1', 'gles2'}.intersection(apis):
-                condition = 'epoxy_conservative_has_gl_extension("{0}")'.format(extname)
+                condition = 'epoxy_conservative_has_gl_extension(provider_name)'
                 loader = 'epoxy_get_proc_address({0})'
                 self.process_require_statements(extension, condition, loader, extname)
 
@@ -700,7 +701,9 @@ class Generator(object):
         self.outln('    int i;')
 
         self.outln('    for (i = 0; providers[i] != {0}_provider_terminator; i++) {{'.format(self.target))
+        self.outln('        const char *provider_name = enum_string + enum_string_offsets[providers[i]];')
         self.outln('        switch (providers[i]) {')
+        self.outln('')
 
         for human_name in sorted(self.provider_enum.keys()):
             enum = self.provider_enum[human_name]
