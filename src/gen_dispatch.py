@@ -50,6 +50,7 @@ class GLProvider(object):
         self.enum = self.enum.replace(' ', '_')
         self.enum = self.enum.replace('\\"', '')
         self.enum = self.enum.replace('.', '_')
+        self.enum = "PROVIDER_" + self.enum
 
 class GLFunction(object):
     def __init__(self, ret_type, name):
@@ -676,7 +677,7 @@ class Generator(object):
         self.outln('    -1, /* {0}_provider_terminator, unused */'.format(self.target))
         for human_name in sorted_providers:
             enum = self.provider_enum[human_name]
-            self.outln('    {1}, /* {0} */'.format(enum, self.enum_string_offset[human_name]))
+            self.outln('    {1}, /* {0} */'.format(human_name, self.enum_string_offset[human_name]))
         self.outln('};')
         self.outln('')
 
