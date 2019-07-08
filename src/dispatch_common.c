@@ -158,6 +158,8 @@
  *        glXQueryVersion queries."
  */
 
+#include "config.h"
+
 #include <assert.h>
 #include <stdlib.h>
 #ifdef _WIN32
@@ -334,6 +336,17 @@ do_dlsym(void **handle, const char *name, bool exit_on_fail)
 #ifdef _WIN32
     result = GetProcAddress(*handle, name);
 #else
+
+#ifdef _GNU_SOURCE
+    /*
+     * Check if the symbol is not already defined either by
+     * using aliasing or LD_PRELOAD.
+     */
+    result = dlsym(RTLD_DEFAULT, name);
+    if (result)
+        return result;
+#endif
+
     result = dlsym(*handle, name);
     if (!result)
         error = dlerror();

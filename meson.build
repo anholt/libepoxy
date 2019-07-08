@@ -30,6 +30,10 @@ conf.set_quoted('PACKAGE_LOCALEDIR', join_paths(get_option('prefix'), get_option
 conf.set_quoted('PACKAGE_LIBEXECDIR', join_paths(get_option('prefix'), get_option('libexecdir')))
 conf.set('HAVE_KHRPLATFORM_H', cc.has_header('KHR/khrplatform.h'))
 
+if target_machine.system() == 'linux'
+  conf.set('_GNU_SOURCE', 1)
+endif
+
 # GLX can be used on different platforms, so we expose a
 # configure time switch to enable or disable it; in case
 # the "auto" default value is set, we only enable GLX
