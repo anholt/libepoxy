@@ -80,7 +80,7 @@ if build_egl and build_x11_tests
   endforeach
 endif
 
-if build_glx
+if build_glx and build_x11_tests
   glx_common_sources = [ 'glx_common.h', 'glx_common.c', ]
   glx_common_lib = static_library('glx_common',
                                   sources: glx_common_sources,
