@@ -28,7 +28,11 @@
  * no context bound would fail out in dispatch.
  */
 
+#ifdef __sun
+#define __EXTENSIONS__
+#else
 #define _GNU_SOURCE
+#endif
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
