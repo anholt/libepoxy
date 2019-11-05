@@ -77,18 +77,3 @@ core
 #		Edit the following section as needed
 # For example, !report.pc overrides *.pc. See 'man gitignore'
 # 
-configure.lineno
-.dirstamp
-test-driver
-
-gl_generated_dispatch.c
-gl_generated.h
-
-glx_generated_dispatch.c
-glx_generated.h
-
-egl_generated_dispatch.c
-egl_generated.h
-
-wgl_generated_dispatch.c
-wgl_generated.h
