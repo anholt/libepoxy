@@ -196,12 +196,6 @@ if host_system == 'windows'
   gdi32_dep = cc.find_library('gdi32', required: true)
 endif
 
-# Python
-python = import('python3').find_python()
-if not python.found()
-  python = find_program('python', required: true)
-endif
-
 # Generates the dispatch tables
 gen_dispatch_py = files('src/gen_dispatch.py')
 
