@@ -25,7 +25,6 @@ foreach g: generated_headers
                             input: registry,
                             output: [ gen_header ],
                             command: [
-                              python,
                               gen_dispatch_py,
                               '--header',
                               '--no-source',

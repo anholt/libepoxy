@@ -33,7 +33,6 @@ foreach g: generated_sources
                             input: registry,
                             output: [ gen_source ],
                             command: [
-                              python,
                               gen_dispatch_py,
                               '--source',
                               '--no-header',
