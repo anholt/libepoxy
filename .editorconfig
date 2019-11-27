@@ -10,14 +10,6 @@ end_of_line = lf
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[configure.ac]
-indent_style = tab
-indent_size = 8
-
-[Makefile.am]
-indent_style = tab
-indent_size = 8
-
 [.travis.yml]
 indent_style = space
 indent_size = 2
