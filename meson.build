@@ -197,7 +197,7 @@ if host_system == 'windows'
 endif
 
 # Generates the dispatch tables
-gen_dispatch_py = files('src/gen_dispatch.py')
+gen_dispatch_py = find_program('src/gen_dispatch.py')
 
 gl_registry = files('registry/gl.xml')
 egl_registry = files('registry/egl.xml')
