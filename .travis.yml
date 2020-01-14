@@ -28,6 +28,7 @@ before_install:
   - |
     if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       brew update
+      brew unlink python@2
       brew install python@3 meson
       # Use a Ninja with QuLogic's patch: https://github.com/ninja-build/ninja/issues/1219
       mkdir -p $HOME/tools; curl -L http://nirbheek.in/files/binaries/ninja/macos/ninja -o $HOME/tools/ninja; chmod +x $HOME/tools/ninja
