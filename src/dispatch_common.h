@@ -47,9 +47,12 @@
 #endif
 #if PLATFORM_HAS_EGL
 # if !ENABLE_X11
-/* Mesa uses this symbol to avoid including X11 headers when including
- * EGL.h; since X11 was explicitly disabled at configuration time, we
- * should do the same
+/* Disable including X11 headers if the X11 support was disabled at
+ * configuration time
+ */
+#  define EGL_NO_X11 1
+/* Older versions of Mesa use this symbol to achieve the same result
+ * as EGL_NO_X11
  */
 #  define MESA_EGL_NO_X11_HEADERS 1
 # endif
