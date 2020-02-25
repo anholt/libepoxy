@@ -29,7 +29,7 @@ GLenum mock_enum;
 const char *mock_gl_version;
 const char *mock_glsl_version;
 
-static const GLubyte *override_glGetString(GLenum name)
+static const GLubyte * EPOXY_CALLSPEC override_glGetString(GLenum name)
 {
     switch (name) {
     case GL_VERSION:
