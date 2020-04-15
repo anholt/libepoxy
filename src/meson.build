@@ -60,6 +60,10 @@ if host_system == 'windows'
   epoxy_deps += [ opengl32_dep, gdi32_dep ]
 endif
 
+if build_egl
+  epoxy_deps += [ egl_dep.partial_dependency(compile_args: true), ]
+endif
+
 libepoxy = library(
   'epoxy',
   sources: epoxy_sources + epoxy_headers,
