@@ -392,10 +392,10 @@ epoxy_is_desktop_gl(void)
 }
 
 static int
-epoxy_internal_gl_version(GLenum version_string, int error_version)
+epoxy_internal_gl_version(GLenum version_string, int error_version, int factor)
 {
     const char *version = (const char *)glGetString(version_string);
-    GLint major, minor, factor;
+    GLint major, minor;
     int scanf_count;
 
     if (!version)
@@ -412,11 +412,6 @@ epoxy_internal_gl_version(GLenum version_string, int error_version)
                 version);
         abort();
     }
-
-    if (minor >= 10)
-        factor = 100;
-    else
-        factor = 10;
 
     return factor * major + minor;
 }
@@ -439,7 +434,7 @@ epoxy_internal_gl_version(GLenum version_string, int error_version)
 int
 epoxy_gl_version(void)
 {
-    return epoxy_internal_gl_version(GL_VERSION, 0);
+    return epoxy_internal_gl_version(GL_VERSION, 0, 10);
 }
 
 int
@@ -448,7 +443,7 @@ epoxy_conservative_gl_version(void)
     if (api.begin_count)
         return 100;
 
-    return epoxy_internal_gl_version(GL_VERSION, 100);
+    return epoxy_internal_gl_version(GL_VERSION, 100, 10);
 }
 
 /**
@@ -471,7 +466,7 @@ epoxy_glsl_version(void)
 {
     if (epoxy_gl_version() >= 20 ||
         epoxy_has_gl_extension ("GL_ARB_shading_language_100"))
-        return epoxy_internal_gl_version(GL_SHADING_LANGUAGE_VERSION, 0);
+        return epoxy_internal_gl_version(GL_SHADING_LANGUAGE_VERSION, 0, 100);
 
     return 0;
 }
