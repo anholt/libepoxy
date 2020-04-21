@@ -80,6 +80,8 @@ main(int argc, char **argv)
 
     pass = pass && test_version("3.0 Mesa 13.0.6", 30,
                                 "1.30", 130);
+    pass = pass && test_version("OpenGL ES 2.0 Mesa 20.1.0-devel (git-4bb19a330e)", 20,
+                                "OpenGL ES GLSL ES 1.0.16", 100);
     pass = pass && test_version("OpenGL ES 3.2 Mesa 18.3.0-devel", 32,
                                 "OpenGL ES GLSL ES 3.20", 320);
     pass = pass && test_version("4.5.0 NVIDIA 384.130", 45,
