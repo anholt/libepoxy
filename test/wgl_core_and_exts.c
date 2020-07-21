@@ -44,7 +44,7 @@ test_function(HDC hdc)
     }
 
     // Attempt to create core context if supported
-    if (epoxy_has_gl_extension("WGL_ARB_create_context")) {
+    if (epoxy_has_wgl_extension(hdc, "WGL_ARB_create_context")) {
         // -- Define an array of Context Attributes
         int attribs[] = {
             WGL_CONTEXT_PROFILE_MASK_ARB,WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
