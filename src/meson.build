@@ -53,9 +53,7 @@ if host_system == 'linux' and cc.get_id() == 'gcc'
 endif
 
 # Maintain compatibility with autotools; see: https://github.com/anholt/libepoxy/issues/108
-if host_system == 'darwin'
-  common_ldflags += [ '-compatibility_version 1', '-current_version 1.0', ]
-endif
+darwin_versions = [1, '1.0']
 
 epoxy_deps = [ dl_dep, ]
 if host_system == 'windows'
@@ -66,6 +64,7 @@ libepoxy = library(
   'epoxy',
   sources: epoxy_sources + epoxy_headers,
   version: '0.0.0',
+  darwin_versions: darwin_versions,
   install: true,
   dependencies: epoxy_deps,
   include_directories: libepoxy_inc,
