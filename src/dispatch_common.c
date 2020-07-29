@@ -189,7 +189,7 @@
 #define GLES2_LIB "libGLESv2.dll"
 #define OPENGL_LIB "OPENGL32"
 #else
-#define GLVND_GLX_LIB "libGLX.so.1"
+#define GLVND_GLX_LIB "libGLX.so.0"
 #define GLX_LIB "libGL.so.1"
 #define EGL_LIB "libEGL.so.1"
 #define GLES1_LIB "libGLESv1_CM.so.1"
