@@ -580,21 +580,28 @@ epoxy_current_context_is_glx(void)
 #else
     void *sym;
 
-    sym = epoxy_conservative_glx_dlsym("glXGetCurrentContext", false);
-    if (sym) {
-        if (glXGetCurrentContext())
-            return true;
-    } else {
-        (void)dlerror();
+    // There is no point of getting symbols from library, which is not loaded,
+    // as handle will always be NULL, when exit_on_fail is false
+    if (api.glx_handle) {
+        sym = epoxy_conservative_glx_dlsym("glXGetCurrentContext", false);
+        if (sym) {
+            if (glXGetCurrentContext())
+                return true;
+        } else {
+            (void)dlerror();
+        }
     }
 
 #if PLATFORM_HAS_EGL
-    sym = epoxy_conservative_egl_dlsym("eglGetCurrentContext", false);
-    if (sym) {
-        if (epoxy_egl_get_current_gl_context_api() != EGL_NONE)
-            return false;
-    } else {
-        (void)dlerror();
+    // Same as for GLX
+    if (api.egl_handle) {
+        sym = epoxy_conservative_egl_dlsym("eglGetCurrentContext", false);
+        if (sym) {
+            if (epoxy_egl_get_current_gl_context_api() != EGL_NONE)
+                return false;
+        } else {
+            (void)dlerror();
+        }
     }
 #endif /* PLATFORM_HAS_EGL */
 
