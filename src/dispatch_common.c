@@ -677,7 +677,8 @@ epoxy_load_gl(void)
     if (!api.gl_handle) {
 	get_dlopen_handle(&api.gl_handle, GLX_LIB, true, true);
 #if PLATFORM_HAS_GLX
-	api.glx_handle = api.gl_handle;
+        if (!api.glx_handle)
+	    api.glx_handle = api.gl_handle;
 #endif
     }
 #endif
