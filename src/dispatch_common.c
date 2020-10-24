@@ -675,8 +675,10 @@ epoxy_load_gl(void)
 	get_dlopen_handle(&api.gl_handle, OPENGL_LIB, false, true);
 #endif
 
-    get_dlopen_handle(&api.glx_handle, GLX_LIB, true, true);
-    api.gl_handle = api.glx_handle;
+    if (!api.gl_handle) {
+        get_dlopen_handle(&api.glx_handle, GLX_LIB, true, true);
+        api.gl_handle = api.glx_handle;
+    }
 #endif
 }
 
