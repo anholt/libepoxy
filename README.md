@@ -2,6 +2,7 @@
 ![macOS](https://github.com/anholt/libepoxy/workflows/macOS/badge.svg)
 ![MSVC Build](https://github.com/anholt/libepoxy/workflows/MSVC%20Build/badge.svg)
 ![MSYS2 Build](https://github.com/anholt/libepoxy/workflows/MSYS2%20Build/badge.svg)
+[![License: MIT](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 Epoxy is a library for handling OpenGL function pointer management for
 you.
