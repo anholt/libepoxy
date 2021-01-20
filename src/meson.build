@@ -72,16 +72,21 @@ libepoxy = library(
   link_args: common_ldflags,
 )
 
+epoxy_has_glx = build_glx ? '1' : '0'
+epoxy_has_egl = build_egl ? '1' : '0'
+epoxy_has_wgl = build_wgl ? '1' : '0'
+
 libepoxy_dep = declare_dependency(
   link_with: libepoxy,
   include_directories: libepoxy_inc,
   dependencies: epoxy_deps,
   sources: epoxy_headers,
+  variables: {
+    'epoxy_has_glx': epoxy_has_glx,
+    'epoxy_has_egl': epoxy_has_egl,
+    'epoxy_has_wgl': epoxy_has_wgl,
+  },
 )
-
-epoxy_has_glx = build_glx ? '1' : '0'
-epoxy_has_egl = build_egl ? '1' : '0'
-epoxy_has_wgl = build_wgl ? '1' : '0'
 
 # We don't want to add these dependencies to the library, as they are
 # not needed when building Epoxy; we do want to add them to the generated
