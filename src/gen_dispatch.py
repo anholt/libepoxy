@@ -467,6 +467,7 @@ class Generator(object):
                                                                     func.args_decl))
 
     def write_header_header(self, out_file):
+        self.close()
         self.out_file = open(out_file, 'w')
 
         self.outln('/* GL dispatch header.')
@@ -757,6 +758,7 @@ class Generator(object):
         self.outln('')
 
     def write_source(self, f):
+        self.close()
         self.out_file = open(f, 'w')
 
         self.outln('/* GL dispatch code.')
@@ -849,6 +851,12 @@ class Generator(object):
         for func in self.sorted_functions:
             self.write_function_pointer(func)
 
+    def close(self):
+        if self.out_file:
+            self.out_file.close()
+            self.out_file = None
+
+
 argparser = argparse.ArgumentParser(description='Generate GL dispatch wrappers.')
 argparser.add_argument('files', metavar='file.xml', nargs='+', help='GL API XML files to be parsed')
 argparser.add_argument('--outputdir', metavar='dir', required=False, help='Destination directory for files (default to current dir)')
@@ -913,3 +921,5 @@ for f in args.files:
         generator.write_header(os.path.join(includedir, name + '_generated.h'))
     if build_source:
         generator.write_source(os.path.join(srcdir, name + '_generated_dispatch.c'))
+
+    generator.close()
