@@ -69,6 +69,63 @@ else
   has_znow = true
 endif
 
+# Dependencies
+dl_dep = cc.find_library('dl', required: false)
+gl_dep = dependency('gl', required: false)
+
+egl_dep = dependency('egl', required: false)
+if not egl_dep.found()
+  # The generated EGL dispatch table includes eglplatform.h, so we need
+  # this header to build Epoxy itself
+  if not cc.has_header('EGL/eglplatform.h')
+    if get_option('egl') == 'yes'
+      error('EGL required, but EGL/eglplatform.h could not be found')
+    else
+      build_egl = false
+    endif
+  endif
+endif
+
+x11_dep = dependency('x11', required: false)
+if not x11_dep.found()
+  # The generated GLX dispatch table includes Xlib.h, so we need this
+  # header to build Epoxy itself
+  if not cc.has_header('X11/Xlib.h')
+    if get_option('glx') == 'yes'
+      error('GLX required, but X11/Xlib.h cound not be found')
+    else
+      build_glx = false
+    endif
+  endif
+endif
+
+# GLES v2 and v1 may have pkg-config files, courtesy of downstream
+# packagers; let's check those first, and fall back to find_library()
+# if we fail
+gles2_dep = dependency('glesv2', required: false)
+if not gles2_dep.found()
+  gles2_dep = cc.find_library('libGLESv2', required: false)
+endif
+
+gles1_dep = dependency('glesv1_cm', required: false)
+if not gles1_dep.found()
+  gles1_dep = cc.find_library('libGLESv1_CM', required: false)
+endif
+
+# On windows, the DLL has to have all of its functions
+# resolved at link time, so we have to link directly against
+# opengl32.  But that's the only GL provider, anyway.
+if host_system == 'windows'
+  opengl32_dep = cc.find_library('opengl32', required: true)
+
+  # When building against static libraries, we need to control
+  # the order of the dependencies, and gdi32 provides symbols
+  # needed when using opengl32, like SetPixelFormat and
+  # ChoosePixelFormat. This is mostly a workaround for older
+  # versions of Meson.
+  gdi32_dep = cc.find_library('gdi32', required: true)
+endif
+
 conf.set10('ENABLE_GLX', build_glx)
 conf.set10('ENABLE_EGL', build_egl)
 conf.set10('ENABLE_X11', enable_x11)
@@ -159,41 +216,6 @@ if host_system == 'windows'
   if cc.get_id() == 'msvc'
     conf.set('inline', '__inline')
   endif
-endif
-
-# Dependencies
-dl_dep = cc.find_library('dl', required: false)
-gl_dep = dependency('gl', required: false)
-egl_dep = dependency('egl', required: false)
-
-# Optional dependencies for tests
-x11_dep = dependency('x11', required: false)
-
-# GLES v2 and v1 may have pkg-config files, courtesy of downstream
-# packagers; let's check those first, and fall back to find_library()
-# if we fail
-gles2_dep = dependency('glesv2', required: false)
-if not gles2_dep.found()
-  gles2_dep = cc.find_library('libGLESv2', required: false)
-endif
-
-gles1_dep = dependency('glesv1_cm', required: false)
-if not gles1_dep.found()
-  gles1_dep = cc.find_library('libGLESv1_CM', required: false)
-endif
-
-# On windows, the DLL has to have all of its functions
-# resolved at link time, so we have to link directly against
-# opengl32.  But that's the only GL provider, anyway.
-if host_system == 'windows'
-  opengl32_dep = cc.find_library('opengl32', required: true)
-
-  # When building against static libraries, we need to control
-  # the order of the dependencies, and gdi32 provides symbols
-  # needed when using opengl32, like SetPixelFormat and
-  # ChoosePixelFormat. This is mostly a workaround for older
-  # versions of Meson.
-  gdi32_dep = cc.find_library('gdi32', required: true)
 endif
 
 # Generates the dispatch tables
