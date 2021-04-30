@@ -535,7 +535,6 @@ class Generator(object):
             self.outln('    KHRONOS_TRUE  = 1,')
             self.outln('    KHRONOS_BOOLEAN_ENUM_FORCE_SIZE = KHRONOS_MAX_ENUM')
             self.outln('} khronos_boolean_enum_t;')
-            self.outln('typedef uintptr_t khronos_uintptr_t;')
 
         if self.target == "glx":
             self.outln('#include <X11/Xlib.h>')
