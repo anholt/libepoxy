@@ -670,13 +670,23 @@ epoxy_load_gl(void)
     get_dlopen_handle(&api.gl_handle, OPENGL_LIB, true, true);
 #else
 
+    // Prefer GLX_LIB over OPENGL_LIB to maintain existing behavior.
+    // Using the inverse ordering OPENGL_LIB -> GLX_LIB, causes issues such as:
+    // https://github.com/anholt/libepoxy/issues/240 (apitrace missing calls)
+    // https://github.com/anholt/libepoxy/issues/252 (Xorg boot crash)
+    get_dlopen_handle(&api.glx_handle, GLX_LIB, false, true);
+    api.gl_handle = api.glx_handle;
+
 #if defined(OPENGL_LIB)
     if (!api.gl_handle)
-	get_dlopen_handle(&api.gl_handle, OPENGL_LIB, false, true);
+        get_dlopen_handle(&api.gl_handle, OPENGL_LIB, false, true);
 #endif
 
-    get_dlopen_handle(&api.glx_handle, GLX_LIB, true, true);
-    api.gl_handle = api.glx_handle;
+    if (!api.gl_handle) {
+        fprintf(stderr, "Couldn't open %s or %s\n", GLX_LIB, OPENGL_LIB);
+        abort();
+    }
+
 #endif
 }
 
