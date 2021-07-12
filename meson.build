@@ -165,6 +165,9 @@ endif
 dl_dep = cc.find_library('dl', required: false)
 gl_dep = dependency('gl', required: false)
 egl_dep = dependency('egl', required: false)
+if not egl_dep.found()
+  egl_dep = cc.find_library('EGL', required: false)
+endif
 
 # Optional dependencies for tests
 x11_dep = dependency('x11', required: false)
@@ -174,12 +177,12 @@ x11_dep = dependency('x11', required: false)
 # if we fail
 gles2_dep = dependency('glesv2', required: false)
 if not gles2_dep.found()
-  gles2_dep = cc.find_library('libGLESv2', required: false)
+  gles2_dep = cc.find_library('GLESv2', required: false)
 endif
 
 gles1_dep = dependency('glesv1_cm', required: false)
 if not gles1_dep.found()
-  gles1_dep = cc.find_library('libGLESv1_CM', required: false)
+  gles1_dep = cc.find_library('GLESv1_CM', required: false)
 endif
 
 # On windows, the DLL has to have all of its functions
