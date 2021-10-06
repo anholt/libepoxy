@@ -59,6 +59,12 @@ epoxy_deps = [ dl_dep, ]
 if host_system == 'windows'
   epoxy_deps += [ opengl32_dep, gdi32_dep ]
 endif
+if enable_x11
+  epoxy_deps += [ x11_headers_dep, ]
+endif
+if build_egl
+  epoxy_deps += [ elg_headers_dep, ]
+endif
 
 libepoxy = library(
   'epoxy',
