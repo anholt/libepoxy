@@ -683,7 +683,11 @@ epoxy_load_gl(void)
 #endif
 
     if (!api.gl_handle) {
+#if defined(OPENGL_LIB)
         fprintf(stderr, "Couldn't open %s or %s\n", GLX_LIB, OPENGL_LIB);
+#else
+        fprintf(stderr, "Couldn't open %s\n", GLX_LIB);
+#endif
         abort();
     }
 
