@@ -784,8 +784,10 @@ class Generator(object):
         self.outln('')
         self.outln('#ifdef __GNUC__')
         self.outln('#define EPOXY_NOINLINE __attribute__((noinline))')
+        self.outln('#define EPOXY_THREADLOCAL __thread')
         self.outln('#elif defined (_MSC_VER)')
         self.outln('#define EPOXY_NOINLINE __declspec(noinline)')
+        self.outln('#define EPOXY_THREADLOCAL __declspec(thread)')
         self.outln('#endif')
 
         self.outln('struct dispatch_table {')
@@ -824,6 +826,14 @@ class Generator(object):
         self.outln('};')
         self.outln('')
 
+        self.outln('#ifdef EPOXY_STATIC_BUILD')
+        self.outln('EPOXY_THREADLOCAL struct dispatch_table {0}_tls_data;'.format(self.target))
+        self.outln('static inline struct dispatch_table *')
+        self.outln('get_dispatch_table(void)')
+        self.outln('{')
+        self.outln('	return &{0}_tls_data;'.format(self.target))
+        self.outln('}')
+        self.outln('#else')
         self.outln('uint32_t {0}_tls_index;'.format(self.target))
         self.outln('uint32_t {0}_tls_size = sizeof(struct dispatch_table);'.format(self.target))
         self.outln('')
@@ -833,6 +843,7 @@ class Generator(object):
         self.outln('{')
         self.outln('	return TlsGetValue({0}_tls_index);'.format(self.target))
         self.outln('}')
+        self.outln('#endif')
         self.outln('')
 
         self.outln('void')
