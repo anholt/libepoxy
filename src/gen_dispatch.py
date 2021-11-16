@@ -848,8 +848,6 @@ class Generator(object):
         self.outln('}')
         self.outln('')
 
-        self.outln('')
-
         self.outln('#endif /* !USING_DISPATCH_TABLE */')
 
         for func in self.sorted_functions:
