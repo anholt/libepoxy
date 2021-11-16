@@ -27,8 +27,8 @@
 
 #include "dispatch_common.h"
 
-static bool first_context_current = false;
-static bool already_switched_to_dispatch_table = false;
+//static bool first_context_current = false;
+// static bool already_switched_to_dispatch_table = false;
 
 /**
  * If we can determine the WGL extension support from the current
@@ -75,74 +75,9 @@ epoxy_has_wgl_extension(HDC hdc, const char *ext)
 void
 epoxy_handle_external_wglMakeCurrent(void)
 {
-    if (!first_context_current) {
-        first_context_current = true;
-    } else {
-        if (!already_switched_to_dispatch_table) {
-            already_switched_to_dispatch_table = true;
-            gl_switch_to_dispatch_table();
-            wgl_switch_to_dispatch_table();
-        }
-
-        gl_init_dispatch_table();
-        wgl_init_dispatch_table();
-    }
+    gl_init_dispatch_table();
+    wgl_init_dispatch_table();
 }
-
-#ifndef EPOXY_STATIC_BUILD
-
-/**
- * This global symbol is apparently looked up by Windows when loading
- * a DLL, but it doesn't declare the prototype.
- */
-BOOL WINAPI
-DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved);
-
-BOOL WINAPI
-DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
-{
-    void *data;
-
-    switch (reason) {
-    case DLL_PROCESS_ATTACH:
-        gl_tls_index = TlsAlloc();
-        if (gl_tls_index == TLS_OUT_OF_INDEXES)
-            return FALSE;
-        wgl_tls_index = TlsAlloc();
-        if (wgl_tls_index == TLS_OUT_OF_INDEXES)
-            return FALSE;
-
-        first_context_current = false;
-
-        /* FALLTHROUGH */
-
-    case DLL_THREAD_ATTACH:
-        data = LocalAlloc(LPTR, gl_tls_size);
-        TlsSetValue(gl_tls_index, data);
-
-        data = LocalAlloc(LPTR, wgl_tls_size);
-        TlsSetValue(wgl_tls_index, data);
-
-        break;
-
-    case DLL_THREAD_DETACH:
-    case DLL_PROCESS_DETACH:
-        data = TlsGetValue(gl_tls_index);
-        LocalFree(data);
-
-        data = TlsGetValue(wgl_tls_index);
-        LocalFree(data);
-
-        if (reason == DLL_PROCESS_DETACH) {
-            TlsFree(gl_tls_index);
-            TlsFree(wgl_tls_index);
-        }
-        break;
-    }
-
-    return TRUE;
-}
-#endif
 
 WRAPPER_VISIBILITY (BOOL)
 WRAPPER(epoxy_wglMakeCurrent)(HDC hdc, HGLRC hglrc)
