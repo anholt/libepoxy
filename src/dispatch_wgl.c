@@ -27,8 +27,6 @@
 
 #include "dispatch_common.h"
 
-//static bool first_context_current = false;
-// static bool already_switched_to_dispatch_table = false;
 
 /**
  * If we can determine the WGL extension support from the current
