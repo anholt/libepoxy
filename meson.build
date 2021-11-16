@@ -151,8 +151,6 @@ if libtype == 'shared'
     conf.set('EPOXY_PUBLIC', '__attribute__((visibility("default"))) extern')
     visibility_cflags += [ '-fvisibility=hidden' ]
   endif
-else
-  conf.set('EPOXY_STATIC_BUILD', true)
 endif
 
 # The inline keyword is available only for C++ in MSVC.

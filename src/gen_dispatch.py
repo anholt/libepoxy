@@ -828,22 +828,6 @@ class Generator(object):
             self.outln('    epoxy_{0}_dispatch_table_rewrite_ptr, /* {0} */'.format(func.wrapped_name))
         self.outln('};')
         self.outln('')
-        """
-        self.outln('#ifdef EPOXY_STATIC_BUILD')
-
-        self.outln('#else')
-        self.outln('uint32_t {0}_tls_index;'.format(self.target))
-        self.outln('uint32_t {0}_tls_size = sizeof(struct dispatch_table);'.format(self.target))
-        self.outln('')
-
-        self.outln('static inline struct dispatch_table *')
-        self.outln('get_dispatch_table(void)')
-        self.outln('{')
-        self.outln('	return TlsGetValue({0}_tls_index);'.format(self.target))
-        self.outln('}')
-        self.outln('#endif /* EPOXY_STATIC_BUILD */')
-        self.outln('')
-        """
 
         self.outln('EPOXY_THREADLOCAL struct dispatch_table {0}_tls_data = {{'.format(self.target))
         for func in self.sorted_functions:
@@ -863,17 +847,6 @@ class Generator(object):
         self.outln('    memcpy(dispatch_table, &resolver_table, sizeof(resolver_table));')
         self.outln('}')
         self.outln('')
-
-        """
-        self.outln('void')
-        self.outln('{0}_switch_to_dispatch_table(void)'.format(self.target))
-        self.outln('{')
-        
-        for func in self.sorted_functions:
-            self.outln('    epoxy_{0} = epoxy_{0}_dispatch_table_thunk;'.format(func.wrapped_name))
-
-        self.outln('}')
-        """
 
         self.outln('')
 
