@@ -89,6 +89,7 @@ epoxy_handle_external_wglMakeCurrent(void)
     }
 }
 
+#ifdef DLL_EXPORT
 /**
  * This global symbol is apparently looked up by Windows when loading
  * a DLL, but it doesn't declare the prototype.
@@ -140,6 +141,7 @@ DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
 
     return TRUE;
 }
+#endif
 
 WRAPPER_VISIBILITY (BOOL)
 WRAPPER(epoxy_wglMakeCurrent)(HDC hdc, HGLRC hglrc)
