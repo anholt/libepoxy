@@ -55,7 +55,7 @@ endif
 # Maintain compatibility with autotools; see: https://github.com/anholt/libepoxy/issues/108
 darwin_versions = [1, '1.0']
 
-epoxy_deps = [ dl_dep, ]
+epoxy_deps = [ dl_dep, egl_dep ]
 if host_system == 'windows'
   epoxy_deps += [ opengl32_dep, gdi32_dep ]
 endif

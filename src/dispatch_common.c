@@ -175,9 +175,10 @@
 
 #if defined(__APPLE__)
 #define GLX_LIB "/opt/X11/lib/libGL.1.dylib"
+#define EGL_LIB "libEGL.dylib"
 #define OPENGL_LIB "/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL"
-#define GLES1_LIB "libGLESv1_CM.so"
-#define GLES2_LIB "libGLESv2.so"
+#define GLES1_LIB "libGLESv1_CM.dylib"
+#define GLES2_LIB "libGLESv2.dylib"
 #elif defined(__ANDROID__)
 #define GLX_LIB "libGLESv2.so"
 #define EGL_LIB "libEGL.so"
