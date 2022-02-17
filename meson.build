@@ -95,6 +95,7 @@ if cc.get_id() == 'msvc'
     '-we4053', # an expression of type void was used as an operand
     '-we4071', # no function prototype given
     '-we4819', # the file contains a character that cannot be represented in the current code page
+    '/utf-8', # Set the input and exec encoding to utf-8, like is the default with GCC
   ]
 elif cc.get_id() == 'gcc' or cc.get_id() == 'clang'
   test_cflags = [
