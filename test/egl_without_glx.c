@@ -30,7 +30,11 @@
  * test either a GLES1-only or a GLES2-only system.
  */
 
+#if defined(__APPLE__)
+#define _DARWIN_C_SOURCE
+#else
 #define _GNU_SOURCE
+#endif
 
 #include <stdio.h>
 #include <string.h>
