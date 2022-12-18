@@ -93,6 +93,7 @@ libepoxy_dep = declare_dependency(
     'epoxy_has_wgl': epoxy_has_wgl,
   },
 )
+meson.override_dependency('epoxy', libepoxy_dep)
 
 # We don't want to add these dependencies to the library, as they are
 # not needed when building Epoxy; we do want to add them to the generated
