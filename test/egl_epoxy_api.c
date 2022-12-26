@@ -29,6 +29,8 @@
 
 #ifdef __sun
 #define __EXTENSIONS__
+#elif defined(__APPLE__)
+#define _DARWIN_C_SOURCE
 #else
 #define _GNU_SOURCE
 #endif
