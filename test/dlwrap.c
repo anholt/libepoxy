@@ -237,6 +237,7 @@ dlwrap_real_dlsym(void *handle, const char *name)
          * In the meantime, I'll just keep augmenting this
          * hard-coded version list as people report bugs. */
         const char *version[] = {
+            "GLIBC_2.27",
             "GLIBC_2.17",
             "GLIBC_2.4",
             "GLIBC_2.3",
