@@ -13,11 +13,11 @@ jobs:
       PYTHONIOENCODING: "utf-8"
     steps:
     - uses: actions/checkout@master
-    - uses: actions/setup-python@v1
+    - uses: actions/setup-python@v4
     - uses: seanmiddleditch/gha-setup-vsdevenv@master
     - uses: BSFishy/meson-build@v1.0.3
       with:
         action: test
         directory: _build
         options: --verbose --fatal-meson-warnings
-        meson-version: 0.54.3
+        meson-version: 1.2.2
