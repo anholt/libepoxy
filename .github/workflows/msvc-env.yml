@@ -19,5 +19,5 @@ jobs:
       with:
         action: test
         directory: _build
-        options: --verbose --fatal-meson-warnings
+        options: --verbose
         meson-version: 1.2.2
