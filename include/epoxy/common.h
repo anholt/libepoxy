@@ -38,7 +38,7 @@
 #endif
 
 #ifndef EPOXY_PUBLIC
-# if defined(_MSC_VER)
+# if defined(_MSC_VER) && defined(EPOXY_SHARED)
 #  define EPOXY_PUBLIC __declspec(dllimport) extern
 # else
 #  define EPOXY_PUBLIC extern

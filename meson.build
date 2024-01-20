@@ -142,6 +142,7 @@ libtype = get_option('default_library')
 # Visibility compiler flags; we only use this for shared libraries
 visibility_cflags = []
 if libtype == 'shared'
+  common_cflags += [ '-DEPOXY_SHARED' ]
   if host_system == 'windows'
     conf.set('DLL_EXPORT', true)
     conf.set('EPOXY_PUBLIC', '__declspec(dllexport) extern')
