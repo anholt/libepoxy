@@ -165,25 +165,47 @@ endif
 # Dependencies
 dl_dep = cc.find_library('dl', required: false)
 gl_dep = dependency('gl', required: false)
-egl_dep = dependency('egl', required: false)
-elg_headers_dep = egl_dep.partial_dependency(compile_args: true, includes: true)
 
 # Optional dependencies for tests
 x11_dep = dependency('x11', required: false)
 x11_headers_dep = x11_dep.partial_dependency(compile_args: true, includes: true)
 
-# GLES v2 and v1 may have pkg-config files, courtesy of downstream
-# packagers; let's check those first, and fall back to find_library()
-# if we fail
+# We have multiple checks for EGL and GLES v2/v1 to support different providers:
+# 1. pkg-config for Mesa
+# 2. find_library() for ANGLE, which do not support pkg-config nor CMake.
+#    Note that Microsoft's "link" requires "lib" prefix.
+# 3. CMake for Qt 5, which bundles ANGLE.
+egl_dep = dependency('egl', required: false)
+if not egl_dep.found()
+  egl_dep = cc.find_library('EGL', required: false)
+endif
+if not egl_dep.found() and host_machine == 'windows'
+  egl_dep = cc.find_library('libEGL.dll', required: false)
+endif
+if not egl_dep.found()
+  egl_dep = dependency('Qt5Gui', modules: 'Qt5::Gui_EGL', required: false)
+endif
+
 gles2_dep = dependency('glesv2', required: false)
 if not gles2_dep.found()
-  gles2_dep = cc.find_library('libGLESv2', required: false)
+  gles2_dep = cc.find_library('GLESv2', required: false)
+endif
+if not gles2_dep.found() and host_machine == 'windows'
+  gles2_dep = cc.find_library('libGLESv2.dll', required: false)
+endif
+if not gles2_dep.found()
+  egl_dep = dependency('Qt5Gui', modules: 'Qt5::Gui_GLESv2', required: false)
 endif
 
 gles1_dep = dependency('glesv1_cm', required: false)
 if not gles1_dep.found()
-  gles1_dep = cc.find_library('libGLESv1_CM', required: false)
+  gles1_dep = cc.find_library('GLESv1_CM', required: false)
 endif
+if not gles1_dep.found() and host_machine == 'windows'
+  gles1_dep = cc.find_library('libGLESv1_CM.dll', required: false)
+endif
+
+elg_headers_dep = egl_dep.partial_dependency(compile_args: true, includes: true)
 
 # On windows, the DLL has to have all of its functions
 # resolved at link time, so we have to link directly against
