@@ -100,7 +100,7 @@ meson.override_dependency('epoxy', libepoxy_dep)
 # pkg-config file, for consumers of Epoxy
 gl_reqs = []
 if gl_dep.found() and gl_dep.type_name() == 'pkgconfig'
-  gl_reqs += 'gl'
+  gl_reqs += gl_dep.name()
 endif
 if build_egl and egl_dep.found() and egl_dep.type_name() == 'pkgconfig'
   gl_reqs += 'egl'
