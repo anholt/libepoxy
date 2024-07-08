@@ -639,7 +639,7 @@ class Generator(object):
                                                                        func.args_list))
 
     def write_function_pointer(self, func):
-        self.outln('{0} epoxy_{1} = epoxy_{1}_global_rewrite_ptr;'.format(func.ptr_type, func.wrapped_name))
+        self.outln('{0} epoxy_{1} = EPOXY_DISPATCH_PTR(epoxy_{1});'.format(func.ptr_type, func.wrapped_name))
         self.outln('')
 
     def write_provider_enums(self):
@@ -816,7 +816,12 @@ class Generator(object):
             self.write_thunks(func)
         self.outln('')
 
+        self.outln('#define EPOXY_DISPATCH_PTR(name) name##_global_rewrite_ptr')
+
         self.outln('#if USING_DISPATCH_TABLE')
+
+        self.outln('#undef EPOXY_DISPATCH_PTR')
+        self.outln('#define EPOXY_DISPATCH_PTR(name) name##_dispatch_table_thunk')
 
         self.outln('static struct dispatch_table resolver_table = {')
         for func in self.sorted_functions:
@@ -824,32 +829,22 @@ class Generator(object):
         self.outln('};')
         self.outln('')
 
-        self.outln('uint32_t {0}_tls_index;'.format(self.target))
-        self.outln('uint32_t {0}_tls_size = sizeof(struct dispatch_table);'.format(self.target))
-        self.outln('')
-
+        self.outln('EPOXY_THREADLOCAL struct dispatch_table {0}_tls_data = {{'.format(self.target))
+        for func in self.sorted_functions:
+            self.outln('    epoxy_{0}_dispatch_table_rewrite_ptr, /* {0} */'.format(func.wrapped_name))
+        self.outln('};')
         self.outln('static inline struct dispatch_table *')
         self.outln('get_dispatch_table(void)')
         self.outln('{')
-        self.outln('	return TlsGetValue({0}_tls_index);'.format(self.target))
+        self.outln('	return &{0}_tls_data;'.format(self.target))
         self.outln('}')
         self.outln('')
-
+        
         self.outln('void')
         self.outln('{0}_init_dispatch_table(void)'.format(self.target))
         self.outln('{')
         self.outln('    struct dispatch_table *dispatch_table = get_dispatch_table();')
         self.outln('    memcpy(dispatch_table, &resolver_table, sizeof(resolver_table));')
-        self.outln('}')
-        self.outln('')
-
-        self.outln('void')
-        self.outln('{0}_switch_to_dispatch_table(void)'.format(self.target))
-        self.outln('{')
-
-        for func in self.sorted_functions:
-            self.outln('    epoxy_{0} = epoxy_{0}_dispatch_table_thunk;'.format(func.wrapped_name))
-
         self.outln('}')
         self.outln('')
 
