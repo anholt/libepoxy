@@ -165,6 +165,9 @@ endif
 # Dependencies
 dl_dep = cc.find_library('dl', required: false)
 gl_dep = dependency('gl', required: false)
+if not gl_dep.found() and not build_glx
+  gl_dep = dependency('opengl', required: false)
+endif
 egl_dep = dependency('egl', required: false)
 elg_headers_dep = egl_dep.partial_dependency(compile_args: true, includes: true)
 
