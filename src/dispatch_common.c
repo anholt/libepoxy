@@ -114,7 +114,7 @@
  *      3.6. To perform the dynamic query, libGL also must export an entry
  *           point called
  *
- *           void (*glXGetProcAddressARB(const GLubyte *))(); 
+ *           void (*glXGetProcAddressARB(const GLubyte *))();
  *
  *      The full specification of this function is available separately. It
  *      takes the string name of a GL or GLX entry point and returns a pointer
@@ -268,7 +268,7 @@ static struct api api = {
 #ifndef _WIN32
     .mutex = PTHREAD_MUTEX_INITIALIZER,
 #else
-	0,
+    0,
 #endif
 };
 
@@ -550,7 +550,7 @@ epoxy_load_glx(bool exit_if_fails, bool load)
 # ifdef GLVND_GLX_LIB
     /* prefer the glvnd library if it exists */
     if (!api.glx_handle)
-	get_dlopen_handle(&api.glx_handle, GLVND_GLX_LIB, false, load);
+        get_dlopen_handle(&api.glx_handle, GLVND_GLX_LIB, false, load);
 # endif
     if (!api.glx_handle)
         get_dlopen_handle(&api.glx_handle, GLX_LIB, exit_if_fails, load);
@@ -664,7 +664,7 @@ static void
 epoxy_load_gl(void)
 {
     if (api.gl_handle)
-	return;
+        return;
 
 #if defined(_WIN32) || defined(__APPLE__)
     get_dlopen_handle(&api.gl_handle, OPENGL_LIB, true, true);
@@ -784,9 +784,9 @@ epoxy_egl_get_current_gl_context_api(void)
     EGLint curapi;
 
     if (eglQueryContext(eglGetCurrentDisplay(), eglGetCurrentContext(),
-			EGL_CONTEXT_CLIENT_TYPE, &curapi) == EGL_FALSE) {
-	(void)eglGetError();
-	return EGL_NONE;
+                        EGL_CONTEXT_CLIENT_TYPE, &curapi) == EGL_FALSE) {
+                        (void)eglGetError();
+        return EGL_NONE;
     }
 
     return (EGLenum) curapi;
@@ -920,7 +920,7 @@ epoxy_set_resolver_failure_handler(epoxy_resolver_failure_handler_t handler)
 {
 #ifdef _WIN32
     return InterlockedExchangePointer((void**)&epoxy_resolver_failure_handler,
-				      handler);
+                                      handler);
 #else
     epoxy_resolver_failure_handler_t old;
     pthread_mutex_lock(&api.mutex);
