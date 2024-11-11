@@ -781,12 +781,16 @@ epoxy_get_core_proc_address(const char *name, int core_version)
 static EGLenum
 epoxy_egl_get_current_gl_context_api(void)
 {
+    EGLDisplay *egl_display = eglGetCurrentDisplay();
+    EGLContext *egl_context = eglGetCurrentContext();
     EGLint curapi;
 
     if (!api.egl_handle)
         return EGL_NONE;
 
-    if (eglQueryContext(eglGetCurrentDisplay(), eglGetCurrentContext(),
+    if (egl_display == EGL_NO_DISPLAY ||
+        eglQueryContext(egl_display,
+                        egl_context,
 			EGL_CONTEXT_CLIENT_TYPE, &curapi) == EGL_FALSE) {
 	(void)eglGetError();
 	return EGL_NONE;
@@ -835,8 +839,13 @@ epoxy_get_bootstrap_proc_address(const char *name)
         case EGL_OPENGL_API:
             return epoxy_gl_dlsym(name);
         case EGL_OPENGL_ES_API:
-            if (eglQueryContext(eglGetCurrentDisplay(),
-                                eglGetCurrentContext(),
+        {
+            EGLDisplay *egl_display = eglGetCurrentDisplay();
+            EGLContext *egl_context = eglGetCurrentContext();
+
+            if (egl_display != EGL_NO_DISPLAY &&
+                eglQueryContext(egl_display,
+                                egl_context,
                                 EGL_CONTEXT_CLIENT_VERSION,
                                 &version)) {
                 if (version >= 2)
@@ -844,6 +853,7 @@ epoxy_get_bootstrap_proc_address(const char *name)
                 else
                     return epoxy_gles1_dlsym(name);
             }
+        }
         }
     }
 #endif /* PLATFORM_HAS_EGL */
