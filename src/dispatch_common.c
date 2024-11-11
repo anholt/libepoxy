@@ -817,6 +817,11 @@ epoxy_get_bootstrap_proc_address(const char *name)
         return epoxy_gl_dlsym(name);
 #endif
 
+#ifdef _WIN32
+    if (api.gl_handle && wglGetCurrentContext())
+        return epoxy_gl_dlsym(name);
+#endif
+
     /* If epoxy hasn't loaded any API-specific library yet, try to
      * figure out what API the context is using and use that library,
      * since future calls will also use that API (this prevents a
