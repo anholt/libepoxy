@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         os: 
-          - ubuntu-18.04
+          - ubuntu-20.04
         compiler:
           - gcc
           - clang
@@ -20,7 +20,7 @@ jobs:
           - '-Dx11=false'
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: >
           sudo apt-get update &&
           sudo apt-get install --no-install-recommends
@@ -29,7 +29,7 @@ jobs:
           libgles2-mesa-dev
           libgl1-mesa-dri
           ninja-build
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
           python-version: 3.x
       - run: |
