@@ -13,7 +13,7 @@ jobs:
       PYTHONIOENCODING: "utf-8"
     steps:
     - uses: actions/checkout@master
-    - uses: actions/setup-python@v4
+    - uses: actions/setup-python@v5
     - uses: seanmiddleditch/gha-setup-vsdevenv@master
     - uses: BSFishy/meson-build@v1.0.3
       with:
