@@ -57,6 +57,9 @@ EPOXY_BEGIN_DECLS
 
 EPOXY_PUBLIC bool epoxy_extension_in_string(const char *extension_list,
                                             const char *ext);
+#if defined(__ANDROID__)
+EPOXY_PUBLIC void epoxy_set_library_path(const char * path, const char * suffix);
+#endif
 
 EPOXY_END_DECLS
 

@@ -179,10 +179,18 @@
 #define GLES1_LIB "libGLESv1_CM.so"
 #define GLES2_LIB "libGLESv2.so"
 #elif defined(__ANDROID__)
-#define GLX_LIB "libGLESv2.so"
-#define EGL_LIB "libEGL.so"
-#define GLES1_LIB "libGLESv1_CM.so"
-#define GLES2_LIB "libGLESv2.so"
+#define GLX_LIB GLES2_LIB
+static char EGL_LIB[PATH_MAX] = "libEGL.so";
+static char GLES1_LIB[PATH_MAX] = "libGLESv1_CM.so";
+static char GLES2_LIB[PATH_MAX] = "libGLESv2.so";
+/* example for angle-gl platform */ 
+/* epoxy_set_library_path("opt/angle-android/gl", "_angle); */
+EPOXY_PUBLIC void epoxy_set_library_path(const char * path, const char * suffix) {
+    char *prefix = getenv("PREFIX");
+    sprintf(EGL_LIB, "%s/%s/libEGL%s.so", prefix, path, suffix);
+    sprintf(GLES1_LIB, "%s/%s/libGLESv1_CM%s.so", prefix, path, suffix);
+    sprintf(GLES2_LIB, "%s/%s/libGLESv2%s.so", prefix, path, suffix);
+}
 #elif defined(_WIN32)
 #define EGL_LIB "libEGL.dll"
 #define GLES1_LIB "libGLES_CM.dll"
