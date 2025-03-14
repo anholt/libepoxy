@@ -2,7 +2,12 @@ cmake_minimum_required(VERSION 3.18)
 project(libepoxy
     VERSION 1.5.11
     LANGUAGES C
+    DESCRIPTION "GL dispatch library"
 )
+
+# Version components
+set(EPOXY_SHORT_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
+set(EPOXY_FULL_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
 
 # Set C standard and default build type
 set(CMAKE_C_STANDARD 99)
@@ -31,8 +36,12 @@ configure_file(
 option(ENABLE_GLX "Enable GLX support (auto/yes/no)" "AUTO")
 option(ENABLE_EGL "Enable EGL support (auto/yes/no)" "AUTO")
 option(ENABLE_X11 "Enable X11 support (GLX or EGL-X11)" ON)
-option(BUILD_TESTS "Build the test suite" ON)
-option(BUILD_DOCS "Enable generating the Epoxy API reference (depends on Doxygen)" OFF)
+option(BUILD_TESTS "Build the test suite" OFF) # TODO: Add test/ subdirectory
+option(BUILD_DOCS "Enable generating the Epoxy API reference (depends on Doxygen)" OFF) # TODO: Add doc/ subdirectory
+
+if(APPLE)
+    option(BUILD_APPLE_FRAMEWORK "Build as Apple Frameworks" OFF)
+endif()
 
 # Platform detection and logic
 if(WIN32)
@@ -94,7 +103,6 @@ elseif(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
         -Wbad-function-cast -Wold-style-definition -Wdeclaration-after-statement
         -Wunused -Wuninitialized -Wshadow -Wmissing-noreturn
         -Wmissing-format-attribute -Wredundant-decls
-        # -Wlogical-op not supported by AppleClang, skipping for now
         -Werror=implicit -Werror=nonnull -Werror=init-self -Werror=main
         -Werror=missing-braces -Werror=sequence-point -Werror=return-type
         -Werror=trigraphs -Werror=array-bounds -Werror=write-strings
@@ -103,22 +111,21 @@ elseif(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
     )
 endif()
 
-# Visibility flags for shared libraries
-if(BUILD_SHARED_LIBS)
-    if(WIN32)
-        add_definitions(-DDLL_EXPORT -DEPOXY_PUBLIC=__declspec(dllexport) extern)
-        if(NOT MSVC)
-            add_compile_options(-fvisibility=hidden)
-        endif()
-    else()
-        add_definitions(-DEPOXY_PUBLIC=__attribute__((visibility("default"))) extern)
-        add_compile_options(-fvisibility=hidden)
-    endif()
-endif()
-
 # Dependencies
 find_library(DL_LIBRARY dl)
-find_package(OpenGL REQUIRED)
+if(BUILD_APPLE_FRAMEWORK) # Includes iOS-derived frameworks
+    # For Apple platforms with frameworks, use OpenGLES.framework
+    find_library(OPENGL_LIBRARY OpenGLES)
+    find_path(OPENGL_INCLUDE_DIR NAMES OpenGLES/ES3/gl.h)
+    if(NOT OPENGL_LIBRARY OR NOT OPENGL_INCLUDE_DIR)
+        message(FATAL_ERROR "Could not find OpenGLES.framework")
+    endif()
+    set(OPENGL_LIBRARIES ${OPENGL_LIBRARY})
+    set(OPENGL_FOUND TRUE)
+else()
+    # For non-framework platforms, use standard OpenGL
+    find_package(OpenGL REQUIRED)
+endif()
 if(BUILD_EGL)
     find_package(EGL)
 endif()
@@ -132,64 +139,65 @@ endif()
 # Python for dispatch generation
 find_package(Python3 REQUIRED COMPONENTS Interpreter)
 set(GEN_DISPATCH_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/src/gen_dispatch.py)
+set(GENERATED_DIR ${CMAKE_CURRENT_BINARY_DIR}/epoxy)
+file(MAKE_DIRECTORY ${GENERATED_DIR})
 
 # Generated sources and headers
 set(GENERATED_SOURCES)
 set(GENERATED_HEADERS)
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/epoxy)
 
 # GL (always generated)
 add_custom_command(
-    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/epoxy/gl_generated_dispatch.c
-           ${CMAKE_CURRENT_BINARY_DIR}/epoxy/gl_generated.h
-    COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --source --no-header --outputdir=${CMAKE_CURRENT_BINARY_DIR}/epoxy ${CMAKE_CURRENT_SOURCE_DIR}/registry/gl.xml
-    COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --header --no-source --outputdir=${CMAKE_CURRENT_BINARY_DIR}/epoxy ${CMAKE_CURRENT_SOURCE_DIR}/registry/gl.xml
+    OUTPUT ${GENERATED_DIR}/gl_generated_dispatch.c
+           ${GENERATED_DIR}/gl_generated.h
+    COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --source --no-header --outputdir=${GENERATED_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/registry/gl.xml
+    COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --header --no-source --outputdir=${GENERATED_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/registry/gl.xml
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/registry/gl.xml ${GEN_DISPATCH_SCRIPT}
     COMMENT "Generating GL dispatch files"
 )
-list(APPEND GENERATED_SOURCES ${CMAKE_CURRENT_BINARY_DIR}/epoxy/gl_generated_dispatch.c)
-list(APPEND GENERATED_HEADERS ${CMAKE_CURRENT_BINARY_DIR}/epoxy/gl_generated.h)
+list(APPEND GENERATED_SOURCES ${GENERATED_DIR}/gl_generated_dispatch.c)
+list(APPEND GENERATED_HEADERS ${GENERATED_DIR}/gl_generated.h)
 
 # EGL (conditional)
 if(BUILD_EGL)
     add_custom_command(
-        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/epoxy/egl_generated_dispatch.c
-               ${CMAKE_CURRENT_BINARY_DIR}/epoxy/egl_generated.h
-        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --source --no-header --outputdir=${CMAKE_CURRENT_BINARY_DIR}/epoxy ${CMAKE_CURRENT_SOURCE_DIR}/registry/egl.xml
-        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --header --no-source --outputdir=${CMAKE_CURRENT_BINARY_DIR}/epoxy ${CMAKE_CURRENT_SOURCE_DIR}/registry/egl.xml
+        OUTPUT ${GENERATED_DIR}/egl_generated_dispatch.c
+               ${GENERATED_DIR}/egl_generated.h
+        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --source --no-header --outputdir=${GENERATED_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/registry/egl.xml
+        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --header --no-source --outputdir=${GENERATED_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/registry/egl.xml
         DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/registry/egl.xml ${GEN_DISPATCH_SCRIPT}
         COMMENT "Generating EGL dispatch files"
     )
-    list(APPEND GENERATED_SOURCES ${CMAKE_CURRENT_BINARY_DIR}/epoxy/egl_generated_dispatch.c)
-    list(APPEND GENERATED_HEADERS ${CMAKE_CURRENT_BINARY_DIR}/epoxy/egl_generated.h)
+    list(APPEND GENERATED_SOURCES ${GENERATED_DIR}/egl_generated_dispatch.c)
+    list(APPEND GENERATED_HEADERS ${GENERATED_DIR}/egl_generated.h)
 endif()
 
 # GLX (conditional)
 if(BUILD_GLX)
     add_custom_command(
-        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/epoxy/glx_generated_dispatch.c
-               ${CMAKE_CURRENT_BINARY_DIR}/epoxy/glx_generated.h
-        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --source --no-header --outputdir=${CMAKE_CURRENT_BINARY_DIR}/epoxy ${CMAKE_CURRENT_SOURCE_DIR}/registry/glx.xml
-        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --header --no-source --outputdir=${CMAKE_CURRENT_BINARY_DIR}/epoxy ${CMAKE_CURRENT_SOURCE_DIR}/registry/glx.xml
+        OUTPUT ${GENERATED_DIR}/glx_generated_dispatch.c
+               ${GENERATED_DIR}/glx_generated.h
+        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --source --no-header --outputdir=${GENERATED_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/registry/glx.xml
+        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --header --no-source --outputdir=${GENERATED_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/registry/glx.xml
         DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/registry/glx.xml ${GEN_DISPATCH_SCRIPT}
         COMMENT "Generating GLX dispatch files"
     )
-    list(APPEND GENERATED_SOURCES ${CMAKE_CURRENT_BINARY_DIR}/epoxy/glx_generated_dispatch.c)
-    list(APPEND GENERATED_HEADERS ${CMAKE_CURRENT_BINARY_DIR}/epoxy/glx_generated.h)
+    list(APPEND GENERATED_SOURCES ${GENERATED_DIR}/glx_generated_dispatch.c)
+    list(APPEND GENERATED_HEADERS ${GENERATED_DIR}/glx_generated.h)
 endif()
 
 # WGL (conditional)
 if(BUILD_WGL)
     add_custom_command(
-        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/epoxy/wgl_generated_dispatch.c
-               ${CMAKE_CURRENT_BINARY_DIR}/epoxy/wgl_generated.h
-        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --source --no-header --outputdir=${CMAKE_CURRENT_BINARY_DIR}/epoxy ${CMAKE_CURRENT_SOURCE_DIR}/registry/wgl.xml
-        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --header --no-source --outputdir=${CMAKE_CURRENT_BINARY_DIR}/epoxy ${CMAKE_CURRENT_SOURCE_DIR}/registry/wgl.xml
+        OUTPUT ${GENERATED_DIR}/wgl_generated_dispatch.c
+               ${GENERATED_DIR}/wgl_generated.h
+        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --source --no-header --outputdir=${GENERATED_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/registry/wgl.xml
+        COMMAND ${Python3_EXECUTABLE} ${GEN_DISPATCH_SCRIPT} --header --no-source --outputdir=${GENERATED_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/registry/wgl.xml
         DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/registry/wgl.xml ${GEN_DISPATCH_SCRIPT}
         COMMENT "Generating WGL dispatch files"
     )
-    list(APPEND GENERATED_SOURCES ${CMAKE_CURRENT_BINARY_DIR}/epoxy/wgl_generated_dispatch.c)
-    list(APPEND GENERATED_HEADERS ${CMAKE_CURRENT_BINARY_DIR}/epoxy/wgl_generated.h)
+    list(APPEND GENERATED_SOURCES ${GENERATED_DIR}/wgl_generated_dispatch.c)
+    list(APPEND GENERATED_HEADERS ${GENERATED_DIR}/wgl_generated.h)
 endif()
 
 # Source files
@@ -198,15 +206,24 @@ set(EPOXY_SOURCES
     ${GENERATED_SOURCES}
 )
 
-# Headers
-set(EPOXY_HEADERS
+# Headers (ensure all public headers are listed)
+set(EPOXY_PUBLIC_HEADERS
     include/epoxy/common.h
     include/epoxy/gl.h
-    ${GENERATED_HEADERS}
 )
+if(BUILD_EGL)
+    list(APPEND EPOXY_PUBLIC_HEADERS include/epoxy/egl.h)
+endif()
+if(BUILD_GLX)
+    list(APPEND EPOXY_PUBLIC_HEADERS include/epoxy/glx.h)
+endif()
+if(BUILD_WGL)
+    list(APPEND EPOXY_PUBLIC_HEADERS include/epoxy/wgl.h)
+endif()
+list(APPEND EPOXY_PUBLIC_HEADERS ${GENERATED_HEADERS})
 
 # Library definition
-add_library(epoxy ${EPOXY_SOURCES} ${EPOXY_HEADERS})
+add_library(epoxy ${EPOXY_SOURCES} ${EPOXY_PUBLIC_HEADERS})
 target_include_directories(epoxy
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -214,14 +231,32 @@ target_include_directories(epoxy
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
         $<INSTALL_INTERFACE:${EPOXY_INCLUDEDIR}>
 )
+if(BUILD_APPLE_FRAMEWORK)
+    target_link_libraries(epoxy PUBLIC ${OPENGL_LIBRARIES})
+else()
+    target_link_libraries(epoxy PUBLIC OpenGL::GL)
+endif()
 target_link_libraries(epoxy
     PUBLIC
-        OpenGL::GL
         $<$<BOOL:${DL_LIBRARY}>:${DL_LIBRARY}>
         $<$<BOOL:${EGL_FOUND}>:EGL::EGL>
         $<$<BOOL:${X11_FOUND}>:X11::X11>
         $<$<BOOL:${WIN32}>:${GDI32_LIBRARY}>
 )
+
+# Visibility definitions
+if(BUILD_SHARED_LIBS)
+    if(WIN32)
+        target_compile_definitions(epoxy PRIVATE "DLL_EXPORT")
+        target_compile_definitions(epoxy PUBLIC "EPOXY_PUBLIC=__declspec(dllexport) extern")
+        if(NOT MSVC)
+            target_compile_options(epoxy PRIVATE -fvisibility=hidden)
+        endif()
+    else()
+        target_compile_definitions(epoxy PUBLIC "EPOXY_PUBLIC=__attribute__((visibility(\"default\"))) extern")
+        target_compile_options(epoxy PRIVATE -fvisibility=hidden)
+    endif()
+endif()
 
 # Ensure generated files are built before the library
 add_custom_target(generate_dispatch_files
@@ -229,14 +264,41 @@ add_custom_target(generate_dispatch_files
 )
 add_dependencies(epoxy generate_dispatch_files)
 
+# Build Framework artifacts
+if(BUILD_APPLE_FRAMEWORK)
+    set_target_properties(epoxy PROPERTIES
+        FRAMEWORK TRUE
+        FRAMEWORK_VERSION ${EPOXY_FULL_VERSION}
+        PRODUCT_BUNDLE_IDENTIFIER "github.com/anholt/libepoxy"
+        XCODE_ATTRIBUTE_INSTALL_PATH "@rpath"
+        PUBLIC_HEADER "${EPOXY_PUBLIC_HEADERS}"
+        XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY ""
+        XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "NO"
+        XCODE_ATTRIBUTE_CODE_SIGNING_REQUIRED "NO"
+        MACOSX_FRAMEWORK_IDENTIFIER "github.com/anholt/libepoxy"
+        MACOSX_FRAMEWORK_BUNDLE_VERSION ${EPOXY_FULL_VERSION}
+        MACOSX_FRAMEWORK_SHORT_VERSION_STRING ${EPOXY_SHORT_VERSION}
+        MACOSX_RPATH TRUE
+    )
+    # Nest headers in Headers/epoxy/   # Doesn't work
+    set_target_properties(epoxy PROPERTIES
+        FRAMEWORK_HEADER_SUBDIR "epoxy"
+    )
+endif()
+
 # Installation
 install(TARGETS epoxy
     EXPORT epoxyTargets
     LIBRARY DESTINATION ${EPOXY_LIBDIR}
     ARCHIVE DESTINATION ${EPOXY_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    FRAMEWORK DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT runtime OPTIONAL
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
-install(FILES ${EPOXY_HEADERS} DESTINATION ${EPOXY_INCLUDEDIR}/epoxy)
+if(NOT BUILD_APPLE_FRAMEWORK)
+    # For non-framework installs, use the epoxy/ subdirectory
+    install(FILES ${EPOXY_PUBLIC_HEADERS} DESTINATION ${EPOXY_INCLUDEDIR}/epoxy)
+endif()
 
 # Export targets for downstream use
 install(EXPORT epoxyTargets
