@@ -1,0 +1,16 @@
+/* config.h.in - Configuration header for libepoxy */
+
+#define PACKAGE_NAME "@PROJECT_NAME@"
+#define PACKAGE_VERSION "@PROJECT_VERSION@"
+#define PACKAGE_STRING "@PROJECT_NAME@ @PROJECT_VERSION@"
+#define PACKAGE_DATADIR "@EPOXY_DATADIR@"
+#define PACKAGE_LIBDIR "@EPOXY_LIBDIR@"
+#define PACKAGE_LOCALEDIR "@EPOXY_DATADIR@/locale"
+#define PACKAGE_LIBEXECDIR "@CMAKE_INSTALL_FULL_LIBEXECDIR@"
+
+#cmakedefine HAVE_KHRPLATFORM_H
+
+/* Platform-specific features */
+#cmakedefine ENABLE_GLX 1
+#cmakedefine ENABLE_EGL 1
+#cmakedefine ENABLE_X11 1
