@@ -27,6 +27,7 @@
 
 #include "dispatch_common.h"
 
+static INIT_ONCE initialized = INIT_ONCE_STATIC_INIT;
 static bool first_context_current = false;
 static bool already_switched_to_dispatch_table = false;
 
@@ -62,6 +63,29 @@ epoxy_has_wgl_extension(HDC hdc, const char *ext)
     return epoxy_extension_in_string(getext(hdc), ext);
 }
 
+BOOL
+epoxy_initialize_tls(PINIT_ONCE once, PVOID param, PVOID *context)
+{
+    void *data;
+
+    gl_tls_index = TlsAlloc();
+    if (gl_tls_index == TLS_OUT_OF_INDEXES)
+        return FALSE;
+    wgl_tls_index = TlsAlloc();
+    if (wgl_tls_index == TLS_OUT_OF_INDEXES)
+        return FALSE;
+
+    first_context_current = false;
+
+    data = LocalAlloc(LPTR, gl_tls_size);
+    TlsSetValue(gl_tls_index, data);
+
+    data = LocalAlloc(LPTR, wgl_tls_size);
+    TlsSetValue(wgl_tls_index, data);
+
+    return TRUE;
+}
+
 /**
  * Does the work necessary to update the win32 per-thread dispatch
  * tables when wglMakeCurrent() is called.
@@ -78,6 +102,8 @@ epoxy_handle_external_wglMakeCurrent(void)
     if (!first_context_current) {
         first_context_current = true;
     } else {
+        InitOnceExecuteOnce(&initialized, epoxy_initialize_tls, NULL, NULL);
+
         if (!already_switched_to_dispatch_table) {
             already_switched_to_dispatch_table = true;
             gl_switch_to_dispatch_table();
@@ -103,16 +129,8 @@ DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
 
     switch (reason) {
     case DLL_PROCESS_ATTACH:
-        gl_tls_index = TlsAlloc();
-        if (gl_tls_index == TLS_OUT_OF_INDEXES)
-            return FALSE;
-        wgl_tls_index = TlsAlloc();
-        if (wgl_tls_index == TLS_OUT_OF_INDEXES)
-            return FALSE;
-
-        first_context_current = false;
-
-        /* FALLTHROUGH */
+        InitOnceExecuteOnce(&initialized, epoxy_initialize_tls, NULL, NULL);
+        break;
 
     case DLL_THREAD_ATTACH:
         data = LocalAlloc(LPTR, gl_tls_size);
