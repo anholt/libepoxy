@@ -56,7 +56,10 @@
 
 #else
 #ifndef APIENTRY
-#define APIENTRY __stdcall
+#ifndef WINAPI
+#define WINAPI __stdcall
+#endif
+#define APIENTRY WINAPI
 #endif
 
 #ifndef GLAPIENTRY
