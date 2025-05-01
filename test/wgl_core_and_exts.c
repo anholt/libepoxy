@@ -43,6 +43,21 @@ test_function(HDC hdc)
         return 1;
     }
 
+    // Attempt to create core context if supported
+    if (epoxy_has_wgl_extension(hdc, "WGL_ARB_create_context")) {
+        // -- Define an array of Context Attributes
+        int attribs[] = {
+            WGL_CONTEXT_PROFILE_MASK_ARB,WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
+            0
+        };
+    
+        HGLRC corectx = wglCreateContextAttribsARB(hdc, 0, attribs);
+        wglMakeCurrent(NULL, NULL);
+        wglDeleteContext(ctx);
+        ctx = corectx;
+        wglMakeCurrent(hdc, ctx);
+    }
+    
     /* GL 1.0 APIs are available as symbols in opengl32.dll. */
     glEnable(GL_LIGHTING);
     val = 0;
