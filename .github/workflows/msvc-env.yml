@@ -15,9 +15,10 @@ jobs:
     - uses: actions/checkout@master
     - uses: actions/setup-python@v1
     - uses: seanmiddleditch/gha-setup-vsdevenv@master
-    - uses: BSFishy/meson-build@v1.0.1
+    - uses: BSFishy/meson-build@v1.0.3
       with:
         action: test
         directory: _build
-        options: --verbose --fatal-meson-warnings
+        setup-options: --fatal-meson-warnings
+        options: --verbose
         meson-version: 0.54.3
