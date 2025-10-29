@@ -168,7 +168,12 @@ gl_dep = dependency('gl', required: false)
 if not gl_dep.found() and not build_glx
   gl_dep = dependency('opengl', required: false)
 endif
+
 egl_dep = dependency('egl', required: false)
+if not egl_dep.found()
+  egl_dep = dependency('Qt5Gui', modules: 'Qt5::Gui_EGL', required: false)
+endif
+
 elg_headers_dep = egl_dep.partial_dependency(compile_args: true, includes: true)
 
 # Optional dependencies for tests
@@ -181,6 +186,9 @@ x11_headers_dep = x11_dep.partial_dependency(compile_args: true, includes: true)
 gles2_dep = dependency('glesv2', required: false)
 if not gles2_dep.found()
   gles2_dep = cc.find_library('libGLESv2', required: false)
+endif
+if not gles2_dep.found()
+  egl_dep = dependency('Qt5Gui', modules: 'Qt5::Gui_GLESv2', required: false)
 endif
 
 gles1_dep = dependency('glesv1_cm', required: false)
