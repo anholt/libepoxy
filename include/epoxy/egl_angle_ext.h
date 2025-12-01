@@ -21,35 +21,7 @@
  * IN THE SOFTWARE.
  */
 
-/** @file egl.h
- *
- * Provides an implementation of an EGL dispatch layer using global
- * function pointers
- *
- * You should include `<epoxy/egl.h>` instead of `<EGL/egl.h>`.
- */
-
-#ifndef EPOXY_EGL_H
-#define EPOXY_EGL_H
-
-#include "epoxy/common.h"
-
-#if defined(__egl_h_) || defined(__eglext_h_)
-#error epoxy/egl.h must be included before (or in place of) GL/egl.h
-#else
-#define __egl_h_
-#define __eglext_h_
-#endif
-
-EPOXY_BEGIN_DECLS
-
-#include "epoxy/egl_generated.h"
-#include "epoxy/egl_angle_ext_generated.h"
-
-EPOXY_PUBLIC bool epoxy_has_egl_extension(EGLDisplay dpy, const char *extension);
-EPOXY_PUBLIC int epoxy_egl_version(EGLDisplay dpy);
-EPOXY_PUBLIC bool epoxy_has_egl(void);
-
-EPOXY_END_DECLS
-
-#endif /* EPOXY_EGL_H */
+#ifndef EPOXY_EGL_ANGLE_EXT_H
+#define EPOXY_EGL_ANGLE_EXT_H
+#include "epoxy/egl.h"
+#endif /* EPOXY_EGL_ANGLE_EXT_H */

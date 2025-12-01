@@ -11,6 +11,7 @@ generated_sources = [
 
 if build_egl
   generated_sources += [ [ 'egl_generated_dispatch.c', egl_registry, 'dispatch_egl.c' ] ]
+  generated_sources += [ [ 'egl_angle_ext_generated_dispatch.c', egl_angle_registry, [] ] ]
 endif
 
 if build_glx
