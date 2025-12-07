@@ -118,5 +118,5 @@ pkg.generate(
     'epoxy_has_wgl=@0@'.format(epoxy_has_wgl),
   ],
   filebase: 'epoxy',
-  requires_private: ' '.join(gl_reqs),
+  requires_private: gl_reqs,
 )
