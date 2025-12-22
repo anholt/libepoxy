@@ -29,13 +29,13 @@ import re
 import os
 
 class GLProvider(object):
-    def __init__(self, condition, condition_name, loader, name):
+    def __init__(self, condition, human_name, condition_name, loader, name):
         # C code for determining if this function is available.
         # (e.g. epoxy_is_desktop_gl() && epoxy_gl_version() >= 20
         self.condition = condition
 
         # A string (possibly with spaces) describing the condition.
-        self.condition_name = condition_name
+        self.human_name = human_name
 
         # The loader for getting the symbol -- either dlsym or
         # getprocaddress.  This is a python format string to generate
@@ -139,8 +139,9 @@ class GLFunction(object):
             self.args_list += ', ' + arg_list_name
             self.args_decl += ', ' + arg_type + ' ' + arg_name
 
-    def add_provider(self, condition, loader, condition_name):
-        self.providers[condition_name] = GLProvider(condition, condition_name,
+    def add_provider(self, condition, loader, human_name, condition_name):
+        self.providers[condition_name] = GLProvider(condition, human_name,
+                                                    condition_name,
                                                     loader, self.name)
 
     def add_alias(self, ext):
@@ -170,16 +171,15 @@ class Generator(object):
         # #defines for.
         self.supported_extensions = set()
 
-        # Dictionary mapping human-readable names of providers to a C
-        # enum token that will be used to reference those names, to
-        # reduce generated binary size.
-        self.provider_enum = {}
+        # Dictionary mapping C enum tokens of providers to
+        # human-readable names, to reduce generated binary size.
+        self.provider_human_name = {}
 
-        # Dictionary mapping human-readable names of providers to C
+        # Dictionary mapping C enum tokens of providers to C
         # code to detect if it's present.
         self.provider_condition = {}
 
-        # Dictionary mapping human-readable names of providers to
+        # Dictionary mapping C enum tokens of providers to
         # format strings for fetching the function pointer when
         # provided the name of the symbol to be requested.
         self.provider_loader = {}
@@ -289,7 +289,7 @@ class Generator(object):
                 alias_func.alias_exts.append(func)
 
     def prepare_provider_enum(self):
-        self.provider_enum = {}
+        self.provider_human_name = {}
 
         # We assume that for any given provider, all functions using
         # it will have the same loader.  This lets us generate a
@@ -298,32 +298,31 @@ class Generator(object):
         # call it with a table of values.
         for func in self.functions.values():
             for provider in func.providers.values():
-                if provider.condition_name in self.provider_enum:
-                    assert self.provider_condition[provider.condition_name] == provider.condition
-                    assert self.provider_loader[provider.condition_name] == provider.loader
+                if provider.enum in self.provider_human_name:
+                    assert self.provider_condition[provider.enum] == provider.condition
+                    assert self.provider_loader[provider.enum] == provider.loader
                     continue
 
-                self.provider_enum[provider.condition_name] = provider.enum
-                self.provider_condition[provider.condition_name] = provider.condition
-                self.provider_loader[provider.condition_name] = provider.loader
+                self.provider_human_name[provider.enum] = provider.human_name
+                self.provider_condition[provider.enum] = provider.condition
+                self.provider_loader[provider.enum] = provider.loader
 
     def sort_functions(self):
         self.sorted_functions = sorted(self.functions.values(), key=lambda func: func.name)
 
-    def process_require_statements(self, feature, condition, loader, human_name):
-        for command in feature.findall('require/command'):
-            name = command.get('name')
+    def process_command_statements(self, command, condition, loader, human_name, condition_name):
+        name = command.get('name')
 
-            # wgl.xml describes 6 functions in WGL 1.0 that are in
-            # gdi32.dll instead of opengl32.dll, and we would need to
-            # change up our symbol loading to support that.  Just
-            # don't wrap those functions.
-            if self.target == 'wgl' and 'wgl' not in name:
-                del self.functions[name]
-                continue
+        # wgl.xml describes 6 functions in WGL 1.0 that are in
+        # gdi32.dll instead of opengl32.dll, and we would need to
+        # change up our symbol loading to support that.  Just
+        # don't wrap those functions.
+        if self.target == 'wgl' and 'wgl' not in name:
+            del self.functions[name]
+            return
 
-            func = self.functions[name]
-            func.add_provider(condition, loader, human_name)
+        func = self.functions[name]
+        func.add_provider(condition, loader, human_name, condition_name)
 
     def parse_function_providers(self, reg):
         for feature in reg.findall('feature'):
@@ -381,33 +380,56 @@ class Generator(object):
             else:
                 sys.exit('unknown API: "{0}"'.format(api))
 
-            self.process_require_statements(feature, condition, loader, human_name)
+            for command in feature.findall('require/command'):
+                self.process_command_statements(command, condition, loader, human_name, human_name)
 
         for extension in reg.findall('extensions/extension'):
-            extname = extension.get('name')
+            extname = extension.attrib.get('name')
             cond_extname = "enum_string[enum_string_offsets[i]]"
 
             self.supported_extensions.add(extname)
 
             # 'supported' is a set of strings like gl, gles1, gles2,
             # or glx, which are separated by '|'
-            apis = extension.get('supported').split('|')
-            if 'glx' in apis:
-                condition = 'epoxy_conservative_has_glx_extension(provider_name)'
-                loader = 'glXGetProcAddress((const GLubyte *){0})'
-                self.process_require_statements(extension, condition, loader, extname)
-            if 'egl' in apis:
-                condition = 'epoxy_conservative_has_egl_extension(provider_name)'
-                loader = 'eglGetProcAddress({0})'
-                self.process_require_statements(extension, condition, loader, extname)
-            if 'wgl' in apis:
-                condition = 'epoxy_conservative_has_wgl_extension(provider_name)'
-                loader = 'wglGetProcAddress({0})'
-                self.process_require_statements(extension, condition, loader, extname)
-            if {'gl', 'gles1', 'gles2'}.intersection(apis):
-                condition = 'epoxy_conservative_has_gl_extension(provider_name)'
-                loader = 'epoxy_get_proc_address({0})'
-                self.process_require_statements(extension, condition, loader, extname)
+            support = extension.attrib.get('supported').split('|')
+            for require in extension.findall('.require'):
+                require_api = require.attrib['api'] if 'api' in require.attrib else None
+                for command in require.findall('./command'):
+                    gl = 'gl' in support and (not require_api or require_api == 'gl')
+                    gles1 = 'gles1' in support and (not require_api or require_api == 'gles1')
+                    gles2 = 'gles2' in support and (not require_api or require_api == 'gles2')
+                    egl = 'egl' in support and (not require_api or require_api == 'egl')
+                    glx = 'glx' in support and (not require_api or require_api == 'glx')
+                    wgl = 'wgl' in support and (not require_api or require_api == 'wgl')
+                    condition_name = extname
+
+                    if gl and (gles1 or gles2):
+                        condition = 'epoxy_conservative_has_gl_extension(provider_name)'
+                        loader = 'epoxy_get_proc_address({0})'
+                        self.process_command_statements(command, condition, loader, extname, extname)
+                    elif gl:
+                        condition = 'epoxy_is_desktop_gl() && epoxy_conservative_has_gl_extension(provider_name)'
+                        loader = 'epoxy_get_proc_address({0})'
+                        condition_name = f'GL_{extname}'
+                    elif gles1 or gles2:
+                        condition = '!epoxy_is_desktop_gl() && epoxy_conservative_has_gl_extension(provider_name)'
+                        loader = 'epoxy_get_proc_address({0})'
+                        condition_name = f'GLES_{extname}'
+                    elif egl:
+                        condition = 'epoxy_conservative_has_egl_extension(provider_name)'
+                        loader = 'eglGetProcAddress({0})'
+                        self.process_command_statements(command, condition, loader, extname, extname)
+                    elif glx:
+                        condition = 'epoxy_conservative_has_glx_extension(provider_name)'
+                        loader = 'glXGetProcAddress((const GLubyte *){0})'
+                        self.process_command_statements(command, condition, loader, extname, extname)
+                    elif wgl:
+                        condition = 'epoxy_conservative_has_wgl_extension(provider_name)'
+                        loader = 'wglGetProcAddress({0})'
+                    else:
+                        continue
+
+                    self.process_command_statements(command, condition, loader, extname, condition_name)
 
     def fixup_bootstrap_function(self, name, loader):
         # We handle glGetString(), glGetIntegerv(), and
@@ -420,7 +442,7 @@ class Generator(object):
 
         func = self.functions[name]
         func.providers = {}
-        func.add_provider('true', loader, 'always present')
+        func.add_provider('true', loader, 'always present', 'always present')
 
     def parse(self, xml_file):
         reg = ET.parse(xml_file)
@@ -649,14 +671,11 @@ class Generator(object):
         self.outln('')
         self.outln('enum {0}_provider {{'.format(self.target))
 
-        sorted_providers = sorted(self.provider_enum.keys())
-
         # We always put a 0 enum first so that we can have a
         # terminator in our arrays
         self.outln('    {0}_provider_terminator = 0,'.format(self.target))
 
-        for human_name in sorted_providers:
-            enum = self.provider_enum[human_name]
+        for enum in sorted(self.provider_human_name.keys()):
             self.outln('    {0},'.format(enum))
         self.outln('} PACKED;')
         self.outln('ENDPACKED')
@@ -666,11 +685,9 @@ class Generator(object):
         # Writes the mapping from enums to the strings describing them
         # for epoxy_print_failure_reasons().
 
-        sorted_providers = sorted(self.provider_enum.keys())
-
         offset = 0
         self.outln('static const char *enum_string =')
-        for human_name in sorted_providers:
+        for human_name in sorted(set(self.provider_human_name.values())):
             self.outln('    "{0}\\0"'.format(human_name))
             self.enum_string_offset[human_name] = offset
             offset += len(human_name.replace('\\', '')) + 1
@@ -681,9 +698,9 @@ class Generator(object):
 
         self.outln('static const uint16_t enum_string_offsets[] = {')
         self.outln('    -1, /* {0}_provider_terminator, unused */'.format(self.target))
-        for human_name in sorted_providers:
-            enum = self.provider_enum[human_name]
-            self.outln('    {1}, /* {0} */'.format(human_name, self.enum_string_offset[human_name]))
+        for enum in sorted(self.provider_human_name.keys()):
+            human_name = self.provider_human_name[enum]
+            self.outln('    {1}, /* {0} */'.format(enum, self.enum_string_offset[human_name]))
         self.outln('};')
         self.outln('')
 
@@ -714,11 +731,10 @@ class Generator(object):
         self.outln('        switch (providers[i]) {')
         self.outln('')
 
-        for human_name in sorted(self.provider_enum.keys()):
-            enum = self.provider_enum[human_name]
+        for enum in sorted(self.provider_human_name.keys()):
             self.outln('        case {0}:'.format(enum))
-            self.outln('            if ({0})'.format(self.provider_condition[human_name]))
-            self.outln('                return {0};'.format(self.provider_loader[human_name]).format("entrypoint_strings + entrypoints[i]"))
+            self.outln('            if ({0})'.format(self.provider_condition[enum]))
+            self.outln('                return {0};'.format(self.provider_loader[enum]).format("entrypoint_strings + entrypoints[i]"))
             self.outln('            break;')
 
         self.outln('        case {0}_provider_terminator:'.format(self.target))
