@@ -363,11 +363,7 @@ class Generator(object):
                     condition = 'true'
                     loader = 'epoxy_glx_dlsym({0})'
             elif api == 'egl':
-                human_name = 'EGL {0}'.format(version)
-                if version > 10:
-                    condition = 'epoxy_conservative_egl_version() >= {0}'.format(version)
-                else:
-                    condition = 'true'
+                condition = 'true'
                 # All EGL core entrypoints must be dlsym()ed out --
                 # eglGetProcAdddress() will return NULL.
                 loader = 'epoxy_egl_dlsym({0})'
@@ -381,6 +377,17 @@ class Generator(object):
                 sys.exit('unknown API: "{0}"'.format(api))
 
             for command in feature.findall('require/command'):
+                if api == 'egl':
+                    human_name = 'EGL {0}'.format(version)
+                    if version > 10:
+                        if command.get('name') == 'eglGetPlatformDisplay':
+                            query = 'epoxy_egl_version(EGL_NO_DISPLAY)'
+                            human_name += ' client'
+                        else:
+                            query = 'epoxy_conservative_egl_version()'
+
+                        condition = f'{query} >= {version}'
+
                 self.process_command_statements(command, condition, loader, human_name, human_name)
 
         for extension in reg.findall('extensions/extension'):
