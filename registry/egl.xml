@@ -1625,6 +1625,14 @@
             <param><ptype>EGLAttrib</ptype> *<name>value</name></param>
         </command>
         <command>
+            <proto><ptype>EGLBoolean</ptype> <name>eglQueryDeviceBinaryEXT</name></proto>
+            <param><ptype>EGLDeviceEXT</ptype> <name>device</name></param>
+            <param><ptype>EGLint</ptype> <name>name</name></param>
+            <param><ptype>EGLint</ptype> <name>max_size</name></param>
+            <param>void *<name>value</name></param>
+            <param><ptype>EGLint</ptype> *<name>size</name></param>
+        </command>
+        <command>
             <proto>const char *<name>eglQueryDeviceStringEXT</name></proto>
             <param><ptype>EGLDeviceEXT</ptype> <name>device</name></param>
             <param><ptype>EGLint</ptype> <name>name</name></param>
