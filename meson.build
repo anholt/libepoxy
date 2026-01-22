@@ -169,6 +169,9 @@ if not gl_dep.found() and not build_glx
   gl_dep = dependency('opengl', required: false)
 endif
 egl_dep = dependency('egl', required: false)
+if not egl_dep.found()
+  egl_dep = cc.find_library('libEGL', required: false)
+endif
 elg_headers_dep = egl_dep.partial_dependency(compile_args: true, includes: true)
 
 # Optional dependencies for tests

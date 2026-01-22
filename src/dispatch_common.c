@@ -185,7 +185,7 @@
 #define GLES2_LIB "libGLESv2.so"
 #elif defined(_WIN32)
 #define EGL_LIB "libEGL.dll"
-#define GLES1_LIB "libGLES_CM.dll"
+#define GLES1_LIB "libGLESv1_CM.dll"
 #define GLES2_LIB "libGLESv2.dll"
 #define OPENGL_LIB "OPENGL32"
 #else
