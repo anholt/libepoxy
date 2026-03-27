@@ -20,7 +20,7 @@ jobs:
       with:
         msystem: MINGW64
         update: true
-        install: base-devel git mingw-w64-x86_64-meson mingw-w64-x86_64-ninja mingw-w64-x86_64-pkg-config mingw-w64-x86_64-python3 mingw-w64-x86_64-python3-pip mingw-w64-x86_64-toolchain
+        install: base-devel git mingw-w64-x86_64-meson mingw-w64-x86_64-ninja mingw-w64-x86_64-pkg-config mingw-w64-x86_64-python3 python3-pip mingw-w64-x86_64-toolchain
     - name: Build
       run: |
         meson setup _build
