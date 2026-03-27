@@ -22,7 +22,11 @@
  */
 
 #include "config.h"
-
+#ifdef __GNUC__
+#define EPOXY_THREADLOCAL __thread
+#elif defined (_MSC_VER)
+#define EPOXY_THREADLOCAL __declspec(thread)
+#endif
 #ifdef _WIN32
 #define PLATFORM_HAS_EGL ENABLE_EGL
 #define PLATFORM_HAS_GLX ENABLE_GLX
