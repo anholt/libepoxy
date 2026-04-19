@@ -15,8 +15,8 @@ jobs:
           - '-Dx11=false'
     runs-on: macos-14
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.x
       - run: |
