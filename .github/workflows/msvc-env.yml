@@ -19,5 +19,11 @@ jobs:
       with:
         action: test
         directory: _build
+        setup-options: --fatal-meson-warnings
         options: --verbose
         meson-version: 0.54.3
+    - uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: msvc-ci
+        path: _build/meson-logs/

@@ -112,6 +112,8 @@ make_window_and_test(int (*callback)(HDC hdc))
         exit(1);
     }
 
+    LoadLibrary ("OPENGL32.DLL");
+
     /* create window */
     hwnd = CreateWindow(class_name, window_name,
                         WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS,
